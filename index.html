@@ -96,6 +96,10 @@
 	<td class="name" nowrap><a href="#ScenEdit_DeleteUnit">ScenEdit_DeleteUnit (unit)</a></td>
 	<td class="summary">Deletes a unit based on a selector.</td>
 	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_GetUnit">ScenEdit_GetUnit (unit)</a></td>
+	<td class="summary">Fetches a unit based on a selector.</td>
+	</tr>
 </table>
 <h2><a href="#Tables">Tables</a></h2>
 <table class="function_list">
@@ -129,15 +133,19 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">temp</span>
+            <span class="types"><span class="type">number</span></span>
          The current baseline temperature (in deg C). Varies by latitude.
         </li>
         <li><span class="parameter">rate</span>
+            <span class="types"><span class="type">number</span></span>
          The rainfall rate, 0-50.
         </li>
         <li><span class="parameter">percentage</span>
+            <span class="types"><span class="type">number</span></span>
          The amount of sky that is covered in cloud, 0.0-1.0
         </li>
         <li><span class="parameter">state</span>
+            <span class="types"><span class="type">number</span></span>
          The current sea state 0-9.
         </li>
     </ul>
@@ -163,9 +171,11 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">unit</span>
-         The unit to assign
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name or GUID of the unit to assign
         </li>
         <li><span class="parameter">mission</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          The mission to execute
         </li>
     </ul>
@@ -203,12 +213,15 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">sideAName</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          Side A's name
         </li>
         <li><span class="parameter">sideBName</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          Side B's name
         </li>
         <li><span class="parameter">posture</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          The posture of side A towards side B
         </li>
     </ul>
@@ -252,12 +265,15 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">type</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          The type of the thing to set the EMCON on.
         </li>
         <li><span class="parameter">name</span>
-         The object's name to select.
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name or GUID of the object to select.
         </li>
         <li><span class="parameter">emcon</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          The new EMCON for the object.
         </li>
     </ul>
@@ -407,9 +423,10 @@ Values may be omitted from the descriptor if they are intended to remain unmodif
 
     <h3>Usage:</h3>
     <ul>
-        <pre class="example"> ScenEdit_AddUnit({<span class="global">type</span> = <span class="string">'Aircraft'</span>, name = <span class="string">'F-15C Eagle'</span>, loadoutid = <span class="number">16934</span>,
+        <li><pre class="example"> ScenEdit_AddUnit({<span class="global">type</span> = <span class="string">'Aircraft'</span>, name = <span class="string">'F-15C Eagle'</span>, loadoutid = <span class="number">16934</span>,
        heading = <span class="number">0</span>, dbid = <span class="number">3500</span>, side = <span class="string">'NATO'</span>, Latitude=<span class="string">"N46.00.00"</span>,Longitude=<span class="string">"E25.00.00"</span>,
-       altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="string">"false"</span>,holdfire=<span class="string">"true"</span>,proficiency=<span class="string">"Ace"</span>})</pre>
+       altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="string">"false"</span>,holdfire=<span class="string">"true"</span>,proficiency=<span class="string">"Ace"</span>})</pre></li>
+        <li><pre class="example">ScenEdit_AddUnit({<span class="global">type</span> = <span class="string">'Air'</span>, name = <span class="string">'F-15C Eagle'</span>, loadoutid = <span class="number">16934</span>, dbid = <span class="number">3500</span>, side = <span class="string">'NATO'</span>, Lat=<span class="string">"5.123"</span>,Lon=<span class="string">"-12.51"</span>,alt=<span class="number">5000</span>})</pre></li>
     </ul>
 
 </dd>
@@ -438,6 +455,14 @@ Values may be omitted from the descriptor if they are intended to remain unmodif
 
 
 
+    <h3>Usage:</h3>
+    <ul>
+        <li><pre class="example">ScenEdit_SetUnit({side=<span class="string">"United States"</span>, name=<span class="string">"USS Test"</span>, lat = <span class="number">5</span>})</pre></li>
+        <li><pre class="example">ScenEdit_SetUnit({side=<span class="string">"United States"</span>, name=<span class="string">"USS Test"</span>, lat = <span class="number">5</span>})</pre></li>
+        <li><pre class="example">ScenEdit_SetUnit({side=<span class="string">"United States"</span>, name=<span class="string">"USS Test"</span>, lat = <span class="number">5</span>, lon = <span class="string">"N50.20.10"</span>})</pre></li>
+        <li><pre class="example">ScenEdit_SetUnit({side=<span class="string">"United States"</span>, name=<span class="string">"USS Test"</span>, newname=<span class="string">"USS Barack Obama"</span>})</pre></li>
+        <li><pre class="example">ScenEdit_SetUnit({side=<span class="string">"United States"</span>, name=<span class="string">"USS Test"</span>, heading=<span class="number">0</span>, HoldPosition=<span class="number">1</span>, HoldFire=<span class="number">1</span>,Proficiency=<span class="string">"Ace"</span>, Autodetectable=<span class="string">"yes"</span>})</pre></li>
+    </ul>
 
 </dd>
     <dt>
@@ -459,6 +484,41 @@ Values may be omitted from the descriptor if they are intended to remain unmodif
 
 
 
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_DeleteUnit({side=<span class="string">"United States"</span>, name=<span class="string">"USS Abcd"</span>})</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_GetUnit"></a>
+    <strong>ScenEdit_GetUnit (unit)</strong>
+    </dt>
+    <dd>
+    Fetches a unit based on a selector.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unit</span>
+            <span class="types"><a class="type" href="index.html#Unit">Unit</a></span>
+         The unit to select. Must be at least a selector.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="index.html#Unit">Unit</a></span>
+        A complete unit descriptor if the unit exists or nil otherwise.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_GetUnit({side=<span class="string">"United States"</span>, name=<span class="string">"USS Test"</span>})</pre>
+    </ul>
 
 </dd>
 </dl>
@@ -553,7 +613,7 @@ unambiguously.
         </li>
         <li><span class="parameter">side</span>
             <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         The unit's side. Option #1 for selectors in combination with name (descriptor, selector 1).
+         The unit's side. Option #1 for selectors in combination with name (selector 1).
         </li>
         <li><span class="parameter">latitude</span>
             <span class="types"><span class="type">latlon</span></span>
@@ -595,6 +655,11 @@ unambiguously.
          The unit proficiency, one of "Novice", "Cadet", "Regular", "Veteran", "Ace" (descriptor).
          (<em>optional</em>)
         </li>
+        <li><span class="parameter">newname</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         If a descriptor, the unit's new name (descriptor).
+         (<em>optional</em>)
+        </li>
     </ul>
 
 
@@ -609,7 +674,7 @@ unambiguously.
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2014-12-07 16:21:27 </i>
+<i style="float:right;">Last updated 2014-12-07 16:28:44 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
