@@ -31,6 +31,7 @@
 <ul>
 <li><a href="#Functions">Functions</a></li>
 <li><a href="#Tables">Tables</a></li>
+<li><a href="#Class_LatLon">Class LatLon </a></li>
 </ul>
 
 
@@ -72,24 +73,27 @@
 	<td class="name" nowrap><a href="#ScenEdit_RunScript">ScenEdit_RunScript (script)</a></td>
 	<td class="summary">Run a script in a file.</td>
 	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_AddReferencePoint">ScenEdit_AddReferencePoint (descriptor)</a></td>
-	<td class="summary">Add a new reference point.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_DeleteReferencePoint">ScenEdit_DeleteReferencePoint (selector)</a></td>
-	<td class="summary">Delete a reference point.</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_SetReferencePoint">ScenEdit_SetReferencePoint (descriptor)</a></td>
-	<td class="summary">Update a reference point with new values.</td>
-	</tr>
 </table>
 <h2><a href="#Tables">Tables</a></h2>
 <table class="function_list">
 	<tr>
 	<td class="name" nowrap><a href="#ReferencePoint">ReferencePoint</a></td>
 	<td class="summary">Reference point descriptor.</td>
+	</tr>
+</table>
+<h2><a href="#Class_LatLon">Class LatLon </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#LatLon:ScenEdit_AddReferencePoint">LatLon:ScenEdit_AddReferencePoint (descriptor)</a></td>
+	<td class="summary">Add a new reference point.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#LatLon:ScenEdit_DeleteReferencePoint">LatLon:ScenEdit_DeleteReferencePoint (selector)</a></td>
+	<td class="summary">Delete a reference point.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#LatLon:ScenEdit_SetReferencePoint">LatLon:ScenEdit_SetReferencePoint (descriptor)</a></td>
+	<td class="summary">Update a reference point with new values.</td>
 	</tr>
 </table>
 
@@ -282,88 +286,6 @@ This function runs a script in the file <code>script</code>. This file must be i
     </ul>
 
 </dd>
-    <dt>
-    <a name = "ScenEdit_AddReferencePoint"></a>
-    <strong>ScenEdit_AddReferencePoint (descriptor)</strong>
-    </dt>
-    <dd>
-    Add a new reference point.
-Based on <code>descriptor</code>, a table of type <a href="index.html#ReferencePoint">ReferencePoint</a>, this function adds a new reference point into the scene.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">descriptor</span>
-            <span class="types"><a class="type" href="index.html#ReferencePoint">ReferencePoint</a></span>
-         The reference point to create.
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><a class="type" href="index.html#ReferencePoint">ReferencePoint</a></span>
-        The reference point descriptor for the new reference point.
-    </ol>
-
-
-
-    <h3>Usage:</h3>
-    <ul>
-        <pre class="example">ScenEdit_AddReferencePoint({side=<span class="string">"United States"</span>, name=<span class="string">"Downed Pilot"</span>, lat=<span class="number">0.1</span>, lon=<span class="number">4</span>, highlighted=<span class="keyword">true</span>})</pre>
-    </ul>
-
-</dd>
-    <dt>
-    <a name = "ScenEdit_DeleteReferencePoint"></a>
-    <strong>ScenEdit_DeleteReferencePoint (selector)</strong>
-    </dt>
-    <dd>
-    Delete a reference point.
-Given a reference point selector, this function will remove it from the scene.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">selector</span>
-            <span class="types"><a class="type" href="index.html#ReferencePoint">ReferencePoint</a></span>
-         The reference point selector describing the reference point to delete.
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
-    <a name = "ScenEdit_SetReferencePoint"></a>
-    <strong>ScenEdit_SetReferencePoint (descriptor)</strong>
-    </dt>
-    <dd>
-    Update a reference point with new values.
-Given a <a href="index.html#ReferencePoint">descriptor with a valid selector</a>, the function will find the correct reference point and update it to the values contained in the descriptor.
-Values may be omitted from the descriptor if they are intended to remain unmodified.
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">descriptor</span>
-            <span class="types"><a class="type" href="index.html#ReferencePoint">ReferencePoint</a></span>
-         A descriptor with a valid selector.
-        </li>
-    </ul>
-
-
-
-
-    <h3>Usage:</h3>
-    <ul>
-        <li><pre class="example">ScenEdit_SetReferencePoint({side=<span class="string">"United States"</span>, name=<span class="string">"Downed Pilot"</span>, lat=<span class="number">0.5</span>})</pre></li>
-        <li><pre class="example">ScenEdit_SetReferencePoint({side=<span class="string">"United States"</span>, name=<span class="string">"Downed Pilot"</span>, lat=<span class="number">0.5</span>, lon=<span class="string">"N50.50.50"</span>, highlighted = <span class="keyword">true</span>})</pre></li>
-    </ul>
-
-</dd>
 </dl>
     <h2><a name="Tables"></a>Tables</h2>
 
@@ -377,7 +299,7 @@ Values may be omitted from the descriptor if they are intended to remain unmodif
 
 <p>For creation, <em>every</em> field must be defined.</p>
 
-<p>If selecting a unit (that is, using the descriptor as a selector) (e.g. <a href="index.html#ScenEdit_SetReferencePoint">SetReferencePoint</a> or <a href="index.html#ScenEdit_DeleteReferencePoint">DeleteReferencePoint</a>), one of the two following sets of fields must be define:</p>
+<p>If selecting a unit (that is, using the descriptor as a selector) (e.g. <a href="index.html#LatLon:ScenEdit_SetReferencePoint">SetReferencePoint</a> or <a href="index.html#LatLon:ScenEdit_DeleteReferencePoint">DeleteReferencePoint</a>), one of the two following sets of fields must be define:</p>
 
 <ul>
     <li><code>name</code> and <code>side</code>, to select a reference point <code>name</code> belonging to <code>side</code></li>
@@ -421,13 +343,100 @@ Values may be omitted from the descriptor if they are intended to remain unmodif
 
 </dd>
 </dl>
+    <h2><a name="Class_LatLon"></a>Class LatLon </h2>
+
+
+    <dl class="function">
+    <dt>
+    <a name = "LatLon:ScenEdit_AddReferencePoint"></a>
+    <strong>LatLon:ScenEdit_AddReferencePoint (descriptor)</strong>
+    </dt>
+    <dd>
+    Add a new reference point.
+Based on <code>descriptor</code>, a table of type <a href="index.html#ReferencePoint">ReferencePoint</a>, this function adds a new reference point into the scene.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">descriptor</span>
+            <span class="types"><a class="type" href="index.html#ReferencePoint">ReferencePoint</a></span>
+         The reference point to create.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="index.html#ReferencePoint">ReferencePoint</a></span>
+        The reference point descriptor for the new reference point.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_AddReferencePoint({side=<span class="string">"United States"</span>, name=<span class="string">"Downed Pilot"</span>, lat=<span class="number">0.1</span>, lon=<span class="number">4</span>, highlighted=<span class="keyword">true</span>})</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "LatLon:ScenEdit_DeleteReferencePoint"></a>
+    <strong>LatLon:ScenEdit_DeleteReferencePoint (selector)</strong>
+    </dt>
+    <dd>
+    Delete a reference point.
+Given a reference point selector, this function will remove it from the scene.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">selector</span>
+            <span class="types"><a class="type" href="index.html#ReferencePoint">ReferencePoint</a></span>
+         The reference point selector describing the reference point to delete.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "LatLon:ScenEdit_SetReferencePoint"></a>
+    <strong>LatLon:ScenEdit_SetReferencePoint (descriptor)</strong>
+    </dt>
+    <dd>
+    Update a reference point with new values.
+Given a <a href="index.html#ReferencePoint">descriptor with a valid selector</a>, the function will find the correct reference point and update it to the values contained in the descriptor.
+Values may be omitted from the descriptor if they are intended to remain unmodified.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">descriptor</span>
+            <span class="types"><a class="type" href="index.html#ReferencePoint">ReferencePoint</a></span>
+         A descriptor with a valid selector.
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <li><pre class="example">ScenEdit_SetReferencePoint({side=<span class="string">"United States"</span>, name=<span class="string">"Downed Pilot"</span>, lat=<span class="number">0.5</span>})</pre></li>
+        <li><pre class="example">ScenEdit_SetReferencePoint({side=<span class="string">"United States"</span>, name=<span class="string">"Downed Pilot"</span>, lat=<span class="number">0.5</span>, lon=<span class="string">"N50.50.50"</span>, highlighted = <span class="keyword">true</span>})</pre></li>
+    </ul>
+
+</dd>
+</dl>
 
 
 </div> <!-- id="content" -->
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2014-12-07 09:53:14 </i>
+<i style="float:right;">Last updated 2014-12-07 09:58:11 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
