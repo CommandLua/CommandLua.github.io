@@ -1,0 +1,434 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Tables">Tables</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><strong>ScenEdit</strong></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>ScenEdit</code></h1>
+<p>Command Lua API</p>
+<p>
+
+</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_SetWeather">ScenEdit_SetWeather (temp, rate, percentage, state)</a></td>
+	<td class="summary">Set the current scene weather.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_AssignUnitToMission">ScenEdit_AssignUnitToMission (unit, mission)</a></td>
+	<td class="summary">Assign a unit to a mission.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_SetSidePosture">ScenEdit_SetSidePosture (sideAName, sideBName, posture)</a></td>
+	<td class="summary">Set the side posture towards another.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_SetEMCON">ScenEdit_SetEMCON (type, name, emcon)</a></td>
+	<td class="summary">Sets the EMCON of the selected object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_RunScript">ScenEdit_RunScript (script)</a></td>
+	<td class="summary">Run a script in a file.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_AddReferencePoint">ScenEdit_AddReferencePoint (descriptor)</a></td>
+	<td class="summary">Add a new reference point.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_DeleteReferencePoint">ScenEdit_DeleteReferencePoint (selector)</a></td>
+	<td class="summary">Delete a reference point.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_SetReferencePoint">ScenEdit_SetReferencePoint (descriptor)</a></td>
+	<td class="summary">Update a reference point with new values.</td>
+	</tr>
+</table>
+<h2><a href="#Tables">Tables</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#ReferencePoint">ReferencePoint</a></td>
+	<td class="summary">Reference point descriptor.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "ScenEdit_SetWeather"></a>
+    <strong>ScenEdit_SetWeather (temp, rate, percentage, state)</strong>
+    </dt>
+    <dd>
+    Set the current scene weather.
+ This function takes 4 numbers that describe the desired weather conditions. These
+ conditions are applied globally.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">temp</span>
+         The current baseline temperature (in deg C). Varies by latitude.
+        </li>
+        <li><span class="parameter">rate</span>
+         The rainfall rate, 0-50.
+        </li>
+        <li><span class="parameter">percentage</span>
+         The amount of sky that is covered in cloud, 0.0-1.0
+        </li>
+        <li><span class="parameter">state</span>
+         The current sea state 0-9.
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_SetWeather(<span class="global">math</span>.random(<span class="number">0</span>,<span class="number">25</span>), <span class="global">math</span>.random(<span class="number">0</span>,<span class="number">50</span>), <span class="global">math</span>.random(<span class="number">0</span>,<span class="number">10</span>)/<span class="number">10.0</span>, <span class="global">math</span>.random(<span class="number">0</span>,<span class="number">9</span>))</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_AssignUnitToMission"></a>
+    <strong>ScenEdit_AssignUnitToMission (unit, mission)</strong>
+    </dt>
+    <dd>
+    Assign a unit to a mission.
+ Takes a unit and mission descriptor, then assigns the unit to the mission if it exists. Fails silently if eitehr do not exist.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unit</span>
+         The unit to assign
+        </li>
+        <li><span class="parameter">mission</span>
+         The mission to execute
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_AssignUnitToMission(<span class="string">"Bar #1"</span>, <span class="string">"Strike"</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_SetSidePosture"></a>
+    <strong>ScenEdit_SetSidePosture (sideAName, sideBName, posture)</strong>
+    </dt>
+    <dd>
+    Set the side posture towards another.
+ Sets side A's posture towards side B to the specified posture.
+ Posture codes:</p>
+
+<p> <style>
+  tr:not(:first-child) { border-top: 1px solid black;}
+  td { padding: .5em; }
+ </style>
+ <table style="border-spacing: 0.5rem;">
+  <tr><td>F</td><td>Friendly</td></tr>
+  <tr><td>H</td><td>Hostile</td></tr>
+  <tr><td>N</td><td>Neutral</td></tr>
+  <tr><td>U</td><td>Unknown</td></tr>
+ </table>
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sideAName</span>
+         Side A's name
+        </li>
+        <li><span class="parameter">sideBName</span>
+         Side B's name
+        </li>
+        <li><span class="parameter">posture</span>
+         The posture of side A towards side B
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_SetSidePosture(<span class="string">"LuaSideA"</span>, <span class="string">"LuaSideB"</span>, <span class="string">"H"</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_SetEMCON"></a>
+    <strong>ScenEdit_SetEMCON (type, name, emcon)</strong>
+    </dt>
+    <dd>
+
+<p>Sets the EMCON of the selected object.  Select the object by specifying the type and the object's name.</p>
+
+<p> Type is the type of object to set the EMCON on. It can be one of 4 values:</p>
+
+<ul>
+    <li><strong>Side</strong> - Set an entire side's EMCON (e.g. United States using active radar)</li>
+    <li><strong>Mission</strong> - Set the EMCON for a mission (e.g. Minesweepers active sonar)</li>
+    <li><strong>Group</strong> - Set the EMCON for an entire group (e.g Package #20 active radar)</li>
+    <li><strong>Unit</strong> - Set the EMCON for a single group (e.g. Hornet #14 passive radar)</li>
+</ul>
+
+<p> emcon is a compound structure. The string follows the following grammar, with each clause separated by a semicolon (;)</p>
+
+<ul>
+    <li><code>Inherit</code> indicates that the output EMCON should be at least the parent's EMCON. Inherit must come first.</li>
+    <li>A transmitter "set" statement. Each is of the form <code>type=status</code>, where type can be any one of <code>Radar</code>, <code>Sonar</code>, and <code>OECM</code>, and status can be any one of <code>Passive</code> or <code>Active</code>.</li>
+</ul>
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">type</span>
+         The type of the thing to set the EMCON on.
+        </li>
+        <li><span class="parameter">name</span>
+         The object's name to select.
+        </li>
+        <li><span class="parameter">emcon</span>
+         The new EMCON for the object.
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <li><pre class="example">ScenEdit_SetEMCON(<span class="string">'Side'</span>, <span class="string">'NATO'</span>, <span class="string">'Radar=Active;Sonar=Passive'</span>)</pre></li>
+        <li><pre class="example">ScenEdit_SetEMCON(<span class="string">'Mission'</span>, <span class="string">'ASW Patrol #1'</span>, <span class="string">'Inherit;Sonar=Active'</span>)</pre></li>
+        <li><pre class="example">ScenEdit_SetEMCON(<span class="string">'Unit'</span>, <span class="string">'Camel 2'</span>, <span class="string">'OECM=Active'</span>)</pre></li>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_RunScript"></a>
+    <strong>ScenEdit_RunScript (script)</strong>
+    </dt>
+    <dd>
+    Run a script in a file.
+This function runs a script in the file <code>script</code>. This file must be inside the [Command base directory]/Lua directory, or else the game will not be able to load it.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">script</span>
+         The script to run. The file that is looked for will be of the form [Command base directory]/Lua/[<code>script</code>]
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_RunScript(<span class="string">'cklib.lua'</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_AddReferencePoint"></a>
+    <strong>ScenEdit_AddReferencePoint (descriptor)</strong>
+    </dt>
+    <dd>
+    Add a new reference point.
+Based on <code>descriptor</code>, a table of type <a href="index.html#ReferencePoint">ReferencePoint</a>, this function adds a new reference point into the scene.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">descriptor</span>
+            <span class="types"><a class="type" href="index.html#ReferencePoint">ReferencePoint</a></span>
+         The reference point to create.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="index.html#ReferencePoint">ReferencePoint</a></span>
+        The reference point descriptor for the new reference point.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_AddReferencePoint({side=<span class="string">"United States"</span>, name=<span class="string">"Downed Pilot"</span>, lat=<span class="number">0.1</span>, lon=<span class="number">4</span>, highlighted=<span class="keyword">true</span>})</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_DeleteReferencePoint"></a>
+    <strong>ScenEdit_DeleteReferencePoint (selector)</strong>
+    </dt>
+    <dd>
+    Delete a reference point.
+Given a reference point selector, this function will remove it from the scene.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">selector</span>
+            <span class="types"><a class="type" href="index.html#ReferencePoint">ReferencePoint</a></span>
+         The reference point selector describing the reference point to delete.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_SetReferencePoint"></a>
+    <strong>ScenEdit_SetReferencePoint (descriptor)</strong>
+    </dt>
+    <dd>
+    Update a reference point with new values.
+Given a <a href="index.html#ReferencePoint">descriptor with a valid selector</a>, the function will find the correct reference point and update it to the values contained in the descriptor.
+Values may be omitted from the descriptor if they are intended to remain unmodified.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">descriptor</span>
+            <span class="types"><a class="type" href="index.html#ReferencePoint">ReferencePoint</a></span>
+         A descriptor with a valid selector.
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <li><pre class="example">ScenEdit_SetReferencePoint({side=<span class="string">"United States"</span>, name=<span class="string">"Downed Pilot"</span>, lat=<span class="number">0.5</span>})</pre></li>
+        <li><pre class="example">ScenEdit_SetReferencePoint({side=<span class="string">"United States"</span>, name=<span class="string">"Downed Pilot"</span>, lat=<span class="number">0.5</span>, lon=<span class="string">"N50.50.50"</span>, highlighted = <span class="keyword">true</span>})</pre></li>
+    </ul>
+
+</dd>
+</dl>
+    <h2><a name="Tables"></a>Tables</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "ReferencePoint"></a>
+    <strong>ReferencePoint</strong>
+    </dt>
+    <dd>
+    Reference point descriptor. </p>
+
+<p>For creation, <em>every</em> field must be defined.</p>
+
+<p>If selecting a unit (that is, using the descriptor as a selector) (e.g. <a href="index.html#ScenEdit_SetReferencePoint">SetReferencePoint</a> or <a href="index.html#ScenEdit_DeleteReferencePoint">DeleteReferencePoint</a>), one of the two following sets of fields must be define:</p>
+
+<ul>
+    <li><code>name</code> and <code>side</code>, to select a reference point <code>name</code> belonging to <code>side</code></li>
+    <li><code>guid</code>, if the unique ID of the reference point is known.</li>
+</ul>
+
+<p>If both are given, then the method defaults to finding the reference point with the correct GUID.
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name of the reference point
+        </li>
+        <li><span class="parameter">latitude</span>
+            <span class="types"><span class="type">latlon</span></span>
+         The latitude of the reference point
+        </li>
+        <li><span class="parameter">longitude</span>
+            <span class="types"><span class="type">latlon</span></span>
+         The longitude of the reference point
+        </li>
+        <li><span class="parameter">guid</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The unique identifier for the reference point
+        </li>
+        <li><span class="parameter">side</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The side the reference point is visible to
+        </li>
+        <li><span class="parameter">highlighted</span>
+            <span class="types"><span class="type">bool</span></span>
+         True if the point should be selected
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
+<i style="float:right;">Last updated 2014-12-07 09:31:39 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
