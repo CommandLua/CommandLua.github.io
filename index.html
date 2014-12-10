@@ -235,14 +235,14 @@
  Posture codes:</p>
 
 <p> <style>
-  tr:not(:first-child) { border-top: 1px solid black;}
-  td { padding: .5em; }
+ tr:not(:first-child) { border-top: 1px solid black;}
+ td { padding: .5em; }
  </style>
  <table style="border-spacing: 0.5rem;">
-  <tr><td>F</td><td>Friendly</td></tr>
-  <tr><td>H</td><td>Hostile</td></tr>
-  <tr><td>N</td><td>Neutral</td></tr>
-  <tr><td>U</td><td>Unknown</td></tr>
+ <tr><td>F</td><td>Friendly</td></tr>
+ <tr><td>H</td><td>Hostile</td></tr>
+ <tr><td>N</td><td>Neutral</td></tr>
+ <tr><td>U</td><td>Unknown</td></tr>
  </table>
 
 
@@ -460,8 +460,8 @@ Values may be omitted from the descriptor if they are intended to remain unmodif
     <h3>Usage:</h3>
     <ul>
         <li><pre class="example"> ScenEdit_AddUnit({<span class="global">type</span> = <span class="string">'Aircraft'</span>, name = <span class="string">'F-15C Eagle'</span>, loadoutid = <span class="number">16934</span>,
-       heading = <span class="number">0</span>, dbid = <span class="number">3500</span>, side = <span class="string">'NATO'</span>, Latitude=<span class="string">"N46.00.00"</span>,Longitude=<span class="string">"E25.00.00"</span>,
-       altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="string">"false"</span>,holdfire=<span class="string">"true"</span>,proficiency=<span class="string">"Ace"</span>})</pre></li>
+ heading = <span class="number">0</span>, dbid = <span class="number">3500</span>, side = <span class="string">'NATO'</span>, Latitude=<span class="string">"N46.00.00"</span>,Longitude=<span class="string">"E25.00.00"</span>,
+ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="string">"false"</span>,holdfire=<span class="string">"true"</span>,proficiency=<span class="string">"Ace"</span>})</pre></li>
         <li><pre class="example">ScenEdit_AddUnit({<span class="global">type</span> = <span class="string">'Air'</span>, name = <span class="string">'F-15C Eagle'</span>, loadoutid = <span class="number">16934</span>, dbid = <span class="number">3500</span>, side = <span class="string">'NATO'</span>, Lat=<span class="string">"5.123"</span>,Lon=<span class="string">"-12.51"</span>,alt=<span class="number">5000</span>})</pre></li>
     </ul>
 
@@ -1046,94 +1046,55 @@ use one of <code>&quot;1&quot;</code>, <code>&quot;true&quot;</code> or <code>&q
     <ul>
         <li><span class="parameter">use_nuclear_weapons</span>
             <span class="types"><span class="type">bool</span></span>
-
-<pre><code>            True iff the unit should be able to employ nuclear weapons
-</code></pre>
-
+         True iff the unit should be able to employ nuclear weapons
         </li>
         <li><span class="parameter">engage_non_hostile_targets</span>
             <span class="types"><span class="type">bool</span></span>
-
-<pre><code>    True iff the unit should attempt hostile action against units that are not hostile
-</code></pre>
-
+         True iff the unit should attempt hostile action against units that are not hostile
         </li>
         <li><span class="parameter">rtb_when_winchester</span>
             <span class="types"><span class="type">bool</span></span>
-
-<pre><code>            True iff the unit should return to base when out of weapons
-</code></pre>
-
+         True iff the unit should return to base when out of weapons
         </li>
         <li><span class="parameter">engaging_ambiguous_targets</span>
             <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-
-<pre><code>    One of "Ignore", "Optimistic", or "Pessimistic"
-</code></pre>
-
+         One of "Ignore", "Optimistic", or "Pessimistic"
         </li>
         <li><span class="parameter">automatic_evasion</span>
             <span class="types"><span class="type">bool</span></span>
-
-<pre><code>                True iff the unit should automatically evade incoming missiles
-</code></pre>
-
+         True iff the unit should automatically evade incoming missiles
         </li>
         <li><span class="parameter">maintain_standoff</span>
             <span class="types"><span class="type">bool</span></span>
-
-<pre><code>                True iff the unit should try to avoid approaching its target, only valid for ships
-</code></pre>
-
+         True iff the unit should try to avoid approaching its target, only valid for ships
         </li>
         <li><span class="parameter">use_refuel_unrep</span>
             <span class="types"><span class="type">bool</span></span>
-
-<pre><code>                One of "Always" or "Never"
-</code></pre>
-
+         One of "Always" or "Never"
         </li>
         <li><span class="parameter">engage_opportunity_targets</span>
             <span class="types"><span class="type">bool</span></span>
-
-<pre><code>    True iff the unit should take opportunistic shots
-</code></pre>
-
+         True iff the unit should take opportunistic shots
         </li>
         <li><span class="parameter">use_sams_in_anti_surface_mode</span>
             <span class="types"><span class="type">bool</span></span>
-
-<pre><code>    True iff SAMs should be used to engage surface targets
-</code></pre>
-
+         True iff SAMs should be used to engage surface targets
         </li>
         <li><span class="parameter">ignore_emcon_while_under_attack</span>
             <span class="types"><span class="type">bool</span></span>
-
-<pre><code>True iff EMCON should be ignored and all systems should go active when engaged
-</code></pre>
-
+         True iff EMCON should be ignored and all systems should go active when engaged
         </li>
         <li><span class="parameter">quick_turnaround_for_aircraft</span>
             <span class="types"><span class="type">bool</span></span>
-
-<pre><code>    One of "Yes", "FightersAndASW", or "No"
-</code></pre>
-
+         One of "Yes", "FightersAndASW", or "No"
         </li>
         <li><span class="parameter">air_operations_tempo</span>
             <span class="types"><span class="type">bool</span></span>
-
-<pre><code>            One of "Surge" or "Sustained"
-</code></pre>
-
+         One of "Surge" or "Sustained"
         </li>
         <li><span class="parameter">kinematic_range_for_torpedoes</span>
             <span class="types"><span class="type">bool</span></span>
-
-<pre><code>    One of "AutomaticAndManualFire", "ManualFireOnly", or "No"
-</code></pre>
-
+         One of "AutomaticAndManualFire", "ManualFireOnly", or "No"
         </li>
     </ul>
 
@@ -1149,7 +1110,7 @@ use one of <code>&quot;1&quot;</code>, <code>&quot;true&quot;</code> or <code>&q
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2014-12-10 11:39:05 </i>
+<i style="float:right;">Last updated 2014-12-10 11:40:14 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
