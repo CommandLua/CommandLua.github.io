@@ -100,6 +100,22 @@
 	<td class="name" nowrap><a href="#ScenEdit_GetUnit">ScenEdit_GetUnit (unit)</a></td>
 	<td class="summary">Fetches a unit based on a selector.</td>
 	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_SetDoctrine">ScenEdit_SetDoctrine (selector, doctrine)</a></td>
+	<td class="summary">Set the doctrine of the designated object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_GetDoctrine">ScenEdit_GetDoctrine (selector)</a></td>
+	<td class="summary">Gets the doctrine of the designated object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_CurrentTime">ScenEdit_CurrentTime ()</a></td>
+	<td class="summary">Gets the current time.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_AddAircraft">ScenEdit_AddAircraft (sideName, unitName, dbid, loadoutID, latlonspec, lat, lon)</a></td>
+	<td class="summary">Adds an aircraft to the scene.</td>
+	</tr>
 </table>
 <h2><a href="#Tables">Tables</a></h2>
 <table class="function_list">
@@ -110,6 +126,14 @@
 	<tr>
 	<td class="name" nowrap><a href="#Unit">Unit</a></td>
 	<td class="summary">Represents a unit in the scene.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DoctrineSelector">DoctrineSelector</a></td>
+	<td class="summary">Selects a thing, one of a side, group, mission, or unit.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Doctrine">Doctrine</a></td>
+	<td class="summary">Describes a doctrine.</td>
 	</tr>
 </table>
 
@@ -495,7 +519,10 @@ Values may be omitted from the descriptor if they are intended to remain unmodif
     <strong>ScenEdit_GetUnit (unit)</strong>
     </dt>
     <dd>
-    Fetches a unit based on a selector.
+    Fetches a unit based on a selector. </p>
+
+<p>This function is mostly identical to <a href="index.html#ScenEdit_SetUnit">ScenEdit_SetUnit</a> except that if no unit is selected by the selector portion of <code>unit</code>,
+then the function returns nil instead of producing an exception.
 
 
     <h3>Parameters:</h3>
@@ -518,6 +545,147 @@ Values may be omitted from the descriptor if they are intended to remain unmodif
     <h3>Usage:</h3>
     <ul>
         <pre class="example">ScenEdit_GetUnit({side=<span class="string">"United States"</span>, name=<span class="string">"USS Test"</span>})</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_SetDoctrine"></a>
+    <strong>ScenEdit_SetDoctrine (selector, doctrine)</strong>
+    </dt>
+    <dd>
+    Set the doctrine of the designated object. </p>
+
+<p>This function uses selector to find the thing to modify, then modifies the doctrine of that object based on the given object.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">selector</span>
+            <span class="types"><a class="type" href="index.html#DoctrineSelector">DoctrineSelector</a></span>
+         The selector for the object to modify
+        </li>
+        <li><span class="parameter">doctrine</span>
+            <span class="types"><a class="type" href="index.html#Doctrine">Doctrine</a></span>
+         The doctrine to update the object to
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <li><pre class="example">ScenEdit_SetDoctrine({side=<span class="string">"Soviet Union"</span>}, {kinematic_range_for_torpedoes = <span class="string">"AutomaticAndManualFire"</span>,use_nuclear_weapons= <span class="string">"yes"</span> })</pre></li>
+        <li><pre class="example">ScenEdit_SetDoctrine({side=<span class="string">"Soviet Union"</span>, mission=<span class="string">"ASW PATROL"</span>}, {kinematic_range_for_torpedoes = <span class="string">"AutomaticAndManualFire"</span>,use_nuclear_weapons= <span class="string">"yes"</span> })</pre></li>
+        <li><pre class="example">ScenEdit_SetDoctrine({side=<span class="string">"Soviet Union"</span>, name=<span class="string">"Bear #2"</span>}, {use_nuclear_weapons= <span class="string">"yes"</span> })</pre></li>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_GetDoctrine"></a>
+    <strong>ScenEdit_GetDoctrine (selector)</strong>
+    </dt>
+    <dd>
+    Gets the doctrine of the designated object. </p>
+
+<p>This function looks up the doctrine of the object selected by selector, and throws an exception if the unit does not exist.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">selector</span>
+            <span class="types"><a class="type" href="index.html#DoctrineSelector">DoctrineSelector</a></span>
+         The selector for the object to look up
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="index.html#Doctrine">Doctrine</a></span>
+        The doctrine of the selected object
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_GetDoctrine({side=<span class="string">"Soviet Union"</span>}).use_nuclear_weapons</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_CurrentTime"></a>
+    <strong>ScenEdit_CurrentTime ()</strong>
+    </dt>
+    <dd>
+    Gets the current time.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        The UTC Unix timestamp of the current time in-game.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_AddAircraft"></a>
+    <strong>ScenEdit_AddAircraft (sideName, unitName, dbid, loadoutID, latlonspec, lat, lon)</strong>
+    </dt>
+    <dd>
+    Adds an aircraft to the scene.
+**Not recommended, use <a href="index.html#ScenEdit_AddUnit">ScenEdit_AddUnit</a> instead** </p>
+
+<p>Adds a new aircraft to the scene.</p>
+
+<p>Note that the parameters <code>lat</code> and <code>lon</code> are specified by the parameter <code>latlonspec</code>. If <code>latlonspec</code> is <code>&quot;DEG&quot;</code>, then <code>lat</code> and <code>lon</code> should be a simple
+floating point number. If <code>latlonspec</code> is <code>&quot;DEC&quot;</code>, then <code>lat</code> and <code>lon</code> should be in the format of `"N/S/E/W deg.min.sec".
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sideName</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name of the side for the new aircraft
+        </li>
+        <li><span class="parameter">unitName</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name of the new aircraft
+        </li>
+        <li><span class="parameter">dbid</span>
+            <span class="types"><span class="type">number</span></span>
+         The database ID of the new aircraft
+        </li>
+        <li><span class="parameter">loadoutID</span>
+            <span class="types"><span class="type">number</span></span>
+         The database ID of the aircraft's loadout
+        </li>
+        <li><span class="parameter">latlonspec</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The formatting specification for <code>lat</code> and <code>lon</code>.
+        </li>
+        <li><span class="parameter">lat</span>
+            <span class="types"><span class="type">latlon</span></span>
+         The latitude of the new aircraft
+        </li>
+        <li><span class="parameter">lon</span>
+            <span class="types"><span class="type">latlon</span></span>
+         The longitude of the new aircraft
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_AddAircraft(<span class="string">"USA"</span>, <span class="string">"Eagles"</span>, <span class="number">3222</span>, <span class="number">3177</span>, <span class="string">"DEG"</span>, <span class="number">1.1</span>, <span class="number">1.1</span>)</pre>
     </ul>
 
 </dd>
@@ -667,6 +835,152 @@ unambiguously.
 
 
 </dd>
+    <dt>
+    <a name = "DoctrineSelector"></a>
+    <strong>DoctrineSelector</strong>
+    </dt>
+    <dd>
+    Selects a thing, one of a side, group, mission, or unit. </p>
+
+<p>This selector can only be used with the doctrine mechanism, with other systems relying on different selection mechanisms.
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">side</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The side to select/from
+        </li>
+        <li><span class="parameter">mission</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name of the mission to select
+        </li>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name of the unit to select
+        </li>
+        <li><span class="parameter">group</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name of the group to select
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Doctrine"></a>
+    <strong>Doctrine</strong>
+    </dt>
+    <dd>
+    Describes a doctrine. </p>
+
+<p>At the current time, a bug exists where Lua booleans do not work for bool fields. To work around this issue,
+use one of <code>&quot;1&quot;</code>, <code>&quot;true&quot;</code> or <code>&quot;yes&quot;</code> for true or <code>&quot;0&quot;</code>, <code>&quot;false&quot;</code>, or <code>&quot;no&quot;</code> for false.
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">use_nuclear_weapons</span>
+            <span class="types"><span class="type">bool</span></span>
+
+<pre><code>            True iff the unit should be able to employ nuclear weapons
+</code></pre>
+
+        </li>
+        <li><span class="parameter">engage_non_hostile_targets</span>
+            <span class="types"><span class="type">bool</span></span>
+
+<pre><code>    True iff the unit should attempt hostile action against units that are not hostile
+</code></pre>
+
+        </li>
+        <li><span class="parameter">rtb_when_winchester</span>
+            <span class="types"><span class="type">bool</span></span>
+
+<pre><code>            True iff the unit should return to base when out of weapons
+</code></pre>
+
+        </li>
+        <li><span class="parameter">engaging_ambiguous_targets</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+<pre><code>    One of "Ignore", "Optimistic", or "Pessimistic"
+</code></pre>
+
+        </li>
+        <li><span class="parameter">automatic_evasion</span>
+            <span class="types"><span class="type">bool</span></span>
+
+<pre><code>                True iff the unit should automatically evade incoming missiles
+</code></pre>
+
+        </li>
+        <li><span class="parameter">maintain_standoff</span>
+            <span class="types"><span class="type">bool</span></span>
+
+<pre><code>                True iff the unit should try to avoid approaching its target, only valid for ships
+</code></pre>
+
+        </li>
+        <li><span class="parameter">use_refuel_unrep</span>
+            <span class="types"><span class="type">bool</span></span>
+
+<pre><code>                One of "Always" or "Never"
+</code></pre>
+
+        </li>
+        <li><span class="parameter">engage_opportunity_targets</span>
+            <span class="types"><span class="type">bool</span></span>
+
+<pre><code>    True iff the unit should take opportunistic shots
+</code></pre>
+
+        </li>
+        <li><span class="parameter">use_sams_in_anti_surface_mode</span>
+            <span class="types"><span class="type">bool</span></span>
+
+<pre><code>    True iff SAMs should be used to engage surface targets
+</code></pre>
+
+        </li>
+        <li><span class="parameter">ignore_emcon_while_under_attack</span>
+            <span class="types"><span class="type">bool</span></span>
+
+<pre><code>True iff EMCON should be ignored and all systems should go active when engaged
+</code></pre>
+
+        </li>
+        <li><span class="parameter">quick_turnaround_for_aircraft</span>
+            <span class="types"><span class="type">bool</span></span>
+
+<pre><code>    One of "Yes", "FightersAndASW", or "No"
+</code></pre>
+
+        </li>
+        <li><span class="parameter">air_operations_tempo</span>
+            <span class="types"><span class="type">bool</span></span>
+
+<pre><code>            One of "Surge" or "Sustained"
+</code></pre>
+
+        </li>
+        <li><span class="parameter">kinematic_range_for_torpedoes</span>
+            <span class="types"><span class="type">bool</span></span>
+
+<pre><code>    One of "AutomaticAndManualFire", "ManualFireOnly", or "No"
+</code></pre>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
 </dl>
 
 
@@ -674,7 +988,7 @@ unambiguously.
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2014-12-07 16:28:58 </i>
+<i style="float:right;">Last updated 2014-12-10 11:32:13 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
