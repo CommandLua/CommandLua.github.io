@@ -116,6 +116,18 @@
 	<td class="name" nowrap><a href="#ScenEdit_AddAircraft">ScenEdit_AddAircraft (sideName, unitName, dbid, loadoutID, latlonspec, lat, lon)</a></td>
 	<td class="summary">Adds an aircraft to the scene.</td>
 	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_AddShip">ScenEdit_AddShip (sideName, unitName, dbid, latlonspec, lat, lon)</a></td>
+	<td class="summary">Adds a ship to the scene.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_AddSubmarine">ScenEdit_AddSubmarine (sideName, unitName, dbid, latlonspec, lat, lon)</a></td>
+	<td class="summary">Adds a submarine to the scene.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_AddFacility">ScenEdit_AddFacility (sideName, unitName, dbid, orientation, latlonspec, lat, lon)</a></td>
+	<td class="summary">Adds an aircraft to the scene.</td>
+	</tr>
 </table>
 <h2><a href="#Tables">Tables</a></h2>
 <table class="function_list">
@@ -687,6 +699,157 @@ floating point number. If <code>latlonspec</code> is <code>&quot;DEC&quot;</code
     </ul>
 
 </dd>
+    <dt>
+    <a name = "ScenEdit_AddShip"></a>
+    <strong>ScenEdit_AddShip (sideName, unitName, dbid, latlonspec, lat, lon)</strong>
+    </dt>
+    <dd>
+    Adds a ship to the scene.
+<b>Not recommended, use <a href="index.html#ScenEdit_AddUnit">ScenEdit_AddUnit</a> instead</b></p>
+
+<p>Note that the parameters <code>lat</code> and <code>lon</code> are specified by the parameter <code>latlonspec</code>. If <code>latlonspec</code> is <code>&quot;DEG&quot;</code>, then <code>lat</code> and <code>lon</code> should be a simple
+floating point number. If <code>latlonspec</code> is <code>&quot;DEC&quot;</code>, then <code>lat</code> and <code>lon</code> should be in the format of `"N/S/E/W deg.min.sec".
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sideName</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name of the side for the new ship
+        </li>
+        <li><span class="parameter">unitName</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name of the new ship
+        </li>
+        <li><span class="parameter">dbid</span>
+            <span class="types"><span class="type">number</span></span>
+         The database ID of the new ship
+        </li>
+        <li><span class="parameter">latlonspec</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The formatting specification for <code>lat</code> and <code>lon</code>.
+        </li>
+        <li><span class="parameter">lat</span>
+            <span class="types"><span class="type">latlon</span></span>
+         The latitude of the new ship
+        </li>
+        <li><span class="parameter">lon</span>
+            <span class="types"><span class="type">latlon</span></span>
+         The longitude of the new ship
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_AddShip(<span class="string">'Blue'</span>, <span class="string">'Boat'</span>, <span class="number">745</span>, <span class="string">'DEC'</span>, <span class="string">'23.1'</span>, <span class="string">'-40.2'</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_AddSubmarine"></a>
+    <strong>ScenEdit_AddSubmarine (sideName, unitName, dbid, latlonspec, lat, lon)</strong>
+    </dt>
+    <dd>
+    Adds a submarine to the scene.
+<b>Not recommended, use <a href="index.html#ScenEdit_AddUnit">ScenEdit_AddUnit</a> instead</b></p>
+
+<p>Note that the parameters <code>lat</code> and <code>lon</code> are specified by the parameter <code>latlonspec</code>. If <code>latlonspec</code> is <code>&quot;DEG&quot;</code>, then <code>lat</code> and <code>lon</code> should be a simple
+floating point number. If <code>latlonspec</code> is <code>&quot;DEC&quot;</code>, then <code>lat</code> and <code>lon</code> should be in the format of `"N/S/E/W deg.min.sec".
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sideName</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name of the side for the new submarine
+        </li>
+        <li><span class="parameter">unitName</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name of the new submarine
+        </li>
+        <li><span class="parameter">dbid</span>
+            <span class="types"><span class="type">number</span></span>
+         The database ID of the new submarine
+        </li>
+        <li><span class="parameter">latlonspec</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The formatting specification for <code>lat</code> and <code>lon</code>.
+        </li>
+        <li><span class="parameter">lat</span>
+            <span class="types"><span class="type">latlon</span></span>
+         The latitude of the new submarine
+        </li>
+        <li><span class="parameter">lon</span>
+            <span class="types"><span class="type">latlon</span></span>
+         The longitude of the new submarine
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_AddSubmarine(<span class="string">'Blue'</span>, <span class="string">'Duck'</span>, <span class="number">112</span>, <span class="string">'DEC'</span>, <span class="string">'23.1'</span>, <span class="string">'-40.2'</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_AddFacility"></a>
+    <strong>ScenEdit_AddFacility (sideName, unitName, dbid, orientation, latlonspec, lat, lon)</strong>
+    </dt>
+    <dd>
+    Adds an aircraft to the scene.
+<b>Not recommended, use <a href="index.html#ScenEdit_AddUnit">ScenEdit_AddUnit</a> instead</b></p>
+
+<p>Note that the parameters <code>lat</code> and <code>lon</code> are specified by the parameter <code>latlonspec</code>. If <code>latlonspec</code> is <code>&quot;DEG&quot;</code>, then <code>lat</code> and <code>lon</code> should be a simple
+floating point number. If <code>latlonspec</code> is <code>&quot;DEC&quot;</code>, then <code>lat</code> and <code>lon</code> should be in the format of `"N/S/E/W deg.min.sec".
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sideName</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name of the side for the new facility
+        </li>
+        <li><span class="parameter">unitName</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name of the new facility
+        </li>
+        <li><span class="parameter">dbid</span>
+            <span class="types"><span class="type">number</span></span>
+         The database ID of the new facility
+        </li>
+        <li><span class="parameter">orientation</span>
+            <span class="types"><span class="type">number</span></span>
+         The heading of the new facility
+        </li>
+        <li><span class="parameter">latlonspec</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The formatting specification for <code>lat</code> and <code>lon</code>.
+        </li>
+        <li><span class="parameter">lat</span>
+            <span class="types"><span class="type">latlon</span></span>
+         The latitude of the new facility
+        </li>
+        <li><span class="parameter">lon</span>
+            <span class="types"><span class="type">latlon</span></span>
+         The longitude of the new facility
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_AddFacility(<span class="string">"Orange"</span>, <span class="string">"Here"</span>, <span class="number">19</span>, <span class="number">0</span>, <span class="string">"DEC"</span>, <span class="string">"N 40.26.30"</span>, <span class="string">"W 80.00.00"</span>)</pre>
+    </ul>
+
+</dd>
 </dl>
     <h2><a name="Tables"></a>Tables</h2>
 
@@ -986,7 +1149,7 @@ use one of <code>&quot;1&quot;</code>, <code>&quot;true&quot;</code> or <code>&q
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2014-12-10 11:33:29 </i>
+<i style="float:right;">Last updated 2014-12-10 11:38:55 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
