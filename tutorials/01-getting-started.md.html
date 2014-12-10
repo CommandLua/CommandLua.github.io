@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Command Lua Documentation</title>
+    <link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-57524251-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>CommandLua</h1>
+
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Concepts">Concepts </a></li>
+<li><a href="#Execution">Execution </a></li>
+</ul>
+
+
+<h2>Tutorials</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><strong>01-getting-started</strong></li>
+  <li><a href="../tutorials/02-creation.md.html">02-creation</a></li>
+  <li><a href="../tutorials/03-events.md.html">03-events</a></li>
+</ul>
+<h2>Reference</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="../index.html">ScenEdit</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+
+<h1>Introduction to Lua in Command</h1>
+
+<p>Before you begin, make sure that you've read the first 4 tutorials at the <a href="http://lua-users.org/wiki/TutorialDirectory">lua-users wiki</a>, to help with understanding what's going on here. We also recommend FunctionsTutorial, but it is optional.</p>
+
+<p><a href="https://github.com/BenChung/CommandLuaDocs/raw/master/LuaTutorial1.scen">Scen file, right click -> save as</a>.</p>
+
+<p>Please download the introductory Scene file. This file includes a blank map with two predefined sides, LuaSideA and LuaSideB, who are eternal mortal enemies. These two belligerents want to have a naval incident in the North Atlantic (and each has a mission already set up to do so), but don't have any ships to incident with. We will help them out by giving them some new vessels, using Lua.</p>
+
+<p>Before we get started, we have to introduce our metaphorical office, the place where we'll be working from. In this introduction, we will be using the script console, then in part 2 we will move onto to using Lua from the event editor.</p>
+
+<p><img src="http://i.imgur.com/waKVgdA.png" alt="Figure 1"/>
+Once you've opened the scene file in the editor, open the script console (Editor->Script Console).
+<img src="http://i.imgur.com/qO9ql2H.png" alt="Script Console"/></p>
+
+<p>The Script Console provides a place to rapidly create, run, and debug Lua scripts. The interface has 3 components:</p>
+
+<ul>
+    <li><strong>Red</strong>: This displays the output of your scripts, as well as a history of your inputs.</li>
+    <li><strong>Green</strong>: This is where you enter the scripts into the console to run them.</li>
+    <li><strong>Yellow</strong>: This button is how you execute your script in the game.</li>
+</ul>
+
+<p>For the purposes of this tutorial, we will be using the script editor to set up a simple scene, where two identical ships fire at each other over a short distance. The scene already has the posture information in it, so we just need to select, position, and create the ships.</p>
+
+<p><a name="Concepts"></a></p>
+<h2>Concepts</h2>
+<p>Before we can get into the meat of Lua in Command, we first have to discuss two basic concepts: IDs and positions.</p>
+
+<h3>IDs</h3>
+<p>Internally, Command refers to every aircraft, ship, submarine, loadout (and rather a lot else) with a unique ID number. To create a unit, you need to tell Command that unit's unique ID number, which can typically be found in the DB viewer.</p>
+
+<p>For the purposes of this tutorial, both LuaSideA and LuaSideB operate the 1984 variant of the Spruance class destroyer. To add it using Lua, we look up the ID in the DB:
+<img src="http://i.imgur.com/9svl63O.png" alt="DB lookup"/></p>
+
+<p>In this case, the class has ID# 383.</p>
+
+<h3>Positions</h3>
+<p>As you probably already know, map positions are referred to with latitude (north/south) and longitude (east/west) coordinates. These can be represented in two forms, degrees minutes seconds, and decimal degrees. The Command Lua API supports both forms.</p>
+
+<p>For this scenario, we will pick an arbitrary location in the North Atlantic for our ships. We pick these two positions:</p>
+
+<p><img src="http://i.imgur.com/kRGv31E.png" alt="Pos 1"/></p>
+
+<p><img src="http://i.imgur.com/hkza1QX.png" alt="Pos 2"/></p>
+
+<p>The coordinates for these are</p>
+
+<ul>
+    <li>N61 29' 23" W17 14' 32"</li>
+    <li>N61 29' 11" W17 15' 04"</li>
+</ul>
+
+<p><a name="Execution"></a></p>
+<h2>Execution</h2>
+
+<p>Let's add our ships now. To do so, we'll need to use the function ScenEdit_AddShip.</p>
+
+<p><a href="../index.html#ScenEdit_AddShip">ScenEdit_AddShip</a>, henceforth just called AddShip, is a function that adds a ship to a scene. The signature is</p>
+
+
+<pre>
+ScenEdit_AddShip(<span class="string">'[Side Name or ID]'</span>, <span class="string">'[Ship Name]'</span>, [DBID], [<span class="string">'DEC'</span> <span class="keyword">or</span> <span class="string">'DEG'</span>], [<span class="string">'Latitude'</span>], [<span class="string">'Longitude'</span>])
+</pre>
+
+<p>For our purposes, we want to add two ships with names A and B, DBID 383, at the above coords, to sides LuaSideA and LuaSideB. The function can understand the degrees minutes second format (under the 'DEG' option), but we will use the Dms function for simplicity. This results in the function calls</p>
+
+
+<pre>
+ScenEdit_AddShip(<span class="string">'LuaSideA'</span>, <span class="string">'A'</span>, <span class="number">383</span>, <span class="string">'DEG'</span>, <span class="string">"N61.29.23"</span>, <span class="string">"W17.14.32"</span>)
+ScenEdit_AddShip(<span class="string">'LuaSideB'</span>, <span class="string">'B'</span>, <span class="number">383</span>, <span class="string">'DEG'</span>, <span class="string">"N61.29.11"</span>, <span class="string">"W17.15.4"</span>)
+</pre>
+
+<p>If you run this script with the Dms function, you should end up with two Spruances near Iceland on opposite sides.</p>
+
+<p>Running the scenario now leads to disappointment - the ships don't attack each other. We need to add them to a mission. To do this, we use the <a href="../index.html#ScenEdit_AssignUnitToMission">ScenEdit_AssignUnitToMission</a> function, with the following signature</p>
+
+
+<pre>
+ScenEdit_AssignUnitToMission(<span class="string">'[Unit Name or ID]'</span>, <span class="string">'[Mission Name or ID or NONE]'</span>)
+</pre>
+
+<p>The scene already contains two missions with appropriate setups for attack. We simply need to assign our ships to these missions, like so</p>
+
+
+<pre>
+ScenEdit_AssignUnitToMission(<span class="string">'A'</span>, <span class="string">'AStrike'</span>)
+ScenEdit_AssignUnitToMission(<span class="string">'B'</span>, <span class="string">'BStrike'</span>)
+</pre>
+
+<p>Now, if you execute this and run the game, the ships should see and attack each other, as intended.</p>
+
+<p>In <a href="../tutorials/02-creation.md.html#">tutorial 2</a>, we'll cover the basics of aircraft creation and weather alteration.</p>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
+<i style="float:right;">Last updated 2014-12-10 12:40:08 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

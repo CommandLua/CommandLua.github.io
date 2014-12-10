@@ -1,0 +1,1133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Command Lua Documentation</title>
+    <link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-57524251-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>CommandLua</h1>
+
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Tables">Tables</a></li>
+</ul>
+
+
+<h2>Reference</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><strong>ScenEdit</strong></li>
+</ul>
+<h2>Tutorials</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="../tutorials/01-getting-started.md.html">01-getting-started</a></li>
+  <li><a href="../tutorials/02-creation.md.html">02-creation</a></li>
+  <li><a href="../tutorials/03-events.md.html">03-events</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>ScenEdit</code></h1>
+<p>Command Lua API</p>
+<p>
+
+</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_SetWeather">ScenEdit_SetWeather (temp, rate, percentage, state)</a></td>
+	<td class="summary">Set the current scene weather.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_AssignUnitToMission">ScenEdit_AssignUnitToMission (unit, mission)</a></td>
+	<td class="summary">Assign a unit to a mission.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_SetSidePosture">ScenEdit_SetSidePosture (sideAName, sideBName, posture)</a></td>
+	<td class="summary">Set the side posture towards another.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_SetEMCON">ScenEdit_SetEMCON (type, name, emcon)</a></td>
+	<td class="summary">Sets the EMCON of the selected object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_RunScript">ScenEdit_RunScript (script)</a></td>
+	<td class="summary">Run a script in a file.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_AddReferencePoint">ScenEdit_AddReferencePoint (descriptor)</a></td>
+	<td class="summary">Add a new reference point.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_DeleteReferencePoint">ScenEdit_DeleteReferencePoint (selector)</a></td>
+	<td class="summary">Delete a reference point.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_SetReferencePoint">ScenEdit_SetReferencePoint (descriptor)</a></td>
+	<td class="summary">Update a reference point with new values.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_AddUnit">ScenEdit_AddUnit (unit)</a></td>
+	<td class="summary">Adds a unit to the scene based on a descriptor.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_SetUnit">ScenEdit_SetUnit (unit)</a></td>
+	<td class="summary">Sets the properties of a unit that already exists.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_DeleteUnit">ScenEdit_DeleteUnit (unit)</a></td>
+	<td class="summary">Deletes a unit based on a selector.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_GetUnit">ScenEdit_GetUnit (unit)</a></td>
+	<td class="summary">Fetches a unit based on a selector.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_SetDoctrine">ScenEdit_SetDoctrine (selector, doctrine)</a></td>
+	<td class="summary">Set the doctrine of the designated object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_GetDoctrine">ScenEdit_GetDoctrine (selector)</a></td>
+	<td class="summary">Gets the doctrine of the designated object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_CurrentTime">ScenEdit_CurrentTime ()</a></td>
+	<td class="summary">Gets the current time.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_AddAircraft">ScenEdit_AddAircraft (sideName, unitName, dbid, loadoutID, latlonspec, lat, lon)</a></td>
+	<td class="summary">Adds an aircraft to the scene.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_AddShip">ScenEdit_AddShip (sideName, unitName, dbid, latlonspec, lat, lon)</a></td>
+	<td class="summary">Adds a ship to the scene.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_AddSubmarine">ScenEdit_AddSubmarine (sideName, unitName, dbid, latlonspec, lat, lon)</a></td>
+	<td class="summary">Adds a submarine to the scene.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_AddFacility">ScenEdit_AddFacility (sideName, unitName, dbid, orientation, latlonspec, lat, lon)</a></td>
+	<td class="summary">Adds an aircraft to the scene.</td>
+	</tr>
+</table>
+<h2><a href="#Tables">Tables</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#ReferencePoint">ReferencePoint</a></td>
+	<td class="summary">Reference point descriptor.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Unit">Unit</a></td>
+	<td class="summary">Represents a unit in the scene.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DoctrineSelector">DoctrineSelector</a></td>
+	<td class="summary">Selects a thing, one of a side, group, mission, or unit.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Doctrine">Doctrine</a></td>
+	<td class="summary">Describes a doctrine.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "ScenEdit_SetWeather"></a>
+    <strong>ScenEdit_SetWeather (temp, rate, percentage, state)</strong>
+    </dt>
+    <dd>
+    Set the current scene weather.
+ This function takes 4 numbers that describe the desired weather conditions. These
+ conditions are applied globally.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">temp</span>
+            <span class="types"><span class="type">number</span></span>
+         The current baseline temperature (in deg C). Varies by latitude.
+        </li>
+        <li><span class="parameter">rate</span>
+            <span class="types"><span class="type">number</span></span>
+         The rainfall rate, 0-50.
+        </li>
+        <li><span class="parameter">percentage</span>
+            <span class="types"><span class="type">number</span></span>
+         The amount of sky that is covered in cloud, 0.0-1.0
+        </li>
+        <li><span class="parameter">state</span>
+            <span class="types"><span class="type">number</span></span>
+         The current sea state 0-9.
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_SetWeather(<span class="global">math</span>.random(<span class="number">0</span>,<span class="number">25</span>), <span class="global">math</span>.random(<span class="number">0</span>,<span class="number">50</span>), <span class="global">math</span>.random(<span class="number">0</span>,<span class="number">10</span>)/<span class="number">10.0</span>, <span class="global">math</span>.random(<span class="number">0</span>,<span class="number">9</span>))</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_AssignUnitToMission"></a>
+    <strong>ScenEdit_AssignUnitToMission (unit, mission)</strong>
+    </dt>
+    <dd>
+    Assign a unit to a mission.
+ Takes a unit and mission descriptor, then assigns the unit to the mission if it exists. Fails silently if eitehr do not exist.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unit</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name or GUID of the unit to assign
+        </li>
+        <li><span class="parameter">mission</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The mission to execute
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_AssignUnitToMission(<span class="string">"Bar #1"</span>, <span class="string">"Strike"</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_SetSidePosture"></a>
+    <strong>ScenEdit_SetSidePosture (sideAName, sideBName, posture)</strong>
+    </dt>
+    <dd>
+    Set the side posture towards another.
+ Sets side A's posture towards side B to the specified posture.
+ Posture codes:</p>
+
+<p> <style>
+ tr:not(:first-child) { border-top: 1px solid black;}
+ td { padding: .5em; }
+ </style>
+ <table style="border-spacing: 0.5rem;">
+ <tr><td>F</td><td>Friendly</td></tr>
+ <tr><td>H</td><td>Hostile</td></tr>
+ <tr><td>N</td><td>Neutral</td></tr>
+ <tr><td>U</td><td>Unknown</td></tr>
+ </table>
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sideAName</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         Side A's name
+        </li>
+        <li><span class="parameter">sideBName</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         Side B's name
+        </li>
+        <li><span class="parameter">posture</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The posture of side A towards side B
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_SetSidePosture(<span class="string">"LuaSideA"</span>, <span class="string">"LuaSideB"</span>, <span class="string">"H"</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_SetEMCON"></a>
+    <strong>ScenEdit_SetEMCON (type, name, emcon)</strong>
+    </dt>
+    <dd>
+
+<p>Sets the EMCON of the selected object.  Select the object by specifying the type and the object's name.</p>
+
+<p> Type is the type of object to set the EMCON on. It can be one of 4 values:</p>
+
+<ul>
+    <li><strong>Side</strong> - Set an entire side's EMCON (e.g. United States using active radar)</li>
+    <li><strong>Mission</strong> - Set the EMCON for a mission (e.g. Minesweepers active sonar)</li>
+    <li><strong>Group</strong> - Set the EMCON for an entire group (e.g Package #20 active radar)</li>
+    <li><strong>Unit</strong> - Set the EMCON for a single group (e.g. Hornet #14 passive radar)</li>
+</ul>
+
+<p> emcon is a compound structure. The string follows the following grammar, with each clause separated by a semicolon (;)</p>
+
+<ul>
+    <li><code>Inherit</code> indicates that the output EMCON should be at least the parent's EMCON. Inherit must come first.</li>
+    <li>A transmitter "set" statement. Each is of the form <code>type=status</code>, where type can be any one of <code>Radar</code>, <code>Sonar</code>, and <code>OECM</code>, and status can be any one of <code>Passive</code> or <code>Active</code>.</li>
+</ul>
+
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">type</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The type of the thing to set the EMCON on.
+        </li>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name or GUID of the object to select.
+        </li>
+        <li><span class="parameter">emcon</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The new EMCON for the object.
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <li><pre class="example">ScenEdit_SetEMCON(<span class="string">'Side'</span>, <span class="string">'NATO'</span>, <span class="string">'Radar=Active;Sonar=Passive'</span>)</pre></li>
+        <li><pre class="example">ScenEdit_SetEMCON(<span class="string">'Mission'</span>, <span class="string">'ASW Patrol #1'</span>, <span class="string">'Inherit;Sonar=Active'</span>)</pre></li>
+        <li><pre class="example">ScenEdit_SetEMCON(<span class="string">'Unit'</span>, <span class="string">'Camel 2'</span>, <span class="string">'OECM=Active'</span>)</pre></li>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_RunScript"></a>
+    <strong>ScenEdit_RunScript (script)</strong>
+    </dt>
+    <dd>
+    Run a script in a file.
+This function runs a script in the file <code>script</code>. This file must be inside the [Command base directory]/Lua directory, or else the game will not be able to load it.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">script</span>
+         The script to run. The file that is looked for will be of the form [Command base directory]/Lua/[<code>script</code>]
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_RunScript(<span class="string">'cklib.lua'</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_AddReferencePoint"></a>
+    <strong>ScenEdit_AddReferencePoint (descriptor)</strong>
+    </dt>
+    <dd>
+    Add a new reference point.
+Based on <code>descriptor</code>, a table of type <a href="../index.html#ReferencePoint">ReferencePoint</a>, this function adds a new reference point into the scene.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">descriptor</span>
+            <span class="types"><a class="type" href="../index.html#ReferencePoint">ReferencePoint</a></span>
+         The reference point to create.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../index.html#ReferencePoint">ReferencePoint</a></span>
+        The reference point descriptor for the new reference point.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_AddReferencePoint({side=<span class="string">"United States"</span>, name=<span class="string">"Downed Pilot"</span>, lat=<span class="number">0.1</span>, lon=<span class="number">4</span>, highlighted=<span class="keyword">true</span>})</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_DeleteReferencePoint"></a>
+    <strong>ScenEdit_DeleteReferencePoint (selector)</strong>
+    </dt>
+    <dd>
+    Delete a reference point.
+Given a reference point selector, this function will remove it from the scene.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">selector</span>
+            <span class="types"><a class="type" href="../index.html#ReferencePoint">ReferencePoint</a></span>
+         The reference point selector describing the reference point to delete.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_SetReferencePoint"></a>
+    <strong>ScenEdit_SetReferencePoint (descriptor)</strong>
+    </dt>
+    <dd>
+    Update a reference point with new values.
+Given a <a href="../index.html#ReferencePoint">descriptor with a valid selector</a>, the function will find the correct reference point and update it to the values contained in the descriptor.
+Values may be omitted from the descriptor if they are intended to remain unmodified.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">descriptor</span>
+            <span class="types"><a class="type" href="../index.html#ReferencePoint">ReferencePoint</a></span>
+         A descriptor with a valid selector.
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <li><pre class="example">ScenEdit_SetReferencePoint({side=<span class="string">"United States"</span>, name=<span class="string">"Downed Pilot"</span>, lat=<span class="number">0.5</span>})</pre></li>
+        <li><pre class="example">ScenEdit_SetReferencePoint({side=<span class="string">"United States"</span>, name=<span class="string">"Downed Pilot"</span>, lat=<span class="number">0.5</span>, lon=<span class="string">"N50.50.50"</span>, highlighted = <span class="keyword">true</span>})</pre></li>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_AddUnit"></a>
+    <strong>ScenEdit_AddUnit (unit)</strong>
+    </dt>
+    <dd>
+    Adds a unit to the scene based on a descriptor.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unit</span>
+            <span class="types"><a class="type" href="../index.html#Unit">Unit</a></span>
+         The unit to add
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../index.html#Unit">Unit</a></span>
+        A complete descriptor for the added unit
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <li><pre class="example"> ScenEdit_AddUnit({<span class="global">type</span> = <span class="string">'Aircraft'</span>, name = <span class="string">'F-15C Eagle'</span>, loadoutid = <span class="number">16934</span>,
+ heading = <span class="number">0</span>, dbid = <span class="number">3500</span>, side = <span class="string">'NATO'</span>, Latitude=<span class="string">"N46.00.00"</span>,Longitude=<span class="string">"E25.00.00"</span>,
+ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="string">"false"</span>,holdfire=<span class="string">"true"</span>,proficiency=<span class="string">"Ace"</span>})</pre></li>
+        <li><pre class="example">ScenEdit_AddUnit({<span class="global">type</span> = <span class="string">'Air'</span>, name = <span class="string">'F-15C Eagle'</span>, loadoutid = <span class="number">16934</span>, dbid = <span class="number">3500</span>, side = <span class="string">'NATO'</span>, Lat=<span class="string">"5.123"</span>,Lon=<span class="string">"-12.51"</span>,alt=<span class="number">5000</span>})</pre></li>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_SetUnit"></a>
+    <strong>ScenEdit_SetUnit (unit)</strong>
+    </dt>
+    <dd>
+    Sets the properties of a unit that already exists.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unit</span>
+            <span class="types"><a class="type" href="../index.html#Unit">Unit</a></span>
+         The unit to edit. Must be at least a selector.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../index.html#Unit">Unit</a></span>
+        A complete descriptor for the added unit
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <li><pre class="example">ScenEdit_SetUnit({side=<span class="string">"United States"</span>, name=<span class="string">"USS Test"</span>, lat = <span class="number">5</span>})</pre></li>
+        <li><pre class="example">ScenEdit_SetUnit({side=<span class="string">"United States"</span>, name=<span class="string">"USS Test"</span>, lat = <span class="number">5</span>})</pre></li>
+        <li><pre class="example">ScenEdit_SetUnit({side=<span class="string">"United States"</span>, name=<span class="string">"USS Test"</span>, lat = <span class="number">5</span>, lon = <span class="string">"N50.20.10"</span>})</pre></li>
+        <li><pre class="example">ScenEdit_SetUnit({side=<span class="string">"United States"</span>, name=<span class="string">"USS Test"</span>, newname=<span class="string">"USS Barack Obama"</span>})</pre></li>
+        <li><pre class="example">ScenEdit_SetUnit({side=<span class="string">"United States"</span>, name=<span class="string">"USS Test"</span>, heading=<span class="number">0</span>, HoldPosition=<span class="number">1</span>, HoldFire=<span class="number">1</span>,Proficiency=<span class="string">"Ace"</span>, Autodetectable=<span class="string">"yes"</span>})</pre></li>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_DeleteUnit"></a>
+    <strong>ScenEdit_DeleteUnit (unit)</strong>
+    </dt>
+    <dd>
+    Deletes a unit based on a selector.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unit</span>
+            <span class="types"><a class="type" href="../index.html#Unit">Unit</a></span>
+         The unit to delete. Must be at least a selector.
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_DeleteUnit({side=<span class="string">"United States"</span>, name=<span class="string">"USS Abcd"</span>})</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_GetUnit"></a>
+    <strong>ScenEdit_GetUnit (unit)</strong>
+    </dt>
+    <dd>
+    Fetches a unit based on a selector. </p>
+
+<p>This function is mostly identical to <a href="../index.html#ScenEdit_SetUnit">ScenEdit_SetUnit</a> except that if no unit is selected by the selector portion of <code>unit</code>,
+then the function returns nil instead of producing an exception.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unit</span>
+            <span class="types"><a class="type" href="../index.html#Unit">Unit</a></span>
+         The unit to select. Must be at least a selector.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../index.html#Unit">Unit</a></span>
+        A complete unit descriptor if the unit exists or nil otherwise.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_GetUnit({side=<span class="string">"United States"</span>, name=<span class="string">"USS Test"</span>})</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_SetDoctrine"></a>
+    <strong>ScenEdit_SetDoctrine (selector, doctrine)</strong>
+    </dt>
+    <dd>
+    Set the doctrine of the designated object. </p>
+
+<p>This function uses selector to find the thing to modify, then modifies the doctrine of that object based on the given object.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">selector</span>
+            <span class="types"><a class="type" href="../index.html#DoctrineSelector">DoctrineSelector</a></span>
+         The selector for the object to modify
+        </li>
+        <li><span class="parameter">doctrine</span>
+            <span class="types"><a class="type" href="../index.html#Doctrine">Doctrine</a></span>
+         The doctrine to update the object to
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <li><pre class="example">ScenEdit_SetDoctrine({side=<span class="string">"Soviet Union"</span>}, {kinematic_range_for_torpedoes = <span class="string">"AutomaticAndManualFire"</span>,use_nuclear_weapons= <span class="string">"yes"</span> })</pre></li>
+        <li><pre class="example">ScenEdit_SetDoctrine({side=<span class="string">"Soviet Union"</span>, mission=<span class="string">"ASW PATROL"</span>}, {kinematic_range_for_torpedoes = <span class="string">"AutomaticAndManualFire"</span>,use_nuclear_weapons= <span class="string">"yes"</span> })</pre></li>
+        <li><pre class="example">ScenEdit_SetDoctrine({side=<span class="string">"Soviet Union"</span>, name=<span class="string">"Bear #2"</span>}, {use_nuclear_weapons= <span class="string">"yes"</span> })</pre></li>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_GetDoctrine"></a>
+    <strong>ScenEdit_GetDoctrine (selector)</strong>
+    </dt>
+    <dd>
+    Gets the doctrine of the designated object. </p>
+
+<p>This function looks up the doctrine of the object selected by selector, and throws an exception if the unit does not exist.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">selector</span>
+            <span class="types"><a class="type" href="../index.html#DoctrineSelector">DoctrineSelector</a></span>
+         The selector for the object to look up
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../index.html#Doctrine">Doctrine</a></span>
+        The doctrine of the selected object
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_GetDoctrine({side=<span class="string">"Soviet Union"</span>}).use_nuclear_weapons</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_CurrentTime"></a>
+    <strong>ScenEdit_CurrentTime ()</strong>
+    </dt>
+    <dd>
+    Gets the current time.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        The UTC Unix timestamp of the current time in-game.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_AddAircraft"></a>
+    <strong>ScenEdit_AddAircraft (sideName, unitName, dbid, loadoutID, latlonspec, lat, lon)</strong>
+    </dt>
+    <dd>
+    Adds an aircraft to the scene.
+<b>Not recommended, use <a href="../index.html#ScenEdit_AddUnit">ScenEdit_AddUnit</a> instead</b></p>
+
+<p>Note that the parameters <code>lat</code> and <code>lon</code> are specified by the parameter <code>latlonspec</code>. If <code>latlonspec</code> is <code>&quot;DEG&quot;</code>, then <code>lat</code> and <code>lon</code> should be a simple
+floating point number. If <code>latlonspec</code> is <code>&quot;DEC&quot;</code>, then <code>lat</code> and <code>lon</code> should be in the format of `"N/S/E/W deg.min.sec".
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sideName</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name of the side for the new aircraft
+        </li>
+        <li><span class="parameter">unitName</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name of the new aircraft
+        </li>
+        <li><span class="parameter">dbid</span>
+            <span class="types"><span class="type">number</span></span>
+         The database ID of the new aircraft
+        </li>
+        <li><span class="parameter">loadoutID</span>
+            <span class="types"><span class="type">number</span></span>
+         The database ID of the aircraft's loadout
+        </li>
+        <li><span class="parameter">latlonspec</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The formatting specification for <code>lat</code> and <code>lon</code>.
+        </li>
+        <li><span class="parameter">lat</span>
+            <span class="types"><span class="type">latlon</span></span>
+         The latitude of the new aircraft
+        </li>
+        <li><span class="parameter">lon</span>
+            <span class="types"><span class="type">latlon</span></span>
+         The longitude of the new aircraft
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_AddAircraft(<span class="string">"USA"</span>, <span class="string">"Eagles"</span>, <span class="number">3222</span>, <span class="number">3177</span>, <span class="string">"DEG"</span>, <span class="number">1.1</span>, <span class="number">1.1</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_AddShip"></a>
+    <strong>ScenEdit_AddShip (sideName, unitName, dbid, latlonspec, lat, lon)</strong>
+    </dt>
+    <dd>
+    Adds a ship to the scene.
+<b>Not recommended, use <a href="../index.html#ScenEdit_AddUnit">ScenEdit_AddUnit</a> instead</b></p>
+
+<p>Note that the parameters <code>lat</code> and <code>lon</code> are specified by the parameter <code>latlonspec</code>. If <code>latlonspec</code> is <code>&quot;DEG&quot;</code>, then <code>lat</code> and <code>lon</code> should be a simple
+floating point number. If <code>latlonspec</code> is <code>&quot;DEC&quot;</code>, then <code>lat</code> and <code>lon</code> should be in the format of `"N/S/E/W deg.min.sec".
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sideName</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name of the side for the new ship
+        </li>
+        <li><span class="parameter">unitName</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name of the new ship
+        </li>
+        <li><span class="parameter">dbid</span>
+            <span class="types"><span class="type">number</span></span>
+         The database ID of the new ship
+        </li>
+        <li><span class="parameter">latlonspec</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The formatting specification for <code>lat</code> and <code>lon</code>.
+        </li>
+        <li><span class="parameter">lat</span>
+            <span class="types"><span class="type">latlon</span></span>
+         The latitude of the new ship
+        </li>
+        <li><span class="parameter">lon</span>
+            <span class="types"><span class="type">latlon</span></span>
+         The longitude of the new ship
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_AddShip(<span class="string">'Blue'</span>, <span class="string">'Boat'</span>, <span class="number">745</span>, <span class="string">'DEC'</span>, <span class="string">'23.1'</span>, <span class="string">'-40.2'</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_AddSubmarine"></a>
+    <strong>ScenEdit_AddSubmarine (sideName, unitName, dbid, latlonspec, lat, lon)</strong>
+    </dt>
+    <dd>
+    Adds a submarine to the scene.
+<b>Not recommended, use <a href="../index.html#ScenEdit_AddUnit">ScenEdit_AddUnit</a> instead</b></p>
+
+<p>Note that the parameters <code>lat</code> and <code>lon</code> are specified by the parameter <code>latlonspec</code>. If <code>latlonspec</code> is <code>&quot;DEG&quot;</code>, then <code>lat</code> and <code>lon</code> should be a simple
+floating point number. If <code>latlonspec</code> is <code>&quot;DEC&quot;</code>, then <code>lat</code> and <code>lon</code> should be in the format of `"N/S/E/W deg.min.sec".
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sideName</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name of the side for the new submarine
+        </li>
+        <li><span class="parameter">unitName</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name of the new submarine
+        </li>
+        <li><span class="parameter">dbid</span>
+            <span class="types"><span class="type">number</span></span>
+         The database ID of the new submarine
+        </li>
+        <li><span class="parameter">latlonspec</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The formatting specification for <code>lat</code> and <code>lon</code>.
+        </li>
+        <li><span class="parameter">lat</span>
+            <span class="types"><span class="type">latlon</span></span>
+         The latitude of the new submarine
+        </li>
+        <li><span class="parameter">lon</span>
+            <span class="types"><span class="type">latlon</span></span>
+         The longitude of the new submarine
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_AddSubmarine(<span class="string">'Blue'</span>, <span class="string">'Duck'</span>, <span class="number">112</span>, <span class="string">'DEC'</span>, <span class="string">'23.1'</span>, <span class="string">'-40.2'</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_AddFacility"></a>
+    <strong>ScenEdit_AddFacility (sideName, unitName, dbid, orientation, latlonspec, lat, lon)</strong>
+    </dt>
+    <dd>
+    Adds an aircraft to the scene.
+<b>Not recommended, use <a href="../index.html#ScenEdit_AddUnit">ScenEdit_AddUnit</a> instead</b></p>
+
+<p>Note that the parameters <code>lat</code> and <code>lon</code> are specified by the parameter <code>latlonspec</code>. If <code>latlonspec</code> is <code>&quot;DEG&quot;</code>, then <code>lat</code> and <code>lon</code> should be a simple
+floating point number. If <code>latlonspec</code> is <code>&quot;DEC&quot;</code>, then <code>lat</code> and <code>lon</code> should be in the format of `"N/S/E/W deg.min.sec".
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sideName</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name of the side for the new facility
+        </li>
+        <li><span class="parameter">unitName</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name of the new facility
+        </li>
+        <li><span class="parameter">dbid</span>
+            <span class="types"><span class="type">number</span></span>
+         The database ID of the new facility
+        </li>
+        <li><span class="parameter">orientation</span>
+            <span class="types"><span class="type">number</span></span>
+         The heading of the new facility
+        </li>
+        <li><span class="parameter">latlonspec</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The formatting specification for <code>lat</code> and <code>lon</code>.
+        </li>
+        <li><span class="parameter">lat</span>
+            <span class="types"><span class="type">latlon</span></span>
+         The latitude of the new facility
+        </li>
+        <li><span class="parameter">lon</span>
+            <span class="types"><span class="type">latlon</span></span>
+         The longitude of the new facility
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_AddFacility(<span class="string">"Orange"</span>, <span class="string">"Here"</span>, <span class="number">19</span>, <span class="number">0</span>, <span class="string">"DEC"</span>, <span class="string">"N 40.26.30"</span>, <span class="string">"W 80.00.00"</span>)</pre>
+    </ul>
+
+</dd>
+</dl>
+    <h2><a name="Tables"></a>Tables</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "ReferencePoint"></a>
+    <strong>ReferencePoint</strong>
+    </dt>
+    <dd>
+    Reference point descriptor. </p>
+
+<p>For creation, <em>every</em> field must be defined.</p>
+
+<p>If selecting a unit (that is, using the descriptor as a selector) (e.g. <a href="../index.html#ScenEdit_SetReferencePoint">SetReferencePoint</a> or <a href="../index.html#ScenEdit_DeleteReferencePoint">DeleteReferencePoint</a>), one of the two following sets of fields must be define:</p>
+
+<ul>
+    <li><code>name</code> and <code>side</code>, to select a reference point <code>name</code> belonging to <code>side</code></li>
+    <li><code>guid</code>, if the unique ID of the reference point is known.</li>
+</ul>
+
+<p>If both are given, then the method defaults to finding the reference point with the correct GUID.
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name of the reference point
+        </li>
+        <li><span class="parameter">latitude</span>
+            <span class="types"><span class="type">latlon</span></span>
+         The latitude of the reference point
+        </li>
+        <li><span class="parameter">longitude</span>
+            <span class="types"><span class="type">latlon</span></span>
+         The longitude of the reference point
+        </li>
+        <li><span class="parameter">guid</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The unique identifier for the reference point
+        </li>
+        <li><span class="parameter">side</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The side the reference point is visible to
+        </li>
+        <li><span class="parameter">highlighted</span>
+            <span class="types"><span class="type">bool</span></span>
+         True if the point should be selected
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Unit"></a>
+    <strong>Unit</strong>
+    </dt>
+    <dd>
+    Represents a unit in the scene. <br/>
+This structure can be used as either a descriptor (e.g. when returned or when creating a new unit)
+or as a selector (e.g. when used to find a unit).</p>
+
+<p>When being used as a selector, a unit can be discovered in 1 of two ways:</p>
+
+<ol>
+    <li>Name and side, which is slower</li>
+    <li>GUID, which is faster</li>
+</ol>
+
+<p>If both are specified, the GUID is chosen over the name and side selection, which are then considered parts of the descriptor. </p>
+
+<p>Excluding GUID, any field may be modified.</p>
+
+<p>Note that "PlayerSide", while not a valid side in the scene, may be used to select the player's side
+unambiguously.
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">type</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The type of object, may be 'Facility', 'Ship', 'Submarine', or 'Aircraft' (descriptor).
+        </li>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The unit's name. Option #1 for selectors in combination with side (descriptor, selector 1).
+        </li>
+        <li><span class="parameter">side</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The unit's side. Option #1 for selectors in combination with name (selector 1).
+        </li>
+        <li><span class="parameter">latitude</span>
+            <span class="types"><span class="type">latlon</span></span>
+         The latitude of the unit (descriptor).
+        </li>
+        <li><span class="parameter">longitude</span>
+            <span class="types"><span class="type">latlon</span></span>
+         The longitude of the unit (descriptor).
+        </li>
+        <li><span class="parameter">DBID</span>
+            <span class="types"><span class="type">number</span></span>
+         The database ID of the unit (descriptor).
+        </li>
+        <li><span class="parameter">altitude</span>
+            <span class="types"><span class="type">number</span></span>
+         The altitude of the unit in meters (descriptor).
+        </li>
+        <li><span class="parameter">autodetectable</span>
+            <span class="types"><span class="type">bool</span></span>
+         True if the unit is automatically detected (descriptor).
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">holdfire</span>
+            <span class="types"><span class="type">bool</span></span>
+         True if the unit should not fire (descriptor).
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">guid</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The unit's unique ID. Option #1 for selectors, invalid for creational descriptors (selector 2).
+        </li>
+        <li><span class="parameter">heading</span>
+            <span class="types"><span class="type">number</span></span>
+         The unit's heading (descriptor).
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">proficiency</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The unit proficiency, one of "Novice", "Cadet", "Regular", "Veteran", "Ace" (descriptor).
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">newname</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         If a descriptor, the unit's new name (descriptor).
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DoctrineSelector"></a>
+    <strong>DoctrineSelector</strong>
+    </dt>
+    <dd>
+    Selects a thing, one of a side, group, mission, or unit. </p>
+
+<p>This selector can only be used with the doctrine mechanism, with other systems relying on different selection mechanisms.
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">side</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The side to select/from
+        </li>
+        <li><span class="parameter">mission</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name of the mission to select
+        </li>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name of the unit to select
+        </li>
+        <li><span class="parameter">group</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name of the group to select
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Doctrine"></a>
+    <strong>Doctrine</strong>
+    </dt>
+    <dd>
+    Describes a doctrine. </p>
+
+<p>At the current time, a bug exists where Lua booleans do not work for bool fields. To work around this issue,
+use one of <code>&quot;1&quot;</code>, <code>&quot;true&quot;</code> or <code>&quot;yes&quot;</code> for true or <code>&quot;0&quot;</code>, <code>&quot;false&quot;</code>, or <code>&quot;no&quot;</code> for false.
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">use_nuclear_weapons</span>
+            <span class="types"><span class="type">bool</span></span>
+         True iff the unit should be able to employ nuclear weapons
+        </li>
+        <li><span class="parameter">engage_non_hostile_targets</span>
+            <span class="types"><span class="type">bool</span></span>
+         True iff the unit should attempt hostile action against units that are not hostile
+        </li>
+        <li><span class="parameter">rtb_when_winchester</span>
+            <span class="types"><span class="type">bool</span></span>
+         True iff the unit should return to base when out of weapons
+        </li>
+        <li><span class="parameter">engaging_ambiguous_targets</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         One of "Ignore", "Optimistic", or "Pessimistic"
+        </li>
+        <li><span class="parameter">automatic_evasion</span>
+            <span class="types"><span class="type">bool</span></span>
+         True iff the unit should automatically evade incoming missiles
+        </li>
+        <li><span class="parameter">maintain_standoff</span>
+            <span class="types"><span class="type">bool</span></span>
+         True iff the unit should try to avoid approaching its target, only valid for ships
+        </li>
+        <li><span class="parameter">use_refuel_unrep</span>
+            <span class="types"><span class="type">bool</span></span>
+         One of "Always" or "Never"
+        </li>
+        <li><span class="parameter">engage_opportunity_targets</span>
+            <span class="types"><span class="type">bool</span></span>
+         True iff the unit should take opportunistic shots
+        </li>
+        <li><span class="parameter">use_sams_in_anti_surface_mode</span>
+            <span class="types"><span class="type">bool</span></span>
+         True iff SAMs should be used to engage surface targets
+        </li>
+        <li><span class="parameter">ignore_emcon_while_under_attack</span>
+            <span class="types"><span class="type">bool</span></span>
+         True iff EMCON should be ignored and all systems should go active when engaged
+        </li>
+        <li><span class="parameter">quick_turnaround_for_aircraft</span>
+            <span class="types"><span class="type">bool</span></span>
+         One of "Yes", "FightersAndASW", or "No"
+        </li>
+        <li><span class="parameter">air_operations_tempo</span>
+            <span class="types"><span class="type">bool</span></span>
+         One of "Surge" or "Sustained"
+        </li>
+        <li><span class="parameter">kinematic_range_for_torpedoes</span>
+            <span class="types"><span class="type">bool</span></span>
+         One of "AutomaticAndManualFire", "ManualFireOnly", or "No"
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
+<i style="float:right;">Last updated 2014-12-10 12:40:08 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
