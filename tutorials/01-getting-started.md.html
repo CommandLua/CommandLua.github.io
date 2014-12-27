@@ -98,7 +98,7 @@ Once you've opened the scene file in the editor, open the script console (Editor
 <p>In this case, the class has ID# 383.</p>
 
 <h3>Positions</h3>
-<p>As you probably already know, map positions are referred to with latitude (north/south) and longitude (east/west) coordinates. These can be represented in two forms, degrees minutes seconds, and decimal degrees. The Command Lua API supports both forms.</p>
+<p>As you probably already know, map positions are referred to with latitude (north/south) and longitude (east/west) coordinates. These can be represented in two forms, degrees minutes seconds, and decimal degrees. The Command Lua API supports both forms, but we will cover only the decimal form.</p>
 
 <p>For this scenario, we will pick an arbitrary location in the North Atlantic for our ships. We pick these two positions:</p>
 
@@ -106,34 +106,42 @@ Once you've opened the scene file in the editor, open the script console (Editor
 
 <p><img src="http://i.imgur.com/hkza1QX.png" alt="Pos 2"/></p>
 
-<p>The coordinates for these are</p>
+<p>To copy these positions in-game, point to a position on the map, then press Ctrl-X. This copies a string to the clipboard representing the position pointed to on the map, a string that can then be directly used from Lua.</p>
 
-<ul>
-    <li>N61 29' 23" W17 14' 32"</li>
-    <li>N61 29' 11" W17 15' 04"</li>
-</ul>
+<p>We will use the following two positions for this tutorial:</p>
 
-<p><a name="Execution"></a></p>
+<p>*latitude='61.4900913548312', longitude='-17.2428976983679'
+*latitude='61.4858175768381', longitude='-17.256394768325'</p>
+
+<p>Note that the formatting is correct for use in a Lua table - this will become important when we come to add them to the scene.
+<a name="Execution"></a></p>
 <h2>Execution</h2>
 
-<p>Let's add our ships now. To do so, we'll need to use the function ScenEdit_AddShip.</p>
+<p>Let's add our ships now. To do so, we'll need to use the function ???.</p>
 
-<p><a href="../index.html#ScenEdit_AddShip">ScenEdit_AddShip</a>, henceforth just called AddShip, is a function that adds a ship to a scene. The signature is</p>
+<p>??? adds a unit to the game, using a <a href="../index.html#Unit"> unit descriptor</a>. A unit descriptor uses a table to define the properties of a unit, such as position, type, and side.</p>
+
+<p>At a minimum, to create a unit, this table needs to contain:</p>
+
+<ul>
+    <li>Side (e.g. "LuaSideA" and "LuaSideB")</li>
+    <li>Type (both "Ship" in this case - use the part of the DB you got the ID from)</li>
+    <li>Name (in this case "A" and "B")</li>
+    <li>DBID (Both 383, a newish Spruance-Class)</li>
+    <li>Lat &amp; lon</li>
+</ul>
+
+<p>See the data type documentation for a complete explanation as to the use of these fields.</p>
+
+<p>For our purposes, we want to add two ships with names A and B, DBID 383, at the above coords, to sides LuaSideA and LuaSideB. </p>
 
 
 <pre>
-ScenEdit_AddShip(<span class="string">'[Side Name or ID]'</span>, <span class="string">'[Ship Name]'</span>, [DBID], [<span class="string">'DEC'</span> <span class="keyword">or</span> <span class="string">'DEG'</span>], [<span class="string">'Latitude'</span>], [<span class="string">'Longitude'</span>])
+ScenEdit_AddUnit({side=<span class="string">'LuaSideA'</span>, <span class="global">type</span>=<span class="string">'Ship'</span>, name=<span class="string">'A'</span>, dbid=<span class="number">383</span>, latitude=<span class="string">'61.4900913548312'</span>, longitude=<span class="string">'-17.2428976983679'</span>})
+ScenEdit_AddUnit({side=<span class="string">'LuaSideB'</span>, <span class="global">type</span>=<span class="string">'Ship'</span>, name=<span class="string">'B'</span>, dbid=<span class="number">383</span>, latitude=<span class="string">'61.4858175768381'</span>, longitude=<span class="string">'-17.256394768325'</span>})
 </pre>
 
-<p>For our purposes, we want to add two ships with names A and B, DBID 383, at the above coords, to sides LuaSideA and LuaSideB. The function can understand the degrees minutes second format (under the 'DEG' option), but we will use the Dms function for simplicity. This results in the function calls</p>
-
-
-<pre>
-ScenEdit_AddShip(<span class="string">'LuaSideA'</span>, <span class="string">'A'</span>, <span class="number">383</span>, <span class="string">'DEG'</span>, <span class="string">"N61.29.23"</span>, <span class="string">"W17.14.32"</span>)
-ScenEdit_AddShip(<span class="string">'LuaSideB'</span>, <span class="string">'B'</span>, <span class="number">383</span>, <span class="string">'DEG'</span>, <span class="string">"N61.29.11"</span>, <span class="string">"W17.15.4"</span>)
-</pre>
-
-<p>If you run this script with the Dms function, you should end up with two Spruances near Iceland on opposite sides.</p>
+<p>Once you run this script, you should end up with two Spruances near Iceland on opposite sides.</p>
 
 <p>Running the scenario now leads to disappointment - the ships don't attack each other. We need to add them to a mission. To do this, we use the <a href="../index.html#ScenEdit_AssignUnitToMission">ScenEdit_AssignUnitToMission</a> function, with the following signature</p>
 
@@ -159,7 +167,7 @@ ScenEdit_AssignUnitToMission(<span class="string">'B'</span>, <span class="strin
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2014-12-12 20:08:12 </i>
+<i style="float:right;">Last updated 2014-12-27 16:39:08 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
