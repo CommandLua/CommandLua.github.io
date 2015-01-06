@@ -40,8 +40,8 @@
 
 <h2>Contents</h2>
 <ul>
-<li><a href="#Aircraft_creation">Aircraft creation </a></li>
-<li><a href="#Exercises">Exercises </a></li>
+<li><a href="#SetEMCON">SetEMCON </a></li>
+<li><a href="#Events">Events </a></li>
 </ul>
 
 
@@ -60,93 +60,58 @@
 
 <div id="content">
 
-    The longtime belligerents, LuaSideA and LuaSideB have decided that naval incidenting is simply insufficient, and want to take the war to each other's homes with aircraft. However, they have entirely failed to actually acquire any, and are thus at something of an impasse. Both sides need a contract to purchase (and deliver) new fighters, written in their native language Lua.</p>
+    In this tutorial, we'll discuss how to embed your scripts into a real scenario, as well as how to alter the EMCON of a unit. Yet again, the two sides are fighting, but with ground units which aren't on the map. LuaSideB wants some aerial recon, but can only understand instructions in Lua. This is particularly problematic, because they want a radar sweep but only from within a specific area! Even worse, the generals forgot to tell the pilot about this, so we'll have to inform the pilot to turn the radar on once it arrives.</p>
 
-<p><a href="https://github.com/BenChung/CommandLuaDocs/raw/master/LuaTutorial2.scen">Scen file, save as</a>.</p>
+<p>To implement this challenge, we'll be using Command's events system to control the EMCON of the recon aircraft. The scene file already contains the skeleton of what's needed for Lua use.</p>
 
-<p><a name="Aircraft_creation"></a></p>
-<h2>Aircraft creation</h2>
-<p>Creating aircraft in Command is very much the same as ships, using the <a href="../index.html#ScenEdit_AddAircraft">ScenEdit_AddAircraft</a> function, whose signature is as follows:</p>
+<p><a href="https://github.com/BenChung/CommandLuaDocs/raw/master/LuaTutorial3.scen">Scene file</a></p>
 
+<p>LuaSideB has already placed the aircraft (BHawk) and the mission (AAnalysis). We'll be configuring BHawk to fly AAnalysis.</p>
 
-<pre>
-ScenEdit_AddAircraft(<span class="string">'[Side Name or ID]'</span>, <span class="string">'[AC Name]'</span>, [DBID], [LoadoutID], [<span class="string">'DEC'</span> <span class="keyword">or</span> <span class="string">'DEG'</span>], [<span class="string">'Latitude'</span>], [<span class="string">'Longitude'</span>])
-</pre>
+<p><a name="SetEMCON"></a></p>
+<h2>SetEMCON</h2>
+<p>To make this scene work, we'll need to use the <a href="../index.html#ScenEdit_SetEMCON">SetEMCON</a> function. This function does what it says on the tin: explains to one of the Luaians what kind of EMCON to use, be it Radar, Sonar, or OECM. </p>
 
-<p>You'll notice the LoadoutID field. This indicates which loadout should be carried by the unit, and needs to be populated from the DB.</p>
-
-<p>Now, the Lua countries have imposed a constraint on us. They were very annoyed with how the naval incidents were perfectly equally matched, and want to purchase different equipment. As such, they want us to draw up contracts for a F-15 (SideA), and Su-27 (SideB), both of which should be in a ground attack configuration.</p>
-
-
-<p>We'll cover the method for picking SideA's plane in detail, then SideB will be left as an exercise (Su-30 is also acceptable, according to the contact). We first pick the model:</p>
-
-<p><img src="http://i.imgur.com/PeAsyWx.png" alt="F-15E 3222"/></p>
-
-<p>Then, to find the Loadout ID, scroll down to the loadouts until you see</p>
-
-<p><img src="http://i.imgur.com/o43hl32.png" alt="Loadout 1666"/></p>
-
-<p>Therefore, we want aircraft ID # 3222 and loadout ID 1666.</p>
-
-<p><strong>Exercise:</strong> Repeat this for SideB, picking a Su-27 and an appropriate loadout for land attack.</p>
-
-<p>The sides have specified these coordinates for their aircraft:</p>
-
-<ul>
-    <li><strong>SideA</strong>: N51 11 01, E0 32 32</li>
-    <li><strong>SideB</strong>: N50 43 02, E1 52 09</li>
-</ul>
-
-<p>Further, they want the names:</p>
-
-<ul>
-    <li><strong>SideA</strong>: A Avenger</li>
-    <li><strong>SideB</strong>: B Boomer</li>
-</ul>
-
-<p>As such, for SideA's plane, we write</p>
+<p>The function's syntax is quite complex. The signature is</p>
 
 
 <pre>
-ScenEdit_AddAircraft(<span class="string">'LuaSideA'</span>, <span class="string">'A Avenger'</span>, <span class="number">3222</span>, <span class="number">1666</span>, <span class="string">'DEG'</span>, <span class="string">'N51.11.01'</span>, <span class="string">'E0.32.32'</span>)
+ScenEdit_SetEMCON([<span class="string">'Side'</span> / <span class="string">'Mission'</span> / <span class="string">'Group'</span> / <span class="string">'Unit'</span>], [<span class="string">'Side Name or ID'</span> / <span class="string">'Mission Name or ID'</span> / <span class="string">'Group Name or ID'</span> / <span class="string">'Unit Name or ID'</span>], [<span class="string">'Radar/Sonar/OECM=Active/Passive;'</span> / <span class="string">'Inherit'</span>])
 </pre>
 
-<p><strong>Exercise:</strong> Repeat for SideB.</p>
-
-<p>All we need to do now is assign them to their missions, like so:</p>
+<p>For instance, to turn on an BHawk's OECM, you would write</p>
 
 
 <pre>
-ScenEdit_AssignUnitToMission(<span class="string">"A Avenger"</span>, <span class="string">"AAttack"</span>)
-ScenEdit_AssignUnitToMission(<span class="string">"B Boomer"</span>, <span class="string">"BBombing"</span>)
+ScenEdit_SetEMCON(<span class="string">'Unit'</span>,<span class="string">'BHawk'</span>,<span class="string">'OECM=Active'</span>)
 </pre>
 
-<p>Now, this isn't enough. They've specified that this engagement <strong>must</strong> happen when it's rainy out, but it's a beautiful day! We can change this with the <a href="../index.html#ScenEdit_SetWeather">ScenEdit_SetWeather</a> function, with the following interface</p>
+<p>Therefore, we need to do</p>
 
-<p>   ScenEdit_SetWeather([Average Temperature], [Rainfall Rate (0-50)], [Cloud Percentage (0.0 - 1.0)], [Sea State (0 - 9)])</p>
 
-<p>So, we just need to do</p>
+<pre>
+ScenEdit_SetEMCON(<span class="string">'Unit'</span>,<span class="string">'BHawk'</span>,<span class="string">'Radar=Active'</span>)
+</pre>
 
-<p>   ScenEdit_SetWeather(20, 50, 1, 5)</p>
+<p><a name="Events"></a></p>
+<h2>Events</h2>
+<p>We need to add Lua to the event framework that's already in the game. We'll add a new action of the type "Lua Action", as seen here:</p>
 
-<p>And we're done!</p>
+<p><img src="http://imgur.com/MGsUvoe.png" alt="Event editor Lua Action"/></p>
 
-<p><a name="Exercises"></a></p>
-<h2>Exercises</h2>
+<p>Then, we get</p>
 
-<ul>
-    <li><strong>Exercise 1</strong>: Set up more complex attacks from Lua.</li>
-    <li><strong>Exercise 2</strong>: Create a weather testing environment where visibility range is tested.</li>
-    <li><strong>Exercise 3</strong>: Make a shooting range for every loadout of an aircraft.</li>
-</ul>
+<p><img src="http://imgur.com/BkzIRdJ.png" alt="Lua Action Editor"/></p>
 
-<p>In <a href="../tutorials/03-events.md.html#">tutorial 2</a>, we'll cover how to embed Lua scripts into the game, as well as how to change EMCON and add submarines.
+<p>The text entry area is where we'll add our script.</p>
+
+<p>To finish the tutorial, add in our Lua script to set the EMCON, add it to the event, then run the scenario.
 
 </div> <!-- id="content" -->
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2014-12-27 16:40:15 </i>
+<i style="float:right;">Last updated 2015-01-05 23:07:39 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
