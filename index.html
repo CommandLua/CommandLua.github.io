@@ -157,6 +157,34 @@
 	<td class="name" nowrap><a href="#ScenEdit_EndScenario">ScenEdit_EndScenario ()</a></td>
 	<td class="summary">Ends the current scenario.</td>
 	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_GetScore">ScenEdit_GetScore (side)</a></td>
+	<td class="summary">Get a given side's score.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_SetScore">ScenEdit_SetScore (side, score)</a></td>
+	<td class="summary">Sets a given side's score.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_UnitX">ScenEdit_UnitX ()</a></td>
+	<td class="summary">Gets the unit that fired the current trigger - nil if otherwise.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_MsgBox">ScenEdit_MsgBox (string, https:)</a></td>
+	<td class="summary">Opens a message box with the given string.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_ImportInst">ScenEdit_ImportInst (side, filename)</a></td>
+	<td class="summary">Imports an inst file.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_UseAttachment">ScenEdit_UseAttachment (attachment)</a></td>
+	<td class="summary">Import an attachment into the scene.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_UseAttachmentOnSide">ScenEdit_UseAttachmentOnSide (attachment, sidename)</a></td>
+	<td class="summary">Use an attachment on a side (used for .inst files as attachments).</td>
+	</tr>
 </table>
 <h2><a href="#Tables">Tables</a></h2>
 <table class="function_list">
@@ -967,6 +995,186 @@ floating point number. If <code>latlonspec</code> is <code>&quot;DEC&quot;</code
 
 
 </dd>
+    <dt>
+    <a name = "ScenEdit_GetScore"></a>
+    <strong>ScenEdit_GetScore (side)</strong>
+    </dt>
+    <dd>
+    Get a given side's score.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">side</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name of the side
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">num</span></span>
+        The side's score
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_GetScore(<span class="string">"PlayerSide"</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_SetScore"></a>
+    <strong>ScenEdit_SetScore (side, score)</strong>
+    </dt>
+    <dd>
+    Sets a given side's score.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">side</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name of the side
+        </li>
+        <li><span class="parameter">score</span>
+            <span class="types"><span class="type">num</span></span>
+         The new score for the side
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_GetScore(<span class="string">"PlayerSide"</span>, <span class="number">20</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_UnitX"></a>
+    <strong>ScenEdit_UnitX ()</strong>
+    </dt>
+    <dd>
+    Gets the unit that fired the current trigger - nil if otherwise.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="index.html#Unit">Unit</a></span>
+        The triggering unit
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_UnitX()</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_MsgBox"></a>
+    <strong>ScenEdit_MsgBox (string, https:)</strong>
+    </dt>
+    <dd>
+    Opens a message box with the given string.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">string</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The string to display to the user
+        </li>
+        <li><span class="parameter">https:</span>
+            <span class="types"><span class="type">num] style The style of the message box (see [here</span></span>
+        //msdn.microsoft.com/en-us/library/system.windows.forms.messageboxbuttons%28v=vs.110%29.aspx) for values - each option numbered in order 1-6)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_ImportInst"></a>
+    <strong>ScenEdit_ImportInst (side, filename)</strong>
+    </dt>
+    <dd>
+    Imports an inst file.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">side</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The side to import the inst file as
+        </li>
+        <li><span class="parameter">filename</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The filename of the inst file
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_UseAttachment"></a>
+    <strong>ScenEdit_UseAttachment (attachment)</strong>
+    </dt>
+    <dd>
+    Import an attachment into the scene.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">attachment</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         Either the name of the attachment or the GUID of the attachment
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_UseAttachmentOnSide"></a>
+    <strong>ScenEdit_UseAttachmentOnSide (attachment, sidename)</strong>
+    </dt>
+    <dd>
+    Use an attachment on a side (used for .inst files as attachments).
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">attachment</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         Either the name of the attachment or the GUID of the attachment
+        </li>
+        <li><span class="parameter">sidename</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name of the side to import the attachment into
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
 </dl>
     <h2><a name="Tables"></a>Tables</h2>
 
@@ -1300,7 +1508,7 @@ use one of <code>&quot;1&quot;</code>, <code>&quot;true&quot;</code> or <code>&q
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2015-02-16 15:03:40 </i>
+<i style="float:right;">Last updated 2015-02-16 15:27:47 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
