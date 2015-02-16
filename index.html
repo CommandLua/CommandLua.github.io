@@ -153,6 +153,10 @@
 	<td class="name" nowrap><a href="#ScenEdit_AddFacility">ScenEdit_AddFacility (sideName, unitName, dbid, orientation, latlonspec, lat, lon)</a></td>
 	<td class="summary">Adds an aircraft to the scene.</td>
 	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_EndScenario">ScenEdit_EndScenario ()</a></td>
+	<td class="summary">Ends the current scenario.</td>
+	</tr>
 </table>
 <h2><a href="#Tables">Tables</a></h2>
 <table class="function_list">
@@ -161,8 +165,16 @@
 	<td class="summary">Reference point descriptor.</td>
 	</tr>
 	<tr>
+	<td class="name" nowrap><a href="#ReferencePointSelector">ReferencePointSelector</a></td>
+	<td class="summary">Reference point selector.</td>
+	</tr>
+	<tr>
 	<td class="name" nowrap><a href="#Unit">Unit</a></td>
 	<td class="summary">Represents a unit in the scene.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#UnitSelector">UnitSelector</a></td>
+	<td class="summary">Use to select a unit in the scene based on either the side and name or the unique identifier (GUID).</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#DoctrineSelector">DoctrineSelector</a></td>
@@ -419,7 +431,7 @@ Given a reference point selector, this function will remove it from the scene.
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">selector</span>
-            <span class="types"><a class="type" href="index.html#ReferencePoint">ReferencePoint</a></span>
+            <span class="types"><a class="type" href="index.html#ReferencePointSelector">ReferencePointSelector</a></span>
          The reference point selector describing the reference point to delete.
         </li>
     </ul>
@@ -565,8 +577,8 @@ then the function returns nil instead of producing an exception.
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">unit</span>
-            <span class="types"><a class="type" href="index.html#Unit">Unit</a></span>
-         The unit to select. Must be at least a selector.
+            <span class="types"><a class="type" href="index.html#UnitSelector">UnitSelector</a></span>
+         The unit to select.
         </li>
     </ul>
 
@@ -941,6 +953,20 @@ floating point number. If <code>latlonspec</code> is <code>&quot;DEC&quot;</code
     </ul>
 
 </dd>
+    <dt>
+    <a name = "ScenEdit_EndScenario"></a>
+    <strong>ScenEdit_EndScenario ()</strong>
+    </dt>
+    <dd>
+    Ends the current scenario.
+
+
+
+
+
+
+
+</dd>
 </dl>
     <h2><a name="Tables"></a>Tables</h2>
 
@@ -954,7 +980,7 @@ floating point number. If <code>latlonspec</code> is <code>&quot;DEC&quot;</code
 
 <p>For creation, <em>every</em> field must be defined.</p>
 
-<p>If selecting a unit (that is, using the descriptor as a selector) (e.g. <a href="index.html#ScenEdit_SetReferencePoint">SetReferencePoint</a> or <a href="index.html#ScenEdit_DeleteReferencePoint">DeleteReferencePoint</a>), one of the two following sets of fields must be define:</p>
+<p>If selecting a unit (that is, using the descriptor as a selector) (e.g. <a href="index.html#ScenEdit_SetReferencePoint">SetReferencePoint</a>), one of the two following sets of fields must be define:</p>
 
 <ul>
     <li><code>name</code> and <code>side</code>, to select a reference point <code>name</code> belonging to <code>side</code></li>
@@ -998,6 +1024,41 @@ floating point number. If <code>latlonspec</code> is <code>&quot;DEC&quot;</code
 
 </dd>
     <dt>
+    <a name = "ReferencePointSelector"></a>
+    <strong>ReferencePointSelector</strong>
+    </dt>
+    <dd>
+    Reference point selector. </p>
+
+<p>To select a unit, specify either
+* <code>name</code> and <code>side</code>, to select a reference point <code>name</code> belonging to <code>side</code>
+* <code>guid</code>, if the unique ID of the reference point is known.</p>
+
+<p>If both are given, then the method defaults to finding the reference point with the correct GUID.
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">side</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The side the reference point is visible to
+        </li>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name of the reference point
+        </li>
+        <li><span class="parameter">guid</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The unique identifier for the reference point
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
     <a name = "Unit"></a>
     <strong>Unit</strong>
     </dt>
@@ -1029,11 +1090,11 @@ unambiguously.
         </li>
         <li><span class="parameter">name</span>
             <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         The unit's name. Option #1 for selectors in combination with side (descriptor, selector 1).
+         The unit's name.
         </li>
         <li><span class="parameter">side</span>
             <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         The unit's side. Option #1 for selectors in combination with name (selector 1).
+         The unit's side.
         </li>
         <li><span class="parameter">latitude</span>
             <span class="types"><span class="type">latlon</span></span>
@@ -1063,7 +1124,7 @@ unambiguously.
         </li>
         <li><span class="parameter">guid</span>
             <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         The unit's unique ID. Option #1 for selectors, invalid for creational descriptors (selector 2).
+         The unit's unique ID.
         </li>
         <li><span class="parameter">heading</span>
             <span class="types"><span class="type">number</span></span>
@@ -1083,6 +1144,40 @@ unambiguously.
         <li><span class="parameter">course</span>
             <span class="types"><span class="type">list latlon</span></span>
          The unit's course, as lat/lon pairs
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "UnitSelector"></a>
+    <strong>UnitSelector</strong>
+    </dt>
+    <dd>
+    Use to select a unit in the scene based on either the side and name or the unique identifier (GUID). </p>
+
+<p>You can use either
+1. <code>name</code> and <code>side</code>
+2. <code>guid</code>
+If both are given, then the GUID is used preferentially.
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name of the unit to select (for option #1)
+        </li>
+        <li><span class="parameter">side</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The name of the unit to select (for option #1)
+        </li>
+        <li><span class="parameter">guid</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         The guid of the unit to select (for option #2)
         </li>
     </ul>
 
@@ -1205,7 +1300,7 @@ use one of <code>&quot;1&quot;</code>, <code>&quot;true&quot;</code> or <code>&q
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2015-01-05 23:07:39 </i>
+<i style="float:right;">Last updated 2015-02-16 15:03:40 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
