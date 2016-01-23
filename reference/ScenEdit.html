@@ -162,7 +162,7 @@
 	<td class="summary">Get a given side's score.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_SetScore">ScenEdit_SetScore (side, score)</a></td>
+	<td class="name" nowrap><a href="#ScenEdit_SetScore">ScenEdit_SetScore (side, score, reason)</a></td>
 	<td class="summary">Sets a given side's score.</td>
 	</tr>
 	<tr>
@@ -190,20 +190,24 @@
 	<td class="summary">Detonates a warhead at a specified location.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_KillUnit">ScenEdit_KillUnit (unit)</a></td>
-	<td class="summary">Kills a unit (instead of deleting it).</td>
+	<td class="name" nowrap><a href="#ScenEdit_SetSpecialAction">ScenEdit_SetSpecialAction (action_info)</a></td>
+	<td class="summary">Sets the properties of an already existing special action with the specified information.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_PlayerSide">ScenEdit_PlayerSide ()</a></td>
-	<td class="summary">Gets the side that the player is on.</td>
+	<td class="name" nowrap><a href="#ScenEdit_HostUnitToParent">ScenEdit_HostUnitToParent (host_info)</a></td>
+	<td class="summary">Hosts a unit to the specified host.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_SpecialMessage">ScenEdit_SpecialMessage (sidename, text)</a></td>
-	<td class="summary">Displays a message to the player (akin to a message in the scene editor).</td>
+	<td class="name" nowrap><a href="#ScenEdit_GetSidePosture">ScenEdit_GetSidePosture (sideA, sideB)</a></td>
+	<td class="summary">Gets the posture of one side towards another.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_SetUnitSide">ScenEdit_SetUnitSide (sidechange)</a></td>
-	<td class="summary">Changes the side of a unit.</td>
+	<td class="name" nowrap><a href="#ScenEdit_GetScenHasStarted">ScenEdit_GetScenHasStarted ()</a></td>
+	<td class="summary">Returns true iff the scene has started.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_SetLoadout">ScenEdit_SetLoadout (loadoutinfo)</a></td>
+	<td class="summary">Sets the loadout for a unit</td>
 	</tr>
 </table>
 <h2><a href="#Tables">Tables</a></h2>
@@ -219,6 +223,14 @@
 	<tr>
 	<td class="name" nowrap><a href="#Unit">Unit</a></td>
 	<td class="summary">Represents a unit in the scene.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Fuel">Fuel</a></td>
+	<td class="summary">A table describing the fuel state of a given unit.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#FuelState">FuelState</a></td>
+	<td class="summary">Describes the current fuel state of a unit</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#UnitSelector">UnitSelector</a></td>
@@ -237,8 +249,16 @@
 	<td class="summary">Defines a warhead to detonate.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Sidechange">Sidechange</a></td>
-	<td class="summary">Describes the unit whose side to change and what side to change it to.</td>
+	<td class="name" nowrap><a href="#SpecialAction">SpecialAction</a></td>
+	<td class="summary">Defines a warhead to detonate.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#HostUnit">HostUnit</a></td>
+	<td class="summary">Requests that a unit be hosted to another</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#LoadoutInfo">LoadoutInfo</a></td>
+	<td class="summary">Requests that a unit be hosted to another</td>
 	</tr>
 </table>
 
@@ -300,11 +320,11 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">unit</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The name or GUID of the unit to assign
         </li>
         <li><span class="parameter">mission</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The mission to execute
         </li>
     </ul>
@@ -342,15 +362,15 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">sideAName</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          Side A's name
         </li>
         <li><span class="parameter">sideBName</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          Side B's name
         </li>
         <li><span class="parameter">posture</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The posture of side A towards side B
         </li>
     </ul>
@@ -391,19 +411,18 @@
 
 
 
-
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">type</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The type of the thing to set the EMCON on.
         </li>
         <li><span class="parameter">name</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The name or GUID of the object to select.
         </li>
         <li><span class="parameter">emcon</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The new EMCON for the object.
         </li>
     </ul>
@@ -554,11 +573,8 @@ Values may be omitted from the descriptor if they are intended to remain unmodif
     <h3>Usage:</h3>
     <ul>
         <li><pre class="example"> ScenEdit_AddUnit({<span class="global">type</span> = <span class="string">'Aircraft'</span>, name = <span class="string">'F-15C Eagle'</span>, loadoutid = <span class="number">16934</span>,
-
  heading = <span class="number">0</span>, dbid = <span class="number">3500</span>, side = <span class="string">'NATO'</span>, Latitude=<span class="string">"N46.00.00"</span>,Longitude=<span class="string">"E25.00.00"</span>,
-
- altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="string">"false"</span>,holdfire=<span class="string">"true"</span>,proficiency=<span class="number">4</span>})
-</pre></li>
+ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="string">"false"</span>,holdfire=<span class="string">"true"</span>,proficiency=<span class="number">4</span>})</pre></li>
         <li><pre class="example">ScenEdit_AddUnit({<span class="global">type</span> = <span class="string">'Air'</span>, name = <span class="string">'F-15C Eagle'</span>, loadoutid = <span class="number">16934</span>, dbid = <span class="number">3500</span>, side = <span class="string">'NATO'</span>, Lat=<span class="string">"5.123"</span>,Lon=<span class="string">"-12.51"</span>,alt=<span class="number">5000</span>})</pre></li>
     </ul>
 
@@ -670,11 +686,11 @@ then the function returns nil instead of producing an exception.
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">key</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The key to associate with
         </li>
         <li><span class="parameter">value</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The value to associate
         </li>
     </ul>
@@ -685,7 +701,6 @@ then the function returns nil instead of producing an exception.
     <h3>Usage:</h3>
     <ul>
         <pre class="example">ScenEdit_SetKeyValue(<span class="string">"A"</span>,<span class="string">"B"</span>)
-
 ScenEdit_GetKeyValue(<span class="string">"A"</span>) -- returns <span class="string">"B"</span></pre>
     </ul>
 
@@ -703,7 +718,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>) -- returns <span class="st
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">key</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The key to fetch the associated value of
         </li>
     </ul>
@@ -711,7 +726,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>) -- returns <span class="st
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
         The value associated with the key. "" if none exists.
     </ol>
 
@@ -720,7 +735,6 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>) -- returns <span class="st
     <h3>Usage:</h3>
     <ul>
         <pre class="example">ScenEdit_SetKeyValue(<span class="string">"A"</span>,<span class="string">"2"</span>)
-
 ScenEdit_GetKeyValue(<span class="string">"A"</span>) -- returns <span class="string">"2"</span></pre>
     </ul>
 
@@ -826,11 +840,11 @@ floating point number. If <code>latlonspec</code> is <code>&quot;DEC&quot;</code
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">sideName</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The name of the side for the new aircraft
         </li>
         <li><span class="parameter">unitName</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The name of the new aircraft
         </li>
         <li><span class="parameter">dbid</span>
@@ -842,7 +856,7 @@ floating point number. If <code>latlonspec</code> is <code>&quot;DEC&quot;</code
          The database ID of the aircraft's loadout
         </li>
         <li><span class="parameter">latlonspec</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The formatting specification for <code>lat</code> and <code>lon</code>.
         </li>
         <li><span class="parameter">lat</span>
@@ -879,11 +893,11 @@ floating point number. If <code>latlonspec</code> is <code>&quot;DEC&quot;</code
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">sideName</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The name of the side for the new ship
         </li>
         <li><span class="parameter">unitName</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The name of the new ship
         </li>
         <li><span class="parameter">dbid</span>
@@ -891,7 +905,7 @@ floating point number. If <code>latlonspec</code> is <code>&quot;DEC&quot;</code
          The database ID of the new ship
         </li>
         <li><span class="parameter">latlonspec</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The formatting specification for <code>lat</code> and <code>lon</code>.
         </li>
         <li><span class="parameter">lat</span>
@@ -928,11 +942,11 @@ floating point number. If <code>latlonspec</code> is <code>&quot;DEC&quot;</code
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">sideName</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The name of the side for the new submarine
         </li>
         <li><span class="parameter">unitName</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The name of the new submarine
         </li>
         <li><span class="parameter">dbid</span>
@@ -940,7 +954,7 @@ floating point number. If <code>latlonspec</code> is <code>&quot;DEC&quot;</code
          The database ID of the new submarine
         </li>
         <li><span class="parameter">latlonspec</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The formatting specification for <code>lat</code> and <code>lon</code>.
         </li>
         <li><span class="parameter">lat</span>
@@ -977,11 +991,11 @@ floating point number. If <code>latlonspec</code> is <code>&quot;DEC&quot;</code
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">sideName</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The name of the side for the new facility
         </li>
         <li><span class="parameter">unitName</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The name of the new facility
         </li>
         <li><span class="parameter">dbid</span>
@@ -993,7 +1007,7 @@ floating point number. If <code>latlonspec</code> is <code>&quot;DEC&quot;</code
          The heading of the new facility
         </li>
         <li><span class="parameter">latlonspec</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The formatting specification for <code>lat</code> and <code>lon</code>.
         </li>
         <li><span class="parameter">lat</span>
@@ -1040,7 +1054,7 @@ floating point number. If <code>latlonspec</code> is <code>&quot;DEC&quot;</code
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">side</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The name of the side
         </li>
     </ul>
@@ -1062,7 +1076,7 @@ floating point number. If <code>latlonspec</code> is <code>&quot;DEC&quot;</code
 </dd>
     <dt>
     <a name = "ScenEdit_SetScore"></a>
-    <strong>ScenEdit_SetScore (side, score)</strong>
+    <strong>ScenEdit_SetScore (side, score, reason)</strong>
     </dt>
     <dd>
     Sets a given side's score.
@@ -1071,12 +1085,16 @@ floating point number. If <code>latlonspec</code> is <code>&quot;DEC&quot;</code
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">side</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The name of the side
         </li>
         <li><span class="parameter">score</span>
             <span class="types"><span class="type">num</span></span>
          The new score for the side
+        </li>
+        <li><span class="parameter">reason</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
+         The reason for the score to change
         </li>
     </ul>
 
@@ -1118,32 +1136,18 @@ floating point number. If <code>latlonspec</code> is <code>&quot;DEC&quot;</code
     <strong>ScenEdit_MsgBox (string, style)</strong>
     </dt>
     <dd>
-
-<p>Opens a message box with the given string. </p>
-
-<p>Styles:</p>
-
-<ul>
-    <li>Okay: 0</li>
-    <li>Okay Cancel: 1</li>
-    <li>Abort Retry Ignore: 2</li>
-    <li>Yes No Cancel: 3</li>
-    <li>Yes No: 4</li>
-    <li>Retry Cancel: 5</li>
-</ul>
-
-
+    Opens a message box with the given string.
 
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">string</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         The message to display.
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
+         The string to display to the user
         </li>
         <li><span class="parameter">style</span>
-            <span class="types"><span class="type">number</span></span>
-         The buttons to display.
+            <span class="types"><span class="type">num</span></span>
+         The style of the message box
         </li>
     </ul>
 
@@ -1155,10 +1159,6 @@ floating point number. If <code>latlonspec</code> is <code>&quot;DEC&quot;</code
 
 
 
-    <h3>Usage:</h3>
-    <ul>
-        <pre class="example">ScenEdit_MsgBox(<span class="string">"Do you want to continue"</span>, <span class="number">0</span>)</pre>
-    </ul>
 
 </dd>
     <dt>
@@ -1172,11 +1172,11 @@ floating point number. If <code>latlonspec</code> is <code>&quot;DEC&quot;</code
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">side</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The side to import the inst file as
         </li>
         <li><span class="parameter">filename</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The filename of the inst file
         </li>
     </ul>
@@ -1197,7 +1197,7 @@ floating point number. If <code>latlonspec</code> is <code>&quot;DEC&quot;</code
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">attachment</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          Either the name of the attachment or the GUID of the attachment
         </li>
     </ul>
@@ -1218,11 +1218,11 @@ floating point number. If <code>latlonspec</code> is <code>&quot;DEC&quot;</code
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">attachment</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          Either the name of the attachment or the GUID of the attachment
         </li>
         <li><span class="parameter">sidename</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The name of the side to import the attachment into
         </li>
     </ul>
@@ -1254,43 +1254,71 @@ floating point number. If <code>latlonspec</code> is <code>&quot;DEC&quot;</code
 
 </dd>
     <dt>
-    <a name = "ScenEdit_KillUnit"></a>
-    <strong>ScenEdit_KillUnit (unit)</strong>
+    <a name = "ScenEdit_SetSpecialAction"></a>
+    <strong>ScenEdit_SetSpecialAction (action_info)</strong>
     </dt>
     <dd>
-    Kills a unit (instead of deleting it).
+    Sets the properties of an already existing special action with the specified information.
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">unit</span>
-            <span class="types"><a class="type" href="../index.html#Unit">Unit</a></span>
-         The unit to delete. Must be at least a selector.
+        <li><span class="parameter">action_info</span>
+            <span class="types"><a class="type" href="../index.html#SpecialAction">SpecialAction</a></span>
+         The special action to modify
         </li>
     </ul>
 
 
 
 
-    <h3>Usage:</h3>
-    <ul>
-        <pre class="example">ScenEdit_KillUnit({side=<span class="string">"United States"</span>, name=<span class="string">"USS Abcd"</span>})</pre>
-    </ul>
 
 </dd>
     <dt>
-    <a name = "ScenEdit_PlayerSide"></a>
-    <strong>ScenEdit_PlayerSide ()</strong>
+    <a name = "ScenEdit_HostUnitToParent"></a>
+    <strong>ScenEdit_HostUnitToParent (host_info)</strong>
     </dt>
     <dd>
-    Gets the side that the player is on.
+    Hosts a unit to the specified host.  The unit will be moved from any location, including flying or hostes elsewhere.
 
 
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">host_info</span>
+            <span class="types"><a class="type" href="../index.html#HostUnit">HostUnit</a></span>
+         The information about the hosting request
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_GetSidePosture"></a>
+    <strong>ScenEdit_GetSidePosture (sideA, sideB)</strong>
+    </dt>
+    <dd>
+    Gets the posture of one side towards another.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sideA</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
+         The name of the first side
+        </li>
+        <li><span class="parameter">sideB</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
+         The name of the second side
+        </li>
+    </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-        The player's side
+        The posture of sideA towards sideB, one of 'N', 'F', 'H', or 'A'.
     </ol>
 
 
@@ -1298,57 +1326,43 @@ floating point number. If <code>latlonspec</code> is <code>&quot;DEC&quot;</code
 
 </dd>
     <dt>
-    <a name = "ScenEdit_SpecialMessage"></a>
-    <strong>ScenEdit_SpecialMessage (sidename, text)</strong>
+    <a name = "ScenEdit_GetScenHasStarted"></a>
+    <strong>ScenEdit_GetScenHasStarted ()</strong>
     </dt>
     <dd>
-    Displays a message to the player (akin to a message in the scene editor).
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">sidename</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         The side to display the message to
-        </li>
-        <li><span class="parameter">text</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         The text of the message, in HTML
-        </li>
-    </ul>
+    Returns true iff the scene has started.
 
 
 
+    <h3>Returns:</h3>
+    <ol>
 
-    <h3>Usage:</h3>
-    <ul>
-        <pre class="example">ScenEdit_SpecialMessage(<span class="string">"NATO"</span>, <span class="string">"The Russians have destroyed the SOSUS station!"</span>)</pre>
-    </ul>
+        If the scene has started
+    </ol>
+
+
+
 
 </dd>
     <dt>
-    <a name = "ScenEdit_SetUnitSide"></a>
-    <strong>ScenEdit_SetUnitSide (sidechange)</strong>
+    <a name = "ScenEdit_SetLoadout"></a>
+    <strong>ScenEdit_SetLoadout (loadoutinfo)</strong>
     </dt>
     <dd>
-    Changes the side of a unit.
+    Sets the loadout for a unit
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">sidechange</span>
-            <span class="types"><a class="type" href="../index.html#Sidechange">Sidechange</a></span>
-         The information about the unit whose side to change.
+        <li><span class="parameter">loadoutinfo</span>
+            <span class="types"><a class="type" href="../index.html#LoadoutInfo">LoadoutInfo</a></span>
+         The loadout information to apply
         </li>
     </ul>
 
 
 
 
-    <h3>Usage:</h3>
-    <ul>
-        <pre class="example">ScenEdit_SetUnitSide({side=<span class="string">"Neutral"</span>, name=<span class="string">"SSM Bn FROG.1"</span>, newside=<span class="string">"ISIS"</span>})</pre>
-    </ul>
 
 </dd>
 </dl>
@@ -1377,7 +1391,7 @@ floating point number. If <code>latlonspec</code> is <code>&quot;DEC&quot;</code
     <h3>Fields:</h3>
     <ul>
         <li><span class="parameter">name</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The name of the reference point
         </li>
         <li><span class="parameter">latitude</span>
@@ -1389,11 +1403,11 @@ floating point number. If <code>latlonspec</code> is <code>&quot;DEC&quot;</code
          The longitude of the reference point
         </li>
         <li><span class="parameter">guid</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The unique identifier for the reference point
         </li>
         <li><span class="parameter">side</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The side the reference point is visible to
         </li>
         <li><span class="parameter">highlighted</span>
@@ -1424,15 +1438,15 @@ floating point number. If <code>latlonspec</code> is <code>&quot;DEC&quot;</code
     <h3>Fields:</h3>
     <ul>
         <li><span class="parameter">side</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The side the reference point is visible to
         </li>
         <li><span class="parameter">name</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The name of the reference point
         </li>
         <li><span class="parameter">guid</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The unique identifier for the reference point
         </li>
     </ul>
@@ -1469,15 +1483,15 @@ unambiguously.
     <h3>Fields:</h3>
     <ul>
         <li><span class="parameter">type</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The type of object, may be 'Facility', 'Ship', 'Submarine', or 'Aircraft' (descriptor).
         </li>
         <li><span class="parameter">name</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The unit's name.
         </li>
         <li><span class="parameter">side</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The unit's side.
         </li>
         <li><span class="parameter">latitude</span>
@@ -1507,7 +1521,7 @@ unambiguously.
          (<em>optional</em>)
         </li>
         <li><span class="parameter">guid</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The unit's unique ID.
         </li>
         <li><span class="parameter">heading</span>
@@ -1516,18 +1530,102 @@ unambiguously.
          (<em>optional</em>)
         </li>
         <li><span class="parameter">proficiency</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The unit proficiency, one of 0, 1, 2, 3, 4 (descriptor).
          (<em>optional</em>)
         </li>
         <li><span class="parameter">newname</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          If a descriptor, the unit's new name (descriptor).
          (<em>optional</em>)
         </li>
         <li><span class="parameter">course</span>
             <span class="types"><span class="type">list latlon</span></span>
          The unit's course, as lat/lon pairs
+        </li>
+        <li><span class="parameter">RTB</span>
+            <span class="types"><span class="type">bool</span></span>
+         If used in SetUnit, then if to trigger the unit to return to base
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">fuel</span>
+            <span class="types"><a class="type" href="../index.html#Fuel">Fuel</a></span>
+         A table enabling access to the unit's fuel status
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Fuel"></a>
+    <strong>Fuel</strong>
+    </dt>
+    <dd>
+
+<p>A table describing the fuel state of a given unit.  This entire table should be replaced in a single go - so to update a unit's fuel, see the example.</p>
+
+<p>Fuel IDs:</p>
+
+<p><style>
+tr:not(:first-child) { border-top: 1px solid black;}
+td { padding: .5em; }
+</style></p>
+
+<table style="border-spacing: 0.5rem;">
+<tr><td>1001</td><td>'no fuel'</td></tr>
+<tr><td>2001</td><td>aviation fuel</td></tr>
+<tr><td>3001</td><td>diesel fuel</td></tr>
+<tr><td>3002</td><td>oil fuel</td></tr>
+<tr><td>3003</td><td>gas fuel</td></tr>
+<tr><td>4001</td><td>battery life</td></tr>
+<tr><td>4002</td><td>AIP</td></tr>
+<tr><td>5001</td><td>rocket fuel</td></tr>
+<tr><td>5002</td><td>torpedo fuel</td></tr>
+<tr><td>5003</td><td>weapon coast</td></tr>
+</table>
+
+
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">code</span>
+            <span class="types"><a class="type" href="../index.html#FuelState">FuelState</a></span>
+         The fuel state of the unit. Note that 'code' is a placeholder - it should be replaced with a valid fuel ID, as listed above.
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"> <span class="keyword">local</span> fuel = u.fuel
+       fuel[<span class="number">3001</span>].current = <span class="number">400</span>
+       u.fuel = fuel</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "FuelState"></a>
+    <strong>FuelState</strong>
+    </dt>
+    <dd>
+    Describes the current fuel state of a unit
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">current</span>
+            <span class="types"><span class="type">number</span></span>
+         The current fuel of the unit
+        </li>
+        <li><span class="parameter">max</span>
+            <span class="types"><span class="type">number</span></span>
+         How much can be stored in the unit
         </li>
     </ul>
 
@@ -1552,15 +1650,15 @@ If both are given, then the GUID is used preferentially.
     <h3>Fields:</h3>
     <ul>
         <li><span class="parameter">name</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The name of the unit to select (for option #1)
         </li>
         <li><span class="parameter">side</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The name of the unit to select (for option #1)
         </li>
         <li><span class="parameter">guid</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The guid of the unit to select (for option #2)
         </li>
     </ul>
@@ -1583,19 +1681,19 @@ If both are given, then the GUID is used preferentially.
     <h3>Fields:</h3>
     <ul>
         <li><span class="parameter">side</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The side to select/from
         </li>
         <li><span class="parameter">mission</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The name of the mission to select
         </li>
         <li><span class="parameter">name</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The name of the unit to select
         </li>
         <li><span class="parameter">group</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          The name of the group to select
         </li>
     </ul>
@@ -1631,7 +1729,7 @@ use one of <code>&quot;1&quot;</code>, <code>&quot;true&quot;</code> or <code>&q
          True iff the unit should return to base when out of weapons
         </li>
         <li><span class="parameter">engaging_ambiguous_targets</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
          One of "Ignore", "Optimistic", or "Pessimistic"
         </li>
         <li><span class="parameter">automatic_evasion</span>
@@ -1711,26 +1809,92 @@ use one of <code>&quot;1&quot;</code>, <code>&quot;true&quot;</code> or <code>&q
 
 </dd>
     <dt>
-    <a name = "Sidechange"></a>
-    <strong>Sidechange</strong>
+    <a name = "SpecialAction"></a>
+    <strong>SpecialAction</strong>
     </dt>
     <dd>
-    Describes the unit whose side to change and what side to change it to.  <strong>The order is important.</strong>
+    Defines a warhead to detonate.
 
 
     <h3>Fields:</h3>
     <ul>
-        <li><span class="parameter">side</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         The original side of the unit.
+        <li><span class="parameter">ActionNameOrID</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
+         The name or ID of the special action
         </li>
-        <li><span class="parameter">name</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         The name of the unit whose side to change.
+        <li><span class="parameter">IsActive</span>
+            <span class="types"><span class="type">bool</span></span>
+         If the action is visible to the player
         </li>
-        <li><span class="parameter">newside</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         The new side for the unit.
+        <li><span class="parameter">IsRepeatable</span>
+            <span class="types"><span class="type">bool</span></span>
+         If the player can use the action multiple times
+        </li>
+        <li><span class="parameter">NewName</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
+         If specified, the new name of the action
+        </li>
+        <li><span class="parameter">Description</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
+         If specified, the new description for the action
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "HostUnit"></a>
+    <strong>HostUnit</strong>
+    </dt>
+    <dd>
+    Requests that a unit be hosted to another
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">HostedUnitNameOrID</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
+         The name or GUID of the unit to put into the host
+        </li>
+        <li><span class="parameter">SelectedHostNameOrID</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
+         The name or GUID of the host to put the unit into
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "LoadoutInfo"></a>
+    <strong>LoadoutInfo</strong>
+    </dt>
+    <dd>
+    Requests that a unit be hosted to another
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">UnitNameOrID</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
+         The name or GUID of the unit to change the loadout on
+        </li>
+        <li><span class="parameter">LoadoutID</span>
+            <span class="types"><span class="type">number</span></span>
+         The ID of the new loadout
+        </li>
+        <li><span class="parameter">TimeToReady_Minutes</span>
+            <span class="types"><span class="type">number</span></span>
+         How many minutes until the loadout is ready
+        </li>
+        <li><span class="parameter">IgnoreMagazines</span>
+            <span class="types"><span class="type">bool</span></span>
+         If the new loadout should rely on the magazines having the right weapons ready
         </li>
     </ul>
 
@@ -1746,7 +1910,7 @@ use one of <code>&quot;1&quot;</code>, <code>&quot;true&quot;</code> or <code>&q
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2015-10-23 22:41:50 </i>
+<i style="float:right;">Last updated 2016-01-23 00:35:09 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
