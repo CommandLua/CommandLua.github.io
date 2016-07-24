@@ -225,6 +225,14 @@
 	<td class="name" nowrap><a href="#ScenEdit_SpecialMessage">ScenEdit_SpecialMessage (side, message)</a></td>
 	<td class="summary">Displays a special message consisting of the HTML text <code>message</code> to side `side.</td>
 	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#World_GetElevation">World_GetElevation (location)</a></td>
+	<td class="summary">Returns the elevation in meters of a given position</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#VP_GetSide">VP_GetSide (side)</a></td>
+	<td class="summary">Gets a side object from the perspective of the player.</td>
+	</tr>
 </table>
 <h2><a href="#Tables">Tables</a></h2>
 <table class="function_list">
@@ -279,6 +287,22 @@
 	<tr>
 	<td class="name" nowrap><a href="#SideDescription">SideDescription</a></td>
 	<td class="summary">Information on how to change a unit's side.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Point">Point</a></td>
+	<td class="summary">Information about a geographic point.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#SideSelector">SideSelector</a></td>
+	<td class="summary">Information to select a particular side.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#SideInfo">SideInfo</a></td>
+	<td class="summary">Get the perspective of the specified side.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#SideUnit">SideUnit</a></td>
+	<td class="summary">Information known about a specific unit.</td>
 	</tr>
 </table>
 
@@ -1476,6 +1500,59 @@ floating point number. If <code>latlonspec</code> is <code>&quot;DEC&quot;</code
 
 
 </dd>
+    <dt>
+    <a name = "World_GetElevation"></a>
+    <strong>World_GetElevation (location)</strong>
+    </dt>
+    <dd>
+    Returns the elevation in meters of a given position
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">location</span>
+            <span class="types"><a class="type" href="index.html#Point">Point</a></span>
+         The position to find the elevation of
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The elevation of the point in meters
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "VP_GetSide"></a>
+    <strong>VP_GetSide (side)</strong>
+    </dt>
+    <dd>
+    Gets a side object from the perspective of the player.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">side</span>
+            <span class="types"><a class="type" href="index.html#SideSelector">SideSelector</a></span>
+         The side to get information about
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="index.html#SideInfo">SideInfo</a></span>
+        Information about the side selected, from the perspective of the player
+    </ol>
+
+
+
+
+</dd>
 </dl>
     <h2><a name="Tables"></a>Tables</h2>
 
@@ -2069,6 +2146,114 @@ use one of <code>&quot;1&quot;</code>, <code>&quot;true&quot;</code> or <code>&q
 
 
 </dd>
+    <dt>
+    <a name = "Point"></a>
+    <strong>Point</strong>
+    </dt>
+    <dd>
+    Information about a geographic point.
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">latitude</span>
+            <span class="types"><span class="type">number</span></span>
+         The latitude of the point
+        </li>
+        <li><span class="parameter">longitude</span>
+            <span class="types"><span class="type">number</span></span>
+         The longitude of the point
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "SideSelector"></a>
+    <strong>SideSelector</strong>
+    </dt>
+    <dd>
+    Information to select a particular side.
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">GUID</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
+         The GUID of the side to select. Preferred.
+        </li>
+        <li><span class="parameter">Name</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
+         The name of the side to select.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "SideInfo"></a>
+    <strong>SideInfo</strong>
+    </dt>
+    <dd>
+    Get the perspective of the specified side.
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">Objectid</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
+         The GUID of the side.
+        </li>
+        <li><span class="parameter">Name</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
+         The name of the side.
+        </li>
+        <li><span class="parameter">Units</span>
+            <span class="types"><a class="type" href="index.html#SideUnit">{SideUnit</a></span>
+         Units of the designated side.
+        </li>
+        <li><span class="parameter">Contacts</span>
+            <span class="types"><a class="type" href="index.html#SideUnit">{SideUnit</a></span>
+         The side's current contacts.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "SideUnit"></a>
+    <strong>SideUnit</strong>
+    </dt>
+    <dd>
+    Information known about a specific unit.
+
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">Objectid</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
+         The GUID of the side.
+        </li>
+        <li><span class="parameter">Name</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.2/manual.html#6.4">string</a></span>
+         The name of the side.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
 </dl>
 
 
@@ -2076,7 +2261,7 @@ use one of <code>&quot;1&quot;</code>, <code>&quot;true&quot;</code> or <code>&q
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2016-06-04 00:18:06 </i>
+<i style="float:right;">Last updated 2016-07-24 13:26:56 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
