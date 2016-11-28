@@ -1,0 +1,2521 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Command Lua Documentation</title>
+    <link rel="stylesheet" href="ldoc_pale.css" type="text/css" />
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-57524251-1', 'auto');
+      ga('require', 'displayfeatures');
+      ga('send', 'pageview');
+
+    </script>
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>CommandLua</h1>
+
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Selectors">Selectors</a></li>
+<li><a href="#Wrappers">Wrappers</a></li>
+<li><a href="#Data_types">Data types</a></li>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Tables">Tables</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><strong>ScenEdit</strong></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>ScenEdit</code></h1>
+<p>
+
+</p>
+<p> Lua is a case sensitve language.</p>
+
+<p> When accessing object properties directly as in 'unit.name', the property should be in lower case.</p>
+
+<p> However, when accessing the properties through the module functions below, both the keyword/property and the value are case insensitive; the code will worry about matching them up.</p>
+
+<p><u><b>Selector</b></u><br>
+ These define the information required as part of the 'select' process for the functions. In the case of functions that 'add' things, these are also key elements to the adding process.
+ Other properties may be included in the 'selector' such as when updating an existing table.</p>
+
+<p><u><b>Wrapper</b></u><br>
+ These define the information that is returned from some functions. This information can be usually modified either directly (object.field) or by a wrapper Set(..) function. The particular wrapper Set(..) function is preferred as some validation is performed on the input to ensure that it is within the bounds of the field being updated.</p>
+
+<p><u><b>Data type</b></u><br>
+ These cover any special considerations for the data, such as longitude/latitude; degrees, DMS, N/S, E/W, etc.</p>
+
+
+<h2><a href="#Selectors">Selectors</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#ContactSelector">ContactSelector</a></td>
+	<td class="summary">Contact selector.</td>
+	</tr>
+</table>
+<h2><a href="#Wrappers">Wrappers</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Contact">Contact</a></td>
+	<td class="summary">Information about a contact.</td>
+	</tr>
+</table>
+<h2><a href="#Data_types">Data types</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Latitude">Latitude</a></td>
+	<td class="summary">Longitude.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Longitude">Longitude</a></td>
+	<td class="summary">Latitude.</td>
+	</tr>
+</table>
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_AddExplosion">ScenEdit_AddExplosion (explosion)</a></td>
+	<td class="summary">Detonates a warhead at a specified location.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_AddReferencePoint">ScenEdit_AddReferencePoint (descriptor)</a></td>
+	<td class="summary">Add a new reference point.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_AddUnit">ScenEdit_AddUnit (unit)</a></td>
+	<td class="summary">Adds a unit to the scene based on a descriptor.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_AssignUnitToMission">ScenEdit_AssignUnitToMission (unit, mission, escort)</a></td>
+	<td class="summary">Assign a unit to a mission.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_CurrentTime">ScenEdit_CurrentTime ()</a></td>
+	<td class="summary">Gets the current time.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_DeleteReferencePoint">ScenEdit_DeleteReferencePoint (selector)</a></td>
+	<td class="summary">Delete a reference point.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_DeleteUnit">ScenEdit_DeleteUnit (unit)</a></td>
+	<td class="summary">Deletes a unit based on a selector.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_EndScenario">ScenEdit_EndScenario ()</a></td>
+	<td class="summary">Ends the current scenario.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_GetDoctrine">ScenEdit_GetDoctrine (selector)</a></td>
+	<td class="summary">Gets the doctrine of the designated object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_GetKeyValue">ScenEdit_GetKeyValue (key)</a></td>
+	<td class="summary">Gets a persistent value.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_GetReferencePoints">ScenEdit_GetReferencePoints (descriptor)</a></td>
+	<td class="summary">Get a set of reference point(s).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_GetScenHasStarted">ScenEdit_GetScenHasStarted ()</a></td>
+	<td class="summary">Returns true iff the scene has started.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_GetScore">ScenEdit_GetScore (side)</a></td>
+	<td class="summary">Get a given side's score.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_GetSideIsHuman">ScenEdit_GetSideIsHuman (sidename)</a></td>
+	<td class="summary">Returns true if side is played by a human player</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_GetSidePosture">ScenEdit_GetSidePosture (sideA, sideB)</a></td>
+	<td class="summary">Gets the posture of one side towards another.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_GetUnit">ScenEdit_GetUnit (unit)</a></td>
+	<td class="summary">Fetches a unit based on a selector.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_HostUnitToParent">ScenEdit_HostUnitToParent (host_info)</a></td>
+	<td class="summary">Hosts a unit to the specified host.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_ImportInst">ScenEdit_ImportInst (side, filename)</a></td>
+	<td class="summary">Imports an inst file.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_MsgBox">ScenEdit_MsgBox (string, style)</a></td>
+	<td class="summary">Opens a message box with the given string.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_PlayerSide">ScenEdit_PlayerSide ()</a></td>
+	<td class="summary">Returns the player's current side.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_RunScript">ScenEdit_RunScript (script)</a></td>
+	<td class="summary">Run a script in a file.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_SetDoctrine">ScenEdit_SetDoctrine (selector, doctrine)</a></td>
+	<td class="summary">Set the doctrine of the designated object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_SetEMCON">ScenEdit_SetEMCON (type, name, emcon)</a></td>
+	<td class="summary">Sets the EMCON of the selected object.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_SetKeyValue">ScenEdit_SetKeyValue (key, value)</a></td>
+	<td class="summary">Sets a persistent value in the key value store.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_SetLoadout">ScenEdit_SetLoadout (loadoutinfo)</a></td>
+	<td class="summary">Sets the loadout for a unit</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_SetReferencePoint">ScenEdit_SetReferencePoint (descriptor)</a></td>
+	<td class="summary">Update a reference point with new values.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_SetScore">ScenEdit_SetScore (side, score, reason)</a></td>
+	<td class="summary">Sets a given side's score.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_SetSidePosture">ScenEdit_SetSidePosture (sideAName, sideBName, posture)</a></td>
+	<td class="summary">Set the posture of a side towards another.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_SetSpecialAction">ScenEdit_SetSpecialAction (action_info)</a></td>
+	<td class="summary">Sets the properties of an already existing special action with the specified information.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_SetUnit">ScenEdit_SetUnit (unit)</a></td>
+	<td class="summary">Sets the properties of a unit that already exists.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_SetUnitSide">ScenEdit_SetUnitSide (sidedesc)</a></td>
+	<td class="summary">Changes the side of a unit</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_SetWeather">ScenEdit_SetWeather (temperature, rainfall, underrain, seastate)</a></td>
+	<td class="summary">Set the current weather conditions.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_SpecialMessage">ScenEdit_SpecialMessage (side, message)</a></td>
+	<td class="summary">Displays a special message consisting of the HTML text <code>message</code> to side `side.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_UnitX">ScenEdit_UnitX ()</a></td>
+	<td class="summary">Gets the unit that fired the current trigger - nil if otherwise.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_UseAttachment">ScenEdit_UseAttachment (attachment)</a></td>
+	<td class="summary">Import an attachment into the scene.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ScenEdit_UseAttachmentOnSide">ScenEdit_UseAttachmentOnSide (attachment, sidename)</a></td>
+	<td class="summary">Use an attachment on a side (used for .inst files as attachments).</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#VP_GetContact">VP_GetContact (ContactGUID)</a></td>
+	<td class="summary">Get contact details</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#VP_GetSide">VP_GetSide (side)</a></td>
+	<td class="summary">Side information from player's perspective</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#VP_GetUnit">VP_GetUnit (ActiveOrContact)</a></td>
+	<td class="summary">Get unit details</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#World_GetElevation">World_GetElevation (location)</a></td>
+	<td class="summary">Returns the elevation in meters of a given position</td>
+	</tr>
+</table>
+<h2><a href="#Tables">Tables</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#Doctrine">Doctrine</a></td>
+	<td class="summary">Describes a doctrine.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DoctrineSelector">DoctrineSelector</a></td>
+	<td class="summary">Selects a thing, one of a side, group, mission, or unit.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Explosion">Explosion</a></td>
+	<td class="summary">Defines a warhead to detonate.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Fuel">Fuel</a></td>
+	<td class="summary">A table describing the fuel state of a given unit.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#FuelState">FuelState</a></td>
+	<td class="summary">Describes the current fuel state of a unit</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#HostUnit">HostUnit</a></td>
+	<td class="summary">Requests that a unit be hosted to another</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#LatLon">LatLon</a></td>
+	<td class="summary">Position.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#LoadoutInfo">LoadoutInfo</a></td>
+	<td class="summary">Information on a loadout to add/alter</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ReferencePoint">ReferencePoint</a></td>
+	<td class="summary">Reference point descriptor.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ReferencePointSelector">ReferencePointSelector</a></td>
+	<td class="summary">Reference point selector.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#SideContact">SideContact</a></td>
+	<td class="summary">The information known about a specific contact.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#SideDescription">SideDescription</a></td>
+	<td class="summary">Information on how to change a unit's side.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#SideInfo">SideInfo</a></td>
+	<td class="summary">Get the perspective of the specified side.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#SideSelector">SideSelector</a></td>
+	<td class="summary">Information to select a particular side.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#SideUnit">SideUnit</a></td>
+	<td class="summary">Information known about a specific unit.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#SpecialAction">SpecialAction</a></td>
+	<td class="summary">Special action selector</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Unit">Unit</a></td>
+	<td class="summary">Represents a unit in the scene.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#UnitSelector">UnitSelector</a></td>
+	<td class="summary">Use to select a unit in the scene based on either the side and name or the unique identifier (GUID).</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2><a name="Selectors"></a>Selectors</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "ContactSelector"></a>
+    <strong>ContactSelector</strong>
+    </dt>
+    <dd>
+    Contact selector. </p>
+
+<p>Used to select a contact.</p>
+
+<p>Note that a unit and it's contact GUIDs are different for the same physical unit; the contact GUIDs are from the other side's perspective
+
+    </ul>
+
+    <ul>
+        <li><span class="parameter">guid</span>
+            <span class="types"><span class="type">string</span></span>
+         The GUID of the contact. Interrogate VP_GetSide().contacts for the side's contacts and use the GUID from there.
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> vp = VP_GetSide({name = <span class="string">"NATO"</span>})
+<span class="keyword">local</span> cp = vp.contacts <span class="comment">--List Of contacts
+</span><span class="keyword">local</span> guid = cp[<span class="number">12</span>].objectid <span class="comment">-- a specific contact
+</span><span class="keyword">local</span> contact = VP_GetContact({guid=guid}) <span class="comment">-- details of contact as distinct to unit details</span></pre>
+    </ul>
+
+</dd>
+</dl>
+    <h2><a name="Wrappers"></a>Wrappers</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "Contact"></a>
+    <strong>Contact</strong>
+    </dt>
+    <dd>
+    Information about a contact.
+
+    </ul>
+
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><span class="type">string</span></span>
+         The contact name.
+        </li>
+        <li><span class="parameter">objectid</span>
+            <span class="types"><span class="type">string</span></span>
+         The contact GUID
+        </li>
+        <li><span class="parameter">actualunitid</span>
+            <span class="types"><span class="type">string</span></span>
+         The contact actual GUID.
+        </li>
+        <li><span class="parameter">latitude</span>
+            <span class="types"><a class="type" href="index.html#Latitude">Latitude</a></span>
+         The latitude of the contact.
+        </li>
+        <li><span class="parameter">longitude</span>
+            <span class="types"><a class="type" href="index.html#Longitude">Longitude</a></span>
+         The longitude of the contact.
+        </li>
+        <li><span class="parameter">posture</span>
+            <span class="types"><span class="type">string</span></span>
+         Posture towards contact.
+        </li>
+        <li><span class="parameter">type</span>
+            <span class="types"><span class="type">string</span></span>
+         Type of contact.
+        </li>
+        <li><span class="parameter">areaofuncertainty</span>
+            <span class="types"><a class="type" href="index.html#LatLon">{LatLon}</a></span>
+         Table of points defining the area of contact.
+        </li>
+        <li><span class="parameter">type_description</span>
+            <span class="types"><span class="type">string</span></span>
+         Contact type description.
+        </li>
+        <li><span class="parameter">actualunitdbid</span>
+            <span class="types"><span class="type">number</span></span>
+         Actual contact type.
+        </li>
+        <li><span class="parameter">classificationlevel</span>
+            <span class="types"><span class="type">string</span></span>
+         Contact classification.
+        </li>
+        <li><span class="parameter">potentialmatches</span>
+            <span class="types"><span class="type">{numbers}</span></span>
+         Table of DBIDs on potential EMCON emission matches.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+    <h2><a name="Data_types"></a>Data types</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "Latitude"></a>
+    <strong>Latitude</strong>
+    </dt>
+    <dd>
+    Longitude.  is in degrees E or W as 'W 60.20.10' or  as +/- as -60.336. The data in the tables is held as a signed number.
+
+    </ul>
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Longitude"></a>
+    <strong>Longitude</strong>
+    </dt>
+    <dd>
+    Latitude.  is in degrees N or S as 'S 60.20.10' or as +/- as -60.336. The data in the tables is held as a signed number.
+
+    </ul>
+
+
+
+
+
+
+</dd>
+</dl>
+    <h2><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "ScenEdit_AddExplosion"></a>
+    <strong>ScenEdit_AddExplosion (explosion)</strong>
+    </dt>
+    <dd>
+    Detonates a warhead at a specified location.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">explosion</span>
+            <span class="types"><a class="type" href="index.html#Explosion">Explosion</a></span>
+         The explosion descriptor.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_AddReferencePoint"></a>
+    <strong>ScenEdit_AddReferencePoint (descriptor)</strong>
+    </dt>
+    <dd>
+    Add a new reference point. </p>
+
+<p>This function adds a new reference point as defined by a descriptor. The descriptor <b>must</b> contain a name, side, latitude and longitude. None of the other properties wil be used. You will need to call <a href="index.html#ScenEdit_SetReferencePoint">ScenEdit_SetReferencePoint</a> to set them after adding the reference point
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">descriptor</span>
+            <span class="types"><a class="type" href="index.html#ReferencePoint">ReferencePoint</a></span>
+         The reference point to create.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="index.html#ReferencePoint">ReferencePoint</a></span>
+        The reference point descriptor for the new reference point.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_AddReferencePoint({side=<span class="string">"United States"</span>, name=<span class="string">"Downed Pilot"</span>, lat=<span class="number">0.1</span>, lon=<span class="number">4</span>, highlighted=<span class="keyword">true</span>})</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_AddUnit"></a>
+    <strong>ScenEdit_AddUnit (unit)</strong>
+    </dt>
+    <dd>
+    Adds a unit to the scene based on a descriptor.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unit</span>
+            <span class="types"><a class="type" href="index.html#Unit">Unit</a></span>
+         The unit to add
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="index.html#Unit">Unit</a></span>
+        A complete descriptor for the added unit
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <li><pre class="example">ScenEdit_AddUnit({<span class="global">type</span> = <span class="string">'Aircraft'</span>, name = <span class="string">'F-15C Eagle'</span>, loadoutid = <span class="number">16934</span>,
+heading = <span class="number">0</span>, dbid = <span class="number">3500</span>, side = <span class="string">'NATO'</span>, Latitude=<span class="string">"N46.00.00"</span>,Longitude=<span class="string">"E25.00.00"</span>,
+altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="string">"false"</span>,holdfire=<span class="string">"true"</span>,proficiency=<span class="number">4</span>})</pre></li>
+        <li><pre class="example">ScenEdit_AddUnit({<span class="global">type</span> = <span class="string">'Air'</span>, name = <span class="string">'F-15C Eagle'</span>, loadoutid = <span class="number">16934</span>, dbid = <span class="number">3500</span>, side = <span class="string">'NATO'</span>, Lat=<span class="string">"5.123"</span>,Lon=<span class="string">"-12.51"</span>,alt=<span class="number">5000</span>})</pre></li>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_AssignUnitToMission"></a>
+    <strong>ScenEdit_AssignUnitToMission (unit, mission, escort)</strong>
+    </dt>
+    <dd>
+    Assign a unit to a mission. </p>
+
+<p>The function takes a unit and mission descriptor, and assigns the unit to the mission if it exists. Produces a pop up
+error (not catchable) if the unit or mission does not exist.
+The 'UnitX' can be used as the unit descriptor
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unit</span>
+            <span class="types"><span class="type">string</span></span>
+         The name or GUID of the unit to assign
+        </li>
+        <li><span class="parameter">mission</span>
+            <span class="types"><span class="type">string</span></span>
+         The mission to execute
+        </li>
+        <li><span class="parameter">escort</span>
+            <span class="types"><span class="type">bool</span></span>
+         [Default=False] If the mission is a strike one, then assign unit to the 'Escort' for the strike
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        True/False for Successful/Failure
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_AssignUnitToMission(<span class="string">"Bar #1"</span>, <span class="string">"Strike"</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_CurrentTime"></a>
+    <strong>ScenEdit_CurrentTime ()</strong>
+    </dt>
+    <dd>
+    Gets the current time.
+
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        The UTC Unix timestamp of the current time in-game.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_DeleteReferencePoint"></a>
+    <strong>ScenEdit_DeleteReferencePoint (selector)</strong>
+    </dt>
+    <dd>
+    Delete a reference point. </p>
+
+<p>Given a reference point selector, this function will remove it.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">selector</span>
+            <span class="types"><a class="type" href="index.html#ReferencePointSelector">ReferencePointSelector</a></span>
+         The reference point selector describing the reference point to delete.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        True if deleted
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_DeleteUnit"></a>
+    <strong>ScenEdit_DeleteUnit (unit)</strong>
+    </dt>
+    <dd>
+    Deletes a unit based on a selector.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unit</span>
+            <span class="types"><a class="type" href="index.html#Unit">Unit</a></span>
+         The unit to delete. Must be at least a selector.
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_DeleteUnit({side=<span class="string">"United States"</span>, name=<span class="string">"USS Abcd"</span>})</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_EndScenario"></a>
+    <strong>ScenEdit_EndScenario ()</strong>
+    </dt>
+    <dd>
+    Ends the current scenario.
+
+    </ul>
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_GetDoctrine"></a>
+    <strong>ScenEdit_GetDoctrine (selector)</strong>
+    </dt>
+    <dd>
+    Gets the doctrine of the designated object. </p>
+
+<p>This function looks up the doctrine of the object selected by selector, and throws an exception if the unit does not exist.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">selector</span>
+            <span class="types"><a class="type" href="index.html#DoctrineSelector">DoctrineSelector</a></span>
+         The selector for the object to look up
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="index.html#Doctrine">Doctrine</a></span>
+        The doctrine of the selected object
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_GetDoctrine({side=<span class="string">"Soviet Union"</span>}).use_nuclear_weapons</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_GetKeyValue"></a>
+    <strong>ScenEdit_GetKeyValue (key)</strong>
+    </dt>
+    <dd>
+    Gets a persistent value. </p>
+
+<p>This function retrieves a value put into the store by <a href="index.html#ScenEdit_SetKeyValue">ScenEdit_SetKeyValue</a>. The keys must be identical.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+            <span class="types"><span class="type">string</span></span>
+         The key to fetch the associated value of
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">string</span></span>
+        The value associated with the key. "" if none exists.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_SetKeyValue(<span class="string">"A"</span>,<span class="string">"2"</span>)
+ScenEdit_GetKeyValue(<span class="string">"A"</span>) <span class="comment">-- returns "2"</span></pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_GetReferencePoints"></a>
+    <strong>ScenEdit_GetReferencePoints (descriptor)</strong>
+    </dt>
+    <dd>
+    Get a set of reference point(s). </p>
+
+<p>Given a reference point selector, the function will return a table of the reference point descriptors.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">descriptor</span>
+            <span class="types"><a class="type" href="index.html#ReferencePoint">ReferencePoint</a></span>
+         A descriptor with a valid selector.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">table</span></span>
+        The table of reference point descriptors for the selector
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_SetReferencePoint({side=<span class="string">"United States"</span>, area={<span class="string">"rp-100"</span>,<span class="string">"rp-101"</span>,<span class="string">"rp-102"</span>,<span class="string">"rp-103"</span>,<span class="string">"rp-104"</span>})</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_GetScenHasStarted"></a>
+    <strong>ScenEdit_GetScenHasStarted ()</strong>
+    </dt>
+    <dd>
+    Returns true iff the scene has started.
+
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        If the scene has started
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_GetScore"></a>
+    <strong>ScenEdit_GetScore (side)</strong>
+    </dt>
+    <dd>
+    Get a given side's score.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">side</span>
+            <span class="types"><span class="type">string</span></span>
+         The name of the side
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">num</span></span>
+        The side's score
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_GetScore(<span class="string">"PlayerSide"</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_GetSideIsHuman"></a>
+    <strong>ScenEdit_GetSideIsHuman (sidename)</strong>
+    </dt>
+    <dd>
+    Returns true if side is played by a human player
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sidename</span>
+            <span class="types"><span class="type">string</span></span>
+         The name of the side to check if is human controlled
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        True iff the side specified is human
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_GetSidePosture"></a>
+    <strong>ScenEdit_GetSidePosture (sideA, sideB)</strong>
+    </dt>
+    <dd>
+    Gets the posture of one side towards another.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sideA</span>
+            <span class="types"><span class="type">string</span></span>
+         The name of the first side
+        </li>
+        <li><span class="parameter">sideB</span>
+            <span class="types"><span class="type">string</span></span>
+         The name of the second side
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The posture of sideA towards sideB, one of 'N', 'F', 'H', or 'A'.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_GetUnit"></a>
+    <strong>ScenEdit_GetUnit (unit)</strong>
+    </dt>
+    <dd>
+    Fetches a unit based on a selector. </p>
+
+<p>This function is mostly identical to <a href="index.html#ScenEdit_SetUnit">ScenEdit_SetUnit</a> except that if no unit is selected by the selector portion of <code>unit</code>,
+then the function returns nil instead of producing an exception.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unit</span>
+            <span class="types"><a class="type" href="index.html#UnitSelector">UnitSelector</a></span>
+         The unit to select.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="index.html#Unit">Unit</a></span>
+        A complete unit descriptor if the unit exists or nil otherwise.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_GetUnit({side=<span class="string">"United States"</span>, name=<span class="string">"USS Test"</span>})</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_HostUnitToParent"></a>
+    <strong>ScenEdit_HostUnitToParent (host_info)</strong>
+    </dt>
+    <dd>
+    Hosts a unit to the specified host.  The unit will be moved from any location, including flying or hosted elsewhere.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">host_info</span>
+            <span class="types"><a class="type" href="index.html#HostUnit">HostUnit</a></span>
+         The information about the hosting request
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_ImportInst"></a>
+    <strong>ScenEdit_ImportInst (side, filename)</strong>
+    </dt>
+    <dd>
+    Imports an inst file.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">side</span>
+            <span class="types"><span class="type">string</span></span>
+         The side to import the inst file as
+        </li>
+        <li><span class="parameter">filename</span>
+            <span class="types"><span class="type">string</span></span>
+         The filename of the inst file
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_MsgBox"></a>
+    <strong>ScenEdit_MsgBox (string, style)</strong>
+    </dt>
+    <dd>
+    Opens a message box with the given string.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">string</span>
+            <span class="types"><span class="type">string</span></span>
+         The string to display to the user
+        </li>
+        <li><span class="parameter">style</span>
+            <span class="types"><span class="type">num</span></span>
+         The style of the message box
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        No return value - user response is lost.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_PlayerSide"></a>
+    <strong>ScenEdit_PlayerSide ()</strong>
+    </dt>
+    <dd>
+    Returns the player's current side.
+
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The player's side
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_RunScript"></a>
+    <strong>ScenEdit_RunScript (script)</strong>
+    </dt>
+    <dd>
+    Run a script in a file.
+This function runs a script in the file <code>script</code>. This file must be inside the [Command base directory]/Lua directory, or else the game will not be able to load it.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">script</span>
+         The script to run. The file that is looked for will be of the form [Command base directory]/Lua/[<code>script</code>]
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_RunScript(<span class="string">'cklib.lua'</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_SetDoctrine"></a>
+    <strong>ScenEdit_SetDoctrine (selector, doctrine)</strong>
+    </dt>
+    <dd>
+    Set the doctrine of the designated object. </p>
+
+<p>This function uses selector to find the thing to modify, then modifies the doctrine of that object based on the given object.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">selector</span>
+            <span class="types"><a class="type" href="index.html#DoctrineSelector">DoctrineSelector</a></span>
+         The selector for the object to modify
+        </li>
+        <li><span class="parameter">doctrine</span>
+            <span class="types"><a class="type" href="index.html#Doctrine">Doctrine</a></span>
+         The doctrine to update the object to
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <li><pre class="example">ScenEdit_SetDoctrine({side=<span class="string">"Soviet Union"</span>}, {kinematic_range_for_torpedoes = <span class="string">"AutomaticAndManualFire"</span>,use_nuclear_weapons= <span class="string">"yes"</span> })</pre></li>
+        <li><pre class="example">ScenEdit_SetDoctrine({side=<span class="string">"Soviet Union"</span>, mission=<span class="string">"ASW PATROL"</span>}, {kinematic_range_for_torpedoes = <span class="string">"AutomaticAndManualFire"</span>,use_nuclear_weapons= <span class="string">"yes"</span> })</pre></li>
+        <li><pre class="example">ScenEdit_SetDoctrine({side=<span class="string">"Soviet Union"</span>, name=<span class="string">"Bear #2"</span>}, {use_nuclear_weapons= <span class="string">"yes"</span> })</pre></li>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_SetEMCON"></a>
+    <strong>ScenEdit_SetEMCON (type, name, emcon)</strong>
+    </dt>
+    <dd>
+
+<p>Sets the EMCON of the selected object.  Select the object by specifying the type and the object's name.</p>
+
+<p> Type is the type of object to set the EMCON on. It can be one of 4 values:</p>
+
+<ul>
+    <li><strong>Side</strong> - Set an entire side's EMCON (e.g. United States using active radar)</li>
+    <li><strong>Mission</strong> - Set the EMCON for a mission (e.g. Minesweepers active sonar)</li>
+    <li><strong>Group</strong> - Set the EMCON for an entire group (e.g Package #20 active radar)</li>
+    <li><strong>Unit</strong> - Set the EMCON for a single group (e.g. Hornet #14 passive radar)</li>
+</ul>
+
+<p> emcon is a compound structure. The string follows the following grammar, with each clause separated by a semicolon (;)</p>
+
+<ul>
+    <li><code>Inherit</code> indicates that the output EMCON should be at least the parent's EMCON. Inherit must come first.</li>
+    <li>A transmitter "set" statement. Each is of the form <code>type=status</code>, where type can be any one of <code>Radar</code>, <code>Sonar</code>, and <code>OECM</code>, and status can be any one of <code>Passive</code> or <code>Active</code>.</li>
+</ul>
+
+
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">type</span>
+            <span class="types"><span class="type">string</span></span>
+         The type of the thing to set the EMCON on.
+        </li>
+        <li><span class="parameter">name</span>
+            <span class="types"><span class="type">string</span></span>
+         The name or GUID of the object to select.
+        </li>
+        <li><span class="parameter">emcon</span>
+            <span class="types"><span class="type">string</span></span>
+         The new EMCON for the object.
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <li><pre class="example">ScenEdit_SetEMCON(<span class="string">'Side'</span>, <span class="string">'NATO'</span>, <span class="string">'Radar=Active;Sonar=Passive'</span>)</pre></li>
+        <li><pre class="example">ScenEdit_SetEMCON(<span class="string">'Mission'</span>, <span class="string">'ASW Patrol #1'</span>, <span class="string">'Inherit;Sonar=Active'</span>)</pre></li>
+        <li><pre class="example">ScenEdit_SetEMCON(<span class="string">'Unit'</span>, <span class="string">'Camel 2'</span>, <span class="string">'OECM=Active'</span>)</pre></li>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_SetKeyValue"></a>
+    <strong>ScenEdit_SetKeyValue (key, value)</strong>
+    </dt>
+    <dd>
+    Sets a persistent value in the key value store. </p>
+
+<p>This function allows you to add values, associated with keys, to a persistent store that is retained when the game is saved and resumed. Keys and values are both represented as non-nil strings.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+            <span class="types"><span class="type">string</span></span>
+         The key to associate with
+        </li>
+        <li><span class="parameter">value</span>
+            <span class="types"><span class="type">string</span></span>
+         The value to associate
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_SetKeyValue(<span class="string">"A"</span>,<span class="string">"B"</span>)
+ScenEdit_GetKeyValue(<span class="string">"A"</span>) <span class="comment">-- returns "B"</span></pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_SetLoadout"></a>
+    <strong>ScenEdit_SetLoadout (loadoutinfo)</strong>
+    </dt>
+    <dd>
+    Sets the loadout for a unit
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">loadoutinfo</span>
+            <span class="types"><a class="type" href="index.html#LoadoutInfo">LoadoutInfo</a></span>
+         The loadout information to apply
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_SetReferencePoint"></a>
+    <strong>ScenEdit_SetReferencePoint (descriptor)</strong>
+    </dt>
+    <dd>
+    Update a reference point with new values. </p>
+
+<p>Given a valid <a href="index.html#ReferencePointSelector">ReferencePointSelector</a> as part of the descriptor, the function wil update the values contained in the descriptor. Values may be omitted from the descriptor if they are intended to remain unmodified. The 'area' selector is useful for changing some general attribute, like locking or highlighting, in bulk.</p>
+
+<p> Additional key=value options are; <br>
+ NEWNAME='string' to rename a reference point <br>
+ TOGGLEHIGHLIGHTED = True to flip the reference point(s) highlight <br>
+ CLEAR = True to remove the 'relative to' of the reference point(s)
+
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">descriptor</span>
+            <span class="types"><a class="type" href="index.html#ReferencePoint">ReferencePoint</a></span>
+         A descriptor with a valid selector.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="index.html#ReferencePoint">ReferencePoint</a></span>
+        The reference point descriptor for the reference point or first one in the area.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <li><pre class="example">ScenEdit_SetReferencePoint({side=<span class="string">"United States"</span>, name=<span class="string">"Downed Pilot"</span>, lat=<span class="number">0.5</span>})</pre></li>
+        <li><pre class="example">ScenEdit_SetReferencePoint({side=<span class="string">"United States"</span>, name=<span class="string">"Downed Pilot"</span>, lat=<span class="number">0.5</span>, lon=<span class="string">"N50.50.50"</span>, highlighted = <span class="keyword">true</span>})</pre></li>
+        <li><pre class="example">ScenEdit_SetReferencePoint({side=<span class="string">"United States"</span>, area={<span class="string">"rp-100"</span>,<span class="string">"rp-101"</span>,<span class="string">"rp-102"</span>,<span class="string">"rp-103"</span>,<span class="string">"rp-104"</span>}, highlighted = <span class="keyword">true</span>})</pre></li>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_SetScore"></a>
+    <strong>ScenEdit_SetScore (side, score, reason)</strong>
+    </dt>
+    <dd>
+    Sets a given side's score.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">side</span>
+            <span class="types"><span class="type">string</span></span>
+         The name of the side
+        </li>
+        <li><span class="parameter">score</span>
+            <span class="types"><span class="type">num</span></span>
+         The new score for the side
+        </li>
+        <li><span class="parameter">reason</span>
+            <span class="types"><span class="type">string</span></span>
+         The reason for the score to change
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_GetScore(<span class="string">"PlayerSide"</span>, <span class="number">20</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_SetSidePosture"></a>
+    <strong>ScenEdit_SetSidePosture (sideAName, sideBName, posture)</strong>
+    </dt>
+    <dd>
+    Set the posture of a side towards another. </p>
+
+<p> This will set side A's posture towards side B to the specified posture.</p>
+
+<p> Posture codes:
+ <style>
+ tr:not(:first-child) { border-top: 1px solid black;}
+ td { padding: .5em; }
+ </style>
+ <table style="border-spacing: 0.5rem;">
+ <tr><td>F</td><td>Friendly</td></tr>
+ <tr><td>H</td><td>Hostile</td></tr>
+ <tr><td>N</td><td>Neutral</td></tr>
+ <tr><td>U</td><td>Unfriendly</td></tr>
+ </table>
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sideAName</span>
+            <span class="types"><span class="type">string</span></span>
+         Side A's name or GUID
+        </li>
+        <li><span class="parameter">sideBName</span>
+            <span class="types"><span class="type">string</span></span>
+         Side B's name or GUID
+        </li>
+        <li><span class="parameter">posture</span>
+            <span class="types"><span class="type">string</span></span>
+         The posture of side A towards side B
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        True/False for Successful/Failure
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_SetSidePosture(<span class="string">"LuaSideA"</span>, <span class="string">"LuaSideB"</span>, <span class="string">"H"</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_SetSpecialAction"></a>
+    <strong>ScenEdit_SetSpecialAction (action_info)</strong>
+    </dt>
+    <dd>
+    Sets the properties of an already existing special action with the specified information.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">action_info</span>
+            <span class="types"><a class="type" href="index.html#SpecialAction">SpecialAction</a></span>
+         The special action to modify
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_SetUnit"></a>
+    <strong>ScenEdit_SetUnit (unit)</strong>
+    </dt>
+    <dd>
+    Sets the properties of a unit that already exists.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unit</span>
+            <span class="types"><a class="type" href="index.html#Unit">Unit</a></span>
+         The unit to edit. Must be at least a selector.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="index.html#Unit">Unit</a></span>
+        A complete descriptor for the added unit
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <li><pre class="example">ScenEdit_SetUnit({side=<span class="string">"United States"</span>, name=<span class="string">"USS Test"</span>, lat = <span class="number">5</span>})</pre></li>
+        <li><pre class="example">ScenEdit_SetUnit({side=<span class="string">"United States"</span>, name=<span class="string">"USS Test"</span>, lat = <span class="number">5</span>})</pre></li>
+        <li><pre class="example">ScenEdit_SetUnit({side=<span class="string">"United States"</span>, name=<span class="string">"USS Test"</span>, lat = <span class="number">5</span>, lon = <span class="string">"N50.20.10"</span>})</pre></li>
+        <li><pre class="example">ScenEdit_SetUnit({side=<span class="string">"United States"</span>, name=<span class="string">"USS Test"</span>, newname=<span class="string">"USS Barack Obama"</span>})</pre></li>
+        <li><pre class="example">ScenEdit_SetUnit({side=<span class="string">"United States"</span>, name=<span class="string">"USS Test"</span>, heading=<span class="number">0</span>, HoldPosition=<span class="number">1</span>, HoldFire=<span class="number">1</span>,Proficiency=<span class="string">"Ace"</span>, Autodetectable=<span class="string">"yes"</span>})</pre></li>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_SetUnitSide"></a>
+    <strong>ScenEdit_SetUnitSide (sidedesc)</strong>
+    </dt>
+    <dd>
+    Changes the side of a unit
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sidedesc</span>
+            <span class="types"><a class="type" href="index.html#SideDescription">SideDescription</a></span>
+         The description of how to change the unit's side
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_SetWeather"></a>
+    <strong>ScenEdit_SetWeather (temperature, rainfall, underrain, seastate)</strong>
+    </dt>
+    <dd>
+    Set the current weather conditions. </p>
+
+<p>This function takes four numbers that describe the desired weather conditions. These
+conditions are applied globally.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">temperature</span>
+            <span class="types"><span class="type">number</span></span>
+         The current baseline temperature (in deg C). Varies by latitude.
+        </li>
+        <li><span class="parameter">rainfall</span>
+            <span class="types"><span class="type">number</span></span>
+         The rainfall rate, 0-50.
+        </li>
+        <li><span class="parameter">underrain</span>
+            <span class="types"><span class="type">number</span></span>
+         The amount of sky that is covered in cloud, 0.0-1.0
+        </li>
+        <li><span class="parameter">seastate</span>
+            <span class="types"><span class="type">number</span></span>
+         The current sea state 0-9.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        True/False for Successful/Failure
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_SetWeather(<span class="global">math</span>.random(<span class="number">0</span>,<span class="number">25</span>), <span class="global">math</span>.random(<span class="number">0</span>,<span class="number">50</span>), <span class="global">math</span>.random(<span class="number">0</span>,<span class="number">10</span>)/<span class="number">10.0</span>, <span class="global">math</span>.random(<span class="number">0</span>,<span class="number">9</span>))</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_SpecialMessage"></a>
+    <strong>ScenEdit_SpecialMessage (side, message)</strong>
+    </dt>
+    <dd>
+    Displays a special message consisting of the HTML text <code>message</code> to side `side.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">side</span>
+            <span class="types"><span class="type">string</span></span>
+         The side to display the message on
+        </li>
+        <li><span class="parameter">message</span>
+            <span class="types"><span class="type">string</span></span>
+         The HTML text to display to the player
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_UnitX"></a>
+    <strong>ScenEdit_UnitX ()</strong>
+    </dt>
+    <dd>
+    Gets the unit that fired the current trigger - nil if otherwise.
+
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="index.html#Unit">Unit</a></span>
+        The triggering unit
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_UnitX()</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_UseAttachment"></a>
+    <strong>ScenEdit_UseAttachment (attachment)</strong>
+    </dt>
+    <dd>
+    Import an attachment into the scene.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">attachment</span>
+            <span class="types"><span class="type">string</span></span>
+         Either the name of the attachment or the GUID of the attachment
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_UseAttachmentOnSide"></a>
+    <strong>ScenEdit_UseAttachmentOnSide (attachment, sidename)</strong>
+    </dt>
+    <dd>
+    Use an attachment on a side (used for .inst files as attachments).
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">attachment</span>
+            <span class="types"><span class="type">string</span></span>
+         Either the name of the attachment or the GUID of the attachment
+        </li>
+        <li><span class="parameter">sidename</span>
+            <span class="types"><span class="type">string</span></span>
+         The name of the side to import the attachment into
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "VP_GetContact"></a>
+    <strong>VP_GetContact (ContactGUID)</strong>
+    </dt>
+    <dd>
+    Get contact details This will get the information about a contact unit
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ContactGUID</span>
+            <span class="types"><a class="type" href="index.html#ContactSelector">ContactSelector</a></span>
+         The contact selector to interrogate
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="index.html#Contact">Contact</a></span>
+        The information associated with the contact
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "VP_GetSide"></a>
+    <strong>VP_GetSide (side)</strong>
+    </dt>
+    <dd>
+    Side information from player's perspective Gets a side object from the perspective of the player.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">side</span>
+            <span class="types"><a class="type" href="index.html#SideSelector">SideSelector</a></span>
+         The side to get information about
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="index.html#SideInfo">SideInfo</a></span>
+        Information about the side selected, from the perspective of the player
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "VP_GetUnit"></a>
+    <strong>VP_GetUnit (ActiveOrContact)</strong>
+    </dt>
+    <dd>
+    Get unit details This will get the information about an active unit or a contact unit
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ActiveOrContact</span>
+            <span class="types"><a class="type" href="index.html#UnitSelector">UnitSelector</a></span>
+         The unit selector to interrogate
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="index.html#Unit">Unit</a></span>
+        The information associated with the unit
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "World_GetElevation"></a>
+    <strong>World_GetElevation (location)</strong>
+    </dt>
+    <dd>
+    Returns the elevation in meters of a given position
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">location</span>
+            <span class="types"><span class="type">Point</span></span>
+         The position to find the elevation of
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        The elevation of the point in meters
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2><a name="Tables"></a>Tables</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "Doctrine"></a>
+    <strong>Doctrine</strong>
+    </dt>
+    <dd>
+    Describes a doctrine. </p>
+
+<p>At the current time, a bug exists where Lua booleans do not work for bool fields. To work around this issue,
+use one of <code>&quot;1&quot;</code>, <code>&quot;true&quot;</code> or <code>&quot;yes&quot;</code> for true or <code>&quot;0&quot;</code>, <code>&quot;false&quot;</code>, or <code>&quot;no&quot;</code> for false.</p>
+
+<p>For each field, adding the suffix "<em>player</em>editable" determines if the player can alter the setting.
+
+    </ul>
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">use_nuclear_weapons</span>
+            <span class="types"><span class="type">bool</span></span>
+         True iff the unit should be able to employ nuclear weapons
+        </li>
+        <li><span class="parameter">engage_non_hostile_targets</span>
+            <span class="types"><span class="type">bool</span></span>
+         True iff the unit should attempt hostile action against units that are not hostile
+        </li>
+        <li><span class="parameter">rtb_when_winchester</span>
+            <span class="types"><span class="type">bool</span></span>
+         True iff the unit should return to base when out of weapons
+        </li>
+        <li><span class="parameter">ignore_plotted_course</span>
+            <span class="types"><span class="type">bool</span></span>
+         True iff the unit should ignore plotted courses
+        </li>
+        <li><span class="parameter">engaging_ambiguous_targets</span>
+            <span class="types"><span class="type">string</span></span>
+         One of "Ignore", "Optimistic", or "Pessimistic"
+        </li>
+        <li><span class="parameter">automatic_evasion</span>
+            <span class="types"><span class="type">bool</span></span>
+         True iff the unit should automatically evade incoming missiles
+        </li>
+        <li><span class="parameter">maintain_standoff</span>
+            <span class="types"><span class="type">bool</span></span>
+         True iff the unit should try to avoid approaching its target, only valid for ships
+        </li>
+        <li><span class="parameter">use_refuel_unrep</span>
+            <span class="types"><span class="type">bool</span></span>
+         One of "Always" or "Never"
+        </li>
+        <li><span class="parameter">engage_opportunity_targets</span>
+            <span class="types"><span class="type">bool</span></span>
+         True iff the unit should take opportunistic shots
+        </li>
+        <li><span class="parameter">use_sams_in_anti_surface_mode</span>
+            <span class="types"><span class="type">bool</span></span>
+         True iff SAMs should be used to engage surface targets
+        </li>
+        <li><span class="parameter">ignore_emcon_while_under_attack</span>
+            <span class="types"><span class="type">bool</span></span>
+         True iff EMCON should be ignored and all systems should go active when engaged
+        </li>
+        <li><span class="parameter">quick_turnaround_for_aircraft</span>
+            <span class="types"><span class="type">bool</span></span>
+         One of "Yes", "FightersAndASW", or "No"
+        </li>
+        <li><span class="parameter">air_operations_tempo</span>
+            <span class="types"><span class="type">bool</span></span>
+         One of "Surge" or "Sustained"
+        </li>
+        <li><span class="parameter">kinematic_range_for_torpedoes</span>
+            <span class="types"><span class="type">bool</span></span>
+         One of "AutomaticAndManualFire", "ManualFireOnly", or "No"
+        </li>
+        <li><span class="parameter">weapon_control_status_air</span>
+            <span class="types"><span class="type">string</span></span>
+         '0','1','2' which correspond to Free, Tight, and Hold.
+        </li>
+        <li><span class="parameter">weapon_control_status_surface</span>
+            <span class="types"><span class="type">string</span></span>
+         '0','1','2' which correspond to Free, Tight, and Hold.
+        </li>
+        <li><span class="parameter">weapon_control_status_subsurface</span>
+            <span class="types"><span class="type">string</span></span>
+         '0','1','2' which correspond to Free, Tight, and Hold.
+        </li>
+        <li><span class="parameter">weapon_control_status_land</span>
+            <span class="types"><span class="type">string</span></span>
+         '0','1','2' which correspond to Free, Tight, and Hold.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DoctrineSelector"></a>
+    <strong>DoctrineSelector</strong>
+    </dt>
+    <dd>
+    Selects a thing, one of a side, group, mission, or unit. </p>
+
+<p>This selector can only be used with the doctrine mechanism, with other systems relying on different selection mechanisms.
+
+    </ul>
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">side</span>
+            <span class="types"><span class="type">string</span></span>
+         The side to select/from
+        </li>
+        <li><span class="parameter">mission</span>
+            <span class="types"><span class="type">string</span></span>
+         The name of the mission to select
+        </li>
+        <li><span class="parameter">name</span>
+            <span class="types"><span class="type">string</span></span>
+         The name of the unit to select
+        </li>
+        <li><span class="parameter">group</span>
+            <span class="types"><span class="type">string</span></span>
+         The name of the group to select
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Explosion"></a>
+    <strong>Explosion</strong>
+    </dt>
+    <dd>
+    Defines a warhead to detonate.
+
+    </ul>
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">warheadid</span>
+            <span class="types"><span class="type">number</span></span>
+         The ID of the warhead to detonate - find by weapon
+        </li>
+        <li><span class="parameter">lat</span>
+            <span class="types"><span class="type">number</span></span>
+         The latitude of the detonation
+        </li>
+        <li><span class="parameter">lon</span>
+            <span class="types"><span class="type">number</span></span>
+         The longitude of the detonation
+        </li>
+        <li><span class="parameter">altitude</span>
+            <span class="types"><span class="type">number</span></span>
+         The altitude of the detonation
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Fuel"></a>
+    <strong>Fuel</strong>
+    </dt>
+    <dd>
+
+<p>A table describing the fuel state of a given unit.  This entire table should be replaced in a single go - so to update a unit's fuel, see the example.</p>
+
+<p>Fuel IDs:</p>
+
+<p><style>
+tr:not(:first-child) { border-top: 1px solid black;}
+td { padding: .5em; }
+</style></p>
+
+<table style="border-spacing: 0.5rem;">
+<tr><td>1001</td><td>'no fuel'</td></tr>
+<tr><td>2001</td><td>aviation fuel</td></tr>
+<tr><td>3001</td><td>diesel fuel</td></tr>
+<tr><td>3002</td><td>oil fuel</td></tr>
+<tr><td>3003</td><td>gas fuel</td></tr>
+<tr><td>4001</td><td>battery life</td></tr>
+<tr><td>4002</td><td>AIP</td></tr>
+<tr><td>5001</td><td>rocket fuel</td></tr>
+<tr><td>5002</td><td>torpedo fuel</td></tr>
+<tr><td>5003</td><td>weapon coast</td></tr>
+</table>
+
+
+
+    </ul>
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">code</span>
+            <span class="types"><a class="type" href="index.html#FuelState">FuelState</a></span>
+         The fuel state of the unit. Note that 'code' is a placeholder - it should be replaced with a valid fuel ID, as listed above.
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> fuel = u.fuel
+      fuel[<span class="number">3001</span>].current = <span class="number">400</span>
+      u.fuel = fuel</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "FuelState"></a>
+    <strong>FuelState</strong>
+    </dt>
+    <dd>
+    Describes the current fuel state of a unit
+
+    </ul>
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">current</span>
+            <span class="types"><span class="type">number</span></span>
+         The current fuel of the unit
+        </li>
+        <li><span class="parameter">max</span>
+            <span class="types"><span class="type">number</span></span>
+         How much can be stored in the unit
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "HostUnit"></a>
+    <strong>HostUnit</strong>
+    </dt>
+    <dd>
+    Requests that a unit be hosted to another
+
+    </ul>
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">HostedUnitNameOrID</span>
+            <span class="types"><span class="type">string</span></span>
+         The name or GUID of the unit to put into the host
+        </li>
+        <li><span class="parameter">SelectedHostNameOrID</span>
+            <span class="types"><span class="type">string</span></span>
+         The name or GUID of the host to put the unit into
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "LatLon"></a>
+    <strong>LatLon</strong>
+    </dt>
+    <dd>
+    Position.
+A set of latitude &amp; longitude to define a point
+
+    </ul>
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">latitude</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">longitude</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "LoadoutInfo"></a>
+    <strong>LoadoutInfo</strong>
+    </dt>
+    <dd>
+    Information on a loadout to add/alter
+
+    </ul>
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">UnitNameOrID</span>
+            <span class="types"><span class="type">string</span></span>
+         The name or GUID of the unit to change the loadout on
+        </li>
+        <li><span class="parameter">LoadoutID</span>
+            <span class="types"><span class="type">number</span></span>
+         The ID of the new loadout
+        </li>
+        <li><span class="parameter">TimeToReady_Minutes</span>
+            <span class="types"><span class="type">number</span></span>
+         How many minutes until the loadout is ready
+        </li>
+        <li><span class="parameter">IgnoreMagazines</span>
+            <span class="types"><span class="type">bool</span></span>
+         If the new loadout should rely on the magazines having the right weapons ready
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ReferencePoint"></a>
+    <strong>ReferencePoint</strong>
+    </dt>
+    <dd>
+    Reference point descriptor. </p>
+
+<p>For creation, <em>every</em> field must be defined.</p>
+
+<p>If selecting a unit (that is, using the descriptor as a selector) (e.g. <a href="index.html#ScenEdit_SetReferencePoint">SetReferencePoint</a>), one of the two following sets of fields must be define:</p>
+
+<ul>
+    <li><code>name</code> and <code>side</code>, to select a reference point <code>name</code> belonging to <code>side</code></li>
+    <li><code>guid</code>, if the unique ID of the reference point is known.</li>
+</ul>
+
+<p>If both are given, then the method defaults to finding the reference point with the correct GUID.
+
+    </ul>
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><span class="type">string</span></span>
+         The name of the reference point
+        </li>
+        <li><span class="parameter">latitude</span>
+            <span class="types"><span class="type">latlon</span></span>
+         The latitude of the reference point
+        </li>
+        <li><span class="parameter">longitude</span>
+            <span class="types"><span class="type">latlon</span></span>
+         The longitude of the reference point
+        </li>
+        <li><span class="parameter">guid</span>
+            <span class="types"><span class="type">string</span></span>
+         The unique identifier for the reference point
+        </li>
+        <li><span class="parameter">side</span>
+            <span class="types"><span class="type">string</span></span>
+         The side the reference point is visible to
+        </li>
+        <li><span class="parameter">highlighted</span>
+            <span class="types"><span class="type">bool</span></span>
+         True if the point should be selected
+        </li>
+        <li><span class="parameter">locked</span>
+            <span class="types"><span class="type">bool</span></span>
+         True if the point is locked
+        </li>
+        <li><span class="parameter">bearingtype</span>
+            <span class="types"><span class="type">bearing</span></span>
+         Type of bearing Fixed (0) or Rotating (1)
+        </li>
+        <li><span class="parameter">relativeto</span>
+            <span class="types"><span class="type">unit</span></span>
+         The unit that reference point is realtive to
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ReferencePointSelector"></a>
+    <strong>ReferencePointSelector</strong>
+    </dt>
+    <dd>
+    Reference point selector. </p>
+
+<p>To select a unit, specify either</p>
+
+<ul>
+    <li><code>name</code> and <code>side</code>, to select a reference point <code>name</code> belonging to <code>side</code> or</li>
+    <li><code>guid</code>, if the unique ID of the reference point is known or</li>
+    <li><code>area</code>, set of regerence points</li>
+</ul>
+
+<p> GUID method takes precedence over name/side if both present.
+
+    </ul>
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">side</span>
+            <span class="types"><span class="type">string</span></span>
+         The side the reference point is visible to
+        </li>
+        <li><span class="parameter">name</span>
+            <span class="types"><span class="type">string</span></span>
+         The name of the reference point
+        </li>
+        <li><span class="parameter">guid</span>
+            <span class="types"><span class="type">string</span></span>
+         The unique identifier for the reference point
+        </li>
+        <li><span class="parameter">area</span>
+            <span class="types"><span class="type">table</span></span>
+         Table of reference points (used with Set()/Get()]
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "SideContact"></a>
+    <strong>SideContact</strong>
+    </dt>
+    <dd>
+    The information known about a specific contact.
+
+    </ul>
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">objectid</span>
+            <span class="types"><span class="type">string</span></span>
+         The GUID of the contact. Note that this is not the GUID of the unit, you must use VP_GetUnit to resolve it.
+        </li>
+        <li><span class="parameter">Name</span>
+            <span class="types"><span class="type">string</span></span>
+         The name of the contact.
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> vp = VP_GetSide({name = <span class="string">"NATO"</span>})
+<span class="keyword">local</span> cp = vp.contacts <span class="comment">-- list Of contacts
+</span><span class="keyword">local</span> guid = cp[<span class="number">471</span>].objectid <span class="comment">-- specific contact
+</span><span class="keyword">local</span> unit = VP_GetUnit({Side =<span class="string">'Russia'</span>,Name=cp[<span class="number">471</span>].name}) <span class="comment">-- actual unit information</span></pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "SideDescription"></a>
+    <strong>SideDescription</strong>
+    </dt>
+    <dd>
+    Information on how to change a unit's side.  ORDER IS IMPORTANT
+
+    </ul>
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">side</span>
+            <span class="types"><span class="type">string</span></span>
+         The original side
+        </li>
+        <li><span class="parameter">name</span>
+            <span class="types"><span class="type">string</span></span>
+         The name/GUID of the unit
+        </li>
+        <li><span class="parameter">newside</span>
+            <span class="types"><span class="type">string</span></span>
+         The new side
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "SideInfo"></a>
+    <strong>SideInfo</strong>
+    </dt>
+    <dd>
+    Get the perspective of the specified side. </p>
+
+<p>There are methods that can be applied to a Side object. These will return information about No-navigation or Exclusion Zones
+See usage below
+
+    </ul>
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">objectid</span>
+            <span class="types"><span class="type">string</span></span>
+         The GUID of the side.
+        </li>
+        <li><span class="parameter">name</span>
+            <span class="types"><span class="type">string</span></span>
+         The name of the side.
+        </li>
+        <li><span class="parameter">units</span>
+            <span class="types"><a class="type" href="index.html#SideUnit">SideUnit</a></span>
+         Table of units for the designated side.
+        </li>
+        <li><span class="parameter">contacts</span>
+            <span class="types"><a class="type" href="index.html#SideContact">SideContact</a></span>
+         Table of current contacts for the designated side.
+        </li>
+        <li><span class="parameter">exclusionzones</span>
+            <span class="types"><span class="type">Zone</span></span>
+         Zones for the designated side
+        </li>
+        <li><span class="parameter">nonavzones</span>
+            <span class="types"><span class="type">Zone</span></span>
+          Zones for the designated side
+        </li>
+        <li><span class="parameter">awareness</span>
+            <span class="types"><span class="type">awareness</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">proficiency</span>
+            <span class="types"><span class="type">proficiency</span></span>
+
+
+
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">mySide = VP_GetSide({Name=<span class="string">"NATO"</span>});
+myZone = mySide:getnonavzone(<span class="string">"Kaliningrad"</span>)
+myZone.isactive = <span class="string">"False"</span>
+mySide = VP_GetSide({Name=<span class="string">"Russia"</span>})
+myZone = mySide:getexclusionzone(<span class="string">"Kaliningrad Free Fire Zone"</span>)
+myZone.isactive = <span class="string">"False"</span> </pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "SideSelector"></a>
+    <strong>SideSelector</strong>
+    </dt>
+    <dd>
+    Information to select a particular side.
+
+    </ul>
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">GUID</span>
+            <span class="types"><span class="type">string</span></span>
+         The GUID of the side to select. Preferred.
+        </li>
+        <li><span class="parameter">Name</span>
+            <span class="types"><span class="type">string</span></span>
+         The name of the side to select.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "SideUnit"></a>
+    <strong>SideUnit</strong>
+    </dt>
+    <dd>
+    Information known about a specific unit.
+
+    </ul>
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">objectid</span>
+            <span class="types"><span class="type">string</span></span>
+         The GUID of the unit.
+        </li>
+        <li><span class="parameter">Name</span>
+            <span class="types"><span class="type">string</span></span>
+         The name of the unit.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "SpecialAction"></a>
+    <strong>SpecialAction</strong>
+    </dt>
+    <dd>
+    Special action selector
+
+    </ul>
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">ActionNameOrID</span>
+            <span class="types"><span class="type">string</span></span>
+         The name or ID of the special action
+        </li>
+        <li><span class="parameter">IsActive</span>
+            <span class="types"><span class="type">bool</span></span>
+         If the action is visible to the player
+        </li>
+        <li><span class="parameter">IsRepeatable</span>
+            <span class="types"><span class="type">bool</span></span>
+         If the player can use the action multiple times
+        </li>
+        <li><span class="parameter">NewName</span>
+            <span class="types"><span class="type">string</span></span>
+         If specified, the new name of the action
+        </li>
+        <li><span class="parameter">Description</span>
+            <span class="types"><span class="type">string</span></span>
+         If specified, the new description for the action
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Unit"></a>
+    <strong>Unit</strong>
+    </dt>
+    <dd>
+    Represents a unit in the scene. <br/>
+This structure can be used as either a descriptor (e.g. when returned or when creating a new unit)
+or as a selector (e.g. when used to find a unit).</p>
+
+<p>When being used as a selector, a unit can be discovered in 1 of two ways:</p>
+
+<ol>
+    <li>Name and side, which is slower</li>
+    <li>GUID, which is faster</li>
+</ol>
+
+<p>If both are specified, the GUID is chosen over the name and side selection, which are then considered parts of the descriptor. </p>
+
+<p>Excluding GUID, any field may be modified.</p>
+
+<p>Note that "PlayerSide", while not a valid side in the scene, may be used to select the player's side
+unambiguously.
+
+    </ul>
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">type</span>
+            <span class="types"><span class="type">string</span></span>
+         The type of object, may be 'Facility', 'Ship', 'Submarine', or 'Aircraft' (descriptor).
+        </li>
+        <li><span class="parameter">name</span>
+            <span class="types"><span class="type">string</span></span>
+         The unit's name.
+        </li>
+        <li><span class="parameter">side</span>
+            <span class="types"><span class="type">string</span></span>
+         The unit's side.
+        </li>
+        <li><span class="parameter">latitude</span>
+            <span class="types"><span class="type">latlon</span></span>
+         The latitude of the unit (descriptor).
+        </li>
+        <li><span class="parameter">longitude</span>
+            <span class="types"><span class="type">latlon</span></span>
+         The longitude of the unit (descriptor).
+        </li>
+        <li><span class="parameter">DBID</span>
+            <span class="types"><span class="type">number</span></span>
+         The database ID of the unit (descriptor).
+        </li>
+        <li><span class="parameter">altitude</span>
+            <span class="types"><span class="type">number</span></span>
+         The altitude of the unit in meters (descriptor).
+        </li>
+        <li><span class="parameter">autodetectable</span>
+            <span class="types"><span class="type">bool</span></span>
+         True if the unit is automatically detected (descriptor).
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">holdfire</span>
+            <span class="types"><span class="type">bool</span></span>
+         True if the unit should not fire (descriptor).
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">guid</span>
+            <span class="types"><span class="type">string</span></span>
+         The unit's unique ID.
+        </li>
+        <li><span class="parameter">heading</span>
+            <span class="types"><span class="type">number</span></span>
+         The unit's heading (descriptor).
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">proficiency</span>
+            <span class="types"><span class="type">string</span></span>
+         The unit proficiency, one of 0, 1, 2, 3, 4 (descriptor).
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">newname</span>
+            <span class="types"><span class="type">string</span></span>
+         If a descriptor, the unit's new name (descriptor).
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">course</span>
+            <span class="types"><span class="type">list latlon</span></span>
+         The unit's course, as lat/lon pairs
+        </li>
+        <li><span class="parameter">RTB</span>
+            <span class="types"><span class="type">bool</span></span>
+         If used in SetUnit, then if to trigger the unit to return to base
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">fuel</span>
+            <span class="types"><a class="type" href="index.html#Fuel">Fuel</a></span>
+         A table enabling access to the unit's fuel status
+        </li>
+        <li><span class="parameter">mission</span>
+            <span class="types"><span class="type">string</span></span>
+         The name of the mission the unit is assigned to (can be altered)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "UnitSelector"></a>
+    <strong>UnitSelector</strong>
+    </dt>
+    <dd>
+    Use to select a unit in the scene based on either the side and name or the unique identifier (GUID). </p>
+
+<p>You can use either
+1. <code>name</code> and <code>side</code>
+2. <code>guid</code>
+If both are given, then the GUID is used preferentially.
+
+    </ul>
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><span class="type">string</span></span>
+         The name of the unit to select (for option #1)
+        </li>
+        <li><span class="parameter">side</span>
+            <span class="types"><span class="type">string</span></span>
+         The name of the unit to select (for option #1)
+        </li>
+        <li><span class="parameter">guid</span>
+            <span class="types"><span class="type">string</span></span>
+         The guid of the unit to select (for option #2)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
+<i style="float:right;">Last updated 2016-11-27 21:09:11 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
