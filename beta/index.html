@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <head>
     <title>Command Lua Documentation</title>
-    <link rel="stylesheet" href="ldoc_pale.css" type="text/css" />
+    <link rel="stylesheet" href="ldoc_fixed.css" type="text/css" />
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -84,411 +84,419 @@
 <h2><a href="#Selector_tables">Selector tables</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#ContactSelector">ContactSelector</a></td>
+	<td class="name" ><a href="#ContactSelector">ContactSelector</a></td>
 	<td class="summary">Contact selector.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#DoctrineSelector">DoctrineSelector</a></td>
+	<td class="name" ><a href="#DoctrineSelector">DoctrineSelector</a></td>
 	<td class="summary">Selects a doctrine, for on a side, group, mission, or unit.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#NewMission">NewMission</a></td>
+	<td class="name" ><a href="#NewMission">NewMission</a></td>
 	<td class="summary">New mission options.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#NewUnit">NewUnit</a></td>
+	<td class="name" ><a href="#NewUnit">NewUnit</a></td>
 	<td class="summary">New unit selector.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ReferencePointSelector">ReferencePointSelector</a></td>
+	<td class="name" ><a href="#ReferencePointSelector">ReferencePointSelector</a></td>
 	<td class="summary">Reference point selector.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#UnitSelector">UnitSelector</a></td>
+	<td class="name" ><a href="#UnitSelector">UnitSelector</a></td>
 	<td class="summary">Select a unit.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Weapon2Magazine">Weapon2Magazine</a></td>
+	<td class="name" ><a href="#Weapon2Magazine">Weapon2Magazine</a></td>
 	<td class="summary">Select magazine and weapon.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Weapon2Mount">Weapon2Mount</a></td>
+	<td class="name" ><a href="#Weapon2Mount">Weapon2Mount</a></td>
 	<td class="summary">Select mount and weapon.</td>
 	</tr>
 </table>
 <h2><a href="#Wrapper_Descriptor_tables">Wrapper/Descriptor tables</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#Contact">Contact</a></td>
+	<td class="name" ><a href="#Contact">Contact</a></td>
 	<td class="summary">Contact details.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Doctrine">Doctrine</a></td>
+	<td class="name" ><a href="#Doctrine">Doctrine</a></td>
 	<td class="summary">Doctrine options.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Group">Group</a></td>
+	<td class="name" ><a href="#Group">Group</a></td>
 	<td class="summary">Group details.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Mission">Mission</a></td>
+	<td class="name" ><a href="#Mission">Mission</a></td>
 	<td class="summary">Mission.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ReferencePoint">ReferencePoint</a></td>
+	<td class="name" ><a href="#ReferencePoint">ReferencePoint</a></td>
 	<td class="summary">Reference point information.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Side">Side</a></td>
+	<td class="name" ><a href="#RefuelOptions">RefuelOptions</a></td>
+	<td class="summary">Unit refueling options.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#Side">Side</a></td>
 	<td class="summary">Side perspective.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Unit">Unit</a></td>
+	<td class="name" ><a href="#Unit">Unit</a></td>
 	<td class="summary">Represents a active unit.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Zone">Zone</a></td>
+	<td class="name" ><a href="#Zone">Zone</a></td>
 	<td class="summary">Exclusion/No navigatation zone.</td>
 	</tr>
 </table>
 <h2><a href="#Data_types">Data types</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#Altitude">Altitude</a></td>
+	<td class="name" ><a href="#Altitude">Altitude</a></td>
 	<td class="summary">Altitude.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#DateTime">DateTime</a></td>
+	<td class="name" ><a href="#DateTime">DateTime</a></td>
 	<td class="summary">DateTime.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#KeyStore">KeyStore</a></td>
+	<td class="name" ><a href="#KeyStore">KeyStore</a></td>
 	<td class="summary">KeyStore.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Latitude">Latitude</a></td>
+	<td class="name" ><a href="#Latitude">Latitude</a></td>
 	<td class="summary">Latitude.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Longitude">Longitude</a></td>
+	<td class="name" ><a href="#Longitude">Longitude</a></td>
 	<td class="summary">Longitude.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Size">Size</a></td>
+	<td class="name" ><a href="#Size">Size</a></td>
 	<td class="summary">Size.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Stance">Stance</a></td>
+	<td class="name" ><a href="#Stance">Stance</a></td>
 	<td class="summary">Stance/Posture.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#TimeStamp">TimeStamp</a></td>
+	<td class="name" ><a href="#TimeStamp">TimeStamp</a></td>
 	<td class="summary">TimeStamp.</td>
 	</tr>
 </table>
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_AddExplosion">ScenEdit_AddExplosion (explosion)</a></td>
+	<td class="name" ><a href="#ScenEdit_AddExplosion">ScenEdit_AddExplosion (explosion)</a></td>
 	<td class="summary">Detonates a warhead at a specified location.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_AddMission">ScenEdit_AddMission (SideName, MissionNameOrId, MissionType, MissionOptions)</a></td>
+	<td class="name" ><a href="#ScenEdit_AddMission">ScenEdit_AddMission (SideName, MissionNameOrId, MissionType, MissionOptions)</a></td>
 	<td class="summary">Add new mission.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_AddReferencePoint">ScenEdit_AddReferencePoint (descriptor)</a></td>
+	<td class="name" ><a href="#ScenEdit_AddReferencePoint">ScenEdit_AddReferencePoint (descriptor)</a></td>
 	<td class="summary">Add a new reference point.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_AddReloadsToUnit">ScenEdit_AddReloadsToUnit (descriptor)</a></td>
+	<td class="name" ><a href="#ScenEdit_AddReloadsToUnit">ScenEdit_AddReloadsToUnit (descriptor)</a></td>
 	<td class="summary">Adds weapons into a mount.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_AddUnit">ScenEdit_AddUnit (unit)</a></td>
+	<td class="name" ><a href="#ScenEdit_AddUnit">ScenEdit_AddUnit (unit)</a></td>
 	<td class="summary">Adds a unit based on a descriptor.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_AddWeaponToUnitMagazine">ScenEdit_AddWeaponToUnitMagazine (descriptor)</a></td>
+	<td class="name" ><a href="#ScenEdit_AddWeaponToUnitMagazine">ScenEdit_AddWeaponToUnitMagazine (descriptor)</a></td>
 	<td class="summary">Adds weapons into a magazine.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_AssignUnitAsTarget">ScenEdit_AssignUnitAsTarget (AUNameOrIDOrTable, MissionNameOrID)</a></td>
+	<td class="name" ><a href="#ScenEdit_AssignUnitAsTarget">ScenEdit_AssignUnitAsTarget (AUNameOrIDOrTable, MissionNameOrID)</a></td>
 	<td class="summary">Assigns targets to a Strike mission.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_AssignUnitToMission">ScenEdit_AssignUnitToMission (unit, mission, escort)</a></td>
+	<td class="name" ><a href="#ScenEdit_AssignUnitToMission">ScenEdit_AssignUnitToMission (unit, mission, escort)</a></td>
 	<td class="summary">Assign a unit to a mission.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_CurrentTime">ScenEdit_CurrentTime ()</a></td>
+	<td class="name" ><a href="#ScenEdit_CurrentTime">ScenEdit_CurrentTime ()</a></td>
 	<td class="summary">Get the current scenario time.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_DeleteReferencePoint">ScenEdit_DeleteReferencePoint (selector)</a></td>
+	<td class="name" ><a href="#ScenEdit_DeleteReferencePoint">ScenEdit_DeleteReferencePoint (selector)</a></td>
 	<td class="summary">Delete a reference point.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_DeleteUnit">ScenEdit_DeleteUnit (unit)</a></td>
+	<td class="name" ><a href="#ScenEdit_DeleteUnit">ScenEdit_DeleteUnit (unit)</a></td>
 	<td class="summary">Deletes a unit based on a selector.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_EndScenario">ScenEdit_EndScenario ()</a></td>
+	<td class="name" ><a href="#ScenEdit_EndScenario">ScenEdit_EndScenario ()</a></td>
 	<td class="summary">Ends the current scenario.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_GetDoctrine">ScenEdit_GetDoctrine (selector)</a></td>
+	<td class="name" ><a href="#ScenEdit_GetDoctrine">ScenEdit_GetDoctrine (selector)</a></td>
 	<td class="summary">Gets the doctrine of the designated object.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_GetKeyValue">ScenEdit_GetKeyValue (key)</a></td>
+	<td class="name" ><a href="#ScenEdit_GetKeyValue">ScenEdit_GetKeyValue (key)</a></td>
 	<td class="summary">Gets the value for a key from the persistent key store.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_GetMission">ScenEdit_GetMission (SideName, MissionNameOrId)</a></td>
+	<td class="name" ><a href="#ScenEdit_GetMission">ScenEdit_GetMission (SideName, MissionNameOrId)</a></td>
 	<td class="summary">Get details of a mission.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_GetReferencePoints">ScenEdit_GetReferencePoints (selector)</a></td>
+	<td class="name" ><a href="#ScenEdit_GetReferencePoints">ScenEdit_GetReferencePoints (selector)</a></td>
 	<td class="summary">Get a set of reference point(s).</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_GetScenHasStarted">ScenEdit_GetScenHasStarted ()</a></td>
+	<td class="name" ><a href="#ScenEdit_GetScenHasStarted">ScenEdit_GetScenHasStarted ()</a></td>
 	<td class="summary">Has the scenario started?</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_GetScore">ScenEdit_GetScore (side)</a></td>
+	<td class="name" ><a href="#ScenEdit_GetScore">ScenEdit_GetScore (side)</a></td>
 	<td class="summary">Get a given side's score.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_GetSideIsHuman">ScenEdit_GetSideIsHuman (sidename)</a></td>
+	<td class="name" ><a href="#ScenEdit_GetSideIsHuman">ScenEdit_GetSideIsHuman (sidename)</a></td>
 	<td class="summary">Returns true if side is played by a human player</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_GetSideOptions">ScenEdit_GetSideOptions (options)</a></td>
+	<td class="name" ><a href="#ScenEdit_GetSideOptions">ScenEdit_GetSideOptions (options)</a></td>
 	<td class="summary">Get side options.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_GetSidePosture">ScenEdit_GetSidePosture (sideA, sideB)</a></td>
+	<td class="name" ><a href="#ScenEdit_GetSidePosture">ScenEdit_GetSidePosture (sideA, sideB)</a></td>
 	<td class="summary">Gets the posture of one side towards another.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_GetUnit">ScenEdit_GetUnit (unit)</a></td>
+	<td class="name" ><a href="#ScenEdit_GetUnit">ScenEdit_GetUnit (unit)</a></td>
 	<td class="summary">Fetches a unit based on a selector.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_HostUnitToParent">ScenEdit_HostUnitToParent (host_info)</a></td>
+	<td class="name" ><a href="#ScenEdit_HostUnitToParent">ScenEdit_HostUnitToParent (host_info)</a></td>
 	<td class="summary">Hosts a unit to the specified host.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_ImportInst">ScenEdit_ImportInst (side, filename)</a></td>
+	<td class="name" ><a href="#ScenEdit_ImportInst">ScenEdit_ImportInst (side, filename)</a></td>
 	<td class="summary">Imports an inst file.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_KillUnit">ScenEdit_KillUnit (options)</a></td>
+	<td class="name" ><a href="#ScenEdit_KillUnit">ScenEdit_KillUnit (options)</a></td>
 	<td class="summary">Kill unit.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_MsgBox">ScenEdit_MsgBox (string, style)</a></td>
+	<td class="name" ><a href="#ScenEdit_MsgBox">ScenEdit_MsgBox (string, style)</a></td>
 	<td class="summary">Opens a message box with the given string.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_PlayerSide">ScenEdit_PlayerSide ()</a></td>
+	<td class="name" ><a href="#ScenEdit_PlayerSide">ScenEdit_PlayerSide ()</a></td>
 	<td class="summary">The player's current side.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_RemoveUnitAsTarget">ScenEdit_RemoveUnitAsTarget (AUNameOrIDOrTable, MissionNameOrID)</a></td>
+	<td class="name" ><a href="#ScenEdit_RefuelUnit">ScenEdit_RefuelUnit (unitOptions)</a></td>
+	<td class="summary">Cause unit to refuel.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ScenEdit_RemoveUnitAsTarget">ScenEdit_RemoveUnitAsTarget (AUNameOrIDOrTable, MissionNameOrID)</a></td>
 	<td class="summary">Removes targets from a Strike mission.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_RunScript">ScenEdit_RunScript (script)</a></td>
+	<td class="name" ><a href="#ScenEdit_RunScript">ScenEdit_RunScript (script)</a></td>
 	<td class="summary">Runs a script from a file.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_SetDoctrine">ScenEdit_SetDoctrine (selector, doctrine)</a></td>
+	<td class="name" ><a href="#ScenEdit_SetDoctrine">ScenEdit_SetDoctrine (selector, doctrine)</a></td>
 	<td class="summary">Set the doctrine of the designated object.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_SetEMCON">ScenEdit_SetEMCON (type, name, emcon)</a></td>
+	<td class="name" ><a href="#ScenEdit_SetEMCON">ScenEdit_SetEMCON (type, name, emcon)</a></td>
 	<td class="summary">Sets the EMCON of the selected object.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_SetKeyValue">ScenEdit_SetKeyValue (key, value)</a></td>
+	<td class="name" ><a href="#ScenEdit_SetKeyValue">ScenEdit_SetKeyValue (key, value)</a></td>
 	<td class="summary">Sets the value for a key in the persistent key store.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_SetLoadout">ScenEdit_SetLoadout (loadoutinfo)</a></td>
+	<td class="name" ><a href="#ScenEdit_SetLoadout">ScenEdit_SetLoadout (loadoutinfo)</a></td>
 	<td class="summary">Sets the loadout for a unit</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_SetMission">ScenEdit_SetMission (SideName, MissionNameOrId)</a></td>
+	<td class="name" ><a href="#ScenEdit_SetMission">ScenEdit_SetMission (SideName, MissionNameOrId)</a></td>
 	<td class="summary">Set details for a mission.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_SetReferencePoint">ScenEdit_SetReferencePoint (descriptor)</a></td>
+	<td class="name" ><a href="#ScenEdit_SetReferencePoint">ScenEdit_SetReferencePoint (descriptor)</a></td>
 	<td class="summary">Update a reference point(s) with new values.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_SetScore">ScenEdit_SetScore (side, score, reason)</a></td>
+	<td class="name" ><a href="#ScenEdit_SetScore">ScenEdit_SetScore (side, score, reason)</a></td>
 	<td class="summary">Sets a given side's score.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_SetSideOptions">ScenEdit_SetSideOptions (options)</a></td>
+	<td class="name" ><a href="#ScenEdit_SetSideOptions">ScenEdit_SetSideOptions (options)</a></td>
 	<td class="summary">Set side options.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_SetSidePosture">ScenEdit_SetSidePosture (sideAName, sideBName, posture)</a></td>
+	<td class="name" ><a href="#ScenEdit_SetSidePosture">ScenEdit_SetSidePosture (sideAName, sideBName, posture)</a></td>
 	<td class="summary">Set the posture of a side towards another.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_SetSpecialAction">ScenEdit_SetSpecialAction (action_info)</a></td>
+	<td class="name" ><a href="#ScenEdit_SetSpecialAction">ScenEdit_SetSpecialAction (action_info)</a></td>
 	<td class="summary">Sets the properties of an already existing special action with the specified information.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_SetUnit">ScenEdit_SetUnit (unit)</a></td>
+	<td class="name" ><a href="#ScenEdit_SetUnit">ScenEdit_SetUnit (unit)</a></td>
 	<td class="summary">Sets the properties of a unit that already exists.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_SetUnitDamage">ScenEdit_SetUnitDamage (options)</a></td>
+	<td class="name" ><a href="#ScenEdit_SetUnitDamage">ScenEdit_SetUnitDamage (options)</a></td>
 	<td class="summary">Set unit damage.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_SetUnitSide">ScenEdit_SetUnitSide (sidedesc)</a></td>
+	<td class="name" ><a href="#ScenEdit_SetUnitSide">ScenEdit_SetUnitSide (sidedesc)</a></td>
 	<td class="summary">Changes the side of a unit</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_SetWeather">ScenEdit_SetWeather (temperature, rainfall, underrain, seastate)</a></td>
+	<td class="name" ><a href="#ScenEdit_SetWeather">ScenEdit_SetWeather (temperature, rainfall, underrain, seastate)</a></td>
 	<td class="summary">Set the current weather conditions.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_SpecialMessage">ScenEdit_SpecialMessage (side, message)</a></td>
+	<td class="name" ><a href="#ScenEdit_SpecialMessage">ScenEdit_SpecialMessage (side, message)</a></td>
 	<td class="summary">Displays a special message consisting of the HTML text <code>message</code> to side `side.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_UnitX">ScenEdit_UnitX ()</a></td>
+	<td class="name" ><a href="#ScenEdit_UnitX">ScenEdit_UnitX ()</a></td>
 	<td class="summary">The Unit that fired the current event trigger.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_UseAttachment">ScenEdit_UseAttachment (attachment)</a></td>
+	<td class="name" ><a href="#ScenEdit_UseAttachment">ScenEdit_UseAttachment (attachment)</a></td>
 	<td class="summary">Import an attachment into the scene.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ScenEdit_UseAttachmentOnSide">ScenEdit_UseAttachmentOnSide (attachment, sidename)</a></td>
+	<td class="name" ><a href="#ScenEdit_UseAttachmentOnSide">ScenEdit_UseAttachmentOnSide (attachment, sidename)</a></td>
 	<td class="summary">Use an attachment on a side (used for .inst files as attachments).</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#VP_GetContact">VP_GetContact (ContactGUID)</a></td>
+	<td class="name" ><a href="#VP_GetContact">VP_GetContact (ContactGUID)</a></td>
 	<td class="summary">Get contact details</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#VP_GetSide">VP_GetSide (side)</a></td>
+	<td class="name" ><a href="#VP_GetSide">VP_GetSide (side)</a></td>
 	<td class="summary">Side information from player's perspective.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#VP_GetUnit">VP_GetUnit (ActiveOrContact)</a></td>
+	<td class="name" ><a href="#VP_GetUnit">VP_GetUnit (ActiveOrContact)</a></td>
 	<td class="summary">Get unit details</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#World_GetElevation">World_GetElevation (location)</a></td>
+	<td class="name" ><a href="#World_GetElevation">World_GetElevation (location)</a></td>
 	<td class="summary">Returns the elevation in meters of a given position</td>
 	</tr>
 </table>
 <h2><a href="#Tables">Tables</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#AAR">AAR</a></td>
+	<td class="name" ><a href="#AAR">AAR</a></td>
 	<td class="summary">AAR.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#CargoMission">CargoMission</a></td>
+	<td class="name" ><a href="#CargoMission">CargoMission</a></td>
 	<td class="summary">CargoMission.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Component">Component</a></td>
+	<td class="name" ><a href="#Component">Component</a></td>
 	<td class="summary">Component.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Explosion">Explosion</a></td>
+	<td class="name" ><a href="#Explosion">Explosion</a></td>
 	<td class="summary">Defines a warhead to detonate.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#FerryMission">FerryMission</a></td>
+	<td class="name" ><a href="#FerryMission">FerryMission</a></td>
 	<td class="summary">FerryMission.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Fuel">Fuel</a></td>
+	<td class="name" ><a href="#Fuel">Fuel</a></td>
 	<td class="summary">Fuel.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#FuelState">FuelState</a></td>
+	<td class="name" ><a href="#FuelState">FuelState</a></td>
 	<td class="summary">Status of a fuel <code>type</code>.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#HostUnit">HostUnit</a></td>
+	<td class="name" ><a href="#HostUnit">HostUnit</a></td>
 	<td class="summary">Requests that a unit be hosted to another</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#LatLon">LatLon</a></td>
+	<td class="name" ><a href="#LatLon">LatLon</a></td>
 	<td class="summary">A Position on the map.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#LoadoutInfo">LoadoutInfo</a></td>
+	<td class="name" ><a href="#LoadoutInfo">LoadoutInfo</a></td>
 	<td class="summary">Information on a loadout to add/alter</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Magazine">Magazine</a></td>
+	<td class="name" ><a href="#Magazine">Magazine</a></td>
 	<td class="summary">Magazine.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#MineClearMission">MineClearMission</a></td>
+	<td class="name" ><a href="#MineClearMission">MineClearMission</a></td>
 	<td class="summary">MineClearMission.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#MineMission">MineMission</a></td>
+	<td class="name" ><a href="#MineMission">MineMission</a></td>
 	<td class="summary">MineMission.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#Mount">Mount</a></td>
+	<td class="name" ><a href="#Mount">Mount</a></td>
 	<td class="summary">Mount.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#PatrolMission">PatrolMission</a></td>
+	<td class="name" ><a href="#PatrolMission">PatrolMission</a></td>
 	<td class="summary">PatrolMission.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#SideContact">SideContact</a></td>
+	<td class="name" ><a href="#SideContact">SideContact</a></td>
 	<td class="summary">Side's contact.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#SideDescription">SideDescription</a></td>
+	<td class="name" ><a href="#SideDescription">SideDescription</a></td>
 	<td class="summary">Information on how to change a unit's side.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#SideSelector">SideSelector</a></td>
+	<td class="name" ><a href="#SideSelector">SideSelector</a></td>
 	<td class="summary">Information to select a particular side.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#SideUnit">SideUnit</a></td>
+	<td class="name" ><a href="#SideUnit">SideUnit</a></td>
 	<td class="summary">Side's unit.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#SpecialAction">SpecialAction</a></td>
+	<td class="name" ><a href="#SpecialAction">SpecialAction</a></td>
 	<td class="summary">Special action selector</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#StrikeMission">StrikeMission</a></td>
+	<td class="name" ><a href="#StrikeMission">StrikeMission</a></td>
 	<td class="summary">StrikeMission.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#SupportMission">SupportMission</a></td>
+	<td class="name" ><a href="#SupportMission">SupportMission</a></td>
 	<td class="summary">SupportMission.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#WeaponLoaded">WeaponLoaded</a></td>
+	<td class="name" ><a href="#WeaponLoaded">WeaponLoaded</a></td>
 	<td class="summary">Weapon loads on mount or in magazine.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ZoneMarker">ZoneMarker</a></td>
+	<td class="name" ><a href="#ZoneMarker">ZoneMarker</a></td>
 	<td class="summary">Zone marker.</td>
 	</tr>
 </table>
@@ -1199,6 +1207,40 @@ If both are given, then the GUID is used preferentially.
 
 
 
+
+</dd>
+    <dt>
+    <a name = "RefuelOptions"></a>
+    <strong>RefuelOptions</strong>
+    </dt>
+    <dd>
+    Unit refueling options.
+ <br><b>TODO: Allow assumed side to include allied if the doctrine is on </b>
+
+    </ul>
+
+    <ul>
+        <li><span class="parameter">unitSelector</span>
+            <span class="types"><a class="type" href="index.html#UnitSelector">UnitSelector</a></span>
+         A normal unit selector defining the unit.
+        </li>
+        <li><span class="parameter">tanker</span>
+            <span class="types"><span class="type">string</span></span>
+         A specific tanker defined by its name (side is assumed to be the same as unit) or GUID.
+        </li>
+        <li><span class="parameter">missions</span>
+            <span class="types"><span class="type">{ mission } </span></span>
+         A table of mission names or mission GUIDs.
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">{side=<span class="string">"United States"</span>, name=<span class="string">"USS Test"</span>, missions={<span class="string">"Pitstop"</span>}, tanker=<span class="string">"Hose #1"</span>}</pre>
+    </ul>
 
 </dd>
     <dt>
@@ -2511,6 +2553,42 @@ then the function returns nil instead of producing an exception.
     <h3>Usage:</h3>
     <ul>
         <pre class="example"><span class="keyword">local</span> side = ScenEdit_PlayerSide()</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_RefuelUnit"></a>
+    <strong>ScenEdit_RefuelUnit (unitOptions)</strong>
+    </dt>
+    <dd>
+    Cause unit to refuel. </p>
+
+<p> The unit should follow it's AAR configuration. You can force it use a specific tanker or ones from a set of missions.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unitOptions</span>
+            <span class="types"><a class="type" href="index.html#RefuelOptions">RefuelOptions</a></span>
+         The unit and refueling options.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">String</span></span>
+        If successful, then empty string. Else message showing why it failed to
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <li><pre class="example">ScenEdit_RefuelUnit({side=<span class="string">"United States"</span>, name=<span class="string">"USS Test"</span>})</pre></li>
+        <li><pre class="example">ScenEdit_RefuelUnit({side=<span class="string">"United States"</span>, name=<span class="string">"USS Test"</span>, tanker=<span class="string">"Hose #1"</span>})</pre></li>
+        <li><pre class="example">ScenEdit_RefuelUnit({side=<span class="string">"United States"</span>, name=<span class="string">"USS Test"</span>, missions={<span class="string">"Pitstop"</span>}})</pre></li>
     </ul>
 
 </dd>
@@ -4920,7 +4998,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2016-12-03 13:49:15 </i>
+<i style="float:right;">Last updated 2016-12-03 18:45:51 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

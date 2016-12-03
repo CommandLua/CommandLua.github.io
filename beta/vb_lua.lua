@@ -780,8 +780,31 @@ function ScenEdit_SetUnitSide(sidedesc) end
 function ScenEdit_AddWeaponToUnitMagazine(descriptor)
 
 --[[--
-dummy
 ]]
+
+--[[-- Unit refueling options.
+ <br><b>TODO: Allow assumed side to include allied if the doctrine is on </b>
+
+@Wrapper RefuelOptions
+@field[type=UnitSelector] unitSelector A normal unit selector defining the unit.
+@field[type=string] tanker A specific tanker defined by its name (side is assumed to be the same as unit) or GUID.
+@field[type={ mission } ] missions A table of mission names or mission GUIDs.
+@usage {side="United States", name="USS Test", missions={"Pitstop"}, tanker="Hose #1"}
+]]
+
+
+--[[-- Cause unit to refuel.
+
+ The unit should follow it's AAR configuration. You can force it use a specific tanker or ones from a set of missions.
+
+@function ScenEdit_RefuelUnit
+@param[type=RefuelOptions] unitOptions The unit and refueling options.
+@return[type=String] If successful, then empty string. Else message showing why it failed to
+@usage ScenEdit_RefuelUnit({side="United States", name="USS Test"})
+@usage ScenEdit_RefuelUnit({side="United States", name="USS Test", tanker="Hose #1"})
+@usage ScenEdit_RefuelUnit({side="United States", name="USS Test", missions={"Pitstop"}})
+]]
+
 
 --[[-- Get unit details 
 
@@ -994,7 +1017,7 @@ function ScenEdit_EndScenario() end
 @field[type={ Fuel }] fuel A table of fuel types used by unit.
 @field[type=Mission] mission The unit's assigned mission. Can be changed by setting to the Mission name or guid (calls ScenEdit_AssignUnitToMission)
 @field[type=Group] group The unit's group (if applicable). Can be changed assigning an existing or new name. It will try to create a group if new (experimental)
-@field[type=number]  airbornetime  how long aircraft has been flying. [READONLY]
+@field[type=number]  airbornetime  how long aircraft has been flying. [READONLY]
 @field[type=string] unitstate Message on unit status. [READONLY]
 @field[type=string] fuelstate  Message on unit fuel status. [READONLY]
 @field[type=string]  weaponstate  Message on unit weapon status. [READONLY]
@@ -1138,7 +1161,7 @@ td { padding: .5em; }
 ]]
 
 --[[-- MineClearMission.
-  options. These are updated by ScenEdit_SetMission()
+  options. These are updated by ScenEdit_SetMission()
  
 @table MineClearMission
 @field[type=string] onethirdrule
@@ -1185,11 +1208,11 @@ td { padding: .5em; }
 @field[type=string] groupsize
 @field[type=string] usegroupsize
 @field[type=string] zone
-@field[type=string] armingdelay
+@field[type=string] armingdelay
 ]]
 
 --[[-- SupportMission.
-  options. These are updated by ScenEdit_SetMission()
+  options. These are updated by ScenEdit_SetMission()
  
 @table SupportMission
 @field[type=string] onethirdrule
