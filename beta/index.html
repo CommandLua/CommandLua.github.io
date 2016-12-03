@@ -397,6 +397,10 @@
 	<td class="summary">Get unit details</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#World_GetCircleFromPoint">World_GetCircleFromPoint (table)</a></td>
+	<td class="summary">Returns a circle around point.</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#World_GetElevation">World_GetElevation (location)</a></td>
 	<td class="summary">Returns the elevation in meters of a given position</td>
 	</tr>
@@ -414,6 +418,10 @@
 	<tr>
 	<td class="name" ><a href="#Component">Component</a></td>
 	<td class="summary">Component.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#EventSelector">EventSelector</a></td>
+	<td class="summary">Event selector</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#Explosion">Explosion</a></td>
@@ -1215,7 +1223,6 @@ If both are given, then the GUID is used preferentially.
     </dt>
     <dd>
     Unit refueling options.
- <br><b>TODO: Allow assumed side to include allied if the doctrine is on </b>
 
     </ul>
 
@@ -1437,6 +1444,10 @@ If both are given, then the GUID is used preferentially.
         <li><span class="parameter">components</span>
             <span class="types"><a class="type" href="index.html#Component">{ Component }</a></span>
           A table of components on the unit.  [READONLY]
+        </li>
+        <li><span class="parameter">refuel</span>
+            <span class="types"><span class="type">bool</span></span>
+         Trigger the unit to attempt an UNREP
         </li>
         <li><span class="parameter">delete</span>
             <span class="types"><span class="type">method</span></span>
@@ -2092,6 +2103,66 @@ The 'UnitX' can be used as the unit descriptor
 
 </dd>
     <dt>
+    <a name = "ScenEdit_ExecuteEventAction"></a>
+    <strong>ScenEdit_ExecuteEventAction (eventNameOrId)</strong>
+    </dt>
+    <dd>
+    Execute a Lua Event action script
+ ..  but does not show results of execution of the action
+
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">eventNameOrId</span>
+            <span class="types"><span class="type">string</span></span>
+         The name or ID of the event action
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">string</span></span>
+        "Ok" on execution or nothing.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_ExecuteSpecialAction"></a>
+    <strong>ScenEdit_ExecuteSpecialAction (eventNameOrId)</strong>
+    </dt>
+    <dd>
+    Execute a Lua Special action script
+ ..  but does not show results of execution of the action
+
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">eventNameOrId</span>
+            <span class="types"><span class="type">string</span></span>
+         The name or ID of the event action
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">string</span></span>
+        "Ok" on execution or nothing.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
     <a name = "ScenEdit_GetDoctrine"></a>
     <strong>ScenEdit_GetDoctrine (selector)</strong>
     </dt>
@@ -2123,6 +2194,28 @@ The 'UnitX' can be used as the unit descriptor
     <ul>
         <pre class="example">ScenEdit_GetDoctrine({side=<span class="string">"Soviet Union"</span>}).use_nuclear_weapons</pre>
     </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_GetEvent"></a>
+    <strong>ScenEdit_GetEvent (eventname)</strong>
+    </dt>
+    <dd>
+    Gets the properties of an existing event.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">eventname</span>
+            <span class="types"><span class="type">string</span></span>
+         The event to modify
+        </li>
+    </ul>
+
+
+
+
 
 </dd>
     <dt>
@@ -2377,6 +2470,28 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>) <span class="comment">-- r
 
         The posture of sideA towards sideB, one of 'N', 'F', 'H', or 'A'.
     </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_GetSpecialAction"></a>
+    <strong>ScenEdit_GetSpecialAction (table)</strong>
+    </dt>
+    <dd>
+    Gets the properties of an existing event.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">table</span>
+            <span class="types"><span class="type">string</span></span>
+         The event to modify
+        </li>
+    </ul>
+
 
 
 
@@ -2745,6 +2860,32 @@ The file to find will be of the form [Command base directory]/Lua/[<code>script<
         <li><pre class="example">ScenEdit_SetEMCON(<span class="string">'Mission'</span>, <span class="string">'ASW Patrol #1'</span>, <span class="string">'Inherit;Sonar=Active'</span>)</pre></li>
         <li><pre class="example">ScenEdit_SetEMCON(<span class="string">'Unit'</span>, <span class="string">'Camel 2'</span>, <span class="string">'OECM=Active'</span>)</pre></li>
     </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_SetEvent"></a>
+    <strong>ScenEdit_SetEvent (eventname, options)</strong>
+    </dt>
+    <dd>
+    Sets the properties of an existing event.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">eventname</span>
+            <span class="types"><span class="type">string</span></span>
+         The event to modify
+        </li>
+        <li><span class="parameter">options</span>
+            <span class="types"><span class="type">Event</span></span>
+         The event options to modify
+        </li>
+    </ul>
+
+
+
+
 
 </dd>
     <dt>
@@ -3353,6 +3494,35 @@ Otherwise, a nil is returned.
 
 </dd>
     <dt>
+    <a name = "World_GetCircleFromPoint"></a>
+    <strong>World_GetCircleFromPoint (table)</strong>
+    </dt>
+    <dd>
+    Returns a circle around point.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">table</span>
+            <span class="types"><span class="type">Point</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Tabe of points
+    </ol>
+
+
+
+
+</dd>
+    <dt>
     <a name = "World_GetElevation"></a>
     <strong>World_GetElevation (location)</strong>
     </dt>
@@ -3603,6 +3773,48 @@ Otherwise, a nil is returned.
         <li><span class="parameter">comp_damage</span>
             <span class="types"><span class="type">string</span></span>
          Damage Severity
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "EventSelector"></a>
+    <strong>EventSelector</strong>
+    </dt>
+    <dd>
+    Event selector
+
+    </ul>
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">ActionNameOrID</span>
+            <span class="types"><span class="type">string</span></span>
+         The name or ID of the special action
+        </li>
+        <li><span class="parameter">IsActive</span>
+            <span class="types"><span class="type">bool</span></span>
+         If the action is visible to the player
+        </li>
+        <li><span class="parameter">IsRepeatable</span>
+            <span class="types"><span class="type">bool</span></span>
+         If the player can use the action multiple times
+        </li>
+        <li><span class="parameter">NewName</span>
+            <span class="types"><span class="type">string</span></span>
+         If specified, the new name of the action
+        </li>
+        <li><span class="parameter">Description</span>
+            <span class="types"><span class="type">string</span></span>
+         If specified, the new description for the action
+        </li>
+        <li><span class="parameter">Probability</span>
+            <span class="types"><span class="type">number</span></span>
+         If specified, a new probability for the action
         </li>
     </ul>
 
@@ -4998,7 +5210,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2016-12-03 18:45:51 </i>
+<i style="float:right;">Last updated 2016-12-04 09:08:34 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

@@ -85,6 +85,93 @@ This function looks up the doctrine of the object selected by selector, and thro
 ]]
 function ScenEdit_GetDoctrine(selector) end
 
+--[[-- Execute a Lua Event action script
+ .. but does not show results of execution of the action
+ 
+@function ScenEdit_ExecuteEventAction
+@param[type=string] eventNameOrId The name or ID of the event action
+@return[type=string] "Ok" on execution or nothing.
+]]
+
+
+
+--[[--
+Event selector
+
+@param[type=string] ActionNameOrID The name or ID of the special action
+@param[type=bool] IsActive If the action is visible to the player
+@param[type=bool] IsRepeatable If the player can use the action multiple times
+@param[type=string] NewName If specified, the new name of the action
+@param[type=string] Description If specified, the new description for the action
+@param[type=number] Probability If specified, a new probability for the action
+]]
+EventSelector = {
+ ActionNameOrID,
+ IsActive,
+ IsRepeatable,
+ NewName,
+ Description,
+ Probability
+}
+
+
+--[[--
+Sets the properties of an existing event.
+
+@param[type=string] eventname The event to modify
+@param[type=Event] options The event options to modify
+]]
+function ScenEdit_SetEvent(eventname, options)end
+
+--[[--
+Gets the properties of an existing event.
+
+@param[type=string] eventname The event to modify
+]]
+function ScenEdit_GetEvent(eventname)end
+
+
+--[[--
+Special action selector
+
+@param[type=string] ActionNameOrID The name or ID of the special action
+@param[type=bool] IsActive If the action is visible to the player
+@param[type=bool] IsRepeatable If the player can use the action multiple times
+@param[type=string] NewName If specified, the new name of the action
+@param[type=string] Description If specified, the new description for the action
+]]
+SpecialAction = {
+ ActionNameOrID,
+ IsActive,
+ IsRepeatable,
+ NewName,
+ Description
+}
+
+
+--[[--
+Sets the properties of an already existing special action with the specified information.
+
+@param[type=SpecialAction] action_info The special action to modify
+]]
+function ScenEdit_SetSpecialAction(action_info)end
+
+--[[--
+Gets the properties of an existing event.
+
+@param[type=string] table The event to modify
+]]
+function ScenEdit_GetSpecialAction(table)end
+
+--[[-- Execute a Lua Special action script
+ .. but does not show results of execution of the action
+ 
+@function ScenEdit_ExecuteSpecialAction
+@param[type=string] eventNameOrId The name or ID of the event action
+@return[type=string] "Ok" on execution or nothing.
+]]
+
+
 --[[--
 Imports an inst file.
 
@@ -269,7 +356,7 @@ Altitude()
 
 
 --[[-- TimeStamp.
- ... is a representation of time defined as the number of seconds that have elapsed since 00:00:00 Coordinated Universal Time (UTC), Thursday, 1 January 1970
+ ... is a representation of time defined as the number of seconds that have elapsed since 00:00:00 Coordinated Universal Time (UTC), Thursday, 1 January 1970
 
 @DataType TimeStamp
 ]]
@@ -506,32 +593,6 @@ function ScenEdit_SetSidePosture(sideAName, sideBName, posture) end
 ]]
 
 --[[--
-Special action selector
-
-@param[type=string] ActionNameOrID The name or ID of the special action
-@param[type=bool] IsActive If the action is visible to the player
-@param[type=bool] IsRepeatable If the player can use the action multiple times
-@param[type=string] NewName If specified, the new name of the action
-@param[type=string] Description If specified, the new description for the action
-]]
-SpecialAction = {
- ActionNameOrID,
- IsActive,
- IsRepeatable,
- NewName,
- Description
-}
-
-
---[[--
-Sets the properties of an already existing special action with the specified information.
-
-@param[type=SpecialAction] action_info The special action to modify
-]]
-function ScenEdit_SetSpecialAction(action_info)end
-
-
---[[--
  Sets the EMCON of the selected object. Select the object by specifying the type and the object's name.
  
  Type is the type of object to set the EMCON on. It can be one of 4 values:
@@ -548,7 +609,7 @@ function ScenEdit_SetSpecialAction(action_info)end
 
  @param[type=string] type The type of the thing to set the EMCON on.
  @param[type=string] name The name or GUID of the object to select.
- @param[type=string] emcon The new EMCON for the object.
+ @param[type=string] emcon The new EMCON for the object.
  @usage ScenEdit_SetEMCON('Side', 'NATO', 'Radar=Active;Sonar=Passive')
  @usage ScenEdit_SetEMCON('Mission', 'ASW Patrol #1', 'Inherit;Sonar=Active')
  @usage ScenEdit_SetEMCON('Unit', 'Camel 2', 'OECM=Active')
@@ -625,7 +686,7 @@ Sets a given side's score.
 ]]
 function ScenEdit_SetScore(side,score,reason) end
 
-
+
 --[[--
 	Displays a special message consisting of the HTML text `message` to side `side.
 
@@ -637,7 +698,7 @@ function ScenEdit_SpecialMessage(side, message) end
 --[[-- New unit selector.
 
  ... lists minimum fields required. Other fields from @{Unit} may be included.
-
+
 @Selector NewUnit
 @field[type=string] type The type of unit (Ship, Sub, Aircraft, Facility)
 @field[type=string] name The name of the unit 
@@ -696,7 +757,7 @@ Deletes a unit based on a selector.
 @usage ScenEdit_DeleteUnit({side="United States", name="USS Abcd"})
 ]]
 function ScenEdit_DeleteUnit(unit)end
-
+
 
 --[[-- Kill unit.
  ... and triggers event.
@@ -783,7 +844,6 @@ function ScenEdit_AddWeaponToUnitMagazine(descriptor)
 ]]
 
 --[[-- Unit refueling options.
- <br><b>TODO: Allow assumed side to include allied if the doctrine is on </b>
 
 @Wrapper RefuelOptions
 @field[type=UnitSelector] unitSelector A normal unit selector defining the unit.
@@ -860,6 +920,15 @@ function VP_GetSide(side) end
 @return The elevation of the point in meters
 ]]
 function World_GetElevation(location) end
+
+
+--[[--
+	Returns a circle around point.
+
+@param[type=Point] table 
+@return Tabe of points
+]]
+function World_GetCircleFromPoint(table) end
 
 
 --[[-- The Unit that fired the current event trigger.
@@ -1017,7 +1086,7 @@ function ScenEdit_EndScenario() end
 @field[type={ Fuel }] fuel A table of fuel types used by unit.
 @field[type=Mission] mission The unit's assigned mission. Can be changed by setting to the Mission name or guid (calls ScenEdit_AssignUnitToMission)
 @field[type=Group] group The unit's group (if applicable). Can be changed assigning an existing or new name. It will try to create a group if new (experimental)
-@field[type=number]  airbornetime  how long aircraft has been flying. [READONLY]
+@field[type=number]  airbornetime  how long aircraft has been flying. [READONLY]
 @field[type=string] unitstate Message on unit status. [READONLY]
 @field[type=string] fuelstate  Message on unit fuel status. [READONLY]
 @field[type=string]  weaponstate  Message on unit weapon status. [READONLY]
@@ -1026,6 +1095,7 @@ function ScenEdit_EndScenario() end
 @field[type={ Magazine }]  magazines  A table of magazines (with weapon loads) in the unit or group. Can be updated by @{ScenEdit_AddWeaponToUnitMagazine} [READONLY]
 @field[type={ Mount }]  mounts  A table of mounts (with weapon loads) in the unit or group. Can be updated by @{ScenEdit_AddReloadsToUnit} [READONLY]
 @field[type={ Component }]  components  A table of components on the unit.  [READONLY]
+@field[type=bool] refuel Trigger the unit to attempt an UNREP
 @field[type=method] delete() Immediately removes unit object
 @field[type=method] filterOnComponent(`type`) Filters unit on `type` of component and returns a @{Component} table. 
     
@@ -1158,7 +1228,7 @@ td { padding: .5em; }
 @field[type=string] flightsize
 @field[type=string] minaircraftreq
 @field[type=string] useflightsize
-]]
+]]
 
 --[[-- MineClearMission.
   options. These are updated by ScenEdit_SetMission()
@@ -1189,7 +1259,7 @@ td { padding: .5em; }
   options. These are updated by ScenEdit_SetMission()
  
 @table MineMission
-@field[type=string] onethirdrule
+@field[type=string] onethirdrule
 @field[type=string] transitthrottleaircraft
 @field[type=string] transitaltitudeaircraft
 @field[type=string] transitterrainfollowingaircraft
@@ -1208,7 +1278,7 @@ td { padding: .5em; }
 @field[type=string] groupsize
 @field[type=string] usegroupsize
 @field[type=string] zone
-@field[type=string] armingdelay
+@field[type=string] armingdelay
 ]]
 
 --[[-- SupportMission.
