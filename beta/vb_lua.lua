@@ -85,83 +85,74 @@ This function looks up the doctrine of the object selected by selector, and thro
 ]]
 function ScenEdit_GetDoctrine(selector) end
 
---[[-- Execute a Lua Event action script
+--[[-- Execute a Lua Event action script.
  .. but does not show results of execution of the action
  
 @function ScenEdit_ExecuteEventAction
-@param[type=string] eventNameOrId The name or ID of the event action
+@param[type=string] EventDescriptionOrID The description or ID of the event action
 @return[type=string] "Ok" on execution or nothing.
 ]]
 
 
 
---[[--
-Event selector
+--[[-- Event.
 
-@param[type=string] ActionNameOrID The name or ID of the special action
-@param[type=bool] IsActive If the action is visible to the player
-@param[type=bool] IsRepeatable If the player can use the action multiple times
-@param[type=string] NewName If specified, the new name of the action
-@param[type=string] Description If specified, the new description for the action
-@param[type=number] Probability If specified, a new probability for the action
+@Selector Event
+@param[type=string] EventDescriptionOrID The description or ID of the event
+@param[type=string] GUID The GUID of the event [READONLY]
+@param[type=bool] IsActive If the action is active to the player
+@param[type=bool] IsRepeatable If the event can be triggered multiple times
+@param[type=string] Description If specified, the new description for the event
+@param[type=number] Probability If specified, a new probability for the event
+@param[type={ Triggers }] triggers A table of triggers for this event [READONLY]
+@param[type={ Conditions }] triggers A table of conditions for this event [READONLY]
+@param[type={ Actions }] triggers A table of actions for this event [READONLY]
 ]]
-EventSelector = {
- ActionNameOrID,
- IsActive,
- IsRepeatable,
- NewName,
- Description,
- Probability
-}
 
 
---[[--
-Sets the properties of an existing event.
+--[[-- Sets the properties of an event.
 
-@param[type=string] eventname The event to modify
+
+@param[type=string] EventDescriptionOrID The event to modify
 @param[type=Event] options The event options to modify
 ]]
-function ScenEdit_SetEvent(eventname, options)end
+function ScenEdit_SetEvent(EventDescriptionOrID, options)end
 
---[[--
-Gets the properties of an existing event.
+--[[-- Gets the properties of an event.
 
-@param[type=string] eventname The event to modify
+
+@param[type=string] EventDescriptionOrID The event to retrieve
+@return[type=Event] The event details
 ]]
-function ScenEdit_GetEvent(eventname)end
+function ScenEdit_GetEvent(EventDescriptionOrID)end
 
 
 --[[--
-Special action selector
+Special action selector.
 
+@Selector SpecialAction
+@param[type=string] GUID The GUID of the special action [READONLY]
 @param[type=string] ActionNameOrID The name or ID of the special action
 @param[type=bool] IsActive If the action is visible to the player
 @param[type=bool] IsRepeatable If the player can use the action multiple times
 @param[type=string] NewName If specified, the new name of the action
 @param[type=string] Description If specified, the new description for the action
 ]]
-SpecialAction = {
- ActionNameOrID,
- IsActive,
- IsRepeatable,
- NewName,
- Description
-}
 
 
 --[[--
-Sets the properties of an already existing special action with the specified information.
+Sets the properties of an existing special action.
 
 @param[type=SpecialAction] action_info The special action to modify
 ]]
 function ScenEdit_SetSpecialAction(action_info)end
 
 --[[--
-Gets the properties of an existing event.
+Gets the properties of an existing special action.
 
-@param[type=string] table The event to modify
+@param[type=SpecialAction] action_info The special action to retrieve
 ]]
-function ScenEdit_GetSpecialAction(table)end
+function ScenEdit_GetSpecialAction(action_info)end
 
 --[[-- Execute a Lua Special action script
  .. but does not show results of execution of the action
@@ -184,7 +175,7 @@ function ScenEdit_ImportInst(side, filename) end
 --[[-- Get details of a mission.
 
 @function ScenEdit_GetMission
-@param[type=string] SideName The mission side
+@param[type=string] SideNameOrId The mission side
 @param[type=string] MissionNameOrId The mission name
 @return[type=Mission] A mission descriptor if the mission exists or nil otherwise.
 @usage local mission = ScenEdit_GetMission('USA','CV CAP Left')
@@ -202,12 +193,47 @@ function ScenEdit_ImportInst(side, filename) end
 --[[-- Add new mission.
 
 @function ScenEdit_AddMission
-@param[type=string] SideName The mission side
+@param[type=string] SideNameOrId The mission side
 @param[type=string] MissionNameOrId The mission name
 @param[type=string] MissionType The mission type (Strike, Ferry, Patrol, etc)
-@param[type=NewMission] MissionOptions The mission specific options
-@return[type=Mission] A mission descriptor if the mission exists or nil otherwise.
+@param[type=NewMission] MissionOptions The mission specific options as a table
+@return[type=Mission] A mission descriptor of the added mission or nil otherwise.
 @usage local mission = ScenEdit_AddMission('USA','Marker strike','strike',{type='land'})
+]]
+
+]]
+
+--[[-- Delete mission.
+ .. unassigns any units attached to it.
+@function ScenEdit_DeleteMission
+@param[type=string] SideNameOrId The mission side
+@param[type=string] MissionNameOrId The mission name
+@return[type=bool] True if mission has been removed.
+@usage local mission = ScenEdit_AddMission('USA','Marker strike','strike',{type='land'})
+]]
+
+]]
+
+--[[-- Export mission parameters.
+ .. as a XML file in folder Command_base/Defaults.
+ [Experimental as this should really be treated like an attachment so can be imported with Scenario]
+@function ScenEdit_ExportMission
+@param[type=string] SideNameOrId The mission side
+@param[type=string] MissionNameOrId The mission name
+@return[type={ guid }] Mission GUID exported.
+@usage local mission = ScenEdit_ExportMission('USA','Marker strike'})
+]]
+
+]]
+
+--[[-- Import mission parameters.
+ .. from a XML file in folder Command_base/Defaults.
+ [Experimental as this should really be treated like an attachment so can be imported with Scenario]
+@function ScenEdit_ImportMission
+@param[type=string] SideNameOrId The mission side
+@param[type=string] MissionNameOrId The mission name
+@return[type={ guid }] Mission GUID imported.
+@usage local mission = ScenEdit_ExportMission('USA','Marker strike'})
 ]]
 
 
@@ -216,6 +242,7 @@ function ScenEdit_ImportInst(side, filename) end
 @function ScenEdit_SetMission
 @param[type=string] SideName The mission side
 @param[type=string] MissionNameOrId The mission name
+@param[type=Mission] MissionOptions The mission options as a table.
 @return[type=Mission] A mission descriptor if the mission exists or nil otherwise.
 @usage local mission = ScenEdit_SetMission('USA','CV CAP Left',{TankerUsage=1,OnStation=2})
 ]]
@@ -223,19 +250,20 @@ function ScenEdit_ImportInst(side, filename) end
 
 --[[-- Assigns targets to a Strike mission.
 
-The 'UnitX' can be used as the unit descriptor.
-Contacts can also be assigned. Refer to the VP_ functions for details
+ 'UnitX' can be used as a unit descriptor.
+ Contacts can also be assigned. Refer to the VP_ functions for details
 @function ScenEdit_AssignUnitAsTarget
 @param[type=string|table] AUNameOrIDOrTable The name/GUID of the unit, or a table of `name/GUID` to add to target list
-@param[type=string] MissionNameOrID The mission 
+@param[type=string] MissionNameOrID The mission to update
 @return[type={ GUID } ] A table of targets added
 @usage ScenEdit_AssignUnitAsTarget({'target1', 'target2'}, 'Land strike')
+@usage ScenEdit_AssignUnitAsTarget('UnitX', 'Land strike')
 ]]
 
 
 --[[-- Removes targets from a Strike mission.
 
-The 'UnitX' can be used as the unit descriptor
+The 'UnitX' can be used as a unit descriptor
 @function ScenEdit_RemoveUnitAsTarget
 @param[type=string|table] AUNameOrIDOrTable The name/GUID of the unit, or a table of `name/GUID` to remove from target list
 @param[type=string] MissionNameOrID The mission 
@@ -456,14 +484,14 @@ If both are given, then the GUID is used preferentially.
 ]]
 
 
---[[-- Defines a warhead to detonate.
+--[[-- Defines the warhead to detonate.
 
 
 @table Explosion
 @param[type=number] warheadid The ID of the warhead to detonate
 @param[type=Latitude] lat The latitude of the detonation
 @param[type=Longitude] lon The longitude of the detonation
-@param[type=number] altitude The altitude of the detonation
+@param[type=Altitude] altitude The altitude of the detonation
 @usage {warheadid=253, lat=unit.latitude, lon=unit.longitude, altitude=unit.altitude}
 ]]
 
@@ -471,10 +499,10 @@ If both are given, then the GUID is used preferentially.
 --[[-- Detonates a warhead at a specified location.
 
 
-@param[type=Explosion] explosion Describes the `explosion`.
+@function ScenEdit_AddExplosion
+@param[type=Explosion] explosion Describes the explosion.
 @usage ScenEdit_AddExplosion ({warheadid=253, lat=unit.latitude, lon=unit.longitude, altitude=unit.altitude})
 ]]
-function ScenEdit_AddExplosion(explosion)end
 
 
 --[[--
@@ -502,28 +530,30 @@ function ScenEdit_HostUnitToParent(host_info)end
 The function takes a unit and mission descriptor, and assigns the unit to the mission if it exists. Produces a pop up
 error (not catchable) if the unit or mission does not exist.
 The 'UnitX' can be used as the unit descriptor
-@param[type=string] unit The name or GUID of the unit to assign
-@param[type=string] mission The mission to execute
+@param[type=string] unitname The name/GUID of the unit to assign
+@param[type=string] mission The mission name/GUID to use
 @param[type=bool] escort [Default=False] If the mission is a strike one, then assign unit to the 'Escort' for the strike
 @return[type=boolean] True/False for Successful/Failure
 @usage ScenEdit_AssignUnitToMission("Bar #1", "Strike")
 ]]
-function ScenEdit_AssignUnitToMission(unit, mission[, escort]) end
+function ScenEdit_AssignUnitToMission(unitname, mission[, escort]) end
 
 
 --[[--
 Information on a loadout to add/alter
 
-@param[type=string] UnitNameOrID The name or GUID of the unit to change the loadout on
-@param[type=number] LoadoutID The ID of the new loadout
+@param[type=string] UnitName The name/GUID of the unit to change the loadout on
+@param[type=number] LoadoutID The ID of the new loadout; 0 = use the current loadout
 @param[type=number] TimeToReady_Minutes How many minutes until the loadout is ready
 @param[type=bool] IgnoreMagazines If the new loadout should rely on the magazines having the right weapons ready
+@param[type=bool,opt] ExcludeOptionalWeapons Exclude optional weapons from loadout
 ]]
 LoadoutInfo = {
-	UnitNameOrID, 
+	UnitName, 
 	LoadoutID, 
 	TimeToReady_Minutes, 
-	IgnoreMagazines
+	IgnoreMagazines,
+ ExcludeOptionalWeapons
 }
 
 
@@ -531,6 +561,7 @@ LoadoutInfo = {
 Sets the loadout for a unit
 
 @param[type=LoadoutInfo] loadoutinfo The loadout information to apply
+@return[type=bool] True
 ]]
 function ScenEdit_SetLoadout(loadoutinfo)end
 
@@ -589,7 +620,7 @@ function ScenEdit_SetSidePosture(sideAName, sideBName, posture) end
 @function ScenEdit_SetUnitDamage(options)
 @param[DamageOptions] options 
 @return[type=Component] The unit's components object
-@usage ScenEdit_SetUnitDamage('{side='SideA',name='Ship',fires=1,components={{'rudder','medium'},{'type',type='sensor',1}}}')
+@usage ScenEdit_SetUnitDamage('{side='SideA',unitname='Ship',fires=1,components={{'rudder','medium'},{'type',type='sensor',1}}}')
 ]]
 
 --[[--
@@ -609,7 +640,7 @@ function ScenEdit_SetSidePosture(sideAName, sideBName, posture) end
 
  @param[type=string] type The type of the thing to set the EMCON on.
  @param[type=string] name The name or GUID of the object to select.
- @param[type=string] emcon The new EMCON for the object.
+ @param[type=string] emcon The new EMCON for the object.
  @usage ScenEdit_SetEMCON('Side', 'NATO', 'Radar=Active;Sonar=Passive')
  @usage ScenEdit_SetEMCON('Mission', 'ASW Patrol #1', 'Inherit;Sonar=Active')
  @usage ScenEdit_SetEMCON('Unit', 'Camel 2', 'OECM=Active')
@@ -621,7 +652,7 @@ Opens a message box with the given string.
 
 @param[type=string] string The string to display to the user
 @param[type=num] style The style of the message box
-@return No return value - user response is lost.
+@return button number.
 ]]
 function ScenEdit_MsgBox(string, style) end
 
@@ -643,7 +674,7 @@ Gets the posture of one side towards another.
 @param[type=string] sideB The name of the second side
 @return The posture of sideA towards sideB, one of 'N', 'F', 'H', or 'A'.
 ]]
-function ScenEdit_GetSidePosture(sideA,sideB) end
+function ScenEdit_GetSidePosture(sideA,sideB) end
 
 
 --[[--
@@ -679,18 +710,19 @@ function ScenEdit_GetSideIsHuman(sidename)end
 --[[--
 Sets a given side's score.
 
-@param[type=string] side The name of the side
+@param[type=string] side The name/GUID of the side
 @param[type=num] score The new score for the side
 @param[type=string] reason The reason for the score to change
+@return[type=num] The new score for the side
 @usage ScenEdit_GetScore("PlayerSide", 20)
 ]]
 function ScenEdit_SetScore(side,score,reason) end
 
-
+
 --[[--
 	Displays a special message consisting of the HTML text `message` to side `side.
 
-@param[type=string] side The side to display the message on
+@param[type=string] side The side name/guid to display the message on
 @param[type=string] message The HTML text to display to the player
 ]]
 function ScenEdit_SpecialMessage(side, message) end
@@ -701,13 +733,13 @@ function ScenEdit_SpecialMessage(side, message) end
 
 @Selector NewUnit
 @field[type=string] type The type of unit (Ship, Sub, Aircraft, Facility)
-@field[type=string] name The name of the unit 
-@field[type=string] side The side of the unit
+@field[type=string] unitname The name of the unit 
+@field[type=string] side The side name or GUID to add unit to
 @field[type=number] dbid The database id of the unit
 @field[type=Latitude] latitude Not required if a `base` is defined
 @field[type=Longitude] longitude Not required if a `base` is defined
 @field[type=string] base Unit base name or GUID where the unit will be 'hosted' (applicable to AIR, SHIP, SUB)
-@field[type=number] loadout Aircraft database loadout id (applicable to AIR)
+@field[type=number] loadout Aircraft database loadout id (applicable to AIR)
 @field[type=number] altitude Unit altitude (applicable to AIR)
 ]]
 
@@ -719,7 +751,7 @@ Adds a unit based on a descriptor.
 @usage ScenEdit_AddUnit({type = 'Aircraft', name = 'F-15C Eagle', loadoutid = 16934, 
  heading = 0, dbid = 3500, side = 'NATO', Latitude="N46.00.00",Longitude="E25.00.00",
  altitude="5000 ft",autodetectable="false",holdfire="true",proficiency=4})
-@usage ScenEdit_AddUnit({type = 'Air', name = 'F-15C Eagle', loadoutid = 16934, dbid = 3500, side = 'NATO', Lat="5.123",Lon="-12.51",alt=5000})
+@usage ScenEdit_AddUnit({type = 'Air', unitname = 'F-15C Eagle', loadoutid = 16934, dbid = 3500, side = 'NATO', Lat="5.123",Lon="-12.51",alt=5000})
 
 ]]
 function ScenEdit_AddUnit(unit)end
@@ -733,7 +765,7 @@ then the function returns nil instead of producing an exception.
 
 @param[type=UnitSelector] unit The unit to select.
 @return[type=Unit] A complete unit descriptor if the unit exists or nil otherwise.
-@usage ScenEdit_GetUnit({side="United States", name="USS Test"})
+@usage ScenEdit_GetUnit({side="United States", unitname="USS Test"})
 ]]
 function ScenEdit_GetUnit(unit)end
 
@@ -742,30 +774,30 @@ Sets the properties of a unit that already exists.
 
 @param[type=Unit] unit The unit to edit. Must be at least a selector.
 @return[type=Unit] A complete descriptor for the added unit
-@usage ScenEdit_SetUnit({side="United States", name="USS Test", lat = 5})
-@usage ScenEdit_SetUnit({side="United States", name="USS Test", lat = 5})
-@usage ScenEdit_SetUnit({side="United States", name="USS Test", lat = 5, lon = "N50.20.10"})
-@usage ScenEdit_SetUnit({side="United States", name="USS Test", newname="USS Barack Obama"})
-@usage ScenEdit_SetUnit({side="United States", name="USS Test", heading=0, HoldPosition=1, HoldFire=1,Proficiency="Ace", Autodetectable="yes"})
+@usage ScenEdit_SetUnit({side="United States", unitname="USS Test", lat = 5})
+@usage ScenEdit_SetUnit({side="United States", unitname="USS Test", lat = 5})
+@usage ScenEdit_SetUnit({side="United States", unitname="USS Test", lat = 5, lon = "N50.20.10"})
+@usage ScenEdit_SetUnit({side="United States", unitname="USS Test", newname="USS Barack Obama"})
+@usage ScenEdit_SetUnit({side="United States", unitname="USS Test", heading=0, HoldPosition=1, HoldFire=1,Proficiency="Ace", Autodetectable="yes"})
 ]]
 function ScenEdit_SetUnit(unit)end
 
 
---[[--
-Deletes a unit based on a selector.
-@param[type=Unit] unit The unit to delete. Must be at least a selector.
-@usage ScenEdit_DeleteUnit({side="United States", name="USS Abcd"})
+--[[-- Deletes unit.
+ .. and no event triggers.
+@param[UnitSelector] unit 
+@usage ScenEdit_DeleteUnit({side="United States", unitname="USS Abcd"})
 ]]
 function ScenEdit_DeleteUnit(unit)end
-
+
 
 --[[-- Kill unit.
  ... and triggers event.
 
-@function ScenEdit_KillUnit(options)
-@param[UnitSelector] options 
+@function ScenEdit_KillUnit(unit)
+@param[UnitSelector] unit 
 @return[type=bool] True if successful
-@usage ScenEdit_KillUnit({side='SideA',name='ship'})
+@usage ScenEdit_KillUnit({side='SideA',unitname='ship'})
 ]]
 
 --[[--
@@ -795,8 +827,8 @@ function ScenEdit_SetUnitSide(sidedesc) end
  You can specify a particular `mount` by the GUID, or leave it out, 
  and the function will try to fill up any `available` space with the `weapon`.
 @Selector Weapon2Mount
-@param[type=string] *side The side of the unit with mount
-@param[type=string] *name The name of unit with mount
+@param[type=string] *side The side name/GUID of the unit with mount
+@param[type=string] *unitname The name/GUID of unit with mount
 @param[type=string] *guid GUID of the unit with mount
 @param[type=string] mount_guid The mount GUID
 @param[type=string] wpn_dbid The weapon database ID
@@ -810,7 +842,7 @@ function ScenEdit_SetUnitSide(sidedesc) end
 @function ScenEdit_AddReloadsToUnit
 @param[type=Weapon2Mount] descriptor Describes the weapon and mount to update
 @return[type=number] Number of items added to the magazine
-@usage ScenEdit_AddReloadsToUnit({name='Mech Inf #1', w_dbid=773, number=1, w_max=10})
+@usage ScenEdit_AddReloadsToUnit({unitname='Mech Inf #1', w_dbid=773, number=1, w_max=10})
 ]]
 
 
@@ -819,8 +851,8 @@ function ScenEdit_SetUnitSide(sidedesc) end
  A group magazine, for example, tend to have multiple magazines, with the same name. So you can specify a particular `magazine` by the GUID, or leave it out, 
  and the function will try to fill up any `available` space with the `weapon`.
 @Selector Weapon2Magazine
-@param[type=string] *side The side of the unit with magazine
-@param[type=string] *name The name of unit with magazine
+@param[type=string] *side The side name/GUID of the unit with magazine
+@param[type=string] *unitname The name/GUID of unit with magazine
 @param[type=string] *guid GUID of the unit with magazine
 @param[type=string] mag_guid The magazine GUID
 @param[type=string] wpn_dbid The weapon database ID
@@ -836,7 +868,7 @@ function ScenEdit_SetUnitSide(sidedesc) end
 
 @param[type=Weapon2Magazine] descriptor Describes the weapon and magazine to update
 @return[type=number] Number of items added to the magazine
-@usage ScenEdit_AddWeaponToUnitMagazine({name='Ammo', w_dbid=773, number=1, w_max=10})
+@usage ScenEdit_AddWeaponToUnitMagazine({unitname='Ammo', w_dbid=773, number=1, w_max=10})
 ]]
 function ScenEdit_AddWeaponToUnitMagazine(descriptor)
 
@@ -860,9 +892,9 @@ function ScenEdit_AddWeaponToUnitMagazine(descriptor)
 @function ScenEdit_RefuelUnit
 @param[type=RefuelOptions] unitOptions The unit and refueling options.
 @return[type=String] If successful, then empty string. Else message showing why it failed to
-@usage ScenEdit_RefuelUnit({side="United States", name="USS Test"})
-@usage ScenEdit_RefuelUnit({side="United States", name="USS Test", tanker="Hose #1"})
-@usage ScenEdit_RefuelUnit({side="United States", name="USS Test", missions={"Pitstop"}})
+@usage ScenEdit_RefuelUnit({side="United States", unitname="USS Test"})
+@usage ScenEdit_RefuelUnit({side="United States", unitname="USS Test", tanker="Hose #1"})
+@usage ScenEdit_RefuelUnit({side="United States", unitname="USS Test", missions={"Pitstop"}})
 ]]
 
 
@@ -950,6 +982,14 @@ function ScenEdit_UnitX() end
  end
 ]]
 function ScenEdit_CurrentTime() end
+
+
+--[[-- Name of the scenario.
+
+@return[type=string] The title of the scenario
+@function GetScenarioTitle
+]]
+
 
 
 --[[-- Runs a script from a file.
@@ -1087,6 +1127,7 @@ function ScenEdit_EndScenario() end
 @field[type=Mission] mission The unit's assigned mission. Can be changed by setting to the Mission name or guid (calls ScenEdit_AssignUnitToMission)
 @field[type=Group] group The unit's group (if applicable). Can be changed assigning an existing or new name. It will try to create a group if new (experimental)
 @field[type=number]  airbornetime  how long aircraft has been flying. [READONLY]
+@field[type=number]  loadoutdbid  current aircraft loadout DBID. [READONLY]
 @field[type=string] unitstate Message on unit status. [READONLY]
 @field[type=string] fuelstate  Message on unit fuel status. [READONLY]
 @field[type=string]  weaponstate  Message on unit weapon status. [READONLY]
@@ -1157,6 +1198,7 @@ td { padding: .5em; }
 @field[type=Longitude] longitude The longitude of the contact. [READONLY]
 @field[type=string] posture Posture towards contact.
 @field[type=string] type Type of contact. [READONLY]
+@field[type=number] typed Type of contact. [READONLY]
 @field[type={ LatLon }] areaofuncertainty Table of points defining the area of contact. [READONLY]
 @field[type=string] type_description Contact type description. [READONLY]
 @field[type=number] actualunitdbid Actual contact type. [READONLY]
@@ -1181,11 +1223,11 @@ td { padding: .5em; }
 
 @Wrapper Mission
 @field[type=string] guid The GUID of the mission. [READONLY]
-@field[type=string] name 
-@field[type=bool] isactive
-@field[type=string] side
-@field[type=DateTime] starttime Time mission is started
-@field[type=DateTime] endtime Time mission is ended
+@field[type=string] name Name of mission
+@field[type=bool] isactive True if mission is currently active
+@field[type=string] side Mission belongs to side
+@field[type=DateTime] starttime Time mission starts
+@field[type=DateTime] endtime Time mission ends
 @field[type=MissionClass] type Mission class(patrol,strike,etc). [READONLY]
 @field[type=MissionSubClass] subtype Mission class(asw,land,etc). [READONLY]
 @field[type=bool] SISH 'Scrub if side human' tick box
@@ -1202,202 +1244,202 @@ td { padding: .5em; }
 ]]
 
 --[[-- AAR.
- Air-to-air refueling options. These are updated by ScenEdit_SetMission()
+ .. refueling options; these are updated by ScenEdit_SetMission()
  
 @table AAR
-@field[type=string] use_refuel_unrep
-@field[type=string] tankerusage
-@field[type=string] tankermissionlist
-@field[type=string] launchmissionwithouttankersinplace
-@field[type=string] tankerminnumber_total
-@field[type=string] tankerminnumber_airborne
-@field[type=string] tankerminnumber_station
-@field[type=string] maxreceiversinqueuepertanker_airborne
-@field[type=string] fuelqtytostartlookingfortanker_airborne
-@field[type=string] tankermaxdistance_airborne
+@field[type=string] use_refuel_unrep This is same as the one from Doctrine setting
+@field[type=string|number] tankerUsage Automatic(0), Mission(1)
+@field[type=bool] launchMissionWithoutTankersInPlace
+@field[type={ mission name|guid }] tankerMissionList Table of missions to use as source of refuellers
+@field[type=number] tankerMinNumber_total
+@field[type=number] tankerMinNumber_airborne
+@field[type=number] tankerMinNumber_station
+@field[type=number] maxReceiversInQueuePerTanker_airborne
+@field[type=number] fuelQtyToStartLookingForTanker_airborne Percentage of fuel (0-100)
+@field[type=string|number] tankerMaxDistance_airborne Use 'internal' or set a range. The code will match the lowest availble setting
 ]]
 
 --[[-- FerryMission.
-  options. These are updated by ScenEdit_SetMission()
+  .. options; these are updated by ScenEdit_SetMission()
  
 @table FerryMission
-@field[type=string] ferrybehavior
-@field[type=string] ferrythrottleaircraft
-@field[type=string] ferryaltitudeaircraft
-@field[type=string] ferryterrainfollowingaircraft
-@field[type=string] flightsize
-@field[type=string] minaircraftreq
-@field[type=string] useflightsize
-]]
+@field[type=string] ferryBehavior Values OneWay(0), Cycle(1), Random(2)
+@field[type=string] ferryThrottleAircraft
+@field[type=string] ferryAltitudeAircraft
+@field[type=bool] ferryTerrainFollowingAircraft
+@field[type=Size] flightSize
+@field[type=string] minAircraftReq
+@field[type=bool] useFlightSize
+]]
 
 --[[-- MineClearMission.
-  options. These are updated by ScenEdit_SetMission()
+  .. options; these are updated by ScenEdit_SetMission()
  
 @table MineClearMission
-@field[type=string] onethirdrule
-@field[type=string] transitthrottleaircraft
-@field[type=string] transitaltitudeaircraft
-@field[type=string] transitterrainfollowingaircraft
-@field[type=string] stationthrottleaircraft
-@field[type=string] stationaltitudeaircraft
-@field[type=string] stationterrainfollowingaircraft
-@field[type=string] transitthrottlesubmarine
-@field[type=string] transitdepthsubmarine
-@field[type=string] stationthrottlesubmarine
-@field[type=string] stationdepthsubmarine
-@field[type=string] transitthrottleship
-@field[type=string] stationthrottleship
-@field[type=string] flightsize
-@field[type=string] minaircraftreq
-@field[type=string] useflightsize
-@field[type=string] groupsize
-@field[type=string] usegroupsize
-@field[type=string] zone
+@field[type=bool] oneThirdRule
+@field[type=string] transitThrottleAircraft
+@field[type=string] transitAltitudeAircraft
+@field[type=bool] transitTerrainFollowingAircraft
+@field[type=string] stationThrottleAircraft
+@field[type=string] stationAltitudeAircraft
+@field[type=bool] stationTerrainFollowingAircraft
+@field[type=string] transitThrottleSubmarine
+@field[type=string] transitDepthSubmarine
+@field[type=string] stationThrottleSubmarine
+@field[type=string] stationDepthSubmarine
+@field[type=string] transitThrottleShip
+@field[type=string] stationThrottleShip
+@field[type=Size] flightSize
+@field[type=string] minAircraftReq
+@field[type=bool] useFlightSize
+@field[type=Size] groupSize
+@field[type=bool] useGroupSize
+@field[type={ name|guid }] zone Table of reference point names and/or guids
 ]]
 
 --[[-- MineMission.
-  options. These are updated by ScenEdit_SetMission()
+  .. options; these are updated by ScenEdit_SetMission()
  
 @table MineMission
-@field[type=string] onethirdrule
-@field[type=string] transitthrottleaircraft
-@field[type=string] transitaltitudeaircraft
-@field[type=string] transitterrainfollowingaircraft
-@field[type=string] stationthrottleaircraft
-@field[type=string] stationaltitudeaircraft
-@field[type=string] stationterrainfollowingaircraft
-@field[type=string] transitthrottlesubmarine
-@field[type=string] transitdepthsubmarine
-@field[type=string] stationthrottlesubmarine
-@field[type=string] stationdepthsubmarine
-@field[type=string] transitthrottleship
-@field[type=string] stationthrottleship
-@field[type=string] flightsize
+@field[type=bool] oneThirdRule
+@field[type=string] transitThrottleAircraft
+@field[type=string] transitAltitudeAircraft
+@field[type=bool] transitTerrainFollowingAircraft
+@field[type=string] stationThrottleAircraft
+@field[type=string] stationAltitudeAircraft
+@field[type=bool] stationTerrainFollowingAircraft
+@field[type=string] transitThrottleSubmarine
+@field[type=string] transitDepthSubmarine
+@field[type=string] stationThrottleSubmarine
+@field[type=string] stationDepthSubmarine
+@field[type=string] transitThrottleShip
+@field[type=string] stationThrottleShip
+@field[type=Size] flightSize
 @field[type=string] minaircraftreq
-@field[type=string] useflightsize
-@field[type=string] groupsize
-@field[type=string] usegroupsize
-@field[type=string] zone
-@field[type=string] armingdelay
+@field[type=bool] useFlightSize
+@field[type=Size] groupSize
+@field[type=bool] useGroupSize
+@field[type={ name|guid }] zone Table of reference point names and/or guids
+@field[type=time] armingdelay In format of 'days:hours:minutes:seconds' e.g. 1 day, 4 hours, 30 minutes would be '1:4:30:0'
 ]]
 
 --[[-- SupportMission.
-  options. These are updated by ScenEdit_SetMission()
+  .. options; these are updated by ScenEdit_SetMission()
  
 @table SupportMission
-@field[type=string] onethirdrule
-@field[type=string] transitthrottleaircraft
-@field[type=string]  transitaltitudeaircraft
-@field[type=string]  transitterrainfollowingaircraft
-@field[type=string] stationthrottleaircraft
-@field[type=string]  stationaltitudeaircraft
-@field[type=string]  stationterrainfollowingaircraft
-@field[type=string] transitthrottlesubmarine
-@field[type=string]  transitdepthsubmarine
-@field[type=string]  stationthrottlesubmarine
-@field[type=string] stationdepthsubmarine
-@field[type=string] transitthrottleship
-@field[type=string] stationthrottleship
-@field[type=string] flightsize
-@field[type=string] minaircraftreq
-@field[type=string] useflightsize
-@field[type=string] groupsize
-@field[type=string] usegroupsize
-@field[type=string] zone
-@field[type=string] looptype
-@field[type=string] onstation
-@field[type=string] onetimeonly
-@field[type=string] activeemcon
-@field[type=string] tankeronetime
-@field[type=string] tankermaxreceivers
+@field[type=bool] oneThirdRule
+@field[type=string] transitThrottleAircraft
+@field[type=string]  transitAltitudeAircraft
+@field[type=bool]  transitTerrainFollowingAircraft
+@field[type=string] stationThrottleAircraft
+@field[type=string]  stationAltitudeAircraft
+@field[type=bool]  stationTerrainFollowingAircraft
+@field[type=string] transitThrottleSubmarine
+@field[type=string]  transitDepthSubmarine
+@field[type=string]  stationThrottleSubmarine
+@field[type=string] stationDepthSubmarine
+@field[type=string] transitThrottleShip
+@field[type=string] stationThrottleShip
+@field[type=Size] flightSize
+@field[type=string] minAircraftReq
+@field[type=boo] useFlightSize
+@field[type=Size] groupSize
+@field[type=bool] useGroupSize
+@field[type={ name|guid}] zone Table of reference point names and/or guids
+@field[type=string] loopType Values of ContinousLoop(0) or SingleLoop(1)
+@field[type=string] onStation
+@field[type=bool] oneTimeOnly
+@field[type=bool] activeEMCON
+@field[type=bool] tankerOneTime
+@field[type=string] tankerMaxReceivers
 ]]
 
 --[[-- PatrolMission.
-  options. These are updated by ScenEdit_SetMission()
+  .. options; these are updated by ScenEdit_SetMission()
  
 @table PatrolMission
-@field[type=string] onethirdrule
-@field[type=string] checkopa
-@field[type=string] checkwwr
-@field[type=string] activeemcon
-@field[type=string] transitthrottleaircraft
-@field[type=string] transitaltitudeaircraft
-@field[type=string] transitterrainfollowingaircraft
-@field[type=string] stationthrottleaircraft
-@field[type=string] stationaltitudeaircraft
-@field[type=string] stationterrainfollowingaircraft
-@field[type=string] attackthrottleaircraft
-@field[type=string] attackaltitudeaircraft
-@field[type=string] attackterrainfollowingaircraft
-@field[type=string] attackdistanceaircraft
-@field[type=string] transitthrottlesubmarine
-@field[type=string] transitdepthsubmarine
-@field[type=string] stationthrottlesubmarine
-@field[type=string] stationdepthsubmarine
-@field[type=string] attackthrottlesubmarine
-@field[type=string] attackdepthsubmarine
-@field[type=string] attackdistancesubmarine
-@field[type=string] transitthrottleship
-@field[type=string] stationthrottleship
-@field[type=string] attackthrottleship
-@field[type=string] attackdistanceship
-@field[type=string] flightsize
-@field[type=string] minaircraftreq
-@field[type=string] useflightsize
-@field[type=string] groupsize
-@field[type=string] usegroupsize
-@field[type=string] prosecutionzone
-@field[type=string] patrolzone
+@field[type=bool] oneThirdRule True if activated
+@field[type=bool] checkOPA True if can investigate outside zones
+@field[type=bool] checkWWR True if can investigate within weapon range
+@field[type=bool] activeEMCON  True if active EMCON in patrol zone
+@field[type=string] transitThrottleAircraft
+@field[type=string] transitAltitudeAircraft
+@field[type=bool] transitTerrainFollowingAircraft True if terrain following
+@field[type=string] stationThrottleAircraft
+@field[type=string] stationAltitudeAircraft
+@field[type=bool] stationTerrainFollowingAircraft True if terrain following
+@field[type=string] attackThrottleAircraft
+@field[type=string] attackAltitudeAircraft
+@field[type=bool] attackTerrainFollowingAircraft True if terrain following
+@field[type=string] attackDistanceAircraft
+@field[type=string] transitThrottleSubmarine
+@field[type=string] transitDepthSubmarine
+@field[type=string] stationThrottleSubmarine
+@field[type=string] stationDepthSubmarine
+@field[type=string] attackThrottleSubmarine
+@field[type=string] attackDepthSubmarine
+@field[type=string] attackDistanceSubmarine
+@field[type=string] transitThrottleShip
+@field[type=string] stationThrottleShip
+@field[type=string] attackThrottleShip
+@field[type=string] attackDistanceShip
+@field[type=Size] flightSize
+@field[type=string] minAircraftReq
+@field[type=bool] useFlightSize True if min size required
+@field[type=Size] groupSize
+@field[type=bool] useGroupSize True if min size required
+@field[type={ name|guid }] prosecutionZone Table of reference point names and/or GUIDs
+@field[type={ name|guid }] patrolZone  Table of reference point names and/or GUIDs
 ]]
 
 --[[-- StrikeMission.
-  options. These are updated by ScenEdit_SetMission()
+  .. options; these are updated by ScenEdit_SetMission(). Note that these are split between the escorts and strikers
  
 @table StrikeMission
-@field[type=string] escortflightsizeshooter
-@field[type=string] escortminshooter
-@field[type=string] escortmaxshooter
-@field[type=string] escortresponseradius
-@field[type=string] escortuseflightsize
-@field[type=string] escortflightsizenonshooter
-@field[type=string] escortminnonshooter
-@field[type=string] escortmaxnonshooter
-@field[type=string] escortgroupsize
-@field[type=string] escortusegroupsize
-@field[type=string] strikeonetimeonly
-@field[type=string] strikeminimumtrigger
-@field[type=string] strikemax
-@field[type=string] strikeflightsize
-@field[type=string] strikeminaircraftreq
-@field[type=string] strikeuseflightsize
-@field[type=string] strikegroupsize
-@field[type=string] strikeusegroupsize
-@field[type=string] strikeautoplanner
-@field[type=string] strikepreplan
+@field[type=Size] escortFlightSizeShooter 
+@field[type=number] escortMinShooter
+@field[type=number] escortMaxShooter
+@field[type=number] escortResponseRadius
+@field[type=bool] escortUseFlightSize True if minimum size required
+@field[type=Size] escortFlightSizeNonshooter
+@field[type=number] escortMinNonshooter
+@field[type=number] escortMaxNonshooter
+@field[type=Size] escortGroupSize
+@field[type=bool] escortUseGroupSize  True if minimum size required
+@field[type=bool] strikeOneTimeOnly True if activated
+@field[type=string] strikeMinimumTrigger
+@field[type=number] strikeMax
+@field[type=Size] strikeFlightSize
+@field[type=number] strikeMinAircraftReq
+@field[type=bool] strikeUseFlightSize True if minimum size required
+@field[type=Size] strikeGroupSize
+@field[type=bool] strikeUseGroupSize True if minimum size required
+@field[type=bool] strikeAutoPlanner True if activated
+@field[type=bool] strikePreplan True if pre-planned target list only
 ]]
 
 --[[-- CargoMission.
-  options. These are updated by ScenEdit_SetMission()
+ .. options; these are updated by ScenEdit_SetMission()
  
 @table CargoMission
-@field[type=string] onethirdrule
-@field[type=string] transitthrottleaircraft
-@field[type=string]  transitaltitudeaircraft
-@field[type=string] stationthrottleaircraft
-@field[type=string]  stationaltitudeaircraft
-@field[type=string] transitthrottlesubmarine
-@field[type=string]  transitdepthsubmarine
-@field[type=string]  stationthrottlesubmarine
-@field[type=string]  stationdepthsubmarine
-@field[type=string] transitthrottleship
-@field[type=string]  stationthrottleship
-@field[type=string]  useflightsize
-@field[type=string]  usegroupsize
-@field[type=string]  zone
+@field[type=bool] oneThirdRule  True if activated
+@field[type=string] transitThrottleAircraft
+@field[type=string]  transitAltitudeAircraft
+@field[type=string] stationThrottleAircraft
+@field[type=string]  stationAltitudeAircraft
+@field[type=string] transitThrottleSubmarine
+@field[type=string]  transitDepthSubmarine
+@field[type=string]  stationThrottleSubmarine
+@field[type=string]  stationDepthSubmarine
+@field[type=string] transitThrottleShip
+@field[type=string]  stationThrottleShip
+@field[type=bool]  useFlightSize  True if minimum size required
+@field[type=bool]  useGroupSize True if minimum size required
+@field[type={ name|guid }] zone Table of reference point names and/or GUIDs
 ]]
 
 --[[-- DateTime.
- ... is displayed and changed as 'MM/DD/YYYY HH:MM:SS AM/PM' eg '8/13/2002 12:14 PM' LOCALE ???
+ ... is displayed and changed as per LOCALE e.g. US would be 'MM/DD/YYYY HH:MM:SS AM/PM' eg '8/13/2002 12:14 PM'
  
 @DataType DateTime
 ]]

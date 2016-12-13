@@ -40,8 +40,8 @@
 
 <h2>Contents</h2>
 <ul>
-<li><a href="#Selector_tables">Selector tables</a></li>
-<li><a href="#Wrapper_Descriptor_tables">Wrapper/Descriptor tables</a></li>
+<li><a href="#Selector">Selector</a></li>
+<li><a href="#Wrapper_Descriptor">Wrapper/Descriptor</a></li>
 <li><a href="#Data_types">Data types</a></li>
 <li><a href="#Functions">Functions</a></li>
 <li><a href="#Tables">Tables</a></li>
@@ -81,7 +81,7 @@
  These cover any special considerations for the data, such as longitude/latitude; degrees, DMS, N/S, E/W, etc.</p>
 
 
-<h2><a href="#Selector_tables">Selector tables</a></h2>
+<h2><a href="#Selector">Selector</a></h2>
 <table class="function_list">
 	<tr>
 	<td class="name" ><a href="#ContactSelector">ContactSelector</a></td>
@@ -90,6 +90,10 @@
 	<tr>
 	<td class="name" ><a href="#DoctrineSelector">DoctrineSelector</a></td>
 	<td class="summary">Selects a doctrine, for on a side, group, mission, or unit.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#Event">Event</a></td>
+	<td class="summary">Event.</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#NewMission">NewMission</a></td>
@@ -104,6 +108,10 @@
 	<td class="summary">Reference point selector.</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#SpecialAction">SpecialAction</a></td>
+	<td class="summary">Special action selector.</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#UnitSelector">UnitSelector</a></td>
 	<td class="summary">Select a unit.</td>
 	</tr>
@@ -116,7 +124,7 @@
 	<td class="summary">Select mount and weapon.</td>
 	</tr>
 </table>
-<h2><a href="#Wrapper_Descriptor_tables">Wrapper/Descriptor tables</a></h2>
+<h2><a href="#Wrapper_Descriptor">Wrapper/Descriptor</a></h2>
 <table class="function_list">
 	<tr>
 	<td class="name" ><a href="#Contact">Contact</a></td>
@@ -193,11 +201,15 @@
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
 	<tr>
+	<td class="name" ><a href="#GetScenarioTitle">GetScenarioTitle ()</a></td>
+	<td class="summary">Name of the scenario.</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#ScenEdit_AddExplosion">ScenEdit_AddExplosion (explosion)</a></td>
 	<td class="summary">Detonates a warhead at a specified location.</td>
 	</tr>
 	<tr>
-	<td class="name" ><a href="#ScenEdit_AddMission">ScenEdit_AddMission (SideName, MissionNameOrId, MissionType, MissionOptions)</a></td>
+	<td class="name" ><a href="#ScenEdit_AddMission">ScenEdit_AddMission (SideNameOrId, MissionNameOrId, MissionType, MissionOptions)</a></td>
 	<td class="summary">Add new mission.</td>
 	</tr>
 	<tr>
@@ -221,7 +233,7 @@
 	<td class="summary">Assigns targets to a Strike mission.</td>
 	</tr>
 	<tr>
-	<td class="name" ><a href="#ScenEdit_AssignUnitToMission">ScenEdit_AssignUnitToMission (unit, mission, escort)</a></td>
+	<td class="name" ><a href="#ScenEdit_AssignUnitToMission">ScenEdit_AssignUnitToMission (unitname, mission, escort)</a></td>
 	<td class="summary">Assign a unit to a mission.</td>
 	</tr>
 	<tr>
@@ -229,27 +241,48 @@
 	<td class="summary">Get the current scenario time.</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#ScenEdit_DeleteMission">ScenEdit_DeleteMission (SideNameOrId, MissionNameOrId)</a></td>
+	<td class="summary">Delete mission.</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#ScenEdit_DeleteReferencePoint">ScenEdit_DeleteReferencePoint (selector)</a></td>
 	<td class="summary">Delete a reference point.</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_DeleteUnit">ScenEdit_DeleteUnit (unit)</a></td>
-	<td class="summary">Deletes a unit based on a selector.</td>
+	<td class="summary">Deletes unit.</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_EndScenario">ScenEdit_EndScenario ()</a></td>
 	<td class="summary">Ends the current scenario.</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#ScenEdit_ExecuteEventAction">ScenEdit_ExecuteEventAction (EventDescriptionOrID)</a></td>
+	<td class="summary">Execute a Lua Event action script.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ScenEdit_ExecuteSpecialAction">ScenEdit_ExecuteSpecialAction (eventNameOrId)</a></td>
+	<td class="summary">Execute a Lua Special action script
+ ..</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ScenEdit_ExportMission">ScenEdit_ExportMission (SideNameOrId, MissionNameOrId)</a></td>
+	<td class="summary">Export mission parameters.</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#ScenEdit_GetDoctrine">ScenEdit_GetDoctrine (selector)</a></td>
 	<td class="summary">Gets the doctrine of the designated object.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ScenEdit_GetEvent">ScenEdit_GetEvent (EventDescriptionOrID)</a></td>
+	<td class="summary">Gets the properties of an event.</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_GetKeyValue">ScenEdit_GetKeyValue (key)</a></td>
 	<td class="summary">Gets the value for a key from the persistent key store.</td>
 	</tr>
 	<tr>
-	<td class="name" ><a href="#ScenEdit_GetMission">ScenEdit_GetMission (SideName, MissionNameOrId)</a></td>
+	<td class="name" ><a href="#ScenEdit_GetMission">ScenEdit_GetMission (SideNameOrId, MissionNameOrId)</a></td>
 	<td class="summary">Get details of a mission.</td>
 	</tr>
 	<tr>
@@ -277,6 +310,10 @@
 	<td class="summary">Gets the posture of one side towards another.</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#ScenEdit_GetSpecialAction">ScenEdit_GetSpecialAction (action_info)</a></td>
+	<td class="summary">Gets the properties of an existing special action.</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#ScenEdit_GetUnit">ScenEdit_GetUnit (unit)</a></td>
 	<td class="summary">Fetches a unit based on a selector.</td>
 	</tr>
@@ -289,7 +326,11 @@
 	<td class="summary">Imports an inst file.</td>
 	</tr>
 	<tr>
-	<td class="name" ><a href="#ScenEdit_KillUnit">ScenEdit_KillUnit (options)</a></td>
+	<td class="name" ><a href="#ScenEdit_ImportMission">ScenEdit_ImportMission (SideNameOrId, MissionNameOrId)</a></td>
+	<td class="summary">Import mission parameters.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ScenEdit_KillUnit">ScenEdit_KillUnit (unit)</a></td>
 	<td class="summary">Kill unit.</td>
 	</tr>
 	<tr>
@@ -321,6 +362,10 @@
 	<td class="summary">Sets the EMCON of the selected object.</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#ScenEdit_SetEvent">ScenEdit_SetEvent (EventDescriptionOrID, options)</a></td>
+	<td class="summary">Sets the properties of an event.</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#ScenEdit_SetKeyValue">ScenEdit_SetKeyValue (key, value)</a></td>
 	<td class="summary">Sets the value for a key in the persistent key store.</td>
 	</tr>
@@ -329,7 +374,7 @@
 	<td class="summary">Sets the loadout for a unit</td>
 	</tr>
 	<tr>
-	<td class="name" ><a href="#ScenEdit_SetMission">ScenEdit_SetMission (SideName, MissionNameOrId)</a></td>
+	<td class="name" ><a href="#ScenEdit_SetMission">ScenEdit_SetMission (SideName, MissionNameOrId, MissionOptions)</a></td>
 	<td class="summary">Set details for a mission.</td>
 	</tr>
 	<tr>
@@ -350,7 +395,7 @@
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_SetSpecialAction">ScenEdit_SetSpecialAction (action_info)</a></td>
-	<td class="summary">Sets the properties of an already existing special action with the specified information.</td>
+	<td class="summary">Sets the properties of an existing special action.</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_SetUnit">ScenEdit_SetUnit (unit)</a></td>
@@ -420,12 +465,8 @@
 	<td class="summary">Component.</td>
 	</tr>
 	<tr>
-	<td class="name" ><a href="#EventSelector">EventSelector</a></td>
-	<td class="summary">Event selector</td>
-	</tr>
-	<tr>
 	<td class="name" ><a href="#Explosion">Explosion</a></td>
-	<td class="summary">Defines a warhead to detonate.</td>
+	<td class="summary">Defines the warhead to detonate.</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#FerryMission">FerryMission</a></td>
@@ -488,10 +529,6 @@
 	<td class="summary">Side's unit.</td>
 	</tr>
 	<tr>
-	<td class="name" ><a href="#SpecialAction">SpecialAction</a></td>
-	<td class="summary">Special action selector</td>
-	</tr>
-	<tr>
 	<td class="name" ><a href="#StrikeMission">StrikeMission</a></td>
 	<td class="summary">StrikeMission.</td>
 	</tr>
@@ -513,7 +550,7 @@
 <br/>
 
 
-    <h2><a name="Selector_tables"></a>Selector tables</h2>
+    <h2><a name="Selector"></a>Selector</h2>
 
     <dl class="function">
     <dt>
@@ -588,6 +625,59 @@
 
 </dd>
     <dt>
+    <a name = "Event"></a>
+    <strong>Event</strong>
+    </dt>
+    <dd>
+    Event.
+
+    </ul>
+
+    <ul>
+        <li><span class="parameter">EventDescriptionOrID</span>
+            <span class="types"><span class="type">string</span></span>
+         The description or ID of the event
+        </li>
+        <li><span class="parameter">GUID</span>
+            <span class="types"><span class="type">string</span></span>
+         The GUID of the event [READONLY]
+        </li>
+        <li><span class="parameter">IsActive</span>
+            <span class="types"><span class="type">bool</span></span>
+         If the action is active to the player
+        </li>
+        <li><span class="parameter">IsRepeatable</span>
+            <span class="types"><span class="type">bool</span></span>
+         If the event can be triggered multiple times
+        </li>
+        <li><span class="parameter">Description</span>
+            <span class="types"><span class="type">string</span></span>
+         If specified, the new description for the event
+        </li>
+        <li><span class="parameter">Probability</span>
+            <span class="types"><span class="type">number</span></span>
+         If specified, a new probability for the event
+        </li>
+        <li><span class="parameter">triggers</span>
+            <span class="types"><span class="type">{ Actions }</span></span>
+         A table of actions for this event [READONLY]
+        </li>
+        <li><span class="parameter">triggers</span>
+            <span class="types"><span class="type">{ Actions }</span></span>
+         A table of actions for this event [READONLY]
+        </li>
+        <li><span class="parameter">triggers</span>
+            <span class="types"><span class="type">{ Actions }</span></span>
+         A table of actions for this event [READONLY]
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
     <a name = "NewMission"></a>
     <strong>NewMission</strong>
     </dt>
@@ -632,13 +722,13 @@
             <span class="types"><span class="type">string</span></span>
          The type of unit (Ship, Sub, Aircraft, Facility)
         </li>
-        <li><span class="parameter">name</span>
+        <li><span class="parameter">unitname</span>
             <span class="types"><span class="type">string</span></span>
          The name of the unit
         </li>
         <li><span class="parameter">side</span>
             <span class="types"><span class="type">string</span></span>
-         The side of the unit
+         The side name or GUID to add unit to
         </li>
         <li><span class="parameter">dbid</span>
             <span class="types"><span class="type">number</span></span>
@@ -715,6 +805,47 @@
 
 </dd>
     <dt>
+    <a name = "SpecialAction"></a>
+    <strong>SpecialAction</strong>
+    </dt>
+    <dd>
+    Special action selector.
+
+    </ul>
+
+    <ul>
+        <li><span class="parameter">GUID</span>
+            <span class="types"><span class="type">string</span></span>
+         The GUID of the special action [READONLY]
+        </li>
+        <li><span class="parameter">ActionNameOrID</span>
+            <span class="types"><span class="type">string</span></span>
+         The name or ID of the special action
+        </li>
+        <li><span class="parameter">IsActive</span>
+            <span class="types"><span class="type">bool</span></span>
+         If the action is visible to the player
+        </li>
+        <li><span class="parameter">IsRepeatable</span>
+            <span class="types"><span class="type">bool</span></span>
+         If the player can use the action multiple times
+        </li>
+        <li><span class="parameter">NewName</span>
+            <span class="types"><span class="type">string</span></span>
+         If specified, the new name of the action
+        </li>
+        <li><span class="parameter">Description</span>
+            <span class="types"><span class="type">string</span></span>
+         If specified, the new description for the action
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
     <a name = "UnitSelector"></a>
     <strong>UnitSelector</strong>
     </dt>
@@ -764,11 +895,11 @@ If both are given, then the GUID is used preferentially.
     <ul>
         <li><span class="parameter">side</span>
             <span class="types"><span class="type">string</span></span>
-         The side of the unit with magazine
+         The side name/GUID of the unit with magazine
         </li>
-        <li><span class="parameter">name</span>
+        <li><span class="parameter">unitname</span>
             <span class="types"><span class="type">string</span></span>
-         The name of unit with magazine
+         The name/GUID of unit with magazine
         </li>
         <li><span class="parameter">guid</span>
             <span class="types"><span class="type">string</span></span>
@@ -824,11 +955,11 @@ If both are given, then the GUID is used preferentially.
     <ul>
         <li><span class="parameter">side</span>
             <span class="types"><span class="type">string</span></span>
-         The side of the unit with mount
+         The side name/GUID of the unit with mount
         </li>
-        <li><span class="parameter">name</span>
+        <li><span class="parameter">unitname</span>
             <span class="types"><span class="type">string</span></span>
-         The name of unit with mount
+         The name/GUID of unit with mount
         </li>
         <li><span class="parameter">guid</span>
             <span class="types"><span class="type">string</span></span>
@@ -862,7 +993,7 @@ If both are given, then the GUID is used preferentially.
 
 </dd>
 </dl>
-    <h2><a name="Wrapper_Descriptor_tables"></a>Wrapper/Descriptor tables</h2>
+    <h2><a name="Wrapper_Descriptor"></a>Wrapper/Descriptor</h2>
 
     <dl class="function">
     <dt>
@@ -905,6 +1036,10 @@ If both are given, then the GUID is used preferentially.
         </li>
         <li><span class="parameter">type</span>
             <span class="types"><span class="type">string</span></span>
+         Type of contact. [READONLY]
+        </li>
+        <li><span class="parameter">typed</span>
+            <span class="types"><span class="type">number</span></span>
          Type of contact. [READONLY]
         </li>
         <li><span class="parameter">areaofuncertainty</span>
@@ -1081,29 +1216,23 @@ If both are given, then the GUID is used preferentially.
         </li>
         <li><span class="parameter">name</span>
             <span class="types"><span class="type">string</span></span>
-
-
-
+         Name of mission
         </li>
         <li><span class="parameter">isactive</span>
             <span class="types"><span class="type">bool</span></span>
-
-
-
+         True if mission is currently active
         </li>
         <li><span class="parameter">side</span>
             <span class="types"><span class="type">string</span></span>
-
-
-
+         Mission belongs to side
         </li>
         <li><span class="parameter">starttime</span>
             <span class="types"><a class="type" href="index.html#DateTime">DateTime</a></span>
-         Time mission is started
+         Time mission starts
         </li>
         <li><span class="parameter">endtime</span>
             <span class="types"><a class="type" href="index.html#DateTime">DateTime</a></span>
-         Time mission is ended
+         Time mission ends
         </li>
         <li><span class="parameter">type</span>
             <span class="types"><span class="type">MissionClass</span></span>
@@ -1413,6 +1542,10 @@ If both are given, then the GUID is used preferentially.
             <span class="types"><span class="type">number</span></span>
           how long aircraft has been flying. [READONLY]
         </li>
+        <li><span class="parameter">loadoutdbid</span>
+            <span class="types"><span class="type">number</span></span>
+          current aircraft loadout DBID. [READONLY]
+        </li>
         <li><span class="parameter">unitstate</span>
             <span class="types"><span class="type">string</span></span>
          Message on unit status. [READONLY]
@@ -1532,7 +1665,7 @@ If both are given, then the GUID is used preferentially.
     </dt>
     <dd>
     DateTime.
- ... is displayed and changed as 'MM/DD/YYYY HH:MM:SS AM/PM' eg '8/13/2002 12:14 PM' LOCALE ???
+ ... is displayed and changed as per LOCALE e.g. US would be 'MM/DD/YYYY HH:MM:SS AM/PM' eg '8/13/2002 12:14 PM'
 
 
     </ul>
@@ -1711,6 +1844,27 @@ Key/value pairs added to the persistent store is retained when the game is saved
 
     <dl class="function">
     <dt>
+    <a name = "GetScenarioTitle"></a>
+    <strong>GetScenarioTitle ()</strong>
+    </dt>
+    <dd>
+    Name of the scenario.
+
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">string</span></span>
+        The title of the scenario
+    </ol>
+
+
+
+
+</dd>
+    <dt>
     <a name = "ScenEdit_AddExplosion"></a>
     <strong>ScenEdit_AddExplosion (explosion)</strong>
     </dt>
@@ -1723,7 +1877,7 @@ Key/value pairs added to the persistent store is retained when the game is saved
     <ul>
         <li><span class="parameter">explosion</span>
             <span class="types"><a class="type" href="index.html#Explosion">Explosion</a></span>
-         Describes the <code>explosion</code>.
+         Describes the explosion.
         </li>
     </ul>
 
@@ -1738,7 +1892,7 @@ Key/value pairs added to the persistent store is retained when the game is saved
 </dd>
     <dt>
     <a name = "ScenEdit_AddMission"></a>
-    <strong>ScenEdit_AddMission (SideName, MissionNameOrId, MissionType, MissionOptions)</strong>
+    <strong>ScenEdit_AddMission (SideNameOrId, MissionNameOrId, MissionType, MissionOptions)</strong>
     </dt>
     <dd>
     Add new mission.
@@ -1747,7 +1901,7 @@ Key/value pairs added to the persistent store is retained when the game is saved
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">SideName</span>
+        <li><span class="parameter">SideNameOrId</span>
             <span class="types"><span class="type">string</span></span>
          The mission side
         </li>
@@ -1761,7 +1915,7 @@ Key/value pairs added to the persistent store is retained when the game is saved
         </li>
         <li><span class="parameter">MissionOptions</span>
             <span class="types"><a class="type" href="index.html#NewMission">NewMission</a></span>
-         The mission specific options
+         The mission specific options as a table
         </li>
     </ul>
 
@@ -1769,7 +1923,7 @@ Key/value pairs added to the persistent store is retained when the game is saved
     <ol>
 
            <span class="types"><a class="type" href="index.html#Mission">Mission</a></span>
-        A mission descriptor if the mission exists or nil otherwise.
+        A mission descriptor of the added mission or nil otherwise.
     </ol>
 
 
@@ -1843,7 +1997,7 @@ The descriptor <b>must</b> contain at least a name, side, latitude and longitude
 
     <h3>Usage:</h3>
     <ul>
-        <pre class="example">ScenEdit_AddReloadsToUnit({name=<span class="string">'Mech Inf #1'</span>, w_dbid=<span class="number">773</span>, number=<span class="number">1</span>, w_max=<span class="number">10</span>})</pre>
+        <pre class="example">ScenEdit_AddReloadsToUnit({unitname=<span class="string">'Mech Inf #1'</span>, w_dbid=<span class="number">773</span>, number=<span class="number">1</span>, w_max=<span class="number">10</span>})</pre>
     </ul>
 
 </dd>
@@ -1878,7 +2032,7 @@ The descriptor <b>must</b> contain at least a name, side, latitude and longitude
         <li><pre class="example">ScenEdit_AddUnit({<span class="global">type</span> = <span class="string">'Aircraft'</span>, name = <span class="string">'F-15C Eagle'</span>, loadoutid = <span class="number">16934</span>,
 heading = <span class="number">0</span>, dbid = <span class="number">3500</span>, side = <span class="string">'NATO'</span>, Latitude=<span class="string">"N46.00.00"</span>,Longitude=<span class="string">"E25.00.00"</span>,
 altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="string">"false"</span>,holdfire=<span class="string">"true"</span>,proficiency=<span class="number">4</span>})</pre></li>
-        <li><pre class="example">ScenEdit_AddUnit({<span class="global">type</span> = <span class="string">'Air'</span>, name = <span class="string">'F-15C Eagle'</span>, loadoutid = <span class="number">16934</span>, dbid = <span class="number">3500</span>, side = <span class="string">'NATO'</span>, Lat=<span class="string">"5.123"</span>,Lon=<span class="string">"-12.51"</span>,alt=<span class="number">5000</span>})</pre></li>
+        <li><pre class="example">ScenEdit_AddUnit({<span class="global">type</span> = <span class="string">'Air'</span>, unitname = <span class="string">'F-15C Eagle'</span>, loadoutid = <span class="number">16934</span>, dbid = <span class="number">3500</span>, side = <span class="string">'NATO'</span>, Lat=<span class="string">"5.123"</span>,Lon=<span class="string">"-12.51"</span>,alt=<span class="number">5000</span>})</pre></li>
     </ul>
 
 </dd>
@@ -1910,7 +2064,7 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
 
     <h3>Usage:</h3>
     <ul>
-        <pre class="example">ScenEdit_AddWeaponToUnitMagazine({name=<span class="string">'Ammo'</span>, w_dbid=<span class="number">773</span>, number=<span class="number">1</span>, w_max=<span class="number">10</span>})</pre>
+        <pre class="example">ScenEdit_AddWeaponToUnitMagazine({unitname=<span class="string">'Ammo'</span>, w_dbid=<span class="number">773</span>, number=<span class="number">1</span>, w_max=<span class="number">10</span>})</pre>
     </ul>
 
 </dd>
@@ -1921,8 +2075,8 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     <dd>
     Assigns targets to a Strike mission. </p>
 
-<p>The 'UnitX' can be used as the unit descriptor.
-Contacts can also be assigned. Refer to the VP_ functions for details
+<p> 'UnitX' can be used as a unit descriptor.
+ Contacts can also be assigned. Refer to the VP_ functions for details
 
     </ul>
 
@@ -1934,7 +2088,7 @@ Contacts can also be assigned. Refer to the VP_ functions for details
         </li>
         <li><span class="parameter">MissionNameOrID</span>
             <span class="types"><span class="type">string</span></span>
-         The mission
+         The mission to update
         </li>
     </ul>
 
@@ -1949,13 +2103,14 @@ Contacts can also be assigned. Refer to the VP_ functions for details
 
     <h3>Usage:</h3>
     <ul>
-        <pre class="example">ScenEdit_AssignUnitAsTarget({<span class="string">'target1'</span>, <span class="string">'target2'</span>}, <span class="string">'Land strike'</span>)</pre>
+        <li><pre class="example">ScenEdit_AssignUnitAsTarget({<span class="string">'target1'</span>, <span class="string">'target2'</span>}, <span class="string">'Land strike'</span>)</pre></li>
+        <li><pre class="example">ScenEdit_AssignUnitAsTarget(<span class="string">'UnitX'</span>, <span class="string">'Land strike'</span>)</pre></li>
     </ul>
 
 </dd>
     <dt>
     <a name = "ScenEdit_AssignUnitToMission"></a>
-    <strong>ScenEdit_AssignUnitToMission (unit, mission, escort)</strong>
+    <strong>ScenEdit_AssignUnitToMission (unitname, mission, escort)</strong>
     </dt>
     <dd>
     Assign a unit to a mission. </p>
@@ -1968,13 +2123,13 @@ The 'UnitX' can be used as the unit descriptor
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">unit</span>
+        <li><span class="parameter">unitname</span>
             <span class="types"><span class="type">string</span></span>
-         The name or GUID of the unit to assign
+         The name/GUID of the unit to assign
         </li>
         <li><span class="parameter">mission</span>
             <span class="types"><span class="type">string</span></span>
-         The mission to execute
+         The mission name/GUID to use
         </li>
         <li><span class="parameter">escort</span>
             <span class="types"><span class="type">bool</span></span>
@@ -2028,6 +2183,43 @@ The 'UnitX' can be used as the unit descriptor
 
 </dd>
     <dt>
+    <a name = "ScenEdit_DeleteMission"></a>
+    <strong>ScenEdit_DeleteMission (SideNameOrId, MissionNameOrId)</strong>
+    </dt>
+    <dd>
+    Delete mission.
+ .. unassigns any units attached to it.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">SideNameOrId</span>
+            <span class="types"><span class="type">string</span></span>
+         The mission side
+        </li>
+        <li><span class="parameter">MissionNameOrId</span>
+            <span class="types"><span class="type">string</span></span>
+         The mission name
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        True if mission has been removed.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> mission = ScenEdit_AddMission(<span class="string">'USA'</span>,<span class="string">'Marker strike'</span>,<span class="string">'strike'</span>,{<span class="global">type</span>=<span class="string">'land'</span>})</pre>
+    </ul>
+
+</dd>
+    <dt>
     <a name = "ScenEdit_DeleteReferencePoint"></a>
     <strong>ScenEdit_DeleteReferencePoint (selector)</strong>
     </dt>
@@ -2062,15 +2254,17 @@ The 'UnitX' can be used as the unit descriptor
     <strong>ScenEdit_DeleteUnit (unit)</strong>
     </dt>
     <dd>
-    Deletes a unit based on a selector.
+    Deletes unit.
+ .. and no event triggers.
 
     </ul>
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">unit</span>
-            <span class="types"><a class="type" href="index.html#Unit">Unit</a></span>
-         The unit to delete. Must be at least a selector.
+
+
+
         </li>
     </ul>
 
@@ -2079,7 +2273,7 @@ The 'UnitX' can be used as the unit descriptor
 
     <h3>Usage:</h3>
     <ul>
-        <pre class="example">ScenEdit_DeleteUnit({side=<span class="string">"United States"</span>, name=<span class="string">"USS Abcd"</span>})</pre>
+        <pre class="example">ScenEdit_DeleteUnit({side=<span class="string">"United States"</span>, unitname=<span class="string">"USS Abcd"</span>})</pre>
     </ul>
 
 </dd>
@@ -2104,20 +2298,20 @@ The 'UnitX' can be used as the unit descriptor
 </dd>
     <dt>
     <a name = "ScenEdit_ExecuteEventAction"></a>
-    <strong>ScenEdit_ExecuteEventAction (eventNameOrId)</strong>
+    <strong>ScenEdit_ExecuteEventAction (EventDescriptionOrID)</strong>
     </dt>
     <dd>
-    Execute a Lua Event action script
- ..  but does not show results of execution of the action
+    Execute a Lua Event action script.
+ .. but does not show results of execution of the action
 
 
     </ul>
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">eventNameOrId</span>
+        <li><span class="parameter">EventDescriptionOrID</span>
             <span class="types"><span class="type">string</span></span>
-         The name or ID of the event action
+         The description or ID of the event action
         </li>
     </ul>
 
@@ -2163,6 +2357,44 @@ The 'UnitX' can be used as the unit descriptor
 
 </dd>
     <dt>
+    <a name = "ScenEdit_ExportMission"></a>
+    <strong>ScenEdit_ExportMission (SideNameOrId, MissionNameOrId)</strong>
+    </dt>
+    <dd>
+    Export mission parameters.
+ .. as a XML file in folder Command_base/Defaults.
+ [Experimental as this should really be treated like an attachment so can be imported with Scenario]
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">SideNameOrId</span>
+            <span class="types"><span class="type">string</span></span>
+         The mission side
+        </li>
+        <li><span class="parameter">MissionNameOrId</span>
+            <span class="types"><span class="type">string</span></span>
+         The mission name
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">{ guid }</span></span>
+        Mission GUID exported.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> mission = ScenEdit_ExportMission(<span class="string">'USA'</span>,<span class="string">'Marker strike'</span>})</pre>
+    </ul>
+
+</dd>
+    <dt>
     <a name = "ScenEdit_GetDoctrine"></a>
     <strong>ScenEdit_GetDoctrine (selector)</strong>
     </dt>
@@ -2198,21 +2430,27 @@ The 'UnitX' can be used as the unit descriptor
 </dd>
     <dt>
     <a name = "ScenEdit_GetEvent"></a>
-    <strong>ScenEdit_GetEvent (eventname)</strong>
+    <strong>ScenEdit_GetEvent (EventDescriptionOrID)</strong>
     </dt>
     <dd>
-    Gets the properties of an existing event.
+    Gets the properties of an event.
 
     </ul>
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">eventname</span>
+        <li><span class="parameter">EventDescriptionOrID</span>
             <span class="types"><span class="type">string</span></span>
-         The event to modify
+         The event to retrieve
         </li>
     </ul>
 
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="index.html#Event">Event</a></span>
+        The event details
+    </ol>
 
 
 
@@ -2255,7 +2493,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>) <span class="comment">-- r
 </dd>
     <dt>
     <a name = "ScenEdit_GetMission"></a>
-    <strong>ScenEdit_GetMission (SideName, MissionNameOrId)</strong>
+    <strong>ScenEdit_GetMission (SideNameOrId, MissionNameOrId)</strong>
     </dt>
     <dd>
     Get details of a mission.
@@ -2264,7 +2502,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>) <span class="comment">-- r
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">SideName</span>
+        <li><span class="parameter">SideNameOrId</span>
             <span class="types"><span class="type">string</span></span>
          The mission side
         </li>
@@ -2477,18 +2715,18 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>) <span class="comment">-- r
 </dd>
     <dt>
     <a name = "ScenEdit_GetSpecialAction"></a>
-    <strong>ScenEdit_GetSpecialAction (table)</strong>
+    <strong>ScenEdit_GetSpecialAction (action_info)</strong>
     </dt>
     <dd>
-    Gets the properties of an existing event.
+    Gets the properties of an existing special action.
 
     </ul>
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">table</span>
-            <span class="types"><span class="type">string</span></span>
-         The event to modify
+        <li><span class="parameter">action_info</span>
+            <span class="types"><a class="type" href="index.html#SpecialAction">SpecialAction</a></span>
+         The special action to retrieve
         </li>
     </ul>
 
@@ -2528,7 +2766,7 @@ then the function returns nil instead of producing an exception.
 
     <h3>Usage:</h3>
     <ul>
-        <pre class="example">ScenEdit_GetUnit({side=<span class="string">"United States"</span>, name=<span class="string">"USS Test"</span>})</pre>
+        <pre class="example">ScenEdit_GetUnit({side=<span class="string">"United States"</span>, unitname=<span class="string">"USS Test"</span>})</pre>
     </ul>
 
 </dd>
@@ -2581,19 +2819,57 @@ then the function returns nil instead of producing an exception.
 
 </dd>
     <dt>
-    <a name = "ScenEdit_KillUnit"></a>
-    <strong>ScenEdit_KillUnit (options)</strong>
+    <a name = "ScenEdit_ImportMission"></a>
+    <strong>ScenEdit_ImportMission (SideNameOrId, MissionNameOrId)</strong>
     </dt>
     <dd>
-    Kill unit.
- ... and triggers event.
-(options)
+    Import mission parameters.
+ .. from a XML file in folder Command_base/Defaults.
+ [Experimental as this should really be treated like an attachment so can be imported with Scenario]
 
     </ul>
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">options</span>
+        <li><span class="parameter">SideNameOrId</span>
+            <span class="types"><span class="type">string</span></span>
+         The mission side
+        </li>
+        <li><span class="parameter">MissionNameOrId</span>
+            <span class="types"><span class="type">string</span></span>
+         The mission name
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">{ guid }</span></span>
+        Mission GUID imported.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> mission = ScenEdit_ExportMission(<span class="string">'USA'</span>,<span class="string">'Marker strike'</span>})</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_KillUnit"></a>
+    <strong>ScenEdit_KillUnit (unit)</strong>
+    </dt>
+    <dd>
+    Kill unit.
+ ... and triggers event.
+(unit)
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">unit</span>
 
 
 
@@ -2611,7 +2887,7 @@ then the function returns nil instead of producing an exception.
 
     <h3>Usage:</h3>
     <ul>
-        <pre class="example">ScenEdit_KillUnit({side=<span class="string">'SideA'</span>,name=<span class="string">'ship'</span>})</pre>
+        <pre class="example">ScenEdit_KillUnit({side=<span class="string">'SideA'</span>,unitname=<span class="string">'ship'</span>})</pre>
     </ul>
 
 </dd>
@@ -2639,7 +2915,7 @@ then the function returns nil instead of producing an exception.
     <h3>Returns:</h3>
     <ol>
 
-        No return value - user response is lost.
+        button number.
     </ol>
 
 
@@ -2701,9 +2977,9 @@ then the function returns nil instead of producing an exception.
 
     <h3>Usage:</h3>
     <ul>
-        <li><pre class="example">ScenEdit_RefuelUnit({side=<span class="string">"United States"</span>, name=<span class="string">"USS Test"</span>})</pre></li>
-        <li><pre class="example">ScenEdit_RefuelUnit({side=<span class="string">"United States"</span>, name=<span class="string">"USS Test"</span>, tanker=<span class="string">"Hose #1"</span>})</pre></li>
-        <li><pre class="example">ScenEdit_RefuelUnit({side=<span class="string">"United States"</span>, name=<span class="string">"USS Test"</span>, missions={<span class="string">"Pitstop"</span>}})</pre></li>
+        <li><pre class="example">ScenEdit_RefuelUnit({side=<span class="string">"United States"</span>, unitname=<span class="string">"USS Test"</span>})</pre></li>
+        <li><pre class="example">ScenEdit_RefuelUnit({side=<span class="string">"United States"</span>, unitname=<span class="string">"USS Test"</span>, tanker=<span class="string">"Hose #1"</span>})</pre></li>
+        <li><pre class="example">ScenEdit_RefuelUnit({side=<span class="string">"United States"</span>, unitname=<span class="string">"USS Test"</span>, missions={<span class="string">"Pitstop"</span>}})</pre></li>
     </ul>
 
 </dd>
@@ -2714,7 +2990,7 @@ then the function returns nil instead of producing an exception.
     <dd>
     Removes targets from a Strike mission. </p>
 
-<p>The 'UnitX' can be used as the unit descriptor
+<p>The 'UnitX' can be used as a unit descriptor
 
     </ul>
 
@@ -2864,21 +3140,21 @@ The file to find will be of the form [Command base directory]/Lua/[<code>script<
 </dd>
     <dt>
     <a name = "ScenEdit_SetEvent"></a>
-    <strong>ScenEdit_SetEvent (eventname, options)</strong>
+    <strong>ScenEdit_SetEvent (EventDescriptionOrID, options)</strong>
     </dt>
     <dd>
-    Sets the properties of an existing event.
+    Sets the properties of an event.
 
     </ul>
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">eventname</span>
+        <li><span class="parameter">EventDescriptionOrID</span>
             <span class="types"><span class="type">string</span></span>
          The event to modify
         </li>
         <li><span class="parameter">options</span>
-            <span class="types"><span class="type">Event</span></span>
+            <span class="types"><a class="type" href="index.html#Event">Event</a></span>
          The event options to modify
         </li>
     </ul>
@@ -2939,6 +3215,12 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>) <span class="comment">-- r
         </li>
     </ul>
 
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        True
+    </ol>
 
 
 
@@ -2946,7 +3228,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>) <span class="comment">-- r
 </dd>
     <dt>
     <a name = "ScenEdit_SetMission"></a>
-    <strong>ScenEdit_SetMission (SideName, MissionNameOrId)</strong>
+    <strong>ScenEdit_SetMission (SideName, MissionNameOrId, MissionOptions)</strong>
     </dt>
     <dd>
     Set details for a mission.
@@ -2962,6 +3244,10 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>) <span class="comment">-- r
         <li><span class="parameter">MissionNameOrId</span>
             <span class="types"><span class="type">string</span></span>
          The mission name
+        </li>
+        <li><span class="parameter">MissionOptions</span>
+            <span class="types"><a class="type" href="index.html#Mission">Mission</a></span>
+         The mission options as a table.
         </li>
     </ul>
 
@@ -3036,7 +3322,7 @@ The 'area' selector is useful for changing some common attribute, like locking o
     <ul>
         <li><span class="parameter">side</span>
             <span class="types"><span class="type">string</span></span>
-         The name of the side
+         The name/GUID of the side
         </li>
         <li><span class="parameter">score</span>
             <span class="types"><span class="type">num</span></span>
@@ -3048,6 +3334,12 @@ The 'area' selector is useful for changing some common attribute, like locking o
         </li>
     </ul>
 
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">num</span></span>
+        The new score for the side
+    </ol>
 
 
 
@@ -3150,7 +3442,7 @@ The 'area' selector is useful for changing some common attribute, like locking o
     <strong>ScenEdit_SetSpecialAction (action_info)</strong>
     </dt>
     <dd>
-    Sets the properties of an already existing special action with the specified information.
+    Sets the properties of an existing special action.
 
     </ul>
 
@@ -3195,11 +3487,11 @@ The 'area' selector is useful for changing some common attribute, like locking o
 
     <h3>Usage:</h3>
     <ul>
-        <li><pre class="example">ScenEdit_SetUnit({side=<span class="string">"United States"</span>, name=<span class="string">"USS Test"</span>, lat = <span class="number">5</span>})</pre></li>
-        <li><pre class="example">ScenEdit_SetUnit({side=<span class="string">"United States"</span>, name=<span class="string">"USS Test"</span>, lat = <span class="number">5</span>})</pre></li>
-        <li><pre class="example">ScenEdit_SetUnit({side=<span class="string">"United States"</span>, name=<span class="string">"USS Test"</span>, lat = <span class="number">5</span>, lon = <span class="string">"N50.20.10"</span>})</pre></li>
-        <li><pre class="example">ScenEdit_SetUnit({side=<span class="string">"United States"</span>, name=<span class="string">"USS Test"</span>, newname=<span class="string">"USS Barack Obama"</span>})</pre></li>
-        <li><pre class="example">ScenEdit_SetUnit({side=<span class="string">"United States"</span>, name=<span class="string">"USS Test"</span>, heading=<span class="number">0</span>, HoldPosition=<span class="number">1</span>, HoldFire=<span class="number">1</span>,Proficiency=<span class="string">"Ace"</span>, Autodetectable=<span class="string">"yes"</span>})</pre></li>
+        <li><pre class="example">ScenEdit_SetUnit({side=<span class="string">"United States"</span>, unitname=<span class="string">"USS Test"</span>, lat = <span class="number">5</span>})</pre></li>
+        <li><pre class="example">ScenEdit_SetUnit({side=<span class="string">"United States"</span>, unitname=<span class="string">"USS Test"</span>, lat = <span class="number">5</span>})</pre></li>
+        <li><pre class="example">ScenEdit_SetUnit({side=<span class="string">"United States"</span>, unitname=<span class="string">"USS Test"</span>, lat = <span class="number">5</span>, lon = <span class="string">"N50.20.10"</span>})</pre></li>
+        <li><pre class="example">ScenEdit_SetUnit({side=<span class="string">"United States"</span>, unitname=<span class="string">"USS Test"</span>, newname=<span class="string">"USS Barack Obama"</span>})</pre></li>
+        <li><pre class="example">ScenEdit_SetUnit({side=<span class="string">"United States"</span>, unitname=<span class="string">"USS Test"</span>, heading=<span class="number">0</span>, HoldPosition=<span class="number">1</span>, HoldFire=<span class="number">1</span>,Proficiency=<span class="string">"Ace"</span>, Autodetectable=<span class="string">"yes"</span>})</pre></li>
     </ul>
 
 </dd>
@@ -3234,7 +3526,7 @@ The 'area' selector is useful for changing some common attribute, like locking o
 
     <h3>Usage:</h3>
     <ul>
-        <pre class="example">ScenEdit_SetUnitDamage(<span class="string">'{side='</span>SideA<span class="string">',name='</span>Ship<span class="string">',fires=1,components={{'</span>rudder<span class="string">','</span>medium<span class="string">'},{'</span><span class="global">type</span><span class="string">',type='</span>sensor<span class="string">',1}}}'</span>)</pre>
+        <pre class="example">ScenEdit_SetUnitDamage(<span class="string">'{side='</span>SideA<span class="string">',unitname='</span>Ship<span class="string">',fires=1,components={{'</span>rudder<span class="string">','</span>medium<span class="string">'},{'</span><span class="global">type</span><span class="string">',type='</span>sensor<span class="string">',1}}}'</span>)</pre>
     </ul>
 
 </dd>
@@ -3320,7 +3612,7 @@ conditions are applied globally.
     <ul>
         <li><span class="parameter">side</span>
             <span class="types"><span class="type">string</span></span>
-         The side to display the message on
+         The side name/guid to display the message on
         </li>
         <li><span class="parameter">message</span>
             <span class="types"><span class="type">string</span></span>
@@ -3559,7 +3851,7 @@ Otherwise, a nil is returned.
     </dt>
     <dd>
     AAR.
- Air-to-air refueling options. These are updated by ScenEdit_SetMission()
+ .. refueling options; these are updated by ScenEdit_SetMission()
 
 
     </ul>
@@ -3568,63 +3860,53 @@ Otherwise, a nil is returned.
     <ul>
         <li><span class="parameter">use_refuel_unrep</span>
             <span class="types"><span class="type">string</span></span>
+         This is same as the one from Doctrine setting
+        </li>
+        <li><span class="parameter">tankerUsage</span>
+            <span class="types"><span class="type">string</span> or <span class="type">number</span></span>
+         Automatic(0), Mission(1)
+        </li>
+        <li><span class="parameter">launchMissionWithoutTankersInPlace</span>
+            <span class="types"><span class="type">bool</span></span>
 
 
 
         </li>
-        <li><span class="parameter">tankerusage</span>
-            <span class="types"><span class="type">string</span></span>
+        <li><span class="parameter">tankerMissionList</span>
+            <span class="types"><span class="type">{ mission name</span> or <span class="type">guid }</span></span>
+         Table of missions to use as source of refuellers
+        </li>
+        <li><span class="parameter">tankerMinNumber_total</span>
+            <span class="types"><span class="type">number</span></span>
 
 
 
         </li>
-        <li><span class="parameter">tankermissionlist</span>
-            <span class="types"><span class="type">string</span></span>
+        <li><span class="parameter">tankerMinNumber_airborne</span>
+            <span class="types"><span class="type">number</span></span>
 
 
 
         </li>
-        <li><span class="parameter">launchmissionwithouttankersinplace</span>
-            <span class="types"><span class="type">string</span></span>
+        <li><span class="parameter">tankerMinNumber_station</span>
+            <span class="types"><span class="type">number</span></span>
 
 
 
         </li>
-        <li><span class="parameter">tankerminnumber_total</span>
-            <span class="types"><span class="type">string</span></span>
+        <li><span class="parameter">maxReceiversInQueuePerTanker_airborne</span>
+            <span class="types"><span class="type">number</span></span>
 
 
 
         </li>
-        <li><span class="parameter">tankerminnumber_airborne</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
+        <li><span class="parameter">fuelQtyToStartLookingForTanker_airborne</span>
+            <span class="types"><span class="type">number</span></span>
+         Percentage of fuel (0-100)
         </li>
-        <li><span class="parameter">tankerminnumber_station</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">maxreceiversinqueuepertanker_airborne</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">fuelqtytostartlookingfortanker_airborne</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">tankermaxdistance_airborne</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
+        <li><span class="parameter">tankerMaxDistance_airborne</span>
+            <span class="types"><span class="type">string</span> or <span class="type">number</span></span>
+         Use 'internal' or set a range. The code will match the lowest availble setting
         </li>
     </ul>
 
@@ -3639,96 +3921,88 @@ Otherwise, a nil is returned.
     </dt>
     <dd>
     CargoMission.
-  options. These are updated by ScenEdit_SetMission()
+ .. options; these are updated by ScenEdit_SetMission()
 
 
     </ul>
 
     <h3>Fields:</h3>
     <ul>
-        <li><span class="parameter">onethirdrule</span>
+        <li><span class="parameter">oneThirdRule</span>
+            <span class="types"><span class="type">bool</span></span>
+          True if activated
+        </li>
+        <li><span class="parameter">transitThrottleAircraft</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">transitthrottleaircraft</span>
+        <li><span class="parameter">transitAltitudeAircraft</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">transitaltitudeaircraft</span>
+        <li><span class="parameter">stationThrottleAircraft</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">stationthrottleaircraft</span>
+        <li><span class="parameter">stationAltitudeAircraft</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">stationaltitudeaircraft</span>
+        <li><span class="parameter">transitThrottleSubmarine</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">transitthrottlesubmarine</span>
+        <li><span class="parameter">transitDepthSubmarine</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">transitdepthsubmarine</span>
+        <li><span class="parameter">stationThrottleSubmarine</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">stationthrottlesubmarine</span>
+        <li><span class="parameter">stationDepthSubmarine</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">stationdepthsubmarine</span>
+        <li><span class="parameter">transitThrottleShip</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">transitthrottleship</span>
+        <li><span class="parameter">stationThrottleShip</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">stationthrottleship</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
+        <li><span class="parameter">useFlightSize</span>
+            <span class="types"><span class="type">bool</span></span>
+          True if minimum size required
         </li>
-        <li><span class="parameter">useflightsize</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">usegroupsize</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
+        <li><span class="parameter">useGroupSize</span>
+            <span class="types"><span class="type">bool</span></span>
+         True if minimum size required
         </li>
         <li><span class="parameter">zone</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
+            <span class="types"><span class="type">{ name</span> or <span class="type">guid }</span></span>
+         Table of reference point names and/or GUIDs
         </li>
     </ul>
 
@@ -3782,53 +4056,11 @@ Otherwise, a nil is returned.
 
 </dd>
     <dt>
-    <a name = "EventSelector"></a>
-    <strong>EventSelector</strong>
-    </dt>
-    <dd>
-    Event selector
-
-    </ul>
-
-    <h3>Fields:</h3>
-    <ul>
-        <li><span class="parameter">ActionNameOrID</span>
-            <span class="types"><span class="type">string</span></span>
-         The name or ID of the special action
-        </li>
-        <li><span class="parameter">IsActive</span>
-            <span class="types"><span class="type">bool</span></span>
-         If the action is visible to the player
-        </li>
-        <li><span class="parameter">IsRepeatable</span>
-            <span class="types"><span class="type">bool</span></span>
-         If the player can use the action multiple times
-        </li>
-        <li><span class="parameter">NewName</span>
-            <span class="types"><span class="type">string</span></span>
-         If specified, the new name of the action
-        </li>
-        <li><span class="parameter">Description</span>
-            <span class="types"><span class="type">string</span></span>
-         If specified, the new description for the action
-        </li>
-        <li><span class="parameter">Probability</span>
-            <span class="types"><span class="type">number</span></span>
-         If specified, a new probability for the action
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
     <a name = "Explosion"></a>
     <strong>Explosion</strong>
     </dt>
     <dd>
-    Defines a warhead to detonate.
+    Defines the warhead to detonate.
 
     </ul>
 
@@ -3847,7 +4079,7 @@ Otherwise, a nil is returned.
          The longitude of the detonation
         </li>
         <li><span class="parameter">altitude</span>
-            <span class="types"><span class="type">number</span></span>
+            <span class="types"><a class="type" href="index.html#Altitude">Altitude</a></span>
          The altitude of the detonation
         </li>
     </ul>
@@ -3867,51 +4099,49 @@ Otherwise, a nil is returned.
     </dt>
     <dd>
     FerryMission.
-  options. These are updated by ScenEdit_SetMission()
+  .. options; these are updated by ScenEdit_SetMission()
 
 
     </ul>
 
     <h3>Fields:</h3>
     <ul>
-        <li><span class="parameter">ferrybehavior</span>
+        <li><span class="parameter">ferryBehavior</span>
+            <span class="types"><span class="type">string</span></span>
+         Values OneWay(0), Cycle(1), Random(2)
+        </li>
+        <li><span class="parameter">ferryThrottleAircraft</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">ferrythrottleaircraft</span>
+        <li><span class="parameter">ferryAltitudeAircraft</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">ferryaltitudeaircraft</span>
+        <li><span class="parameter">ferryTerrainFollowingAircraft</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">flightSize</span>
+            <span class="types"><a class="type" href="index.html#Size">Size</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">minAircraftReq</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">ferryterrainfollowingaircraft</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">flightsize</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">minaircraftreq</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">useflightsize</span>
-            <span class="types"><span class="type">string</span></span>
+        <li><span class="parameter">useFlightSize</span>
+            <span class="types"><span class="type">bool</span></span>
 
 
 
@@ -4084,13 +4314,13 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 
     <h3>Fields:</h3>
     <ul>
-        <li><span class="parameter">UnitNameOrID</span>
+        <li><span class="parameter">UnitName</span>
             <span class="types"><span class="type">string</span></span>
-         The name or GUID of the unit to change the loadout on
+         The name/GUID of the unit to change the loadout on
         </li>
         <li><span class="parameter">LoadoutID</span>
             <span class="types"><span class="type">number</span></span>
-         The ID of the new loadout
+         The ID of the new loadout; 0 = use the current loadout
         </li>
         <li><span class="parameter">TimeToReady_Minutes</span>
             <span class="types"><span class="type">number</span></span>
@@ -4099,6 +4329,11 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
         <li><span class="parameter">IgnoreMagazines</span>
             <span class="types"><span class="type">bool</span></span>
          If the new loadout should rely on the magazines having the right weapons ready
+        </li>
+        <li><span class="parameter">ExcludeOptionalWeapons</span>
+            <span class="types"><span class="type">bool</span></span>
+         Exclude optional weapons from loadout
+         (<em>optional</em>)
         </li>
     </ul>
 
@@ -4154,126 +4389,124 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
     </dt>
     <dd>
     MineClearMission.
-  options. These are updated by ScenEdit_SetMission()
+  .. options; these are updated by ScenEdit_SetMission()
 
 
     </ul>
 
     <h3>Fields:</h3>
     <ul>
-        <li><span class="parameter">onethirdrule</span>
+        <li><span class="parameter">oneThirdRule</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">transitThrottleAircraft</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">transitthrottleaircraft</span>
+        <li><span class="parameter">transitAltitudeAircraft</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">transitaltitudeaircraft</span>
+        <li><span class="parameter">transitTerrainFollowingAircraft</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">stationThrottleAircraft</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">transitterrainfollowingaircraft</span>
+        <li><span class="parameter">stationAltitudeAircraft</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">stationthrottleaircraft</span>
+        <li><span class="parameter">stationTerrainFollowingAircraft</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">transitThrottleSubmarine</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">stationaltitudeaircraft</span>
+        <li><span class="parameter">transitDepthSubmarine</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">stationterrainfollowingaircraft</span>
+        <li><span class="parameter">stationThrottleSubmarine</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">transitthrottlesubmarine</span>
+        <li><span class="parameter">stationDepthSubmarine</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">transitdepthsubmarine</span>
+        <li><span class="parameter">transitThrottleShip</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">stationthrottlesubmarine</span>
+        <li><span class="parameter">stationThrottleShip</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">stationdepthsubmarine</span>
+        <li><span class="parameter">flightSize</span>
+            <span class="types"><a class="type" href="index.html#Size">Size</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">minAircraftReq</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">transitthrottleship</span>
-            <span class="types"><span class="type">string</span></span>
+        <li><span class="parameter">useFlightSize</span>
+            <span class="types"><span class="type">bool</span></span>
 
 
 
         </li>
-        <li><span class="parameter">stationthrottleship</span>
-            <span class="types"><span class="type">string</span></span>
+        <li><span class="parameter">groupSize</span>
+            <span class="types"><a class="type" href="index.html#Size">Size</a></span>
 
 
 
         </li>
-        <li><span class="parameter">flightsize</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">minaircraftreq</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">useflightsize</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">groupsize</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">usegroupsize</span>
-            <span class="types"><span class="type">string</span></span>
+        <li><span class="parameter">useGroupSize</span>
+            <span class="types"><span class="type">bool</span></span>
 
 
 
         </li>
         <li><span class="parameter">zone</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
+            <span class="types"><span class="type">{ name</span> or <span class="type">guid }</span></span>
+         Table of reference point names and/or guids
         </li>
     </ul>
 
@@ -4288,93 +4521,93 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
     </dt>
     <dd>
     MineMission.
-  options. These are updated by ScenEdit_SetMission()
+  .. options; these are updated by ScenEdit_SetMission()
 
 
     </ul>
 
     <h3>Fields:</h3>
     <ul>
-        <li><span class="parameter">onethirdrule</span>
+        <li><span class="parameter">oneThirdRule</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">transitThrottleAircraft</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">transitthrottleaircraft</span>
+        <li><span class="parameter">transitAltitudeAircraft</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">transitaltitudeaircraft</span>
+        <li><span class="parameter">transitTerrainFollowingAircraft</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">stationThrottleAircraft</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">transitterrainfollowingaircraft</span>
+        <li><span class="parameter">stationAltitudeAircraft</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">stationthrottleaircraft</span>
+        <li><span class="parameter">stationTerrainFollowingAircraft</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">transitThrottleSubmarine</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">stationaltitudeaircraft</span>
+        <li><span class="parameter">transitDepthSubmarine</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">stationterrainfollowingaircraft</span>
+        <li><span class="parameter">stationThrottleSubmarine</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">transitthrottlesubmarine</span>
+        <li><span class="parameter">stationDepthSubmarine</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">transitdepthsubmarine</span>
+        <li><span class="parameter">transitThrottleShip</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">stationthrottlesubmarine</span>
+        <li><span class="parameter">stationThrottleShip</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">stationdepthsubmarine</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">transitthrottleship</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">stationthrottleship</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">flightsize</span>
-            <span class="types"><span class="type">string</span></span>
+        <li><span class="parameter">flightSize</span>
+            <span class="types"><a class="type" href="index.html#Size">Size</a></span>
 
 
 
@@ -4385,35 +4618,31 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 
 
         </li>
-        <li><span class="parameter">useflightsize</span>
-            <span class="types"><span class="type">string</span></span>
+        <li><span class="parameter">useFlightSize</span>
+            <span class="types"><span class="type">bool</span></span>
 
 
 
         </li>
-        <li><span class="parameter">groupsize</span>
-            <span class="types"><span class="type">string</span></span>
+        <li><span class="parameter">groupSize</span>
+            <span class="types"><a class="type" href="index.html#Size">Size</a></span>
 
 
 
         </li>
-        <li><span class="parameter">usegroupsize</span>
-            <span class="types"><span class="type">string</span></span>
+        <li><span class="parameter">useGroupSize</span>
+            <span class="types"><span class="type">bool</span></span>
 
 
 
         </li>
         <li><span class="parameter">zone</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
+            <span class="types"><span class="type">{ name</span> or <span class="type">guid }</span></span>
+         Table of reference point names and/or guids
         </li>
         <li><span class="parameter">armingdelay</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
+            <span class="types"><span class="type">time</span></span>
+         In format of 'days:hours:minutes:seconds' e.g. 1 day, 4 hours, 30 minutes would be '1:4:30:0'
         </li>
     </ul>
 
@@ -4464,204 +4693,182 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
     </dt>
     <dd>
     PatrolMission.
-  options. These are updated by ScenEdit_SetMission()
+  .. options; these are updated by ScenEdit_SetMission()
 
 
     </ul>
 
     <h3>Fields:</h3>
     <ul>
-        <li><span class="parameter">onethirdrule</span>
+        <li><span class="parameter">oneThirdRule</span>
+            <span class="types"><span class="type">bool</span></span>
+         True if activated
+        </li>
+        <li><span class="parameter">checkOPA</span>
+            <span class="types"><span class="type">bool</span></span>
+         True if can investigate outside zones
+        </li>
+        <li><span class="parameter">checkWWR</span>
+            <span class="types"><span class="type">bool</span></span>
+         True if can investigate within weapon range
+        </li>
+        <li><span class="parameter">activeEMCON</span>
+            <span class="types"><span class="type">bool</span></span>
+          True if active EMCON in patrol zone
+        </li>
+        <li><span class="parameter">transitThrottleAircraft</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">checkopa</span>
+        <li><span class="parameter">transitAltitudeAircraft</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">checkwwr</span>
+        <li><span class="parameter">transitTerrainFollowingAircraft</span>
+            <span class="types"><span class="type">bool</span></span>
+         True if terrain following
+        </li>
+        <li><span class="parameter">stationThrottleAircraft</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">activeemcon</span>
+        <li><span class="parameter">stationAltitudeAircraft</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">transitthrottleaircraft</span>
+        <li><span class="parameter">stationTerrainFollowingAircraft</span>
+            <span class="types"><span class="type">bool</span></span>
+         True if terrain following
+        </li>
+        <li><span class="parameter">attackThrottleAircraft</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">transitaltitudeaircraft</span>
+        <li><span class="parameter">attackAltitudeAircraft</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">transitterrainfollowingaircraft</span>
+        <li><span class="parameter">attackTerrainFollowingAircraft</span>
+            <span class="types"><span class="type">bool</span></span>
+         True if terrain following
+        </li>
+        <li><span class="parameter">attackDistanceAircraft</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">stationthrottleaircraft</span>
+        <li><span class="parameter">transitThrottleSubmarine</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">stationaltitudeaircraft</span>
+        <li><span class="parameter">transitDepthSubmarine</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">stationterrainfollowingaircraft</span>
+        <li><span class="parameter">stationThrottleSubmarine</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">attackthrottleaircraft</span>
+        <li><span class="parameter">stationDepthSubmarine</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">attackaltitudeaircraft</span>
+        <li><span class="parameter">attackThrottleSubmarine</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">attackterrainfollowingaircraft</span>
+        <li><span class="parameter">attackDepthSubmarine</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">attackdistanceaircraft</span>
+        <li><span class="parameter">attackDistanceSubmarine</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">transitthrottlesubmarine</span>
+        <li><span class="parameter">transitThrottleShip</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">transitdepthsubmarine</span>
+        <li><span class="parameter">stationThrottleShip</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">stationthrottlesubmarine</span>
+        <li><span class="parameter">attackThrottleShip</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">stationdepthsubmarine</span>
+        <li><span class="parameter">attackDistanceShip</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">attackthrottlesubmarine</span>
+        <li><span class="parameter">flightSize</span>
+            <span class="types"><a class="type" href="index.html#Size">Size</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">minAircraftReq</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">attackdepthsubmarine</span>
-            <span class="types"><span class="type">string</span></span>
+        <li><span class="parameter">useFlightSize</span>
+            <span class="types"><span class="type">bool</span></span>
+         True if min size required
+        </li>
+        <li><span class="parameter">groupSize</span>
+            <span class="types"><a class="type" href="index.html#Size">Size</a></span>
 
 
 
         </li>
-        <li><span class="parameter">attackdistancesubmarine</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
+        <li><span class="parameter">useGroupSize</span>
+            <span class="types"><span class="type">bool</span></span>
+         True if min size required
         </li>
-        <li><span class="parameter">transitthrottleship</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
+        <li><span class="parameter">prosecutionZone</span>
+            <span class="types"><span class="type">{ name</span> or <span class="type">guid }</span></span>
+         Table of reference point names and/or GUIDs
         </li>
-        <li><span class="parameter">stationthrottleship</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">attackthrottleship</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">attackdistanceship</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">flightsize</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">minaircraftreq</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">useflightsize</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">groupsize</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">usegroupsize</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">prosecutionzone</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">patrolzone</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
+        <li><span class="parameter">patrolZone</span>
+            <span class="types"><span class="type">{ name</span> or <span class="type">guid }</span></span>
+          Table of reference point names and/or GUIDs
         </li>
     </ul>
 
@@ -4779,175 +4986,123 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 
 </dd>
     <dt>
-    <a name = "SpecialAction"></a>
-    <strong>SpecialAction</strong>
-    </dt>
-    <dd>
-    Special action selector
-
-    </ul>
-
-    <h3>Fields:</h3>
-    <ul>
-        <li><span class="parameter">ActionNameOrID</span>
-            <span class="types"><span class="type">string</span></span>
-         The name or ID of the special action
-        </li>
-        <li><span class="parameter">IsActive</span>
-            <span class="types"><span class="type">bool</span></span>
-         If the action is visible to the player
-        </li>
-        <li><span class="parameter">IsRepeatable</span>
-            <span class="types"><span class="type">bool</span></span>
-         If the player can use the action multiple times
-        </li>
-        <li><span class="parameter">NewName</span>
-            <span class="types"><span class="type">string</span></span>
-         If specified, the new name of the action
-        </li>
-        <li><span class="parameter">Description</span>
-            <span class="types"><span class="type">string</span></span>
-         If specified, the new description for the action
-        </li>
-    </ul>
-
-
-
-
-
-</dd>
-    <dt>
     <a name = "StrikeMission"></a>
     <strong>StrikeMission</strong>
     </dt>
     <dd>
     StrikeMission.
-  options. These are updated by ScenEdit_SetMission()
+  .. options; these are updated by ScenEdit_SetMission(). Note that these are split between the escorts and strikers
 
 
     </ul>
 
     <h3>Fields:</h3>
     <ul>
-        <li><span class="parameter">escortflightsizeshooter</span>
+        <li><span class="parameter">escortFlightSizeShooter</span>
+            <span class="types"><a class="type" href="index.html#Size">Size</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">escortMinShooter</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">escortMaxShooter</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">escortResponseRadius</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">escortUseFlightSize</span>
+            <span class="types"><span class="type">bool</span></span>
+         True if minimum size required
+        </li>
+        <li><span class="parameter">escortFlightSizeNonshooter</span>
+            <span class="types"><a class="type" href="index.html#Size">Size</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">escortMinNonshooter</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">escortMaxNonshooter</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">escortGroupSize</span>
+            <span class="types"><a class="type" href="index.html#Size">Size</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">escortUseGroupSize</span>
+            <span class="types"><span class="type">bool</span></span>
+          True if minimum size required
+        </li>
+        <li><span class="parameter">strikeOneTimeOnly</span>
+            <span class="types"><span class="type">bool</span></span>
+         True if activated
+        </li>
+        <li><span class="parameter">strikeMinimumTrigger</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">escortminshooter</span>
-            <span class="types"><span class="type">string</span></span>
+        <li><span class="parameter">strikeMax</span>
+            <span class="types"><span class="type">number</span></span>
 
 
 
         </li>
-        <li><span class="parameter">escortmaxshooter</span>
-            <span class="types"><span class="type">string</span></span>
+        <li><span class="parameter">strikeFlightSize</span>
+            <span class="types"><a class="type" href="index.html#Size">Size</a></span>
 
 
 
         </li>
-        <li><span class="parameter">escortresponseradius</span>
-            <span class="types"><span class="type">string</span></span>
+        <li><span class="parameter">strikeMinAircraftReq</span>
+            <span class="types"><span class="type">number</span></span>
 
 
 
         </li>
-        <li><span class="parameter">escortuseflightsize</span>
-            <span class="types"><span class="type">string</span></span>
+        <li><span class="parameter">strikeUseFlightSize</span>
+            <span class="types"><span class="type">bool</span></span>
+         True if minimum size required
+        </li>
+        <li><span class="parameter">strikeGroupSize</span>
+            <span class="types"><a class="type" href="index.html#Size">Size</a></span>
 
 
 
         </li>
-        <li><span class="parameter">escortflightsizenonshooter</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
+        <li><span class="parameter">strikeUseGroupSize</span>
+            <span class="types"><span class="type">bool</span></span>
+         True if minimum size required
         </li>
-        <li><span class="parameter">escortminnonshooter</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
+        <li><span class="parameter">strikeAutoPlanner</span>
+            <span class="types"><span class="type">bool</span></span>
+         True if activated
         </li>
-        <li><span class="parameter">escortmaxnonshooter</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">escortgroupsize</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">escortusegroupsize</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">strikeonetimeonly</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">strikeminimumtrigger</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">strikemax</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">strikeflightsize</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">strikeminaircraftreq</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">strikeuseflightsize</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">strikegroupsize</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">strikeusegroupsize</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">strikeautoplanner</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">strikepreplan</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
+        <li><span class="parameter">strikePreplan</span>
+            <span class="types"><span class="type">bool</span></span>
+         True if pre-planned target list only
         </li>
     </ul>
 
@@ -4962,158 +5117,154 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
     </dt>
     <dd>
     SupportMission.
-  options. These are updated by ScenEdit_SetMission()
+  .. options; these are updated by ScenEdit_SetMission()
 
 
     </ul>
 
     <h3>Fields:</h3>
     <ul>
-        <li><span class="parameter">onethirdrule</span>
+        <li><span class="parameter">oneThirdRule</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">transitThrottleAircraft</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">transitthrottleaircraft</span>
+        <li><span class="parameter">transitAltitudeAircraft</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">transitaltitudeaircraft</span>
+        <li><span class="parameter">transitTerrainFollowingAircraft</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">stationThrottleAircraft</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">transitterrainfollowingaircraft</span>
+        <li><span class="parameter">stationAltitudeAircraft</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">stationthrottleaircraft</span>
+        <li><span class="parameter">stationTerrainFollowingAircraft</span>
+            <span class="types"><span class="type">bool</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">transitThrottleSubmarine</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">stationaltitudeaircraft</span>
+        <li><span class="parameter">transitDepthSubmarine</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">stationterrainfollowingaircraft</span>
+        <li><span class="parameter">stationThrottleSubmarine</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">transitthrottlesubmarine</span>
+        <li><span class="parameter">stationDepthSubmarine</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">transitdepthsubmarine</span>
+        <li><span class="parameter">transitThrottleShip</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">stationthrottlesubmarine</span>
+        <li><span class="parameter">stationThrottleShip</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">stationdepthsubmarine</span>
+        <li><span class="parameter">flightSize</span>
+            <span class="types"><a class="type" href="index.html#Size">Size</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">minAircraftReq</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">transitthrottleship</span>
-            <span class="types"><span class="type">string</span></span>
+        <li><span class="parameter">useFlightSize</span>
+            <span class="types"><span class="type">boo</span></span>
 
 
 
         </li>
-        <li><span class="parameter">stationthrottleship</span>
-            <span class="types"><span class="type">string</span></span>
+        <li><span class="parameter">groupSize</span>
+            <span class="types"><a class="type" href="index.html#Size">Size</a></span>
 
 
 
         </li>
-        <li><span class="parameter">flightsize</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">minaircraftreq</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">useflightsize</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">groupsize</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">usegroupsize</span>
-            <span class="types"><span class="type">string</span></span>
+        <li><span class="parameter">useGroupSize</span>
+            <span class="types"><span class="type">bool</span></span>
 
 
 
         </li>
         <li><span class="parameter">zone</span>
+            <span class="types"><span class="type">{ name</span> or <span class="type">guid}</span></span>
+         Table of reference point names and/or guids
+        </li>
+        <li><span class="parameter">loopType</span>
+            <span class="types"><span class="type">string</span></span>
+         Values of ContinousLoop(0) or SingleLoop(1)
+        </li>
+        <li><span class="parameter">onStation</span>
             <span class="types"><span class="type">string</span></span>
 
 
 
         </li>
-        <li><span class="parameter">looptype</span>
-            <span class="types"><span class="type">string</span></span>
+        <li><span class="parameter">oneTimeOnly</span>
+            <span class="types"><span class="type">bool</span></span>
 
 
 
         </li>
-        <li><span class="parameter">onstation</span>
-            <span class="types"><span class="type">string</span></span>
+        <li><span class="parameter">activeEMCON</span>
+            <span class="types"><span class="type">bool</span></span>
 
 
 
         </li>
-        <li><span class="parameter">onetimeonly</span>
-            <span class="types"><span class="type">string</span></span>
+        <li><span class="parameter">tankerOneTime</span>
+            <span class="types"><span class="type">bool</span></span>
 
 
 
         </li>
-        <li><span class="parameter">activeemcon</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">tankeronetime</span>
-            <span class="types"><span class="type">string</span></span>
-
-
-
-        </li>
-        <li><span class="parameter">tankermaxreceivers</span>
+        <li><span class="parameter">tankerMaxReceivers</span>
             <span class="types"><span class="type">string</span></span>
 
 
@@ -5210,7 +5361,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2016-12-04 09:08:34 </i>
+<i style="float:right;">Last updated 2016-12-13 23:56:40 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
