@@ -102,7 +102,11 @@ Usually when a Lua script fails, an error is thrown that ends the script at that
 	</tr>
 	<tr>
 	<td class="name" ><a href="#DoctrineSelector">DoctrineSelector</a></td>
-	<td class="summary">Selects a doctrine, for on a side, group, mission, or unit.</td>
+	<td class="summary">Selects a doctrine.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#DoctrineWRASelector">DoctrineWRASelector</a></td>
+	<td class="summary">Selects a WRA doctrine.</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#Event">Event</a></td>
@@ -162,6 +166,10 @@ Usually when a Lua script fails, an error is thrown that ends the script at that
 	<tr>
 	<td class="name" ><a href="#Doctrine">Doctrine</a></td>
 	<td class="summary">Doctrine options.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#DoctrineWRA">DoctrineWRA</a></td>
+	<td class="summary">WRA Doctrine options.</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#Group">Group</a></td>
@@ -225,6 +233,10 @@ Usually when a Lua script fails, an error is thrown that ends the script at that
 	<tr>
 	<td class="name" ><a href="#Stance">Stance</a></td>
 	<td class="summary">Stance/Posture.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#TargetTypeWRA">TargetTypeWRA</a></td>
+	<td class="summary">Target type.</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#TimeStamp">TimeStamp</a></td>
@@ -325,6 +337,10 @@ Usually when a Lua script fails, an error is thrown that ends the script at that
 	<td class="summary">Gets the doctrine of the designated object.</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#ScenEdit_GetDoctrineWRA">ScenEdit_GetDoctrineWRA (selector)</a></td>
+	<td class="summary">Gets the WRA doctrine.</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#ScenEdit_GetEvent">ScenEdit_GetEvent (EventDescriptionOrID)</a></td>
 	<td class="summary">Gets the properties of an event.</td>
 	</tr>
@@ -407,6 +423,14 @@ Usually when a Lua script fails, an error is thrown that ends the script at that
 	<tr>
 	<td class="name" ><a href="#ScenEdit_SetDoctrine">ScenEdit_SetDoctrine (selector, doctrine)</a></td>
 	<td class="summary">Set the doctrine of the designated object.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ScenEdit_SetDoctrineWRA">ScenEdit_SetDoctrineWRA (selector, options)</a></td>
+	<td class="summary">
+<blockquote>
+    <p>Sets the WRA doctrine.</p>
+</blockquote>
+</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_SetEMCON">ScenEdit_SetEMCON (type, name, emcon)</a></td>
@@ -601,6 +625,10 @@ Usually when a Lua script fails, an error is thrown that ends the script at that
 	<td class="summary">SupportMission.</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#WRA">WRA</a></td>
+	<td class="summary">WRA settings.</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#WeaponLoaded">WeaponLoaded</a></td>
 	<td class="summary">Weapon loads on mount or in magazine.</td>
 	</tr>
@@ -649,9 +677,8 @@ Usually when a Lua script fails, an error is thrown that ends the script at that
     <strong>DoctrineSelector</strong>
     </dt>
     <dd>
-    Selects a doctrine, for on a side, group, mission, or unit. </p>
-
-<p>This selector can only be used with the doctrine mechanism, with other systems relying on different selection methods.
+    Selects a doctrine.
+ .. for on a side, group, mission, or unit
 
     </ul>
 
@@ -675,6 +702,53 @@ Usually when a Lua script fails, an error is thrown that ends the script at that
         <li><span class="parameter">escort</span>
             <span class="types"><span class="type">bool</span></span>
          If a strike mission, adding 'escort=true' will update the escort doctrine
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DoctrineWRASelector"></a>
+    <strong>DoctrineWRASelector</strong>
+    </dt>
+    <dd>
+    Selects a WRA doctrine.
+  .. for on a side, group, mission, or unit.
+ weapon<em>id is mandatory. One of side,mission,unitname or guid is mandatory. One of contact</em>id or target_type is mandatory
+
+    </ul>
+
+    <ul>
+        <li><span class="parameter">side</span>
+            <span class="types"><span class="type">string</span></span>
+         The side to select/from
+        </li>
+        <li><span class="parameter">mission</span>
+            <span class="types"><span class="type">string</span></span>
+         The name of the mission to select
+        </li>
+        <li><span class="parameter">unitname</span>
+            <span class="types"><span class="type">string</span></span>
+         The name of the unit to select
+        </li>
+        <li><span class="parameter">guid</span>
+            <span class="types"><span class="type">string</span></span>
+         The unit GUID to select
+        </li>
+        <li><span class="parameter">weapon_id</span>
+            <span class="types"><span class="type">string</span></span>
+         The weapon database id
+        </li>
+        <li><span class="parameter">contact_id</span>
+            <span class="types"><span class="type">string</span></span>
+          A contact GUID  (mutually exclusive with target_type)
+        </li>
+        <li><span class="parameter">target_type</span>
+            <span class="types"><span class="type">string</span></span>
+         The target type (mutually exclusive with contact_id)
         </li>
     </ul>
 
@@ -1504,6 +1578,43 @@ If both are given, then the GUID is used preferentially.
 
 </dd>
     <dt>
+    <a name = "DoctrineWRA"></a>
+    <strong>DoctrineWRA</strong>
+    </dt>
+    <dd>
+    WRA Doctrine options.
+
+    </ul>
+
+    <ul>
+        <li><span class="parameter">weapon_dbid</span>
+            <span class="types"><span class="type">string</span></span>
+         Weapon number [info]
+        </li>
+        <li><span class="parameter">weapon_name</span>
+            <span class="types"><span class="type">string</span></span>
+         Weapon name [info]
+        </li>
+        <li><span class="parameter">target_type</span>
+            <span class="types"><a class="type" href="index.html#TargetTypeWRA">TargetTypeWRA</a></span>
+         Type of target [info]
+        </li>
+        <li><span class="parameter">level</span>
+            <span class="types"><span class="type">string</span></span>
+         The doctrine selected (at unit/mission/side) - useful Is just using GUIDs [info]
+        </li>
+        <li><span class="parameter">wra</span>
+            <span class="types"><a class="type" href="index.html#WRA">{ WRA }</a></span>
+         The WRA doctrine
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
     <a name = "Group"></a>
     <strong>Group</strong>
     </dt>
@@ -1936,6 +2047,10 @@ If both are given, then the GUID is used preferentially.
             <span class="types"><span class="type">method</span></span>
         (<code>type</code>) Filters unit on <code>type</code> of component and returns a <a href="index.html#Component">Component</a> table.
         </li>
+        <li><span class="parameter">rangetotarget</span>
+            <span class="types"><span class="type">method</span></span>
+        ('contactid') Calculate flat distance to a contact location
+        </li>
     </ul>
 
 
@@ -2178,6 +2293,120 @@ Key/value pairs added to the persistent store is retained when the game is saved
  <tr><td>2</td><td>Unfriendly</td></tr>
  <tr><td>3</td><td>Hostile</td></tr>
  <tr><td>4</td><td>Unknown</td></tr>
+ </table>
+
+    </ul>
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "TargetTypeWRA"></a>
+    <strong>TargetTypeWRA</strong>
+    </dt>
+    <dd>
+    Target type. </p>
+
+
+
+<p> <style>
+ tr { border: 1px solid black;}
+ td { padding: .5em; }
+ </style>
+ <table style="border-spacing: 0.5rem;">
+<tr><td>None </td><td> 1001</td></tr>
+<tr><td>Decoy </td><td> 1002</td></tr>
+<tr><td>Air_Contact_Unknown_Type </td><td> 1999</td></tr>
+<tr><td>Aircraft_Unspecified </td><td> 2000</td></tr>
+<tr><td>Aircraft_5th_Generation </td><td> 2001</td></tr>
+<tr><td>Aircraft_4th_Generation </td><td> 2002</td></tr>
+<tr><td>Aircraft_3rd_Generation </td><td> 2003</td></tr>
+<tr><td>Aircraft_Less_Capable </td><td> 2004</td></tr>
+<tr><td>Aircraft_High_Perf_Bombers </td><td> 2011</td></tr>
+<tr><td>Aircraft_Medium_Perf_Bombers </td><td> 2012</td></tr>
+<tr><td>Aircraft_Low_Perf_Bombers </td><td> 2013</td></tr>
+<tr><td>Aircraft_High_Perf_Recon_EW </td><td> 2021</td></tr>
+<tr><td>Aircraft_Medium_Perf_Recon_EW </td><td> 2022</td></tr>
+<tr><td>Aircraft_Low_Perf_Recon_EW </td><td> 2023</td></tr>
+<tr><td>Aircraft_AEW </td><td> 2031</td></tr>
+<tr><td>Helicopter_Unspecified </td><td> 2100</td></tr>
+<tr><td>Guided_Weapon_Unspecified </td><td> 2200</td></tr>
+<tr><td>Guided_Weapon_Supersonic_Sea_Skimming </td><td> 2201</td></tr>
+<tr><td>Guided_Weapon_Subsonic_Sea_Skimming </td><td> 2202</td></tr>
+<tr><td>Guided_Weapon_Supersonic </td><td> 2203</td></tr>
+<tr><td>Guided_Weapon_Subsonic </td><td> 2204</td></tr>
+<tr><td>Guided_Weapon_Ballistic </td><td> 2211</td></tr>
+<tr><td>Satellite_Unspecified </td><td> 2300</td></tr>
+<tr><td>Surface_Contact_Unknown_Type </td><td> 2999</td></tr>
+<tr><td>Ship_Unspecified </td><td> 3000</td></tr>
+<tr><td>Ship_Carrier_0_25000_tons </td><td> 3001</td></tr>
+<tr><td>Ship_Carrier_25001_45000_tons </td><td> 3002</td></tr>
+<tr><td>Ship_Carrier_45001_95000_tons </td><td> 3003</td></tr>
+<tr><td>Ship_Carrier_95000_tons </td><td> 3004</td></tr>
+<tr><td>Ship_Surface_Combatant_0_500_tons </td><td> 3101</td></tr>
+<tr><td>Ship_Surface_Combatant_501_1500_tons </td><td> 3102</td></tr>
+<tr><td>Ship_Surface_Combatant_1501_5000_tons </td><td> 3103</td></tr>
+<tr><td>Ship_Surface_Combatant_5001_10000_tons </td><td> 3104</td></tr>
+<tr><td>Ship_Surface_Combatant_10001_25000_tons </td><td> 3105</td></tr>
+<tr><td>Ship_Surface_Combatant_25001_45000_tons </td><td> 3106</td></tr>
+<tr><td>Ship_Surface_Combatant_45001_95000_tons </td><td> 3107</td></tr>
+<tr><td>Ship_Surface_Combatant_95000_tons </td><td> 3108</td></tr>
+<tr><td>Ship_Amphibious_0_500_tons </td><td> 3201</td></tr>
+<tr><td>Ship_Amphibious_501_1500_tons </td><td> 3202</td></tr>
+<tr><td>Ship_Amphibious_1501_5000_tons </td><td> 3203</td></tr>
+<tr><td>Ship_Amphibious_5001_10000_tons </td><td> 3204</td></tr>
+<tr><td>Ship_Amphibious_10001_25000_tons </td><td> 3205</td></tr>
+<tr><td>Ship_Amphibious_25001_45000_tons </td><td> 3206</td></tr>
+<tr><td>Ship_Amphibious_45001_95000_tons </td><td> 3207</td></tr>
+<tr><td>Ship_Amphibious_95000_tons </td><td> 3208</td></tr>
+<tr><td>Ship_Auxiliary_0_500_tons </td><td> 3301</td></tr>
+<tr><td>Ship_Auxiliary_501_1500_tons </td><td> 3302</td></tr>
+<tr><td>Ship_Auxiliary_1501_5000_tons </td><td> 3303</td></tr>
+<tr><td>Ship_Auxiliary_5001_10000_tons </td><td> 3304</td></tr>
+<tr><td>Ship_Auxiliary_10001_25000_tons </td><td> 3305</td></tr>
+<tr><td>Ship_Auxiliary_25001_45000_tons </td><td> 3306</td></tr>
+<tr><td>Ship_Auxiliary_45001_95000_tons </td><td> 3307</td></tr>
+<tr><td>Ship_Auxiliary_95000_tons </td><td> 3308</td></tr>
+<tr><td>Ship_Merchant_Civilian_0_500_tons </td><td> 3401</td></tr>
+<tr><td>Ship_Merchant_Civilian_501_1500_tons </td><td> 3402</td></tr>
+<tr><td>Ship_Merchant_Civilian_1501_5000_tons </td><td> 3403</td></tr>
+<tr><td>Ship_Merchant_Civilian_5001_10000_tons </td><td> 3404</td></tr>
+<tr><td>Ship_Merchant_Civilian_10001_25000_tons </td><td> 3405</td></tr>
+<tr><td>Ship_Merchant_Civilian_25001_45000_tons </td><td> 3406</td></tr>
+<tr><td>Ship_Merchant_Civilian_45001_95000_tons </td><td> 3407</td></tr>
+<tr><td>Ship_Merchant_Civilian_95000_tons </td><td> 3408</td></tr>
+<tr><td>Submarine_Surfaced </td><td> 3501</td></tr>
+<tr><td>Subsurface_Contact_Unknown_Type </td><td> 3999</td></tr>
+<tr><td>Submarine_Unspecified </td><td> 4000</td></tr>
+<tr><td>Land_Contact_Unknown_Type </td><td> 4999</td></tr>
+<tr><td>Land_Structure_Soft_Unspecified </td><td> 5000</td></tr>
+<tr><td>Land_Structure_Soft_Building_Surface </td><td> 5001</td></tr>
+<tr><td>Land_Structure_Soft_Building_Reveted </td><td> 5002</td></tr>
+<tr><td>Land_Structure_Soft_Structure_Open </td><td> 5005</td></tr>
+<tr><td>Land_Structure_Soft_Structure_Reveted </td><td> 5006</td></tr>
+<tr><td>Land_Structure_Soft_Aerostat_Moring </td><td> 5011</td></tr>
+<tr><td>Land_Structure_Hardened_Unspecified </td><td> 5100</td></tr>
+<tr><td>Land_Structure_Hardened_Building_Surface </td><td> 5101</td></tr>
+<tr><td>Land_Structure_Hardened_Building_Reveted </td><td> 5102</td></tr>
+<tr><td>Land_Structure_Hardened_Building_Bunker </td><td> 5103</td></tr>
+<tr><td>Land_Structure_Hardened_Building_Underground </td><td> 5104</td></tr>
+<tr><td>Land_Structure_Hardened_Structure_Open </td><td> 5105</td></tr>
+<tr><td>Land_Structure_Hardened_Structure_Reveted </td><td> 5106</td></tr>
+<tr><td>Runway_Facility_Unspecified </td><td> 5200</td></tr>
+<tr><td>Runway </td><td> 5201</td></tr>
+<tr><td>Runway_Grade_Taxiway </td><td> 5202</td></tr>
+<tr><td>Runway_Access_Point </td><td> 5203</td></tr>
+<tr><td>Radar_Unspecified </td><td> 5300</td></tr>
+<tr><td>Mobile_Target_Soft_Unspecified </td><td> 5400</td></tr>
+<tr><td>Mobile_Target_Soft_Mobile_Vehicle </td><td> 5401</td></tr>
+<tr><td>Mobile_Target_Soft_Mobile_Personnel </td><td> 5402</td></tr>
+<tr><td>Mobile_Target_Hardened_Unspecified </td><td> 5500</td></tr>
+<tr><td>Mobile_Target_Hardened_Mobile_Vehicle </td><td> 5501</td></tr>
+<tr><td>Underwater_Structure </td><td> 5601</td></tr>
+<tr><td>Air_Base_Single_Unit_Airfield </td><td> 5801</td></tr>
  </table>
 
     </ul>
@@ -2942,6 +3171,42 @@ The 'UnitX' can be used as the unit descriptor
 
 </dd>
     <dt>
+    <a name = "ScenEdit_GetDoctrineWRA"></a>
+    <strong>ScenEdit_GetDoctrineWRA (selector)</strong>
+    </dt>
+    <dd>
+    Gets the WRA doctrine. </p>
+
+<p>Returns the WRA setting In a table For the selected side/mission/unit based On the target type.
+Nothing returned Or empty values means that the weapon Is Not For the target type.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">selector</span>
+            <span class="types"><a class="type" href="index.html#DoctrineWRASelector">DoctrineWRASelector</a></span>
+         The selector for the object to look up
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="index.html#DoctrineWRA">DoctrineWRA</a></span>
+        The WRA doctrine of the selected object
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <li><pre class="example">ScenEdit_GetDoctrineWRA({guid = <span class="string">'a1a52edf-3541-4b55-bea4-58d4e1ab11dc'</span>, contact_id=<span class="string">'Boeing 747-8F #610'</span>, weapon_id=<span class="number">1575</span>})</pre></li>
+        <li><pre class="example">ScenEdit_GetDoctrineWRA({side=<span class="string">'sidea'</span>, target_type=<span class="string">'Surface_Contact_Unknown_Type'</span>, weapon_id=<span class="number">1575</span>})</pre></li>
+    </ul>
+
+</dd>
+    <dt>
     <a name = "ScenEdit_GetEvent"></a>
     <strong>ScenEdit_GetEvent (EventDescriptionOrID)</strong>
     </dt>
@@ -3595,6 +3860,56 @@ A file can also be loaded indirectly from an attachment <a href="index.html#Scen
         <li><pre class="example">ScenEdit_SetDoctrine({side=<span class="string">"Soviet Union"</span>}, {kinematic_range_for_torpedoes = <span class="string">"AutomaticAndManualFire"</span>,use_nuclear_weapons= <span class="string">"yes"</span> })</pre></li>
         <li><pre class="example">ScenEdit_SetDoctrine({side=<span class="string">"Soviet Union"</span>, mission=<span class="string">"ASW PATROL"</span>}, {kinematic_range_for_torpedoes = <span class="string">"AutomaticAndManualFire"</span>,use_nuclear_weapons= <span class="string">"yes"</span> })</pre></li>
         <li><pre class="example">ScenEdit_SetDoctrine({side=<span class="string">"Soviet Union"</span>, unitname=<span class="string">"Bear #2"</span>}, {use_nuclear_weapons= <span class="string">"yes"</span> })</pre></li>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_SetDoctrineWRA"></a>
+    <strong>ScenEdit_SetDoctrineWRA (selector, options)</strong>
+    </dt>
+    <dd>
+
+<blockquote>
+    <p>Sets the WRA doctrine. </p>
+</blockquote>
+
+<p>Returns the WRA setting like GetDoctrineWRA</p>
+
+<p> The values below can be used in the option settings
+ 'inherit' = reverts to the side level setting
+ 'system' = reverts to the database level setting (does not apply to 'firing_range')
+ 'max' = use the appropriate maximum setting
+ 'none' = not to be used</p>
+
+
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">selector</span>
+            <span class="types"><a class="type" href="index.html#DoctrineWRASelector">DoctrineWRASelector</a></span>
+         The selector for the object to update
+        </li>
+        <li><span class="parameter">options</span>
+            <span class="types"><a class="type" href="index.html#WRA">{ WRA }</a></span>
+         Table of settings {qty<em>salvo, shooter</em>salvo,firing<em>range,self</em>defence}. The order IS IMPORTANT as no keys used.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="index.html#DoctrineWRA">DoctrineWRA</a></span>
+        The WRA doctrine of the selected object
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <li><pre class="example">ScenEdit_SetDoctrineWRA({guid = <span class="string">'a1a52edf-3541-4b55-bea4-58d4e1ab11dc'</span>, target_type=<span class="string">'Surface_Contact_Unknown_Type'</span>, weapon_id=<span class="number">1575</span>}, {<span class="string">'inherit'</span>,<span class="string">'inherit'</span>,<span class="string">'system'</span>,<span class="string">'inherit'</span>})</pre></li>
+        <li><pre class="example">ScenEdit_SetDoctrineWRA({guid = <span class="string">'a1a52edf-3541-4b55-bea4-58d4e1ab11dc'</span>, target_type=<span class="string">'Surface_Contact_Unknown_Type'</span>, weapon_id=<span class="number">1575</span>}, {<span class="string">'max'</span>,<span class="string">'inherit'</span>,<span class="number">90</span>,<span class="string">'inherit'</span>})</pre></li>
     </ul>
 
 </dd>
@@ -5917,6 +6232,41 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 
 </dd>
     <dt>
+    <a name = "WRA"></a>
+    <strong>WRA</strong>
+    </dt>
+    <dd>
+    WRA settings.
+ .. absence of fields implies that it is NOT used
+
+    </ul>
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">qty_salvo</span>
+            <span class="types"><span class="type">string</span></span>
+         Weapons per salvo ('Max' or a number)
+        </li>
+        <li><span class="parameter">shooter_salvo</span>
+            <span class="types"><span class="type">string</span></span>
+         Shooters per salvo ('Max' or a number)
+        </li>
+        <li><span class="parameter">firing_range</span>
+            <span class="types"><span class="type">string</span></span>
+         Firing range ('Max' or a number)
+        </li>
+        <li><span class="parameter">self_defence</span>
+            <span class="types"><span class="type">string</span></span>
+         Self-defence range ('Max' or a number)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
     <a name = "WeaponLoaded"></a>
     <strong>WeaponLoaded</strong>
     </dt>
@@ -6000,7 +6350,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2017-01-10 13:22:50 </i>
+<i style="float:right;">Last updated 2017-01-11 01:35:51 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
