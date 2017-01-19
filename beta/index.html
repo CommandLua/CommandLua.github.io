@@ -242,6 +242,10 @@ Usually when a Lua script fails, an error is thrown that ends the script at that
 	<td class="name" ><a href="#TimeStamp">TimeStamp</a></td>
 	<td class="summary">TimeStamp.</td>
 	</tr>
+	<tr>
+	<td class="name" ><a href="#Weather">Weather</a></td>
+	<td class="summary">weather conditions.</td>
+	</tr>
 </table>
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
@@ -385,6 +389,10 @@ Usually when a Lua script fails, an error is thrown that ends the script at that
 	<td class="summary">Fetches a unit based on a selector.</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#ScenEdit_GetWeather">ScenEdit_GetWeather ()</a></td>
+	<td class="summary">Get the current weather conditions.</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#ScenEdit_HostUnitToParent">ScenEdit_HostUnitToParent (host_info)</a></td>
 	<td class="summary">Hosts a unit to the specified host.</td>
 	</tr>
@@ -485,7 +493,7 @@ Usually when a Lua script fails, an error is thrown that ends the script at that
 	<td class="summary">Changes the side of a unit</td>
 	</tr>
 	<tr>
-	<td class="name" ><a href="#ScenEdit_SetWeather">ScenEdit_SetWeather (temperature, rainfall, underrain, seastate)</a></td>
+	<td class="name" ><a href="#ScenEdit_SetWeather">ScenEdit_SetWeather (temperature, rainfall, undercloud, seastate)</a></td>
 	<td class="summary">Set the current weather conditions.</td>
 	</tr>
 	<tr>
@@ -782,6 +790,10 @@ Usually when a Lua script fails, an error is thrown that ends the script at that
         <li><span class="parameter">isrepeatable</span>
             <span class="types"><span class="type">bool</span></span>
          If the event can be triggered multiple times
+        </li>
+        <li><span class="parameter">isshown</span>
+            <span class="types"><span class="type">bool</span></span>
+         If the action is suppressed in the log window
         </li>
         <li><span class="parameter">description</span>
             <span class="types"><span class="type">string</span></span>
@@ -1358,8 +1370,12 @@ If both are given, then the GUID is used preferentially.
             <span class="types"><span class="type">bool</span></span>
          True to filtered out contact
         </li>
+        <li><span class="parameter">weather</span>
+            <span class="types"><a class="type" href="index.html#Weather">{ Weather } </a></span>
+         Table of weather parameters (temp, rainfall, underrain, seastate)
+        </li>
         <li><span class="parameter">DropContact</span>
-            <span class="types"><span class="type">function</span></span>
+            <span class="types"><span class="type">method</span></span>
         () Drops contact from the reporting side
         </li>
     </ul>
@@ -2039,6 +2055,10 @@ If both are given, then the GUID is used preferentially.
             <span class="types"><span class="type">bool</span></span>
          Trigger the unit to attempt an UNREP
         </li>
+        <li><span class="parameter">weather</span>
+            <span class="types"><a class="type" href="index.html#Weather">{ Weather } </a></span>
+         Table of weather parameters (temp, rainfall, underrain, seastate)
+        </li>
         <li><span class="parameter">delete</span>
             <span class="types"><span class="type">method</span></span>
         () Immediately removes unit object
@@ -2427,6 +2447,39 @@ Key/value pairs added to the persistent store is retained when the game is saved
 
     </ul>
 
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Weather"></a>
+    <strong>Weather</strong>
+    </dt>
+    <dd>
+    weather conditions.
+
+    </ul>
+
+    <ul>
+        <li><span class="parameter">temp</span>
+            <span class="types"><span class="type">number</span></span>
+         Temperature (average for GetWeather(), or time-of-day for unit/contact)
+        </li>
+        <li><span class="parameter">rainfall</span>
+            <span class="types"><span class="type">number</span></span>
+         Rainfall rate
+        </li>
+        <li><span class="parameter">undercloud</span>
+            <span class="types"><span class="type">number</span></span>
+         Fraction under cloud
+        </li>
+        <li><span class="parameter">seastate</span>
+            <span class="types"><span class="type">number</span></span>
+          Sea state
+        </li>
+    </ul>
 
 
 
@@ -3549,6 +3602,31 @@ then the function returns nil instead of producing an exception.
 
 </dd>
     <dt>
+    <a name = "ScenEdit_GetWeather"></a>
+    <strong>ScenEdit_GetWeather ()</strong>
+    </dt>
+    <dd>
+    Get the current weather conditions.
+
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">table</span></span>
+        Table of weather parameters [temp (average), rainfall, undercloud, seastate]
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_GetWeather()</pre>
+    </ul>
+
+</dd>
+    <dt>
     <a name = "ScenEdit_HostUnitToParent"></a>
     <strong>ScenEdit_HostUnitToParent (host_info)</strong>
     </dt>
@@ -4390,7 +4468,7 @@ The 'area' selector is useful for changing some common attribute, like locking o
 </dd>
     <dt>
     <a name = "ScenEdit_SetWeather"></a>
-    <strong>ScenEdit_SetWeather (temperature, rainfall, underrain, seastate)</strong>
+    <strong>ScenEdit_SetWeather (temperature, rainfall, undercloud, seastate)</strong>
     </dt>
     <dd>
     Set the current weather conditions. </p>
@@ -4410,7 +4488,7 @@ conditions are applied globally.
             <span class="types"><span class="type">number</span></span>
          The rainfall rate, 0-50.
         </li>
-        <li><span class="parameter">underrain</span>
+        <li><span class="parameter">undercloud</span>
             <span class="types"><span class="type">number</span></span>
          The amount of sky that is covered in cloud, 0.0-1.0
         </li>
@@ -6350,7 +6428,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2017-01-11 01:35:51 </i>
+<i style="float:right;">Last updated 2017-01-20 00:53:17 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
