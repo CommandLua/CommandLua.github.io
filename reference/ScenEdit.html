@@ -57,6 +57,7 @@
   <li><a href="../topics/01-getting-started.md.html">01-getting-started</a></li>
   <li><a href="../topics/02-creation.md.html">02-creation</a></li>
   <li><a href="../topics/03-unit-table.md.html">03-unit-table</a></li>
+  <li><a href="../topics/98-event_handling.md.html">98-event_handling</a></li>
   <li><a href="../topics/99-code-examples.md.html">99-code-examples</a></li>
 </ul>
 
@@ -91,14 +92,32 @@
 <p><u><b>Error handling</b></u><br>
 Usually when a Lua script fails, an error is thrown that ends the script at that point. While this may be okay in most cases, it is not often desired. <br>Whenever a Command Lua function gets an error, it will normally return a 'nil', and the error message will be available as a Lua global variables; '_errmsg_' will have the last error message, '_errfnc_' the Command Lua function that gave the error, and '_errnum_' the error code (0 is no error, and any value >0 will be an error). Thus if you get back a 'nil', you can check to see if that is due to an error or no data.</p>
 
-<p>Example: <br>without the new error handling, the script below would probably terminate after the SE_AddMission() and the rest of script would not run.<br> local mission = ScenEdit_AddMission('USA','Marker strike','strike',{type='land'})<br>if mission == nil then<br> if _errnum_ ~= 0 then print('Failed to add:' .. _errmsg_) else print('Something else') end<br> else print(mission)<br>...do some more command lua stuff...<br>end<br></p>
+<p>Example: <br>without the new error handling, the script below would probably terminate after the SE_AddMission() and the rest of script would not run.<br> local mission = ScenEdit_AddMission('USA','Marker strike','strike',{type='land'})<br>if mission == nil then<br>&emsp;if _errnum_ ~= 0 then print('Failed to add:' .. _errmsg_) else print('Something else') end<br>else<br>&emsp;print(mission)<br>&emsp;do some more command lua stuff...<br>end<br></p>
+
+<p>Note:
+Due to how errors are now handle from SR7, if a command fails in the console window, it will show an error. If the command runs outside the console (as in an event script), it will not fail with a visible error but return a nil or  or some other value.
+One issue with commands running in an event is that sometimes they fail with an in-game message that actually stops the rest of the script from running. Now, these event scripts will run without any in-game message showing, and the designer should check the result of the command and handle any error condition, and let the remaining script run as needed.</p>
+
+<p>My intent is have all command errors behave in the same fashion in the console window; and the command errors outside a console behave without stopping the script. Which requires the designer to cater for the specific error conditions.</p>
+
+<p>To emulate the expected outcome from an event, put 'Tool_EmulateNoConsole(true)' at the start of the script to be tested; it is not required in the event code as the script is already not running in a console.</p>
+
+<p>Note also, that the Lua history log should also record the event script errors.</p>
 
 
-<p><b>Release: 1.11.SR7 </b></p>
+<p><b>Release: 1.12 </b></p>
 
 
 <h2><a href="#Selector">Selector</a></h2>
 <table class="function_list">
+	<tr>
+	<td class="name" ><a href="#ActionUpdate">ActionUpdate</a></td>
+	<td class="summary">Action update.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ConditionUpdate">ConditionUpdate</a></td>
+	<td class="summary">Condition update.</td>
+	</tr>
 	<tr>
 	<td class="name" ><a href="#ContactSelector">ContactSelector</a></td>
 	<td class="summary">Contact selector.</td>
@@ -116,8 +135,12 @@ Usually when a Lua script fails, an error is thrown that ends the script at that
 	<td class="summary">Selects a WRA doctrine.</td>
 	</tr>
 	<tr>
-	<td class="name" ><a href="#Event">Event</a></td>
-	<td class="summary">Event.</td>
+	<td class="name" ><a href="#EventTCAUpdate">EventTCAUpdate</a></td>
+	<td class="summary">Event Trigger/Condition/Action update.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#EventUpdate">EventUpdate</a></td>
+	<td class="summary">Event update.</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#EventUpdate">EventUpdate</a></td>
@@ -136,8 +159,16 @@ Usually when a Lua script fails, an error is thrown that ends the script at that
 	<td class="summary">Reference point selector.</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#SideOption">SideOption</a></td>
+	<td class="summary">Side options.</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#SpecialAction">SpecialAction</a></td>
 	<td class="summary">Special action selector.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#TriggerUpdate">TriggerUpdate</a></td>
+	<td class="summary">Trigger update.</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#UnitSelector">UnitSelector</a></td>
@@ -277,12 +308,20 @@ Usually when a Lua script fails, an error is thrown that ends the script at that
 	<td class="summary">Adds weapons into a mount.</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#ScenEdit_AddSide">ScenEdit_AddSide (table)</a></td>
+	<td class="summary">Add side.</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#ScenEdit_AddUnit">ScenEdit_AddUnit (unit)</a></td>
 	<td class="summary">Adds a unit based on a descriptor.</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_AddWeaponToUnitMagazine">ScenEdit_AddWeaponToUnitMagazine (descriptor)</a></td>
 	<td class="summary">Adds weapons into a magazine.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ScenEdit_AddZone">ScenEdit_AddZone (sideName, zoneType, table)</a></td>
+	<td class="summary">Add no-nav or exclusion zone.</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_AssignUnitAsTarget">ScenEdit_AssignUnitAsTarget (AUNameOrIDOrTable, MissionNameOrID)</a></td>
@@ -352,7 +391,7 @@ Usually when a Lua script fails, an error is thrown that ends the script at that
 	<td class="summary">Gets the WRA doctrine.</td>
 	</tr>
 	<tr>
-	<td class="name" ><a href="#ScenEdit_GetEvent">ScenEdit_GetEvent (EventDescriptionOrID)</a></td>
+	<td class="name" ><a href="#ScenEdit_GetEvent">ScenEdit_GetEvent (EventDescriptionOrID, level)</a></td>
 	<td class="summary">Gets the properties of an event.</td>
 	</tr>
 	<tr>
@@ -412,12 +451,16 @@ Usually when a Lua script fails, an error is thrown that ends the script at that
 	<td class="summary">Import mission parameters.</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#ScenEdit_InputBox">ScenEdit_InputBox (string)</a></td>
+	<td class="summary">Open an input box with the passed prompt.</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#ScenEdit_KillUnit">ScenEdit_KillUnit (unit)</a></td>
 	<td class="summary">Kill unit.</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_MsgBox">ScenEdit_MsgBox (string, style)</a></td>
-	<td class="summary">Opens a message box with the given string.</td>
+	<td class="summary">Show a message box with a passed string.</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_PlayerSide">ScenEdit_PlayerSide ()</a></td>
@@ -428,12 +471,25 @@ Usually when a Lua script fails, an error is thrown that ends the script at that
 	<td class="summary">Cause unit to refuel.</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#ScenEdit_RemoveSide">ScenEdit_RemoveSide (table)</a></td>
+	<td class="summary">Remove side
+ from play.</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#ScenEdit_RemoveUnitAsTarget">ScenEdit_RemoveUnitAsTarget (AUNameOrIDOrTable, MissionNameOrID)</a></td>
 	<td class="summary">Removes targets from a Strike mission.</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_RunScript">ScenEdit_RunScript (script)</a></td>
 	<td class="summary">Runs a script from a file.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ScenEdit_SetAction">ScenEdit_SetAction (options)</a></td>
+	<td class="summary">Sets the attributes of an action.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ScenEdit_SetCondition">ScenEdit_SetCondition (options)</a></td>
+	<td class="summary">Sets the attributes of an condition.</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_SetDoctrine">ScenEdit_SetDoctrine (selector, doctrine)</a></td>
@@ -453,7 +509,11 @@ Usually when a Lua script fails, an error is thrown that ends the script at that
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_SetEvent">ScenEdit_SetEvent (EventDescriptionOrID, options)</a></td>
-	<td class="summary">Sets the properties of an event.</td>
+	<td class="summary">Sets the attributes of an event.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ScenEdit_SetEventTrigger">ScenEdit_SetEventTrigger (EventDescriptionOrID, options)</a></td>
+	<td class="summary">Sets the attributes of a T/C/A.</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_SetKeyValue">ScenEdit_SetKeyValue (key, value)</a></td>
@@ -488,6 +548,10 @@ Usually when a Lua script fails, an error is thrown that ends the script at that
 	<td class="summary">Sets the properties of an existing special action.</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#ScenEdit_SetTrigger">ScenEdit_SetTrigger (options)</a></td>
+	<td class="summary">Sets the attributes of a trigger.</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#ScenEdit_SetUnit">ScenEdit_SetUnit (unit)</a></td>
 	<td class="summary">Sets the properties of a unit that already exists.</td>
 	</tr>
@@ -509,7 +573,13 @@ Usually when a Lua script fails, an error is thrown that ends the script at that
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_UnitX">ScenEdit_UnitX ()</a></td>
-	<td class="summary">The Unit that fired the current event trigger.</td>
+	<td class="summary">Activating Unit
+ ..</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ScenEdit_UnitY">ScenEdit_UnitY ()</a></td>
+	<td class="summary">Detecting Unit
+ ...</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_UpdateEvent">ScenEdit_UpdateEvent (EventDescriptionOrID, options)</a></td>
@@ -672,6 +742,88 @@ Usually when a Lua script fails, an error is thrown that ends the script at that
     <h2><a name="Selector"></a>Selector</h2>
 
     <dl class="function">
+    <dt>
+    <a name = "ActionUpdate"></a>
+    <strong>ActionUpdate</strong>
+    </dt>
+    <dd>
+    Action update.
+
+    </ul>
+
+    <ul>
+        <li><span class="parameter">ID</span>
+            <span class="types"><span class="type">string</span></span>
+         The GUID of the action [READONLY]
+        </li>
+        <li><span class="parameter">Description</span>
+            <span class="types"><span class="type">string</span></span>
+         Description or GUID of action
+        </li>
+        <li><span class="parameter">NewName</span>
+            <span class="types"><span class="type">string</span></span>
+         If specified, the new name of the action
+        </li>
+        <li><span class="parameter">Mode</span>
+            <span class="types"><span class="type">string</span></span>
+         Operation to do - 'list', 'add', 'remove', 'update' (default) SE_Set...()
+        </li>
+        <li><span class="parameter">Type</span>
+            <span class="types"><span class="type">string</span></span>
+         Type of action [required only for 'add' option]
+        </li>
+        <li><span class="parameter">Other</span>
+            <span class="types"><span class="type">various</span></span>
+         values apply to Type of action.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ConditionUpdate"></a>
+    <strong>ConditionUpdate</strong>
+    </dt>
+    <dd>
+    Condition update.
+
+    </ul>
+
+    <ul>
+        <li><span class="parameter">ID</span>
+            <span class="types"><span class="type">string</span></span>
+         The GUID of the condition [READONLY]
+        </li>
+        <li><span class="parameter">Description</span>
+            <span class="types"><span class="type">string</span></span>
+         Description or GUID of condition
+        </li>
+        <li><span class="parameter">NewName</span>
+            <span class="types"><span class="type">string</span></span>
+         If specified, the new name of the condition
+        </li>
+        <li><span class="parameter">Mode</span>
+            <span class="types"><span class="type">string</span></span>
+         Operation to do - 'list', 'add', 'remove', 'update' (default) SE_Set...()
+        </li>
+        <li><span class="parameter">Type</span>
+            <span class="types"><span class="type">string</span></span>
+         Type of condition [required only for 'add' option]
+        </li>
+        <li><span class="parameter">Other</span>
+            <span class="types"><span class="type">various</span></span>
+         values apply to Type of condition.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
     <dt>
     <a name = "ContactSelector"></a>
     <strong>ContactSelector</strong>
@@ -843,58 +995,26 @@ Usually when a Lua script fails, an error is thrown that ends the script at that
 
 </dd>
     <dt>
-    <a name = "Event"></a>
-    <strong>Event</strong>
+    <a name = "EventTCAUpdate"></a>
+    <strong>EventTCAUpdate</strong>
     </dt>
     <dd>
-    Event.
+    Event Trigger/Condition/Action update.
 
     </ul>
 
     <ul>
-        <li><span class="parameter">EventDescriptionOrID</span>
+        <li><span class="parameter">GUID</span>
             <span class="types"><span class="type">string</span></span>
-         The description or ID of the event
+         The GUID of the trigger
         </li>
-        <li><span class="parameter">guid</span>
+        <li><span class="parameter">Description</span>
             <span class="types"><span class="type">string</span></span>
-         The GUID of the event [READONLY]
+         The description or ID of the T/C/A
         </li>
-        <li><span class="parameter">isactive</span>
-            <span class="types"><span class="type">bool</span></span>
-         If the action is active for the player
-        </li>
-        <li><span class="parameter">isrepeatable</span>
-            <span class="types"><span class="type">bool</span></span>
-         If the event can be triggered multiple times
-        </li>
-        <li><span class="parameter">isshown</span>
-            <span class="types"><span class="type">bool</span></span>
-         If the action is suppressed in the log window
-        </li>
-        <li><span class="parameter">description</span>
+        <li><span class="parameter">Mode</span>
             <span class="types"><span class="type">string</span></span>
-         If specified, the new description for the event. Not desirable, as this will cause any instances where the old description is used, to fail.
-        </li>
-        <li><span class="parameter">probability</span>
-            <span class="types"><span class="type">number</span></span>
-         If specified, a new probability for the event
-        </li>
-        <li><span class="parameter">newname</span>
-            <span class="types"><span class="type">string</span></span>
-         If specified, the new name for the event
-        </li>
-        <li><span class="parameter">triggers</span>
-            <span class="types"><span class="type">{ Triggers }</span></span>
-         A table of triggers for this event [READONLY]
-        </li>
-        <li><span class="parameter">conditionss</span>
-            <span class="types"><span class="type">{ Conditions }</span></span>
-         A table of conditions for this event [READONLY]
-        </li>
-        <li><span class="parameter">actions</span>
-            <span class="types"><span class="type">{ Actions }</span></span>
-         A table of actions for this event [READONLY]
+         Operation to do - 'add', 'remove', replace', 'update' (default) SE_Set...()
         </li>
     </ul>
 
@@ -924,6 +1044,55 @@ Usually when a Lua script fails, an error is thrown that ends the script at that
         <li><span class="parameter">script</span>
             <span class="types"><span class="type">string</span></span>
          The Lua script
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "EventUpdate"></a>
+    <strong>EventUpdate</strong>
+    </dt>
+    <dd>
+    Event update.
+
+    </ul>
+
+    <ul>
+        <li><span class="parameter">ID</span>
+            <span class="types"><span class="type">string</span></span>
+         The GUID of the event [READONLY]
+        </li>
+        <li><span class="parameter">Description</span>
+            <span class="types"><span class="type">string</span></span>
+         If specified, the new description for the event
+        </li>
+        <li><span class="parameter">NewName</span>
+            <span class="types"><span class="type">string</span></span>
+         If specified, the new name of the event
+        </li>
+        <li><span class="parameter">IsActive</span>
+            <span class="types"><span class="type">bool</span></span>
+         If the event is active
+        </li>
+        <li><span class="parameter">IsRepeatable</span>
+            <span class="types"><span class="type">bool</span></span>
+         If the event can occur multiple times
+        </li>
+        <li><span class="parameter">IsShown</span>
+            <span class="types"><span class="type">bool</span></span>
+         If the event is shown in message log
+        </li>
+        <li><span class="parameter">Probability</span>
+            <span class="types"><span class="type">integer</span></span>
+         Chance of it happening
+        </li>
+        <li><span class="parameter">Mode</span>
+            <span class="types"><span class="type">string</span></span>
+         Operation to do - 'add', 'update' (default) SE_SetEvent()
         </li>
     </ul>
 
@@ -1060,6 +1229,39 @@ Usually when a Lua script fails, an error is thrown that ends the script at that
 
 </dd>
     <dt>
+    <a name = "SideOption"></a>
+    <strong>SideOption</strong>
+    </dt>
+    <dd>
+    Side options.
+
+    </ul>
+
+    <ul>
+        <li><span class="parameter">side</span>
+            <span class="types"><span class="type">string}</span></span>
+         Side name
+        </li>
+        <li><span class="parameter">guid</span>
+            <span class="types"><span class="type">string}</span></span>
+         Side guid
+        </li>
+        <li><span class="parameter">awareness</span>
+            <span class="types"><span class="type">string}</span></span>
+         Side awareness
+        </li>
+        <li><span class="parameter">proficiency</span>
+            <span class="types"><span class="type">string}</span></span>
+         Side proficiency
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
     <a name = "SpecialAction"></a>
     <strong>SpecialAction</strong>
     </dt>
@@ -1092,6 +1294,47 @@ Usually when a Lua script fails, an error is thrown that ends the script at that
         <li><span class="parameter">Description</span>
             <span class="types"><span class="type">string</span></span>
          If specified, the new description for the action
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "TriggerUpdate"></a>
+    <strong>TriggerUpdate</strong>
+    </dt>
+    <dd>
+    Trigger update.
+
+    </ul>
+
+    <ul>
+        <li><span class="parameter">ID</span>
+            <span class="types"><span class="type">string</span></span>
+         The GUID of the trigger [READONLY]
+        </li>
+        <li><span class="parameter">Description</span>
+            <span class="types"><span class="type">string</span></span>
+         Description or GUID of trigger
+        </li>
+        <li><span class="parameter">NewName</span>
+            <span class="types"><span class="type">string</span></span>
+         If specified, the new name of the trigger
+        </li>
+        <li><span class="parameter">Mode</span>
+            <span class="types"><span class="type">string</span></span>
+         Operation to do - 'list', 'add', 'remove', 'update' (default) SE_Set...()
+        </li>
+        <li><span class="parameter">Type</span>
+            <span class="types"><span class="type">string</span></span>
+         Type of trigger [required only for 'add' option]
+        </li>
+        <li><span class="parameter">Other</span>
+            <span class="types"><span class="type">various</span></span>
+         values apply to Type of trigger.
         </li>
     </ul>
 
@@ -2014,7 +2257,7 @@ If both are given, then the GUID is used preferentially.
         </li>
         <li><span class="parameter">base</span>
             <span class="types"><a class="type" href="../index.html#Unit">Unit</a></span>
-          The unit's assigned base. [READONLY]
+          The unit's assigned base.
         </li>
         <li><span class="parameter">latitude</span>
             <span class="types"><a class="type" href="../index.html#Latitude">Latitude</a></span>
@@ -2049,8 +2292,8 @@ If both are given, then the GUID is used preferentially.
          True if the unit should hold.
         </li>
         <li><span class="parameter">holdfire</span>
-            <span class="types"><span class="type">bool</span></span>
-         True if the unit should not fire .
+            <span class="types"><span class="type">{ table}</span></span>
+         Doctrine WCS setting for {air,surface,subsurface,land}. [READONLY]
         </li>
         <li><span class="parameter">heading</span>
             <span class="types"><span class="type">number</span></span>
@@ -2067,10 +2310,6 @@ If both are given, then the GUID is used preferentially.
         <li><span class="parameter">course</span>
             <span class="types"><a class="type" href="../index.html#LatLon">{ LatLon }</a></span>
          The unit's course, as a table of lat/lon pairs
-        </li>
-        <li><span class="parameter">RTB</span>
-            <span class="types"><span class="type">bool</span></span>
-         Trigger the unit to return to base
         </li>
         <li><span class="parameter">fuel</span>
             <span class="types"><a class="type" href="../index.html#Fuel">{ Fuel }</a></span>
@@ -2105,15 +2344,15 @@ If both are given, then the GUID is used preferentially.
           Message on unit weapon status. [READONLY]
         </li>
         <li><span class="parameter">manualSpeed</span>
-            <span class="types"><span class="type">number</span></span>
-          Manual desired speed. [READONLY]
+            <span class="types"><span class="type">string</span> or <span class="type">number</span></span>
+         Desired speed or 'OFF' to turn off manual mode
         </li>
         <li><span class="parameter">manualAlitude</span>
             <span class="types"><span class="type">bool</span></span>
-          Manual altiude. [READONLY]
+          To turn on/off manual mode
         </li>
         <li><span class="parameter">damage</span>
-            <span class="types"><span class="type">{ table  }</span></span>
+            <span class="types"><span class="type">{ table }</span></span>
           Table {dp,flood,fires,startDp} of start and current DP, flood and fire level. [READONLY]
         </li>
         <li><span class="parameter">magazines</span>
@@ -2132,10 +2371,6 @@ If both are given, then the GUID is used preferentially.
             <span class="types"><span class="type">{ table }</span></span>
           A table {side,guid,name} of this unit seen from the other sides (as contacts).  [READONLY]
         </li>
-        <li><span class="parameter">refuel</span>
-            <span class="types"><span class="type">bool</span></span>
-         Trigger the unit to attempt an UNREP
-        </li>
         <li><span class="parameter">weather</span>
             <span class="types"><a class="type" href="../index.html#Weather">{ Weather } </a></span>
          Table of weather parameters (temp, rainfall, underrain, seastate)
@@ -2151,6 +2386,36 @@ If both are given, then the GUID is used preferentially.
         <li><span class="parameter">rangetotarget</span>
             <span class="types"><span class="type">method</span></span>
         ('contactid') Calculate flat distance to a contact location
+        </li>
+        <li><span class="parameter">areaTriggersFired</span>
+            <span class="types"><span class="type">{ table } </span></span>
+         Table of active 'in area' triggers that have fired for unit
+        </li>
+        <li><span class="parameter">OODA</span>
+            <span class="types"><span class="type">{ table }</span></span>
+          Table contain unit's "observe, orient, decide, act" values {evasion, targeting, detection} </p>
+
+<p> ScenEdit only
+        </li>
+        <li><span class="parameter">refuel</span>
+            <span class="types"><span class="type">bool</span></span>
+         Trigger the unit to attempt an UNREP
+        </li>
+        <li><span class="parameter">RTB</span>
+            <span class="types"><span class="type">bool</span></span>
+         Trigger the unit to return to base
+        </li>
+        <li><span class="parameter">moveto</span>
+            <span class="types"><span class="type">bool</span></span>
+          Set a desired alt/depth instead of jumping to actual
+        </li>
+        <li><span class="parameter">manualSpeed</span>
+            <span class="types"><span class="type">string</span> or <span class="type">number</span></span>
+         Desired speed or 'OFF' to turn off manual mode
+        </li>
+        <li><span class="parameter">manualAlitude</span>
+            <span class="types"><span class="type">bool</span></span>
+          To turn on/off manual mode
         </li>
     </ul>
 
@@ -2173,21 +2438,29 @@ If both are given, then the GUID is used preferentially.
             <span class="types"><span class="type">string</span></span>
          The GUID of the zone. [READONLY]
         </li>
-        <li><span class="parameter">isactive</span>
-            <span class="types"><span class="type">bool</span></span>
-         Zone is currently active.
-        </li>
-        <li><span class="parameter">name</span>
-            <span class="types"><span class="type">string</span></span>
-         The name of the zone.
-        </li>
         <li><span class="parameter">description</span>
             <span class="types"><span class="type">string</span></span>
          The description of the zone.
         </li>
+        <li><span class="parameter">isactive</span>
+            <span class="types"><span class="type">bool</span></span>
+         Zone is currently active.
+        </li>
         <li><span class="parameter">area</span>
             <span class="types"><a class="type" href="../index.html#ZoneMarker">{ ZoneMarker }</a></span>
          A set of reference points marking the zone. [READONLY]
+        </li>
+        <li><span class="parameter">affects</span>
+            <span class="types"><span class="type">{ unitTypes } </span></span>
+         List of unit types (ship, submarine, aircraft, facility)
+        </li>
+        <li><span class="parameter">locked</span>
+            <span class="types"><span class="type">bool</span></span>
+         Zone is locked.
+        </li>
+        <li><span class="parameter">markas</span>
+            <span class="types"><span class="type">Posture</span></span>
+         Posture of violator of exclusion zone.
         </li>
     </ul>
 
@@ -2730,6 +3003,37 @@ The descriptor <b>must</b> contain at least a name, side, latitude and longitude
 
 </dd>
     <dt>
+    <a name = "ScenEdit_AddSide"></a>
+    <strong>ScenEdit_AddSide (table)</strong>
+    </dt>
+    <dd>
+    Add side. <br/>
+ ...
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">table</span>
+            <span class="types"><span class="type">{ table } </span></span>
+         The side
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../index.html#Side">Side</a></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
     <a name = "ScenEdit_AddUnit"></a>
     <strong>ScenEdit_AddUnit (unit)</strong>
     </dt>
@@ -2794,6 +3098,45 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     <ul>
         <pre class="example">ScenEdit_AddWeaponToUnitMagazine({unitname=<span class="string">'Ammo'</span>, w_dbid=<span class="number">773</span>, number=<span class="number">1</span>, w_max=<span class="number">10</span>})</pre>
     </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_AddZone"></a>
+    <strong>ScenEdit_AddZone (sideName, zoneType, table)</strong>
+    </dt>
+    <dd>
+    Add no-nav or exclusion zone. <br/>
+ ...
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sideName</span>
+            <span class="types"><span class="type">string </span></span>
+         Side name/GUID
+        </li>
+        <li><span class="parameter">zoneType</span>
+            <span class="types"><span class="type">string </span></span>
+         Type of zone to add: 0 = no-nav, 1 = exclusion
+        </li>
+        <li><span class="parameter">table</span>
+            <span class="types"><span class="type">{ table } </span></span>
+          Description, Isactive, Area { of RPs }, Affects { of UnitTypes }, MarkAs (exc only), Locked (non only)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../index.html#Zone">{ Zone } </a></span>
+
+
+
+    </ol>
+
+
+
 
 </dd>
     <dt>
@@ -3342,7 +3685,7 @@ Nothing returned Or empty values means that the weapon Is Not For the target typ
 </dd>
     <dt>
     <a name = "ScenEdit_GetEvent"></a>
-    <strong>ScenEdit_GetEvent (EventDescriptionOrID)</strong>
+    <strong>ScenEdit_GetEvent (EventDescriptionOrID, level)</strong>
     </dt>
     <dd>
     Gets the properties of an event.
@@ -3355,12 +3698,16 @@ Nothing returned Or empty values means that the weapon Is Not For the target typ
             <span class="types"><span class="type">string</span></span>
          The event to retrieve
         </li>
+        <li><span class="parameter">level</span>
+            <span class="types"><span class="type">number</span></span>
+         The detail required: 0 - full event,  (limit return to 1 - triggers, 2 - conditions, 3 - actions, 4 - event)
+        </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="../index.html#Event">Event</a></span>
+           <span class="types"><span class="type">Event</span></span>
         The event details
     </ol>
 
@@ -3583,7 +3930,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>) <span class="comment">-- r
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">SideOption</span></span>
+           <span class="types"><a class="type" href="../index.html#SideOption">{ SideOption }</a></span>
         The side options
     </ol>
 
@@ -3795,6 +4142,33 @@ then the function returns nil instead of producing an exception.
 
 </dd>
     <dt>
+    <a name = "ScenEdit_InputBox"></a>
+    <strong>ScenEdit_InputBox (string)</strong>
+    </dt>
+    <dd>
+    Open an input box with the passed prompt.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">string</span>
+            <span class="types"><span class="type">string</span></span>
+         The string to display to the user
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Data entered into box
+    </ol>
+
+
+
+
+</dd>
+    <dt>
     <a name = "ScenEdit_KillUnit"></a>
     <strong>ScenEdit_KillUnit (unit)</strong>
     </dt>
@@ -3834,7 +4208,14 @@ then the function returns nil instead of producing an exception.
     <strong>ScenEdit_MsgBox (string, style)</strong>
     </dt>
     <dd>
-    Opens a message box with the given string.
+    Show a message box with a passed string. </p>
+
+<p> Style numbers
+ 1 = OK and Cancel buttons.
+ 2 = Abort, Retry, and Ignore buttons.
+ 3 = Yes, No, and Cancel buttons
+ 4 = Yes and No buttons.
+ 5 = Retry and Cancel buttons.
 
     </ul>
 
@@ -3853,7 +4234,7 @@ then the function returns nil instead of producing an exception.
     <h3>Returns:</h3>
     <ol>
 
-        button number.
+         button number pressed.
     </ol>
 
 
@@ -3922,6 +4303,37 @@ then the function returns nil instead of producing an exception.
 
 </dd>
     <dt>
+    <a name = "ScenEdit_RemoveSide"></a>
+    <strong>ScenEdit_RemoveSide (table)</strong>
+    </dt>
+    <dd>
+    Remove side
+ from play.  This removes ALL units and contacts.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">table</span>
+            <span class="types"><span class="type">{ table } </span></span>
+         The side
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../index.html#Side">Side</a></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
     <a name = "ScenEdit_RemoveUnitAsTarget"></a>
     <strong>ScenEdit_RemoveUnitAsTarget (AUNameOrIDOrTable, MissionNameOrID)</strong>
     </dt>
@@ -3986,6 +4398,62 @@ A file can also be loaded indirectly from an attachment <a href="../index.html#S
     <ul>
         <pre class="example">ScenEdit_RunScript(<span class="string">'mylibrary.lua'</span>)</pre>
     </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_SetAction"></a>
+    <strong>ScenEdit_SetAction (options)</strong>
+    </dt>
+    <dd>
+    Sets the attributes of an action.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">options</span>
+            <span class="types"><a class="type" href="../index.html#ActionUpdate">{ ActionUpdate }</a></span>
+         The action options
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">{ table } </span></span>
+        Table of action options (new or previous value)
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_SetCondition"></a>
+    <strong>ScenEdit_SetCondition (options)</strong>
+    </dt>
+    <dd>
+    Sets the attributes of an condition.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">options</span>
+            <span class="types"><a class="type" href="../index.html#ConditionUpdate">{ ConditionUpdate }</a></span>
+         The condition options
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">{ table } </span></span>
+        Table of condition options (new or previous value)
+    </ol>
+
+
+
 
 </dd>
     <dt>
@@ -4133,7 +4601,7 @@ A file can also be loaded indirectly from an attachment <a href="../index.html#S
     <strong>ScenEdit_SetEvent (EventDescriptionOrID, options)</strong>
     </dt>
     <dd>
-    Sets the properties of an event.
+    Sets the attributes of an event.
 
     </ul>
 
@@ -4141,19 +4609,51 @@ A file can also be loaded indirectly from an attachment <a href="../index.html#S
     <ul>
         <li><span class="parameter">EventDescriptionOrID</span>
             <span class="types"><span class="type">string</span></span>
-         The event to modify
+         The event name/GUID to perform operation on
         </li>
         <li><span class="parameter">options</span>
-            <span class="types"><a class="type" href="../index.html#Event">Event</a></span>
-         The event options to modify
+            <span class="types"><a class="type" href="../index.html#EventUpdate">{ EventUpdate }</a></span>
+         The event options
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">bool</span></span>
-        If true, successful.
+           <span class="types"><span class="type">{ table } </span></span>
+        Table of event options (new or previous value)
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_SetEventTrigger"></a>
+    <strong>ScenEdit_SetEventTrigger (EventDescriptionOrID, options)</strong>
+    </dt>
+    <dd>
+    Sets the attributes of a T/C/A.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">EventDescriptionOrID</span>
+            <span class="types"><span class="type">string</span></span>
+         The trigger name/GUID to perform operation on
+        </li>
+        <li><span class="parameter">options</span>
+            <span class="types"><a class="type" href="../index.html#EventTCAUpdate">{ EventTCAUpdate }</a></span>
+         The options
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">{ table } </span></span>
+        Table of options (new or previous value)
     </ol>
 
 
@@ -4367,8 +4867,8 @@ The 'area' selector is useful for changing some common attribute, like locking o
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="../index.html#Side">Side</a></span>
-        The Side object
+           <span class="types"><a class="type" href="../index.html#SideOption">{ SideOption }</a></span>
+        The side options
     </ol>
 
 
@@ -4456,6 +4956,34 @@ The 'area' selector is useful for changing some common attribute, like locking o
 
 </dd>
     <dt>
+    <a name = "ScenEdit_SetTrigger"></a>
+    <strong>ScenEdit_SetTrigger (options)</strong>
+    </dt>
+    <dd>
+    Sets the attributes of a trigger.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">options</span>
+            <span class="types"><a class="type" href="../index.html#TriggerUpdate">{ TriggerUpdate }</a></span>
+         The trigger options
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">{ table } </span></span>
+        Table of trigger options (new or previous value)
+    </ol>
+
+
+
+
+</dd>
+    <dt>
     <a name = "ScenEdit_SetUnit"></a>
     <strong>ScenEdit_SetUnit (unit)</strong>
     </dt>
@@ -4523,7 +5051,7 @@ The 'area' selector is useful for changing some common attribute, like locking o
 
     <h3>Usage:</h3>
     <ul>
-        <pre class="example">ScenEdit_SetUnitDamage(<span class="string">'{side='</span>SideA<span class="string">', unitname='</span>Ship<span class="string">', fires=1, components={ {'</span>rudder<span class="string">','</span>Medium<span class="string">'}, {'</span><span class="global">type</span><span class="string">',type='</span>sensor<span class="string">',1} } }'</span>)</pre>
+        <pre class="example">ScenEdit_SetUnitDamage({side=<span class="string">'SideA'</span>, unitname=<span class="string">'Ship'</span>, fires=<span class="number">1</span>, components={ {<span class="string">'rudder'</span>,<span class="string">'Medium'</span>}, {<span class="string">'type'</span>,<span class="global">type</span>=<span class="string">'sensor'</span>,<span class="number">1</span>} } })</pre>
     </ul>
 
 </dd>
@@ -4627,8 +5155,11 @@ conditions are applied globally.
     <strong>ScenEdit_UnitX ()</strong>
     </dt>
     <dd>
-    The Unit that fired the current event trigger.
-Otherwise, a nil is returned.
+    Activating Unit
+ ..  that triggered the current Event.
+Otherwise, a nil is returned.</p>
+
+<p> Note that UnitX() can also be used as a shortcut for ScenEdit_UnitX()
 
     </ul>
 
@@ -4644,7 +5175,41 @@ Otherwise, a nil is returned.
 
     <h3>Usage:</h3>
     <ul>
-        <pre class="example"><span class="keyword">local</span> unit = ScenEdit_UnitX()</pre>
+        <li><pre class="example">ScenEdit_SetUnitDamage({side=UnitX().side, unitname=UnitX().name, fires=<span class="number">1</span>, components={ {<span class="string">'rudder'</span>,<span class="string">'Medium'</span>}, {<span class="string">'type'</span>,<span class="global">type</span>=<span class="string">'sensor'</span>,<span class="number">1</span>} } })</pre></li>
+        <li><pre class="example"><span class="keyword">local</span> unit = ScenEdit_UnitX()</pre></li>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_UnitY"></a>
+    <strong>ScenEdit_UnitY ()</strong>
+    </dt>
+    <dd>
+    Detecting Unit
+ ...  from a Unit Detected event trigger.
+Otherwise, a nil is returned.</p>
+
+<p> Note that UnitY() can also be used as a shortcut for ScenEdit_UnitY()
+
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">{ table }</span></span>
+        The detecting unit and sensors used as { unit = {unit object}, sensor = {[1] = {name, type}, [2] = {name, type}, etc} }
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <li><pre class="example">ScenEdit_SetUnitDamage({side=UnitY().side, unitname=UnitY().name, fires=<span class="number">1</span>, components={ {<span class="string">'rudder'</span>,<span class="string">'Medium'</span>}, {<span class="string">'type'</span>,<span class="global">type</span>=<span class="string">'sensor'</span>,<span class="number">1</span>} } })</pre></li>
+        <li><pre class="example"><span class="keyword">local</span> by = ScenEdit_UnitY()
+ <span class="global">print</span>(<span class="string">'Y:'</span>); <span class="global">print</span>( by)
+ <span class="global">print</span>(<span class="string">'Detected by: '</span>);<span class="global">print</span>( by.unit.name .. <span class="string">' of type '</span> .. by.unit.<span class="global">type</span> ..<span class="string">' from '</span> ..  by.unit.side)
+ <span class="global">print</span>(<span class="string">'Sensor: '</span>);<span class="global">print</span>( by.sensor[<span class="number">1</span>].name .. <span class="string">' of type '</span> ..  by.sensor[<span class="number">1</span>].<span class="global">type</span>);</pre></li>
     </ul>
 
 </dd>
@@ -4661,7 +5226,7 @@ Otherwise, a nil is returned.
     <ul>
         <li><span class="parameter">EventDescriptionOrID</span>
             <span class="types"><span class="type">string</span></span>
-         The event nam/GUID to update
+         The event name/GUID to update
         </li>
         <li><span class="parameter">options</span>
             <span class="types"><a class="type" href="../index.html#EventUpdate">{EventUpdate}</a></span>
@@ -4673,7 +5238,7 @@ Otherwise, a nil is returned.
     <ol>
 
            <span class="types"><span class="type">table</span> or <span class="type">bool</span></span>
-        Table of Lua script event (new or previous values)
+        Table of event option (new or previous values)
     </ol>
 
 
@@ -4894,12 +5459,19 @@ Otherwise, a nil is returned.
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">SideInfo</span></span>
+           <span class="types"><a class="type" href="../index.html#Side">Side</a></span>
         Information about the side selected, from the perspective of the player.
     </ol>
 
 
 
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> a = VP_GetSide({Side =<span class="string">'sidea'</span>}) <span class="comment">-- a side object
+</span><span class="keyword">local</span> z = a.nonavzones <span class="comment">--List of no-nav zones for the side if you need to find it
+</span><span class="keyword">local</span> n = a : getnonavzone(z[<span class="number">1</span>].guid) <span class="comment">-- required zone object for a particular zone
+</span>n.isactive = <span class="keyword">false</span> <span class="comment">-- turn it off</span></pre>
+    </ul>
 
 </dd>
     <dt>
@@ -6295,6 +6867,18 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
             <span class="types"><span class="type">bool</span></span>
          True if pre-planned target list only
         </li>
+        <li><span class="parameter">strikeRadarUasge</span>
+            <span class="types"><span class="type">number</span></span>
+         Radar usage
+        </li>
+        <li><span class="parameter">strikeMinDist</span>
+            <span class="types"><span class="type">number</span></span>
+          Strike minimum distance
+        </li>
+        <li><span class="parameter">strikeMaxDist</span>
+            <span class="types"><span class="type">number</span></span>
+          Strike maximum distance
+        </li>
     </ul>
 
 
@@ -6587,7 +7171,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2017-02-09 21:12:14 </i>
+<i style="float:right;">Last updated 2017-05-19 22:31:43 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
