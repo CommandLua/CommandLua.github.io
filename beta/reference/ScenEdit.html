@@ -105,7 +105,7 @@ One issue with commands running in an event is that sometimes they fail with an 
 <p>Note also, that the Lua history log should also record the event script errors.</p>
 
 
-<p><b>Release: 1.12 </b></p>
+<p><b>Release: 1.12+ </b></p>
 
 
 <h2><a href="#Selector">Selector</a></h2>
@@ -140,7 +140,7 @@ One issue with commands running in an event is that sometimes they fail with an 
 	</tr>
 	<tr>
 	<td class="name" ><a href="#EventUpdate">EventUpdate</a></td>
-	<td class="summary">Event update.</td>
+	<td class="summary">Event update (obsolete).</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#EventUpdate">EventUpdate</a></td>
@@ -572,6 +572,11 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="summary">Displays a special message consisting of the HTML text <code>message</code> to side `side.</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#ScenEdit_TransferCargo">ScenEdit_TransferCargo (fromUnit, toUnit, cargoList)</a></td>
+	<td class="summary">Transfer cargo
+ ..</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#ScenEdit_UnitX">ScenEdit_UnitX ()</a></td>
 	<td class="summary">Activating Unit
  ..</td>
@@ -580,6 +585,10 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="name" ><a href="#ScenEdit_UnitY">ScenEdit_UnitY ()</a></td>
 	<td class="summary">Detecting Unit
  ...</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ScenEdit_UnloadCargo">ScenEdit_UnloadCargo (fromUnit, cargoList)</a></td>
+	<td class="summary">Unload cargo</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_UpdateEvent">ScenEdit_UpdateEvent (EventDescriptionOrID, options)</a></td>
@@ -1028,7 +1037,7 @@ One issue with commands running in an event is that sometimes they fail with an 
     <strong>EventUpdate</strong>
     </dt>
     <dd>
-    Event update.
+    Event update (obsolete).
 
     </ul>
 
@@ -1638,6 +1647,18 @@ If both are given, then the GUID is used preferentially.
             <span class="types"><a class="type" href="../index.html#Longitude">Longitude</a></span>
          The longitude of the contact. [READONLY]
         </li>
+        <li><span class="parameter">speed</span>
+            <span class="types"><span class="type">number</span></span>
+         Speed if known  [READONLY]
+        </li>
+        <li><span class="parameter">heading</span>
+            <span class="types"><span class="type">number</span></span>
+         Heading if known  [READONLY]
+        </li>
+        <li><span class="parameter">altitude</span>
+            <span class="types"><span class="type">number</span></span>
+         Altitude if known  [READONLY]
+        </li>
         <li><span class="parameter">missile_defence</span>
             <span class="types"><span class="type">number</span></span>
          Applicable to Facility and Ships. -1 = unknown contact [READONLY]
@@ -1655,7 +1676,7 @@ If both are given, then the GUID is used preferentially.
          Type of contact. [READONLY]
         </li>
         <li><span class="parameter">areaofuncertainty</span>
-            <span class="types"><a class="type" href="../index.html#LatLon">{ LatLon }</a></span>
+            <span class="types"><a class="type" href="../index.html#LatLon">{ LatLon } </a></span>
          Table of points defining the area of contact. [READONLY]
         </li>
         <li><span class="parameter">type_description</span>
@@ -1671,7 +1692,7 @@ If both are given, then the GUID is used preferentially.
          Contact classification. [READONLY]
         </li>
         <li><span class="parameter">potentialmatches</span>
-            <span class="types"><a class="type" href="../index.html#EMmatch">{ EMmatch }</a></span>
+            <span class="types"><a class="type" href="../index.html#EMmatch">{ EMmatch } </a></span>
          Table {EMmatch} on potential EMCON emission matches. [READONLY]
         </li>
         <li><span class="parameter">side</span>
@@ -1681,6 +1702,10 @@ If both are given, then the GUID is used preferentially.
         <li><span class="parameter">fromside</span>
             <span class="types"><a class="type" href="../index.html#Side">Side</a></span>
          The side who sees this contact. [READONLY]
+        </li>
+        <li><span class="parameter">detectedBySide</span>
+            <span class="types"><a class="type" href="../index.html#Side">Side</a></span>
+         The side who originally saw this contact. Would be same as fromside unless shared [READONLY]
         </li>
         <li><span class="parameter">posture</span>
             <span class="types"><span class="type">string</span></span>
@@ -1693,6 +1718,30 @@ If both are given, then the GUID is used preferentially.
         <li><span class="parameter">weather</span>
             <span class="types"><a class="type" href="../index.html#Weather">{ Weather } </a></span>
          Table of weather parameters (temp, rainfall, underrain, seastate)
+        </li>
+        <li><span class="parameter">BDA</span>
+            <span class="types"><span class="type">{ table } </span></span>
+         Table of battle damage assessment (fires, flood, structural)
+        </li>
+        <li><span class="parameter">emissions</span>
+            <span class="types"><span class="type">{ table } </span></span>
+         Table {name, age, solid} of detected emmissions from contact
+        </li>
+        <li><span class="parameter">detectionBy</span>
+            <span class="types"><span class="type">{ table } </span></span>
+         Table of how long ago was detected by type (radar, esm, visual, infrared, sonaractive, sonarpassive)
+        </li>
+        <li><span class="parameter">targetedBy</span>
+            <span class="types"><span class="type">{ table } </span></span>
+         Table of unit guids that have this contact as a target
+        </li>
+        <li><span class="parameter">firingAt</span>
+            <span class="types"><span class="type">{ table } </span></span>
+         Table of contact guids that this contact is firing at
+        </li>
+        <li><span class="parameter">firedOn</span>
+            <span class="types"><span class="type">{ table } </span></span>
+         Table of guids that are firing on this contact
         </li>
         <li><span class="parameter">DropContact</span>
             <span class="types"><span class="type">method</span></span>
@@ -2257,7 +2306,7 @@ If both are given, then the GUID is used preferentially.
         </li>
         <li><span class="parameter">base</span>
             <span class="types"><a class="type" href="../index.html#Unit">Unit</a></span>
-          The unit's assigned base. [READONLY]
+          The unit's assigned base.
         </li>
         <li><span class="parameter">latitude</span>
             <span class="types"><a class="type" href="../index.html#Latitude">Latitude</a></span>
@@ -2292,7 +2341,7 @@ If both are given, then the GUID is used preferentially.
          True if the unit should hold.
         </li>
         <li><span class="parameter">holdfire</span>
-            <span class="types"><span class="type">{ table}</span></span>
+            <span class="types"><span class="type">{ table} </span></span>
          Doctrine WCS setting for {air,surface,subsurface,land}. [READONLY]
         </li>
         <li><span class="parameter">heading</span>
@@ -2308,11 +2357,11 @@ If both are given, then the GUID is used preferentially.
          If changing existing unit, the unit's new name .
         </li>
         <li><span class="parameter">course</span>
-            <span class="types"><a class="type" href="../index.html#LatLon">{ LatLon }</a></span>
+            <span class="types"><a class="type" href="../index.html#LatLon">{ LatLon } </a></span>
          The unit's course, as a table of lat/lon pairs
         </li>
         <li><span class="parameter">fuel</span>
-            <span class="types"><a class="type" href="../index.html#Fuel">{ Fuel }</a></span>
+            <span class="types"><a class="type" href="../index.html#Fuel">{ Fuel } </a></span>
          A table of fuel types used by unit.
         </li>
         <li><span class="parameter">mission</span>
@@ -2331,6 +2380,10 @@ If both are given, then the GUID is used preferentially.
             <span class="types"><span class="type">number</span></span>
           current aircraft loadout DBID. [READONLY]
         </li>
+        <li><span class="parameter">readytime</span>
+            <span class="types"><span class="type">number</span></span>
+          how long aircraft/ship takes to be ready. [READONLY]
+        </li>
         <li><span class="parameter">unitstate</span>
             <span class="types"><span class="type">string</span></span>
          Message on unit status. [READONLY]
@@ -2343,6 +2396,10 @@ If both are given, then the GUID is used preferentially.
             <span class="types"><span class="type">string</span></span>
           Message on unit weapon status. [READONLY]
         </li>
+        <li><span class="parameter">condition</span>
+            <span class="types"><span class="type">string</span></span>
+          Message on unit ops status. [READONLY]
+        </li>
         <li><span class="parameter">manualSpeed</span>
             <span class="types"><span class="type">string</span> or <span class="type">number</span></span>
          Desired speed or 'OFF' to turn off manual mode
@@ -2352,28 +2409,56 @@ If both are given, then the GUID is used preferentially.
           To turn on/off manual mode
         </li>
         <li><span class="parameter">damage</span>
-            <span class="types"><span class="type">{ table }</span></span>
+            <span class="types"><span class="type">{ table } </span></span>
           Table {dp,flood,fires,startDp} of start and current DP, flood and fire level. [READONLY]
         </li>
         <li><span class="parameter">magazines</span>
-            <span class="types"><a class="type" href="../index.html#Magazine">{ Magazine }</a></span>
+            <span class="types"><a class="type" href="../index.html#Magazine">{ Magazine } </a></span>
           A table of magazines (with weapon loads) in the unit or group. Can be updated by <a href="../index.html#ScenEdit_AddWeaponToUnitMagazine">ScenEdit_AddWeaponToUnitMagazine</a> [READONLY]
         </li>
         <li><span class="parameter">mounts</span>
-            <span class="types"><a class="type" href="../index.html#Mount">{ Mount }</a></span>
+            <span class="types"><a class="type" href="../index.html#Mount">{ Mount } </a></span>
           A table of mounts (with weapon loads) in the unit or group. Can be updated by <a href="../index.html#ScenEdit_AddReloadsToUnit">ScenEdit_AddReloadsToUnit</a> [READONLY]
         </li>
         <li><span class="parameter">components</span>
-            <span class="types"><a class="type" href="../index.html#Component">{ Component }</a></span>
+            <span class="types"><a class="type" href="../index.html#Component">{ Component } </a></span>
           A table of components on the unit.  [READONLY]
         </li>
         <li><span class="parameter">ascontact</span>
-            <span class="types"><span class="type">{ table }</span></span>
+            <span class="types"><span class="type">{ table } </span></span>
           A table {side,guid,name} of this unit seen from the other sides (as contacts).  [READONLY]
         </li>
         <li><span class="parameter">weather</span>
             <span class="types"><a class="type" href="../index.html#Weather">{ Weather } </a></span>
          Table of weather parameters (temp, rainfall, underrain, seastate)
+        </li>
+        <li><span class="parameter">areaTriggersFired</span>
+            <span class="types"><span class="type">{ table } </span></span>
+         Table of active 'in area' triggers that have fired for unit
+        </li>
+        <li><span class="parameter">OODA</span>
+            <span class="types"><span class="type">{ table } </span></span>
+          Table contain unit's "observe, orient, decide, act" values {evasion, targeting, detection}
+        </li>
+        <li><span class="parameter">hostedUnits</span>
+            <span class="types"><span class="type">{ table } </span></span>
+         Table of boats and aircraft docked/embarked on the unit
+        </li>
+        <li><span class="parameter">weapon</span>
+            <span class="types"><span class="type">{ table } </span></span>
+         Table of shooter unit, at contact unit and detonated (when destroyed) if a weapon [READONLY]
+        </li>
+        <li><span class="parameter">targetedBy</span>
+            <span class="types"><span class="type">{ table } </span></span>
+         Table of unit guids that have this unit as a target
+        </li>
+        <li><span class="parameter">firingAt</span>
+            <span class="types"><span class="type">{ table } </span></span>
+         Table of contact guids that this unit is firing at
+        </li>
+        <li><span class="parameter">firedOn</span>
+            <span class="types"><span class="type">{ table } </span></span>
+         Table of guids that are firing on this unit
         </li>
         <li><span class="parameter">delete</span>
             <span class="types"><span class="type">method</span></span>
@@ -2385,15 +2470,7 @@ If both are given, then the GUID is used preferentially.
         </li>
         <li><span class="parameter">rangetotarget</span>
             <span class="types"><span class="type">method</span></span>
-        ('contactid') Calculate flat distance to a contact location
-        </li>
-        <li><span class="parameter">areaTriggersFired</span>
-            <span class="types"><span class="type">{ table } </span></span>
-         Table of active 'in area' triggers that have fired for unit
-        </li>
-        <li><span class="parameter">OODA</span>
-            <span class="types"><span class="type">{ table }</span></span>
-          Table contain unit's "observe, orient, decide, act" values {evasion, targeting, detection} </p>
+        ('contactid') Calculate flat distance to a contact location</p>
 
 <p> ScenEdit only
         </li>
@@ -5151,6 +5228,43 @@ conditions are applied globally.
 
 </dd>
     <dt>
+    <a name = "ScenEdit_TransferCargo"></a>
+    <strong>ScenEdit_TransferCargo (fromUnit, toUnit, cargoList)</strong>
+    </dt>
+    <dd>
+    Transfer cargo
+ ..  list from 'mother' to 'child'
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">fromUnit</span>
+            <span class="types"><a class="type" href="../index.html#UnitSelector">UnitSelector</a></span>
+         The unit with cargo
+        </li>
+        <li><span class="parameter">toUnit</span>
+            <span class="types"><a class="type" href="../index.html#UnitSelector">UnitSelector</a></span>
+         The unit to get cargo
+        </li>
+        <li><span class="parameter">cargoList</span>
+            <span class="types"><span class="type">{ Cargo }</span></span>
+         List of cargo to transfer: table of {guids}, or { {DBID, number}}
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolen</span></span>
+        Successful or not
+    </ol>
+
+
+
+
+</dd>
+    <dt>
     <a name = "ScenEdit_UnitX"></a>
     <strong>ScenEdit_UnitX ()</strong>
     </dt>
@@ -5211,6 +5325,38 @@ Otherwise, a nil is returned.</p>
  <span class="global">print</span>(<span class="string">'Detected by: '</span>);<span class="global">print</span>( by.unit.name .. <span class="string">' of type '</span> .. by.unit.<span class="global">type</span> ..<span class="string">' from '</span> ..  by.unit.side)
  <span class="global">print</span>(<span class="string">'Sensor: '</span>);<span class="global">print</span>( by.sensor[<span class="number">1</span>].name .. <span class="string">' of type '</span> ..  by.sensor[<span class="number">1</span>].<span class="global">type</span>);</pre></li>
     </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_UnloadCargo"></a>
+    <strong>ScenEdit_UnloadCargo (fromUnit, cargoList)</strong>
+    </dt>
+    <dd>
+    Unload cargo
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">fromUnit</span>
+            <span class="types"><a class="type" href="../index.html#UnitSelector">UnitSelector</a></span>
+         The unit with cargo
+        </li>
+        <li><span class="parameter">cargoList</span>
+            <span class="types"><span class="type">{ Cargo }</span></span>
+         List of cargo to unload: table of {guids}, or { {DBID, number}}
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolen</span></span>
+        Successful or not
+    </ol>
+
+
+
 
 </dd>
     <dt>
@@ -6087,15 +6233,17 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
         </li>
         <li><span class="parameter">TimeToReady_Minutes</span>
             <span class="types"><span class="type">number</span></span>
-         How many minutes until the loadout is ready
+         How many minutes until the loadout is ready (default = database loadout time)
+         (<em>optional</em>)
         </li>
         <li><span class="parameter">IgnoreMagazines</span>
             <span class="types"><span class="type">bool</span></span>
-         If the new loadout should rely on the magazines having the right weapons ready
+         If the new loadout should rely on the magazines having the right weapons ready (default = false)
+         (<em>optional</em>)
         </li>
         <li><span class="parameter">ExcludeOptionalWeapons</span>
             <span class="types"><span class="type">bool</span></span>
-         Exclude optional weapons from loadout
+         Exclude optional weapons from loadout  (default = false)
          (<em>optional</em>)
         </li>
     </ul>
@@ -7171,7 +7319,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2017-05-07 17:10:45 </i>
+<i style="float:right;">Last updated 2017-05-27 12:26:03 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
