@@ -302,7 +302,7 @@ One issue with commands running in an event is that sometimes they fail with an 
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_AddReferencePoint">ScenEdit_AddReferencePoint (descriptor)</a></td>
-	<td class="summary">Add a new reference point.</td>
+	<td class="summary">Add new reference point(s).</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_AddReloadsToUnit">ScenEdit_AddReloadsToUnit (descriptor)</a></td>
@@ -450,7 +450,8 @@ One issue with commands running in an event is that sometimes they fail with an 
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_HostUnitToParent">ScenEdit_HostUnitToParent (host_info)</a></td>
-	<td class="summary">Hosts a unit to the specified host.</td>
+	<td class="summary">Host/base
+ ..</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_ImportInst">ScenEdit_ImportInst (side, filename)</a></td>
@@ -621,6 +622,10 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="summary">Use an attachment on a side (used for .inst files as attachments).</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#Tool_Bearing">Tool_Bearing ()</a></td>
+	<td class="summary">Get bearing between points.</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#Tool_DumpEvents">Tool_DumpEvents ()</a></td>
 	<td class="summary">Dump scenario events.</td>
 	</tr>
@@ -651,6 +656,10 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<tr>
 	<td class="name" ><a href="#World_GetElevation">World_GetElevation (location)</a></td>
 	<td class="summary">Returns the elevation in meters of a given position</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#World_GetPointFromBearing">World_GetPointFromBearing (table)</a></td>
+	<td class="summary">Returns a location based on bearing.</td>
 	</tr>
 </table>
 <h2><a href="#Tables">Tables</a></h2>
@@ -690,7 +699,7 @@ One issue with commands running in an event is that sometimes they fail with an 
 	</tr>
 	<tr>
 	<td class="name" ><a href="#HostUnit">HostUnit</a></td>
-	<td class="summary">Requests that a unit be hosted to another</td>
+	<td class="summary">Requests that a unit be hosted/based to another</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#LatLon">LatLon</a></td>
@@ -747,6 +756,11 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<tr>
 	<td class="name" ><a href="#WRA">WRA</a></td>
 	<td class="summary">WRA settings.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#Waypoint">Waypoint</a></td>
+	<td class="summary">Waypoint
+ ..</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#WeaponLoaded">WeaponLoaded</a></td>
@@ -1213,7 +1227,7 @@ One issue with commands running in an event is that sometimes they fail with an 
         </li>
         <li><span class="parameter">area</span>
             <span class="types"><span class="type">{name</span> or <span class="type">guid}</span></span>
-         Table of reference points (used with the Set()/Get() functions]
+         Table of reference points by name and/or guid (used with the Set()/Get() functions)
         </li>
     </ul>
 
@@ -2085,6 +2099,10 @@ If both are given, then the GUID is used preferentially.
             <span class="types"><span class="type">string</span></span>
          [READONLY]
         </li>
+        <li><span class="parameter">lead</span>
+            <span class="types"><span class="type">string</span></span>
+         Group leader guid
+        </li>
         <li><span class="parameter">unitlist</span>
             <span class="types"><span class="type">{ string }</span></span>
          Table of unit GUIDs in the group. [READONLY]
@@ -2423,8 +2441,8 @@ If both are given, then the GUID is used preferentially.
          If changing existing unit, the unit's new name .
         </li>
         <li><span class="parameter">course</span>
-            <span class="types"><a class="type" href="index.html#LatLon">{ LatLon } </a></span>
-         The unit's course, as a table of lat/lon pairs
+            <span class="types"><span class="type">{ WayPoint } </span></span>
+         The unit's course, as a table of waypoints
         </li>
         <li><span class="parameter">fuel</span>
             <span class="types"><a class="type" href="index.html#Fuel">{ Fuel } </a></span>
@@ -2525,6 +2543,10 @@ If both are given, then the GUID is used preferentially.
         <li><span class="parameter">firedOn</span>
             <span class="types"><span class="type">{ table } </span></span>
          Table of guids that are firing on this unit
+        </li>
+        <li><span class="parameter">formation</span>
+            <span class="types"><span class="type">{ table } </span></span>
+         Table of unit's formation info {bearing, type (of bearing), distance, sprint (and drift) }
         </li>
         <li><span class="parameter">inArea</span>
             <span class="types"><span class="type">method</span></span>
@@ -3087,18 +3109,25 @@ Key/value pairs added to the persistent store is retained when the game is saved
     <strong>ScenEdit_AddReferencePoint (descriptor)</strong>
     </dt>
     <dd>
-    Add a new reference point. </p>
+    Add new reference point(s). </p>
 
-<p>This function adds a new reference point as defined by a descriptor.
-The descriptor <b>must</b> contain at least a name, side, latitude and longitude.
+<p>This function adds new reference point(s) as defined by a descriptor.
+As this function also calls ScenEdit_SetReferencePoint() at the end, those parameters can also be passed in this function.<br>
+It can take a new referrnce point, or a table of new reference points.
+The descriptor <b>must</b> contain at least a side, and one set of latitude and longitude, or an area defined by one or more latitude and longitude values.
+Points can also be relative to a unit based on bearing and distence. This applies to ALL bearing type rp(s) in the function.
+ Field = RelativeTo The unit name/GUID that the RP(s) are relative to
 
     </ul>
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">descriptor</span>
-            <span class="types"><a class="type" href="index.html#ReferencePoint">ReferencePoint</a></span>
-         The reference point details to create
+            <span class="types"><a class="type" href="index.html#ReferencePointSelector">ReferencePointSelector</a> or <a class="type" href="index.html#ReferencePoint">{ReferencePoint}</a></span>
+         The reference point details to be created.
+Field 'area' can be <br>(a) Table of reference points {name, longitude, latitude} if 'RelativeTo' not used, or <br>
+(b) table of reference points {name, bearing, distance} if 'RelativeTo' used.<br>
+Leaving out name will default it to noraml 'RP-..'
         </li>
     </ul>
 
@@ -3106,14 +3135,15 @@ The descriptor <b>must</b> contain at least a name, side, latitude and longitude
     <ol>
 
            <span class="types"><a class="type" href="index.html#ReferencePoint">ReferencePoint</a></span>
-        The reference point wrapper for the new reference point.
+        The reference point wrapper for the new reference point, or the first one in an area.
     </ol>
 
 
 
     <h3>Usage:</h3>
     <ul>
-        <pre class="example">ScenEdit_AddReferencePoint({side=<span class="string">"United States"</span>, name=<span class="string">"Downed Pilot"</span>, lat=<span class="number">0.1</span>, lon=<span class="number">4</span>, highlighted=<span class="keyword">true</span>})</pre>
+        <li><pre class="example">ScenEdit_AddReferencePoint( {side=<span class="string">"United States"</span>, name=<span class="string">"Downed Pilot"</span>, lat=<span class="number">0.1</span>, lon=<span class="number">4</span>, highlighted=<span class="keyword">true</span>})</pre></li>
+        <li><pre class="example">ScenEdit_AddReferencePoint( {side=<span class="string">'sidea'</span>, RelativeTo=<span class="string">'USN Dewey'</span>, bearing=<span class="number">45</span> ,distance=<span class="number">20</span>, clear=<span class="keyword">true</span> })</pre></li>
     </ul>
 
 </dd>
@@ -4264,7 +4294,9 @@ then the function returns nil instead of producing an exception.
     <strong>ScenEdit_HostUnitToParent (host_info)</strong>
     </dt>
     <dd>
-    Hosts a unit to the specified host.  The unit will be moved from any location, including flying or hosted elsewhere.
+    Host/base
+ ..  to the specified host.
+ SelectedHostNameOrID' option: the unit will be moved from any location, including flying, to the new location.
 
     </ul>
 
@@ -5632,6 +5664,36 @@ Otherwise, a nil is returned.</p>
 
 </dd>
     <dt>
+    <a name = "Tool_Bearing"></a>
+    <strong>Tool_Bearing ()</strong>
+    </dt>
+    <dd>
+    Get bearing between points. </p>
+
+<p> The points can be a GUID of a unit/contact or a latitude/longitude point.(fromHere, toHere)
+
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        The bearing
+      <ul>
+        </ul>
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <li><pre class="example">Tool_Bearing(<span class="string">'8269b881-20ce-4f2e-baa0-6823e46d55a4'</span>,<span class="string">'004aa55d-d553-428d-a727-26853737c8f4'</span> )</pre></li>
+        <li><pre class="example">Tool_Bearing( {latitude=<span class="string">'33.1991547589118'</span>, longitude=<span class="string">'138.376876749942'</span>}, <span class="string">'8269b881-20ce-4f2e-baa0-6823e46d55a4'</span> )</pre></li>
+    </ul>
+
+</dd>
+    <dt>
     <a name = "Tool_DumpEvents"></a>
     <strong>Tool_DumpEvents ()</strong>
     </dt>
@@ -5857,6 +5919,35 @@ Otherwise, a nil is returned.</p>
     <ol>
 
         The elevation of the point in meters
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "World_GetPointFromBearing"></a>
+    <strong>World_GetPointFromBearing (table)</strong>
+    </dt>
+    <dd>
+    Returns a location based on bearing.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">table</span>
+            <span class="types"><span class="type">Point</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Table of the new point
     </ol>
 
 
@@ -6320,7 +6411,7 @@ td { padding: .5em; }
     <strong>HostUnit</strong>
     </dt>
     <dd>
-    Requests that a unit be hosted to another
+    Requests that a unit be hosted/based to another
 
     </ul>
 
@@ -6333,6 +6424,7 @@ td { padding: .5em; }
         <li><span class="parameter">SelectedHostNameOrID</span>
             <span class="types"><span class="type">string</span></span>
          The name or GUID of the host to put the unit into
+ use SetUnit() with 'base=xxx' to assign the unit to a 'base'
         </li>
     </ul>
 
@@ -7411,6 +7503,77 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 
 </dd>
     <dt>
+    <a name = "Waypoint"></a>
+    <strong>Waypoint</strong>
+    </dt>
+    <dd>
+    Waypoint
+ ..  describing the long/lat points as in a plotted course
+
+    </ul>
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">longitude</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">latitude</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">description</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">presetAltitude</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">presetDepth</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">presetThrottle</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">desiredAltitude</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">desiredSpeed</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">desiredAltitudeTF</span>
+            <span class="types"><span class="type">number</span></span>
+         terrain-following
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
     <a name = "WeaponLoaded"></a>
     <strong>WeaponLoaded</strong>
     </dt>
@@ -7494,7 +7657,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2017-06-09 16:48:46 </i>
+<i style="float:right;">Last updated 2017-06-24 21:47:19 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
