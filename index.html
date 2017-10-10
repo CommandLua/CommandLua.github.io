@@ -57,6 +57,7 @@
   <li><a href="topics/01-getting-started.md.html">01-getting-started</a></li>
   <li><a href="topics/02-creation.md.html">02-creation</a></li>
   <li><a href="topics/03-unit-table.md.html">03-unit-table</a></li>
+  <li><a href="topics/98-event_handling.md.html">98-event_handling</a></li>
   <li><a href="topics/99-code-examples.md.html">99-code-examples</a></li>
 </ul>
 
@@ -70,7 +71,7 @@
 </p>
 <p> Lua is a case sensitve language.</p>
 
-<p> When accessing object properties directly as in 'unit.name', the property should be in lower which will match the Lua generated code. There may be a <i>few</i> special cases (e.g. mission.SISH=true which is a shortcut for scrub<em>if</em>side_human) which will be documented below.</p>
+<p> When accessing object properties directly as in 'unit.name', the property should be in lower which will match the Lua generated code. There may be a <i>few</i> special cases (e.g. mission.SISH=true which is a shortcut for scrub_if_side_human) which will be documented below.</p>
 
 <p> However, when accessing the properties through the module functions below, both the keyword/property and the value are case insensitive; the code will worry about matching them up.</p>
 
@@ -104,11 +105,19 @@ One issue with commands running in an event is that sometimes they fail with an 
 <p>Note also, that the Lua history log should also record the event script errors.</p>
 
 
-<p><b>Release: 1.12 </b></p>
+<p><b>Release: 1.13 </b></p>
 
 
 <h2><a href="#Selector">Selector</a></h2>
 <table class="function_list">
+	<tr>
+	<td class="name" ><a href="#ActionUpdate">ActionUpdate</a></td>
+	<td class="summary">Action update.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ConditionUpdate">ConditionUpdate</a></td>
+	<td class="summary">Condition update.</td>
+	</tr>
 	<tr>
 	<td class="name" ><a href="#ContactSelector">ContactSelector</a></td>
 	<td class="summary">Contact selector.</td>
@@ -124,6 +133,10 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<tr>
 	<td class="name" ><a href="#DoctrineWRASelector">DoctrineWRASelector</a></td>
 	<td class="summary">Selects a WRA doctrine.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#EventTCAUpdate">EventTCAUpdate</a></td>
+	<td class="summary">Event Trigger/Condition/Action update.</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#EventUpdate">EventUpdate</a></td>
@@ -150,12 +163,16 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="summary">Special action selector.</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#TriggerUpdate">TriggerUpdate</a></td>
+	<td class="summary">Trigger update.</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#UnitSelector">UnitSelector</a></td>
 	<td class="summary">Select a unit.</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#UpdateUnit">UpdateUnit</a></td>
-	<td class="summary">Update unit sensor/mount selector.</td>
+	<td class="summary">Update unit sensor/mount/weapon selector.</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#VPContactSelector">VPContactSelector</a></td>
@@ -187,6 +204,11 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<tr>
 	<td class="name" ><a href="#DoctrineWRA">DoctrineWRA</a></td>
 	<td class="summary">WRA Doctrine options.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#Event">Event</a></td>
+	<td class="summary">Event details
+.</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#Group">Group</a></td>
@@ -280,7 +302,7 @@ One issue with commands running in an event is that sometimes they fail with an 
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_AddReferencePoint">ScenEdit_AddReferencePoint (descriptor)</a></td>
-	<td class="summary">Add a new reference point.</td>
+	<td class="summary">Add new reference point(s).</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_AddReloadsToUnit">ScenEdit_AddReloadsToUnit (descriptor)</a></td>
@@ -336,6 +358,11 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="summary">Ends the current scenario.</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#ScenEdit_EventX">ScenEdit_EventX ()</a></td>
+	<td class="summary">Active Event
+ ..</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#ScenEdit_ExecuteEventAction">ScenEdit_ExecuteEventAction (EventDescriptionOrID)</a></td>
 	<td class="summary">Execute a Lua Event action script.</td>
 	</tr>
@@ -368,6 +395,14 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<tr>
 	<td class="name" ><a href="#ScenEdit_GetDoctrineWRA">ScenEdit_GetDoctrineWRA (selector)</a></td>
 	<td class="summary">Gets the WRA doctrine.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ScenEdit_GetEvent">ScenEdit_GetEvent (EventDescriptionOrID, level)</a></td>
+	<td class="summary">Gets the properties of an event.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ScenEdit_GetEvents">ScenEdit_GetEvents (level)</a></td>
+	<td class="summary">Gets all events.</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_GetKeyValue">ScenEdit_GetKeyValue (key)</a></td>
@@ -415,7 +450,8 @@ One issue with commands running in an event is that sometimes they fail with an 
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_HostUnitToParent">ScenEdit_HostUnitToParent (host_info)</a></td>
-	<td class="summary">Hosts a unit to the specified host.</td>
+	<td class="summary">Host/base
+ ..</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_ImportInst">ScenEdit_ImportInst (side, filename)</a></td>
@@ -459,6 +495,14 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="summary">Runs a script from a file.</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#ScenEdit_SetAction">ScenEdit_SetAction (options)</a></td>
+	<td class="summary">Sets the attributes of an action.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ScenEdit_SetCondition">ScenEdit_SetCondition (options)</a></td>
+	<td class="summary">Sets the attributes of an condition.</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#ScenEdit_SetDoctrine">ScenEdit_SetDoctrine (selector, doctrine)</a></td>
 	<td class="summary">Set the doctrine of the designated object.</td>
 	</tr>
@@ -473,6 +517,22 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<tr>
 	<td class="name" ><a href="#ScenEdit_SetEMCON">ScenEdit_SetEMCON (type, name, emcon)</a></td>
 	<td class="summary">Sets the EMCON of the selected object.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ScenEdit_SetEvent">ScenEdit_SetEvent (EventDescriptionOrID, options)</a></td>
+	<td class="summary">Sets the attributes of an event.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ScenEdit_SetEventAction">ScenEdit_SetEventAction (EventDescriptionOrID, options)</a></td>
+	<td class="summary">Sets the attributes of a T/C/A.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ScenEdit_SetEventCondition">ScenEdit_SetEventCondition (EventDescriptionOrID, options)</a></td>
+	<td class="summary">Sets the attributes of a T/C/A.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ScenEdit_SetEventTrigger">ScenEdit_SetEventTrigger (EventDescriptionOrID, options)</a></td>
+	<td class="summary">Sets the attributes of a T/C/A.</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_SetKeyValue">ScenEdit_SetKeyValue (key, value)</a></td>
@@ -507,6 +567,10 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="summary">Sets the properties of an existing special action.</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#ScenEdit_SetTrigger">ScenEdit_SetTrigger (options)</a></td>
+	<td class="summary">Sets the attributes of a trigger.</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#ScenEdit_SetUnit">ScenEdit_SetUnit (unit)</a></td>
 	<td class="summary">Sets the properties of a unit that already exists.</td>
 	</tr>
@@ -527,6 +591,16 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="summary">Displays a special message consisting of the HTML text <code>message</code> to side `side.</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#ScenEdit_TransferCargo">ScenEdit_TransferCargo (fromUnit, toUnit, cargoList)</a></td>
+	<td class="summary">Transfer cargo
+ ..</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ScenEdit_UnitC">ScenEdit_UnitC ()</a></td>
+	<td class="summary">Detected Contact
+ ...</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#ScenEdit_UnitX">ScenEdit_UnitX ()</a></td>
 	<td class="summary">Activating Unit
  ..</td>
@@ -537,8 +611,8 @@ One issue with commands running in an event is that sometimes they fail with an 
  ...</td>
 	</tr>
 	<tr>
-	<td class="name" ><a href="#ScenEdit_UpdateEvent">ScenEdit_UpdateEvent (EventDescriptionOrID, options)</a></td>
-	<td class="summary">Sets the Lua script(s) of an event.</td>
+	<td class="name" ><a href="#ScenEdit_UnloadCargo">ScenEdit_UnloadCargo (fromUnit, cargoList)</a></td>
+	<td class="summary">Unload cargo</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_UpdateUnit">ScenEdit_UpdateUnit (options)</a></td>
@@ -551,6 +625,10 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<tr>
 	<td class="name" ><a href="#ScenEdit_UseAttachmentOnSide">ScenEdit_UseAttachmentOnSide (attachment, sidename)</a></td>
 	<td class="summary">Use an attachment on a side (used for .inst files as attachments).</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#Tool_Bearing">Tool_Bearing ()</a></td>
+	<td class="summary">Get bearing between points.</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#Tool_DumpEvents">Tool_DumpEvents ()</a></td>
@@ -583,6 +661,10 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<tr>
 	<td class="name" ><a href="#World_GetElevation">World_GetElevation (location)</a></td>
 	<td class="summary">Returns the elevation in meters of a given position</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#World_GetPointFromBearing">World_GetPointFromBearing (table)</a></td>
+	<td class="summary">Returns a location based on bearing.</td>
 	</tr>
 </table>
 <h2><a href="#Tables">Tables</a></h2>
@@ -622,7 +704,7 @@ One issue with commands running in an event is that sometimes they fail with an 
 	</tr>
 	<tr>
 	<td class="name" ><a href="#HostUnit">HostUnit</a></td>
-	<td class="summary">Requests that a unit be hosted to another</td>
+	<td class="summary">Requests that a unit be hosted/based to another</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#LatLon">LatLon</a></td>
@@ -681,6 +763,11 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="summary">WRA settings.</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#Waypoint">Waypoint</a></td>
+	<td class="summary">Waypoint
+ ..</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#WeaponLoaded">WeaponLoaded</a></td>
 	<td class="summary">Weapon loads on mount or in magazine.</td>
 	</tr>
@@ -697,6 +784,88 @@ One issue with commands running in an event is that sometimes they fail with an 
     <h2><a name="Selector"></a>Selector</h2>
 
     <dl class="function">
+    <dt>
+    <a name = "ActionUpdate"></a>
+    <strong>ActionUpdate</strong>
+    </dt>
+    <dd>
+    Action update.
+
+    </ul>
+
+    <ul>
+        <li><span class="parameter">ID</span>
+            <span class="types"><span class="type">string</span></span>
+         The GUID of the action [READONLY]
+        </li>
+        <li><span class="parameter">Description</span>
+            <span class="types"><span class="type">string</span></span>
+         Description or GUID of action
+        </li>
+        <li><span class="parameter">NewName</span>
+            <span class="types"><span class="type">string</span></span>
+         If specified, the new name of the action
+        </li>
+        <li><span class="parameter">Mode</span>
+            <span class="types"><span class="type">string</span></span>
+         Operation to do - 'list', 'add', 'remove', 'update' (default) SE_Set...()
+        </li>
+        <li><span class="parameter">Type</span>
+            <span class="types"><span class="type">string</span></span>
+         Type of action [required only for 'add' option]
+        </li>
+        <li><span class="parameter">Other</span>
+            <span class="types"><span class="type">various</span></span>
+         values apply to Type of action.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ConditionUpdate"></a>
+    <strong>ConditionUpdate</strong>
+    </dt>
+    <dd>
+    Condition update.
+
+    </ul>
+
+    <ul>
+        <li><span class="parameter">ID</span>
+            <span class="types"><span class="type">string</span></span>
+         The GUID of the condition [READONLY]
+        </li>
+        <li><span class="parameter">Description</span>
+            <span class="types"><span class="type">string</span></span>
+         Description or GUID of condition
+        </li>
+        <li><span class="parameter">NewName</span>
+            <span class="types"><span class="type">string</span></span>
+         If specified, the new name of the condition
+        </li>
+        <li><span class="parameter">Mode</span>
+            <span class="types"><span class="type">string</span></span>
+         Operation to do - 'list', 'add', 'remove', 'update' (default) SE_Set...()
+        </li>
+        <li><span class="parameter">Type</span>
+            <span class="types"><span class="type">string</span></span>
+         Type of condition [required only for 'add' option]
+        </li>
+        <li><span class="parameter">Other</span>
+            <span class="types"><span class="type">various</span></span>
+         values apply to Type of condition.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
     <dt>
     <a name = "ContactSelector"></a>
     <strong>ContactSelector</strong>
@@ -827,7 +996,7 @@ One issue with commands running in an event is that sometimes they fail with an 
     <dd>
     Selects a WRA doctrine.
   .. for on a side, group, mission, or unit.
- weapon<em>id is mandatory. One of side,mission,unitname or guid is mandatory. One of contact</em>id or target_type is mandatory
+ weapon_id is mandatory. One of side,mission,unitname or guid is mandatory. One of contact_id or target_type is mandatory
 
     </ul>
 
@@ -868,6 +1037,35 @@ One issue with commands running in an event is that sometimes they fail with an 
 
 </dd>
     <dt>
+    <a name = "EventTCAUpdate"></a>
+    <strong>EventTCAUpdate</strong>
+    </dt>
+    <dd>
+    Event Trigger/Condition/Action update.
+
+    </ul>
+
+    <ul>
+        <li><span class="parameter">GUID</span>
+            <span class="types"><span class="type">string</span></span>
+         The GUID of the trigger
+        </li>
+        <li><span class="parameter">Description</span>
+            <span class="types"><span class="type">string</span></span>
+         The description or ID of the T/C/A
+        </li>
+        <li><span class="parameter">Mode</span>
+            <span class="types"><span class="type">string</span></span>
+         Operation to do - 'add', 'remove', replace', 'update' (default) SE_Set...()
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
     <a name = "EventUpdate"></a>
     <strong>EventUpdate</strong>
     </dt>
@@ -877,17 +1075,37 @@ One issue with commands running in an event is that sometimes they fail with an 
     </ul>
 
     <ul>
-        <li><span class="parameter">type</span>
+        <li><span class="parameter">ID</span>
             <span class="types"><span class="type">string</span></span>
-         What to update (add_condition,remove_condition,replace_condition,add_action,remove_action,replace_action)
+         The GUID of the event [READONLY]
         </li>
-        <li><span class="parameter">description</span>
+        <li><span class="parameter">Description</span>
             <span class="types"><span class="type">string</span></span>
-         The description of the Lua script  (can use GUID for existing item in remove/replace)
+         If specified, the new description for the event
         </li>
-        <li><span class="parameter">script</span>
+        <li><span class="parameter">NewName</span>
             <span class="types"><span class="type">string</span></span>
-         The Lua script
+         If specified, the new name of the event
+        </li>
+        <li><span class="parameter">IsActive</span>
+            <span class="types"><span class="type">bool</span></span>
+         If the event is active
+        </li>
+        <li><span class="parameter">IsRepeatable</span>
+            <span class="types"><span class="type">bool</span></span>
+         If the event can occur multiple times
+        </li>
+        <li><span class="parameter">IsShown</span>
+            <span class="types"><span class="type">bool</span></span>
+         If the event is shown in message log
+        </li>
+        <li><span class="parameter">Probability</span>
+            <span class="types"><span class="type">integer</span></span>
+         Chance of it happening
+        </li>
+        <li><span class="parameter">Mode</span>
+            <span class="types"><span class="type">string</span></span>
+         Operation to do - 'add', 'update' (default) SE_SetEvent()
         </li>
     </ul>
 
@@ -1014,7 +1232,7 @@ One issue with commands running in an event is that sometimes they fail with an 
         </li>
         <li><span class="parameter">area</span>
             <span class="types"><span class="type">{name</span> or <span class="type">guid}</span></span>
-         Table of reference points (used with the Set()/Get() functions]
+         Table of reference points by name and/or guid (used with the Set()/Get() functions)
         </li>
     </ul>
 
@@ -1098,6 +1316,47 @@ One issue with commands running in an event is that sometimes they fail with an 
 
 </dd>
     <dt>
+    <a name = "TriggerUpdate"></a>
+    <strong>TriggerUpdate</strong>
+    </dt>
+    <dd>
+    Trigger update.
+
+    </ul>
+
+    <ul>
+        <li><span class="parameter">ID</span>
+            <span class="types"><span class="type">string</span></span>
+         The GUID of the trigger [READONLY]
+        </li>
+        <li><span class="parameter">Description</span>
+            <span class="types"><span class="type">string</span></span>
+         Description or GUID of trigger
+        </li>
+        <li><span class="parameter">NewName</span>
+            <span class="types"><span class="type">string</span></span>
+         If specified, the new name of the trigger
+        </li>
+        <li><span class="parameter">Mode</span>
+            <span class="types"><span class="type">string</span></span>
+         Operation to do - 'list', 'add', 'remove', 'update' (default) SE_Set...()
+        </li>
+        <li><span class="parameter">Type</span>
+            <span class="types"><span class="type">string</span></span>
+         Type of trigger [required only for 'add' option]
+        </li>
+        <li><span class="parameter">Other</span>
+            <span class="types"><span class="type">various</span></span>
+         values apply to Type of trigger.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
     <a name = "UnitSelector"></a>
     <strong>UnitSelector</strong>
     </dt>
@@ -1137,7 +1396,7 @@ If both are given, then the GUID is used preferentially.
     <strong>UpdateUnit</strong>
     </dt>
     <dd>
-    Update unit sensor/mount selector. </p>
+    Update unit sensor/mount/weapon selector. </p>
 
 <p> ... lists minimum fields required. Other fields from <a href="index.html#Unit">Unit</a> may be included.
 
@@ -1150,34 +1409,35 @@ If both are given, then the GUID is used preferentially.
         </li>
         <li><span class="parameter">mode</span>
             <span class="types"><span class="type">string</span></span>
-         The function to perform (add<em>sensor,delete</em>sensor,add<em>mount,remove</em>mount)
+         The function to perform (add_ sensor,remove_ sensor,add_ mount,remove_ mount,add_ weapon,remove_ weapon)
         </li>
         <li><span class="parameter">dbid</span>
             <span class="types"><span class="type">number</span></span>
-         The database id of the item to add [required for add_ mode]
+         The database id of the item to add [required for 'add_' mode]. If used with 'remove_' mode, and no sensorid/mountid, the first matching DBID will be removed.
         </li>
         <li><span class="parameter">sensorid</span>
             <span class="types"><span class="type">string</span></span>
-         The identifier (guid) of the particular sensor to remove [required for remove_sensor mode]
+         The identifier (guid) of the particular sensor to remove [required for remove_ sensor mode]
         </li>
         <li><span class="parameter">mountid</span>
             <span class="types"><span class="type">string</span></span>
-         The identifier (guid) of the particular mount to remove [required for remove_mount mode]
+         The identifier (guid) of the particular mount to remove [required for remove_ mount mode]
+        </li>
+        <li><span class="parameter">weaponid</span>
+            <span class="types"><span class="type">string</span></span>
+         The identifier (guid) of the particular weapon to remove [required for remove_ weapon mode]. Must have a preceeding mountid to update
         </li>
         <li><span class="parameter">arc_detect</span>
             <span class="types"><span class="type">{ Arcs }</span></span>
          The effective arcs for the particular sensor to detect in [override defaults]
-         (<em>optional</em>)
         </li>
         <li><span class="parameter">arc_track</span>
             <span class="types"><span class="type">{ Arcs }</span></span>
          The effective arcs for the particular sensor to track/illuminate in [override defaults]
-         (<em>optional</em>)
         </li>
         <li><span class="parameter">arc_mount</span>
             <span class="types"><span class="type">{ Arcs }</span></span>
          The effective arcs for the particular mount  [override defaults]
-         (<em>optional</em>)
         </li>
     </ul>
 
@@ -1392,6 +1652,18 @@ If both are given, then the GUID is used preferentially.
             <span class="types"><a class="type" href="index.html#Longitude">Longitude</a></span>
          The longitude of the contact. [READONLY]
         </li>
+        <li><span class="parameter">speed</span>
+            <span class="types"><span class="type">number</span></span>
+         Speed if known  [READONLY]
+        </li>
+        <li><span class="parameter">heading</span>
+            <span class="types"><span class="type">number</span></span>
+         Heading if known  [READONLY]
+        </li>
+        <li><span class="parameter">altitude</span>
+            <span class="types"><span class="type">number</span></span>
+         Altitude if known  [READONLY]
+        </li>
         <li><span class="parameter">missile_defence</span>
             <span class="types"><span class="type">number</span></span>
          Applicable to Facility and Ships. -1 = unknown contact [READONLY]
@@ -1409,7 +1681,7 @@ If both are given, then the GUID is used preferentially.
          Type of contact. [READONLY]
         </li>
         <li><span class="parameter">areaofuncertainty</span>
-            <span class="types"><a class="type" href="index.html#LatLon">{ LatLon }</a></span>
+            <span class="types"><a class="type" href="index.html#LatLon">{ LatLon } </a></span>
          Table of points defining the area of contact. [READONLY]
         </li>
         <li><span class="parameter">type_description</span>
@@ -1425,7 +1697,7 @@ If both are given, then the GUID is used preferentially.
          Contact classification. [READONLY]
         </li>
         <li><span class="parameter">potentialmatches</span>
-            <span class="types"><a class="type" href="index.html#EMmatch">{ EMmatch }</a></span>
+            <span class="types"><a class="type" href="index.html#EMmatch">{ EMmatch } </a></span>
          Table {EMmatch} on potential EMCON emission matches. [READONLY]
         </li>
         <li><span class="parameter">side</span>
@@ -1435,6 +1707,10 @@ If both are given, then the GUID is used preferentially.
         <li><span class="parameter">fromside</span>
             <span class="types"><a class="type" href="index.html#Side">Side</a></span>
          The side who sees this contact. [READONLY]
+        </li>
+        <li><span class="parameter">detectedBySide</span>
+            <span class="types"><a class="type" href="index.html#Side">Side</a></span>
+         The side who originally saw this contact. Would be same as fromside unless shared [READONLY]
         </li>
         <li><span class="parameter">posture</span>
             <span class="types"><span class="type">string</span></span>
@@ -1448,9 +1724,37 @@ If both are given, then the GUID is used preferentially.
             <span class="types"><a class="type" href="index.html#Weather">{ Weather } </a></span>
          Table of weather parameters (temp, rainfall, underrain, seastate)
         </li>
+        <li><span class="parameter">BDA</span>
+            <span class="types"><span class="type">{ table } </span></span>
+         Table of battle damage assessment (fires, flood, structural)
+        </li>
+        <li><span class="parameter">emissions</span>
+            <span class="types"><span class="type">{ table } </span></span>
+         Table {name, age, solid} of detected emmissions from contact
+        </li>
+        <li><span class="parameter">detectionBy</span>
+            <span class="types"><span class="type">{ table } </span></span>
+         Table of how long ago was detected by type (radar, esm, visual, infrared, sonaractive, sonarpassive)
+        </li>
+        <li><span class="parameter">targetedBy</span>
+            <span class="types"><span class="type">{ table } </span></span>
+         Table of unit guids that have this contact as a target
+        </li>
+        <li><span class="parameter">firingAt</span>
+            <span class="types"><span class="type">{ table } </span></span>
+         Table of contact guids that this contact is firing at
+        </li>
+        <li><span class="parameter">firedOn</span>
+            <span class="types"><span class="type">{ table } </span></span>
+         Table of guids that are firing on this contact
+        </li>
         <li><span class="parameter">DropContact</span>
             <span class="types"><span class="type">method</span></span>
         () Drops contact from the reporting side
+        </li>
+        <li><span class="parameter">inArea</span>
+            <span class="types"><span class="type">method</span></span>
+        ({area}) Is contact in the 'area' defined by table of RPs (true/false)
         </li>
     </ul>
 
@@ -1467,7 +1771,7 @@ If both are given, then the GUID is used preferentially.
     Doctrine options. </p>
 
 
-<p>For each field, adding the suffix "<em>player</em>editable" determines if the player can alter the setting. Not applicable to the Withdraw/Deploy options.</p>
+<p>For each field, adding the suffix "_player_editable" determines if the player can alter the setting. Not applicable to the Withdraw/Deploy options.</p>
 
 <p> When setting the option, the indicated value or it's number can be used.
 
@@ -1504,7 +1808,7 @@ If both are given, then the GUID is used preferentially.
         </li>
         <li><span class="parameter">use_refuel_unrep</span>
             <span class="types"><span class="type">string</span></span>
-         Always<em>ExceptTankersRefuellingTankers(0), Never(1), Always</em>IncludingTankersRefuellingTankers(2)
+         Always_ExceptTankersRefuellingTankers(0), Never(1), Always_IncludingTankersRefuellingTankers(2)
         </li>
         <li><span class="parameter">engage_opportunity_targets</span>
             <span class="types"><span class="type">bool</span></span>
@@ -1548,7 +1852,7 @@ If both are given, then the GUID is used preferentially.
         </li>
         <li><span class="parameter">refuel_unrep_allied</span>
             <span class="types"><span class="type">string</span></span>
-         Yes(0), Yes<em>ReceiveOnly(1), Yes</em>DeliverOnly(2), No(3)
+         Yes(0), Yes_ReceiveOnly(1), Yes_DeliverOnly(2), No(3)
         </li>
         <li><span class="parameter">fuel_state_planned</span>
             <span class="types"><span class="type">string</span></span>
@@ -1576,23 +1880,23 @@ If both are given, then the GUID is used preferentially.
         </li>
         <li><span class="parameter">avoid_contact</span>
             <span class="types"><span class="type">string</span></span>
-          No(0), Yes<em>ExceptSelfDefence(1), Yes</em>Always(2)
+          No(0), Yes_ExceptSelfDefence(1), Yes_Always(2)
         </li>
         <li><span class="parameter">dive_on_threat</span>
             <span class="types"><span class="type">string</span></span>
-         Yes(0), Yes<em>ESM</em>Only(1), Yes<em>Ships20nm</em>Aircraft30nm(2), No(3)
+         Yes(0), Yes_ESM_Only(1), Yes_Ships20nm_Aircraft30nm(2), No(3)
         </li>
         <li><span class="parameter">recharge_on_patrol</span>
             <span class="types"><span class="type">string</span></span>
-         Recharge<em>Empty(0), Recharge</em>10<em>Percent(10), Recharge</em>20<em>Percent(20), Recharge</em>30<em>Percent(30), Recharge</em>40<em>Percent(40), Recharge</em>50<em>Percent(50), Recharge</em>60<em>Percent(60), Recharge</em>70<em>Percent(70), Recharge</em>80<em>Percent(80), Recharge</em>90_Percent(90)
+         Recharge_Empty(0), Recharge_10_Percent(10), Recharge_20_Percent(20), Recharge_30_Percent(30), Recharge_40_Percent(40), Recharge_50_Percent(50), Recharge_60_Percent(60), Recharge_70_Percent(70), Recharge_80_Percent(80), Recharge_90_Percent(90)
         </li>
         <li><span class="parameter">recharge_on_attack</span>
             <span class="types"><span class="type">string</span></span>
-         Recharge<em>Empty(0), Recharge</em>10<em>Percent(10), Recharge</em>20<em>Percent(20), Recharge</em>30<em>Percent(30), Recharge</em>40<em>Percent(40), Recharge</em>50<em>Percent(50), Recharge</em>60<em>Percent(60), Recharge</em>70<em>Percent(70), Recharge</em>80<em>Percent(80), Recharge</em>90_Percent(90)
+         Recharge_Empty(0), Recharge_10_Percent(10), Recharge_20_Percent(20), Recharge_30_Percent(30), Recharge_40_Percent(40), Recharge_50_Percent(50), Recharge_60_Percent(60), Recharge_70_Percent(70), Recharge_80_Percent(80), Recharge_90_Percent(90)
         </li>
         <li><span class="parameter">use_aip</span>
             <span class="types"><span class="type">string</span></span>
-          No(0), Yes<em>AttackOnly(1), Yes</em>Always(2)
+          No(0), Yes_AttackOnly(1), Yes_Always(2)
         </li>
         <li><span class="parameter">dipping_sonar</span>
             <span class="types"><span class="type">string</span></span>
@@ -1705,6 +2009,74 @@ If both are given, then the GUID is used preferentially.
 
 </dd>
     <dt>
+    <a name = "Event"></a>
+    <strong>Event</strong>
+    </dt>
+    <dd>
+    Event details
+.
+
+    </ul>
+
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><span class="type">string</span></span>
+         The event name.
+        </li>
+        <li><span class="parameter">guid</span>
+            <span class="types"><span class="type">string</span></span>
+         The event GUID. [READONLY]
+        </li>
+        <li><span class="parameter">description</span>
+            <span class="types"><span class="type">string</span></span>
+         The event GUID.
+        </li>
+        <li><span class="parameter">details</span>
+            <span class="types"><span class="type">{ table} </span></span>
+         The details of the event with tables for triggers/conditions/actions. [READONLY]
+        </li>
+        <li><span class="parameter">isActive</span>
+            <span class="types"><span class="type">bool</span></span>
+         The event is active
+        </li>
+        <li><span class="parameter">isRepeatable</span>
+            <span class="types"><span class="type">bool</span></span>
+         The event repeats
+        </li>
+        <li><span class="parameter">isShown</span>
+            <span class="types"><span class="type">bool</span></span>
+         The event shows in log
+        </li>
+        <li><span class="parameter">probability</span>
+            <span class="types"><span class="type">string</span></span>
+         The event chance to occur (0-100)
+        </li>
+        <li><span class="parameter">actions</span>
+            <span class="types"><span class="type">{ table} </span></span>
+         The details of the actions in event [READONLY]
+        </li>
+        <li><span class="parameter">conditions</span>
+            <span class="types"><span class="type">{ table} </span></span>
+         The details of the conditions in event [READONLY]
+        </li>
+        <li><span class="parameter">triggers</span>
+            <span class="types"><span class="type">{ table} </span></span>
+         The details of the triggers in event [READONLY]
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="comment">-- first trigger; as a 'Unit Detected'; what was the target filter values
+</span><span class="keyword">local</span> Event = ScenEdit_EventX() <span class="comment">-- current active event
+</span><span class="global">print</span>(event.details.triggers[<span class="number">1</span>].UnitDetected.TargetFilter)</pre>
+    </ul>
+
+</dd>
+    <dt>
     <a name = "Group"></a>
     <strong>Group</strong>
     </dt>
@@ -1731,6 +2103,10 @@ If both are given, then the GUID is used preferentially.
         <li><span class="parameter">side</span>
             <span class="types"><span class="type">string</span></span>
          [READONLY]
+        </li>
+        <li><span class="parameter">lead</span>
+            <span class="types"><span class="type">string</span></span>
+         Group leader guid
         </li>
         <li><span class="parameter">unitlist</span>
             <span class="types"><span class="type">{ string }</span></span>
@@ -1972,6 +2348,14 @@ If both are given, then the GUID is used preferentially.
             <span class="types"><span class="type">method</span></span>
         (<code>ZoneGUID|ZoneName|ZoneDescription</code>) Returns matching <a href="index.html#Zone">Zone</a> or nil
         </li>
+        <li><span class="parameter">unitsBy</span>
+            <span class="types"><span class="type">method </span></span>
+        (UnitType) Returns table of units filtered by type of unit for the designated side or nil.
+        </li>
+        <li><span class="parameter">contactsBy</span>
+            <span class="types"><span class="type">method </span></span>
+        (UnitType) Returns table of current contacts filtered by type of unit for the designated side or nil.
+        </li>
     </ul>
 
 
@@ -2046,7 +2430,7 @@ If both are given, then the GUID is used preferentially.
          True if the unit should hold.
         </li>
         <li><span class="parameter">holdfire</span>
-            <span class="types"><span class="type">{ table}</span></span>
+            <span class="types"><span class="type">{ table} </span></span>
          Doctrine WCS setting for {air,surface,subsurface,land}. [READONLY]
         </li>
         <li><span class="parameter">heading</span>
@@ -2062,11 +2446,11 @@ If both are given, then the GUID is used preferentially.
          If changing existing unit, the unit's new name .
         </li>
         <li><span class="parameter">course</span>
-            <span class="types"><a class="type" href="index.html#LatLon">{ LatLon }</a></span>
-         The unit's course, as a table of lat/lon pairs
+            <span class="types"><span class="type">{ WayPoint } </span></span>
+         The unit's course, as a table of waypoints
         </li>
         <li><span class="parameter">fuel</span>
-            <span class="types"><a class="type" href="index.html#Fuel">{ Fuel }</a></span>
+            <span class="types"><a class="type" href="index.html#Fuel">{ Fuel } </a></span>
          A table of fuel types used by unit.
         </li>
         <li><span class="parameter">mission</span>
@@ -2085,6 +2469,10 @@ If both are given, then the GUID is used preferentially.
             <span class="types"><span class="type">number</span></span>
           current aircraft loadout DBID. [READONLY]
         </li>
+        <li><span class="parameter">readytime</span>
+            <span class="types"><span class="type">number</span></span>
+          how long aircraft/ship takes to be ready. [READONLY]
+        </li>
         <li><span class="parameter">unitstate</span>
             <span class="types"><span class="type">string</span></span>
          Message on unit status. [READONLY]
@@ -2097,6 +2485,14 @@ If both are given, then the GUID is used preferentially.
             <span class="types"><span class="type">string</span></span>
           Message on unit weapon status. [READONLY]
         </li>
+        <li><span class="parameter">condition_v</span>
+            <span class="types"><span class="type">string</span></span>
+          Docking/Air Ops condition value. [READONLY]
+        </li>
+        <li><span class="parameter">condition</span>
+            <span class="types"><span class="type">string</span></span>
+          Message on unit dock/air ops status. [READONLY]
+        </li>
         <li><span class="parameter">manualSpeed</span>
             <span class="types"><span class="type">string</span> or <span class="type">number</span></span>
          Desired speed or 'OFF' to turn off manual mode
@@ -2106,28 +2502,64 @@ If both are given, then the GUID is used preferentially.
           To turn on/off manual mode
         </li>
         <li><span class="parameter">damage</span>
-            <span class="types"><span class="type">{ table }</span></span>
+            <span class="types"><span class="type">{ table } </span></span>
           Table {dp,flood,fires,startDp} of start and current DP, flood and fire level. [READONLY]
         </li>
         <li><span class="parameter">magazines</span>
-            <span class="types"><a class="type" href="index.html#Magazine">{ Magazine }</a></span>
+            <span class="types"><a class="type" href="index.html#Magazine">{ Magazine } </a></span>
           A table of magazines (with weapon loads) in the unit or group. Can be updated by <a href="index.html#ScenEdit_AddWeaponToUnitMagazine">ScenEdit_AddWeaponToUnitMagazine</a> [READONLY]
         </li>
         <li><span class="parameter">mounts</span>
-            <span class="types"><a class="type" href="index.html#Mount">{ Mount }</a></span>
+            <span class="types"><a class="type" href="index.html#Mount">{ Mount } </a></span>
           A table of mounts (with weapon loads) in the unit or group. Can be updated by <a href="index.html#ScenEdit_AddReloadsToUnit">ScenEdit_AddReloadsToUnit</a> [READONLY]
         </li>
         <li><span class="parameter">components</span>
-            <span class="types"><a class="type" href="index.html#Component">{ Component }</a></span>
+            <span class="types"><a class="type" href="index.html#Component">{ Component } </a></span>
           A table of components on the unit.  [READONLY]
         </li>
         <li><span class="parameter">ascontact</span>
-            <span class="types"><span class="type">{ table }</span></span>
+            <span class="types"><span class="type">{ table } </span></span>
           A table {side,guid,name} of this unit seen from the other sides (as contacts).  [READONLY]
         </li>
         <li><span class="parameter">weather</span>
             <span class="types"><a class="type" href="index.html#Weather">{ Weather } </a></span>
          Table of weather parameters (temp, rainfall, underrain, seastate)
+        </li>
+        <li><span class="parameter">areaTriggersFired</span>
+            <span class="types"><span class="type">{ table } </span></span>
+         Table of active 'in area' triggers that have fired for unit
+        </li>
+        <li><span class="parameter">OODA</span>
+            <span class="types"><span class="type">{ table } </span></span>
+          Table contain unit's "observe, orient, decide, act" values {evasion, targeting, detection}
+        </li>
+        <li><span class="parameter">hostedUnits</span>
+            <span class="types"><span class="type">{ table } </span></span>
+         Table of boats and aircraft docked/embarked on the unit
+        </li>
+        <li><span class="parameter">weapon</span>
+            <span class="types"><span class="type">{ table } </span></span>
+         Table of shooter unit, at contact unit and detonated (when destroyed) if a weapon [READONLY]
+        </li>
+        <li><span class="parameter">targetedBy</span>
+            <span class="types"><span class="type">{ table } </span></span>
+         Table of unit guids that have this unit as a target
+        </li>
+        <li><span class="parameter">firingAt</span>
+            <span class="types"><span class="type">{ table } </span></span>
+         Table of contact guids that this unit is firing at
+        </li>
+        <li><span class="parameter">firedOn</span>
+            <span class="types"><span class="type">{ table } </span></span>
+         Table of guids that are firing on this unit
+        </li>
+        <li><span class="parameter">formation</span>
+            <span class="types"><span class="type">{ table } </span></span>
+         Table of unit's formation info {bearing, type (of bearing), distance, sprint (and drift) }
+        </li>
+        <li><span class="parameter">inArea</span>
+            <span class="types"><span class="type">method</span></span>
+        ({area}) Is unit in the 'area' defined by table of RPs (true/false)
         </li>
         <li><span class="parameter">delete</span>
             <span class="types"><span class="type">method</span></span>
@@ -2139,15 +2571,7 @@ If both are given, then the GUID is used preferentially.
         </li>
         <li><span class="parameter">rangetotarget</span>
             <span class="types"><span class="type">method</span></span>
-        ('contactid') Calculate flat distance to a contact location
-        </li>
-        <li><span class="parameter">areaTriggersFired</span>
-            <span class="types"><span class="type">{ table } </span></span>
-         Table of active 'in area' triggers that have fired for unit
-        </li>
-        <li><span class="parameter">OODA</span>
-            <span class="types"><span class="type">{ table }</span></span>
-          Table contain unit's "observe, orient, decide, act" values {evasion, targeting, detection} </p>
+        ('contactid') Calculate flat distance to a contact location</p>
 
 <p> ScenEdit only
         </li>
@@ -2694,18 +3118,25 @@ Key/value pairs added to the persistent store is retained when the game is saved
     <strong>ScenEdit_AddReferencePoint (descriptor)</strong>
     </dt>
     <dd>
-    Add a new reference point. </p>
+    Add new reference point(s). </p>
 
-<p>This function adds a new reference point as defined by a descriptor.
-The descriptor <b>must</b> contain at least a name, side, latitude and longitude.
+<p>This function adds new reference point(s) as defined by a descriptor.
+As this function also calls ScenEdit_SetReferencePoint() at the end, those parameters can also be passed in this function.<br>
+It can take a new referrnce point, or a table of new reference points.
+The descriptor <b>must</b> contain at least a side, and one set of latitude and longitude, or an area defined by one or more latitude and longitude values.
+Points can also be relative to a unit based on bearing and distence. This applies to ALL bearing type rp(s) in the function.
+ Field = RelativeTo The unit name/GUID that the RP(s) are relative to
 
     </ul>
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">descriptor</span>
-            <span class="types"><a class="type" href="index.html#ReferencePoint">ReferencePoint</a></span>
-         The reference point details to create
+            <span class="types"><a class="type" href="index.html#ReferencePointSelector">ReferencePointSelector</a> or <a class="type" href="index.html#ReferencePoint">{ReferencePoint}</a></span>
+         The reference point details to be created.
+Field 'area' can be <br>(a) Table of reference points {name, longitude, latitude} if 'RelativeTo' not used, or <br>
+(b) table of reference points {name, bearing, distance} if 'RelativeTo' used.<br>
+Leaving out name will default it to noraml 'RP-..'
         </li>
     </ul>
 
@@ -2713,14 +3144,15 @@ The descriptor <b>must</b> contain at least a name, side, latitude and longitude
     <ol>
 
            <span class="types"><a class="type" href="index.html#ReferencePoint">ReferencePoint</a></span>
-        The reference point wrapper for the new reference point.
+        The reference point wrapper for the new reference point, or the first one in an area.
     </ol>
 
 
 
     <h3>Usage:</h3>
     <ul>
-        <pre class="example">ScenEdit_AddReferencePoint({side=<span class="string">"United States"</span>, name=<span class="string">"Downed Pilot"</span>, lat=<span class="number">0.1</span>, lon=<span class="number">4</span>, highlighted=<span class="keyword">true</span>})</pre>
+        <li><pre class="example">ScenEdit_AddReferencePoint( {side=<span class="string">"United States"</span>, name=<span class="string">"Downed Pilot"</span>, lat=<span class="number">0.1</span>, lon=<span class="number">4</span>, highlighted=<span class="keyword">true</span>})</pre></li>
+        <li><pre class="example">ScenEdit_AddReferencePoint( {side=<span class="string">'sidea'</span>, RelativeTo=<span class="string">'USN Dewey'</span>, bearing=<span class="number">45</span> ,distance=<span class="number">20</span>, clear=<span class="keyword">true</span> })</pre></li>
     </ul>
 
 </dd>
@@ -3163,6 +3595,35 @@ The 'UnitX' can be used as the unit descriptor
 
 </dd>
     <dt>
+    <a name = "ScenEdit_EventX"></a>
+    <strong>ScenEdit_EventX ()</strong>
+    </dt>
+    <dd>
+    Active Event
+ ..  that has been triggered.
+Otherwise, a nil is returned.</p>
+
+<p> Note that EventX() can also be used as a shortcut for ScenEdit_EventX()
+
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="index.html#Event">Event</a></span>
+        The triggering event
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> event = ScenEdit_EventX()</pre>
+    </ul>
+
+</dd>
+    <dt>
     <a name = "ScenEdit_ExecuteEventAction"></a>
     <strong>ScenEdit_ExecuteEventAction (EventDescriptionOrID)</strong>
     </dt>
@@ -3435,6 +3896,66 @@ Nothing returned Or empty values means that the weapon Is Not For the target typ
         <li><pre class="example">ScenEdit_GetDoctrineWRA({guid = <span class="string">'a1a52edf-3541-4b55-bea4-58d4e1ab11dc'</span>, contact_id=<span class="string">'Boeing 747-8F #610'</span>, weapon_id=<span class="number">1575</span>})</pre></li>
         <li><pre class="example">ScenEdit_GetDoctrineWRA({side=<span class="string">'sidea'</span>, target_type=<span class="string">'Surface_Contact_Unknown_Type'</span>, weapon_id=<span class="number">1575</span>})</pre></li>
     </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_GetEvent"></a>
+    <strong>ScenEdit_GetEvent (EventDescriptionOrID, level)</strong>
+    </dt>
+    <dd>
+    Gets the properties of an event.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">EventDescriptionOrID</span>
+            <span class="types"><span class="type">string</span></span>
+         The event to retrieve
+        </li>
+        <li><span class="parameter">level</span>
+            <span class="types"><span class="type">number</span></span>
+         The detail required: 0 - full event,  (limit return to 1 - triggers, 2 - conditions, 3 - actions, 4 - event)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="index.html#Event">Event</a></span>
+        The event details
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_GetEvents"></a>
+    <strong>ScenEdit_GetEvents (level)</strong>
+    </dt>
+    <dd>
+    Gets all events.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">level</span>
+            <span class="types"><span class="type">number</span></span>
+         The detail required: 0 - full event,  (limit return to 1 - triggers, 2 - conditions, 3 - actions, 4 - event)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="index.html#Event"> { Event} </a></span>
+        Table of event details
+    </ol>
+
+
+
 
 </dd>
     <dt>
@@ -3782,7 +4303,9 @@ then the function returns nil instead of producing an exception.
     <strong>ScenEdit_HostUnitToParent (host_info)</strong>
     </dt>
     <dd>
-    Hosts a unit to the specified host.  The unit will be moved from any location, including flying or hosted elsewhere.
+    Host/base
+ ..  to the specified host.
+ SelectedHostNameOrID' option: the unit will be moved from any location, including flying, to the new location.
 
     </ul>
 
@@ -4123,6 +4646,62 @@ A file can also be loaded indirectly from an attachment <a href="index.html#Scen
 
 </dd>
     <dt>
+    <a name = "ScenEdit_SetAction"></a>
+    <strong>ScenEdit_SetAction (options)</strong>
+    </dt>
+    <dd>
+    Sets the attributes of an action.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">options</span>
+            <span class="types"><a class="type" href="index.html#ActionUpdate">{ ActionUpdate }</a></span>
+         The action options
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">{ table } </span></span>
+        Table of action options (new or previous value)
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_SetCondition"></a>
+    <strong>ScenEdit_SetCondition (options)</strong>
+    </dt>
+    <dd>
+    Sets the attributes of an condition.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">options</span>
+            <span class="types"><a class="type" href="index.html#ConditionUpdate">{ ConditionUpdate }</a></span>
+         The condition options
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">{ table } </span></span>
+        Table of condition options (new or previous value)
+    </ol>
+
+
+
+
+</dd>
+    <dt>
     <a name = "ScenEdit_SetDoctrine"></a>
     <strong>ScenEdit_SetDoctrine (selector, doctrine)</strong>
     </dt>
@@ -4187,7 +4766,7 @@ A file can also be loaded indirectly from an attachment <a href="index.html#Scen
         </li>
         <li><span class="parameter">options</span>
             <span class="types"><a class="type" href="index.html#WRA">{ WRA }</a></span>
-         Table of settings {qty<em>salvo, shooter</em>salvo,firing<em>range,self</em>defence}. The order IS IMPORTANT as no keys used.
+         Table of settings {qty_salvo, shooter_salvo,firing_range,self_defence}. The order IS IMPORTANT as no keys used.
         </li>
     </ul>
 
@@ -4260,6 +4839,134 @@ A file can also be loaded indirectly from an attachment <a href="index.html#Scen
         <li><pre class="example">ScenEdit_SetEMCON(<span class="string">'Mission'</span>, <span class="string">'ASW Patrol #1'</span>, <span class="string">'Inherit;Sonar=Active'</span>)</pre></li>
         <li><pre class="example">ScenEdit_SetEMCON(<span class="string">'Unit'</span>, <span class="string">'Camel 2'</span>, <span class="string">'OECM=Active'</span>)</pre></li>
     </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_SetEvent"></a>
+    <strong>ScenEdit_SetEvent (EventDescriptionOrID, options)</strong>
+    </dt>
+    <dd>
+    Sets the attributes of an event.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">EventDescriptionOrID</span>
+            <span class="types"><span class="type">string</span></span>
+         The event name/GUID to perform operation on
+        </li>
+        <li><span class="parameter">options</span>
+            <span class="types"><a class="type" href="index.html#EventUpdate">{ EventUpdate }</a></span>
+         The event options
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">{ table } </span></span>
+        Table of event options (new or previous value)
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_SetEventAction"></a>
+    <strong>ScenEdit_SetEventAction (EventDescriptionOrID, options)</strong>
+    </dt>
+    <dd>
+    Sets the attributes of a T/C/A.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">EventDescriptionOrID</span>
+            <span class="types"><span class="type">string</span></span>
+         The action name/GUID to perform operation on
+        </li>
+        <li><span class="parameter">options</span>
+            <span class="types"><a class="type" href="index.html#EventTCAUpdate">{ EventTCAUpdate }</a></span>
+         The options
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">{ table } </span></span>
+        Table of options (new or previous value)
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_SetEventCondition"></a>
+    <strong>ScenEdit_SetEventCondition (EventDescriptionOrID, options)</strong>
+    </dt>
+    <dd>
+    Sets the attributes of a T/C/A.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">EventDescriptionOrID</span>
+            <span class="types"><span class="type">string</span></span>
+         The condition name/GUID to perform operation on
+        </li>
+        <li><span class="parameter">options</span>
+            <span class="types"><a class="type" href="index.html#EventTCAUpdate">{ EventTCAUpdate }</a></span>
+         The options
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">{ table } </span></span>
+        Table of options (new or previous value)
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_SetEventTrigger"></a>
+    <strong>ScenEdit_SetEventTrigger (EventDescriptionOrID, options)</strong>
+    </dt>
+    <dd>
+    Sets the attributes of a T/C/A.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">EventDescriptionOrID</span>
+            <span class="types"><span class="type">string</span></span>
+         The trigger name/GUID to perform operation on
+        </li>
+        <li><span class="parameter">options</span>
+            <span class="types"><a class="type" href="index.html#EventTCAUpdate">{ EventTCAUpdate }</a></span>
+         The options
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">{ table } </span></span>
+        Table of options (new or previous value)
+    </ol>
+
+
+
 
 </dd>
     <dt>
@@ -4558,6 +5265,34 @@ The 'area' selector is useful for changing some common attribute, like locking o
 
 </dd>
     <dt>
+    <a name = "ScenEdit_SetTrigger"></a>
+    <strong>ScenEdit_SetTrigger (options)</strong>
+    </dt>
+    <dd>
+    Sets the attributes of a trigger.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">options</span>
+            <span class="types"><a class="type" href="index.html#TriggerUpdate">{ TriggerUpdate }</a></span>
+         The trigger options
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">{ table } </span></span>
+        Table of trigger options (new or previous value)
+    </ol>
+
+
+
+
+</dd>
+    <dt>
     <a name = "ScenEdit_SetUnit"></a>
     <strong>ScenEdit_SetUnit (unit)</strong>
     </dt>
@@ -4642,7 +5377,7 @@ The 'area' selector is useful for changing some common attribute, like locking o
     <ul>
         <li><span class="parameter">sidedesc</span>
             <span class="types"><a class="type" href="index.html#SideDescription">SideDescription</a></span>
-         The description of how to change the unit's side
+         The sides to change for the unit. Group will change attached units
         </li>
     </ul>
 
@@ -4725,6 +5460,68 @@ conditions are applied globally.
 
 </dd>
     <dt>
+    <a name = "ScenEdit_TransferCargo"></a>
+    <strong>ScenEdit_TransferCargo (fromUnit, toUnit, cargoList)</strong>
+    </dt>
+    <dd>
+    Transfer cargo
+ ..  list from 'mother' to 'child'
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">fromUnit</span>
+            <span class="types"><a class="type" href="index.html#UnitSelector">UnitSelector</a></span>
+         The unit with cargo
+        </li>
+        <li><span class="parameter">toUnit</span>
+            <span class="types"><a class="type" href="index.html#UnitSelector">UnitSelector</a></span>
+         The unit to get cargo
+        </li>
+        <li><span class="parameter">cargoList</span>
+            <span class="types"><span class="type">{ Cargo }</span></span>
+         List of cargo to transfer: table of {guids}, or { {DBID, number}}
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolen</span></span>
+        Successful or not
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_UnitC"></a>
+    <strong>ScenEdit_UnitC ()</strong>
+    </dt>
+    <dd>
+    Detected Contact
+ ...  from a Unit Detected event trigger.
+Otherwise, a nil is returned.</p>
+
+<p> Note that UnitC() can also be used as a shortcut for ScenEdit_UnitC()
+
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="index.html#Contact">Contact</a></span>
+        A contact descriptor or nil
+    </ol>
+
+
+
+
+</dd>
+    <dt>
     <a name = "ScenEdit_UnitX"></a>
     <strong>ScenEdit_UnitX ()</strong>
     </dt>
@@ -4788,31 +5585,31 @@ Otherwise, a nil is returned.</p>
 
 </dd>
     <dt>
-    <a name = "ScenEdit_UpdateEvent"></a>
-    <strong>ScenEdit_UpdateEvent (EventDescriptionOrID, options)</strong>
+    <a name = "ScenEdit_UnloadCargo"></a>
+    <strong>ScenEdit_UnloadCargo (fromUnit, cargoList)</strong>
     </dt>
     <dd>
-    Sets the Lua script(s) of an event.
+    Unload cargo
 
     </ul>
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">EventDescriptionOrID</span>
-            <span class="types"><span class="type">string</span></span>
-         The event name/GUID to update
+        <li><span class="parameter">fromUnit</span>
+            <span class="types"><a class="type" href="index.html#UnitSelector">UnitSelector</a></span>
+         The unit with cargo
         </li>
-        <li><span class="parameter">options</span>
-            <span class="types"><a class="type" href="index.html#EventUpdate">{EventUpdate}</a></span>
-         The event options
+        <li><span class="parameter">cargoList</span>
+            <span class="types"><span class="type">{ Cargo }</span></span>
+         List of cargo to unload: table of {guids}, or { {DBID, number}}
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">table</span> or <span class="type">bool</span></span>
-        Table of event option (new or previous values)
+           <span class="types"><span class="type">boolen</span></span>
+        Successful or not
     </ol>
 
 
@@ -4832,7 +5629,7 @@ Otherwise, a nil is returned.</p>
     <ul>
         <li><span class="parameter">options</span>
             <span class="types"><a class="type" href="index.html#UpdateUnit">UpdateUnit</a></span>
-         The unit sensor/? details to update
+         The unit sensor/mount/weapon details to update
         </li>
     </ul>
 
@@ -4898,6 +5695,36 @@ Otherwise, a nil is returned.</p>
 
 
 
+
+</dd>
+    <dt>
+    <a name = "Tool_Bearing"></a>
+    <strong>Tool_Bearing ()</strong>
+    </dt>
+    <dd>
+    Get bearing between points. </p>
+
+<p> The points can be a GUID of a unit/contact or a latitude/longitude point.(fromHere, toHere)
+
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        The bearing
+      <ul>
+        </ul>
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <li><pre class="example">Tool_Bearing(<span class="string">'8269b881-20ce-4f2e-baa0-6823e46d55a4'</span>,<span class="string">'004aa55d-d553-428d-a727-26853737c8f4'</span> )</pre></li>
+        <li><pre class="example">Tool_Bearing( {latitude=<span class="string">'33.1991547589118'</span>, longitude=<span class="string">'138.376876749942'</span>}, <span class="string">'8269b881-20ce-4f2e-baa0-6823e46d55a4'</span> )</pre></li>
+    </ul>
 
 </dd>
     <dt>
@@ -5132,6 +5959,35 @@ Otherwise, a nil is returned.</p>
 
 
 </dd>
+    <dt>
+    <a name = "World_GetPointFromBearing"></a>
+    <strong>World_GetPointFromBearing (table)</strong>
+    </dt>
+    <dd>
+    Returns a location based on bearing.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">table</span>
+            <span class="types"><span class="type">Point</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Table of the new point
+    </ol>
+
+
+
+
+</dd>
 </dl>
     <h2><a name="Tables"></a>Tables</h2>
 
@@ -5329,15 +6185,19 @@ Otherwise, a nil is returned.</p>
         </li>
         <li><span class="parameter">comp_type</span>
             <span class="types"><span class="type">string</span></span>
-         Type of component (list ?? sensor, rudder, etc)
+         Type of component (mount, sensor, rudder, etc)
         </li>
         <li><span class="parameter">comp_status</span>
             <span class="types"><span class="type">string</span></span>
          Status
         </li>
+        <li><span class="parameter">comp_statusR</span>
+            <span class="types"><span class="type">string</span></span>
+         Reason why inoperative  [if not operational]
+        </li>
         <li><span class="parameter">comp_damage</span>
             <span class="types"><span class="type">string</span></span>
-         Damage Severity
+         Damage Severity   [if not operational]
         </li>
     </ul>
 
@@ -5497,8 +6357,8 @@ Otherwise, a nil is returned.</p>
 <p>Fuel. </p>
 
 <p> The various types of fuel(s), and their state, carried by the unit.
- Use ScenEdit<em>SetUnit() to set the fuel rather thane the unit.fuel...
- ScenEdit</em>SetUnit({...,fuel={{'GasFuel',1500},{2001,8000}}..})
+ Use ScenEdit_SetUnit() to set the fuel rather thane the unit.fuel...
+ ScenEdit_SetUnit({...,fuel={{'GasFuel',1500},{2001,8000}}..})
  It is easier and less prone to error; you can use the fuel name or the fuel number code</p>
 
 <p>Fuel Types:</p>
@@ -5539,6 +6399,7 @@ td { padding: .5em; }
     <h3>Usage:</h3>
     <ul>
         <pre class="example"><span class="keyword">local</span> fuel = u.fuel
+
       fuel[<span class="number">3001</span>].current = <span class="number">400</span>
       u.fuel = fuel</pre>
     </ul>
@@ -5585,7 +6446,7 @@ td { padding: .5em; }
     <strong>HostUnit</strong>
     </dt>
     <dd>
-    Requests that a unit be hosted to another
+    Requests that a unit be hosted/based to another
 
     </ul>
 
@@ -5598,6 +6459,7 @@ td { padding: .5em; }
         <li><span class="parameter">SelectedHostNameOrID</span>
             <span class="types"><span class="type">string</span></span>
          The name or GUID of the host to put the unit into
+ use SetUnit() with 'base=xxx' to assign the unit to a 'base'
         </li>
     </ul>
 
@@ -5661,16 +6523,18 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
         </li>
         <li><span class="parameter">TimeToReady_Minutes</span>
             <span class="types"><span class="type">number</span></span>
-         How many minutes until the loadout is ready
+         How many minutes until the loadout is ready (default = database loadout time)
+         (_optional_)
         </li>
         <li><span class="parameter">IgnoreMagazines</span>
             <span class="types"><span class="type">bool</span></span>
-         If the new loadout should rely on the magazines having the right weapons ready
+         If the new loadout should rely on the magazines having the right weapons ready (default = false)
+         (_optional_)
         </li>
         <li><span class="parameter">ExcludeOptionalWeapons</span>
             <span class="types"><span class="type">bool</span></span>
-         Exclude optional weapons from loadout
-         (<em>optional</em>)
+         Exclude optional weapons from loadout  (default = false)
+         (_optional_)
         </li>
     </ul>
 
@@ -5710,7 +6574,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
          Name
         </li>
         <li><span class="parameter">mag_weapons</span>
-            <span class="types"><a class="type" href="index.html#WeaponLoaded">{ WeaponLoaded }</a></span>
+            <span class="types"><a class="type" href="index.html#WeaponLoaded">{ WeaponLoaded } </a></span>
          Table of weapon loads in magazine
         </li>
     </ul>
@@ -6013,8 +6877,20 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
             <span class="types"><span class="type">string</span></span>
          Name
         </li>
+        <li><span class="parameter">mount_status</span>
+            <span class="types"><span class="type">string</span></span>
+         Status
+        </li>
+        <li><span class="parameter">mount_statusR</span>
+            <span class="types"><span class="type">string</span></span>
+         Reason why inoperative  [if not operational]
+        </li>
+        <li><span class="parameter">mount_damage</span>
+            <span class="types"><span class="type">string</span></span>
+         Damage Severity   [if not operational]
+        </li>
         <li><span class="parameter">mount_weapons</span>
-            <span class="types"><a class="type" href="index.html#WeaponLoaded">{ WeaponLoaded }</a></span>
+            <span class="types"><a class="type" href="index.html#WeaponLoaded">{ WeaponLoaded } </a></span>
          Table of weapon loads on mount
         </li>
     </ul>
@@ -6662,6 +7538,77 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 
 </dd>
     <dt>
+    <a name = "Waypoint"></a>
+    <strong>Waypoint</strong>
+    </dt>
+    <dd>
+    Waypoint
+ ..  describing the long/lat points as in a plotted course
+
+    </ul>
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">longitude</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">latitude</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">description</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">presetAltitude</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">presetDepth</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">presetThrottle</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">desiredAltitude</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">desiredSpeed</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">desiredAltitudeTF</span>
+            <span class="types"><span class="type">number</span></span>
+         terrain-following
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
     <a name = "WeaponLoaded"></a>
     <strong>WeaponLoaded</strong>
     </dt>
@@ -6745,7 +7692,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2017-05-21 00:27:01 </i>
+<i style="float:right;">Last updated 2017-10-10 21:20:35 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
