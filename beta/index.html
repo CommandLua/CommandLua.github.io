@@ -105,7 +105,7 @@ One issue with commands running in an event is that sometimes they fail with an 
 <p>Note also, that the Lua history log should also record the event script errors.</p>
 
 
-<p><b>Release: 1.13 </b></p>
+<p><b>Release: 1.14 </b></p>
 
 
 <h2><a href="#Selector">Selector</a></h2>
@@ -643,6 +643,12 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="summary">Get range between points.</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#VP_ExportUnits">VP_ExportUnits (table, filename)</a></td>
+	<td class="summary">Export unit details </p>
+
+<p> ...</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#VP_GetContact">VP_GetContact (ContactGUID)</a></td>
 	<td class="summary">Get contact details</td>
 	</tr>
@@ -936,11 +942,9 @@ One issue with commands running in an event is that sometimes they fail with an 
 
 
         </li>
-        <li><span class="parameter">DP</span>
+        <li><span class="parameter">dp</span>
             <span class="types"><span class="type">number</span></span>
-
-
-
+         Damage points
         </li>
         <li><span class="parameter">components</span>
             <span class="types"><span class="type">{ table }</span></span>
@@ -1163,7 +1167,7 @@ One issue with commands running in an event is that sometimes they fail with an 
     <ul>
         <li><span class="parameter">type</span>
             <span class="types"><span class="type">string</span></span>
-         The type of unit (Ship, Sub, Aircraft, Facility)
+         The type of unit (Ship, Sub, Aircraft, Facility, Satellite)
         </li>
         <li><span class="parameter">unitname</span>
             <span class="types"><span class="type">string</span></span>
@@ -1196,6 +1200,14 @@ One issue with commands running in an event is that sometimes they fail with an 
         <li><span class="parameter">altitude</span>
             <span class="types"><span class="type">number</span></span>
          Unit altitude (applicable to AIR)
+        </li>
+        <li><span class="parameter">guid</span>
+            <span class="types"><span class="type">string</span></span>
+         Optional custom GUID to override auto one
+        </li>
+        <li><span class="parameter">orbit</span>
+            <span class="types"><span class="type">number</span></span>
+         Orbit index (applicable to SATELLITE)
         </li>
     </ul>
 
@@ -1415,7 +1427,7 @@ If both are given, then the GUID is used preferentially.
         </li>
         <li><span class="parameter">mode</span>
             <span class="types"><span class="type">string</span></span>
-         The function to perform (add_ sensor,remove_ sensor,add_ mount,remove_ mount,add_ weapon,remove_ weapon)
+         The function to perform (add_ sensor,remove_ sensor,add_ mount,remove_ mount,add_ weapon,remove_ weapon,add_comms,remove_comms)
         </li>
         <li><span class="parameter">dbid</span>
             <span class="types"><span class="type">number</span></span>
@@ -1432,6 +1444,10 @@ If both are given, then the GUID is used preferentially.
         <li><span class="parameter">weaponid</span>
             <span class="types"><span class="type">string</span></span>
          The identifier (guid) of the particular weapon to remove [required for remove_ weapon mode]. Must have a preceeding mountid to update
+        </li>
+        <li><span class="parameter">commsid</span>
+            <span class="types"><span class="type">string</span></span>
+         The identifier (guid) of the particular communication device to remove [required for remove_ mount mode]
         </li>
         <li><span class="parameter">arc_detect</span>
             <span class="types"><span class="type">{ Arcs }</span></span>
@@ -2562,6 +2578,10 @@ If both are given, then the GUID is used preferentially.
         <li><span class="parameter">formation</span>
             <span class="types"><span class="type">{ table } </span></span>
          Table of unit's formation info {bearing, type (of bearing), distance, sprint (and drift) }
+        </li>
+        <li><span class="parameter">sprintDrift</span>
+            <span class="types"><span class="type">bool </span></span>
+         Sprint and drift  'True/False'
         </li>
         <li><span class="parameter">inArea</span>
             <span class="types"><span class="type">method</span></span>
@@ -5810,6 +5830,42 @@ Otherwise, a nil is returned.</p>
 
 </dd>
     <dt>
+    <a name = "VP_ExportUnits"></a>
+    <strong>VP_ExportUnits (table, filename)</strong>
+    </dt>
+    <dd>
+    Export unit details </p>
+
+<p> ...  to a file for later import
+ parameters filename, filter by unit type, side
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">table</span>
+            <span class="types"><span class="type">table</span></span>
+         of Filters: TARGETSIDE, TARGETTYPE, TARGETSUBTYPE, SPECIFICUNITCLASS, SPECIFICUNIT. The values are like the Event Target triigers, but can take multiple ones. As in TargetType={'aircraft','submarine'}}
+        </li>
+        <li><span class="parameter">filename</span>
+            <span class="types"><span class="type">string</span></span>
+         of exported file
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        Success or failure
+ {Filter}
+    </ol>
+
+
+
+
+</dd>
+    <dt>
     <a name = "VP_GetContact"></a>
     <strong>VP_GetContact (ContactGUID)</strong>
     </dt>
@@ -6405,7 +6461,6 @@ td { padding: .5em; }
     <h3>Usage:</h3>
     <ul>
         <pre class="example"><span class="keyword">local</span> fuel = u.fuel
-
       fuel[<span class="number">3001</span>].current = <span class="number">400</span>
       u.fuel = fuel</pre>
     </ul>
@@ -7698,7 +7753,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2017-10-27 17:14:48 </i>
+<i style="float:right;">Last updated 2018-02-02 22:36:59 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
