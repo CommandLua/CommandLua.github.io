@@ -56,9 +56,13 @@
 <ul class="$(kind=='Topics' and '' or 'nowrap'">
   <li><a href="../topics/01-getting-started.md.html">01-getting-started</a></li>
   <li><a href="../topics/02-creation.md.html">02-creation</a></li>
-  <li><a href="../topics/03-unit-table.md.html">03-unit-table</a></li>
   <li><a href="../topics/98-event_handling.md.html">98-event_handling</a></li>
   <li><a href="../topics/99-code-examples.md.html">99-code-examples</a></li>
+</ul>
+<h2>Examples</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="../examples/scenedit_addunit.lua.html">scenedit_addunit.lua</a></li>
+  <li><a href="../examples/ex2.lua.html">ex2.lua</a></li>
 </ul>
 
 </div>
@@ -338,6 +342,12 @@ One issue with commands running in an event is that sometimes they fail with an 
  ...</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#ScenEdit_ClearKeyValue">ScenEdit_ClearKeyValue (key, forCampaign)</a></td>
+	<td class="summary">Clears a key</p>
+
+<p> ..</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#ScenEdit_CurrentTime">ScenEdit_CurrentTime ()</a></td>
 	<td class="summary">Get the current scenario time.</td>
 	</tr>
@@ -370,6 +380,10 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="name" ><a href="#ScenEdit_ExecuteSpecialAction">ScenEdit_ExecuteSpecialAction (eventNameOrId)</a></td>
 	<td class="summary">Execute a Lua Special action script
  ..</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ScenEdit_ExportInst">ScenEdit_ExportInst (side, unitList, fileData)</a></td>
+	<td class="summary">Export unit(s) to an inst file.</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_ExportMission">ScenEdit_ExportMission (SideNameOrId, MissionNameOrId)</a></td>
@@ -405,7 +419,7 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="summary">Gets all events.</td>
 	</tr>
 	<tr>
-	<td class="name" ><a href="#ScenEdit_GetKeyValue">ScenEdit_GetKeyValue (key)</a></td>
+	<td class="name" ><a href="#ScenEdit_GetKeyValue">ScenEdit_GetKeyValue (key, forCampaign)</a></td>
 	<td class="summary">Gets the value for a key from the persistent key store.</td>
 	</tr>
 	<tr>
@@ -535,7 +549,7 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="summary">Sets the attributes of a T/C/A.</td>
 	</tr>
 	<tr>
-	<td class="name" ><a href="#ScenEdit_SetKeyValue">ScenEdit_SetKeyValue (key, value)</a></td>
+	<td class="name" ><a href="#ScenEdit_SetKeyValue">ScenEdit_SetKeyValue (key, value, forCampaign)</a></td>
 	<td class="summary">Sets the value for a key in the persistent key store.</td>
 	</tr>
 	<tr>
@@ -690,6 +704,11 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<tr>
 	<td class="name" ><a href="#EMmatch">EMmatch</a></td>
 	<td class="summary">EM matches
+ ..</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#Emissions">Emissions</a></td>
+	<td class="summary">Contact emission
  ..</td>
 	</tr>
 	<tr>
@@ -1285,6 +1304,10 @@ One issue with commands running in an event is that sometimes they fail with an 
             <span class="types"><span class="type">string}</span></span>
          Side proficiency
         </li>
+        <li><span class="parameter">switchto</span>
+            <span class="types"><span class="type">bool}</span></span>
+         Change game side to above (only applicable with SetSideOptions)
+        </li>
     </ul>
 
 
@@ -1751,8 +1774,8 @@ If both are given, then the GUID is used preferentially.
          Table of battle damage assessment (fires, flood, structural)
         </li>
         <li><span class="parameter">emissions</span>
-            <span class="types"><span class="type">{ table } </span></span>
-         Table {name, age, solid} of detected emmissions from contact
+            <span class="types"><a class="type" href="../index.html#Emissions">{ Emissions } </a></span>
+         Table of detected emmissions from contact
         </li>
         <li><span class="parameter">detectionBy</span>
             <span class="types"><span class="type">{ table } </span></span>
@@ -3477,6 +3500,44 @@ The 'UnitX' can be used as the unit descriptor
 
 </dd>
     <dt>
+    <a name = "ScenEdit_ClearKeyValue"></a>
+    <strong>ScenEdit_ClearKeyValue (key, forCampaign)</strong>
+    </dt>
+    <dd>
+    Clears a key</p>
+
+<p> ..  or all keys from the persistent key store.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+            <span class="types"><span class="type">string</span></span>
+         The key to clear or empty for all
+        </li>
+        <li><span class="parameter">forCampaign</span>
+            <span class="types"><span class="type">bool</span></span>
+         Use key store for passing ed to next scenario in campaign. Optional, default = false
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        Success or failure.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_ClearKeyValue(<span class="string">"A"</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
     <a name = "ScenEdit_CurrentTime"></a>
     <strong>ScenEdit_CurrentTime ()</strong>
     </dt>
@@ -3704,6 +3765,36 @@ Otherwise, a nil is returned.</p>
            <span class="types"><span class="type">string</span></span>
         "Ok" on execution or nothing.
     </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_ExportInst"></a>
+    <strong>ScenEdit_ExportInst (side, unitList, fileData)</strong>
+    </dt>
+    <dd>
+    Export unit(s) to an inst file.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">side</span>
+            <span class="types"><span class="type">string</span></span>
+         The side to import the inst file as
+        </li>
+        <li><span class="parameter">unitList</span>
+            <span class="types"><span class="type">table</span></span>
+         list of unit(s) to create as INST file
+        </li>
+        <li><span class="parameter">fileData</span>
+            <span class="types"><span class="type">table</span></span>
+         Table of { filename, name, comment } for the INST file
+        </li>
+    </ul>
+
 
 
 
@@ -3986,7 +4077,7 @@ Nothing returned Or empty values means that the weapon Is Not For the target typ
 </dd>
     <dt>
     <a name = "ScenEdit_GetKeyValue"></a>
-    <strong>ScenEdit_GetKeyValue (key)</strong>
+    <strong>ScenEdit_GetKeyValue (key, forCampaign)</strong>
     </dt>
     <dd>
     Gets the value for a key from the persistent key store. </p>
@@ -4000,6 +4091,10 @@ Nothing returned Or empty values means that the weapon Is Not For the target typ
         <li><span class="parameter">key</span>
             <span class="types"><span class="type">string</span></span>
          The key to fetch the associated value of
+        </li>
+        <li><span class="parameter">forCampaign</span>
+            <span class="types"><span class="type">bool</span></span>
+         Read from the store being passed to next scenario in campaign. Optional, default = false
         </li>
     </ul>
 
@@ -4735,7 +4830,7 @@ A file can also be loaded indirectly from an attachment <a href="../index.html#S
     Set the doctrine of the designated object. </p>
 
 <p>This function uses selector to find the thing to modify, then modifies the doctrine of that object based on the given object.
- Can be used to affect doctrine for Side, Mission, Unit/Group
+ Can be used to affect doctrine for Side, Mission, Unit/Group.
 
     </ul>
 
@@ -4997,7 +5092,7 @@ A file can also be loaded indirectly from an attachment <a href="../index.html#S
 </dd>
     <dt>
     <a name = "ScenEdit_SetKeyValue"></a>
-    <strong>ScenEdit_SetKeyValue (key, value)</strong>
+    <strong>ScenEdit_SetKeyValue (key, value, forCampaign)</strong>
     </dt>
     <dd>
     Sets the value for a key in the persistent key store. </p>
@@ -5016,6 +5111,10 @@ The value is retrieved by <a href="../index.html#ScenEdit_GetKeyValue">ScenEdit_
         <li><span class="parameter">value</span>
             <span class="types"><span class="type">string</span></span>
          The value to associate
+        </li>
+        <li><span class="parameter">forCampaign</span>
+            <span class="types"><span class="type">bool</span></span>
+         Pass the store to next scenario in campaign. Optional, default = false
         </li>
     </ul>
 
@@ -6313,6 +6412,60 @@ Otherwise, a nil is returned.</p>
 
 </dd>
     <dt>
+    <a name = "Emissions"></a>
+    <strong>Emissions</strong>
+    </dt>
+    <dd>
+    Contact emission
+ ..  details
+
+
+    </ul>
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">age</span>
+            <span class="types"><span class="type">number</span></span>
+          Time detection held
+        </li>
+        <li><span class="parameter">solid</span>
+            <span class="types"><span class="type">string</span></span>
+          Precise detected (True/false)
+        </li>
+        <li><span class="parameter">sensor_dbid</span>
+            <span class="types"><span class="type">number</span></span>
+         Databse id.
+        </li>
+        <li><span class="parameter">sensor_name</span>
+            <span class="types"><span class="type">string</span></span>
+         Sensor name.
+        </li>
+        <li><span class="parameter">sensor_type</span>
+            <span class="types"><span class="type">string</span></span>
+         Sensor type
+        </li>
+        <li><span class="parameter">sensor_role</span>
+            <span class="types"><span class="type">string</span></span>
+         Sensor role
+        </li>
+        <li><span class="parameter">sensor_maxrange</span>
+            <span class="types"><span class="type">number</span></span>
+         Sensor range
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
     <a name = "Explosion"></a>
     <strong>Explosion</strong>
     </dt>
@@ -6974,6 +7127,10 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 
     <h3>Fields:</h3>
     <ul>
+        <li><span class="parameter">type</span>
+            <span class="types"><span class="type">string</span></span>
+         Subtype of mission (ASW = 'asw', ASuW<em>Naval = 'naval', AAW = 'aaw', ASuW</em>Land = 'land', ASuW_Mixed = 'mixed', SEAD = 'sead', SeaControl = 'sea')
+        </li>
         <li><span class="parameter">oneThirdRule</span>
             <span class="types"><span class="type">bool</span></span>
          True if activated
@@ -7272,6 +7429,10 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 
     <h3>Fields:</h3>
     <ul>
+        <li><span class="parameter">type</span>
+            <span class="types"><span class="type">string</span></span>
+          Subtype of mission (Air<em>Intercept = 'air', Land</em>Strike = 'land', Maritime<em>Strike = 'sea', Sub</em>Strike = 'sub')
+        </li>
         <li><span class="parameter">escortFlightSizeShooter</span>
             <span class="types"><a class="type" href="../index.html#Size">Size</a></span>
 
@@ -7753,7 +7914,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2018-02-02 22:36:59 </i>
+<i style="float:right;">Last updated 2018-03-11 12:15:29 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
