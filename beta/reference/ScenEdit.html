@@ -62,7 +62,7 @@
 <h2>Examples</h2>
 <ul class="$(kind=='Topics' and '' or 'nowrap'">
   <li><a href="../examples/scenedit_addunit.lua.html">scenedit_addunit.lua</a></li>
-  <li><a href="../examples/ex2.lua.html">ex2.lua</a></li>
+  <li><a href="../examples/scenedit_mission.lua.html">scenedit_mission.lua</a></li>
 </ul>
 
 </div>
@@ -284,6 +284,12 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<tr>
 	<td class="name" ><a href="#TimeStamp">TimeStamp</a></td>
 	<td class="summary">TimeStamp.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#WeaponDoctrine">WeaponDoctrine</a></td>
+	<td class="summary">
+
+</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#Weather">Weather</a></td>
@@ -1212,7 +1218,7 @@ One issue with commands running in an event is that sometimes they fail with an 
             <span class="types"><span class="type">string</span></span>
          Unit base name or GUID where the unit will be 'hosted' (applicable to AIR, SHIP, SUB)
         </li>
-        <li><span class="parameter">loadout</span>
+        <li><span class="parameter">loadoutid</span>
             <span class="types"><span class="type">number</span></span>
          Aircraft database loadout id (applicable to AIR)
         </li>
@@ -1220,13 +1226,13 @@ One issue with commands running in an event is that sometimes they fail with an 
             <span class="types"><span class="type">number</span></span>
          Unit altitude (applicable to AIR)
         </li>
-        <li><span class="parameter">guid</span>
-            <span class="types"><span class="type">string</span></span>
-         Optional custom GUID to override auto one
-        </li>
         <li><span class="parameter">orbit</span>
             <span class="types"><span class="type">number</span></span>
          Orbit index (applicable to SATELLITE)
+        </li>
+        <li><span class="parameter">guid</span>
+            <span class="types"><span class="type">string</span></span>
+         Optional custom GUID to override auto one
         </li>
     </ul>
 
@@ -1908,7 +1914,7 @@ If both are given, then the GUID is used preferentially.
          No(0), YesLastUnit(1), YesFirstUnit(2), YesLeaveGroup(3)
         </li>
         <li><span class="parameter">weapon_state_planned</span>
-            <span class="types"><span class="type">string</span></span>
+            <span class="types"><a class="type" href="../index.html#WeaponDoctrine">WeaponDoctrine</a></span>
          See Weapon Doctrine table below
         </li>
         <li><span class="parameter">weapon_state_rtb</span>
@@ -1977,37 +1983,7 @@ If both are given, then the GUID is used preferentially.
         </li>
         <li><span class="parameter">deploy_on_defence</span>
             <span class="types"><span class="type">string</span></span>
-         Ignore(0), Exhausted(1), Percent25(2), Percent50(3), Percent75(4), Percent100(5), LoadFullWeapons(6) </p>
-
-
-<p> <b>Weapon doctrine:</b>
- <style>
- tr:not(:first-child) { border-top: 1px solid black;}
- td { padding: .5em; }
- </style>
- <table style="border-spacing: 0.5rem;">
- <tr><td>Value</td><td>Number</td><td>Explanation</td></tr>
- <tr><td>LoadoutSetting</td><td>0</td><td>use setting from database</td></tr>
- <tr><td>Winchester</td><td>2001</td><td>Vanilla Winchester.</td></tr>
- <tr><td>Winchester_ToO</td><td>2002</td><td>Same as above, but engage nearby bogies with guns after we're out of missiles. Applies to air-to-air missile loadouts only. For guns-only air-to-air loadouts and all air-to-ground loadouts the behaviour is the same as above. PREFERRED OPTION!</td></tr>
- <tr><td>ShotgunBVR</td><td>3001</td><td>Disengage after firing all Beyond Visual Range (BVR, air-to-air) or Stand-Off (SO, air-to-ground) weapons. This is a risky option as your fighter aircraft may only have one medium-range air-to-air missile (AAM) left, and attempt to engage 'fresh' flights of bogies. Use with caution.</td></tr>
- <tr><td>ShotgunBVR_WVR</td><td>3002</td><td>Same as above, but if easy targets or threats are nearby then shoot at them with remaining Within Visual Range (WVR, air-to-air) or SR (Short-Range, air-to-ground) weapons before disengaging.</td></tr>
- <tr><td>ShotgunBVR_WVR_Guns</td><td>3003</td><td>Same as above, but also engage bogies with guns. Applies to air-to-air (A/A) loadouts only. For air-to-ground (A/G) loadouts the behaviour is the same as above.</td></tr>
- <tr><td>ShotgunOneEngagementBVR</td><td>5001</td><td>Make one engagement with BVR or SO weapons. Continue fighting for as long as there are targets within easy reach and then disengage. This is a safe option as it ensures aircraft do not 'hang around' after they have expended their most potent weapons, and becoming easy targets when engaged by 'fresh' enemy units. </td></tr>
- <tr><td>ShotgunOneEngagementBVR_Opportunity_WVR</td><td>5002</td><td>Same as above, but if easy targets or threats are nearby, shoot at them with remaining WVR or Short-Range weapons before disengaging. A target is considered 'easy' when within 120% of the remaining WVR or Strike weapon's maximum range. In other words, the fighter won't spend much energy chasing down a target after the Shotgun weapon state has been reached, and will leave the target area as quickly as possible. PREFERRED OPTION!</td></tr>
- <tr><td>ShotgunOneEngagementBVR_Opportunity_WVR_Guns</td><td>5003</td><td>Same as above, but also engage bogies with guns. Applies to air-to-air (A/A) loadouts only. For air-to-ground (A/G) loadouts the behaviour is the same as above.</td></tr>
- <tr><td>ShotgunOneEngagementBVR_And_WVR</td><td>5005</td><td>Make one engagement with BVR and WVR, or SO and Strike Weapons. Do not disengage when out of BVR or SO weapons, but continue the engagement with WVR weapons.</td></tr>
- <tr><td>ShotgunOneEngagementBVR_And_WVR_Opportunity_Guns</td><td>5006</td><td> </td></tr>
- <tr><td>ShotgunOneEngagementWVR</td><td>5011</td><td>Make one engagement with WVR or SR weapons. Continue fighting for as long as there are targets within easy reach and then disengage.</td></tr>
- <tr><td>ShotgunOneEngagementWVR_Guns</td><td>5012</td><td>Same as above but also engage bogies with guns. Applies to air-to-air (A/A) loadouts only. For air-to-ground (A/G) loadouts, the behaviour is the same as above. PREFERRED OPTION!</td></tr>
- <tr><td>ShotgunOneEngagementGun</td><td>5021</td><td>Make one engagement with guns. Continue fighting for as long as there are targets nearby and then disengage.</td></tr>
- <tr><td>Shotgun25</td><td>4001</td><td>Disengage after 1/4 of mission-specific weapons have been expended.</td></tr>
- <tr><td>Shotgun25_ToO</td><td>4002</td><td>Same as above, but if easy targets or threats are nearby then shoot at those too. Also engage bogies with guns. Applies to air-to-air (A/A) loadouts only.</td></tr>
- <tr><td>Shotgun50</td><td>4011</td><td>Disengage after half of mission-specific weapons have been expended.</td></tr>
- <tr><td>Shotgun50_ToO</td><td>4012</td><td>Same as above, but if easy targets or threats are nearby then shoot at those too. Also engage bogies with guns. Applies to air-to-air (A/A) loadouts only.</td></tr>
- <tr><td>Shotgun75</td><td>4021</td><td>Disengage after 3/4 of mission-specific weapons have been expended.</td></tr>
- <tr><td>Shotgun75_ToO</td><td>4022</td><td>Same as above, but if easy targets or threats are nearby then shoot at those too. Also engage bogies with guns. Applies to air-to-air (A/A) loadouts only.</td></tr>
- </table></td></tr>
+         Ignore(0), Exhausted(1), Percent25(2), Percent50(3), Percent75(4), Percent100(5), LoadFullWeapons(6)
         </li>
     </ul>
 
@@ -3025,6 +3001,47 @@ Key/value pairs added to the persistent store is retained when the game is saved
     <dd>
     TimeStamp.
  ... is a representation of time defined as the number of seconds that have elapsed since 00:00:00 Coordinated Universal Time (UTC), Thursday, 1 January 1970
+
+    </ul>
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "WeaponDoctrine"></a>
+    <strong>WeaponDoctrine</strong>
+    </dt>
+    <dd>
+     <style>
+ tr:not(:first-child) { border-top: 1px solid black;}
+ td { padding: .5em; }
+ </style>
+ <table style="border-spacing: 0.5rem;">
+ <tr><td>Value</td><td>Number</td><td>Explanation</td></tr>
+ <tr><td>LoadoutSetting</td><td>0</td><td>use setting from database</td></tr>
+ <tr><td>Winchester</td><td>2001</td><td>Vanilla Winchester.</td></tr>
+ <tr><td>Winchester_ToO</td><td>2002</td><td>Same as above, but engage nearby bogies with guns after we're out of missiles. Applies to air-to-air missile loadouts only. For guns-only air-to-air loadouts and all air-to-ground loadouts the behaviour is the same as above. PREFERRED OPTION!</td></tr>
+ <tr><td>ShotgunBVR</td><td>3001</td><td>Disengage after firing all Beyond Visual Range (BVR, air-to-air) or Stand-Off (SO, air-to-ground) weapons. This is a risky option as your fighter aircraft may only have one medium-range air-to-air missile (AAM) left, and attempt to engage 'fresh' flights of bogies. Use with caution.</td></tr>
+ <tr><td>ShotgunBVR_WVR</td><td>3002</td><td>Same as above, but if easy targets or threats are nearby then shoot at them with remaining Within Visual Range (WVR, air-to-air) or SR (Short-Range, air-to-ground) weapons before disengaging.</td></tr>
+ <tr><td>ShotgunBVR_WVR_Guns</td><td>3003</td><td>Same as above, but also engage bogies with guns. Applies to air-to-air (A/A) loadouts only. For air-to-ground (A/G) loadouts the behaviour is the same as above.</td></tr>
+ <tr><td>ShotgunOneEngagementBVR</td><td>5001</td><td>Make one engagement with BVR or SO weapons. Continue fighting for as long as there are targets within easy reach and then disengage. This is a safe option as it ensures aircraft do not 'hang around' after they have expended their most potent weapons, and becoming easy targets when engaged by 'fresh' enemy units. </td></tr>
+ <tr><td>ShotgunOneEngagementBVR_Opportunity_WVR</td><td>5002</td><td>Same as above, but if easy targets or threats are nearby, shoot at them with remaining WVR or Short-Range weapons before disengaging. A target is considered 'easy' when within 120% of the remaining WVR or Strike weapon's maximum range. In other words, the fighter won't spend much energy chasing down a target after the Shotgun weapon state has been reached, and will leave the target area as quickly as possible. PREFERRED OPTION!</td></tr>
+ <tr><td>ShotgunOneEngagementBVR_Opportunity_WVR_Guns</td><td>5003</td><td>Same as above, but also engage bogies with guns. Applies to air-to-air (A/A) loadouts only. For air-to-ground (A/G) loadouts the behaviour is the same as above.</td></tr>
+ <tr><td>ShotgunOneEngagementBVR_And_WVR</td><td>5005</td><td>Make one engagement with BVR and WVR, or SO and Strike Weapons. Do not disengage when out of BVR or SO weapons, but continue the engagement with WVR weapons.</td></tr>
+ <tr><td>ShotgunOneEngagementBVR_And_WVR_Opportunity_Guns</td><td>5006</td><td> </td></tr>
+ <tr><td>ShotgunOneEngagementWVR</td><td>5011</td><td>Make one engagement with WVR or SR weapons. Continue fighting for as long as there are targets within easy reach and then disengage.</td></tr>
+ <tr><td>ShotgunOneEngagementWVR_Guns</td><td>5012</td><td>Same as above but also engage bogies with guns. Applies to air-to-air (A/A) loadouts only. For air-to-ground (A/G) loadouts, the behaviour is the same as above. PREFERRED OPTION!</td></tr>
+ <tr><td>ShotgunOneEngagementGun</td><td>5021</td><td>Make one engagement with guns. Continue fighting for as long as there are targets nearby and then disengage.</td></tr>
+ <tr><td>Shotgun25</td><td>4001</td><td>Disengage after 1/4 of mission-specific weapons have been expended.</td></tr>
+ <tr><td>Shotgun25_ToO</td><td>4002</td><td>Same as above, but if easy targets or threats are nearby then shoot at those too. Also engage bogies with guns. Applies to air-to-air (A/A) loadouts only.</td></tr>
+ <tr><td>Shotgun50</td><td>4011</td><td>Disengage after half of mission-specific weapons have been expended.</td></tr>
+ <tr><td>Shotgun50_ToO</td><td>4012</td><td>Same as above, but if easy targets or threats are nearby then shoot at those too. Also engage bogies with guns. Applies to air-to-air (A/A) loadouts only.</td></tr>
+ <tr><td>Shotgun75</td><td>4021</td><td>Disengage after 3/4 of mission-specific weapons have been expended.</td></tr>
+ <tr><td>Shotgun75_ToO</td><td>4022</td><td>Same as above, but if easy targets or threats are nearby then shoot at those too. Also engage bogies with guns. Applies to air-to-air (A/A) loadouts only.</td></tr>
+ </table></td></tr>
 
     </ul>
 
@@ -4830,7 +4847,7 @@ A file can also be loaded indirectly from an attachment <a href="../index.html#S
     Set the doctrine of the designated object. </p>
 
 <p>This function uses selector to find the thing to modify, then modifies the doctrine of that object based on the given object.
- Can be used to affect doctrine for Side, Mission, Unit/Group.
+ Can be used to affect doctrine for Side, Mission, Unit/Group
 
     </ul>
 
@@ -7301,6 +7318,42 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
             <span class="types"><span class="type">{ name</span> or <span class="type">guid }</span></span>
           Table of reference point names and/or GUIDs
         </li>
+        <li><span class="parameter">FlightsToInvestigate</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">FlightsToEngage</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">WingmanEngageDistance</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">BoatsToInvestigate</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">BoatsToEngage</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">GroupMemberEngageDistance</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
     </ul>
 
 
@@ -7543,13 +7596,57 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
             <span class="types"><span class="type">number</span></span>
          Radar usage
         </li>
-        <li><span class="parameter">strikeMinDist</span>
+        <li><span class="parameter">strikeMinDistAircraft</span>
             <span class="types"><span class="type">number</span></span>
           Strike minimum distance
         </li>
-        <li><span class="parameter">strikeMaxDist</span>
+        <li><span class="parameter">strikeMaxDistAircraft</span>
             <span class="types"><span class="type">number</span></span>
           Strike maximum distance
+        </li>
+        <li><span class="parameter">strikeMinDistShip</span>
+            <span class="types"><span class="type">number</span></span>
+          Strike minimum distance
+        </li>
+        <li><span class="parameter">strikeMaxDistShip</span>
+            <span class="types"><span class="type">number</span></span>
+          Strike maximum distance
+        </li>
+        <li><span class="parameter">FlightsToInvestigate</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">FlightsToEngage</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">WingmanEngageDistance</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">BoatsToInvestigate</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">BoatsToEngage</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">GroupMemberEngageDistance</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
         </li>
     </ul>
 
@@ -7712,6 +7809,36 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 
         </li>
         <li><span class="parameter">tankerMaxReceivers</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">ccenable</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">ccallowqra</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">ccflightgenmethod</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">ccstationtime</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">ccoverlap</span>
             <span class="types"><span class="type">string</span></span>
 
 
@@ -7914,7 +8041,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2018-03-11 12:15:29 </i>
+<i style="float:right;">Last updated 2018-03-24 14:16:21 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
