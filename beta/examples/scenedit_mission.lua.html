@@ -42,6 +42,7 @@
 
 <h2>Examples</h2>
 <ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="../examples/mission1.lua.html">mission1.lua</a></li>
   <li><a href="../examples/scenedit_addunit.lua.html">scenedit_addunit.lua</a></li>
   <li><strong>scenedit_mission.lua</strong></li>
 </ul>
@@ -63,17 +64,17 @@
 
     <h2>scenedit_mission.lua</h2>
 <pre>
-<span class="comment">-- casues commands to return rather than stop on error
+<span class="comment">-- causes commands to return rather than stop on error; using this emulates what should happen for event scripts as you don't want them script to exit on the first error that happens from a SE command.
 </span>Tool_EmulateNoConsole(<span class="keyword">true</span>)
 
-<span class="comment">-- add patrol areas
+<span class="comment">-- create some areas
 </span><span class="keyword">local</span> rp = ScenEdit_AddReferencePoint({side=<span class="string">'USN'</span>, area = { { name = <span class="string">'ASW1'</span>, latitude = <span class="string">'37.0603679040225'</span>, longitude = <span class="string">'-75.6385367903846'</span> }, { name = <span class="string">'ASW2'</span>, latitude = <span class="string">'37.0348786513868'</span>, longitude = <span class="string">'-75.4620702078127'</span> }, { name = <span class="string">'ASW3'</span>, latitude = <span class="string">'36.7335757863909'</span>, longitude = <span class="string">'-75.6561443351817'</span> }, { name = <span class="string">'ASW4'</span>, latitude = <span class="string">'36.7954715618781'</span>, longitude = <span class="string">'-75.7827960715359'</span> } }})
-rp.highlighted=<span class="keyword">true</span>
-rp = ScenEdit_AddReferencePoint({side=<span class="string">'USN'</span>,  area = { { name = <span class="string">'CAP1'</span>,  latitude = <span class="string">'37.7532467437691'</span>, longitude = <span class="string">'-75.4646862637693'</span> }, { name = <span class="string">'CAP2'</span>, latitude = <span class="string">'37.5371903907565'</span>, longitude = <span class="string">'-75.0762089773193'</span> }, { name = <span class="string">'CAP3'</span>, latitude = <span class="string">'37.3380580875803'</span>, longitude = <span class="string">'-75.2578995208917'</span> }, { name = <span class="string">'CAP4'</span>,  latitude = <span class="string">'37.579644594475'</span>, longitude = <span class="string">'-75.6550771945462'</span> } } })
-rp.highlighted=<span class="keyword">true</span>
-rp = ScenEdit_AddReferencePoint({side=<span class="string">'USN'</span>,  area = { {name=<span class="string">'SD-1'</span>, latitude=<span class="string">'36.833046265781'</span>, longitude=<span class="string">'-75.4321271077115'</span>} , {name=<span class="string">'SD-2'</span>, latitude=<span class="string">'36.8312502782357'</span>, longitude=<span class="string">'-74.6593127814792'</span>} , {name=<span class="string">'SD-3'</span>, latitude=<span class="string">'36.3500038343364'</span>, longitude=<span class="string">'-74.662674932343'</span>} , {name=<span class="string">'SD-4'</span>, latitude=<span class="string">'36.3519590455694'</span>, longitude=<span class="string">'-75.4314076940298'</span>} } } )
-rp.highlighted=<span class="keyword">true</span>
-
+rp.highlighted = <span class="keyword">true</span>  <span class="comment">-- highlight the first point in the area
+</span>rp = ScenEdit_AddReferencePoint({side=<span class="string">'USN'</span>,  area = { { name = <span class="string">'CAP1'</span>,  latitude = <span class="string">'37.7532467437691'</span>, longitude = <span class="string">'-75.4646862637693'</span> }, { name = <span class="string">'CAP2'</span>, latitude = <span class="string">'37.5371903907565'</span>, longitude = <span class="string">'-75.0762089773193'</span> }, { name = <span class="string">'CAP3'</span>, latitude = <span class="string">'37.3380580875803'</span>, longitude = <span class="string">'-75.2578995208917'</span> }, { name = <span class="string">'CAP4'</span>,  latitude = <span class="string">'37.579644594475'</span>, longitude = <span class="string">'-75.6550771945462'</span> } } })
+rp.highlighted = <span class="keyword">true</span>  <span class="comment">-- highlight the first point in the area
+</span>rp = ScenEdit_AddReferencePoint({side=<span class="string">'USN'</span>,  area = { {name=<span class="string">'SD-1'</span>, latitude=<span class="string">'36.833046265781'</span>, longitude=<span class="string">'-75.4321271077115'</span>} , {name=<span class="string">'SD-2'</span>, latitude=<span class="string">'36.8312502782357'</span>, longitude=<span class="string">'-74.6593127814792'</span>} , {name=<span class="string">'SD-3'</span>, latitude=<span class="string">'36.3500038343364'</span>, longitude=<span class="string">'-74.662674932343'</span>} , {name=<span class="string">'SD-4'</span>, latitude=<span class="string">'36.3519590455694'</span>, longitude=<span class="string">'-75.4314076940298'</span>} } } )
+rp.highlighted = <span class="keyword">true</span>  <span class="comment">-- highlight the first point in the area
+</span>
 <span class="comment">-- delete any existing missions
 </span><span class="keyword">local</span> dm =  ScenEdit_GetMission(<span class="string">'USN'</span>, <span class="string">'ASW strike'</span>)
 <span class="keyword">if</span> dm ~= <span class="keyword">nil</span> <span class="keyword">then</span>
@@ -92,28 +93,35 @@ enddm =  ScenEdit_GetMission(<span class="string">'USN'</span>, <span class="str
     ScenEdit_DeleteMission(<span class="string">'USN'</span>, <span class="string">'Sea Dragon'</span>)
 <span class="keyword">end</span>
 
-<span class="comment">-- create missions
-</span><span class="keyword">local</span> mission = ScenEdit_AddMission(<span class="string">'USN'</span>, <span class="string">'ASW strike'</span>, <span class="string">'strike'</span>, {<span class="global">type</span>= <span class="string">'sub'</span>}); mission.isactive=<span class="keyword">false</span>
-<span class="keyword">if</span> mission ~= <span class="keyword">nil</span> <span class="keyword">then</span>
-	mission = ScenEdit_SetMission(<span class="string">'USN'</span>, <span class="string">'ASW strike'</span>,{strikeMinimumTrigger=<span class="string">'hostile'</span>})
+<span class="comment">-- create new missions
+</span><span class="keyword">local</span> mission = ScenEdit_AddMission(<span class="string">'USN'</span>, <span class="string">'ASW strike'</span>, <span class="string">'strike'</span>, {<span class="global">type</span>= <span class="string">'sub'</span>})
+<span class="comment">-- successful?
+</span><span class="keyword">if</span> mission ~= <span class="keyword">nil</span> <span class="keyword">then</span>
+	<span class="comment">-- make the mission inactive for now
+</span>	mission.isactive = <span class="keyword">false</span>
+	<span class="comment">-- set any additional mission parameters; the parameters may vary depending on the type of mission
+</span>	mission = ScenEdit_SetMission(<span class="string">'USN'</span>, <span class="string">'ASW strike'</span>,{strikeMinimumTrigger=<span class="string">'hostile'</span>})
 <span class="keyword">else</span>
 	<span class="global">print</span>(<span class="string">'failed to add mission'</span> .. <span class="string">'ASW strike'</span>)
 <span class="keyword">end</span>
-mission = ScenEdit_AddMission(<span class="string">'USN'</span>, <span class="string">'ASW patrol'</span>, <span class="string">'patrol'</span>, {<span class="global">type</span>= <span class="string">'sub'</span>}); mission.isactive=<span class="keyword">false</span>
+mission = ScenEdit_AddMission(<span class="string">'USN'</span>, <span class="string">'ASW patrol'</span>, <span class="string">'patrol'</span>, {<span class="global">type</span>= <span class="string">'sub'</span>})
 <span class="keyword">if</span> mission ~= <span class="keyword">nil</span> <span class="keyword">then</span>
+	mission.isactive = <span class="keyword">false</span>
 	mission = ScenEdit_SetMission(<span class="string">'USN'</span>, <span class="string">'ASW patrol'</span>, {patrolzone={<span class="string">'ASW1'</span>, <span class="string">'ASW2'</span>,<span class="string">'ASW3'</span>,<span class="string">'ASW4'</span>},
         prosecutionZone={<span class="string">'ASW1'</span>, <span class="string">'ASW2'</span>,<span class="string">'ASW3'</span>,<span class="string">'ASW4'</span>}, onethirdrule=<span class="keyword">false</span>, onstation=<span class="number">2</span> })
 <span class="keyword">else</span>
 	<span class="global">print</span>(<span class="string">'failed to add mission'</span> .. <span class="string">'ASW patrol'</span>)
 <span class="keyword">end</span>
-mission = ScenEdit_AddMission(<span class="string">'USN'</span>, <span class="string">'CAP'</span>, <span class="string">'patrol'</span>, {<span class="global">type</span>= <span class="string">'air'</span>}); mission.isactive=<span class="keyword">false</span>
+mission = ScenEdit_AddMission(<span class="string">'USN'</span>, <span class="string">'CAP'</span>, <span class="string">'patrol'</span>, {<span class="global">type</span>= <span class="string">'air'</span>})
 <span class="keyword">if</span> mission ~= <span class="keyword">nil</span> <span class="keyword">then</span>
+	mission.isactive = <span class="keyword">false</span>
 	mission = ScenEdit_SetMission(<span class="string">'USN'</span>, <span class="string">'CAP'</span>, {patrolzone={<span class="string">'CAP1'</span>, <span class="string">'CAP2'</span>,<span class="string">'CAP3'</span>,<span class="string">'CAP4'</span>}, onethirdrule=<span class="keyword">true</span> })
 <span class="keyword">else</span>
 	<span class="global">print</span>(<span class="string">'failed to add mission'</span> .. <span class="string">'CAP'</span>)
 <span class="keyword">end</span>
-mission = ScenEdit_AddMission(<span class="string">'USN'</span>, <span class="string">'Sea Dragon'</span>, <span class="string">'patrol'</span>, {<span class="global">type</span>= <span class="string">'naval'</span>}); mission.isactive=<span class="keyword">false</span>
+mission = ScenEdit_AddMission(<span class="string">'USN'</span>, <span class="string">'Sea Dragon'</span>, <span class="string">'patrol'</span>, {<span class="global">type</span>= <span class="string">'naval'</span>})
 <span class="keyword">if</span> mission ~= <span class="keyword">nil</span> <span class="keyword">then</span>
+	mission.isactive = <span class="keyword">false</span>
 	mission = ScenEdit_SetMission(<span class="string">'USN'</span>, <span class="string">'Sea Dragon'</span>, {patrolzone={<span class="string">'SD-1'</span>, <span class="string">'SD-2'</span>,<span class="string">'SD-3'</span>,<span class="string">'SD-4'</span>}, onethirdrule=<span class="keyword">true</span> })
 <span class="keyword">else</span>
 	<span class="global">print</span>(<span class="string">'failed to add mission'</span> .. <span class="string">'Sea Dragon'</span>)
@@ -132,15 +140,20 @@ end
 ]]</span>
 
 <span class="comment">-- activate missions
-</span><span class="comment">--mission = ScenEdit_GetMission('USN', 'ASW patrol' ); mission.isactive=true
-</span><span class="comment">--mission = ScenEdit_GetMission('USN', 'CAP' ); mission.isactive=true</span></pre>
+</span><span class="comment">-- this often is handled as an event when certain conditions are met
+</span>mission = ScenEdit_GetMission(<span class="string">'USN'</span>, <span class="string">'ASW patrol'</span> )
+<span class="keyword">if</span> mission ~= <span class="keyword">nil</span> <span class="keyword">then</span>
+	mission.isactive = <span class="keyword">true</span>
+<span class="keyword">else</span>
+	<span class="global">print</span>(<span class="string">'failed to get mission'</span> .. <span class="string">'ASW patrol'</span>)
+<span class="keyword">end</span></pre>
 
 
 </div> <!-- id="content" -->
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2018-03-24 14:16:21 </i>
+<i style="float:right;">Last updated 2018-05-21 19:21:14 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
