@@ -43,6 +43,7 @@
 <li><a href="#Selector">Selector</a></li>
 <li><a href="#Wrapper_Descriptor">Wrapper/Descriptor</a></li>
 <li><a href="#Data_types">Data types</a></li>
+<li><a href="#Notes">Notes</a></li>
 <li><a href="#Functions">Functions</a></li>
 <li><a href="#Tables">Tables</a></li>
 </ul>
@@ -56,9 +57,14 @@
 <ul class="$(kind=='Topics' and '' or 'nowrap'">
   <li><a href="../topics/01-getting-started.md.html">01-getting-started</a></li>
   <li><a href="../topics/02-creation.md.html">02-creation</a></li>
-  <li><a href="../topics/03-unit-table.md.html">03-unit-table</a></li>
   <li><a href="../topics/98-event_handling.md.html">98-event_handling</a></li>
   <li><a href="../topics/99-code-examples.md.html">99-code-examples</a></li>
+</ul>
+<h2>Examples</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="../examples/mission1.lua.html">mission1.lua</a></li>
+  <li><a href="../examples/scenedit_addunit.lua.html">scenedit_addunit.lua</a></li>
+  <li><a href="../examples/scenedit_mission.lua.html">scenedit_mission.lua</a></li>
 </ul>
 
 </div>
@@ -105,7 +111,7 @@ One issue with commands running in an event is that sometimes they fail with an 
 <p>Note also, that the Lua history log should also record the event script errors.</p>
 
 
-<p><b>Release: 1.13 </b></p>
+<p><b>Release: 1.14.9 </b></p>
 
 
 <h2><a href="#Selector">Selector</a></h2>
@@ -175,6 +181,10 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="summary">Update unit sensor/mount/weapon selector.</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#UpdateUnitCargo">UpdateUnitCargo</a></td>
+	<td class="summary">Update unit cargo selector.</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#VPContactSelector">VPContactSelector</a></td>
 	<td class="summary">Contact selector.</td>
 	</tr>
@@ -213,6 +223,10 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<tr>
 	<td class="name" ><a href="#Group">Group</a></td>
 	<td class="summary">Group details.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#Loadout">Loadout</a></td>
+	<td class="summary">Loadout.</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#Mission">Mission</a></td>
@@ -262,6 +276,24 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="summary">Latitude.</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#LoadoutRole">LoadoutRole</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#LoadoutTimeOfDay">LoadoutTimeOfDay</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#LoadoutWeather">LoadoutWeather</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#Longitude">Longitude</a></td>
 	<td class="summary">Longitude.</td>
 	</tr>
@@ -282,12 +314,35 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="summary">TimeStamp.</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#WeaponDoctrine">WeaponDoctrine</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#WeaponType">WeaponType</a></td>
+	<td class="summary">
+
+</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#Weather">Weather</a></td>
 	<td class="summary">weather conditions.</td>
 	</tr>
 </table>
+<h2><a href="#Notes">Notes</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" ><a href="#WrapperFields">WrapperFields</a></td>
+	<td class="summary">List fields in a wrapper.</td>
+	</tr>
+</table>
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
+	<tr>
+	<td class="name" ><a href="#GetBuildNumber">GetBuildNumber ()</a></td>
+	<td class="summary">Gets the exe build number.</td>
+	</tr>
 	<tr>
 	<td class="name" ><a href="#GetScenarioTitle">GetScenarioTitle ()</a></td>
 	<td class="summary">Name of the scenario.</td>
@@ -338,6 +393,12 @@ One issue with commands running in an event is that sometimes they fail with an 
  ...</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#ScenEdit_ClearKeyValue">ScenEdit_ClearKeyValue (key, forCampaign)</a></td>
+	<td class="summary">Clears a key</p>
+
+<p> ..</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#ScenEdit_CurrentTime">ScenEdit_CurrentTime ()</a></td>
 	<td class="summary">Get the current scenario time.</td>
 	</tr>
@@ -370,6 +431,10 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="name" ><a href="#ScenEdit_ExecuteSpecialAction">ScenEdit_ExecuteSpecialAction (eventNameOrId)</a></td>
 	<td class="summary">Execute a Lua Special action script
  ..</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ScenEdit_ExportInst">ScenEdit_ExportInst (side, unitList, fileData)</a></td>
+	<td class="summary">Export unit(s) to an inst file.</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_ExportMission">ScenEdit_ExportMission (SideNameOrId, MissionNameOrId)</a></td>
@@ -405,8 +470,12 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="summary">Gets all events.</td>
 	</tr>
 	<tr>
-	<td class="name" ><a href="#ScenEdit_GetKeyValue">ScenEdit_GetKeyValue (key)</a></td>
+	<td class="name" ><a href="#ScenEdit_GetKeyValue">ScenEdit_GetKeyValue (key, forCampaign)</a></td>
 	<td class="summary">Gets the value for a key from the persistent key store.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ScenEdit_GetLoadout">ScenEdit_GetLoadout (loadoutinfo)</a></td>
+	<td class="summary">Gets the loadout for a unit</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_GetMission">ScenEdit_GetMission (SideNameOrId, MissionNameOrId)</a></td>
@@ -535,7 +604,7 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="summary">Sets the attributes of a T/C/A.</td>
 	</tr>
 	<tr>
-	<td class="name" ><a href="#ScenEdit_SetKeyValue">ScenEdit_SetKeyValue (key, value)</a></td>
+	<td class="name" ><a href="#ScenEdit_SetKeyValue">ScenEdit_SetKeyValue (key, value, forCampaign)</a></td>
 	<td class="summary">Sets the value for a key in the persistent key store.</td>
 	</tr>
 	<tr>
@@ -567,6 +636,10 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="summary">Sets the properties of an existing special action.</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#ScenEdit_SetTime">ScenEdit_SetTime (new_time)</a></td>
+	<td class="summary">Sets the scenario time (UTC).</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#ScenEdit_SetTrigger">ScenEdit_SetTrigger (options)</a></td>
 	<td class="summary">Sets the attributes of a trigger.</td>
 	</tr>
@@ -587,7 +660,7 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="summary">Set the current weather conditions.</td>
 	</tr>
 	<tr>
-	<td class="name" ><a href="#ScenEdit_SpecialMessage">ScenEdit_SpecialMessage (side, message)</a></td>
+	<td class="name" ><a href="#ScenEdit_SpecialMessage">ScenEdit_SpecialMessage (side, message, location)</a></td>
 	<td class="summary">Displays a special message consisting of the HTML text <code>message</code> to side `side.</td>
 	</tr>
 	<tr>
@@ -619,6 +692,10 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="summary">Update items on a unit.</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#ScenEdit_UpdateUnitCargo">ScenEdit_UpdateUnitCargo (options)</a></td>
+	<td class="summary">Update cargo on a unit.</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#ScenEdit_UseAttachment">ScenEdit_UseAttachment (attachment)</a></td>
 	<td class="summary">Import an attachment into the scene.</td>
 	</tr>
@@ -641,6 +718,12 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<tr>
 	<td class="name" ><a href="#Tool_Range">Tool_Range ()</a></td>
 	<td class="summary">Get range between points.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#VP_ExportUnits">VP_ExportUnits (table, filename)</a></td>
+	<td class="summary">Export unit details </p>
+
+<p> ...</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#VP_GetContact">VP_GetContact (ContactGUID)</a></td>
@@ -687,8 +770,17 @@ One issue with commands running in an event is that sometimes they fail with an 
  ..</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#Emissions">Emissions</a></td>
+	<td class="summary">Contact emission
+ ..</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#Explosion">Explosion</a></td>
 	<td class="summary">Defines the warhead to detonate.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#Facility">Facility</a></td>
+	<td class="summary">Facility.</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#FerryMission">FerryMission</a></td>
@@ -936,6 +1028,10 @@ One issue with commands running in an event is that sometimes they fail with an 
 
 
         </li>
+        <li><span class="parameter">dp</span>
+            <span class="types"><span class="type">number</span></span>
+         Damage points
+        </li>
         <li><span class="parameter">components</span>
             <span class="types"><span class="type">{ table }</span></span>
          Table of component damage setting { guid, damageLevel }
@@ -1157,7 +1253,7 @@ One issue with commands running in an event is that sometimes they fail with an 
     <ul>
         <li><span class="parameter">type</span>
             <span class="types"><span class="type">string</span></span>
-         The type of unit (Ship, Sub, Aircraft, Facility)
+         The type of unit (Ship, Sub, Aircraft, Facility, Satellite)
         </li>
         <li><span class="parameter">unitname</span>
             <span class="types"><span class="type">string</span></span>
@@ -1183,13 +1279,21 @@ One issue with commands running in an event is that sometimes they fail with an 
             <span class="types"><span class="type">string</span></span>
          Unit base name or GUID where the unit will be 'hosted' (applicable to AIR, SHIP, SUB)
         </li>
-        <li><span class="parameter">loadout</span>
+        <li><span class="parameter">loadoutid</span>
             <span class="types"><span class="type">number</span></span>
          Aircraft database loadout id (applicable to AIR)
         </li>
         <li><span class="parameter">altitude</span>
             <span class="types"><span class="type">number</span></span>
          Unit altitude (applicable to AIR)
+        </li>
+        <li><span class="parameter">orbit</span>
+            <span class="types"><span class="type">number</span></span>
+         Orbit index (applicable to SATELLITE)
+        </li>
+        <li><span class="parameter">guid</span>
+            <span class="types"><span class="type">string</span></span>
+         Optional custom GUID to override auto one
         </li>
     </ul>
 
@@ -1266,6 +1370,10 @@ One issue with commands running in an event is that sometimes they fail with an 
         <li><span class="parameter">proficiency</span>
             <span class="types"><span class="type">string}</span></span>
          Side proficiency
+        </li>
+        <li><span class="parameter">switchto</span>
+            <span class="types"><span class="type">bool}</span></span>
+         Change game side to above (only applicable with SetSideOptions)
         </li>
     </ul>
 
@@ -1399,6 +1507,7 @@ If both are given, then the GUID is used preferentially.
     Update unit sensor/mount/weapon selector. </p>
 
 <p> ... lists minimum fields required. Other fields from <a href="../index.html#Unit">Unit</a> may be included.
+ For the 'delta' mode, the function willl look for a matching GUID (or unit name if no GUID match) in the INI file.
 
     </ul>
 
@@ -1409,7 +1518,7 @@ If both are given, then the GUID is used preferentially.
         </li>
         <li><span class="parameter">mode</span>
             <span class="types"><span class="type">string</span></span>
-         The function to perform (add_ sensor,remove_ sensor,add_ mount,remove_ mount,add_ weapon,remove_ weapon)
+         The function to perform (add_ sensor,remove_ sensor,add_ mount,remove_ mount,add_ weapon,remove_ weapon,add<em>comms,remove</em>comms,delta)
         </li>
         <li><span class="parameter">dbid</span>
             <span class="types"><span class="type">number</span></span>
@@ -1427,6 +1536,14 @@ If both are given, then the GUID is used preferentially.
             <span class="types"><span class="type">string</span></span>
          The identifier (guid) of the particular weapon to remove [required for remove_ weapon mode]. Must have a preceeding mountid to update
         </li>
+        <li><span class="parameter">commsid</span>
+            <span class="types"><span class="type">string</span></span>
+         The identifier (guid) of the particular communication device to remove [required for remove_ mount mode]
+        </li>
+        <li><span class="parameter">file</span>
+            <span class="types"><span class="type">string</span></span>
+         File name of the INI delta to apply [required for delta mode]
+        </li>
         <li><span class="parameter">arc_detect</span>
             <span class="types"><span class="type">{ Arcs }</span></span>
          The effective arcs for the particular sensor to detect in [override defaults]
@@ -1438,6 +1555,37 @@ If both are given, then the GUID is used preferentially.
         <li><span class="parameter">arc_mount</span>
             <span class="types"><span class="type">{ Arcs }</span></span>
          The effective arcs for the particular mount  [override defaults]
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "UpdateUnitCargo"></a>
+    <strong>UpdateUnitCargo</strong>
+    </dt>
+    <dd>
+    Update unit cargo selector. </p>
+
+<p> ... lists minimum fields required. Other fields from <a href="../index.html#Unit">Unit</a> may be included.
+
+    </ul>
+
+    <ul>
+        <li><span class="parameter">guid</span>
+            <span class="types"><span class="type">string</span></span>
+         The unit identifier
+        </li>
+        <li><span class="parameter">mode</span>
+            <span class="types"><span class="type">string</span></span>
+         The function to perform (add_ cargo,remove_ cargo)
+        </li>
+        <li><span class="parameter">cargoList</span>
+            <span class="types"><span class="type">{ Cargo }</span></span>
+         List of cargo to update: table of {guids}, or { {number, DBID}}
         </li>
     </ul>
 
@@ -1729,8 +1877,8 @@ If both are given, then the GUID is used preferentially.
          Table of battle damage assessment (fires, flood, structural)
         </li>
         <li><span class="parameter">emissions</span>
-            <span class="types"><span class="type">{ table } </span></span>
-         Table {name, age, solid} of detected emmissions from contact
+            <span class="types"><a class="type" href="../index.html#Emissions">{ Emissions } </a></span>
+         Table of detected emmissions from contact
         </li>
         <li><span class="parameter">detectionBy</span>
             <span class="types"><span class="type">{ table } </span></span>
@@ -1863,7 +2011,7 @@ If both are given, then the GUID is used preferentially.
          No(0), YesLastUnit(1), YesFirstUnit(2), YesLeaveGroup(3)
         </li>
         <li><span class="parameter">weapon_state_planned</span>
-            <span class="types"><span class="type">string</span></span>
+            <span class="types"><a class="type" href="../index.html#WeaponDoctrine">WeaponDoctrine</a></span>
          See Weapon Doctrine table below
         </li>
         <li><span class="parameter">weapon_state_rtb</span>
@@ -1932,37 +2080,7 @@ If both are given, then the GUID is used preferentially.
         </li>
         <li><span class="parameter">deploy_on_defence</span>
             <span class="types"><span class="type">string</span></span>
-         Ignore(0), Exhausted(1), Percent25(2), Percent50(3), Percent75(4), Percent100(5), LoadFullWeapons(6) </p>
-
-
-<p> <b>Weapon doctrine:</b>
- <style>
- tr:not(:first-child) { border-top: 1px solid black;}
- td { padding: .5em; }
- </style>
- <table style="border-spacing: 0.5rem;">
- <tr><td>Value</td><td>Number</td><td>Explanation</td></tr>
- <tr><td>LoadoutSetting</td><td>0</td><td>use setting from database</td></tr>
- <tr><td>Winchester</td><td>2001</td><td>Vanilla Winchester.</td></tr>
- <tr><td>Winchester_ToO</td><td>2002</td><td>Same as above, but engage nearby bogies with guns after we're out of missiles. Applies to air-to-air missile loadouts only. For guns-only air-to-air loadouts and all air-to-ground loadouts the behaviour is the same as above. PREFERRED OPTION!</td></tr>
- <tr><td>ShotgunBVR</td><td>3001</td><td>Disengage after firing all Beyond Visual Range (BVR, air-to-air) or Stand-Off (SO, air-to-ground) weapons. This is a risky option as your fighter aircraft may only have one medium-range air-to-air missile (AAM) left, and attempt to engage 'fresh' flights of bogies. Use with caution.</td></tr>
- <tr><td>ShotgunBVR_WVR</td><td>3002</td><td>Same as above, but if easy targets or threats are nearby then shoot at them with remaining Within Visual Range (WVR, air-to-air) or SR (Short-Range, air-to-ground) weapons before disengaging.</td></tr>
- <tr><td>ShotgunBVR_WVR_Guns</td><td>3003</td><td>Same as above, but also engage bogies with guns. Applies to air-to-air (A/A) loadouts only. For air-to-ground (A/G) loadouts the behaviour is the same as above.</td></tr>
- <tr><td>ShotgunOneEngagementBVR</td><td>5001</td><td>Make one engagement with BVR or SO weapons. Continue fighting for as long as there are targets within easy reach and then disengage. This is a safe option as it ensures aircraft do not 'hang around' after they have expended their most potent weapons, and becoming easy targets when engaged by 'fresh' enemy units. </td></tr>
- <tr><td>ShotgunOneEngagementBVR_Opportunity_WVR</td><td>5002</td><td>Same as above, but if easy targets or threats are nearby, shoot at them with remaining WVR or Short-Range weapons before disengaging. A target is considered 'easy' when within 120% of the remaining WVR or Strike weapon's maximum range. In other words, the fighter won't spend much energy chasing down a target after the Shotgun weapon state has been reached, and will leave the target area as quickly as possible. PREFERRED OPTION!</td></tr>
- <tr><td>ShotgunOneEngagementBVR_Opportunity_WVR_Guns</td><td>5003</td><td>Same as above, but also engage bogies with guns. Applies to air-to-air (A/A) loadouts only. For air-to-ground (A/G) loadouts the behaviour is the same as above.</td></tr>
- <tr><td>ShotgunOneEngagementBVR_And_WVR</td><td>5005</td><td>Make one engagement with BVR and WVR, or SO and Strike Weapons. Do not disengage when out of BVR or SO weapons, but continue the engagement with WVR weapons.</td></tr>
- <tr><td>ShotgunOneEngagementBVR_And_WVR_Opportunity_Guns</td><td>5006</td><td> </td></tr>
- <tr><td>ShotgunOneEngagementWVR</td><td>5011</td><td>Make one engagement with WVR or SR weapons. Continue fighting for as long as there are targets within easy reach and then disengage.</td></tr>
- <tr><td>ShotgunOneEngagementWVR_Guns</td><td>5012</td><td>Same as above but also engage bogies with guns. Applies to air-to-air (A/A) loadouts only. For air-to-ground (A/G) loadouts, the behaviour is the same as above. PREFERRED OPTION!</td></tr>
- <tr><td>ShotgunOneEngagementGun</td><td>5021</td><td>Make one engagement with guns. Continue fighting for as long as there are targets nearby and then disengage.</td></tr>
- <tr><td>Shotgun25</td><td>4001</td><td>Disengage after 1/4 of mission-specific weapons have been expended.</td></tr>
- <tr><td>Shotgun25_ToO</td><td>4002</td><td>Same as above, but if easy targets or threats are nearby then shoot at those too. Also engage bogies with guns. Applies to air-to-air (A/A) loadouts only.</td></tr>
- <tr><td>Shotgun50</td><td>4011</td><td>Disengage after half of mission-specific weapons have been expended.</td></tr>
- <tr><td>Shotgun50_ToO</td><td>4012</td><td>Same as above, but if easy targets or threats are nearby then shoot at those too. Also engage bogies with guns. Applies to air-to-air (A/A) loadouts only.</td></tr>
- <tr><td>Shotgun75</td><td>4021</td><td>Disengage after 3/4 of mission-specific weapons have been expended.</td></tr>
- <tr><td>Shotgun75_ToO</td><td>4022</td><td>Same as above, but if easy targets or threats are nearby then shoot at those too. Also engage bogies with guns. Applies to air-to-air (A/A) loadouts only.</td></tr>
- </table></td></tr>
+         Ignore(0), Exhausted(1), Percent25(2), Percent50(3), Percent75(4), Percent100(5), LoadFullWeapons(6)
         </li>
     </ul>
 
@@ -2111,6 +2229,39 @@ If both are given, then the GUID is used preferentially.
         <li><span class="parameter">unitlist</span>
             <span class="types"><span class="type">{ string }</span></span>
          Table of unit GUIDs in the group. [READONLY]
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Loadout"></a>
+    <strong>Loadout</strong>
+    </dt>
+    <dd>
+    Loadout.
+
+    </ul>
+
+    <ul>
+        <li><span class="parameter">dbid</span>
+            <span class="types"><span class="type">string</span></span>
+         ID from database
+        </li>
+        <li><span class="parameter">name</span>
+            <span class="types"><span class="type">string</span></span>
+         Name of loadout
+        </li>
+        <li><span class="parameter">roles</span>
+            <span class="types"><span class="type">table</span></span>
+         Table of loadout usage {<a href="../index.html#LoadoutRole">LoadoutRole</a>, <a href="../index.html#LoadoutTimeOfDay">LoadoutTimeOfDay</a>, <a href="../index.html#LoadoutWeather">LoadoutWeather</a>}
+        </li>
+        <li><span class="parameter">weapons</span>
+            <span class="types"><a class="type" href="../index.html#WeaponLoaded">{ WeaponLoaded } </a></span>
+         Table of weapons in loadout
         </li>
     </ul>
 
@@ -2557,6 +2708,10 @@ If both are given, then the GUID is used preferentially.
             <span class="types"><span class="type">{ table } </span></span>
          Table of unit's formation info {bearing, type (of bearing), distance, sprint (and drift) }
         </li>
+        <li><span class="parameter">sprintDrift</span>
+            <span class="types"><span class="type">bool </span></span>
+         Sprint and drift  'True/False'
+        </li>
         <li><span class="parameter">inArea</span>
             <span class="types"><span class="type">method</span></span>
         ({area}) Is unit in the 'area' defined by table of RPs (true/false)
@@ -2571,7 +2726,11 @@ If both are given, then the GUID is used preferentially.
         </li>
         <li><span class="parameter">rangetotarget</span>
             <span class="types"><span class="type">method</span></span>
-        ('contactid') Calculate flat distance to a contact location</p>
+        ('contactid') Calculate flat distance to a contact location
+        </li>
+        <li><span class="parameter">hostFacility</span>
+            <span class="types"><a class="type" href="../index.html#Facility">{ Facility } </a></span>
+         Where unit is hosted</p>
 
 <p> ScenEdit only
         </li>
@@ -2742,6 +2901,110 @@ Key/value pairs added to the persistent store is retained when the game is saved
     <dd>
     Latitude.
  ... is degrees N or S of the equator as 'S 60.20.10' or as +/- as -60.336. The data in the tables is held as a signed number.
+
+    </ul>
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "LoadoutRole"></a>
+    <strong>LoadoutRole</strong>
+    </dt>
+    <dd>
+     None = 1001
+ Intercept<em>BVR = 2001
+ Intercept</em>WVR = 2002
+ AirSuperiority<em>BVR = 2003
+ AirSuperiority</em>WVR = 2004
+ PointDefence<em>BVR = 2005
+ PointDefence</em>WVR = 2006
+ GunsOnly = 2007
+ AntiSatellite<em>Intercept = 2101
+ AirborneLaser = 2102
+ LandNaval</em>Strike = 3001
+ LandNaval<em>Standoff = 3002
+ LandNaval</em>SEAD<em>ARM = 3003
+ LandNaval</em>SEAD<em>TALD = 3004
+ LandNaval</em>DEAD = 3005
+ LandOnly<em>Strike = 3101
+ LandOnly</em>Standoff = 3102
+ LandOnly<em>SEAD</em>ARM = 3103
+ LandOnly<em>SEAD</em>TALD = 3104
+ LandOnly<em>DEAD = 3105
+ NavalOnly</em>Strike = 3201
+ NavalOnly<em>Standoff = 3202
+ NavalOnly</em>SEAD<em>ARM = 3203
+ NavalOnly</em>SEAD<em>TALD = 3204
+ NavalOnly</em>DEAD = 3205
+ BAI<em>CAS = 3401
+ Buddy</em>Illumination = 3501
+ OECM = 4001
+ AEW = 4002
+ CommandPost = 4003
+ ChaffLaying = 4004
+ SearchAndRescue = 4101
+ CombatSearchAndRescue = 4102
+ MineSweeping = 4201
+ MineRecon = 4202
+ NavalMineLaying = 4301
+ ASW<em>Patrol = 6001
+ ASW</em>Attack = 6002
+ Forward<em>Observer = 7001
+ Area</em>Surveillance = 7002
+ Armed<em>Recon = 7003
+ Unarmed</em>Recon = 7004
+ Maritime<em>Surveillance = 7005
+ Paratroopers = 7101
+ Troop</em>Transport = 7102
+ Cargo = 7201
+ AirRefueling = 8001
+ Training = 8101
+ TargetTow = 8102
+ TargetDrone = 8103
+ Ferry = 9001
+ Unavailable = 9002
+ Reserve = 9003
+ ArmedFerry = 9004
+
+    </ul>
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "LoadoutTimeOfDay"></a>
+    <strong>LoadoutTimeOfDay</strong>
+    </dt>
+    <dd>
+     None = 1001
+ DayNight = 2001
+ NightOnly = 2002
+ DayOnly = 2003
+
+    </ul>
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "LoadoutWeather"></a>
+    <strong>LoadoutWeather</strong>
+    </dt>
+    <dd>
+     None = 1001
+ AllWeather = 2001
+ LimitedAllWeather = 2002
+ ClearWeather = 2003
 
     </ul>
 
@@ -2986,6 +3249,100 @@ Key/value pairs added to the persistent store is retained when the game is saved
 
 </dd>
     <dt>
+    <a name = "WeaponDoctrine"></a>
+    <strong>WeaponDoctrine</strong>
+    </dt>
+    <dd>
+     <style>
+ tr:not(:first-child) { border-top: 1px solid black;}
+ td { padding: .5em; }
+ </style>
+ <table style="border-spacing: 0.5rem;">
+ <tr><td>Value</td><td>Number</td><td>Explanation</td></tr>
+ <tr><td>LoadoutSetting</td><td>0</td><td>use setting from database</td></tr>
+ <tr><td>Winchester</td><td>2001</td><td>Vanilla Winchester.</td></tr>
+ <tr><td>Winchester_ToO</td><td>2002</td><td>Same as above, but engage nearby bogies with guns after we're out of missiles. Applies to air-to-air missile loadouts only. For guns-only air-to-air loadouts and all air-to-ground loadouts the behaviour is the same as above. PREFERRED OPTION!</td></tr>
+ <tr><td>ShotgunBVR</td><td>3001</td><td>Disengage after firing all Beyond Visual Range (BVR, air-to-air) or Stand-Off (SO, air-to-ground) weapons. This is a risky option as your fighter aircraft may only have one medium-range air-to-air missile (AAM) left, and attempt to engage 'fresh' flights of bogies. Use with caution.</td></tr>
+ <tr><td>ShotgunBVR_WVR</td><td>3002</td><td>Same as above, but if easy targets or threats are nearby then shoot at them with remaining Within Visual Range (WVR, air-to-air) or SR (Short-Range, air-to-ground) weapons before disengaging.</td></tr>
+ <tr><td>ShotgunBVR_WVR_Guns</td><td>3003</td><td>Same as above, but also engage bogies with guns. Applies to air-to-air (A/A) loadouts only. For air-to-ground (A/G) loadouts the behaviour is the same as above.</td></tr>
+ <tr><td>ShotgunOneEngagementBVR</td><td>5001</td><td>Make one engagement with BVR or SO weapons. Continue fighting for as long as there are targets within easy reach and then disengage. This is a safe option as it ensures aircraft do not 'hang around' after they have expended their most potent weapons, and becoming easy targets when engaged by 'fresh' enemy units. </td></tr>
+ <tr><td>ShotgunOneEngagementBVR_Opportunity_WVR</td><td>5002</td><td>Same as above, but if easy targets or threats are nearby, shoot at them with remaining WVR or Short-Range weapons before disengaging. A target is considered 'easy' when within 120% of the remaining WVR or Strike weapon's maximum range. In other words, the fighter won't spend much energy chasing down a target after the Shotgun weapon state has been reached, and will leave the target area as quickly as possible. PREFERRED OPTION!</td></tr>
+ <tr><td>ShotgunOneEngagementBVR_Opportunity_WVR_Guns</td><td>5003</td><td>Same as above, but also engage bogies with guns. Applies to air-to-air (A/A) loadouts only. For air-to-ground (A/G) loadouts the behaviour is the same as above.</td></tr>
+ <tr><td>ShotgunOneEngagementBVR_And_WVR</td><td>5005</td><td>Make one engagement with BVR and WVR, or SO and Strike Weapons. Do not disengage when out of BVR or SO weapons, but continue the engagement with WVR weapons.</td></tr>
+ <tr><td>ShotgunOneEngagementBVR_And_WVR_Opportunity_Guns</td><td>5006</td><td> </td></tr>
+ <tr><td>ShotgunOneEngagementWVR</td><td>5011</td><td>Make one engagement with WVR or SR weapons. Continue fighting for as long as there are targets within easy reach and then disengage.</td></tr>
+ <tr><td>ShotgunOneEngagementWVR_Guns</td><td>5012</td><td>Same as above but also engage bogies with guns. Applies to air-to-air (A/A) loadouts only. For air-to-ground (A/G) loadouts, the behaviour is the same as above. PREFERRED OPTION!</td></tr>
+ <tr><td>ShotgunOneEngagementGun</td><td>5021</td><td>Make one engagement with guns. Continue fighting for as long as there are targets nearby and then disengage.</td></tr>
+ <tr><td>Shotgun25</td><td>4001</td><td>Disengage after 1/4 of mission-specific weapons have been expended.</td></tr>
+ <tr><td>Shotgun25_ToO</td><td>4002</td><td>Same as above, but if easy targets or threats are nearby then shoot at those too. Also engage bogies with guns. Applies to air-to-air (A/A) loadouts only.</td></tr>
+ <tr><td>Shotgun50</td><td>4011</td><td>Disengage after half of mission-specific weapons have been expended.</td></tr>
+ <tr><td>Shotgun50_ToO</td><td>4012</td><td>Same as above, but if easy targets or threats are nearby then shoot at those too. Also engage bogies with guns. Applies to air-to-air (A/A) loadouts only.</td></tr>
+ <tr><td>Shotgun75</td><td>4021</td><td>Disengage after 3/4 of mission-specific weapons have been expended.</td></tr>
+ <tr><td>Shotgun75_ToO</td><td>4022</td><td>Same as above, but if easy targets or threats are nearby then shoot at those too. Also engage bogies with guns. Applies to air-to-air (A/A) loadouts only.</td></tr>
+ </table></td></tr>
+
+    </ul>
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "WeaponType"></a>
+    <strong>WeaponType</strong>
+    </dt>
+    <dd>
+
+
+<pre><code>    None = 1001
+    GuidedWeapon = 2001
+    Rocket = 2002
+    IronBomb = 2003
+    Gun = 2004
+    Decoy_Expendable = 2005
+    Decoy_Towed = 2006
+    Decoy_Vehicle = 2007
+    TrainingRound = 2008
+    Dispenser = 2009
+    ContactBomb_Suicide = 2010
+    ContactBomb_Sabotage = 2011
+    GuidedProjectile = 2012
+    SensorPod = 3001
+    DropTank = 3002
+    BuddyStore = 3003
+    FerryTank = 3004
+    Torpedo = 4001
+    DepthCharge = 4002
+    Sonobuoy = 4003
+    BottomMine = 4004
+    MooredMine = 4005
+    FloatingMine = 4006
+    MovingMine = 4007
+    RisingMine = 4008
+    DriftingMine = 4009
+    DummyMine = 4011
+    HeliTowedPackage = 4101
+    RV = 5001
+    Laser = 6001
+    HGV = 8001
+    Cargo = 9001
+    Troops = 9002
+    Paratroops = 9003
+</code></pre>
+
+
+
+    </ul>
+
+
+
+
+
+
+</dd>
+    <dt>
     <a name = "Weather"></a>
     <strong>Weather</strong>
     </dt>
@@ -3019,9 +3376,66 @@ Key/value pairs added to the persistent store is retained when the game is saved
 
 </dd>
 </dl>
+    <h2><a name="Notes"></a>Notes</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "WrapperFields"></a>
+    <strong>WrapperFields</strong>
+    </dt>
+    <dd>
+    List fields in a wrapper. </p>
+
+<p>To get a list of fields in a Command Lua wrapper<br>
+1. Get an object wrapper (eg unit = ScenEdit_GetUnit())<br>
+2. List the properties ( eg print(unit.fields) )<br>
+3. Properties consists of (a) name, (b) type of property, and (c) if you set a value for it (eg unit fields =
+{ property<em>29 = '.damage , LuaTable , False',
+property</em>19 = '.dbid , Int32 , False',
+method<em>1 = ':delete , System.Void',
+property</em>28 = '.loadoutdbid , Object , False',
+method<em>2 = ':inArea , System.Boolean,
+property</em>9 = '.course , LuaTable , True' ...<br>
+-> property_29 : unit.damage is a Lua table and you can't set a value as in unit.damage = {}<br>
+-> property_19 : unit.dbid is a number and you can't set a value as in unit.dbid = 12<br>
+-> property_28 : unit.loadoutdbid is a generic object and you can't set a value as in unit.loadoutdbid = 1234<br>
+-> property_9  : unit.course is a Lua table and you can set a value as in unit.course = {...}<br>
+-> method_1    : unit:delete is a Lua method/function and returns nothing<br>
+-> method_2    : unit:inArea is a Lua method/function and returns true/false
+
+    </ul>
+
+
+
+
+
+
+</dd>
+</dl>
     <h2><a name="Functions"></a>Functions</h2>
 
     <dl class="function">
+    <dt>
+    <a name = "GetBuildNumber"></a>
+    <strong>GetBuildNumber ()</strong>
+    </dt>
+    <dd>
+    Gets the exe build number.
+
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">string</span></span>
+        The build number of this exe
+    </ol>
+
+
+
+
+</dd>
     <dt>
     <a name = "GetScenarioTitle"></a>
     <strong>GetScenarioTitle ()</strong>
@@ -3451,6 +3865,44 @@ The 'UnitX' can be used as the unit descriptor
 
 </dd>
     <dt>
+    <a name = "ScenEdit_ClearKeyValue"></a>
+    <strong>ScenEdit_ClearKeyValue (key, forCampaign)</strong>
+    </dt>
+    <dd>
+    Clears a key</p>
+
+<p> ..  or all keys from the persistent key store.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">key</span>
+            <span class="types"><span class="type">string</span></span>
+         The key to clear or empty for all
+        </li>
+        <li><span class="parameter">forCampaign</span>
+            <span class="types"><span class="type">bool</span></span>
+         Use key store for passing ed to next scenario in campaign. Optional, default = false
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        Success or failure.
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_ClearKeyValue(<span class="string">"A"</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
     <a name = "ScenEdit_CurrentTime"></a>
     <strong>ScenEdit_CurrentTime ()</strong>
     </dt>
@@ -3678,6 +4130,36 @@ Otherwise, a nil is returned.</p>
            <span class="types"><span class="type">string</span></span>
         "Ok" on execution or nothing.
     </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_ExportInst"></a>
+    <strong>ScenEdit_ExportInst (side, unitList, fileData)</strong>
+    </dt>
+    <dd>
+    Export unit(s) to an inst file.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">side</span>
+            <span class="types"><span class="type">string</span></span>
+         The side to import the inst file as
+        </li>
+        <li><span class="parameter">unitList</span>
+            <span class="types"><span class="type">table</span></span>
+         list of unit(s) to create as INST file
+        </li>
+        <li><span class="parameter">fileData</span>
+            <span class="types"><span class="type">table</span></span>
+         Table of { filename, name, comment } for the INST file
+        </li>
+    </ul>
+
 
 
 
@@ -3960,7 +4442,7 @@ Nothing returned Or empty values means that the weapon Is Not For the target typ
 </dd>
     <dt>
     <a name = "ScenEdit_GetKeyValue"></a>
-    <strong>ScenEdit_GetKeyValue (key)</strong>
+    <strong>ScenEdit_GetKeyValue (key, forCampaign)</strong>
     </dt>
     <dd>
     Gets the value for a key from the persistent key store. </p>
@@ -3974,6 +4456,10 @@ Nothing returned Or empty values means that the weapon Is Not For the target typ
         <li><span class="parameter">key</span>
             <span class="types"><span class="type">string</span></span>
          The key to fetch the associated value of
+        </li>
+        <li><span class="parameter">forCampaign</span>
+            <span class="types"><span class="type">bool</span></span>
+         Read from the store being passed to next scenario in campaign. Optional, default = false
         </li>
     </ul>
 
@@ -3991,6 +4477,34 @@ Nothing returned Or empty values means that the weapon Is Not For the target typ
         <pre class="example">ScenEdit_SetKeyValue(<span class="string">"A"</span>,<span class="string">"2"</span>)
 ScenEdit_GetKeyValue(<span class="string">"A"</span>) <span class="comment">-- returns "2"</span></pre>
     </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_GetLoadout"></a>
+    <strong>ScenEdit_GetLoadout (loadoutinfo)</strong>
+    </dt>
+    <dd>
+    Gets the loadout for a unit
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">loadoutinfo</span>
+            <span class="types"><a class="type" href="../index.html#LoadoutInfo">LoadoutInfo</a></span>
+         The loadout information to apply
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../index.html#Loadout">Loadout</a></span>
+        Loadout wrapper
+    </ol>
+
+
+
 
 </dd>
     <dt>
@@ -4971,7 +5485,7 @@ A file can also be loaded indirectly from an attachment <a href="../index.html#S
 </dd>
     <dt>
     <a name = "ScenEdit_SetKeyValue"></a>
-    <strong>ScenEdit_SetKeyValue (key, value)</strong>
+    <strong>ScenEdit_SetKeyValue (key, value, forCampaign)</strong>
     </dt>
     <dd>
     Sets the value for a key in the persistent key store. </p>
@@ -4990,6 +5504,10 @@ The value is retrieved by <a href="../index.html#ScenEdit_GetKeyValue">ScenEdit_
         <li><span class="parameter">value</span>
             <span class="types"><span class="type">string</span></span>
          The value to associate
+        </li>
+        <li><span class="parameter">forCampaign</span>
+            <span class="types"><span class="type">bool</span></span>
+         Pass the store to next scenario in campaign. Optional, default = false
         </li>
     </ul>
 
@@ -5265,6 +5783,32 @@ The 'area' selector is useful for changing some common attribute, like locking o
 
 </dd>
     <dt>
+    <a name = "ScenEdit_SetTime"></a>
+    <strong>ScenEdit_SetTime (new_time)</strong>
+    </dt>
+    <dd>
+    Sets the scenario time (UTC).
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">new_time</span>
+            <span class="types"><span class="type">string</span></span>
+         The desired UTC datetime as a table in MM:DD:YYYY &amp; HH:MM:SS or MM.DD.YYYY &amp; HH.MM.SS format
+        </li>
+    </ul>
+
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_SetTime({Date=<span class="string">"2.12.2007"</span>, Time=<span class="string">"22.46.23"</span>})</pre>
+    </ul>
+
+</dd>
+    <dt>
     <a name = "ScenEdit_SetTrigger"></a>
     <strong>ScenEdit_SetTrigger (options)</strong>
     </dt>
@@ -5435,10 +5979,11 @@ conditions are applied globally.
 </dd>
     <dt>
     <a name = "ScenEdit_SpecialMessage"></a>
-    <strong>ScenEdit_SpecialMessage (side, message)</strong>
+    <strong>ScenEdit_SpecialMessage (side, message, location)</strong>
     </dt>
     <dd>
     Displays a special message consisting of the HTML text <code>message</code> to side `side.
+ Can include an optional location to jump to
 
     </ul>
 
@@ -5451,6 +5996,10 @@ conditions are applied globally.
         <li><span class="parameter">message</span>
             <span class="types"><span class="type">string</span></span>
          The HTML text to display to the player
+        </li>
+        <li><span class="parameter">location</span>
+            <span class="types"><span class="type">string</span></span>
+         [Optional] Location as a table to jump to {lon,lat}
         </li>
     </ul>
 
@@ -5481,7 +6030,7 @@ conditions are applied globally.
         </li>
         <li><span class="parameter">cargoList</span>
             <span class="types"><span class="type">{ Cargo }</span></span>
-         List of cargo to transfer: table of {guids}, or { {DBID, number}}
+         List of cargo to transfer: table of {guids}, or { {number,DBID}, [{DBID}]}
         </li>
     </ul>
 
@@ -5601,7 +6150,7 @@ Otherwise, a nil is returned.</p>
         </li>
         <li><span class="parameter">cargoList</span>
             <span class="types"><span class="type">{ Cargo }</span></span>
-         List of cargo to unload: table of {guids}, or { {DBID, number}}
+         List of cargo to unload: table of {guids}, or { {number, DBID}}
         </li>
     </ul>
 
@@ -5646,6 +6195,40 @@ Otherwise, a nil is returned.</p>
     <ul>
         <li><pre class="example">ScenEdit_UpdateUnit({guid=<span class="string">'2cd64757-1b66-4609-ad56-df41bee652e5'</span>,mode=<span class="string">'add_sensor'</span>,dbid=<span class="number">3352</span>})</pre></li>
         <li><pre class="example">ScenEdit_UpdateUnit({guid=<span class="string">'2cd64757-1b66-4609-ad56-df41bee652e5'</span>,mode=<span class="string">'remove_sensor'</span>,dbid=<span class="number">3352</span>,sensorId=<span class="string">'871aea14-d963-4052-a7fc-ed36e97bb732'</span>})</pre></li>
+        <li><pre class="example">ScenEdit_UpdateUnit({guid=<span class="string">'2cd64757-1b66-4609-ad56-df41bee652e5'</span>,mode=<span class="string">'delta'</span>,file=<span class="string">'new.ini'</span>})</pre></li>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_UpdateUnitCargo"></a>
+    <strong>ScenEdit_UpdateUnitCargo (options)</strong>
+    </dt>
+    <dd>
+    Update cargo on a unit.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">options</span>
+            <span class="types"><a class="type" href="../index.html#UpdateUnitCargo">UpdateUnitCargo</a></span>
+         The unit cargo details to update
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../index.html#Unit">Unit</a></span>
+        The updated unit
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <li><pre class="example">ScenEdit_UpdateUnitCargo({guid=<span class="string">'2cd64757-1b66-4609-ad56-df41bee652e5'</span>, mode=<span class="string">'add_cargo'</span>, cargo={{<span class="number">5</span>, <span class="number">752</span>},{<span class="number">700</span>}} })</pre></li>
+        <li><pre class="example">ScenEdit_UpdateUnitCargo({guid=<span class="string">'2cd64757-1b66-4609-ad56-df41bee652e5'</span>, mode=<span class="string">'remove_cargo'</span>, cargo={<span class="string">'871aea14-d963-4052-a7fc-ed36e97bb732'</span>,{<span class="number">5</span>,<span class="number">752</span>}} })</pre></li>
     </ul>
 
 </dd>
@@ -5801,6 +6384,42 @@ Otherwise, a nil is returned.</p>
         <li><pre class="example">Tool_Range(<span class="string">'8269b881-20ce-4f2e-baa0-6823e46d55a4'</span>,<span class="string">'004aa55d-d553-428d-a727-26853737c8f4'</span> )</pre></li>
         <li><pre class="example">Tool_Range( {latitude=<span class="string">'33.1991547589118'</span>, longitude=<span class="string">'138.376876749942'</span>}, <span class="string">'8269b881-20ce-4f2e-baa0-6823e46d55a4'</span> )</pre></li>
     </ul>
+
+</dd>
+    <dt>
+    <a name = "VP_ExportUnits"></a>
+    <strong>VP_ExportUnits (table, filename)</strong>
+    </dt>
+    <dd>
+    Export unit details </p>
+
+<p> ...  to a file for later import
+ parameters filename, filter by unit type, side
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">table</span>
+            <span class="types"><span class="type">table</span></span>
+         of Filters: TARGETSIDE, TARGETTYPE, TARGETSUBTYPE, SPECIFICUNITCLASS, SPECIFICUNIT. The values are like the Event Target triigers, but can take multiple ones. As in TargetType={'aircraft','submarine'}}
+        </li>
+        <li><span class="parameter">filename</span>
+            <span class="types"><span class="type">string</span></span>
+         of exported file
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">bool</span></span>
+        Success or failure
+ {Filter}
+    </ol>
+
+
+
 
 </dd>
     <dt>
@@ -6251,6 +6870,60 @@ Otherwise, a nil is returned.</p>
 
 </dd>
     <dt>
+    <a name = "Emissions"></a>
+    <strong>Emissions</strong>
+    </dt>
+    <dd>
+    Contact emission
+ ..  details
+
+
+    </ul>
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">age</span>
+            <span class="types"><span class="type">number</span></span>
+          Time detection held
+        </li>
+        <li><span class="parameter">solid</span>
+            <span class="types"><span class="type">string</span></span>
+          Precise detected (True/false)
+        </li>
+        <li><span class="parameter">sensor_dbid</span>
+            <span class="types"><span class="type">number</span></span>
+         Databse id.
+        </li>
+        <li><span class="parameter">sensor_name</span>
+            <span class="types"><span class="type">string</span></span>
+         Sensor name.
+        </li>
+        <li><span class="parameter">sensor_type</span>
+            <span class="types"><span class="type">string</span></span>
+         Sensor type
+        </li>
+        <li><span class="parameter">sensor_role</span>
+            <span class="types"><span class="type">string</span></span>
+         Sensor role
+        </li>
+        <li><span class="parameter">sensor_maxrange</span>
+            <span class="types"><span class="type">number</span></span>
+         Sensor range
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
     <a name = "Explosion"></a>
     <strong>Explosion</strong>
     </dt>
@@ -6286,6 +6959,50 @@ Otherwise, a nil is returned.</p>
     <ul>
         <pre class="example">{warheadid=<span class="number">253</span>, lat=unit.latitude, lon=unit.longitude, altitude=unit.altitude}</pre>
     </ul>
+
+</dd>
+    <dt>
+    <a name = "Facility"></a>
+    <strong>Facility</strong>
+    </dt>
+    <dd>
+    Facility. </p>
+
+<p> .. air or dock facility
+
+    </ul>
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">guid</span>
+            <span class="types"><span class="type">string</span></span>
+         GUID
+        </li>
+        <li><span class="parameter">dbid</span>
+            <span class="types"><span class="type">number</span></span>
+         Database ID
+        </li>
+        <li><span class="parameter">name</span>
+            <span class="types"><span class="type">string</span></span>
+         Name
+        </li>
+        <li><span class="parameter">type</span>
+            <span class="types"><span class="type">number</span></span>
+         Type
+        </li>
+        <li><span class="parameter">status</span>
+            <span class="types"><span class="type">string</span></span>
+         Status
+        </li>
+        <li><span class="parameter">capacity</span>
+            <span class="types"><span class="type">number</span></span>
+         Units present
+        </li>
+    </ul>
+
+
+
+
 
 </dd>
     <dt>
@@ -6399,7 +7116,6 @@ td { padding: .5em; }
     <h3>Usage:</h3>
     <ul>
         <pre class="example"><span class="keyword">local</span> fuel = u.fuel
-
       fuel[<span class="number">3001</span>].current = <span class="number">400</span>
       u.fuel = fuel</pre>
     </ul>
@@ -6913,6 +7629,10 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 
     <h3>Fields:</h3>
     <ul>
+        <li><span class="parameter">type</span>
+            <span class="types"><span class="type">string</span></span>
+         Subtype of mission (ASW = 'asw', ASuW<em>Naval = 'naval', AAW = 'aaw', ASuW</em>Land = 'land', ASuW_Mixed = 'mixed', SEAD = 'sead', SeaControl = 'sea')
+        </li>
         <li><span class="parameter">oneThirdRule</span>
             <span class="types"><span class="type">bool</span></span>
          True if activated
@@ -7083,6 +7803,42 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
             <span class="types"><span class="type">{ name</span> or <span class="type">guid }</span></span>
           Table of reference point names and/or GUIDs
         </li>
+        <li><span class="parameter">FlightsToInvestigate</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">FlightsToEngage</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">WingmanEngageDistance</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">BoatsToInvestigate</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">BoatsToEngage</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">GroupMemberEngageDistance</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
     </ul>
 
 
@@ -7211,6 +7967,10 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 
     <h3>Fields:</h3>
     <ul>
+        <li><span class="parameter">type</span>
+            <span class="types"><span class="type">string</span></span>
+          Subtype of mission (Air<em>Intercept = 'air', Land</em>Strike = 'land', Maritime<em>Strike = 'sea', Sub</em>Strike = 'sub')
+        </li>
         <li><span class="parameter">escortFlightSizeShooter</span>
             <span class="types"><a class="type" href="../index.html#Size">Size</a></span>
 
@@ -7321,13 +8081,57 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
             <span class="types"><span class="type">number</span></span>
          Radar usage
         </li>
-        <li><span class="parameter">strikeMinDist</span>
+        <li><span class="parameter">strikeMinDistAircraft</span>
             <span class="types"><span class="type">number</span></span>
           Strike minimum distance
         </li>
-        <li><span class="parameter">strikeMaxDist</span>
+        <li><span class="parameter">strikeMaxDistAircraft</span>
             <span class="types"><span class="type">number</span></span>
           Strike maximum distance
+        </li>
+        <li><span class="parameter">strikeMinDistShip</span>
+            <span class="types"><span class="type">number</span></span>
+          Strike minimum distance
+        </li>
+        <li><span class="parameter">strikeMaxDistShip</span>
+            <span class="types"><span class="type">number</span></span>
+          Strike maximum distance
+        </li>
+        <li><span class="parameter">FlightsToInvestigate</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">FlightsToEngage</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">WingmanEngageDistance</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">BoatsToInvestigate</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">BoatsToEngage</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">GroupMemberEngageDistance</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
         </li>
     </ul>
 
@@ -7495,6 +8299,36 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 
 
         </li>
+        <li><span class="parameter">ccenable</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">ccallowqra</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">ccflightgenmethod</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">ccstationtime</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">ccoverlap</span>
+            <span class="types"><span class="type">string</span></span>
+
+
+
+        </li>
     </ul>
 
 
@@ -7635,13 +8469,17 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
             <span class="types"><span class="type">string</span></span>
          Default loads (to fill out)
         </li>
-        <li><span class="parameter">wpn_dbid</span>
-            <span class="types"><span class="type">string</span></span>
-         Database ID
-        </li>
         <li><span class="parameter">wpn_name</span>
             <span class="types"><span class="type">string</span></span>
          Name
+        </li>
+        <li><span class="parameter">wpn_dbid</span>
+            <span class="types"><span class="type">string</span></span>
+         Database ID of weapon
+        </li>
+        <li><span class="parameter">wpn_type</span>
+            <span class="types"><span class="type">string</span></span>
+         Type of weapon
         </li>
     </ul>
 
@@ -7692,7 +8530,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2017-10-10 21:20:35 </i>
+<i style="float:right;">Last updated 2018-05-21 19:36:27 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
