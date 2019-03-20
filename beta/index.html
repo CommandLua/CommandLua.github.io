@@ -111,7 +111,7 @@ One issue with commands running in an event is that sometimes they fail with an 
 <p>Note also, that the Lua history log should also record the event script errors.</p>
 
 
-<p><b>Release: 1.14.9 </b></p>
+<p><b>Release: 1.15 </b></p>
 
 
 <h2><a href="#Selector">Selector</a></h2>
@@ -399,6 +399,10 @@ One issue with commands running in an event is that sometimes they fail with an 
 <p> ..</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#ScenEdit_CurrentLocalTime">ScenEdit_CurrentLocalTime ()</a></td>
+	<td class="summary">Get the current scenario local time.</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#ScenEdit_CurrentTime">ScenEdit_CurrentTime ()</a></td>
 	<td class="summary">Get the current scenario time.</td>
 	</tr>
@@ -441,6 +445,10 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="summary">Export mission parameters.</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#ScenEdit_ExportScenarioToXML">ScenEdit_ExportScenarioToXML ()</a></td>
+	<td class="summary">Export the entire scenario in XML format.</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#ScenEdit_FillMagsForLoadout">ScenEdit_FillMagsForLoadout (unit, loadoutid, quantity)</a></td>
 	<td class="summary">Fill a unit's magazine(s) with aircraft stores
  ...</td>
@@ -475,7 +483,7 @@ One issue with commands running in an event is that sometimes they fail with an 
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_GetLoadout">ScenEdit_GetLoadout (loadoutinfo)</a></td>
-	<td class="summary">Gets the loadout for a unit</td>
+	<td class="summary">Gets the loadout details for a unit.</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_GetMission">ScenEdit_GetMission (SideNameOrId, MissionNameOrId)</a></td>
@@ -531,12 +539,24 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="summary">Import mission parameters.</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#ScenEdit_ImportScenarioFromXML">ScenEdit_ImportScenarioFromXML ()</a></td>
+	<td class="summary">Import a scenario from provided XML string</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#ScenEdit_InputBox">ScenEdit_InputBox (string)</a></td>
 	<td class="summary">Open an input box with the passed prompt.</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_KillUnit">ScenEdit_KillUnit (unit)</a></td>
 	<td class="summary">Kill unit.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ScenEdit_LocalSound">ScenEdit_LocalSound (string)</a></td>
+	<td class="summary">Play a sound file.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ScenEdit_LocalVideo">ScenEdit_LocalVideo (string, fullscreen, delay)</a></td>
+	<td class="summary">Play a video file.</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_MsgBox">ScenEdit_MsgBox (string, style)</a></td>
@@ -560,8 +580,16 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="summary">Removes targets from a Strike mission.</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#ScenEdit_RemoveZone">ScenEdit_RemoveZone (sideName, zoneType, table)</a></td>
+	<td class="summary">Remove no-nav or exclusion zone.</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#ScenEdit_RunScript">ScenEdit_RunScript (script)</a></td>
 	<td class="summary">Runs a script from a file.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ScenEdit_SelectedUnits">ScenEdit_SelectedUnits ()</a></td>
+	<td class="summary">list of selected unit ids</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_SetAction">ScenEdit_SetAction (options)</a></td>
@@ -660,6 +688,10 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="summary">Set the current weather conditions.</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#ScenEdit_SetZone">ScenEdit_SetZone (sideName, zoneType, table)</a></td>
+	<td class="summary">update no-nav or exclusion zone.</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#ScenEdit_SpecialMessage">ScenEdit_SpecialMessage (side, message, location)</a></td>
 	<td class="summary">Displays a special message consisting of the HTML text <code>message</code> to side `side.</td>
 	</tr>
@@ -755,6 +787,10 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<tr>
 	<td class="name" ><a href="#AAR">AAR</a></td>
 	<td class="summary">AAR.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#Cargo">Cargo</a></td>
+	<td class="summary">Cargo.</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#CargoMission">CargoMission</a></td>
@@ -1201,7 +1237,7 @@ One issue with commands running in an event is that sometimes they fail with an 
         </li>
         <li><span class="parameter">Mode</span>
             <span class="types"><span class="type">string</span></span>
-         Operation to do - 'add', 'update' (default) SE_SetEvent()
+         Operation to do - 'add', 'update' (default), 'remove'
         </li>
     </ul>
 
@@ -1286,6 +1322,10 @@ One issue with commands running in an event is that sometimes they fail with an 
         <li><span class="parameter">altitude</span>
             <span class="types"><span class="type">number</span></span>
          Unit altitude (applicable to AIR)
+        </li>
+        <li><span class="parameter">depth</span>
+            <span class="types"><span class="type">number</span></span>
+         Unit depth (applicable to SUBMARINE - note no sign)
         </li>
         <li><span class="parameter">orbit</span>
             <span class="types"><span class="type">number</span></span>
@@ -1584,7 +1624,7 @@ If both are given, then the GUID is used preferentially.
          The function to perform (add_ cargo,remove_ cargo)
         </li>
         <li><span class="parameter">cargoList</span>
-            <span class="types"><span class="type">{ Cargo }</span></span>
+            <span class="types"><a class="type" href="index.html#Cargo">{ Cargo }</a></span>
          List of cargo to update: table of {guids}, or { {number, DBID}}
         </li>
     </ul>
@@ -2409,6 +2449,10 @@ If both are given, then the GUID is used preferentially.
             <span class="types"><a class="type" href="index.html#Unit">Unit</a></span>
          The unit that reference point is realtive to
         </li>
+        <li><span class="parameter">:toTable</span>
+            <span class="types"><span class="type">method</span></span>
+        () The wrapper returned as Lua table
+        </li>
     </ul>
 
 
@@ -2482,6 +2526,10 @@ If both are given, then the GUID is used preferentially.
         <li><span class="parameter">nonavzones</span>
             <span class="types"><a class="type" href="index.html#Zone">{ Zone } </a></span>
           Zones for the designated side [READONLY]
+        </li>
+        <li><span class="parameter">rps</span>
+            <span class="types"><a class="type" href="index.html#Zone">{ Zone } </a></span>
+          Visible RPs for the designated side [READONLY]
         </li>
         <li><span class="parameter">awareness</span>
             <span class="types"><span class="type">Awareness</span></span>
@@ -2604,6 +2652,10 @@ If both are given, then the GUID is used preferentially.
             <span class="types"><a class="type" href="index.html#Fuel">{ Fuel } </a></span>
          A table of fuel types used by unit.
         </li>
+        <li><span class="parameter">fuels</span>
+            <span class="types"><a class="type" href="index.html#Fuel">{ Fuel } </a></span>
+         A table of fuel types in tanks used by unit.
+        </li>
         <li><span class="parameter">mission</span>
             <span class="types"><a class="type" href="index.html#Mission">Mission</a></span>
          The unit's assigned mission. Can be changed by setting to the Mission name or guid (calls ScenEdit_AssignUnitToMission)
@@ -2644,13 +2696,17 @@ If both are given, then the GUID is used preferentially.
             <span class="types"><span class="type">string</span></span>
           Message on unit dock/air ops status. [READONLY]
         </li>
+        <li><span class="parameter">classname</span>
+            <span class="types"><span class="type">string</span></span>
+          Unit class name  [READONLY]
+        </li>
         <li><span class="parameter">manualSpeed</span>
             <span class="types"><span class="type">string</span> or <span class="type">number</span></span>
          Desired speed or 'OFF' to turn off manual mode
         </li>
         <li><span class="parameter">manualAlitude</span>
-            <span class="types"><span class="type">bool</span></span>
-          To turn on/off manual mode
+            <span class="types"><span class="type">string</span> or <span class="type">number</span></span>
+          Desired altitude/depth or 'OFF' to turn off manual mode
         </li>
         <li><span class="parameter">damage</span>
             <span class="types"><span class="type">{ table } </span></span>
@@ -2684,9 +2740,13 @@ If both are given, then the GUID is used preferentially.
             <span class="types"><span class="type">{ table } </span></span>
           Table contain unit's "observe, orient, decide, act" values {evasion, targeting, detection}
         </li>
-        <li><span class="parameter">hostedUnits</span>
+        <li><span class="parameter">embarkedUnits</span>
             <span class="types"><span class="type">{ table } </span></span>
          Table of boats and aircraft docked/embarked on the unit
+        </li>
+        <li><span class="parameter">assignedUnits</span>
+            <span class="types"><span class="type">{ table } </span></span>
+         Table of boats and aircraft assigned to the unit (base)
         </li>
         <li><span class="parameter">weapon</span>
             <span class="types"><span class="type">{ table } </span></span>
@@ -2730,7 +2790,11 @@ If both are given, then the GUID is used preferentially.
         </li>
         <li><span class="parameter">hostFacility</span>
             <span class="types"><a class="type" href="index.html#Facility">{ Facility } </a></span>
-         Where unit is hosted</p>
+         Where unit is hosted
+        </li>
+        <li><span class="parameter">cargo</span>
+            <span class="types"><a class="type" href="index.html#Cargo">{ Cargo } </a></span>
+         Unit cargo information</p>
 
 <p> ScenEdit only
         </li>
@@ -2751,8 +2815,8 @@ If both are given, then the GUID is used preferentially.
          Desired speed or 'OFF' to turn off manual mode
         </li>
         <li><span class="parameter">manualAlitude</span>
-            <span class="types"><span class="type">bool</span></span>
-          To turn on/off manual mode
+            <span class="types"><span class="type">string</span> or <span class="type">number</span></span>
+          Desired altitude/depth or 'OFF' to turn off manual mode
         </li>
     </ul>
 
@@ -2785,7 +2849,7 @@ If both are given, then the GUID is used preferentially.
         </li>
         <li><span class="parameter">area</span>
             <span class="types"><a class="type" href="index.html#ZoneMarker">{ ZoneMarker }</a></span>
-         A set of reference points marking the zone. [READONLY]
+         A set of reference points marking the zone. Can be updated by a list of RPs, or a table of new RP values.
         </li>
         <li><span class="parameter">affects</span>
             <span class="types"><span class="type">{ unitTypes } </span></span>
@@ -2804,6 +2868,22 @@ If both are given, then the GUID is used preferentially.
 
 
 
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> a = VP_GetSide({Side =<span class="string">'side1'</span>}) <span class="comment">-- a side object
+</span> <span class="keyword">local</span> z = a.nonavzones - -List Of no-nav zones For the side If you need To find it
+ For i, zone <span class="keyword">in</span> <span class="global">ipairs</span>(z) <span class="keyword">do</span>
+     <span class="global">print</span>(<span class="string">"Zone #"</span> .. i)
+     <span class="global">print</span>(zone)
+     <span class="keyword">local</span> n = a :  getnonavzone(z[i].guid) <span class="comment">-- zone object
+</span>     <span class="global">print</span>(<span class="string">'Details: '</span> .. n.description .. <span class="string">' Active: '</span> .. <span class="global">tostring</span>(n.isactive) )
+ n.area = {<span class="string">'rp-9'</span>,<span class="string">'rp-10'</span>, <span class="string">'rp-8'</span> } <span class="comment">-- replace with a list of visible RPs for the side
+</span> n.area = {
+ { name=<span class="string">'area test rp0'</span>,  latitude=<span class="string">'35.5480335331354'</span>, longitude=<span class="string">'15.8184476823186'</span>, highlighted=<span class="keyword">true</span>, bearingtype=<span class="number">1</span>, relativeto=<span class="string">'Tracking #1'</span>, hidden = <span class="keyword">false</span> },
+ { name=<span class="string">'area test rp1'</span>,  latitude=<span class="string">'35.5480335331354'</span>, longitude=<span class="string">'16.8184476823186'</span>, highlighted=<span class="keyword">true</span>, },
+ { name=<span class="string">'area test rp2'</span>,  latitude=<span class="string">'38.5480335331354'</span>, longitude=<span class="string">'18.8184476823186'</span>, highlighted=<span class="keyword">false</span>, } }  <span class="comment">-- replace with a new set of RPs that might not be visible to the side
+</span> End</pre>
+    </ul>
 
 </dd>
 </dl>
@@ -3707,6 +3787,7 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     <dd>
     Add no-nav or exclusion zone. <br/>
  ...
+ The RPs are normally visible to the side. They can start out 'hidden' by adding hidden=1 to the table
 
     </ul>
 
@@ -3900,6 +3981,27 @@ The 'UnitX' can be used as the unit descriptor
     <ul>
         <pre class="example">ScenEdit_ClearKeyValue(<span class="string">"A"</span>)</pre>
     </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_CurrentLocalTime"></a>
+    <strong>ScenEdit_CurrentLocalTime ()</strong>
+    </dt>
+    <dd>
+    Get the current scenario local time.
+
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">String</span></span>
+        The local time as HH:MM:SS.
+    </ol>
+
+
+
 
 </dd>
     <dt>
@@ -4204,6 +4306,31 @@ Otherwise, a nil is returned.</p>
 
 </dd>
     <dt>
+    <a name = "ScenEdit_ExportScenarioToXML"></a>
+    <strong>ScenEdit_ExportScenarioToXML ()</strong>
+    </dt>
+    <dd>
+    Export the entire scenario in XML format.
+
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">string</span></span>
+        The scenario graph in unformatted XML string
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">theXML = ScenEdit_ExportScenarioToXML()</pre>
+    </ul>
+
+</dd>
+    <dt>
     <a name = "ScenEdit_FillMagsForLoadout"></a>
     <strong>ScenEdit_FillMagsForLoadout (unit, loadoutid, quantity)</strong>
     </dt>
@@ -4484,7 +4611,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>) <span class="comment">-- r
     <strong>ScenEdit_GetLoadout (loadoutinfo)</strong>
     </dt>
     <dd>
-    Gets the loadout for a unit
+    Gets the loadout details for a unit.  Use loadoutid =0 or omit to get the a/c current loadout status (ie number of weapons left)
 
     </ul>
 
@@ -4901,6 +5028,31 @@ then the function returns nil instead of producing an exception.
 
 </dd>
     <dt>
+    <a name = "ScenEdit_ImportScenarioFromXML"></a>
+    <strong>ScenEdit_ImportScenarioFromXML ()</strong>
+    </dt>
+    <dd>
+    Import a scenario from provided XML string
+
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        Returns true if the import completed successfully, false otherwise
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_ImportScenarioFromXML({XML=<span class="string">'...'</span>})</pre>
+    </ul>
+
+</dd>
+    <dt>
     <a name = "ScenEdit_InputBox"></a>
     <strong>ScenEdit_InputBox (string)</strong>
     </dt>
@@ -4960,6 +5112,68 @@ then the function returns nil instead of producing an exception.
     <ul>
         <pre class="example">ScenEdit_KillUnit({side=<span class="string">'SideA'</span>,unitname=<span class="string">'ship'</span>})</pre>
     </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_LocalSound"></a>
+    <strong>ScenEdit_LocalSound (string)</strong>
+    </dt>
+    <dd>
+    Play a sound file.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">string</span>
+            <span class="types"><span class="type">string</span></span>
+         The name of the file. Assumed to be in the Sounds\Effects folder
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        bool False if it can't find the file
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_LocalVideo"></a>
+    <strong>ScenEdit_LocalVideo (string, fullscreen, delay)</strong>
+    </dt>
+    <dd>
+    Play a video file.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">string</span>
+            <span class="types"><span class="type">string</span></span>
+         The name of the file. Assumed to be in the Video folder
+        </li>
+        <li><span class="parameter">fullscreen</span>
+            <span class="types"><span class="type">boolean</span></span>
+         Shown in full screen
+        </li>
+        <li><span class="parameter">delay</span>
+            <span class="types"><span class="type">number</span></span>
+         Delay to showing
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string "N" if it can't find the file
+    </ol>
+
+
+
 
 </dd>
     <dt>
@@ -5131,6 +5345,45 @@ then the function returns nil instead of producing an exception.
 
 </dd>
     <dt>
+    <a name = "ScenEdit_RemoveZone"></a>
+    <strong>ScenEdit_RemoveZone (sideName, zoneType, table)</strong>
+    </dt>
+    <dd>
+    Remove no-nav or exclusion zone. <br/>
+ ... Note that this will drop the zone with any area RPs
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sideName</span>
+            <span class="types"><span class="type">string </span></span>
+         Side name/GUID
+        </li>
+        <li><span class="parameter">zoneType</span>
+            <span class="types"><span class="type">string </span></span>
+         Type of zone to remove: 0 = no-nav, 1 = exclusion
+        </li>
+        <li><span class="parameter">table</span>
+            <span class="types"><span class="type">{ table } </span></span>
+          Description, Isactive, Area { of RPs }, Affects { of UnitTypes }, MarkAs (exc only), Locked (non only)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="index.html#Zone">{ Zone } </a></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
     <a name = "ScenEdit_RunScript"></a>
     <strong>ScenEdit_RunScript (script)</strong>
     </dt>
@@ -5157,6 +5410,27 @@ A file can also be loaded indirectly from an attachment <a href="index.html#Scen
     <ul>
         <pre class="example">ScenEdit_RunScript(<span class="string">'mylibrary.lua'</span>)</pre>
     </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_SelectedUnits"></a>
+    <strong>ScenEdit_SelectedUnits ()</strong>
+    </dt>
+    <dd>
+    list of selected unit ids
+
+    </ul>
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">table</span></span>
+        Table of unit ids as table 'units' and 'contacts'.
+    </ol>
+
+
+
 
 </dd>
     <dt>
@@ -5978,6 +6252,45 @@ conditions are applied globally.
 
 </dd>
     <dt>
+    <a name = "ScenEdit_SetZone"></a>
+    <strong>ScenEdit_SetZone (sideName, zoneType, table)</strong>
+    </dt>
+    <dd>
+    update no-nav or exclusion zone. <br/>
+ ... Only need to pass the parts to update
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">sideName</span>
+            <span class="types"><span class="type">string </span></span>
+         Side name/GUID
+        </li>
+        <li><span class="parameter">zoneType</span>
+            <span class="types"><span class="type">string </span></span>
+         Type of zone to remove: 0 = no-nav, 1 = exclusion
+        </li>
+        <li><span class="parameter">table</span>
+            <span class="types"><span class="type">{ table } </span></span>
+          Description, Isactive, Area { of RPs }, Affects { of UnitTypes }, MarkAs (exc only), Locked (non only)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="index.html#Zone">{ Zone } </a></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
     <a name = "ScenEdit_SpecialMessage"></a>
     <strong>ScenEdit_SpecialMessage (side, message, location)</strong>
     </dt>
@@ -5999,7 +6312,7 @@ conditions are applied globally.
         </li>
         <li><span class="parameter">location</span>
             <span class="types"><span class="type">string</span></span>
-         [Optional] Location as a table to jump to {lon,lat}
+         [Optional] Location as a table to jump to {lon='xxx',lat='xxx'}
         </li>
     </ul>
 
@@ -6029,7 +6342,7 @@ conditions are applied globally.
          The unit to get cargo
         </li>
         <li><span class="parameter">cargoList</span>
-            <span class="types"><span class="type">{ Cargo }</span></span>
+            <span class="types"><a class="type" href="index.html#Cargo">{ Cargo }</a></span>
          List of cargo to transfer: table of {guids}, or { {number,DBID}, [{DBID}]}
         </li>
     </ul>
@@ -6149,8 +6462,8 @@ Otherwise, a nil is returned.</p>
          The unit with cargo
         </li>
         <li><span class="parameter">cargoList</span>
-            <span class="types"><span class="type">{ Cargo }</span></span>
-         List of cargo to unload: table of {guids}, or { {number, DBID}}
+            <span class="types"><a class="type" href="index.html#Cargo">{ Cargo }</a></span>
+         List of cargo to unload: table of {guids}, or { { number, DBID}}
         </li>
     </ul>
 
@@ -6228,7 +6541,7 @@ Otherwise, a nil is returned.</p>
     <h3>Usage:</h3>
     <ul>
         <li><pre class="example">ScenEdit_UpdateUnitCargo({guid=<span class="string">'2cd64757-1b66-4609-ad56-df41bee652e5'</span>, mode=<span class="string">'add_cargo'</span>, cargo={{<span class="number">5</span>, <span class="number">752</span>},{<span class="number">700</span>}} })</pre></li>
-        <li><pre class="example">ScenEdit_UpdateUnitCargo({guid=<span class="string">'2cd64757-1b66-4609-ad56-df41bee652e5'</span>, mode=<span class="string">'remove_cargo'</span>, cargo={<span class="string">'871aea14-d963-4052-a7fc-ed36e97bb732'</span>,{<span class="number">5</span>,<span class="number">752</span>}} })</pre></li>
+        <li><pre class="example">ScenEdit_UpdateUnitCargo({guid=<span class="string">'2cd64757-1b66-4609-ad56-df41bee652e5'</span>, mode=<span class="string">'remove_cargo'</span>, cargo={<span class="string">'871aea14-d963-4052-a7fc-ed36e97bb732'</span>,{<span class="number">5</span>, <span class="number">752</span>}} })</pre></li>
     </ul>
 
 </dd>
@@ -6682,6 +6995,70 @@ Otherwise, a nil is returned.</p>
 
 </dd>
     <dt>
+    <a name = "Cargo"></a>
+    <strong>Cargo</strong>
+    </dt>
+    <dd>
+    Cargo. </p>
+
+<p> .. in ship/air or dock facility
+
+    </ul>
+
+    <h3>Fields:</h3>
+    <ul>
+        <li><span class="parameter">guid</span>
+            <span class="types"><span class="type">string</span></span>
+         GUID
+        </li>
+        <li><span class="parameter">dbid</span>
+            <span class="types"><span class="type">number</span></span>
+         Database ID
+        </li>
+        <li><span class="parameter">name</span>
+            <span class="types"><span class="type">string</span></span>
+         Name
+        </li>
+        <li><span class="parameter">type</span>
+            <span class="types"><span class="type">number</span></span>
+         Type
+        </li>
+        <li><span class="parameter">status</span>
+            <span class="types"><span class="type">string</span></span>
+         Status
+        </li>
+        <li><span class="parameter">area</span>
+            <span class="types"><span class="type">number</span></span>
+         Cargo unit area
+        </li>
+        <li><span class="parameter">crew</span>
+            <span class="types"><span class="type">number</span></span>
+         Cargo unit crew
+        </li>
+        <li><span class="parameter">mass</span>
+            <span class="types"><span class="type">number</span></span>
+         Cargo unit mass
+        </li>
+        <li><span class="parameter">quantity</span>
+            <span class="types"><span class="type">number</span></span>
+         Items present
+        </li>
+        <li><span class="parameter">damage</span>
+            <span class="types"><span class="type">string</span></span>
+         Damage
+        </li>
+        <li><span class="parameter">statusR</span>
+            <span class="types"><span class="type">string</span></span>
+         Inoperative reason
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
     <a name = "CargoMission"></a>
     <strong>CargoMission</strong>
     </dt>
@@ -7107,6 +7484,7 @@ td { padding: .5em; }
         <li><span class="parameter">fueltype</span>
             <span class="types"><a class="type" href="index.html#FuelState">{ FuelState }</a></span>
          The state of the type(s) of fuel in the unit.
+Note that the type is normally 4 digits. Use .fuels to get any breakdown of multiple tanks if present.
         </li>
     </ul>
 
@@ -7115,7 +7493,8 @@ td { padding: .5em; }
 
     <h3>Usage:</h3>
     <ul>
-        <pre class="example"><span class="keyword">local</span> fuel = u.fuel
+        <pre class="example"><span class="keyword">local</span> u = ScenEdit_GetUnit(...)
+      <span class="keyword">local</span> fuel = u.fuel
       fuel[<span class="number">3001</span>].current = <span class="number">400</span>
       u.fuel = fuel</pre>
     </ul>
@@ -8493,30 +8872,12 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
     <strong>ZoneMarker</strong>
     </dt>
     <dd>
-    Zone marker.
+    Zone marker. </p>
 
+<p>fields are the same as a ReferencePoint marker
 
     </ul>
 
-    <h3>Fields:</h3>
-    <ul>
-        <li><span class="parameter">guid</span>
-            <span class="types"><span class="type">string</span></span>
-         The GUID of the Reference Point.
-        </li>
-        <li><span class="parameter">longitude</span>
-            <span class="types"><a class="type" href="index.html#Longitude">Longitude</a></span>
-
-
-
-        </li>
-        <li><span class="parameter">latitude</span>
-            <span class="types"><a class="type" href="index.html#Latitude">Latitude</a></span>
-
-
-
-        </li>
-    </ul>
 
 
 
@@ -8530,7 +8891,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2018-05-21 19:36:27 </i>
+<i style="float:right;">Last updated 2019-03-20 16:44:01 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
