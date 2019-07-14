@@ -111,7 +111,7 @@ One issue with commands running in an event is that sometimes they fail with an 
 <p>Note also, that the Lua history log should also record the event script errors.</p>
 
 
-<p><b>Release: 1.15 </b></p>
+<p><b>Release: 1.15.1 </b></p>
 
 
 <h2><a href="#Selector">Selector</a></h2>
@@ -551,16 +551,16 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="summary">Kill unit.</td>
 	</tr>
 	<tr>
-	<td class="name" ><a href="#ScenEdit_MsgBox">ScenEdit_MsgBox (string, style)</a></td>
-	<td class="summary">Show a message box with a passed string.</td>
-	</tr>
-	<tr>
-	<td class="name" ><a href="#ScenEdit_PlaySound">ScenEdit_PlaySound (string)</a></td>
+	<td class="name" ><a href="#ScenEdit_LocalSound">ScenEdit_LocalSound (string)</a></td>
 	<td class="summary">Play a sound file.</td>
 	</tr>
 	<tr>
-	<td class="name" ><a href="#ScenEdit_PlayVideo">ScenEdit_PlayVideo (string, fullscreen, delay)</a></td>
+	<td class="name" ><a href="#ScenEdit_LocalVideo">ScenEdit_LocalVideo (string, fullscreen, delay)</a></td>
 	<td class="summary">Play a video file.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ScenEdit_MsgBox">ScenEdit_MsgBox (string, style)</a></td>
+	<td class="summary">Show a message box with a passed string.</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_PlayerSide">ScenEdit_PlayerSide ()</a></td>
@@ -2704,7 +2704,7 @@ If both are given, then the GUID is used preferentially.
             <span class="types"><span class="type">string</span> or <span class="type">number</span></span>
          Desired speed or 'OFF' to turn off manual mode
         </li>
-        <li><span class="parameter">manualAlitude</span>
+        <li><span class="parameter">manualAltitude</span>
             <span class="types"><span class="type">string</span> or <span class="type">number</span></span>
           Desired altitude/depth or 'OFF' to turn off manual mode
         </li>
@@ -2794,17 +2794,25 @@ If both are given, then the GUID is used preferentially.
         </li>
         <li><span class="parameter">cargo</span>
             <span class="types"><a class="type" href="index.html#Cargo">{ Cargo } </a></span>
-         Unit cargo information</p>
+         Unit cargo information
+        </li>
+        <li><span class="parameter">RTB</span>
+            <span class="types"><span class="type">bool</span></span>
+         Trigger the unit to return to base (true) or unassign (false)
+        </li>
+        <li><span class="parameter">Launch</span>
+            <span class="types"><span class="type">bool</span></span>
+         Trigger the unit to launch from base (true) or abort launch (false)
+        </li>
+        <li><span class="parameter">outOfComms</span>
+            <span class="types"><span class="type">bool</span></span>
+         is unit connected to side comms network (false = connected)   [READONLY]</p>
 
 <p> ScenEdit only
         </li>
         <li><span class="parameter">refuel</span>
             <span class="types"><span class="type">bool</span></span>
          Trigger the unit to attempt an UNREP
-        </li>
-        <li><span class="parameter">RTB</span>
-            <span class="types"><span class="type">bool</span></span>
-         Trigger the unit to return to base
         </li>
         <li><span class="parameter">moveto</span>
             <span class="types"><span class="type">bool</span></span>
@@ -2814,7 +2822,11 @@ If both are given, then the GUID is used preferentially.
             <span class="types"><span class="type">string</span> or <span class="type">number</span></span>
          Desired speed or 'OFF' to turn off manual mode
         </li>
-        <li><span class="parameter">manualAlitude</span>
+        <li><span class="parameter">manualThrottle</span>
+            <span class="types"><span class="type">string</span> or <span class="type">number</span></span>
+         Desired throttle or 'OFF' to turn off manual mode
+        </li>
+        <li><span class="parameter">manualAltitude</span>
             <span class="types"><span class="type">string</span> or <span class="type">number</span></span>
           Desired altitude/depth or 'OFF' to turn off manual mode
         </li>
@@ -5115,6 +5127,68 @@ then the function returns nil instead of producing an exception.
 
 </dd>
     <dt>
+    <a name = "ScenEdit_LocalSound"></a>
+    <strong>ScenEdit_LocalSound (string)</strong>
+    </dt>
+    <dd>
+    Play a sound file.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">string</span>
+            <span class="types"><span class="type">string</span></span>
+         The name of the file. Assumed to be in the Sounds\Effects folder
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        bool False if it can't find the file
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_LocalVideo"></a>
+    <strong>ScenEdit_LocalVideo (string, fullscreen, delay)</strong>
+    </dt>
+    <dd>
+    Play a video file.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">string</span>
+            <span class="types"><span class="type">string</span></span>
+         The name of the file. Assumed to be in the Video folder
+        </li>
+        <li><span class="parameter">fullscreen</span>
+            <span class="types"><span class="type">boolean</span></span>
+         Shown in full screen
+        </li>
+        <li><span class="parameter">delay</span>
+            <span class="types"><span class="type">number</span></span>
+         Delay to showing
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string "N" if it can't find the file
+    </ol>
+
+
+
+
+</dd>
+    <dt>
     <a name = "ScenEdit_MsgBox"></a>
     <strong>ScenEdit_MsgBox (string, style)</strong>
     </dt>
@@ -5146,68 +5220,6 @@ then the function returns nil instead of producing an exception.
     <ol>
 
          button number pressed.
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "ScenEdit_PlaySound"></a>
-    <strong>ScenEdit_PlaySound (string)</strong>
-    </dt>
-    <dd>
-    Play a sound file.
-
-    </ul>
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">string</span>
-            <span class="types"><span class="type">string</span></span>
-         The name of the file. Assumed to be in the Sounds\Effects folder
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-        bool False if it can't find the file
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "ScenEdit_PlayVideo"></a>
-    <strong>ScenEdit_PlayVideo (string, fullscreen, delay)</strong>
-    </dt>
-    <dd>
-    Play a video file.
-
-    </ul>
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">string</span>
-            <span class="types"><span class="type">string</span></span>
-         The name of the file. Assumed to be in the Video folder
-        </li>
-        <li><span class="parameter">fullscreen</span>
-            <span class="types"><span class="type">boolean</span></span>
-         Shown in full screen
-        </li>
-        <li><span class="parameter">delay</span>
-            <span class="types"><span class="type">number</span></span>
-         Delay to showing
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-        string "N" if it can't find the file
     </ol>
 
 
@@ -6311,8 +6323,8 @@ conditions are applied globally.
          The HTML text to display to the player
         </li>
         <li><span class="parameter">location</span>
-            <span class="types"><span class="type">string</span></span>
-         [Optional] Location as a table to jump to {lon='xxx',lat='xxx'}
+            <span class="types"><span class="type">Point</span></span>
+         Optional location (ong,lat) to 'jump to'
         </li>
     </ul>
 
@@ -8891,7 +8903,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2019-03-23 13:41:26 </i>
+<i style="float:right;">Last updated 2019-07-14 11:23:47 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
