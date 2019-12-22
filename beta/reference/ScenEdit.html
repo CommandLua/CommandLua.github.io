@@ -111,7 +111,7 @@ One issue with commands running in an event is that sometimes they fail with an 
 <p>Note also, that the Lua history log should also record the event script errors.</p>
 
 
-<p><b>Release: 1.15.1 </b></p>
+<p><b>Release: 1.15.2 </b></p>
 
 
 <h2><a href="#Selector">Selector</a></h2>
@@ -415,7 +415,7 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="summary">Delete a reference point.</td>
 	</tr>
 	<tr>
-	<td class="name" ><a href="#ScenEdit_DeleteUnit">ScenEdit_DeleteUnit (unit)</a></td>
+	<td class="name" ><a href="#ScenEdit_DeleteUnit">ScenEdit_DeleteUnit (unit, include)</a></td>
 	<td class="summary">Deletes unit.</td>
 	</tr>
 	<tr>
@@ -518,6 +518,11 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="summary">Gets the properties of an existing special action.</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#ScenEdit_GetTimeOfDay">ScenEdit_GetTimeOfDay (table)</a></td>
+	<td class="summary">Get the current time of day at a location
+ use an unit selector (guid or side/name) or position selector (latitude,longitude)</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#ScenEdit_GetUnit">ScenEdit_GetUnit (unit)</a></td>
 	<td class="summary">Fetches a unit based on a selector.</td>
 	</tr>
@@ -565,6 +570,10 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<tr>
 	<td class="name" ><a href="#ScenEdit_PlayerSide">ScenEdit_PlayerSide ()</a></td>
 	<td class="summary">The player's current side.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ScenEdit_QueryDB">ScenEdit_QueryDB (type)</a></td>
+	<td class="summary">Query database</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_RefuelUnit">ScenEdit_RefuelUnit (unitOptions)</a></td>
@@ -692,7 +701,7 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="summary">update no-nav or exclusion zone.</td>
 	</tr>
 	<tr>
-	<td class="name" ><a href="#ScenEdit_SpecialMessage">ScenEdit_SpecialMessage (side, message, location)</a></td>
+	<td class="name" ><a href="#ScenEdit_SpecialMessage">ScenEdit_SpecialMessage (side, message)</a></td>
 	<td class="summary">Displays a special message consisting of the HTML text <code>message</code> to side `side.</td>
 	</tr>
 	<tr>
@@ -776,6 +785,10 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<tr>
 	<td class="name" ><a href="#World_GetElevation">World_GetElevation (location)</a></td>
 	<td class="summary">Returns the elevation in meters of a given position</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#World_GetLocation">World_GetLocation (location)</a></td>
+	<td class="summary">Returns table of details at a given position</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#World_GetPointFromBearing">World_GetPointFromBearing (table)</a></td>
@@ -1104,11 +1117,11 @@ One issue with commands running in an event is that sometimes they fail with an 
         </li>
         <li><span class="parameter">unitname</span>
             <span class="types"><span class="type">string</span></span>
-         The name of the unit to select
+         The name of the unit (or group) to select
         </li>
-        <li><span class="parameter">group</span>
-            <span class="types"><span class="type">string</span></span>
-         The name of the group to select
+        <li><span class="parameter">actual</span>
+            <span class="types"><span class="type">bool</span></span>
+        =true Show the actual doctrine setting based on doctrine inheritance (defaults to only showing non-inherited values)
         </li>
         <li><span class="parameter">escort</span>
             <span class="types"><span class="type">bool</span></span>
@@ -1128,7 +1141,8 @@ One issue with commands running in an event is that sometimes they fail with an 
     <dd>
     Selects a WRA doctrine.
   .. for on a side, group, mission, or unit.
- weapon<em>id is mandatory. One of side,mission,unitname or guid is mandatory. One of contact</em>id or target_type is mandatory
+ weapon<em>id is mandatory. One of side,mission,unitname or guid is mandatory. One of contact</em>id or target<em>type is mandatory
+ If no weapon</em>id is supplied but just the target<em>type, then a WRA table (WRA</em>#) is returned for each weapon for the doctrine that can engage the target_type
 
     </ul>
 
@@ -2090,6 +2104,10 @@ If both are given, then the GUID is used preferentially.
             <span class="types"><span class="type">string</span></span>
          Automatically_HoverAnd150ft(0), ManualAndMissionOnly(1)
         </li>
+        <li><span class="parameter">bvr_logic</span>
+            <span class="types"><span class="type">string</span></span>
+         StraightIn(0), Crank(1), Drag(2)
+        </li>
         <li><span class="parameter">withdraw_on_damage</span>
             <span class="types"><span class="type">string</span></span>
          Ignore(0), Percent5(1), Percent25(2), Percent50(3), Percent75(4)
@@ -2157,7 +2175,7 @@ If both are given, then the GUID is used preferentially.
         </li>
         <li><span class="parameter">wra</span>
             <span class="types"><a class="type" href="../index.html#WRA">{ WRA }</a></span>
-         The WRA doctrine
+         The WRA doctrine for a single weapon, or wra<em># for each weapon against a specific target</em>type
         </li>
     </ul>
 
@@ -2449,10 +2467,6 @@ If both are given, then the GUID is used preferentially.
             <span class="types"><a class="type" href="../index.html#Unit">Unit</a></span>
          The unit that reference point is realtive to
         </li>
-        <li><span class="parameter">:toTable</span>
-            <span class="types"><span class="type">method</span></span>
-        () The wrapper returned as Lua table
-        </li>
     </ul>
 
 
@@ -2529,7 +2543,7 @@ If both are given, then the GUID is used preferentially.
         </li>
         <li><span class="parameter">rps</span>
             <span class="types"><a class="type" href="../index.html#Zone">{ Zone } </a></span>
-          Visible RPs for the designated side [READONLY]
+          RPs for the designated side [READONLY]
         </li>
         <li><span class="parameter">awareness</span>
             <span class="types"><span class="type">Awareness</span></span>
@@ -2798,11 +2812,11 @@ If both are given, then the GUID is used preferentially.
         </li>
         <li><span class="parameter">RTB</span>
             <span class="types"><span class="type">bool</span></span>
-         Trigger the unit to return to base (true) or unassign (false)
+         Trigger the unit to return to base
         </li>
         <li><span class="parameter">Launch</span>
-            <span class="types"><span class="type">bool</span></span>
-         Trigger the unit to launch from base (true) or abort launch (false)
+            <span class="types"><span class="type">method</span></span>
+        (true/fale) Trigger the unit to launch from base (true) or abort launch (false)
         </li>
         <li><span class="parameter">outOfComms</span>
             <span class="types"><span class="type">bool</span></span>
@@ -2813,6 +2827,10 @@ If both are given, then the GUID is used preferentially.
         <li><span class="parameter">refuel</span>
             <span class="types"><span class="type">bool</span></span>
          Trigger the unit to attempt an UNREP
+        </li>
+        <li><span class="parameter">RTB</span>
+            <span class="types"><span class="type">bool</span></span>
+         Trigger the unit to return to base
         </li>
         <li><span class="parameter">moveto</span>
             <span class="types"><span class="type">bool</span></span>
@@ -4115,7 +4133,7 @@ The 'UnitX' can be used as the unit descriptor
 </dd>
     <dt>
     <a name = "ScenEdit_DeleteUnit"></a>
-    <strong>ScenEdit_DeleteUnit (unit)</strong>
+    <strong>ScenEdit_DeleteUnit (unit, include)</strong>
     </dt>
     <dd>
     Deletes unit.
@@ -4129,6 +4147,9 @@ The 'UnitX' can be used as the unit descriptor
 
 
 
+        </li>
+        <li><span class="parameter">include</span>
+         attached units with group for deleting
         </li>
     </ul>
 
@@ -4892,6 +4913,39 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>) <span class="comment">-- r
 
 </dd>
     <dt>
+    <a name = "ScenEdit_GetTimeOfDay"></a>
+    <strong>ScenEdit_GetTimeOfDay (table)</strong>
+    </dt>
+    <dd>
+    Get the current time of day at a location
+ use an unit selector (guid or side/name) or position selector (latitude,longitude)
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">table</span>
+            <span class="types"><span class="type">table</span></span>
+         The unit location or position
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">table</span></span>
+        table {'tod' [ 0=Day 2=Night 3=Dawn 4=Dusk], 'localtime' [local time], 'zulutime' [zulu time], 'TOD' ['day', 'night', 'dawn', 'dusk']}
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">ScenEdit_GetTimeOfDay( <span class="global">table</span>)</pre>
+    </ul>
+
+</dd>
+    <dt>
     <a name = "ScenEdit_GetUnit"></a>
     <strong>ScenEdit_GetUnit (unit)</strong>
     </dt>
@@ -5252,6 +5306,34 @@ then the function returns nil instead of producing an exception.
 
 </dd>
     <dt>
+    <a name = "ScenEdit_QueryDB"></a>
+    <strong>ScenEdit_QueryDB (type)</strong>
+    </dt>
+    <dd>
+    Query database
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">type</span>
+            <span class="types"><span class="type">integer</span></span>
+         The type of item to query; 1=weapon, 2=mount, 3=sensor
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">object</span></span>
+        Object wrapper
+    </ol>
+
+
+
+
+</dd>
+    <dt>
     <a name = "ScenEdit_RefuelUnit"></a>
     <strong>ScenEdit_RefuelUnit (unitOptions)</strong>
     </dt>
@@ -5581,8 +5663,8 @@ A file can also be loaded indirectly from an attachment <a href="../index.html#S
 
     <h3>Usage:</h3>
     <ul>
-        <li><pre class="example">ScenEdit_SetDoctrineWRA({guid = <span class="string">'a1a52edf-3541-4b55-bea4-58d4e1ab11dc'</span>, target_type=<span class="string">'Surface_Contact_Unknown_Type'</span>, weapon_id=<span class="number">1575</span>}, {<span class="string">'inherit'</span>,<span class="string">'inherit'</span>,<span class="string">'system'</span>,<span class="string">'inherit'</span>})</pre></li>
-        <li><pre class="example">ScenEdit_SetDoctrineWRA({guid = <span class="string">'a1a52edf-3541-4b55-bea4-58d4e1ab11dc'</span>, target_type=<span class="string">'Surface_Contact_Unknown_Type'</span>, weapon_id=<span class="number">1575</span>}, {<span class="string">'max'</span>,<span class="string">'inherit'</span>,<span class="number">90</span>,<span class="string">'inherit'</span>})</pre></li>
+        <li><pre class="example">ScenEdit_SetDoctrineWRA({guid = <span class="string">'a1a52edf-3541-4b55-bea4-58d4e1ab11dc'</span>, target_type=<span class="string">'Surface_Contact_Unknown_Type'</span>, weapon_dbid=<span class="number">1575</span>}, {<span class="string">'inherit'</span>,<span class="string">'inherit'</span>,<span class="string">'system'</span>,<span class="string">'inherit'</span>})</pre></li>
+        <li><pre class="example">ScenEdit_SetDoctrineWRA({guid = <span class="string">'a1a52edf-3541-4b55-bea4-58d4e1ab11dc'</span>, target_type=<span class="string">'Surface_Contact_Unknown_Type'</span>, weapon_dbid=<span class="number">1575</span>}, {<span class="string">'max'</span>,<span class="string">'inherit'</span>,<span class="number">90</span>,<span class="string">'inherit'</span>})</pre></li>
     </ul>
 
 </dd>
@@ -5954,7 +6036,7 @@ The 'area' selector is useful for changing some common attribute, like locking o
 
     <h3>Usage:</h3>
     <ul>
-        <pre class="example">ScenEdit_GetScore(<span class="string">"PlayerSide"</span>, <span class="number">20</span>)</pre>
+        <pre class="example">ScenEdit_SetScore(<span class="string">"PlayerSide"</span>, <span class="number">20</span>,<span class="string">"Reset score"</span>)</pre>
     </ul>
 
 </dd>
@@ -6304,7 +6386,7 @@ conditions are applied globally.
 </dd>
     <dt>
     <a name = "ScenEdit_SpecialMessage"></a>
-    <strong>ScenEdit_SpecialMessage (side, message, location)</strong>
+    <strong>ScenEdit_SpecialMessage (side, message)</strong>
     </dt>
     <dd>
     Displays a special message consisting of the HTML text <code>message</code> to side `side.
@@ -6321,10 +6403,6 @@ conditions are applied globally.
         <li><span class="parameter">message</span>
             <span class="types"><span class="type">string</span></span>
          The HTML text to display to the player
-        </li>
-        <li><span class="parameter">location</span>
-            <span class="types"><span class="type">string</span></span>
-         [Optional] Location as a table to jump to {lon='xxx',lat='xxx'}
         </li>
     </ul>
 
@@ -6897,6 +6975,36 @@ Otherwise, a nil is returned.</p>
     <ol>
 
         The elevation of the point in meters
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "World_GetLocation"></a>
+    <strong>World_GetLocation (location)</strong>
+    </dt>
+    <dd>
+    Returns table of details at a given position
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">location</span>
+            <span class="types"><span class="type">Point</span></span>
+         The position to find the details of
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">table</span></span>
+
+
+
     </ol>
 
 
@@ -8733,7 +8841,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
     </dt>
     <dd>
     WRA settings.
- .. absence of fields implies that it is NOT used
+ .. absence of fields implies that it is NOT used.
 
     </ul>
 
@@ -8741,19 +8849,19 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
     <ul>
         <li><span class="parameter">qty_salvo</span>
             <span class="types"><span class="type">string</span></span>
-         Weapons per salvo ('Max' or a number)
+         Weapons per salvo ('Max','DoNoUse' or a number)
         </li>
         <li><span class="parameter">shooter_salvo</span>
             <span class="types"><span class="type">string</span></span>
-         Shooters per salvo ('Max' or a number)
+         Shooters per salvo ('Max','DoNoUse' or a number)
         </li>
         <li><span class="parameter">firing_range</span>
             <span class="types"><span class="type">string</span></span>
-         Firing range ('Max' or a number)
+         Firing range ('Max','DoNoUse' or a number)
         </li>
         <li><span class="parameter">self_defence</span>
             <span class="types"><span class="type">string</span></span>
-         Self-defence range ('Max' or a number)
+         Self-defence range ('Max','DoNoUse' or a number)
         </li>
     </ul>
 
@@ -8903,7 +9011,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2019-07-14 11:32:36 </i>
+<i style="float:right;">Last updated 2019-12-11 18:17:36 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
