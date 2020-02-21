@@ -556,11 +556,11 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="summary">Kill unit.</td>
 	</tr>
 	<tr>
-	<td class="name" ><a href="#ScenEdit_LocalSound">ScenEdit_LocalSound (string)</a></td>
+	<td class="name" ><a href="#ScenEdit_PlaySound">ScenEdit_PlaySound (string, delay)</a></td>
 	<td class="summary">Play a sound file.</td>
 	</tr>
 	<tr>
-	<td class="name" ><a href="#ScenEdit_LocalVideo">ScenEdit_LocalVideo (string, fullscreen, delay)</a></td>
+	<td class="name" ><a href="#ScenEdit_PlayVideo">ScenEdit_PlayVideo (string, fullscreen, delay)</a></td>
 	<td class="summary">Play a video file.</td>
 	</tr>
 	<tr>
@@ -5181,8 +5181,8 @@ then the function returns nil instead of producing an exception.
 
 </dd>
     <dt>
-    <a name = "ScenEdit_LocalSound"></a>
-    <strong>ScenEdit_LocalSound (string)</strong>
+    <a name = "ScenEdit_PlaySound"></a>
+    <strong>ScenEdit_LocalSound (string, delay)</strong>
     </dt>
     <dd>
     Play a sound file.
@@ -5195,7 +5195,11 @@ then the function returns nil instead of producing an exception.
             <span class="types"><span class="type">string</span></span>
          The name of the file. Assumed to be in the Sounds\Effects folder
         </li>
-    </ul>
+         <li><span class="parameter">delay</span>
+            <span class="types"><span class="type">number</span></span>
+         Delay to playing
+        </li>
+   </ul>
 
     <h3>Returns:</h3>
     <ol>
@@ -5208,7 +5212,7 @@ then the function returns nil instead of producing an exception.
 
 </dd>
     <dt>
-    <a name = "ScenEdit_LocalVideo"></a>
+    <a name = "ScenEdit_PlayVideo"></a>
     <strong>ScenEdit_LocalVideo (string, fullscreen, delay)</strong>
     </dt>
     <dd>
@@ -5228,7 +5232,7 @@ then the function returns nil instead of producing an exception.
         </li>
         <li><span class="parameter">delay</span>
             <span class="types"><span class="type">number</span></span>
-         Delay to showing
+         Delay to playing
         </li>
     </ul>
 
