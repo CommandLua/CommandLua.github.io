@@ -111,7 +111,7 @@ One issue with commands running in an event is that sometimes they fail with an 
 <p>Note also, that the Lua history log should also record the event script errors.</p>
 
 
-<p><b>Release: 1.15.2 </b></p>
+<p><b>Release: 2.11.21 </b></p>
 
 
 <h2><a href="#Selector">Selector</a></h2>
@@ -352,6 +352,10 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="summary">Detonates a warhead at a specified location.</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#ScenEdit_AddMinefield">ScenEdit_AddMinefield (side, dbid, number, delay, area)</a></td>
+	<td class="summary">attempt to lay a minefield</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#ScenEdit_AddMission">ScenEdit_AddMission (SideNameOrId, MissionNameOrId, MissionType, MissionOptions)</a></td>
 	<td class="summary">Add new mission.</td>
 	</tr>
@@ -405,6 +409,14 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<tr>
 	<td class="name" ><a href="#ScenEdit_CurrentTime">ScenEdit_CurrentTime ()</a></td>
 	<td class="summary">Get the current scenario time.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ScenEdit_DeleteMine">ScenEdit_DeleteMine (side, guid)</a></td>
+	<td class="summary">delete a mine</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ScenEdit_DeleteMinefield">ScenEdit_DeleteMinefield (side, area)</a></td>
+	<td class="summary">delete a minefield</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_DeleteMission">ScenEdit_DeleteMission (SideNameOrId, MissionNameOrId)</a></td>
@@ -486,6 +498,10 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="summary">Gets the loadout details for a unit.</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#ScenEdit_GetMinefield">ScenEdit_GetMinefield (side, area)</a></td>
+	<td class="summary">get a minefield</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#ScenEdit_GetMission">ScenEdit_GetMission (SideNameOrId, MissionNameOrId)</a></td>
 	<td class="summary">Get details of a mission.</td>
 	</tr>
@@ -554,6 +570,10 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<tr>
 	<td class="name" ><a href="#ScenEdit_KillUnit">ScenEdit_KillUnit (unit)</a></td>
 	<td class="summary">Kill unit.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ScenEdit_MsgBox">ScenEdit_MsgBox (string, style)</a></td>
+	<td class="summary">Show a message box with a passed string.</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_PlaySound">ScenEdit_PlaySound (string, delay)</a></td>
@@ -647,6 +667,10 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<tr>
 	<td class="name" ><a href="#ScenEdit_SetLoadout">ScenEdit_SetLoadout (loadoutinfo)</a></td>
 	<td class="summary">Sets the loadout for a unit</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ScenEdit_SetMine">ScenEdit_SetMine (side, guid, delay)</a></td>
+	<td class="summary">update a mine</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_SetMission">ScenEdit_SetMission (SideName, MissionNameOrId, MissionOptions)</a></td>
@@ -2553,6 +2577,10 @@ If both are given, then the GUID is used preferentially.
             <span class="types"><span class="type">Proficiency</span></span>
          [READONLY]
         </li>
+        <li><span class="parameter">hasmines</span>
+            <span class="types"><span class="type">booleany</span></span>
+         [READONLY]
+        </li>
         <li><span class="parameter">getexclusionzone</span>
             <span class="types"><span class="type">method</span></span>
         (<code>ZoneGUID|ZoneName|ZoneDescription</code>) Returns matching <a href="index.html#Zone">Zone</a> or nil
@@ -2820,7 +2848,15 @@ If both are given, then the GUID is used preferentially.
         </li>
         <li><span class="parameter">outOfComms</span>
             <span class="types"><span class="type">bool</span></span>
-         is unit connected to side comms network (false = connected)   [READONLY]</p>
+         is unit connected to side comms network (false = connected)   [READONLY]
+        </li>
+        <li><span class="parameter">AI_EvaluateTargets_enabled</span>
+            <span class="types"><span class="type">bool</span></span>
+         AI evaluates targets
+        </li>
+        <li><span class="parameter">AI_DeterminePrimaryTarget_enabled</span>
+            <span class="types"><span class="type">bool</span></span>
+         AI determines primary target</p>
 
 <p> ScenEdit only
         </li>
@@ -3594,6 +3630,54 @@ property_9 = '.course , LuaTable , True' ...<br>
 
 </dd>
     <dt>
+    <a name = "ScenEdit_AddMinefield"></a>
+    <strong>ScenEdit_AddMinefield (side, dbid, number, delay, area)</strong>
+    </dt>
+    <dd>
+    attempt to lay a minefield
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">side</span>
+            <span class="types"><span class="type">string}</span></span>
+         Side name or guid
+        </li>
+        <li><span class="parameter">dbid</span>
+            <span class="types"><span class="type">integer</span></span>
+         The database id of the mine to use
+        </li>
+        <li><span class="parameter">number</span>
+            <span class="types"><span class="type">integer</span></span>
+         The number to try to lay
+        </li>
+        <li><span class="parameter">delay</span>
+            <span class="types"><span class="type">integer</span></span>
+         The arming delay in seconds
+        </li>
+        <li><span class="parameter">area</span>
+            <span class="types"><span class="type">table</span></span>
+         The area (as table of RP points) to lay mines in
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">integer</span></span>
+        number of mines laid
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> a = ScenEdit_AddMinefield({side=<span class="string">'Blue'</span>, dbid=<span class="number">2345</span>, number=<span class="number">100</span>, delay=<span class="number">60000</span>, area={<span class="string">'rp-1'</span>,<span class="string">'rp-2'</span>, <span class="string">'rp-3'</span>, <span class="string">'rp-4'</span>} } )</pre>
+    </ul>
+
+</dd>
+    <dt>
     <a name = "ScenEdit_AddMission"></a>
     <strong>ScenEdit_AddMission (SideNameOrId, MissionNameOrId, MissionType, MissionOptions)</strong>
     </dt>
@@ -4061,6 +4145,78 @@ The 'UnitX' can be used as the unit descriptor
 <span class="comment">-- been more than 5 minutes, set the lastTriggered time to now
 </span> timeFromLastTiggered = now
 <span class="keyword">end</span></pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_DeleteMine"></a>
+    <strong>ScenEdit_DeleteMine (side, guid)</strong>
+    </dt>
+    <dd>
+    delete a mine
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">side</span>
+            <span class="types"><span class="type">string}</span></span>
+         Side name or guid
+        </li>
+        <li><span class="parameter">guid</span>
+            <span class="types"><span class="type">string}</span></span>
+         Mine guid
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        true/false
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> a = ScenEdit_DeleteMine({side=<span class="string">'Blue'</span>, guid=<span class="string">'cccccccc'</span>} )</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_DeleteMinefield"></a>
+    <strong>ScenEdit_DeleteMinefield (side, area)</strong>
+    </dt>
+    <dd>
+    delete a minefield
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">side</span>
+            <span class="types"><span class="type">string}</span></span>
+         Side name or guid
+        </li>
+        <li><span class="parameter">area</span>
+            <span class="types"><span class="type">table</span></span>
+         The area (as table of RP points) to lay mines in
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        mines removed
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> a = ScenEdit_DeleteMinefield({side=<span class="string">'Blue'</span>, area={<span class="string">'rp-1'</span>,<span class="string">'rp-2'</span>, <span class="string">'rp-3'</span>, <span class="string">'rp-4'</span>} } )</pre>
     </ul>
 
 </dd>
@@ -4668,6 +4824,42 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>) <span class="comment">-- r
 
 </dd>
     <dt>
+    <a name = "ScenEdit_GetMinefield"></a>
+    <strong>ScenEdit_GetMinefield (side, area)</strong>
+    </dt>
+    <dd>
+    get a minefield
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">side</span>
+            <span class="types"><span class="type">string}</span></span>
+         Side name or guid
+        </li>
+        <li><span class="parameter">area</span>
+            <span class="types"><span class="type">table</span></span>
+         The area (as table of RP points) to lay mines in
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">table</span></span>
+        table of mines in the area
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> a = ScenEdit_GetMinefield({side=<span class="string">'Blue'</span>, area={<span class="string">'rp-1'</span>,<span class="string">'rp-2'</span>, <span class="string">'rp-3'</span>, <span class="string">'rp-4'</span>} } )</pre>
+    </ul>
+
+</dd>
+    <dt>
     <a name = "ScenEdit_GetMission"></a>
     <strong>ScenEdit_GetMission (SideNameOrId, MissionNameOrId)</strong>
     </dt>
@@ -5181,72 +5373,6 @@ then the function returns nil instead of producing an exception.
 
 </dd>
     <dt>
-    <a name = "ScenEdit_PlaySound"></a>
-    <strong>ScenEdit_LocalSound (string, delay)</strong>
-    </dt>
-    <dd>
-    Play a sound file.
-
-    </ul>
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">string</span>
-            <span class="types"><span class="type">string</span></span>
-         The name of the file. Assumed to be in the Sounds\Effects folder
-        </li>
-         <li><span class="parameter">delay</span>
-            <span class="types"><span class="type">number</span></span>
-         Delay to playing
-        </li>
-   </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-        bool False if it can't find the file
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "ScenEdit_PlayVideo"></a>
-    <strong>ScenEdit_LocalVideo (string, fullscreen, delay)</strong>
-    </dt>
-    <dd>
-    Play a video file.
-
-    </ul>
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">string</span>
-            <span class="types"><span class="type">string</span></span>
-         The name of the file. Assumed to be in the Video folder
-        </li>
-        <li><span class="parameter">fullscreen</span>
-            <span class="types"><span class="type">boolean</span></span>
-         Shown in full screen
-        </li>
-        <li><span class="parameter">delay</span>
-            <span class="types"><span class="type">number</span></span>
-         Delay to playing
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-        string "N" if it can't find the file
-    </ol>
-
-
-
-
-</dd>
-    <dt>
     <a name = "ScenEdit_MsgBox"></a>
     <strong>ScenEdit_MsgBox (string, style)</strong>
     </dt>
@@ -5272,12 +5398,78 @@ then the function returns nil instead of producing an exception.
             <span class="types"><span class="type">num</span></span>
          The style of the message box
         </li>
-    </ul>
+   </ul>
 
     <h3>Returns:</h3>
     <ol>
 
          button number pressed.
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_PlaySound"></a>
+    <strong>ScenEdit_PlaySound (string, delay)</strong>
+    </dt>
+    <dd>
+    Play a sound file.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">string</span>
+            <span class="types"><span class="type">string</span></span>
+         The name of the file. Assumed to be in the Sounds\Effects folder
+        </li>
+        <li><span class="parameter">delay</span>
+            <span class="types"><span class="type">number</span></span>
+         Delay to playing
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        bool False if it can't find the file
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_PlayVideo"></a>
+    <strong>ScenEdit_PlayVideo (string, fullscreen, delay)</strong>
+    </dt>
+    <dd>
+    Play a video file.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">string</span>
+            <span class="types"><span class="type">string</span></span>
+         The name of the file. Assumed to be in the Video folder
+        </li>
+        <li><span class="parameter">fullscreen</span>
+            <span class="types"><span class="type">boolean</span></span>
+         Shown in full screen
+        </li>
+        <li><span class="parameter">delay</span>
+            <span class="types"><span class="type">number</span></span>
+         Delay to showing
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string "N" if it can't find the file
     </ol>
 
 
@@ -5311,18 +5503,23 @@ then the function returns nil instead of producing an exception.
 </dd>
     <dt>
     <a name = "ScenEdit_QueryDB"></a>
-    <strong>ScenEdit_QueryDB (type)</strong>
+    <strong>ScenEdit_QueryDB (objectType, DBID)</strong>
     </dt>
     <dd>
     Query database
+ use the wrapper_object_variable.fields to see what can be returned
 
     </ul>
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">type</span>
+        <li><span class="parameter">objectType</span>
+            <span class="types"><span class="type">string</span></span>
+         The type of item to query; 'weapon', 'mount', 'sensor'
+        </li>
+        <li><span class="parameter">DBID</span>
             <span class="types"><span class="type">integer</span></span>
-         The type of item to query; 1=weapon, 2=mount, 3=sensor
+         The databse id of item to query
         </li>
     </ul>
 
@@ -5335,6 +5532,10 @@ then the function returns nil instead of producing an exception.
 
 
 
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> a = ScenEdit_QueryDB(<span class="string">'weapon'</span>,<span class="number">1398</span>)</pre>
+    </ul>
 
 </dd>
     <dt>
@@ -5922,6 +6123,46 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>) <span class="comment">-- r
 
 </dd>
     <dt>
+    <a name = "ScenEdit_SetMine"></a>
+    <strong>ScenEdit_SetMine (side, guid, delay)</strong>
+    </dt>
+    <dd>
+    update a mine
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">side</span>
+            <span class="types"><span class="type">string}</span></span>
+         Side name or guid
+        </li>
+        <li><span class="parameter">guid</span>
+            <span class="types"><span class="type">string}</span></span>
+         Mine guid
+        </li>
+        <li><span class="parameter">delay</span>
+            <span class="types"><span class="type">integer</span></span>
+         The arming delay in seconds [optional]
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        true/false
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> a = ScenEdit_SetMine({side=<span class="string">'Blue'</span>, guid=<span class="string">'cccccccc'</span>, [delay=<span class="number">99999</span>]} )</pre>
+    </ul>
+
+</dd>
+    <dt>
     <a name = "ScenEdit_SetMission"></a>
     <strong>ScenEdit_SetMission (SideName, MissionNameOrId, MissionOptions)</strong>
     </dt>
@@ -6074,7 +6315,7 @@ The 'area' selector is useful for changing some common attribute, like locking o
 
     <h3>Usage:</h3>
     <ul>
-        <pre class="example">ScenEdit_SetSideOptions({side=<span class="string">'SideA'</span>,awareness=<span class="string">'OMNI'</span>,proficiency=<span class="string">'ace'</span>})</pre>
+        <pre class="example">ScenEdit_SetSideOptions(<span class="string">'{side='</span>SideA<span class="string">',awareness='</span>OMNI<span class="string">',PROFICIENCY='</span>ace')</pre>
     </ul>
 
 </dd>
@@ -8386,7 +8627,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 
     <h3>Fields:</h3>
     <ul>
-        <li><span class="parameter">oldside</span>
+        <li><span class="parameter">side</span>
             <span class="types"><span class="type">string</span></span>
          The original side
         </li>
@@ -9015,7 +9256,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2019-12-11 18:17:36 </i>
+<i style="float:right;">Last updated 2020-02-22 14:56:14 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

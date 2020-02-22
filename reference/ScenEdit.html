@@ -77,7 +77,7 @@
 </p>
 <p> Lua is a case sensitve language.</p>
 
-<p> When accessing object properties directly as in 'unit.name', the property should be in lower which will match the Lua generated code. There may be a <i>few</i> special cases (e.g. mission.SISH=true which is a shortcut for scrub_if_side_human) which will be documented below.</p>
+<p> When accessing object properties directly as in 'unit.name', the property should be in lower which will match the Lua generated code. There may be a <i>few</i> special cases (e.g. mission.SISH=true which is a shortcut for scrub<em>if</em>side_human) which will be documented below.</p>
 
 <p> However, when accessing the properties through the module functions below, both the keyword/property and the value are case insensitive; the code will worry about matching them up.</p>
 
@@ -352,6 +352,10 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="summary">Detonates a warhead at a specified location.</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#ScenEdit_AddMinefield">ScenEdit_AddMinefield (side, dbid, number, delay, area)</a></td>
+	<td class="summary">attempt to lay a minefield</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#ScenEdit_AddMission">ScenEdit_AddMission (SideNameOrId, MissionNameOrId, MissionType, MissionOptions)</a></td>
 	<td class="summary">Add new mission.</td>
 	</tr>
@@ -405,6 +409,14 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<tr>
 	<td class="name" ><a href="#ScenEdit_CurrentTime">ScenEdit_CurrentTime ()</a></td>
 	<td class="summary">Get the current scenario time.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ScenEdit_DeleteMine">ScenEdit_DeleteMine (side, guid)</a></td>
+	<td class="summary">delete a mine</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ScenEdit_DeleteMinefield">ScenEdit_DeleteMinefield (side, area)</a></td>
+	<td class="summary">delete a minefield</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_DeleteMission">ScenEdit_DeleteMission (SideNameOrId, MissionNameOrId)</a></td>
@@ -486,6 +498,10 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="summary">Gets the loadout details for a unit.</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#ScenEdit_GetMinefield">ScenEdit_GetMinefield (side, area)</a></td>
+	<td class="summary">get a minefield</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#ScenEdit_GetMission">ScenEdit_GetMission (SideNameOrId, MissionNameOrId)</a></td>
 	<td class="summary">Get details of a mission.</td>
 	</tr>
@@ -556,6 +572,10 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="summary">Kill unit.</td>
 	</tr>
 	<tr>
+	<td class="name" ><a href="#ScenEdit_MsgBox">ScenEdit_MsgBox (string, style)</a></td>
+	<td class="summary">Show a message box with a passed string.</td>
+	</tr>
+	<tr>
 	<td class="name" ><a href="#ScenEdit_PlaySound">ScenEdit_PlaySound (string, delay)</a></td>
 	<td class="summary">Play a sound file.</td>
 	</tr>
@@ -564,16 +584,13 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<td class="summary">Play a video file.</td>
 	</tr>
 	<tr>
-	<td class="name" ><a href="#ScenEdit_MsgBox">ScenEdit_MsgBox (string, style)</a></td>
-	<td class="summary">Show a message box with a passed string.</td>
-	</tr>
-	<tr>
 	<td class="name" ><a href="#ScenEdit_PlayerSide">ScenEdit_PlayerSide ()</a></td>
 	<td class="summary">The player's current side.</td>
 	</tr>
 	<tr>
-	<td class="name" ><a href="#ScenEdit_QueryDB">ScenEdit_QueryDB (type)</a></td>
-	<td class="summary">Query database</td>
+	<td class="name" ><a href="#ScenEdit_QueryDB">ScenEdit_QueryDB (objectType, DBID)</a></td>
+	<td class="summary">Query database
+ use the wrapper<em>object</em>variable.fields to see what can be returned</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_RefuelUnit">ScenEdit_RefuelUnit (unitOptions)</a></td>
@@ -647,6 +664,10 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<tr>
 	<td class="name" ><a href="#ScenEdit_SetLoadout">ScenEdit_SetLoadout (loadoutinfo)</a></td>
 	<td class="summary">Sets the loadout for a unit</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ScenEdit_SetMine">ScenEdit_SetMine (side, guid, delay)</a></td>
+	<td class="summary">update a mine</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_SetMission">ScenEdit_SetMission (SideName, MissionNameOrId, MissionOptions)</a></td>
@@ -1141,8 +1162,8 @@ One issue with commands running in an event is that sometimes they fail with an 
     <dd>
     Selects a WRA doctrine.
   .. for on a side, group, mission, or unit.
- weapon_id is mandatory. One of side,mission,unitname or guid is mandatory. One of contact_id or target_type is mandatory
- If no weapon_id is supplied but just the target_type, then a WRA table (WRA_#) is returned for each weapon for the doctrine that can engage the target_type
+ weapon<em>id is mandatory. One of side,mission,unitname or guid is mandatory. One of contact</em>id or target<em>type is mandatory
+ If no weapon</em>id is supplied but just the target<em>type, then a WRA table (WRA</em>#) is returned for each weapon for the doctrine that can engage the target_type
 
     </ul>
 
@@ -1296,7 +1317,7 @@ One issue with commands running in an event is that sometimes they fail with an 
     <dd>
     New unit selector. </p>
 
-<p> ... lists minimum fields required. Other fields from <a href="index.html#Unit">Unit</a> may be included.
+<p> ... lists minimum fields required. Other fields from <a href="../index.html#Unit">Unit</a> may be included.
 
     </ul>
 
@@ -1318,11 +1339,11 @@ One issue with commands running in an event is that sometimes they fail with an 
          The database id of the unit
         </li>
         <li><span class="parameter">latitude</span>
-            <span class="types"><a class="type" href="index.html#Latitude">Latitude</a></span>
+            <span class="types"><a class="type" href="../index.html#Latitude">Latitude</a></span>
          Not required if a <code>base</code> is defined
         </li>
         <li><span class="parameter">longitude</span>
-            <span class="types"><a class="type" href="index.html#Longitude">Longitude</a></span>
+            <span class="types"><a class="type" href="../index.html#Longitude">Longitude</a></span>
          Not required if a <code>base</code> is defined
         </li>
         <li><span class="parameter">base</span>
@@ -1560,7 +1581,7 @@ If both are given, then the GUID is used preferentially.
     <dd>
     Update unit sensor/mount/weapon selector. </p>
 
-<p> ... lists minimum fields required. Other fields from <a href="index.html#Unit">Unit</a> may be included.
+<p> ... lists minimum fields required. Other fields from <a href="../index.html#Unit">Unit</a> may be included.
  For the 'delta' mode, the function willl look for a matching GUID (or unit name if no GUID match) in the INI file.
 
     </ul>
@@ -1572,11 +1593,11 @@ If both are given, then the GUID is used preferentially.
         </li>
         <li><span class="parameter">mode</span>
             <span class="types"><span class="type">string</span></span>
-         The function to perform (add_ sensor,remove_ sensor,add_ mount,remove_ mount,add_ weapon,remove_ weapon,add_comms,remove_comms,delta)
+         The function to perform (add_ sensor,remove_ sensor,add_ mount,remove_ mount,add_ weapon,remove_ weapon,add<em>comms,remove</em>comms,delta)
         </li>
         <li><span class="parameter">dbid</span>
             <span class="types"><span class="type">number</span></span>
-         The database id of the item to add [required for 'add_' mode]. If used with 'remove_' mode, and no sensorid/mountid, the first matching DBID will be removed.
+         The database id of the item to add [required for 'add<em>' mode]. If used with 'remove</em>' mode, and no sensorid/mountid, the first matching DBID will be removed.
         </li>
         <li><span class="parameter">sensorid</span>
             <span class="types"><span class="type">string</span></span>
@@ -1624,7 +1645,7 @@ If both are given, then the GUID is used preferentially.
     <dd>
     Update unit cargo selector. </p>
 
-<p> ... lists minimum fields required. Other fields from <a href="index.html#Unit">Unit</a> may be included.
+<p> ... lists minimum fields required. Other fields from <a href="../index.html#Unit">Unit</a> may be included.
 
     </ul>
 
@@ -1638,7 +1659,7 @@ If both are given, then the GUID is used preferentially.
          The function to perform (add_ cargo,remove_ cargo)
         </li>
         <li><span class="parameter">cargoList</span>
-            <span class="types"><a class="type" href="index.html#Cargo">{ Cargo }</a></span>
+            <span class="types"><a class="type" href="../index.html#Cargo">{ Cargo }</a></span>
          List of cargo to update: table of {guids}, or { {number, DBID}}
         </li>
     </ul>
@@ -1847,11 +1868,11 @@ If both are given, then the GUID is used preferentially.
          The contact actual GUID. [READONLY]
         </li>
         <li><span class="parameter">latitude</span>
-            <span class="types"><a class="type" href="index.html#Latitude">Latitude</a></span>
+            <span class="types"><a class="type" href="../index.html#Latitude">Latitude</a></span>
          The latitude of the contact. [READONLY]
         </li>
         <li><span class="parameter">longitude</span>
-            <span class="types"><a class="type" href="index.html#Longitude">Longitude</a></span>
+            <span class="types"><a class="type" href="../index.html#Longitude">Longitude</a></span>
          The longitude of the contact. [READONLY]
         </li>
         <li><span class="parameter">speed</span>
@@ -1883,7 +1904,7 @@ If both are given, then the GUID is used preferentially.
          Type of contact. [READONLY]
         </li>
         <li><span class="parameter">areaofuncertainty</span>
-            <span class="types"><a class="type" href="index.html#LatLon">{ LatLon } </a></span>
+            <span class="types"><a class="type" href="../index.html#LatLon">{ LatLon } </a></span>
          Table of points defining the area of contact. [READONLY]
         </li>
         <li><span class="parameter">type_description</span>
@@ -1899,19 +1920,19 @@ If both are given, then the GUID is used preferentially.
          Contact classification. [READONLY]
         </li>
         <li><span class="parameter">potentialmatches</span>
-            <span class="types"><a class="type" href="index.html#EMmatch">{ EMmatch } </a></span>
+            <span class="types"><a class="type" href="../index.html#EMmatch">{ EMmatch } </a></span>
          Table {EMmatch} on potential EMCON emission matches. [READONLY]
         </li>
         <li><span class="parameter">side</span>
-            <span class="types"><a class="type" href="index.html#Side">Side</a></span>
+            <span class="types"><a class="type" href="../index.html#Side">Side</a></span>
          Contact's actual side. [READONLY]
         </li>
         <li><span class="parameter">fromside</span>
-            <span class="types"><a class="type" href="index.html#Side">Side</a></span>
+            <span class="types"><a class="type" href="../index.html#Side">Side</a></span>
          The side who sees this contact. [READONLY]
         </li>
         <li><span class="parameter">detectedBySide</span>
-            <span class="types"><a class="type" href="index.html#Side">Side</a></span>
+            <span class="types"><a class="type" href="../index.html#Side">Side</a></span>
          The side who originally saw this contact. Would be same as fromside unless shared [READONLY]
         </li>
         <li><span class="parameter">posture</span>
@@ -1923,7 +1944,7 @@ If both are given, then the GUID is used preferentially.
          True to filtered out contact
         </li>
         <li><span class="parameter">weather</span>
-            <span class="types"><a class="type" href="index.html#Weather">{ Weather } </a></span>
+            <span class="types"><a class="type" href="../index.html#Weather">{ Weather } </a></span>
          Table of weather parameters (temp, rainfall, underrain, seastate)
         </li>
         <li><span class="parameter">BDA</span>
@@ -1931,7 +1952,7 @@ If both are given, then the GUID is used preferentially.
          Table of battle damage assessment (fires, flood, structural)
         </li>
         <li><span class="parameter">emissions</span>
-            <span class="types"><a class="type" href="index.html#Emissions">{ Emissions } </a></span>
+            <span class="types"><a class="type" href="../index.html#Emissions">{ Emissions } </a></span>
          Table of detected emmissions from contact
         </li>
         <li><span class="parameter">detectionBy</span>
@@ -1973,7 +1994,7 @@ If both are given, then the GUID is used preferentially.
     Doctrine options. </p>
 
 
-<p>For each field, adding the suffix "_player_editable" determines if the player can alter the setting. Not applicable to the Withdraw/Deploy options.</p>
+<p>For each field, adding the suffix "<em>player</em>editable" determines if the player can alter the setting. Not applicable to the Withdraw/Deploy options.</p>
 
 <p> When setting the option, the indicated value or it's number can be used.
 
@@ -2010,7 +2031,7 @@ If both are given, then the GUID is used preferentially.
         </li>
         <li><span class="parameter">use_refuel_unrep</span>
             <span class="types"><span class="type">string</span></span>
-         Always_ExceptTankersRefuellingTankers(0), Never(1), Always_IncludingTankersRefuellingTankers(2)
+         Always<em>ExceptTankersRefuellingTankers(0), Never(1), Always</em>IncludingTankersRefuellingTankers(2)
         </li>
         <li><span class="parameter">engage_opportunity_targets</span>
             <span class="types"><span class="type">bool</span></span>
@@ -2054,7 +2075,7 @@ If both are given, then the GUID is used preferentially.
         </li>
         <li><span class="parameter">refuel_unrep_allied</span>
             <span class="types"><span class="type">string</span></span>
-         Yes(0), Yes_ReceiveOnly(1), Yes_DeliverOnly(2), No(3)
+         Yes(0), Yes<em>ReceiveOnly(1), Yes</em>DeliverOnly(2), No(3)
         </li>
         <li><span class="parameter">fuel_state_planned</span>
             <span class="types"><span class="type">string</span></span>
@@ -2065,7 +2086,7 @@ If both are given, then the GUID is used preferentially.
          No(0), YesLastUnit(1), YesFirstUnit(2), YesLeaveGroup(3)
         </li>
         <li><span class="parameter">weapon_state_planned</span>
-            <span class="types"><a class="type" href="index.html#WeaponDoctrine">WeaponDoctrine</a></span>
+            <span class="types"><a class="type" href="../index.html#WeaponDoctrine">WeaponDoctrine</a></span>
          See Weapon Doctrine table below
         </li>
         <li><span class="parameter">weapon_state_rtb</span>
@@ -2082,23 +2103,23 @@ If both are given, then the GUID is used preferentially.
         </li>
         <li><span class="parameter">avoid_contact</span>
             <span class="types"><span class="type">string</span></span>
-          No(0), Yes_ExceptSelfDefence(1), Yes_Always(2)
+          No(0), Yes<em>ExceptSelfDefence(1), Yes</em>Always(2)
         </li>
         <li><span class="parameter">dive_on_threat</span>
             <span class="types"><span class="type">string</span></span>
-         Yes(0), Yes_ESM_Only(1), Yes_Ships20nm_Aircraft30nm(2), No(3)
+         Yes(0), Yes<em>ESM</em>Only(1), Yes<em>Ships20nm</em>Aircraft30nm(2), No(3)
         </li>
         <li><span class="parameter">recharge_on_patrol</span>
             <span class="types"><span class="type">string</span></span>
-         Recharge_Empty(0), Recharge_10_Percent(10), Recharge_20_Percent(20), Recharge_30_Percent(30), Recharge_40_Percent(40), Recharge_50_Percent(50), Recharge_60_Percent(60), Recharge_70_Percent(70), Recharge_80_Percent(80), Recharge_90_Percent(90)
+         Recharge<em>Empty(0), Recharge</em>10<em>Percent(10), Recharge</em>20<em>Percent(20), Recharge</em>30<em>Percent(30), Recharge</em>40<em>Percent(40), Recharge</em>50<em>Percent(50), Recharge</em>60<em>Percent(60), Recharge</em>70<em>Percent(70), Recharge</em>80<em>Percent(80), Recharge</em>90_Percent(90)
         </li>
         <li><span class="parameter">recharge_on_attack</span>
             <span class="types"><span class="type">string</span></span>
-         Recharge_Empty(0), Recharge_10_Percent(10), Recharge_20_Percent(20), Recharge_30_Percent(30), Recharge_40_Percent(40), Recharge_50_Percent(50), Recharge_60_Percent(60), Recharge_70_Percent(70), Recharge_80_Percent(80), Recharge_90_Percent(90)
+         Recharge<em>Empty(0), Recharge</em>10<em>Percent(10), Recharge</em>20<em>Percent(20), Recharge</em>30<em>Percent(30), Recharge</em>40<em>Percent(40), Recharge</em>50<em>Percent(50), Recharge</em>60<em>Percent(60), Recharge</em>70<em>Percent(70), Recharge</em>80<em>Percent(80), Recharge</em>90_Percent(90)
         </li>
         <li><span class="parameter">use_aip</span>
             <span class="types"><span class="type">string</span></span>
-          No(0), Yes_AttackOnly(1), Yes_Always(2)
+          No(0), Yes<em>AttackOnly(1), Yes</em>Always(2)
         </li>
         <li><span class="parameter">dipping_sonar</span>
             <span class="types"><span class="type">string</span></span>
@@ -2166,7 +2187,7 @@ If both are given, then the GUID is used preferentially.
          Weapon name [info]
         </li>
         <li><span class="parameter">target_type</span>
-            <span class="types"><a class="type" href="index.html#TargetTypeWRA">TargetTypeWRA</a></span>
+            <span class="types"><a class="type" href="../index.html#TargetTypeWRA">TargetTypeWRA</a></span>
          Type of target [info]
         </li>
         <li><span class="parameter">level</span>
@@ -2174,8 +2195,8 @@ If both are given, then the GUID is used preferentially.
          The doctrine selected (at unit/mission/side) - useful Is just using GUIDs [info]
         </li>
         <li><span class="parameter">wra</span>
-            <span class="types"><a class="type" href="index.html#WRA">{ WRA }</a></span>
-         The WRA doctrine for a single weapon, or wra_# for each weapon against a specific target_type
+            <span class="types"><a class="type" href="../index.html#WRA">{ WRA }</a></span>
+         The WRA doctrine for a single weapon, or wra<em># for each weapon against a specific target</em>type
         </li>
     </ul>
 
@@ -2315,10 +2336,10 @@ If both are given, then the GUID is used preferentially.
         </li>
         <li><span class="parameter">roles</span>
             <span class="types"><span class="type">table</span></span>
-         Table of loadout usage {<a href="index.html#LoadoutRole">LoadoutRole</a>, <a href="index.html#LoadoutTimeOfDay">LoadoutTimeOfDay</a>, <a href="index.html#LoadoutWeather">LoadoutWeather</a>}
+         Table of loadout usage {<a href="../index.html#LoadoutRole">LoadoutRole</a>, <a href="../index.html#LoadoutTimeOfDay">LoadoutTimeOfDay</a>, <a href="../index.html#LoadoutWeather">LoadoutWeather</a>}
         </li>
         <li><span class="parameter">weapons</span>
-            <span class="types"><a class="type" href="index.html#WeaponLoaded">{ WeaponLoaded } </a></span>
+            <span class="types"><a class="type" href="../index.html#WeaponLoaded">{ WeaponLoaded } </a></span>
          Table of weapons in loadout
         </li>
     </ul>
@@ -2355,11 +2376,11 @@ If both are given, then the GUID is used preferentially.
          Mission belongs to side
         </li>
         <li><span class="parameter">starttime</span>
-            <span class="types"><a class="type" href="index.html#DateTime">DateTime</a></span>
+            <span class="types"><a class="type" href="../index.html#DateTime">DateTime</a></span>
          Time mission starts
         </li>
         <li><span class="parameter">endtime</span>
-            <span class="types"><a class="type" href="index.html#DateTime">DateTime</a></span>
+            <span class="types"><a class="type" href="../index.html#DateTime">DateTime</a></span>
          Time mission ends
         </li>
         <li><span class="parameter">type</span>
@@ -2383,35 +2404,35 @@ If both are given, then the GUID is used preferentially.
          A table of targets assigned to mission. [READONLY]
         </li>
         <li><span class="parameter">aar</span>
-            <span class="types"><a class="type" href="index.html#AAR">AAR</a></span>
+            <span class="types"><a class="type" href="../index.html#AAR">AAR</a></span>
          A table of the mission air-to-air refueling options. [READONLY]
         </li>
         <li><span class="parameter">ferrymission</span>
-            <span class="types"><a class="type" href="index.html#FerryMission">FerryMission</a></span>
+            <span class="types"><a class="type" href="../index.html#FerryMission">FerryMission</a></span>
          A table of the mission specific options. [READONLY]
         </li>
         <li><span class="parameter">mineclearmission</span>
-            <span class="types"><a class="type" href="index.html#MineClearMission">MineClearMission</a></span>
+            <span class="types"><a class="type" href="../index.html#MineClearMission">MineClearMission</a></span>
          A table of the mission specific options. [READONLY]
         </li>
         <li><span class="parameter">minemission</span>
-            <span class="types"><a class="type" href="index.html#MineMission">MineMission</a></span>
+            <span class="types"><a class="type" href="../index.html#MineMission">MineMission</a></span>
          A table of the mission specific options. [READONLY]
         </li>
         <li><span class="parameter">supportmission</span>
-            <span class="types"><a class="type" href="index.html#SupportMission">SupportMission</a></span>
+            <span class="types"><a class="type" href="../index.html#SupportMission">SupportMission</a></span>
          A table of the mission specific options. [READONLY]
         </li>
         <li><span class="parameter">patrolmission</span>
-            <span class="types"><a class="type" href="index.html#PatrolMission">PatrolMission</a></span>
+            <span class="types"><a class="type" href="../index.html#PatrolMission">PatrolMission</a></span>
          A table of the mission specific options. [READONLY]
         </li>
         <li><span class="parameter">strikemission</span>
-            <span class="types"><a class="type" href="index.html#StrikeMission">StrikeMission</a></span>
+            <span class="types"><a class="type" href="../index.html#StrikeMission">StrikeMission</a></span>
          A table of the mission specific options. [READONLY]
         </li>
         <li><span class="parameter">cargomission</span>
-            <span class="types"><a class="type" href="index.html#CargoMission">CargoMission</a></span>
+            <span class="types"><a class="type" href="../index.html#CargoMission">CargoMission</a></span>
          A table of the mission specific options. [READONLY]
         </li>
     </ul>
@@ -2444,11 +2465,11 @@ If both are given, then the GUID is used preferentially.
          The name of the reference point
         </li>
         <li><span class="parameter">latitude</span>
-            <span class="types"><a class="type" href="index.html#Latitude">Latitude</a></span>
+            <span class="types"><a class="type" href="../index.html#Latitude">Latitude</a></span>
          The latitude of the reference point
         </li>
         <li><span class="parameter">longitude</span>
-            <span class="types"><a class="type" href="index.html#Longitude">Longitude</a></span>
+            <span class="types"><a class="type" href="../index.html#Longitude">Longitude</a></span>
          The longitude of the reference point
         </li>
         <li><span class="parameter">highlighted</span>
@@ -2464,7 +2485,7 @@ If both are given, then the GUID is used preferentially.
          Type of bearing Fixed (0) or Rotating (1)
         </li>
         <li><span class="parameter">relativeto</span>
-            <span class="types"><a class="type" href="index.html#Unit">Unit</a></span>
+            <span class="types"><a class="type" href="../index.html#Unit">Unit</a></span>
          The unit that reference point is realtive to
         </li>
     </ul>
@@ -2485,7 +2506,7 @@ If both are given, then the GUID is used preferentially.
 
     <ul>
         <li><span class="parameter">unitSelector</span>
-            <span class="types"><a class="type" href="index.html#UnitSelector">UnitSelector</a></span>
+            <span class="types"><a class="type" href="../index.html#UnitSelector">UnitSelector</a></span>
          A normal unit selector defining the unit.
         </li>
         <li><span class="parameter">tanker</span>
@@ -2526,23 +2547,23 @@ If both are given, then the GUID is used preferentially.
          The name of the side.
         </li>
         <li><span class="parameter">units</span>
-            <span class="types"><a class="type" href="index.html#SideUnit">{ SideUnit } </a></span>
+            <span class="types"><a class="type" href="../index.html#SideUnit">{ SideUnit } </a></span>
          Table of units for the designated side. [READONLY]
         </li>
         <li><span class="parameter">contacts</span>
-            <span class="types"><a class="type" href="index.html#SideContact">{ SideContact } </a></span>
+            <span class="types"><a class="type" href="../index.html#SideContact">{ SideContact } </a></span>
          Table of current contacts for the designated side. [READONLY]
         </li>
         <li><span class="parameter">exclusionzones</span>
-            <span class="types"><a class="type" href="index.html#Zone">{ Zone } </a></span>
+            <span class="types"><a class="type" href="../index.html#Zone">{ Zone } </a></span>
          Zones for the designated side [READONLY]
         </li>
         <li><span class="parameter">nonavzones</span>
-            <span class="types"><a class="type" href="index.html#Zone">{ Zone } </a></span>
+            <span class="types"><a class="type" href="../index.html#Zone">{ Zone } </a></span>
           Zones for the designated side [READONLY]
         </li>
         <li><span class="parameter">rps</span>
-            <span class="types"><a class="type" href="index.html#Zone">{ Zone } </a></span>
+            <span class="types"><a class="type" href="../index.html#Zone">{ Zone } </a></span>
           RPs for the designated side [READONLY]
         </li>
         <li><span class="parameter">awareness</span>
@@ -2553,13 +2574,17 @@ If both are given, then the GUID is used preferentially.
             <span class="types"><span class="type">Proficiency</span></span>
          [READONLY]
         </li>
+        <li><span class="parameter">hasmines</span>
+            <span class="types"><span class="type">booleany</span></span>
+         [READONLY]
+        </li>
         <li><span class="parameter">getexclusionzone</span>
             <span class="types"><span class="type">method</span></span>
-        (<code>ZoneGUID|ZoneName|ZoneDescription</code>) Returns matching <a href="index.html#Zone">Zone</a> or nil
+        (<code>ZoneGUID|ZoneName|ZoneDescription</code>) Returns matching <a href="../index.html#Zone">Zone</a> or nil
         </li>
         <li><span class="parameter">getnonavzone</span>
             <span class="types"><span class="type">method</span></span>
-        (<code>ZoneGUID|ZoneName|ZoneDescription</code>) Returns matching <a href="index.html#Zone">Zone</a> or nil
+        (<code>ZoneGUID|ZoneName|ZoneDescription</code>) Returns matching <a href="../index.html#Zone">Zone</a> or nil
         </li>
         <li><span class="parameter">unitsBy</span>
             <span class="types"><span class="type">method </span></span>
@@ -2607,15 +2632,15 @@ If both are given, then the GUID is used preferentially.
           The unit's subtype (if applicable). [READONLY]
         </li>
         <li><span class="parameter">base</span>
-            <span class="types"><a class="type" href="index.html#Unit">Unit</a></span>
+            <span class="types"><a class="type" href="../index.html#Unit">Unit</a></span>
           The unit's assigned base.
         </li>
         <li><span class="parameter">latitude</span>
-            <span class="types"><a class="type" href="index.html#Latitude">Latitude</a></span>
+            <span class="types"><a class="type" href="../index.html#Latitude">Latitude</a></span>
          The latitude of the unit.
         </li>
         <li><span class="parameter">longitude</span>
-            <span class="types"><a class="type" href="index.html#Longitude">Longitude</a></span>
+            <span class="types"><a class="type" href="../index.html#Longitude">Longitude</a></span>
          The longitude of the unit .
         </li>
         <li><span class="parameter">DBID</span>
@@ -2663,19 +2688,19 @@ If both are given, then the GUID is used preferentially.
          The unit's course, as a table of waypoints
         </li>
         <li><span class="parameter">fuel</span>
-            <span class="types"><a class="type" href="index.html#Fuel">{ Fuel } </a></span>
+            <span class="types"><a class="type" href="../index.html#Fuel">{ Fuel } </a></span>
          A table of fuel types used by unit.
         </li>
         <li><span class="parameter">fuels</span>
-            <span class="types"><a class="type" href="index.html#Fuel">{ Fuel } </a></span>
+            <span class="types"><a class="type" href="../index.html#Fuel">{ Fuel } </a></span>
          A table of fuel types in tanks used by unit.
         </li>
         <li><span class="parameter">mission</span>
-            <span class="types"><a class="type" href="index.html#Mission">Mission</a></span>
+            <span class="types"><a class="type" href="../index.html#Mission">Mission</a></span>
          The unit's assigned mission. Can be changed by setting to the Mission name or guid (calls ScenEdit_AssignUnitToMission)
         </li>
         <li><span class="parameter">group</span>
-            <span class="types"><a class="type" href="index.html#Group">Group</a></span>
+            <span class="types"><a class="type" href="../index.html#Group">Group</a></span>
          The unit's group (if applicable). Can be changed assigning an existing or new name. It will try to create a group if new (experimental)
         </li>
         <li><span class="parameter">airbornetime</span>
@@ -2727,15 +2752,15 @@ If both are given, then the GUID is used preferentially.
           Table {dp,flood,fires,startDp} of start and current DP, flood and fire level. [READONLY]
         </li>
         <li><span class="parameter">magazines</span>
-            <span class="types"><a class="type" href="index.html#Magazine">{ Magazine } </a></span>
-          A table of magazines (with weapon loads) in the unit or group. Can be updated by <a href="index.html#ScenEdit_AddWeaponToUnitMagazine">ScenEdit_AddWeaponToUnitMagazine</a> [READONLY]
+            <span class="types"><a class="type" href="../index.html#Magazine">{ Magazine } </a></span>
+          A table of magazines (with weapon loads) in the unit or group. Can be updated by <a href="../index.html#ScenEdit_AddWeaponToUnitMagazine">ScenEdit_AddWeaponToUnitMagazine</a> [READONLY]
         </li>
         <li><span class="parameter">mounts</span>
-            <span class="types"><a class="type" href="index.html#Mount">{ Mount } </a></span>
-          A table of mounts (with weapon loads) in the unit or group. Can be updated by <a href="index.html#ScenEdit_AddReloadsToUnit">ScenEdit_AddReloadsToUnit</a> [READONLY]
+            <span class="types"><a class="type" href="../index.html#Mount">{ Mount } </a></span>
+          A table of mounts (with weapon loads) in the unit or group. Can be updated by <a href="../index.html#ScenEdit_AddReloadsToUnit">ScenEdit_AddReloadsToUnit</a> [READONLY]
         </li>
         <li><span class="parameter">components</span>
-            <span class="types"><a class="type" href="index.html#Component">{ Component } </a></span>
+            <span class="types"><a class="type" href="../index.html#Component">{ Component } </a></span>
           A table of components on the unit.  [READONLY]
         </li>
         <li><span class="parameter">ascontact</span>
@@ -2743,7 +2768,7 @@ If both are given, then the GUID is used preferentially.
           A table {side,guid,name} of this unit seen from the other sides (as contacts).  [READONLY]
         </li>
         <li><span class="parameter">weather</span>
-            <span class="types"><a class="type" href="index.html#Weather">{ Weather } </a></span>
+            <span class="types"><a class="type" href="../index.html#Weather">{ Weather } </a></span>
          Table of weather parameters (temp, rainfall, underrain, seastate)
         </li>
         <li><span class="parameter">areaTriggersFired</span>
@@ -2796,18 +2821,18 @@ If both are given, then the GUID is used preferentially.
         </li>
         <li><span class="parameter">filterOnComponent</span>
             <span class="types"><span class="type">method</span></span>
-        (<code>type</code>) Filters unit on <code>type</code> of component and returns a <a href="index.html#Component">Component</a> table.
+        (<code>type</code>) Filters unit on <code>type</code> of component and returns a <a href="../index.html#Component">Component</a> table.
         </li>
         <li><span class="parameter">rangetotarget</span>
             <span class="types"><span class="type">method</span></span>
         ('contactid') Calculate flat distance to a contact location
         </li>
         <li><span class="parameter">hostFacility</span>
-            <span class="types"><a class="type" href="index.html#Facility">{ Facility } </a></span>
+            <span class="types"><a class="type" href="../index.html#Facility">{ Facility } </a></span>
          Where unit is hosted
         </li>
         <li><span class="parameter">cargo</span>
-            <span class="types"><a class="type" href="index.html#Cargo">{ Cargo } </a></span>
+            <span class="types"><a class="type" href="../index.html#Cargo">{ Cargo } </a></span>
          Unit cargo information
         </li>
         <li><span class="parameter">RTB</span>
@@ -2820,7 +2845,15 @@ If both are given, then the GUID is used preferentially.
         </li>
         <li><span class="parameter">outOfComms</span>
             <span class="types"><span class="type">bool</span></span>
-         is unit connected to side comms network (false = connected)   [READONLY]</p>
+         is unit connected to side comms network (false = connected)   [READONLY]
+        </li>
+        <li><span class="parameter">AI_EvaluateTargets_enabled</span>
+            <span class="types"><span class="type">bool</span></span>
+         AI evaluates targets
+        </li>
+        <li><span class="parameter">AI_DeterminePrimaryTarget_enabled</span>
+            <span class="types"><span class="type">bool</span></span>
+         AI determines primary target</p>
 
 <p> ScenEdit only
         </li>
@@ -2878,7 +2911,7 @@ If both are given, then the GUID is used preferentially.
          Zone is currently active.
         </li>
         <li><span class="parameter">area</span>
-            <span class="types"><a class="type" href="index.html#ZoneMarker">{ ZoneMarker }</a></span>
+            <span class="types"><a class="type" href="../index.html#ZoneMarker">{ ZoneMarker }</a></span>
          A set of reference points marking the zone. Can be updated by a list of RPs, or a table of new RP values.
         </li>
         <li><span class="parameter">affects</span>
@@ -3026,32 +3059,32 @@ Key/value pairs added to the persistent store is retained when the game is saved
     </dt>
     <dd>
      None = 1001
- Intercept_BVR = 2001
- Intercept_WVR = 2002
- AirSuperiority_BVR = 2003
- AirSuperiority_WVR = 2004
- PointDefence_BVR = 2005
- PointDefence_WVR = 2006
+ Intercept<em>BVR = 2001
+ Intercept</em>WVR = 2002
+ AirSuperiority<em>BVR = 2003
+ AirSuperiority</em>WVR = 2004
+ PointDefence<em>BVR = 2005
+ PointDefence</em>WVR = 2006
  GunsOnly = 2007
- AntiSatellite_Intercept = 2101
+ AntiSatellite<em>Intercept = 2101
  AirborneLaser = 2102
- LandNaval_Strike = 3001
- LandNaval_Standoff = 3002
- LandNaval_SEAD_ARM = 3003
- LandNaval_SEAD_TALD = 3004
- LandNaval_DEAD = 3005
- LandOnly_Strike = 3101
- LandOnly_Standoff = 3102
- LandOnly_SEAD_ARM = 3103
- LandOnly_SEAD_TALD = 3104
- LandOnly_DEAD = 3105
- NavalOnly_Strike = 3201
- NavalOnly_Standoff = 3202
- NavalOnly_SEAD_ARM = 3203
- NavalOnly_SEAD_TALD = 3204
- NavalOnly_DEAD = 3205
- BAI_CAS = 3401
- Buddy_Illumination = 3501
+ LandNaval</em>Strike = 3001
+ LandNaval<em>Standoff = 3002
+ LandNaval</em>SEAD<em>ARM = 3003
+ LandNaval</em>SEAD<em>TALD = 3004
+ LandNaval</em>DEAD = 3005
+ LandOnly<em>Strike = 3101
+ LandOnly</em>Standoff = 3102
+ LandOnly<em>SEAD</em>ARM = 3103
+ LandOnly<em>SEAD</em>TALD = 3104
+ LandOnly<em>DEAD = 3105
+ NavalOnly</em>Strike = 3201
+ NavalOnly<em>Standoff = 3202
+ NavalOnly</em>SEAD<em>ARM = 3203
+ NavalOnly</em>SEAD<em>TALD = 3204
+ NavalOnly</em>DEAD = 3205
+ BAI<em>CAS = 3401
+ Buddy</em>Illumination = 3501
  OECM = 4001
  AEW = 4002
  CommandPost = 4003
@@ -3061,15 +3094,15 @@ Key/value pairs added to the persistent store is retained when the game is saved
  MineSweeping = 4201
  MineRecon = 4202
  NavalMineLaying = 4301
- ASW_Patrol = 6001
- ASW_Attack = 6002
- Forward_Observer = 7001
- Area_Surveillance = 7002
- Armed_Recon = 7003
- Unarmed_Recon = 7004
- Maritime_Surveillance = 7005
+ ASW<em>Patrol = 6001
+ ASW</em>Attack = 6002
+ Forward<em>Observer = 7001
+ Area</em>Surveillance = 7002
+ Armed<em>Recon = 7003
+ Unarmed</em>Recon = 7004
+ Maritime<em>Surveillance = 7005
  Paratroopers = 7101
- Troop_Transport = 7102
+ Troop</em>Transport = 7102
  Cargo = 7201
  AirRefueling = 8001
  Training = 8101
@@ -3500,12 +3533,12 @@ Key/value pairs added to the persistent store is retained when the game is saved
 1. Get an object wrapper (eg unit = ScenEdit_GetUnit())<br>
 2. List the properties ( eg print(unit.fields) )<br>
 3. Properties consists of (a) name, (b) type of property, and (c) if you set a value for it (eg unit fields =
-{ property_29 = '.damage , LuaTable , False',
-property_19 = '.dbid , Int32 , False',
-method_1 = ':delete , System.Void',
-property_28 = '.loadoutdbid , Object , False',
-method_2 = ':inArea , System.Boolean,
-property_9 = '.course , LuaTable , True' ...<br>
+{ property<em>29 = '.damage , LuaTable , False',
+property</em>19 = '.dbid , Int32 , False',
+method<em>1 = ':delete , System.Void',
+property</em>28 = '.loadoutdbid , Object , False',
+method<em>2 = ':inArea , System.Boolean,
+property</em>9 = '.course , LuaTable , True' ...<br>
 -> property_29 : unit.damage is a Lua table and you can't set a value as in unit.damage = {}<br>
 -> property_19 : unit.dbid is a number and you can't set a value as in unit.dbid = 12<br>
 -> property_28 : unit.loadoutdbid is a generic object and you can't set a value as in unit.loadoutdbid = 1234<br>
@@ -3579,7 +3612,7 @@ property_9 = '.course , LuaTable , True' ...<br>
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">explosion</span>
-            <span class="types"><a class="type" href="index.html#Explosion">Explosion</a></span>
+            <span class="types"><a class="type" href="../index.html#Explosion">Explosion</a></span>
          Describes the explosion.
         </li>
     </ul>
@@ -3590,6 +3623,54 @@ property_9 = '.course , LuaTable , True' ...<br>
     <h3>Usage:</h3>
     <ul>
         <pre class="example">ScenEdit_AddExplosion ({warheadid=<span class="number">253</span>, lat=unit.latitude, lon=unit.longitude, altitude=unit.altitude})</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_AddMinefield"></a>
+    <strong>ScenEdit_AddMinefield (side, dbid, number, delay, area)</strong>
+    </dt>
+    <dd>
+    attempt to lay a minefield
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">side</span>
+            <span class="types"><span class="type">string}</span></span>
+         Side name or guid
+        </li>
+        <li><span class="parameter">dbid</span>
+            <span class="types"><span class="type">integer</span></span>
+         The database id of the mine to use
+        </li>
+        <li><span class="parameter">number</span>
+            <span class="types"><span class="type">integer</span></span>
+         The number to try to lay
+        </li>
+        <li><span class="parameter">delay</span>
+            <span class="types"><span class="type">integer</span></span>
+         The arming delay in seconds
+        </li>
+        <li><span class="parameter">area</span>
+            <span class="types"><span class="type">table</span></span>
+         The area (as table of RP points) to lay mines in
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">integer</span></span>
+        number of mines laid
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> a = ScenEdit_AddMinefield({side=<span class="string">'Blue'</span>, dbid=<span class="number">2345</span>, number=<span class="number">100</span>, delay=<span class="number">60000</span>, area={<span class="string">'rp-1'</span>,<span class="string">'rp-2'</span>, <span class="string">'rp-3'</span>, <span class="string">'rp-4'</span>} } )</pre>
     </ul>
 
 </dd>
@@ -3617,7 +3698,7 @@ property_9 = '.course , LuaTable , True' ...<br>
          The mission type (Strike, Ferry, Patrol, etc)
         </li>
         <li><span class="parameter">MissionOptions</span>
-            <span class="types"><a class="type" href="index.html#NewMission">NewMission</a></span>
+            <span class="types"><a class="type" href="../index.html#NewMission">NewMission</a></span>
          The mission specific options as a table
         </li>
     </ul>
@@ -3625,7 +3706,7 @@ property_9 = '.course , LuaTable , True' ...<br>
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="index.html#Mission">Mission</a></span>
+           <span class="types"><a class="type" href="../index.html#Mission">Mission</a></span>
         A mission descriptor of the added mission or nil otherwise.
     </ol>
 
@@ -3656,7 +3737,7 @@ Points can also be relative to a unit based on bearing and distence. This applie
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">descriptor</span>
-            <span class="types"><a class="type" href="index.html#ReferencePointSelector">ReferencePointSelector</a> or <a class="type" href="index.html#ReferencePoint">{ReferencePoint}</a></span>
+            <span class="types"><a class="type" href="../index.html#ReferencePointSelector">ReferencePointSelector</a> or <a class="type" href="../index.html#ReferencePoint">{ReferencePoint}</a></span>
          The reference point details to be created.
 Field 'area' can be <br>(a) Table of reference points {name, longitude, latitude} if 'RelativeTo' not used, or <br>
 (b) table of reference points {name, bearing, distance} if 'RelativeTo' used.<br>
@@ -3667,7 +3748,7 @@ Leaving out name will default it to noraml 'RP-..'
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="index.html#ReferencePoint">ReferencePoint</a></span>
+           <span class="types"><a class="type" href="../index.html#ReferencePoint">ReferencePoint</a></span>
         The reference point wrapper for the new reference point, or the first one in an area.
     </ol>
 
@@ -3692,7 +3773,7 @@ Leaving out name will default it to noraml 'RP-..'
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">descriptor</span>
-            <span class="types"><a class="type" href="index.html#Weapon2Mount">Weapon2Mount</a></span>
+            <span class="types"><a class="type" href="../index.html#Weapon2Mount">Weapon2Mount</a></span>
          Describes the weapon and mount to update
         </li>
     </ul>
@@ -3733,7 +3814,7 @@ Leaving out name will default it to noraml 'RP-..'
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="index.html#Side">Side</a></span>
+           <span class="types"><a class="type" href="../index.html#Side">Side</a></span>
 
 
 
@@ -3755,7 +3836,7 @@ Leaving out name will default it to noraml 'RP-..'
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">unit</span>
-            <span class="types"><a class="type" href="index.html#NewUnit">NewUnit</a></span>
+            <span class="types"><a class="type" href="../index.html#NewUnit">NewUnit</a></span>
          The unit details to add
         </li>
     </ul>
@@ -3763,7 +3844,7 @@ Leaving out name will default it to noraml 'RP-..'
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="index.html#Unit">Unit</a></span>
+           <span class="types"><a class="type" href="../index.html#Unit">Unit</a></span>
         A complete descriptor for the added unit
     </ol>
 
@@ -3790,7 +3871,7 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">descriptor</span>
-            <span class="types"><a class="type" href="index.html#Weapon2Magazine">Weapon2Magazine</a></span>
+            <span class="types"><a class="type" href="../index.html#Weapon2Magazine">Weapon2Magazine</a></span>
          Describes the weapon and magazine to update
         </li>
     </ul>
@@ -3840,7 +3921,7 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="index.html#Zone">{ Zone } </a></span>
+           <span class="types"><a class="type" href="../index.html#Zone">{ Zone } </a></span>
 
 
 
@@ -3955,7 +4036,7 @@ The 'UnitX' can be used as the unit descriptor
          The contact being attacked as GUID or Name (GUID is better as the name can change as its classification changes)
         </li>
         <li><span class="parameter">options</span>
-            <span class="types"><a class="type" href="index.html#AttackOptions">{ AttackOptions }</a></span>
+            <span class="types"><a class="type" href="../index.html#AttackOptions">{ AttackOptions }</a></span>
          Contains type of attack and weapon allocation if required)
         </li>
     </ul>
@@ -4047,7 +4128,7 @@ The 'UnitX' can be used as the unit descriptor
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="index.html#TimeStamp">TimeStamp</a></span>
+           <span class="types"><a class="type" href="../index.html#TimeStamp">TimeStamp</a></span>
         The UTC Unix timestamp of the current time in-game.
     </ol>
 
@@ -4061,6 +4142,78 @@ The 'UnitX' can be used as the unit descriptor
 <span class="comment">-- been more than 5 minutes, set the lastTriggered time to now
 </span> timeFromLastTiggered = now
 <span class="keyword">end</span></pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_DeleteMine"></a>
+    <strong>ScenEdit_DeleteMine (side, guid)</strong>
+    </dt>
+    <dd>
+    delete a mine
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">side</span>
+            <span class="types"><span class="type">string}</span></span>
+         Side name or guid
+        </li>
+        <li><span class="parameter">guid</span>
+            <span class="types"><span class="type">string}</span></span>
+         Mine guid
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        true/false
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> a = ScenEdit_DeleteMine({side=<span class="string">'Blue'</span>, guid=<span class="string">'cccccccc'</span>} )</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_DeleteMinefield"></a>
+    <strong>ScenEdit_DeleteMinefield (side, area)</strong>
+    </dt>
+    <dd>
+    delete a minefield
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">side</span>
+            <span class="types"><span class="type">string}</span></span>
+         Side name or guid
+        </li>
+        <li><span class="parameter">area</span>
+            <span class="types"><span class="type">table</span></span>
+         The area (as table of RP points) to lay mines in
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">number</span></span>
+        mines removed
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> a = ScenEdit_DeleteMinefield({side=<span class="string">'Blue'</span>, area={<span class="string">'rp-1'</span>,<span class="string">'rp-2'</span>, <span class="string">'rp-3'</span>, <span class="string">'rp-4'</span>} } )</pre>
     </ul>
 
 </dd>
@@ -4115,7 +4268,7 @@ The 'UnitX' can be used as the unit descriptor
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">selector</span>
-            <span class="types"><a class="type" href="index.html#ReferencePointSelector">ReferencePointSelector</a></span>
+            <span class="types"><a class="type" href="../index.html#ReferencePointSelector">ReferencePointSelector</a></span>
          The reference point to delete.
         </li>
     </ul>
@@ -4198,7 +4351,7 @@ Otherwise, a nil is returned.</p>
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="index.html#Event">Event</a></span>
+           <span class="types"><a class="type" href="../index.html#Event">Event</a></span>
         The triggering event
     </ol>
 
@@ -4377,7 +4530,7 @@ Otherwise, a nil is returned.</p>
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">unit</span>
-            <span class="types"><a class="type" href="index.html#UnitSelector">UnitSelector</a></span>
+            <span class="types"><a class="type" href="../index.html#UnitSelector">UnitSelector</a></span>
          The unit to select (name or GUID)
         </li>
         <li><span class="parameter">loadoutid</span>
@@ -4411,14 +4564,14 @@ Otherwise, a nil is returned.</p>
     <dd>
     Fetches a contact based on a selector. </p>
 
-<p>This function is mostly identical to <a href="index.html#ScenEdit_GetUnit">ScenEdit_GetUnit</a> except that if references contacts on a side,
+<p>This function is mostly identical to <a href="../index.html#ScenEdit_GetUnit">ScenEdit_GetUnit</a> except that if references contacts on a side,
 
     </ul>
 
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">contact</span>
-            <span class="types"><a class="type" href="index.html#ContactSelector">ContactSelector</a></span>
+            <span class="types"><a class="type" href="../index.html#ContactSelector">ContactSelector</a></span>
          The contact to select. Must be defined by a side and contact GUID for that side.
         </li>
     </ul>
@@ -4426,7 +4579,7 @@ Otherwise, a nil is returned.</p>
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="index.html#Contact">Contact</a></span>
+           <span class="types"><a class="type" href="../index.html#Contact">Contact</a></span>
         A contact descriptor if it or nil otherwise.
     </ol>
 
@@ -4484,7 +4637,7 @@ Otherwise, a nil is returned.</p>
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">selector</span>
-            <span class="types"><a class="type" href="index.html#DoctrineSelector">DoctrineSelector</a></span>
+            <span class="types"><a class="type" href="../index.html#DoctrineSelector">DoctrineSelector</a></span>
          The selector for the object to look up
         </li>
     </ul>
@@ -4492,7 +4645,7 @@ Otherwise, a nil is returned.</p>
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="index.html#Doctrine">Doctrine</a></span>
+           <span class="types"><a class="type" href="../index.html#Doctrine">Doctrine</a></span>
         The doctrine of the selected object
     </ol>
 
@@ -4519,7 +4672,7 @@ Nothing returned Or empty values means that the weapon Is Not For the target typ
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">selector</span>
-            <span class="types"><a class="type" href="index.html#DoctrineWRASelector">DoctrineWRASelector</a></span>
+            <span class="types"><a class="type" href="../index.html#DoctrineWRASelector">DoctrineWRASelector</a></span>
          The selector for the object to look up
         </li>
     </ul>
@@ -4527,7 +4680,7 @@ Nothing returned Or empty values means that the weapon Is Not For the target typ
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="index.html#DoctrineWRA">DoctrineWRA</a></span>
+           <span class="types"><a class="type" href="../index.html#DoctrineWRA">DoctrineWRA</a></span>
         The WRA doctrine of the selected object
     </ol>
 
@@ -4564,7 +4717,7 @@ Nothing returned Or empty values means that the weapon Is Not For the target typ
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="index.html#Event">Event</a></span>
+           <span class="types"><a class="type" href="../index.html#Event">Event</a></span>
         The event details
     </ol>
 
@@ -4592,7 +4745,7 @@ Nothing returned Or empty values means that the weapon Is Not For the target typ
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="index.html#Event"> { Event} </a></span>
+           <span class="types"><a class="type" href="../index.html#Event"> { Event} </a></span>
         Table of event details
     </ol>
 
@@ -4607,7 +4760,7 @@ Nothing returned Or empty values means that the weapon Is Not For the target typ
     <dd>
     Gets the value for a key from the persistent key store. </p>
 
-<p>This function retrieves a value put into the store by <a href="index.html#ScenEdit_SetKeyValue">ScenEdit_SetKeyValue</a>. The keys must be identical.
+<p>This function retrieves a value put into the store by <a href="../index.html#ScenEdit_SetKeyValue">ScenEdit_SetKeyValue</a>. The keys must be identical.
 
     </ul>
 
@@ -4651,7 +4804,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>) <span class="comment">-- r
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">loadoutinfo</span>
-            <span class="types"><a class="type" href="index.html#LoadoutInfo">LoadoutInfo</a></span>
+            <span class="types"><a class="type" href="../index.html#LoadoutInfo">LoadoutInfo</a></span>
          The loadout information to apply
         </li>
     </ul>
@@ -4659,12 +4812,48 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>) <span class="comment">-- r
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="index.html#Loadout">Loadout</a></span>
+           <span class="types"><a class="type" href="../index.html#Loadout">Loadout</a></span>
         Loadout wrapper
     </ol>
 
 
 
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_GetMinefield"></a>
+    <strong>ScenEdit_GetMinefield (side, area)</strong>
+    </dt>
+    <dd>
+    get a minefield
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">side</span>
+            <span class="types"><span class="type">string}</span></span>
+         Side name or guid
+        </li>
+        <li><span class="parameter">area</span>
+            <span class="types"><span class="type">table</span></span>
+         The area (as table of RP points) to lay mines in
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">table</span></span>
+        table of mines in the area
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> a = ScenEdit_GetMinefield({side=<span class="string">'Blue'</span>, area={<span class="string">'rp-1'</span>,<span class="string">'rp-2'</span>, <span class="string">'rp-3'</span>, <span class="string">'rp-4'</span>} } )</pre>
+    </ul>
 
 </dd>
     <dt>
@@ -4691,7 +4880,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>) <span class="comment">-- r
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="index.html#Mission">Mission</a></span>
+           <span class="types"><a class="type" href="../index.html#Mission">Mission</a></span>
         A mission descriptor if the mission exists or nil otherwise.
     </ol>
 
@@ -4717,7 +4906,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>) <span class="comment">-- r
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">selector</span>
-            <span class="types"><a class="type" href="index.html#ReferencePointSelector">ReferencePointSelector</a></span>
+            <span class="types"><a class="type" href="../index.html#ReferencePointSelector">ReferencePointSelector</a></span>
 
 
 
@@ -4727,7 +4916,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>) <span class="comment">-- r
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="index.html#ReferencePoint">{ReferencePoint}</a></span>
+           <span class="types"><a class="type" href="../index.html#ReferencePoint">{ReferencePoint}</a></span>
         The table of reference point descriptors for the selector
     </ol>
 
@@ -4837,7 +5026,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>) <span class="comment">-- r
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">options</span>
-            <span class="types"><a class="type" href="index.html#SideSelector">SideSelector</a></span>
+            <span class="types"><a class="type" href="../index.html#SideSelector">SideSelector</a></span>
 
 
 
@@ -4847,7 +5036,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>) <span class="comment">-- r
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="index.html#SideOption">{ SideOption }</a></span>
+           <span class="types"><a class="type" href="../index.html#SideOption">{ SideOption }</a></span>
         The side options
     </ol>
 
@@ -4902,7 +5091,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>) <span class="comment">-- r
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">action_info</span>
-            <span class="types"><a class="type" href="index.html#SpecialAction">SpecialAction</a></span>
+            <span class="types"><a class="type" href="../index.html#SpecialAction">SpecialAction</a></span>
          The special action to retrieve
         </li>
     </ul>
@@ -4952,7 +5141,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>) <span class="comment">-- r
     <dd>
     Fetches a unit based on a selector. </p>
 
-<p>This function is mostly identical to <a href="index.html#ScenEdit_SetUnit">ScenEdit_SetUnit</a> except that if no unit is selected by the selector portion of <code>unit</code>,
+<p>This function is mostly identical to <a href="../index.html#ScenEdit_SetUnit">ScenEdit_SetUnit</a> except that if no unit is selected by the selector portion of <code>unit</code>,
 then the function returns nil instead of producing an exception.
 
     </ul>
@@ -4960,7 +5149,7 @@ then the function returns nil instead of producing an exception.
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">unit</span>
-            <span class="types"><a class="type" href="index.html#UnitSelector">UnitSelector</a></span>
+            <span class="types"><a class="type" href="../index.html#UnitSelector">UnitSelector</a></span>
          The unit to select.
         </li>
     </ul>
@@ -4968,7 +5157,7 @@ then the function returns nil instead of producing an exception.
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="index.html#Unit">Unit</a></span>
+           <span class="types"><a class="type" href="../index.html#Unit">Unit</a></span>
         A complete unit descriptor if the unit exists or nil otherwise.
     </ol>
 
@@ -5019,7 +5208,7 @@ then the function returns nil instead of producing an exception.
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">host_info</span>
-            <span class="types"><a class="type" href="index.html#HostUnit">HostUnit</a></span>
+            <span class="types"><a class="type" href="../index.html#HostUnit">HostUnit</a></span>
          The information about the hosting request
         </li>
     </ul>
@@ -5181,72 +5370,6 @@ then the function returns nil instead of producing an exception.
 
 </dd>
     <dt>
-    <a name = "ScenEdit_PlaySound"></a>
-    <strong>ScenEdit_LocalSound (string, delay)</strong>
-    </dt>
-    <dd>
-    Play a sound file.
-
-    </ul>
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">string</span>
-            <span class="types"><span class="type">string</span></span>
-         The name of the file. Assumed to be in the Sounds\Effects folder
-        </li>
-         <li><span class="parameter">delay</span>
-            <span class="types"><span class="type">number</span></span>
-         Delay to playing
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-        bool False if it can't find the file
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "ScenEdit_PlayVideo"></a>
-    <strong>ScenEdit_LocalVideo (string, fullscreen, delay)</strong>
-    </dt>
-    <dd>
-    Play a video file.
-
-    </ul>
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">string</span>
-            <span class="types"><span class="type">string</span></span>
-         The name of the file. Assumed to be in the Video folder
-        </li>
-        <li><span class="parameter">fullscreen</span>
-            <span class="types"><span class="type">boolean</span></span>
-         Shown in full screen
-        </li>
-        <li><span class="parameter">delay</span>
-            <span class="types"><span class="type">number</span></span>
-         Delay to playing
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-        string "N" if it can't find the file
-    </ol>
-
-
-
-
-</dd>
-    <dt>
     <a name = "ScenEdit_MsgBox"></a>
     <strong>ScenEdit_MsgBox (string, style)</strong>
     </dt>
@@ -5285,6 +5408,72 @@ then the function returns nil instead of producing an exception.
 
 </dd>
     <dt>
+    <a name = "ScenEdit_PlaySound"></a>
+    <strong>ScenEdit_PlaySound (string, delay)</strong>
+    </dt>
+    <dd>
+    Play a sound file.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">string</span>
+            <span class="types"><span class="type">string</span></span>
+         The name of the file. Assumed to be in the Sounds\Effects folder
+        </li>
+        <li><span class="parameter">delay</span>
+            <span class="types"><span class="type">number</span></span>
+         Delay to playing
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        bool False if it can't find the file
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_PlayVideo"></a>
+    <strong>ScenEdit_PlayVideo (string, fullscreen, delay)</strong>
+    </dt>
+    <dd>
+    Play a video file.
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">string</span>
+            <span class="types"><span class="type">string</span></span>
+         The name of the file. Assumed to be in the Video folder
+        </li>
+        <li><span class="parameter">fullscreen</span>
+            <span class="types"><span class="type">boolean</span></span>
+         Shown in full screen
+        </li>
+        <li><span class="parameter">delay</span>
+            <span class="types"><span class="type">number</span></span>
+         Delay to showing
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        string "N" if it can't find the file
+    </ol>
+
+
+
+
+</dd>
+    <dt>
     <a name = "ScenEdit_PlayerSide"></a>
     <strong>ScenEdit_PlayerSide ()</strong>
     </dt>
@@ -5311,18 +5500,23 @@ then the function returns nil instead of producing an exception.
 </dd>
     <dt>
     <a name = "ScenEdit_QueryDB"></a>
-    <strong>ScenEdit_QueryDB (type)</strong>
+    <strong>ScenEdit_QueryDB (objectType, DBID)</strong>
     </dt>
     <dd>
     Query database
+ use the wrapper<em>object</em>variable.fields to see what can be returned
 
     </ul>
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">type</span>
+        <li><span class="parameter">objectType</span>
+            <span class="types"><span class="type">string</span></span>
+         The type of item to query; 'weapon', 'mount', 'sensor'
+        </li>
+        <li><span class="parameter">DBID</span>
             <span class="types"><span class="type">integer</span></span>
-         The type of item to query; 1=weapon, 2=mount, 3=sensor
+         The databse id of item to query
         </li>
     </ul>
 
@@ -5335,6 +5529,10 @@ then the function returns nil instead of producing an exception.
 
 
 
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> a = ScenEdit_QueryDB(<span class="string">'weapon'</span>,<span class="number">1398</span>)</pre>
+    </ul>
 
 </dd>
     <dt>
@@ -5351,7 +5549,7 @@ then the function returns nil instead of producing an exception.
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">unitOptions</span>
-            <span class="types"><a class="type" href="index.html#RefuelOptions">RefuelOptions</a></span>
+            <span class="types"><a class="type" href="../index.html#RefuelOptions">RefuelOptions</a></span>
          The unit and refueling options.
         </li>
     </ul>
@@ -5394,7 +5592,7 @@ then the function returns nil instead of producing an exception.
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="index.html#Side">Side</a></span>
+           <span class="types"><a class="type" href="../index.html#Side">Side</a></span>
 
 
 
@@ -5471,7 +5669,7 @@ then the function returns nil instead of producing an exception.
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="index.html#Zone">{ Zone } </a></span>
+           <span class="types"><a class="type" href="../index.html#Zone">{ Zone } </a></span>
 
 
 
@@ -5490,7 +5688,7 @@ then the function returns nil instead of producing an exception.
 The file <code>script</code> must be inside the [Command base directory]/Lua directory, or else the game will not be able to load it.
 You can make the file point to files within a sub-directory of this, as in 'library/cklib.lua'
 The file to find will be of the form [Command base directory]/Lua/[<code>script</code>]
-A file can also be loaded indirectly from an attachment <a href="index.html#ScenEdit_UseAttachment">ScenEdit_UseAttachment</a>
+A file can also be loaded indirectly from an attachment <a href="../index.html#ScenEdit_UseAttachment">ScenEdit_UseAttachment</a>
 
     </ul>
 
@@ -5543,7 +5741,7 @@ A file can also be loaded indirectly from an attachment <a href="index.html#Scen
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">options</span>
-            <span class="types"><a class="type" href="index.html#ActionUpdate">{ ActionUpdate }</a></span>
+            <span class="types"><a class="type" href="../index.html#ActionUpdate">{ ActionUpdate }</a></span>
          The action options
         </li>
     </ul>
@@ -5571,7 +5769,7 @@ A file can also be loaded indirectly from an attachment <a href="index.html#Scen
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">options</span>
-            <span class="types"><a class="type" href="index.html#ConditionUpdate">{ ConditionUpdate }</a></span>
+            <span class="types"><a class="type" href="../index.html#ConditionUpdate">{ ConditionUpdate }</a></span>
          The condition options
         </li>
     </ul>
@@ -5602,11 +5800,11 @@ A file can also be loaded indirectly from an attachment <a href="index.html#Scen
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">selector</span>
-            <span class="types"><a class="type" href="index.html#DoctrineSelector">DoctrineSelector</a></span>
+            <span class="types"><a class="type" href="../index.html#DoctrineSelector">DoctrineSelector</a></span>
          The selector for the object to modify.
         </li>
         <li><span class="parameter">doctrine</span>
-            <span class="types"><a class="type" href="index.html#Doctrine">Doctrine</a></span>
+            <span class="types"><a class="type" href="../index.html#Doctrine">Doctrine</a></span>
          A table of doctrines to update
         </li>
     </ul>
@@ -5647,19 +5845,19 @@ A file can also be loaded indirectly from an attachment <a href="index.html#Scen
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">selector</span>
-            <span class="types"><a class="type" href="index.html#DoctrineWRASelector">DoctrineWRASelector</a></span>
+            <span class="types"><a class="type" href="../index.html#DoctrineWRASelector">DoctrineWRASelector</a></span>
          The selector for the object to update
         </li>
         <li><span class="parameter">options</span>
-            <span class="types"><a class="type" href="index.html#WRA">{ WRA }</a></span>
-         Table of settings {qty_salvo, shooter_salvo,firing_range,self_defence}. The order IS IMPORTANT as no keys used.
+            <span class="types"><a class="type" href="../index.html#WRA">{ WRA }</a></span>
+         Table of settings {qty<em>salvo, shooter</em>salvo,firing<em>range,self</em>defence}. The order IS IMPORTANT as no keys used.
         </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="index.html#DoctrineWRA">DoctrineWRA</a></span>
+           <span class="types"><a class="type" href="../index.html#DoctrineWRA">DoctrineWRA</a></span>
         The WRA doctrine of the selected object
     </ol>
 
@@ -5743,7 +5941,7 @@ A file can also be loaded indirectly from an attachment <a href="index.html#Scen
          The event name/GUID to perform operation on
         </li>
         <li><span class="parameter">options</span>
-            <span class="types"><a class="type" href="index.html#EventUpdate">{ EventUpdate }</a></span>
+            <span class="types"><a class="type" href="../index.html#EventUpdate">{ EventUpdate }</a></span>
          The event options
         </li>
     </ul>
@@ -5775,7 +5973,7 @@ A file can also be loaded indirectly from an attachment <a href="index.html#Scen
          The action name/GUID to perform operation on
         </li>
         <li><span class="parameter">options</span>
-            <span class="types"><a class="type" href="index.html#EventTCAUpdate">{ EventTCAUpdate }</a></span>
+            <span class="types"><a class="type" href="../index.html#EventTCAUpdate">{ EventTCAUpdate }</a></span>
          The options
         </li>
     </ul>
@@ -5807,7 +6005,7 @@ A file can also be loaded indirectly from an attachment <a href="index.html#Scen
          The condition name/GUID to perform operation on
         </li>
         <li><span class="parameter">options</span>
-            <span class="types"><a class="type" href="index.html#EventTCAUpdate">{ EventTCAUpdate }</a></span>
+            <span class="types"><a class="type" href="../index.html#EventTCAUpdate">{ EventTCAUpdate }</a></span>
          The options
         </li>
     </ul>
@@ -5839,7 +6037,7 @@ A file can also be loaded indirectly from an attachment <a href="index.html#Scen
          The trigger name/GUID to perform operation on
         </li>
         <li><span class="parameter">options</span>
-            <span class="types"><a class="type" href="index.html#EventTCAUpdate">{ EventTCAUpdate }</a></span>
+            <span class="types"><a class="type" href="../index.html#EventTCAUpdate">{ EventTCAUpdate }</a></span>
          The options
         </li>
     </ul>
@@ -5862,8 +6060,8 @@ A file can also be loaded indirectly from an attachment <a href="index.html#Scen
     <dd>
     Sets the value for a key in the persistent key store. </p>
 
-<p>This function allows you to add values, associated with keys, to a persistent store <a href="index.html#KeyStore">KeyStore</a> that is retained when the game is saved and resumed. Keys and values are both represented as non-nil strings.
-The value is retrieved by <a href="index.html#ScenEdit_GetKeyValue">ScenEdit_GetKeyValue</a>.
+<p>This function allows you to add values, associated with keys, to a persistent store <a href="../index.html#KeyStore">KeyStore</a> that is retained when the game is saved and resumed. Keys and values are both represented as non-nil strings.
+The value is retrieved by <a href="../index.html#ScenEdit_GetKeyValue">ScenEdit_GetKeyValue</a>.
 
     </ul>
 
@@ -5905,7 +6103,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>) <span class="comment">-- r
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">loadoutinfo</span>
-            <span class="types"><a class="type" href="index.html#LoadoutInfo">LoadoutInfo</a></span>
+            <span class="types"><a class="type" href="../index.html#LoadoutInfo">LoadoutInfo</a></span>
          The loadout information to apply
         </li>
     </ul>
@@ -5919,6 +6117,46 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>) <span class="comment">-- r
 
 
 
+
+</dd>
+    <dt>
+    <a name = "ScenEdit_SetMine"></a>
+    <strong>ScenEdit_SetMine (side, guid, delay)</strong>
+    </dt>
+    <dd>
+    update a mine
+
+    </ul>
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">side</span>
+            <span class="types"><span class="type">string}</span></span>
+         Side name or guid
+        </li>
+        <li><span class="parameter">guid</span>
+            <span class="types"><span class="type">string}</span></span>
+         Mine guid
+        </li>
+        <li><span class="parameter">delay</span>
+            <span class="types"><span class="type">integer</span></span>
+         The arming delay in seconds [optional]
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        true/false
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> a = ScenEdit_SetMine({side=<span class="string">'Blue'</span>, guid=<span class="string">'cccccccc'</span>, [delay=<span class="number">99999</span>]} )</pre>
+    </ul>
 
 </dd>
     <dt>
@@ -5941,7 +6179,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>) <span class="comment">-- r
          The mission name
         </li>
         <li><span class="parameter">MissionOptions</span>
-            <span class="types"><a class="type" href="index.html#Mission">Mission</a></span>
+            <span class="types"><a class="type" href="../index.html#Mission">Mission</a></span>
          The mission options as a table.
         </li>
     </ul>
@@ -5949,7 +6187,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>) <span class="comment">-- r
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="index.html#Mission">Mission</a></span>
+           <span class="types"><a class="type" href="../index.html#Mission">Mission</a></span>
         A mission descriptor if the mission exists or nil otherwise.
     </ol>
 
@@ -5968,7 +6206,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>) <span class="comment">-- r
     <dd>
     Update a reference point(s) with new values. </p>
 
-<p>Given a valid <a href="index.html#ReferencePointSelector">ReferencePointSelector</a> as part of the descriptor, the function wil update the values contained in the descriptor. Values may be omitted from the descriptor if they are intended to remain unmodified.
+<p>Given a valid <a href="../index.html#ReferencePointSelector">ReferencePointSelector</a> as part of the descriptor, the function wil update the values contained in the descriptor. Values may be omitted from the descriptor if they are intended to remain unmodified.
 The 'area' selector is useful for changing some common attribute, like locking or highlighting, in bulk.</p>
 
 <p> Additional key=value options are; <br>
@@ -5982,7 +6220,7 @@ The 'area' selector is useful for changing some common attribute, like locking o
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">descriptor</span>
-            <span class="types"><a class="type" href="index.html#ReferencePoint">ReferencePoint</a></span>
+            <span class="types"><a class="type" href="../index.html#ReferencePoint">ReferencePoint</a></span>
          A valid selector with other values to update.
         </li>
     </ul>
@@ -5990,7 +6228,7 @@ The 'area' selector is useful for changing some common attribute, like locking o
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="index.html#ReferencePoint">ReferencePoint</a></span>
+           <span class="types"><a class="type" href="../index.html#ReferencePoint">ReferencePoint</a></span>
         The reference point descriptor for the reference point or first one in the area.
     </ol>
 
@@ -6066,7 +6304,7 @@ The 'area' selector is useful for changing some common attribute, like locking o
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="index.html#SideOption">{ SideOption }</a></span>
+           <span class="types"><a class="type" href="../index.html#SideOption">{ SideOption }</a></span>
         The side options
     </ol>
 
@@ -6074,7 +6312,7 @@ The 'area' selector is useful for changing some common attribute, like locking o
 
     <h3>Usage:</h3>
     <ul>
-        <pre class="example">ScenEdit_SetSideOptions({side=<span class="string">'SideA'</span>,awareness=<span class="string">'OMNI'</span>,proficiency=<span class="string">'ace'</span>})</pre>
+        <pre class="example">ScenEdit_SetSideOptions(<span class="string">'{side='</span>SideA<span class="string">',awareness='</span>OMNI<span class="string">',PROFICIENCY='</span>ace')</pre>
     </ul>
 
 </dd>
@@ -6085,7 +6323,7 @@ The 'area' selector is useful for changing some common attribute, like locking o
     <dd>
     Set the posture of a side towards another. </p>
 
-<p> This will set side A's posture towards side B to the specified posture. This is the same as <a href="index.html#Stance">Stance</a>, but only the first character of the name is used as shown in the table</p>
+<p> This will set side A's posture towards side B to the specified posture. This is the same as <a href="../index.html#Stance">Stance</a>, but only the first character of the name is used as shown in the table</p>
 
 <p> Posture codes:
  <style>
@@ -6144,7 +6382,7 @@ The 'area' selector is useful for changing some common attribute, like locking o
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">action_info</span>
-            <span class="types"><a class="type" href="index.html#SpecialAction">SpecialAction</a></span>
+            <span class="types"><a class="type" href="../index.html#SpecialAction">SpecialAction</a></span>
          The special action to modify
         </li>
     </ul>
@@ -6192,7 +6430,7 @@ The 'area' selector is useful for changing some common attribute, like locking o
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">options</span>
-            <span class="types"><a class="type" href="index.html#TriggerUpdate">{ TriggerUpdate }</a></span>
+            <span class="types"><a class="type" href="../index.html#TriggerUpdate">{ TriggerUpdate }</a></span>
          The trigger options
         </li>
     </ul>
@@ -6220,7 +6458,7 @@ The 'area' selector is useful for changing some common attribute, like locking o
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">unit</span>
-            <span class="types"><a class="type" href="index.html#Unit">Unit</a></span>
+            <span class="types"><a class="type" href="../index.html#Unit">Unit</a></span>
          The unit to edit. Must be at least a selector.
         </li>
     </ul>
@@ -6228,7 +6466,7 @@ The 'area' selector is useful for changing some common attribute, like locking o
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="index.html#Unit">Unit</a></span>
+           <span class="types"><a class="type" href="../index.html#Unit">Unit</a></span>
         A complete descriptor for the added unit
     </ol>
 
@@ -6258,7 +6496,7 @@ The 'area' selector is useful for changing some common attribute, like locking o
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">options</span>
-            <span class="types"><a class="type" href="index.html#DamageOptions">DamageOptions</a></span>
+            <span class="types"><a class="type" href="../index.html#DamageOptions">DamageOptions</a></span>
 
 
 
@@ -6268,7 +6506,7 @@ The 'area' selector is useful for changing some common attribute, like locking o
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="index.html#Component">Component</a></span>
+           <span class="types"><a class="type" href="../index.html#Component">Component</a></span>
         The unit's components object
     </ol>
 
@@ -6292,7 +6530,7 @@ The 'area' selector is useful for changing some common attribute, like locking o
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">sidedesc</span>
-            <span class="types"><a class="type" href="index.html#SideDescription">SideDescription</a></span>
+            <span class="types"><a class="type" href="../index.html#SideDescription">SideDescription</a></span>
          The sides to change for the unit. Group will change attached units
         </li>
     </ul>
@@ -6378,7 +6616,7 @@ conditions are applied globally.
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="index.html#Zone">{ Zone } </a></span>
+           <span class="types"><a class="type" href="../index.html#Zone">{ Zone } </a></span>
 
 
 
@@ -6428,15 +6666,15 @@ conditions are applied globally.
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">fromUnit</span>
-            <span class="types"><a class="type" href="index.html#UnitSelector">UnitSelector</a></span>
+            <span class="types"><a class="type" href="../index.html#UnitSelector">UnitSelector</a></span>
          The unit with cargo
         </li>
         <li><span class="parameter">toUnit</span>
-            <span class="types"><a class="type" href="index.html#UnitSelector">UnitSelector</a></span>
+            <span class="types"><a class="type" href="../index.html#UnitSelector">UnitSelector</a></span>
          The unit to get cargo
         </li>
         <li><span class="parameter">cargoList</span>
-            <span class="types"><a class="type" href="index.html#Cargo">{ Cargo }</a></span>
+            <span class="types"><a class="type" href="../index.html#Cargo">{ Cargo }</a></span>
          List of cargo to transfer: table of {guids}, or { {number,DBID}, [{DBID}]}
         </li>
     </ul>
@@ -6469,7 +6707,7 @@ Otherwise, a nil is returned.</p>
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="index.html#Contact">Contact</a></span>
+           <span class="types"><a class="type" href="../index.html#Contact">Contact</a></span>
         A contact descriptor or nil
     </ol>
 
@@ -6494,7 +6732,7 @@ Otherwise, a nil is returned.</p>
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="index.html#Unit">Unit</a></span>
+           <span class="types"><a class="type" href="../index.html#Unit">Unit</a></span>
         The triggering unit
     </ol>
 
@@ -6552,11 +6790,11 @@ Otherwise, a nil is returned.</p>
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">fromUnit</span>
-            <span class="types"><a class="type" href="index.html#UnitSelector">UnitSelector</a></span>
+            <span class="types"><a class="type" href="../index.html#UnitSelector">UnitSelector</a></span>
          The unit with cargo
         </li>
         <li><span class="parameter">cargoList</span>
-            <span class="types"><a class="type" href="index.html#Cargo">{ Cargo }</a></span>
+            <span class="types"><a class="type" href="../index.html#Cargo">{ Cargo }</a></span>
          List of cargo to unload: table of {guids}, or { { number, DBID}}
         </li>
     </ul>
@@ -6584,7 +6822,7 @@ Otherwise, a nil is returned.</p>
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">options</span>
-            <span class="types"><a class="type" href="index.html#UpdateUnit">UpdateUnit</a></span>
+            <span class="types"><a class="type" href="../index.html#UpdateUnit">UpdateUnit</a></span>
          The unit sensor/mount/weapon details to update
         </li>
     </ul>
@@ -6592,7 +6830,7 @@ Otherwise, a nil is returned.</p>
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="index.html#Unit">Unit</a></span>
+           <span class="types"><a class="type" href="../index.html#Unit">Unit</a></span>
         The updated unit
     </ol>
 
@@ -6618,7 +6856,7 @@ Otherwise, a nil is returned.</p>
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">options</span>
-            <span class="types"><a class="type" href="index.html#UpdateUnitCargo">UpdateUnitCargo</a></span>
+            <span class="types"><a class="type" href="../index.html#UpdateUnitCargo">UpdateUnitCargo</a></span>
          The unit cargo details to update
         </li>
     </ul>
@@ -6626,7 +6864,7 @@ Otherwise, a nil is returned.</p>
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="index.html#Unit">Unit</a></span>
+           <span class="types"><a class="type" href="../index.html#Unit">Unit</a></span>
         The updated unit
     </ol>
 
@@ -6841,7 +7079,7 @@ Otherwise, a nil is returned.</p>
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">ContactGUID</span>
-            <span class="types"><a class="type" href="index.html#VPContactSelector">VPContactSelector</a></span>
+            <span class="types"><a class="type" href="../index.html#VPContactSelector">VPContactSelector</a></span>
          The contact selector to interrogate
         </li>
     </ul>
@@ -6849,7 +7087,7 @@ Otherwise, a nil is returned.</p>
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="index.html#Contact">Contact</a></span>
+           <span class="types"><a class="type" href="../index.html#Contact">Contact</a></span>
         The information associated with the contact
     </ol>
 
@@ -6878,7 +7116,7 @@ Otherwise, a nil is returned.</p>
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">side</span>
-            <span class="types"><a class="type" href="index.html#SideSelector">SideSelector</a></span>
+            <span class="types"><a class="type" href="../index.html#SideSelector">SideSelector</a></span>
          The side to get information about.
         </li>
     </ul>
@@ -6886,7 +7124,7 @@ Otherwise, a nil is returned.</p>
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="index.html#Side">Side</a></span>
+           <span class="types"><a class="type" href="../index.html#Side">Side</a></span>
         Information about the side selected, from the perspective of the player.
     </ol>
 
@@ -6913,7 +7151,7 @@ Otherwise, a nil is returned.</p>
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">ActiveOrContact</span>
-            <span class="types"><a class="type" href="index.html#UnitSelector">UnitSelector</a></span>
+            <span class="types"><a class="type" href="../index.html#UnitSelector">UnitSelector</a></span>
          The unit selector to interrogate
         </li>
     </ul>
@@ -6921,7 +7159,7 @@ Otherwise, a nil is returned.</p>
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="index.html#Unit">Unit</a></span>
+           <span class="types"><a class="type" href="../index.html#Unit">Unit</a></span>
         The information associated with the unit
     </ol>
 
@@ -7285,7 +7523,7 @@ Otherwise, a nil is returned.</p>
     <dd>
     Component. </p>
 
-<p> This identifies the component/item(s) that are present in a unit. See <a href="index.html#Unit">Unit</a>:filterOnComponent on how to filter this table
+<p> This identifies the component/item(s) that are present in a unit. See <a href="../index.html#Unit">Unit</a>:filterOnComponent on how to filter this table
 
     </ul>
 
@@ -7440,15 +7678,15 @@ Otherwise, a nil is returned.</p>
          The ID of the warhead to detonate
         </li>
         <li><span class="parameter">lat</span>
-            <span class="types"><a class="type" href="index.html#Latitude">Latitude</a></span>
+            <span class="types"><a class="type" href="../index.html#Latitude">Latitude</a></span>
          The latitude of the detonation
         </li>
         <li><span class="parameter">lon</span>
-            <span class="types"><a class="type" href="index.html#Longitude">Longitude</a></span>
+            <span class="types"><a class="type" href="../index.html#Longitude">Longitude</a></span>
          The longitude of the detonation
         </li>
         <li><span class="parameter">altitude</span>
-            <span class="types"><a class="type" href="index.html#Altitude">Altitude</a></span>
+            <span class="types"><a class="type" href="../index.html#Altitude">Altitude</a></span>
          The altitude of the detonation
         </li>
     </ul>
@@ -7542,7 +7780,7 @@ Otherwise, a nil is returned.</p>
 
         </li>
         <li><span class="parameter">flightSize</span>
-            <span class="types"><a class="type" href="index.html#Size">Size</a></span>
+            <span class="types"><a class="type" href="../index.html#Size">Size</a></span>
 
 
 
@@ -7575,8 +7813,8 @@ Otherwise, a nil is returned.</p>
 <p>Fuel. </p>
 
 <p> The various types of fuel(s), and their state, carried by the unit.
- Use ScenEdit_SetUnit() to set the fuel rather thane the unit.fuel...
- ScenEdit_SetUnit({...,fuel={{'GasFuel',1500},{2001,8000}}..})
+ Use ScenEdit<em>SetUnit() to set the fuel rather thane the unit.fuel...
+ ScenEdit</em>SetUnit({...,fuel={{'GasFuel',1500},{2001,8000}}..})
  It is easier and less prone to error; you can use the fuel name or the fuel number code</p>
 
 <p>Fuel Types:</p>
@@ -7606,7 +7844,7 @@ td { padding: .5em; }
     <h3>Fields:</h3>
     <ul>
         <li><span class="parameter">fueltype</span>
-            <span class="types"><a class="type" href="index.html#FuelState">{ FuelState }</a></span>
+            <span class="types"><a class="type" href="../index.html#FuelState">{ FuelState }</a></span>
          The state of the type(s) of fuel in the unit.
 Note that the type is normally 4 digits. Use .fuels to get any breakdown of multiple tanks if present.
         </li>
@@ -7743,17 +7981,17 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
         <li><span class="parameter">TimeToReady_Minutes</span>
             <span class="types"><span class="type">number</span></span>
          How many minutes until the loadout is ready (default = database loadout time)
-         (_optional_)
+         (<em>optional</em>)
         </li>
         <li><span class="parameter">IgnoreMagazines</span>
             <span class="types"><span class="type">bool</span></span>
          If the new loadout should rely on the magazines having the right weapons ready (default = false)
-         (_optional_)
+         (<em>optional</em>)
         </li>
         <li><span class="parameter">ExcludeOptionalWeapons</span>
             <span class="types"><span class="type">bool</span></span>
          Exclude optional weapons from loadout  (default = false)
-         (_optional_)
+         (<em>optional</em>)
         </li>
     </ul>
 
@@ -7793,7 +8031,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
          Name
         </li>
         <li><span class="parameter">mag_weapons</span>
-            <span class="types"><a class="type" href="index.html#WeaponLoaded">{ WeaponLoaded } </a></span>
+            <span class="types"><a class="type" href="../index.html#WeaponLoaded">{ WeaponLoaded } </a></span>
          Table of weapon loads in magazine
         </li>
     </ul>
@@ -7895,7 +8133,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 
         </li>
         <li><span class="parameter">flightSize</span>
-            <span class="types"><a class="type" href="index.html#Size">Size</a></span>
+            <span class="types"><a class="type" href="../index.html#Size">Size</a></span>
 
 
 
@@ -7913,7 +8151,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 
         </li>
         <li><span class="parameter">groupSize</span>
-            <span class="types"><a class="type" href="index.html#Size">Size</a></span>
+            <span class="types"><a class="type" href="../index.html#Size">Size</a></span>
 
 
 
@@ -8027,7 +8265,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 
         </li>
         <li><span class="parameter">flightSize</span>
-            <span class="types"><a class="type" href="index.html#Size">Size</a></span>
+            <span class="types"><a class="type" href="../index.html#Size">Size</a></span>
 
 
 
@@ -8045,7 +8283,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 
         </li>
         <li><span class="parameter">groupSize</span>
-            <span class="types"><a class="type" href="index.html#Size">Size</a></span>
+            <span class="types"><a class="type" href="../index.html#Size">Size</a></span>
 
 
 
@@ -8109,7 +8347,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
          Damage Severity   [if not operational]
         </li>
         <li><span class="parameter">mount_weapons</span>
-            <span class="types"><a class="type" href="index.html#WeaponLoaded">{ WeaponLoaded } </a></span>
+            <span class="types"><a class="type" href="../index.html#WeaponLoaded">{ WeaponLoaded } </a></span>
          Table of weapon loads on mount
         </li>
     </ul>
@@ -8134,7 +8372,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
     <ul>
         <li><span class="parameter">type</span>
             <span class="types"><span class="type">string</span></span>
-         Subtype of mission (ASW = 'asw', ASuW_Naval = 'naval', AAW = 'aaw', ASuW_Land = 'land', ASuW_Mixed = 'mixed', SEAD = 'sead', SeaControl = 'sea')
+         Subtype of mission (ASW = 'asw', ASuW<em>Naval = 'naval', AAW = 'aaw', ASuW</em>Land = 'land', ASuW_Mixed = 'mixed', SEAD = 'sead', SeaControl = 'sea')
         </li>
         <li><span class="parameter">oneThirdRule</span>
             <span class="types"><span class="type">bool</span></span>
@@ -8273,7 +8511,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 
         </li>
         <li><span class="parameter">flightSize</span>
-            <span class="types"><a class="type" href="index.html#Size">Size</a></span>
+            <span class="types"><a class="type" href="../index.html#Size">Size</a></span>
 
 
 
@@ -8289,7 +8527,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
          True if min size required
         </li>
         <li><span class="parameter">groupSize</span>
-            <span class="types"><a class="type" href="index.html#Size">Size</a></span>
+            <span class="types"><a class="type" href="../index.html#Size">Size</a></span>
 
 
 
@@ -8386,7 +8624,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 
     <h3>Fields:</h3>
     <ul>
-        <li><span class="parameter">oldside</span>
+        <li><span class="parameter">side</span>
             <span class="types"><span class="type">string</span></span>
          The original side
         </li>
@@ -8472,10 +8710,10 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
     <ul>
         <li><span class="parameter">type</span>
             <span class="types"><span class="type">string</span></span>
-          Subtype of mission (Air_Intercept = 'air', Land_Strike = 'land', Maritime_Strike = 'sea', Sub_Strike = 'sub')
+          Subtype of mission (Air<em>Intercept = 'air', Land</em>Strike = 'land', Maritime<em>Strike = 'sea', Sub</em>Strike = 'sub')
         </li>
         <li><span class="parameter">escortFlightSizeShooter</span>
-            <span class="types"><a class="type" href="index.html#Size">Size</a></span>
+            <span class="types"><a class="type" href="../index.html#Size">Size</a></span>
 
 
 
@@ -8503,7 +8741,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
          True if minimum size required
         </li>
         <li><span class="parameter">escortFlightSizeNonshooter</span>
-            <span class="types"><a class="type" href="index.html#Size">Size</a></span>
+            <span class="types"><a class="type" href="../index.html#Size">Size</a></span>
 
 
 
@@ -8521,7 +8759,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 
         </li>
         <li><span class="parameter">escortGroupSize</span>
-            <span class="types"><a class="type" href="index.html#Size">Size</a></span>
+            <span class="types"><a class="type" href="../index.html#Size">Size</a></span>
 
 
 
@@ -8547,7 +8785,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 
         </li>
         <li><span class="parameter">strikeFlightSize</span>
-            <span class="types"><a class="type" href="index.html#Size">Size</a></span>
+            <span class="types"><a class="type" href="../index.html#Size">Size</a></span>
 
 
 
@@ -8563,7 +8801,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
          True if minimum size required
         </li>
         <li><span class="parameter">strikeGroupSize</span>
-            <span class="types"><a class="type" href="index.html#Size">Size</a></span>
+            <span class="types"><a class="type" href="../index.html#Size">Size</a></span>
 
 
 
@@ -8735,7 +8973,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 
         </li>
         <li><span class="parameter">flightSize</span>
-            <span class="types"><a class="type" href="index.html#Size">Size</a></span>
+            <span class="types"><a class="type" href="../index.html#Size">Size</a></span>
 
 
 
@@ -8753,7 +8991,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 
         </li>
         <li><span class="parameter">groupSize</span>
-            <span class="types"><a class="type" href="index.html#Size">Size</a></span>
+            <span class="types"><a class="type" href="../index.html#Size">Size</a></span>
 
 
 
@@ -9015,7 +9253,7 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2019-12-11 18:17:36 </i>
+<i style="float:right;">Last updated 2020-02-22 14:56:14 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
