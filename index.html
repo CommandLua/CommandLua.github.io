@@ -9251,7 +9251,37 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 </dd>
 </dl>
 
-
+<div> <!--Form-->
+    <br>
+    <hr>
+    <br>
+<form action="mailto:commandlua@apacheanalytics.dev" method="post" onsubmit="return ValidateForm(this);">
+    <script type="text/javascript">
+    function ValidateForm(frm) {
+    if (frm.ProblemDescription.value == "") { alert('Please enter describe the problem.'); frm.ProblemDescription.focus(); return false; }
+    if (frm.Name.value == "") { alert('Name is required.'); frm.Name.focus(); return false; }
+    if (frm.FromEmailAddress.value == "") { alert('Email address is required.'); frm.FromEmailAddress.focus(); return false; }
+    if (frm.FromEmailAddress.value.indexOf("@") < 1 || frm.FromEmailAddress.value.indexOf(".") < 1) { alert('Please enter a valid email address.'); frm.FromEmailAddress.focus(); return false; }
+    return true; }
+    </script>
+    <h1>Report a problem</h1>
+    <label for="ProblemDescription" style="font-weight:bold">Describe the problem*:</label><br />
+    Please provide as much detail as possible so we can better identify the problem.
+    <br />
+    <textarea name="ProblemDescription" rows="7" cols="40" style="width:450px;"></textarea>
+    <br /><br />
+    <label for="Name" style="font-weight:bold">Name*:</label><br />
+    <input name="Name" type="text" maxlength="60" style="width:450px;" />
+    <br /><br />
+    <label for="FromEmailAddress" style="font-weight:bold">Email address*:</label><br />
+    <input name="FromEmailAddress" type="text" maxlength="90" style="width:450px;" />
+    <br /><br />
+    * - required fields
+    <br /><br />
+    <input name="skip_Submit" type="submit" value="Submit" />
+    <script src="luaissuesubmission@apacheanalytics.dev" type="text/javascript"></script>
+</form>
+</div><!--Form-->
 </div> <!-- id="content" -->
 </div> <!-- id="main" -->
 <div id="about">
