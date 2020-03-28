@@ -7996,7 +7996,24 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
          Exclude optional weapons from loadout  (default = false)
          (_optional_)
         </li>
-    </ul>
+         <li><span class="parameter">Wpn_DBID</span>
+            <span class="types"><span class="type">number</span></span>
+         Weapon DB number - required if WPN_GUID is not supplied
+        </li>
+        <li><span class="parameter">Wpn_GUID</span>
+            <span class="types"><span class="type">string</span></span>
+         Actual weapon to update - DBID is not required as this take precedence
+         (_optional_)
+        </li>
+        <li><span class="parameter">Number</span>
+            <span class="types"><span class="type">number</span></span>
+         Number to change current weapon load by (sign ignored)
+        </li>
+        <li><span class="parameter">Remove</span>
+            <span class="types"><span class="type">bool</span></span>
+         Deduct 'number' rather than add
+        </li>
+   </ul>
 
 
 

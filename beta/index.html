@@ -111,7 +111,7 @@ One issue with commands running in an event is that sometimes they fail with an 
 <p>Note also, that the Lua history log should also record the event script errors.</p>
 
 
-<p><b>Release: 1.15.2 </b></p>
+<p><b>Release: 2.11.21 </b></p>
 
 
 <h2><a href="#Selector">Selector</a></h2>
@@ -582,6 +582,10 @@ One issue with commands running in an event is that sometimes they fail with an 
 	<tr>
 	<td class="name" ><a href="#ScenEdit_PlayVideo">ScenEdit_PlayVideo (string, fullscreen, delay)</a></td>
 	<td class="summary">Play a video file.</td>
+	</tr>
+	<tr>
+	<td class="name" ><a href="#ScenEdit_MsgBox">ScenEdit_MsgBox (string, style)</a></td>
+	<td class="summary">Show a message box with a passed string.</td>
 	</tr>
 	<tr>
 	<td class="name" ><a href="#ScenEdit_PlayerSide">ScenEdit_PlayerSide ()</a></td>
@@ -5394,7 +5398,7 @@ then the function returns nil instead of producing an exception.
             <span class="types"><span class="type">num</span></span>
          The style of the message box
         </li>
-    </ul>
+   </ul>
 
     <h3>Returns:</h3>
     <ol>
@@ -7992,7 +7996,24 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
          Exclude optional weapons from loadout  (default = false)
          (_optional_)
         </li>
-    </ul>
+         <li><span class="parameter">Wpn_DBID</span>
+            <span class="types"><span class="type">number</span></span>
+         Weapon DB number - required if WPN_GUID is not supplied
+        </li>
+        <li><span class="parameter">Wpn_GUID</span>
+            <span class="types"><span class="type">string</span></span>
+         Actual weapon to update - DBID is not required as this take precedence
+         (_optional_)
+        </li>
+        <li><span class="parameter">Number</span>
+            <span class="types"><span class="type">number</span></span>
+         Number to change current weapon load by (sign ignored)
+        </li>
+        <li><span class="parameter">Remove</span>
+            <span class="types"><span class="type">bool</span></span>
+         Deduct 'number' rather than add
+        </li>
+   </ul>
 
 
 
@@ -9247,7 +9268,37 @@ These can be represented in two forms, degrees minutes seconds, and decimal degr
 </dd>
 </dl>
 
-
+<div> <!--Form-->
+    <br>
+    <hr>
+    <br>
+<form action="mailto:commandlua@apacheanalytics.dev" method="post" onsubmit="return ValidateForm(this);">
+    <script type="text/javascript">
+    function ValidateForm(frm) {
+    if (frm.ProblemDescription.value == "") { alert('Please enter describe the problem.'); frm.ProblemDescription.focus(); return false; }
+    if (frm.Name.value == "") { alert('Name is required.'); frm.Name.focus(); return false; }
+    if (frm.FromEmailAddress.value == "") { alert('Email address is required.'); frm.FromEmailAddress.focus(); return false; }
+    if (frm.FromEmailAddress.value.indexOf("@") < 1 || frm.FromEmailAddress.value.indexOf(".") < 1) { alert('Please enter a valid email address.'); frm.FromEmailAddress.focus(); return false; }
+    return true; }
+    </script>
+    <h1>Report a problem</h1>
+    <label for="ProblemDescription" style="font-weight:bold">Describe the problem*:</label><br />
+    Please provide as much detail as possible so we can better identify the problem.
+    <br />
+    <textarea name="ProblemDescription" rows="7" cols="40" style="width:450px;"></textarea>
+    <br /><br />
+    <label for="Name" style="font-weight:bold">Name*:</label><br />
+    <input name="Name" type="text" maxlength="60" style="width:450px;" />
+    <br /><br />
+    <label for="FromEmailAddress" style="font-weight:bold">Email address*:</label><br />
+    <input name="FromEmailAddress" type="text" maxlength="90" style="width:450px;" />
+    <br /><br />
+    * - required fields
+    <br /><br />
+    <input name="skip_Submit" type="submit" value="Submit" />
+    <script src="luaissuesubmission@apacheanalytics.dev" type="text/javascript"></script>
+</form>
+</div><!--Form-->
 </div> <!-- id="content" -->
 </div> <!-- id="main" -->
 <div id="about">
