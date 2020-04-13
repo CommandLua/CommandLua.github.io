@@ -40,7 +40,6 @@
 					<ol>
 						<li><a href="#HowToUse">How to Use These Docs</a></li>
 						<li><a href="#FirstSteps">First Steps</a></li>
-						<li><a href="#Concepts">Concepts</a></li>
 						<li><a href="#ExternalResources">External Resources</a></li>
 					</ol>
 
@@ -71,7 +70,7 @@
 							<strong>Rory Noonan</strong> aka <strong>apache85</strong>
 						</p> -->
 					<p>
-						<sub>April 10th 2020</sub>
+						<sub>April 13th 2020</sub>
 					</p>
 				</div>
 				<p ><strong>After 5 years using the <a href="https://stevedonovan.github.io/ldoc/">LDoc format</a>, the Command Lua API Documentation struts into the 2020's with a sleek new interface, inspired by industry leaders in web documentation.</strong> The new look is accompanied by an extensive re-write and reorganisation of existing content,	consolidation of content from various sources, and brand new content to assist Lua newbies and pros	alike in their Command Lua adventures.</p>
@@ -289,22 +288,14 @@
 					If you've never written a line of code in your life, <strong>don't panic--we've got you</strong>. We have a comprehensive set of <a href="#Guides">Guides</a> to get you started. Once you've conquered the <a href="#Guides">Guides</a> section, you'll be ready to jump in the deep end and start using the <a href="#Functions">Functions</a> to bend Command to your will!
 				</p>
 
-				<a class="anchor" id="Concepts"></a>
-				<h3>Concepts</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 				<a class="anchor" id="ExternalResources"></a>
 				<h3>External Resources</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				<p>The links below contain useful resources for getting started with Lua in general:</p>
+				<ul>
+					<li><a href="http://lua-users.org/wiki/TutorialDirectory">Tutorials from the Lua Users Wiki</a> - The first four tutorials (<a href="http://lua-users.org/wiki/LuaTypesTutorial">Types</a>, <a href="http://lua-users.org/wiki/AssignmentTutorial">Assignment</a>, <a href="http://lua-users.org/wiki/NumbersTutorial">Numbers</a> and <a href="http://lua-users.org/wiki/StringsTutorial">Strings</a>) as well as the <a href="http://lua-users.org/wiki/TablesTutorial">Tables</a> and <a href="http://lua-users.org/wiki/FunctionsTutorial">Functions</a> tutorials are recommended reading.</li>
+					<li><a href="https://en.wikibooks.org/wiki/Lua_Programming">The Lua Programming WikiBook</a></li>
+					<li><a href="https://www.lua.org/manual/5.3/">Lua 5.3 Reference Manual</a></li>
+				</ul>
 				<div class="note-alert">
 					<p>
 						<strong>Note:</strong> These references are external to WarfareSims and are subject to change.
@@ -560,40 +551,52 @@
 				</p>
 				<h4><a class="anchor" id="Altitude"></a>Altitude</h4>
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					Altitude is the height or depth of a unit. The altitude is displayed in meters when accessing the data. It can be set using either meters or feet by adding M or FT after it. The default is M if just a number is used.
+
+					<h5>Example</h5>
+					<div class="example">
+						<code>
+							{altitude=<span class="string">'100 FT'</span>} <span class="keyword">or</span> {altitude=<span class="string">'100 M'</span>} <span class="keyword">or</span> {altitude=<span class="string">'100'</span>}
+						</code>
+					</div>
 				</p>
 				<h4><a class="anchor" id="Arc"></a>Arc</h4>
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					Arcs for sensor and mounts.
+				</p>
+				<h5>Arc Codes</h5>
+				<p>
+					<img src=".\assets\images\datatypes_1_arc_codes.jpg" width="200">
 				</p>
 				<h4><a class="anchor" id="DateTime"></a>DateTime</h4>
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					DateTime is displayed and changed as per LOCALE e.g. US would be 'MM/DD/YYYY HH:MM:SS AM/PM' eg '8/13/2002 12:14 PM'
 				</p>
 				<h4><a class="anchor" id="KeyStore"></a>KeyStore</h4>
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					The simulation allows for user data to be stored within the save file. This is done by associating <code>keys</code> with <code>values</code>. <code>Key</code> and <code>value</code> pairs added to the persistent store are retained when the game is saved and resumed. <code>Keys</code> with <code>values</code> are both represented as non-<code>nil</code> <span class='types'><span class="string">strings</span></span>.
+
+					<div class="note-alert">
+						<p>
+							<strong>Note:</strong> The 
+							<span class="types">KeyStore</span> 
+							datatype only accepts 
+							<span class="types"><span class="string">strings</span></span> 
+							as parameters. 
+							<span class="types"><span class="number">Numbers</span></span> 
+							can only be stored using a 
+							<span class="types">KeyStore</span> 
+							if the number is first converted to a 
+							<span class="types"><span class="string">string</span></span>
+							--e.g. by using the Lua native function <code>tostring()</code>.
+						</p>
+						<o>
+							Conversely, a <span class="types"><span class="number">number</span></span> stored in a <span class="types">KeyStore</span> as a <span class="types"><span class="string">string</span></span> can be converted back to a <span class="types"><span class="number">number</span></span> using the the Lua native function <code>tonumber()</code>.
+						</o>
+					</div>
 				</p>
+
+
 				<h4><a class="anchor" id="Latitude"></a>Latitude</h4>
 				<p>
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
