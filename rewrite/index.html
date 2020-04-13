@@ -1,0 +1,1070 @@
+<html>
+
+<head>
+	<title>Command Lua Docs | 1141.1</title>
+	<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
+	<div id="header-container">
+		<div id="header">
+			<div id="header-logo">
+				<h1><a href="index.html"><img src="./assets/images/CommandLuaLogo.svg" height=45px alt="CommandLua"></a></h1>
+			</div>
+			<div id="header-nav">
+				<a class="selected" href="index.html">Reference</a>
+				<a href="/guides/">Guides</a>
+				<a href="https://www.matrixgames.com/forums/tt.asp?forumid=1681">Forum</a>
+			</div>
+		</div>
+	</div>
+	<div id="container">
+
+		<div id="content">
+			<div id="page-title">
+				<h2 id="page-title">Command Lua API Documentation, v1141.1</h2>
+				<hr>
+			</div>
+			<div id="nav">
+				<!-- 					<button onclick="myFunction()">Toggle dark mode</button>
+					<script>
+					function myFunction() {
+					   var element = document.body;
+					   element.classList.toggle("dark-mode");
+					}
+					</script> -->
+				<!-- 					<h3>Navigation</h3> -->
+				<ul>
+					<li><a href="#News">News</a></li>
+					<li><a href="#Introduction">Introduction</a></li>
+					<ol>
+						<li><a href="#HowToUse">How to Use These Docs</a></li>
+						<li><a href="#FirstSteps">First Steps</a></li>
+						<li><a href="#Concepts">Concepts</a></li>
+						<li><a href="#ExternalResources">External Resources</a></li>
+					</ol>
+
+					<li><a href="#Overview">Overview</a></li>
+					<ol>
+						<li><a href="#CaseSensitivityandConventions">Case Sensitivity and Conventions</a></li>
+						<li><a href="#DataTypes">Data Types</a></li>
+						<li><a href="#Notes">Notes</a></li>
+					</ol>
+					<li><a href="#Functions">Functions</a></li>
+					<ol>
+						<li><a href="#FunctionIndex">Index</a></li>
+						<li><a href="#ScenEdit">ScenEdit_...()</a></li>
+						<li><a href="#VP">VP_...()</a></li>
+						<li><a href="#Tool">Tool_...()</a></li>
+					</ol>
+					<li><a href="#Selectors">Selectors</a></li>
+					<li><a href="#Wrappers">Wrappers</a></li>
+					<li><a href="#Tables">Tables</a></li>
+				</ul>
+			</div>
+			<div id="main">
+				<a class="anchor" id="News"></a>
+				<h2>News</h2>
+				<h4>Command Lua Docs gets a makeover!</h4>
+				<div class="byline">
+					<!-- 						<p>
+							<strong>Rory Noonan</strong> aka <strong>apache85</strong>
+						</p> -->
+					<p>
+						<sub>April 10th 2020</sub>
+					</p>
+				</div>
+				<p ><strong>After 5 years using the <a href="https://stevedonovan.github.io/ldoc/">LDoc format</a>, the Command Lua API Documentation struts into the 2020's with a sleek new interface, inspired by industry leaders in web documentation.</strong> The new look is accompanied by an extensive re-write and reorganisation of existing content,	consolidation of content from various sources, and brand new content to assist Lua newbies and pros	alike in their Command Lua adventures.</p>
+				<p>The old site can be found <a href="./oldsite/index.html">here</a> for metathesiophobics, however it
+					won't be updated.</p>
+				<h4>Version 1141.1</h4>
+				<div class="byline">
+					<p></p>
+					<!-- 						<p>
+							<strong>Rory Noonan</strong> aka <strong>apache85</strong>
+						</p> -->
+					<p>
+						<sub>April 9th 2020</sub>
+					</p>
+				</div>
+				<p>
+					The release of Command: Modern Operations version 1141.1 brings a slew of new functions to the
+					Command Lua API:
+				</p>
+				<ul class="ul-no-bullets">
+					<li><a href="#ScenEdit_DistributeWeaponAtAirbase">ScenEdit_DistributeWeaponAtAirbase</a></li>
+					<li><a href="#ScenEdit_ClearAllAircraft">ScenEdit_ClearAllAircraft</a></li>
+					<li><a href="#ScenEdit_ClearAllMagazines">ScenEdit_ClearAllMagazines</a></li>
+					<li><a href="#ScenEdit_AddMinefield">ScenEdit_AddMinefield</a></li>
+					<li><a href="#ScenEdit_DeleteMine">ScenEdit_DeleteMine</a></li>
+					<li><a href="#ScenEdit_DeleteMinefield">ScenEdit_DeleteMinefield</a></li>
+					<li><a href="#ScenEdit_GetMinefield">ScenEdit_GetMinefield</a></li>
+					<li><a href="#ScenEdit_SetMine">ScenEdit_SetMine</a></li>
+				</ul>
+				<p>Check them out in the <a href="#Functions">Functions</a> section or by clicking the links above.
+				</p>
+				<a class="anchor" id="Introduction"></a>
+				<h2>Introduction</h2>
+				<p>
+					Welcome to the documentation for the Command Lua Application Programming Interface (API). The Command Lua API allows users to control behaviour of Command directly by using the Lua scripting language, providing a flexible and easy to use tool for users to extend or customize the built-in functionality of Command.
+				</p>
+
+				<h3>What Can I Do With the Command Lua API?</h3>
+				<p>
+					Since the Command Lua API interfaces directly with the source code of Command, users are provided with the ability to implement virtually any desired behaviour. Some common uses include:
+				</p>
+				<ul>
+					<li>Precise placement and orientation of units using the console</li>
+					<li>Customised message pop-ups</li>
+					<li>Randomising gameplay elements such as weather, unit types, positions etc</li>
+					<li>Extending existing AI behaviour</li>
+					<li>'Spawning' of units in conjunction with the event editor</li>
+					<li>Implementation of additional features, such as:</li>
+					<ul>	
+						<li>Downed pilots</li>
+						<li>Combat search and rescue</li>
+						<li>'Purchasing' additional units</li>
+						<li>Extended communications modelling</li>
+					</ul>
+				</ul>
+
+				<p>
+					While the above items are common uses for the Command Lua API, the integration with source code allows users to custom-design virtually any feature or modification that they desire.
+				</p>
+
+				<a class="anchor" id="top"></a>
+
+				<h3><a class="anchor" id="HowToUse"></a>How to Use These Docs</h3>
+				<p>
+					Not everyone is a programmer--and even experienced programmers are daunted by dry, wall-of-text documentation. With this in mind, we have taken steps to make the documentation for the Command Lua API accessible to users of all levels of skill, while retaining the depth and detail of technical documentation. To achieve this: 
+				</p>
+				<ul>
+					<li>
+						Examples are offered where practical
+					</li>
+					<li>
+						Color coding and linking are used extensively, and 
+					</li>
+					<li>
+						Simple language is used to explain concepts wherever possible
+					</li>
+				</ul>
+				
+				<h5>Need Help?</h5>
+				<p>
+					Even the best written documentation is no match for a discussion with an expert. We have a lively community of users of all levels--from casual Lua neophytes to professional users who work with the Command Lua API as their primary job--and the place to get in touch with them is the <a href="https://www.matrixgames.com/forums/tt.asp?forumid=1681">Lua Legion</a> subforum on the <a href="https://www.matrixgames.com/forums/tt.asp?forumid=1154">Official Command Forums</a>. The forum is actively monitored by WarfareSims staff, and most questions are answered within 24 hours.
+				</p>
+
+				<h5>Found Something Wrong?</h5>
+				<p>
+					We're human too; there are bound to be mistakes or inaccuracies in documentation for live, complex, evolving software. If you find something that is incorrect or unclear, please let us know by using the <a href="#ReportAProblem">report a problem</a> form or dropping us a message on the <a href="">Official Discord</a>, <a href="https://twitter.com/warfaresims">Twitter</a> or <a href="https://www.facebook.com/WarfareSims/">FaceBook</a>. Better yet, <a href="https://www.matrixgames.com/forums/tt.asp?forumid=1154">come join the community</a>!
+				</p>
+				<h4>Conventions</h4>
+				<p>The following conventions are used throughout this documentation to allow at-a-glance visualisation of data types, code snippets and example code.</p>
+				<ul class="ul-no-bullets">
+					<li><code>Code within text</code> is differentiated from normal text with a border, additional
+						spacing and a console-like font.</li>
+					<li><span class="parameter"><a href="">Parameter</a></span> references appear similar to in-text
+						code with a light blue background. The text links to the relevant documentation (although not in this example, as a parameter can be any of the types below).</li>
+					<li><span class="selector"><a href="#Selectors">Selector</a></span> references appear similar to
+						in-text code with a light green background. The text links to the relevant <a
+							href="#Selectors">Selector</a> documentation.</li>
+					<li><span class="wrapper"><a href="#Wrappers">Wrapper</a></span> references appear similar to
+						in-text code with a light purple background. The text links to the relevant <a
+							href="#Wrappers">Wrapper</a> documentation.</li>
+					<li><span class="table"><a href="#Tables">Table</a></span> references appear similar to in-text code
+						with a light orange background. The text links to the relevant <a href="#Tables">Table</a>
+						documentation.</li>
+
+					<li><span class="types"><a href="#DataTypes">Data type</a></span> descriptions appear similar to in-text code with bold font a dark grey background. If the Data Type is not one of the standard Lua data types, the text is white and links to the relevant <a href="#DataTypes">Data Type</a> documentation. Otherwise, the text is color coded to match the appearance of the datatype in the console:</li>
+					<ul>
+						<li><span class="types"><span class="string">string</span></li>
+						<li><span class="types"><span class="boolean">boolean</span></li>
+						<li><span class="types"><span class="number">number</span></li>
+					</ul>
+					<li><span class="readonly">READ ONLY</span> properties are denoted by a tag with the words READ ONLY in all caps, on a yellow background.</li>
+				</ul>
+				<div class="example">
+					<code>
+						<span class="comment">--Example code is written as it appears in the Command Lua console, with additional spacing and indentation for clarity</span>
+						<br>
+						<br>
+						<span class="comment">--[[
+							<br>
+							Native Lua functions, comparators and boolean values are blue
+							<br>
+							Operators (+,-,/,*) and constructors ( (,),{,} ) are purple
+							<br>
+							Strings are red
+							<br>
+							Numbers are gold
+							<br>
+							Variables and function names are black
+							<br>
+							]]
+						</span>
+						<br>
+						<br>
+						<span class="local">local</span>
+						mission
+						<span class="operator">=</span>
+						ScenEdit_AddMission
+						<span class="operator">(</span>
+						<span class="string">'USA'</span>,
+						<span class="string">'Marker strike'</span>,
+						<span class="string">'strike'</span>,
+						<span class="operator">{</span>
+						type
+						<span class="operator">=</span>
+						<span class="string">'land'</span>
+						<span class="operator">}</span>
+						<span class="operator">)</span>
+						<br>
+						<span class="comparator">if</span> mission 
+						<span class="operator">==</span> 
+						<span class="nil"/> 
+						<span class="comparator">then</span>
+						<br>
+						<span class="tab1">
+							<span class="comparator">&nbsp;&nbsp;&nbsp;&nbsp;if</span>
+							_errnum_
+							<span class="operator">~=</span>
+							<span class="number">0</span>
+							<span class="comparator">then</span>
+							<br>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="print"/>
+							<span class="operator">(</span>
+							<span class="string">'Failed to add:'</span>
+							.. _errmsg_
+							<span class="operator">)</span>
+							<br>
+							<span class="comparator">&nbsp;&nbsp;&nbsp;&nbsp;else</span>
+							<br>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="print"/>
+							<span class="operator">(</span>
+							<span class="string">'Something else'</span>
+							<span class="operator">)</span>
+							<br>
+							<span class="comparator">&nbsp;&nbsp;&nbsp;&nbsp;end</span>
+							<br>
+							<span class="comparator">else</span>
+							<br>
+							&nbsp;&nbsp;&nbsp;&nbsp;<span class="print"></span>
+							<span class="operator">(</span>
+							<span class="string">mission</span?
+							<span class="operator">)</span>
+							<br>
+							<span class="comparator">end</span>
+						</span>
+					</code>
+				</div>
+				<div class="note-alert">
+					<p>
+						<strong>Note:</strong> Information that is particularly useful or worthy of special mention appears in centered boxes with a blue background.
+					</p>
+				</div>
+
+				<div class="note-caution">
+					<p>
+						<strong>Caution:</strong> Advice on common pitfalls appears in centered boxes with a yellow background.
+					</p>
+				</div>
+
+				<div class="note-warning">
+					<p>
+						<strong>Warning:</strong> Information that could prevent you from losing work or otherwise disrupting your workflow appears in centered boxes with a red background. <strong>If you see one of these, pay attention!</strong>
+					</p>
+				</div>
+				</p>
+				<h3><a class="anchor" id="FirstSteps"></a>First Steps</h3>
+				<p>
+					If you're already familiar with writing scripts in Lua, dive right in and take a look at the <a href="#Functions">Functions</a> section. This is the meat of the Command Lua API--the direct interface with the source code that makes things happen.
+				</p>
+
+				<p>
+					If you're somewhat familiar with programming in general--but not Lua in particular--take a look at the <a href="#ExternalResources">External Resources</a> for a primer on Lua as a language, then head on over to the <a href="#Functions">Functions</a> section to get to grips with the tools at your disposal. 
+				</p>
+				
+				<p>
+					If you've never written a line of code in your life, <strong>don't panic--we've got you</strong>. We have a comprehensive set of <a href="#Guides">Guides</a> to get you started. Once you've conquered the <a href="#Guides">Guides</a> section, you'll be ready to jump in the deep end and start using the <a href="#Functions">Functions</a> to bend Command to your will!
+				</p>
+
+				<a class="anchor" id="Concepts"></a>
+				<h3>Concepts</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				<a class="anchor" id="ExternalResources"></a>
+				<h3>External Resources</h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				<div class="note-alert">
+					<p>
+						<strong>Note:</strong> These references are external to WarfareSims and are subject to change.
+					</p>
+				</div>
+
+				<a class="anchor" id="Overview"></a>
+				<h2>Overview</h2>
+
+				<a class="anchor" id="CaseSensitivityandConventions"></a>
+				<h3>Case Sensitivity and Conventions</h3>
+				<p>
+					Lua is a case sensitve language. When accessing object properties directly as in
+					<code>unit.name</code>, the property should be in lowercase which will match the Lua generated code.
+				</p>
+
+				<p> However, when accessing the properties through the module functions, both the keyword/property and
+					the value are case insensitive; the code will worry about matching them up.</p>
+
+				<div class="note-alert">
+					<p>
+						<strong>Note:</strong> There are some special cases where uppercase letters are used to name
+						fields (e.g. <code>mission.SISH=true</code> which is a shortcut for
+						<code>scrub_if_side_human</code>). These are documented in the relevant wrapper, selector or
+						table documentation.
+					</p>
+				</div>
+
+				<h5>Example 1</h5>
+				<p>
+					In the code below, note that incorrect case returns an undesired value while using the correct case
+					returns the desired value.
+				</p>
+
+				<div class="example">
+					<p>
+						<code>
+								<span class="local">local</span>
+								mission
+								<span class="operator">=</span>
+								ScenEdit_AddMission
+								<span class="operator">(</span>
+								<span class="string">'USA'</span>,
+								<span class="string">'Marker strike'</span>,
+								<span class="string">'strike'</span>,
+								<span class="operator">{</span>
+								type
+								<span class="operator">=</span>
+								<span class="string">'land'</span>
+								<span class="operator">}</span>
+								<span class="operator">)</span>
+								<br>
+								<span class="comparator">if</span> mission 
+								<span class="operator">==</span> 
+								<span class="nil"/> 
+								<span class="comparator">then</span>
+								<br>
+								<span class="tab1">
+									<span class="comparator">&nbsp;&nbsp;&nbsp;&nbsp;if</span>
+									_errnum_
+									<span class="operator">~=</span>
+									<span class="number">0</span>
+									<span class="comparator">then</span>
+									<br>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="print"/>
+									<span class="operator">(</span>
+									<span class="string">'Failed to add:'</span>
+									.. _errmsg_
+									<span class="operator">)</span>
+									<br>
+									<span class="comparator">&nbsp;&nbsp;&nbsp;&nbsp;else</span>
+									<br>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="print"/>
+									<span class="operator">(</span>
+									<span class="string">'Something else'</span>
+									<span class="operator">)</span>
+									<br>
+									<span class="comparator">&nbsp;&nbsp;&nbsp;&nbsp;end</span>
+									<br>
+									<span class="comparator">else</span>
+									<br>
+									&nbsp;&nbsp;&nbsp;&nbsp;<span class="print"></span>
+									<span class="operator">(</span>
+									<span class="string">mission</span?
+									<span class="operator">)</span>
+									<br>
+									<span class="comparator">end</span>
+								</span>
+							</code>
+					</p>
+				</div>
+
+
+
+				<h3><a class="anchor" id="Definitions"></a>Definitions</h3>
+
+				<h4>Selectors</h4>
+				<p>
+					These define the information required as part of the 'select' process for the functions. In the case
+					of functions that 'add' things, these are also key elements to the adding process. Other properties
+					may be included in the 'selector' such as when updating an existing table.
+				</p>
+
+				<p>
+					When selecting units, it is preferrable to use the GUID as the identifier for a precise match. If
+					not, then the side and name for a more limited search. And as a last option, just the name which
+					search all units in the scenario. When using just the name, usually the first matching name is
+					returned. This is okay if the names are unique. Thus including the side, it will only check the
+					units on that side for a match.
+				</p>
+
+				<h4>Wrappers</h4>
+				<p>
+					These define the information that is returned from some functions. This information can be usually
+					modified either directly (object.field) or by a wrapper Set(..) function. The particular wrapper
+					Set(..) function is preferred as some validation is performed on the input to ensure that it is
+					within the bounds of the field being updated.
+				</p>
+
+				<h4>Data Types</h4>
+				<p>
+					These cover any special considerations for the data, such as longitude/latitude; degrees, DMS, N/S,
+					E/W, etc.
+				</p>
+
+				<h4>Error Handling</h4>
+				<p>
+					Usually when a Lua script fails, an error is thrown that ends the script at that point. While this
+					may be okay in most cases, it is not often desired.
+				</p>
+				<p>
+					Whenever a Command Lua function gets an error, it will normally return <code>nil</code>, and the
+					error message will be available as Lua global variables:</p>
+				<ul>
+					<li>
+						<code>_errmsg_</code>: the last error message
+					</li>
+					<li>
+						<code>_errfnc_</code>: the Command Lua function that gave the error
+					</li>
+					<li>
+						<code>_errnum_</code>: the error code (0 is no error, and any value >0 will be an error)
+					</li>
+				</ul>
+				<p>Thus if you get back <code>nil</code>, you can check to see if that is due to an error or no data.
+				</p>
+				</p>
+
+				<div class="note-alert">
+					<p>
+						<strong>Note:</strong> Due to how errors are now handled from SR7, if a command fails in the
+						console window, it will show an error. If the command runs outside the console (as in an event
+						script), it will not fail with a visible error but return a nil or or some other value.
+					</p>
+				</div>
+
+				<h5>Example</h5>
+				<p>
+					Without the new error handling, the script below would terminate after the
+					<code>ScenEdit_AddMission()</code> function and the rest of script would not run.
+				</p>
+				<div class="example">
+					<p>
+						<code>
+								<span class="local">local</span>
+								mission
+								<span class="operator">=</span>
+								ScenEdit_AddMission
+								<span class="operator">(</span>
+								<span class="string">'USA'</span>,
+								<span class="string">'Marker strike'</span>,
+								<span class="string">'strike'</span>,
+								<span class="operator">{</span>
+								type
+								<span class="operator">=</span>
+								<span class="string">'land'</span>
+								<span class="operator">}</span>
+								<span class="operator">)</span>
+								<br>
+								<span class="comparator">if</span> mission 
+								<span class="operator">==</span> 
+								<span class="nil"/> 
+								<span class="comparator">then</span>
+								<br>
+								<span class="tab1">
+									<span class="comparator">&nbsp;&nbsp;&nbsp;&nbsp;if</span>
+									_errnum_
+									<span class="operator">~=</span>
+									<span class="number">0</span>
+									<span class="comparator">then</span>
+									<br>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="print"/>
+									<span class="operator">(</span>
+									<span class="string">'Failed to add:'</span>
+									.. _errmsg_
+									<span class="operator">)</span>
+									<br>
+									<span class="comparator">&nbsp;&nbsp;&nbsp;&nbsp;else</span>
+									<br>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="print"/>
+									<span class="operator">(</span>
+									<span class="string">'Something else'</span>
+									<span class="operator">)</span>
+									<br>
+									<span class="comparator">&nbsp;&nbsp;&nbsp;&nbsp;end</span>
+									<br>
+									<span class="comparator">else</span>
+									<br>
+									&nbsp;&nbsp;&nbsp;&nbsp;<span class="print"></span>
+									<span class="operator">(</span>
+									<span class="string">mission</span?
+									<span class="operator">)</span>
+									<br>
+									<span class="comparator">end</span>
+								</span>
+							</code>
+					</p>
+				</div>
+				<div class="note-caution">
+					<p>
+						<strong>Caution:</strong> One issue with commands running in an event is that sometimes they
+						fail with an in-game message that actually stops the rest of the script from running.
+						<strong>Now these event scripts will run without any in-game message showing.</strong> The
+						designer should check the result of the command and handle any error condition, and let the
+						remaining script run as needed.
+					</p>
+				</div>
+
+				<p>
+					The design intent is to have all command errors behave in the same fashion in the console window;
+					and the command errors outside a console behave without stopping the script. Which requires the
+					designer to cater for the specific error conditions.
+				</p>
+
+				<p>
+					To emulate the expected outcome from an event, put 'Tool_EmulateNoConsole(true)' at the start of the
+					script to be tested; it is not required in the event code as the script is already not running in a
+					console.
+				</p>
+
+				<p>
+					Note also, that the Lua history log should also record the event script errors.
+				</p>
+
+				<h3><a class="anchor" id="DataTypes"></a>Data Types</h3>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+				<h4><a class="anchor" id="Altitude"></a>Altitude</h4>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+				<h4><a class="anchor" id="Arc"></a>Arc</h4>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+				<h4><a class="anchor" id="DateTime"></a>DateTime</h4>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+				<h4><a class="anchor" id="KeyStore"></a>KeyStore</h4>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+				<h4><a class="anchor" id="Latitude"></a>Latitude</h4>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+				<h4><a class="anchor" id="LoadoutRole"></a>LoadoutRole</h4>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+				<h4><a class="anchor" id="LoadoutTimeOfDay"></a>LoadoutTimeOfDay</h4>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+				<h4><a class="anchor" id="LoadoutWeather"></a>LoadoutWeather</h4>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+				<h4><a class="anchor" id="Longitude"></a>Longitude</h4>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+				<h4><a class="anchor" id="Size"></a>Size</h4>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+				<h4><a class="anchor" id="Stance"></a>Stance</h4>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+				<h4><a class="anchor" id="TargetTypeWRA"></a>TargetTypeWRA</h4>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+				<h4><a class="anchor" id="TimeStamp"></a>TimeStamp</h4>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+				<h4><a class="anchor" id="WeaponDoctrine"></a>WeaponDoctrine</h4>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+				<h4><a class="anchor" id="WeaponType"></a>WeaponType</h4>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+				<h4><a class="anchor" id="Weather"></a>Weather</h4>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+
+				<a class="anchor" id="Functions"></a>
+				<h2>Functions</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+				<h3>ScenEdit_GetUnit()</h3>
+				<p>Returns a <span class="wrapper"><a href="#wrapper_Unit">Unit</a></span> wrapper using a <span class="selector"><a href="#selector_UnitSelector">UnitSelector</a></span>.</p>
+				<h4>Syntax</h4>
+				<p>
+					<code>ScenEdit_GetUnit(<span class="parameter"><a href="#selector_UnitSelector">UnitSelector</a></span>)</code>
+				</p>
+				<h5>Example</h5>
+				<p><code>ScenEdit_GetUnit({name='Eagle #1',side='Blue'})</code></p>
+				<p>
+					This function returns the properties of a specified unit. If no unit is found the function
+					returns <code>nil</code> if run non-interactively, and raises an exception if run from the
+					console (see note below for a technique to bypass this behaviour if desired).
+				</p>
+				<h4>Parameters</h4>
+				<ul>
+					<li><span class="selector"><a href="#selector_UnitSelector">UnitSelector</a></span> The unit to select.</li>
+				</ul>
+
+				<h4>Returns</h4>
+				<ul>
+					<li><span class="wrapper"><a href="#wrapper_Unit">Unit</a></span> if the unit exists, or</li>
+					<li><code>nil</code></li>
+				</ul>
+
+				<div class="note-alert">
+					<p>
+						<strong>Note:</strong> When run interactively (i.e. in the console) ScenEdit_GetUnit() will
+						raise an exception if the selected unit is not found. This can be prevented using <a
+							href="#Tool_EmulateNoConsole()">Tool_EmulateNoConsole()</a>.
+					</p>
+				</div>
+
+				<h4>Use</h4>
+				<p>
+					The <span class="selector"><a href="#selector_UnitSelector">UnitSelector</a></span> accepts either a <code>name</code> and <code>side</code>, or a
+					<code>guid</code> to return a <code>unit</code>
+				</p>
+
+				<h5>Example 1</h5>
+				<div class="example">
+					<p>
+						<code>
+							<span class="local">local</span>
+							myUnit
+							<span class="operator">=</span> 
+							ScenEdit_GetUnit<span class="operator">({</span>
+								guid=
+								<span class="string">'f4f9e0af-15c2-4582-8e80-b827c2ec2f56'</span>
+								<span class="operator">})</span>
+							<br>
+							<span class="print">print</span>
+							<span class="operator">(</span>
+							myUnit
+							<span class="operator">)</span>
+							<br><br>
+							<span class="output"> >> unit {
+									type = 'Ship', 
+									subtype = '3106', 
+									name = 'CG 56 San Jacinto', 
+									side = 'United States', 
+									guid = 'f4f9e0af-15c2-4582-8e80-b827c2ec2f56', 
+									class = 'CG 56 San Jacinto [Ticonderoga Baseline 3, VLS]', 
+									proficiency = 'Regular', 
+									latitude = '22.3252605703301', 
+									longitude = '62.1828983227462', 
+									altitude = '0', 
+									heading = '0', 
+									speed = '10', 
+									throttle = 'FullStop', 
+									autodetectable = 'False', 
+									group = 'Bush CSG', 
+									mounts = '25', 
+									magazines = '32', 
+									unitstate = 'Unassigned', 
+									fuelstate = 'None', 
+									weaponstate = 'None', 
+								}
+							</span>
+						</code>
+					</p>
+				</div>
+				<h5>Example 2</h5>
+				<div class="example">
+					<p>
+						<code>
+							<span class="local">local</span>
+							myUnit
+							<span class="operator">=</span> 
+							ScenEdit_GetUnit<span class="operator">({</span>
+							side
+							<span class="operator">=</span> 
+							<span class="string">'United States'</span>
+							, name
+							<span class="operator">=</span>
+							<span class="string">'CG 56 San Jacinto'</span>
+							<span class="operator">})</span>
+							<br>
+							<span class="print">print</span>
+							<span class="operator">(</span>
+							myUnit
+							<span class="operator">)</span>
+							<br><br>
+							<span class="output"> >> unit {
+								type = 'Ship', 
+								subtype = '3106', 
+								name = 'CG 56 San Jacinto', 
+								side = 'United States', 
+								guid = 'f4f9e0af-15c2-4582-8e80-b827c2ec2f56', 
+								class = 'CG 56 San Jacinto [Ticonderoga Baseline 3, VLS]', 
+								proficiency = 'Regular', 
+								latitude = '22.3252605703301', 
+								longitude = '62.1828983227462', 
+								altitude = '0', 
+								heading = '0', 
+								speed = '10', 
+								throttle = 'FullStop', 
+								autodetectable = 'False', 
+								group = 'Bush CSG', 
+								mounts = '25', 
+								magazines = '32', 
+								unitstate = 'Unassigned', 
+								fuelstate = 'None', 
+								weaponstate = 'None', 
+								}
+							</span>
+						</code>
+					</p>
+				</div>
+				<a class="anchor" id="Wrappers"></a>
+				<h2>Wrappers</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+					<table class="function_list">
+						<tr>
+						<td class="wrapper" ><a href="#AttackOptions">AttackOptions</a></td>
+						<td class="summary">Attack options.</td>
+						</tr>
+						<tr>
+						<td class="wrapper" ><a href="#Contact">Contact</a></td>
+						<td class="summary">Contact details.</td>
+						</tr>
+						<tr>
+						<td class="wrapper" ><a href="#Doctrine">Doctrine</a></td>
+						<td class="summary">Doctrine options.</td>
+						</tr>
+						<tr>
+						<td class="wrapper" ><a href="#DoctrineWRA">DoctrineWRA</a></td>
+						<td class="summary">WRA Doctrine options.</td>
+						</tr>
+						<tr>
+						<td class="wrapper" ><a href="#Event">Event</a></td>
+						<td class="summary">Event details
+					.</td>
+						</tr>
+						<tr>
+						<td class="wrapper" ><a href="#Group">Group</a></td>
+						<td class="summary">Group details.</td>
+						</tr>
+						<tr>
+						<td class="wrapper" ><a href="#Loadout">Loadout</a></td>
+						<td class="summary">Loadout.</td>
+						</tr>
+						<tr>
+						<td class="wrapper" ><a href="#Mission">Mission</a></td>
+						<td class="summary">Mission.</td>
+						</tr>
+						<tr>
+						<td class="wrapper" ><a href="#ReferencePoint">ReferencePoint</a></td>
+						<td class="summary">Reference point information.</td>
+						</tr>
+						<tr>
+						<td class="wrapper" ><a href="#RefuelOptions">RefuelOptions</a></td>
+						<td class="summary">Unit refueling options.</td>
+						</tr>
+						<tr>
+						<td class="wrapper" ><a href="#Side">Side</a></td>
+						<td class="summary">Side perspective.</td>
+						</tr>
+						<tr>
+						<td class="wrapper" ><a href="#Unit">Unit</a></td>
+						<td class="summary">Represents a active unit.</td>
+						</tr>
+						<tr>
+						<td class="wrapper" ><a href="#Zone">Zone</a></td>
+						<td class="summary">Exclusion/No navigatation zone.</td>
+						</tr>
+					</table>
+				<a class="anchor" id="Selectors"></a>
+				<h2>Selectors</h2>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+				<table class="function_list">
+					<tr>
+					<td class="selector" ><a href="#ActionUpdate">ActionUpdate</a></td>
+					<td class="summary">Action update.</td>
+					</tr>
+					<tr>
+					<td class="selector" ><a href="#ConditionUpdate">ConditionUpdate</a></td>
+					<td class="summary">Condition update.</td>
+					</tr>
+					<tr>
+					<td class="selector" ><a href="#ContactSelector">ContactSelector</a></td>
+					<td class="summary">Contact selector.</td>
+					</tr>
+					<tr>
+					<td class="selector" ><a href="#DamageOptions">DamageOptions</a></td>
+					<td class="summary">Unit damage.</td>
+					</tr>
+					<tr>
+					<td class="selector" ><a href="#DoctrineSelector">DoctrineSelector</a></td>
+					<td class="summary">Selects a doctrine.</td>
+					</tr>
+					<tr>
+					<td class="selector" ><a href="#DoctrineWRASelector">DoctrineWRASelector</a></td>
+					<td class="summary">Selects a WRA doctrine.</td>
+					</tr>
+					<tr>
+					<td class="selector" ><a href="#EventTCAUpdate">EventTCAUpdate</a></td>
+					<td class="summary">Event Trigger/Condition/Action update.</td>
+					</tr>
+					<tr>
+					<td class="selector" ><a href="#EventUpdate">EventUpdate</a></td>
+					<td class="summary">Event update.</td>
+					</tr>
+					<tr>
+					<td class="selector" ><a href="#NewMission">NewMission</a></td>
+					<td class="summary">New mission options.</td>
+					</tr>
+					<tr>
+					<td class="selector" ><a href="#NewUnit">NewUnit</a></td>
+					<td class="summary">New unit selector.</td>
+					</tr>
+					<tr>
+					<td class="selector" ><a href="#ReferencePointSelector">ReferencePointSelector</a></td>
+					<td class="summary">Reference point selector.</td>
+					</tr>
+					<tr>
+					<td class="selector" ><a href="#SideOption">SideOption</a></td>
+					<td class="summary">Side options.</td>
+					</tr>
+					<tr>
+					<td class="selector" ><a href="#SpecialAction">SpecialAction</a></td>
+					<td class="summary">Special action selector.</td>
+					</tr>
+					<tr>
+					<td class="selector" ><a href="#TriggerUpdate">TriggerUpdate</a></td>
+					<td class="summary">Trigger update.</td>
+					</tr>
+					<tr>
+					<td class="selector" ><a href="#UnitSelector">UnitSelector</a></td>
+					<td class="summary">Select a unit.</td>
+					</tr>
+					<tr>
+					<td class="selector" ><a href="#UpdateUnit">UpdateUnit</a></td>
+					<td class="summary">Update unit sensor/mount/weapon selector.</td>
+					</tr>
+					<tr>
+					<td class="selector" ><a href="#UpdateUnitCargo">UpdateUnitCargo</a></td>
+					<td class="summary">Update unit cargo selector.</td>
+					</tr>
+					<tr>
+					<td class="selector" ><a href="#VPContactSelector">VPContactSelector</a></td>
+					<td class="summary">Contact selector.</td>
+					</tr>
+					<tr>
+					<td class="selector" ><a href="#Weapon2Magazine">Weapon2Magazine</a></td>
+					<td class="summary">Select magazine and weapon.</td>
+					</tr>
+					<tr>
+					<td class="selector" ><a href="#Weapon2Mount">Weapon2Mount</a></td>
+					<td class="summary">Select mount and weapon.</td>
+					</tr>
+				</table>
+
+
+				<a class="anchor" id="ActionUpdate"></a>
+				<h3>ActionUpdate</h3>
+				<p>Action update.</p>
+				<ul class="ul-no-bullets">
+					<li>
+						<span class="parameter">ID</span>
+						<span class="types"><span class="string">string</span></span>
+						The GUID of the action <span class="readonly">READ ONLY</span>
+					</li>
+					<li><span class="parameter">Description</span>
+						<span class="types"><span class="string">string</span></span>
+						Description or GUID of action
+					</li>
+					<li><span class="parameter">NewName</span>
+						<span class="types"><span class="string">string</span></span>
+						If specified, the new name of the action
+					</li>
+					<li><span class="parameter">Mode</span>
+						<span class="types"><span class="string">string</span></span>
+						Operation to do - 'list', 'add', 'remove', 'update' (default) SE_Set...()
+					</li>
+					<li><span class="parameter">Type</span>
+						<span class="types"><span class="string">string</span></span>
+						Type of action [required only for 'add' option]
+					</li>
+					<li><span class="parameter">Other</span>
+						<span class="types"><span class="various">various</span></span>
+						values apply to Type of action.
+					</li>
+				</ul>
+
+				<a name = "ConditionUpdate"></a>
+				<h3>ConditionUpdate</h3>
+				<p>Condition update.</p>
+				
+				<ul class="ul-no-bullets">
+					<li><span class="parameter">ID</span>
+						<span class="types"><span class="string">string</span></span>
+					The GUID of the condition <span class="readonly">READ ONLY</span>
+					</li>
+					<li><span class="parameter">Description</span>
+						<span class="types"><span class="string">string</span></span>
+					Description or GUID of condition
+					</li>
+					<li><span class="parameter">NewName</span>
+						<span class="types"><span class="string">string</span></span>
+					If specified, the new name of the condition
+					</li>
+					<li><span class="parameter">Mode</span>
+						<span class="types"><span class="string">string</span></span>
+					Operation to do - 'list', 'add', 'remove', 'update' (default) SE_Set...()
+					</li>
+					<li><span class="parameter">Type</span>
+						<span class="types"><span class="string">string</span></span>
+					Type of condition [required only for 'add' option]
+					</li>
+					<li><span class="parameter">Other</span>
+						<span class="types"><span class="type">various</span></span>
+					values apply to Type of condition.
+					</li>
+				</ul>
+			</div>
+			<div id="footer">
+				<p>Copyright &copy; WarfareSims 2020</p>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
