@@ -11,6 +11,11 @@ body, .summary {
 	z-index: -1;
 }
 
+table {
+	font-size: 14px;
+	border-spacing: 10px;
+	margin-left: 10px;
+}
 .dark-mode {
   background-color: #676767;
   color: white;
@@ -433,7 +438,7 @@ strong {
  content:"\00a0"
 }
 
-#content .parameter, .wrapper, .selector, .table{
+#content .parameter, .wrapper, .selector, .table {
 	border-radius: 3px;
 	border: 1px solid #ccc;
 	

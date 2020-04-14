@@ -9,7 +9,8 @@
 	<div id="header-container">
 		<div id="header">
 			<div id="header-logo">
-				<h1><a href="index.html"><img src="./assets/images/CommandLuaLogo.svg" height=45px alt="CommandLua"></a></h1>
+				<h1><a href="index.html"><img src="./assets/images/CommandLuaLogo.svg" height=45px alt="CommandLua"></a>
+				</h1>
 			</div>
 			<div id="header-nav">
 				<a class="selected" href="index.html">Reference</a>
@@ -47,7 +48,7 @@
 					<ol>
 						<li><a href="#CaseSensitivityandConventions">Case Sensitivity and Conventions</a></li>
 						<li><a href="#DataTypes">Data Types</a></li>
-						<li><a href="#Notes">Notes</a></li>
+						<li><a href="#ErrorHandling">Error Handling</a></li>
 					</ol>
 					<li><a href="#Functions">Functions</a></li>
 					<ol>
@@ -73,7 +74,11 @@
 						<sub>April 13th 2020</sub>
 					</p>
 				</div>
-				<p ><strong>After 5 years using the <a href="https://stevedonovan.github.io/ldoc/">LDoc format</a>, the Command Lua API Documentation struts into the 2020's with a sleek new interface, inspired by industry leaders in web documentation.</strong> The new look is accompanied by an extensive re-write and reorganisation of existing content,	consolidation of content from various sources, and brand new content to assist Lua newbies and pros	alike in their Command Lua adventures.</p>
+				<p><strong>After 5 years using the <a href="https://stevedonovan.github.io/ldoc/">LDoc format</a>, the
+						Command Lua API Documentation struts into the 2020's with a sleek new interface, inspired by
+						industry leaders in web documentation.</strong> The new look is accompanied by an extensive
+					re-write and reorganisation of existing content, consolidation of content from various sources, and
+					brand new content to assist Lua newbies and pros alike in their Command Lua adventures.</p>
 				<p>The old site can be found <a href="./oldsite/index.html">here</a> for metathesiophobics, however it
 					won't be updated.</p>
 				<h4>Version 1141.1</h4>
@@ -105,12 +110,16 @@
 				<a class="anchor" id="Introduction"></a>
 				<h2>Introduction</h2>
 				<p>
-					Welcome to the documentation for the Command Lua Application Programming Interface (API). The Command Lua API allows users to control behaviour of Command directly by using the Lua scripting language, providing a flexible and easy to use tool for users to extend or customize the built-in functionality of Command.
+					Welcome to the documentation for the Command Lua Application Programming Interface (API). The
+					Command Lua API allows users to control behaviour of Command directly by using the Lua scripting
+					language, providing a flexible and easy to use tool for users to extend or customize the built-in
+					functionality of Command.
 				</p>
 
 				<h3>What Can I Do With the Command Lua API?</h3>
 				<p>
-					Since the Command Lua API interfaces directly with the source code of Command, users are provided with the ability to implement virtually any desired behaviour. Some common uses include:
+					Since the Command Lua API interfaces directly with the source code of Command, users are provided
+					with the ability to implement virtually any desired behaviour. Some common uses include:
 				</p>
 				<ul>
 					<li>Precise placement and orientation of units using the console</li>
@@ -119,7 +128,7 @@
 					<li>Extending existing AI behaviour</li>
 					<li>'Spawning' of units in conjunction with the event editor</li>
 					<li>Implementation of additional features, such as:</li>
-					<ul>	
+					<ul>
 						<li>Downed pilots</li>
 						<li>Combat search and rescue</li>
 						<li>'Purchasing' additional units</li>
@@ -128,43 +137,59 @@
 				</ul>
 
 				<p>
-					While the above items are common uses for the Command Lua API, the integration with source code allows users to custom-design virtually any feature or modification that they desire.
+					While the above items are common uses for the Command Lua API, the integration with source code
+					allows users to custom-design virtually any feature or modification that they desire.
 				</p>
 
 				<a class="anchor" id="top"></a>
 
 				<h3><a class="anchor" id="HowToUse"></a>How to Use These Docs</h3>
 				<p>
-					Not everyone is a programmer--and even experienced programmers are daunted by dry, wall-of-text documentation. With this in mind, we have taken steps to make the documentation for the Command Lua API accessible to users of all levels of skill, while retaining the depth and detail of technical documentation. To achieve this: 
+					Not everyone is a programmer--and even experienced programmers are daunted by dry, wall-of-text
+					documentation. With this in mind, we have taken steps to make the documentation for the Command Lua
+					API accessible to users of all levels of skill, while retaining the depth and detail of technical
+					documentation. To achieve this:
 				</p>
 				<ul>
 					<li>
 						Examples are offered where practical
 					</li>
 					<li>
-						Color coding and linking are used extensively, and 
+						Color coding and linking are used extensively, and
 					</li>
 					<li>
 						Simple language is used to explain concepts wherever possible
 					</li>
 				</ul>
-				
+
 				<h5>Need Help?</h5>
 				<p>
-					Even the best written documentation is no match for a discussion with an expert. We have a lively community of users of all levels--from casual Lua neophytes to professional users who work with the Command Lua API as their primary job--and the place to get in touch with them is the <a href="https://www.matrixgames.com/forums/tt.asp?forumid=1681">Lua Legion</a> subforum on the <a href="https://www.matrixgames.com/forums/tt.asp?forumid=1154">Official Command Forums</a>. The forum is actively monitored by WarfareSims staff, and most questions are answered within 24 hours.
+					Even the best written documentation is no match for a discussion with an expert. We have a lively
+					community of users of all levels--from casual Lua neophytes to professional users who work with the
+					Command Lua API as their primary job--and the place to get in touch with them is the <a
+						href="https://www.matrixgames.com/forums/tt.asp?forumid=1681">Lua Legion</a> subforum on the <a
+						href="https://www.matrixgames.com/forums/tt.asp?forumid=1154">Official Command Forums</a>. The
+					forum is actively monitored by WarfareSims staff, and most questions are answered within 24 hours.
 				</p>
 
 				<h5>Found Something Wrong?</h5>
 				<p>
-					We're human too; there are bound to be mistakes or inaccuracies in documentation for live, complex, evolving software. If you find something that is incorrect or unclear, please let us know by using the <a href="#ReportAProblem">report a problem</a> form or dropping us a message on the <a href="">Official Discord</a>, <a href="https://twitter.com/warfaresims">Twitter</a> or <a href="https://www.facebook.com/WarfareSims/">FaceBook</a>. Better yet, <a href="https://www.matrixgames.com/forums/tt.asp?forumid=1154">come join the community</a>!
+					We're human too; there are bound to be mistakes or inaccuracies in documentation for live, complex,
+					evolving software. If you find something that is incorrect or unclear, please let us know by using
+					the <a href="#ReportAProblem">report a problem</a> form or dropping us a message on the <a
+						href="">Official Discord</a>, <a href="https://twitter.com/warfaresims">Twitter</a> or <a
+						href="https://www.facebook.com/WarfareSims/">FaceBook</a>. Better yet, <a
+						href="https://www.matrixgames.com/forums/tt.asp?forumid=1154">come join the community</a>!
 				</p>
 				<h4>Conventions</h4>
-				<p>The following conventions are used throughout this documentation to allow at-a-glance visualisation of data types, code snippets and example code.</p>
+				<p>The following conventions are used throughout this documentation to allow at-a-glance visualisation
+					of data types, code snippets and example code.</p>
 				<ul class="ul-no-bullets">
 					<li><code>Code within text</code> is differentiated from normal text with a border, additional
 						spacing and a console-like font.</li>
 					<li><span class="parameter"><a href="">Parameter</a></span> references appear similar to in-text
-						code with a light blue background. The text links to the relevant documentation (although not in this example, as a parameter can be any of the types below).</li>
+						code with a light blue background. The text links to the relevant documentation (although not in
+						this example, as a parameter can be any of the types below).</li>
 					<li><span class="selector"><a href="#Selectors">Selector</a></span> references appear similar to
 						in-text code with a light green background. The text links to the relevant <a
 							href="#Selectors">Selector</a> documentation.</li>
@@ -175,13 +200,18 @@
 						with a light orange background. The text links to the relevant <a href="#Tables">Table</a>
 						documentation.</li>
 
-					<li><span class="types"><a href="#DataTypes">Data type</a></span> descriptions appear similar to in-text code with bold font a dark grey background. If the Data Type is not one of the standard Lua data types, the text is white and links to the relevant <a href="#DataTypes">Data Type</a> documentation. Otherwise, the text is color coded to match the appearance of the datatype in the console:</li>
+					<li><span class="types"><a href="#DataTypes">Data type</a></span> descriptions appear similar to
+						in-text code with bold font a dark grey background. If the Data Type is not one of the standard
+						Lua data types, the text is white and links to the relevant <a href="#DataTypes">Data Type</a>
+						documentation. Otherwise, the text is color coded to match the appearance of the datatype in the
+						console:</li>
 					<ul>
 						<li><span class="types"><span class="string">string</span></li>
 						<li><span class="types"><span class="boolean">boolean</span></li>
 						<li><span class="types"><span class="number">number</span></li>
 					</ul>
-					<li><span class="readonly">READ ONLY</span> properties are denoted by a tag with the words READ ONLY in all caps, on a yellow background.</li>
+					<li><span class="readonly">READ ONLY</span> properties are denoted by a tag with the words READ ONLY
+						in all caps, on a yellow background.</li>
 				</ul>
 				<div class="example">
 					<code>
@@ -259,40 +289,59 @@
 				</div>
 				<div class="note-alert">
 					<p>
-						<strong>Note:</strong> Information that is particularly useful or worthy of special mention appears in centered boxes with a blue background.
+						<strong>Note:</strong> Information that is particularly useful or worthy of special mention
+						appears in centered boxes with a blue background.
 					</p>
 				</div>
 
 				<div class="note-caution">
 					<p>
-						<strong>Caution:</strong> Advice on common pitfalls appears in centered boxes with a yellow background.
+						<strong>Caution:</strong> Advice on common pitfalls appears in centered boxes with a yellow
+						background.
 					</p>
 				</div>
 
 				<div class="note-warning">
 					<p>
-						<strong>Warning:</strong> Information that could prevent you from losing work or otherwise disrupting your workflow appears in centered boxes with a red background. <strong>If you see one of these, pay attention!</strong>
+						<strong>Warning:</strong> Information that could prevent you from losing work or otherwise
+						disrupting your workflow appears in centered boxes with a red background. <strong>If you see one
+							of these, pay attention!</strong>
 					</p>
 				</div>
 				</p>
 				<h3><a class="anchor" id="FirstSteps"></a>First Steps</h3>
 				<p>
-					If you're already familiar with writing scripts in Lua, dive right in and take a look at the <a href="#Functions">Functions</a> section. This is the meat of the Command Lua API--the direct interface with the source code that makes things happen.
+					If you're already familiar with writing scripts in Lua, dive right in and take a look at the <a
+						href="#Functions">Functions</a> section. This is the meat of the Command Lua API--the direct
+					interface with the source code that makes things happen.
 				</p>
 
 				<p>
-					If you're somewhat familiar with programming in general--but not Lua in particular--take a look at the <a href="#ExternalResources">External Resources</a> for a primer on Lua as a language, then head on over to the <a href="#Functions">Functions</a> section to get to grips with the tools at your disposal. 
+					If you're somewhat familiar with programming in general--but not Lua in particular--take a look at
+					the <a href="#ExternalResources">External Resources</a> for a primer on Lua as a language, then head
+					on over to the <a href="#Functions">Functions</a> section to get to grips with the tools at your
+					disposal.
 				</p>
-				
+
 				<p>
-					If you've never written a line of code in your life, <strong>don't panic--we've got you</strong>. We have a comprehensive set of <a href="#Guides">Guides</a> to get you started. Once you've conquered the <a href="#Guides">Guides</a> section, you'll be ready to jump in the deep end and start using the <a href="#Functions">Functions</a> to bend Command to your will!
+					If you've never written a line of code in your life, <strong>don't panic--we've got you</strong>. We
+					have a comprehensive set of <a href="#Guides">Guides</a> to get you started. Once you've conquered
+					the <a href="#Guides">Guides</a> section, you'll be ready to jump in the deep end and start using
+					the <a href="#Functions">Functions</a> to bend Command to your will!
 				</p>
 
 				<a class="anchor" id="ExternalResources"></a>
 				<h3>External Resources</h3>
 				<p>The links below contain useful resources for getting started with Lua in general:</p>
 				<ul>
-					<li><a href="http://lua-users.org/wiki/TutorialDirectory">Tutorials from the Lua Users Wiki</a> - The first four tutorials (<a href="http://lua-users.org/wiki/LuaTypesTutorial">Types</a>, <a href="http://lua-users.org/wiki/AssignmentTutorial">Assignment</a>, <a href="http://lua-users.org/wiki/NumbersTutorial">Numbers</a> and <a href="http://lua-users.org/wiki/StringsTutorial">Strings</a>) as well as the <a href="http://lua-users.org/wiki/TablesTutorial">Tables</a> and <a href="http://lua-users.org/wiki/FunctionsTutorial">Functions</a> tutorials are recommended reading.</li>
+					<li><a href="http://lua-users.org/wiki/TutorialDirectory">Tutorials from the Lua Users Wiki</a> -
+						The first four tutorials (<a href="http://lua-users.org/wiki/LuaTypesTutorial">Types</a>, <a
+							href="http://lua-users.org/wiki/AssignmentTutorial">Assignment</a>, <a
+							href="http://lua-users.org/wiki/NumbersTutorial">Numbers</a> and <a
+							href="http://lua-users.org/wiki/StringsTutorial">Strings</a>) as well as the <a
+							href="http://lua-users.org/wiki/TablesTutorial">Tables</a> and <a
+							href="http://lua-users.org/wiki/FunctionsTutorial">Functions</a> tutorials are recommended
+						reading.</li>
 					<li><a href="https://en.wikibooks.org/wiki/Lua_Programming">The Lua Programming WikiBook</a></li>
 					<li><a href="https://www.lua.org/manual/5.3/">Lua 5.3 Reference Manual</a></li>
 				</ul>
@@ -420,8 +469,8 @@
 					These cover any special considerations for the data, such as longitude/latitude; degrees, DMS, N/S,
 					E/W, etc.
 				</p>
-
-				<h4>Error Handling</h4>
+				<a class="anchor" id="ErrorHandling"></a>
+				<h3>Error Handling</h3>
 				<p>
 					Usually when a Lua script fails, an error is thrown that ends the script at that point. While this
 					may be okay in most cases, it is not often desired.
@@ -551,12 +600,18 @@
 				</p>
 				<h4><a class="anchor" id="Altitude"></a>Altitude</h4>
 				<p>
-					Altitude is the height or depth of a unit. The altitude is displayed in meters when accessing the data. It can be set using either meters or feet by adding M or FT after it. The default is M if just a number is used.
+					Altitude is the height or depth of a unit. The altitude is displayed in meters when accessing the
+					data. It can be set using either meters or feet by adding M or FT after it. The default is M if just
+					a number is used.
 
 					<h5>Example</h5>
 					<div class="example">
 						<code>
-							{altitude=<span class="string">'100 FT'</span>} <span class="keyword">or</span> {altitude=<span class="string">'100 M'</span>} <span class="keyword">or</span> {altitude=<span class="string">'100'</span>}
+							{altitude = <span class="string">'100 FT'</span>} <br>
+							<span class="comment">--or</span> <br>
+							{altitude = <span class="string">'100 M'</span>} <br>
+							<span class="comment">--or</span> <br>
+							{altitude = <span class="string">'100'</span>} <span class="comment">--same as 100 M, since default is measured in metres</span>
 						</code>
 					</div>
 				</p>
@@ -570,28 +625,37 @@
 				</p>
 				<h4><a class="anchor" id="DateTime"></a>DateTime</h4>
 				<p>
-					DateTime is displayed and changed as per LOCALE e.g. US would be 'MM/DD/YYYY HH:MM:SS AM/PM' eg '8/13/2002 12:14 PM'
+					DateTime is displayed and changed as per LOCALE e.g. US would be 'MM/DD/YYYY HH:MM:SS AM/PM' eg
+					'8/13/2002 12:14 PM'
 				</p>
 				<h4><a class="anchor" id="KeyStore"></a>KeyStore</h4>
 				<p>
-					The simulation allows for user data to be stored within the save file. This is done by associating <code>keys</code> with <code>values</code>. <code>Key</code> and <code>value</code> pairs added to the persistent store are retained when the game is saved and resumed. <code>Keys</code> with <code>values</code> are both represented as non-<code>nil</code> <span class='types'><span class="string">strings</span></span>.
+					The simulation allows for user data to be stored within the save file. This is done by associating
+					<code>keys</code> with <code>values</code>. <code>Key</code> and <code>value</code> pairs added to
+					the persistent store are retained when the game is saved and resumed. <code>Keys</code> with
+					<code>values</code> are both represented as non-<code>nil</code> <span class='types'><span
+							class="string">strings</span></span>.
 
 					<div class="note-alert">
 						<p>
-							<strong>Note:</strong> The 
-							<span class="types">KeyStore</span> 
-							datatype only accepts 
-							<span class="types"><span class="string">strings</span></span> 
-							as parameters. 
-							<span class="types"><span class="number">Numbers</span></span> 
-							can only be stored using a 
-							<span class="types">KeyStore</span> 
-							if the number is first converted to a 
+							<strong>Note:</strong> The
+							<span class="types">KeyStore</span>
+							datatype only accepts
+							<span class="types"><span class="string">strings</span></span>
+							as parameters.
+							<span class="types"><span class="number">Numbers</span></span>
+							can only be stored using a
+							<span class="types">KeyStore</span>
+							if the number is first converted to a
 							<span class="types"><span class="string">string</span></span>
 							--e.g. by using the Lua native function <code>tostring()</code>.
 						</p>
 						<o>
-							Conversely, a <span class="types"><span class="number">number</span></span> stored in a <span class="types">KeyStore</span> as a <span class="types"><span class="string">string</span></span> can be converted back to a <span class="types"><span class="number">number</span></span> using the the Lua native function <code>tonumber()</code>.
+							Conversely, a <span class="types"><span class="number">number</span></span> stored in a
+							<span class="types">KeyStore</span> as a <span class="types"><span
+									class="string">string</span></span> can be converted back to a <span
+								class="types"><span class="number">number</span></span> using the the Lua native
+							function <code>tonumber()</code>.
 						</o>
 					</div>
 				</p>
@@ -599,49 +663,189 @@
 
 				<h4><a class="anchor" id="Latitude"></a>Latitude</h4>
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					Latitude is degrees N or S of the equator as 'S 60.20.10' or as +/- as -60.336. The data in the
+					tables is held as a signed <span class="types"><span class="number"></span>number</span>.
 				</p>
+				<h5>Example</h5>
+				<div class="example">
+					<code>
+						{latitude = <span class="string">'S 60.20.10'</span>} <br>
+						<span class="comment">--or</span> <br>
+						{latitude = <span class="number">-60.336</span>}
+					</code>
+				</div>
 				<h4><a class="anchor" id="LoadoutRole"></a>LoadoutRole</h4>
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					A <span class="types"><span class='string'>string</span></span> and <span class="types"><span class='number'>number</span></span> that correlates to the role of a loadout in the database.
+					<table>
+						<tr>
+							<td>None = 1001 </td>
+							<td>Intercept_BVR = 2001 </td>
+						</tr>
+						<tr>
+							<td>Intercept_WVR = 2002 </td>
+							<td>AirSuperiority_BVR = 2003 </td>
+						</tr>
+						<tr>
+							<td>AirSuperiority_WVR = 2004 </td>
+							<td>PointDefence_BVR = 2005 </td>
+						</tr>
+						<tr>
+							<td>PointDefence_WVR = 2006 </td>
+							<td>GunsOnly = 2007 </td>
+						</tr>
+						<tr>
+							<td>AntiSatellite_Intercept = 2101 </td>
+							<td>AirborneLaser = 2102 </td>
+						</tr>
+						<tr>
+							<td>LandNaval_Strike = 3001 </td>
+							<td>LandNaval_Standoff = 3002 </td>
+						</tr>
+						<tr>
+							<td>LandNaval_SEAD_ARM = 3003 </td>
+							<td>LandNaval_SEAD_TALD = 3004 </td>
+						</tr>
+						<tr>
+							<td>LandNaval_DEAD = 3005 </td>
+							<td>LandOnly_Strike = 3101 </td>
+						</tr>
+						<tr>
+							<td>LandOnly_Standoff = 3102 </td>
+							<td>LandOnly_SEAD_ARM = 3103 </td>
+						</tr>
+						<tr>
+							<td>LandOnly_SEAD_TALD = 3104 </td>
+							<td>LandOnly_DEAD = 3105 </td>
+						</tr>
+						<tr>
+							<td>NavalOnly_Strike = 3201 </td>
+							<td>NavalOnly_Standoff = 3202 </td>
+						</tr>
+						<tr>
+							<td>NavalOnly_SEAD_ARM = 3203 </td>
+							<td>NavalOnly_SEAD_TALD = 3204 </td>
+						</tr>
+						<tr>
+							<td>NavalOnly_DEAD = 3205 </td>
+							<td>BAI_CAS = 3401 </td>
+						</tr>
+						<tr>
+							<td>Buddy_Illumination = 3501 </td>
+							<td>OECM = 4001 </td>
+						</tr>
+						<tr>
+							<td>AEW = 4002 </td>
+							<td>CommandPost = 4003</td>
+						</tr>
+						<tr>
+							<td>ChaffLaying = 4004 </td>
+							<td>SearchAndRescue = 4101 </td>
+						</tr>
+						<tr>
+							<td>CombatSearchAndRescue = 4102 </td>
+							<td>MineSweeping = 4201 </td>
+						</tr>
+						<tr>
+							<td>MineRecon = 4202 </td>
+							<td>NavalMineLaying = 4301 </td>
+						</tr>
+						<tr>
+							<td>ASW_Patrol = 6001 </td>
+							<td>ASW_Attack = 6002 </td>
+						</tr>
+						<tr>
+							<td>Forward_Observer = 7001 </td>
+							<td>Area_Surveillance = 7002 </td>
+						</tr>
+						<tr>
+							<td>Armed_Recon = 7003 </td>
+							<td>Unarmed_Recon = 7004 </td>
+						</tr>
+						<tr>
+							<td>Maritime_Surveillance = 7005 </td>
+							<td>Paratroopers = 7101 </td>
+						</tr>
+						<tr>
+							<td>Troop_Transport = 7102 </td>
+							<td>Cargo = 7201 </td>
+						</tr>
+						<tr>
+							<td>AirRefueling = 8001 </td>
+							<td>Training = 8101 </td>
+						</tr>
+						<tr>
+							<td>TargetTow = 8102 </td>
+							<td>TargetDrone = 8103 </td>
+						</tr>
+						<tr>
+							<td>Ferry = 9001 </td>
+							<td>Unavailable = 9002 </td>
+						</tr>
+						<tr>
+							<td>Reserve = 9003 </td>
+							<td>ArmedFerry = 9004 </td>
+						</tr>
+					</table>
 				</p>
 				<h4><a class="anchor" id="LoadoutTimeOfDay"></a>LoadoutTimeOfDay</h4>
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					A <span class="types"><span class='string'>string</span></span> and <span class="types"><span class='number'>number</span></span> that correlates to the time of day specified for a loadout in the database.
+					<table>
+						<tr>
+							<td>None = 1001</td>
+						</tr>
+						<tr>
+							<td>DayNight = 2001</td>
+						</tr>
+						<tr>
+							<td>NightOnly = 2002</td>
+						</tr>	
+						<tr>
+							<td>DayOnly = 2003</td>
+						</tr>
+					</table>
 				</p>
+				<div class="note-alert">
+					<p>
+						<strong>Note:</strong> As of v1141.1 loadout time of day restrictions are not enforced for aircraft launch, however <strong>they do affect quick-turnaround</strong>.
+					</p>				
+				</div>
 				<h4><a class="anchor" id="LoadoutWeather"></a>LoadoutWeather</h4>
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					A <span class="types"><span class='string'>string</span></span> and <span class="types"><span class='number'>number</span></span> that correlates to the time of day specified for a loadout in the database.
+					<table>
+						<tr>
+							<td>None = 1001</td>
+						</tr>
+						<tr>
+							<td>AllWeather = 2001</td>
+						</tr>
+						<tr>
+							<td>LimitedAllWeather = 2002</td>
+						</tr>	
+						<tr>
+							<td>ClearWeather = 2003</td>
+						</tr>
+					</table>
 				</p>
+				<div class="note-alert">
+					<p>
+						<strong>Note:</strong> As of v1141.1 loadout weather restrictions are not enforced, however the individual weapons in a loadout are affected by weather. For example: There are no restrictions on launching an aircraft with a loadout carrying laser-guided bombs, however they will not be able to use those weapons if the target is obscured by cloud, fog or heavy precipitation.
+					</p>
+				</div>
 				<h4><a class="anchor" id="Longitude"></a>Longitude</h4>
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					Longitude is degrees E or W of Greenwich line as 'W 60.20.10' or as +/- as -60.336. The data in the tables is held as a signed <span class="types"><span class="number"></span>number</span>. 
 				</p>
+				<h5>Example</h5>
+				<div class="example">
+					<code>
+						{longitude = <span class="string">'W 60.20.10'</span>} <br>
+						<span class="comment">--or</span> <br>
+						{longitude = <span class="number">-60.336</span>}
+					</code>
+				</div>
 				<h4><a class="anchor" id="Size"></a>Size</h4>
 				<p>
 					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -716,7 +920,8 @@
 					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
 				<h3>ScenEdit_GetUnit()</h3>
-				<p>Returns a <span class="wrapper"><a href="#wrapper_Unit">Unit</a></span> wrapper using a <span class="selector"><a href="#selector_UnitSelector">UnitSelector</a></span>.</p>
+				<p>Returns a <span class="wrapper"><a href="#wrapper_Unit">Unit</a></span> wrapper using a <span
+						class="selector"><a href="#selector_UnitSelector">UnitSelector</a></span>.</p>
 				<h4>Syntax</h4>
 				<p>
 					<code>ScenEdit_GetUnit(<span class="parameter"><a href="#selector_UnitSelector">UnitSelector</a></span>)</code>
@@ -730,7 +935,8 @@
 				</p>
 				<h4>Parameters</h4>
 				<ul>
-					<li><span class="selector"><a href="#selector_UnitSelector">UnitSelector</a></span> The unit to select.</li>
+					<li><span class="selector"><a href="#selector_UnitSelector">UnitSelector</a></span> The unit to
+						select.</li>
 				</ul>
 
 				<h4>Returns</h4>
@@ -749,7 +955,8 @@
 
 				<h4>Use</h4>
 				<p>
-					The <span class="selector"><a href="#selector_UnitSelector">UnitSelector</a></span> accepts either a <code>name</code> and <code>side</code>, or a
+					The <span class="selector"><a href="#selector_UnitSelector">UnitSelector</a></span> accepts either a
+					<code>name</code> and <code>side</code>, or a
 					<code>guid</code> to return a <code>unit</code>
 				</p>
 
@@ -852,61 +1059,61 @@
 					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-					<table class="function_list">
-						<tr>
-						<td class="wrapper" ><a href="#AttackOptions">AttackOptions</a></td>
+				<table class="function_list">
+					<tr>
+						<td class="wrapper"><a href="#AttackOptions">AttackOptions</a></td>
 						<td class="summary">Attack options.</td>
-						</tr>
-						<tr>
-						<td class="wrapper" ><a href="#Contact">Contact</a></td>
+					</tr>
+					<tr>
+						<td class="wrapper"><a href="#Contact">Contact</a></td>
 						<td class="summary">Contact details.</td>
-						</tr>
-						<tr>
-						<td class="wrapper" ><a href="#Doctrine">Doctrine</a></td>
+					</tr>
+					<tr>
+						<td class="wrapper"><a href="#Doctrine">Doctrine</a></td>
 						<td class="summary">Doctrine options.</td>
-						</tr>
-						<tr>
-						<td class="wrapper" ><a href="#DoctrineWRA">DoctrineWRA</a></td>
+					</tr>
+					<tr>
+						<td class="wrapper"><a href="#DoctrineWRA">DoctrineWRA</a></td>
 						<td class="summary">WRA Doctrine options.</td>
-						</tr>
-						<tr>
-						<td class="wrapper" ><a href="#Event">Event</a></td>
+					</tr>
+					<tr>
+						<td class="wrapper"><a href="#Event">Event</a></td>
 						<td class="summary">Event details
-					.</td>
-						</tr>
-						<tr>
-						<td class="wrapper" ><a href="#Group">Group</a></td>
+							.</td>
+					</tr>
+					<tr>
+						<td class="wrapper"><a href="#Group">Group</a></td>
 						<td class="summary">Group details.</td>
-						</tr>
-						<tr>
-						<td class="wrapper" ><a href="#Loadout">Loadout</a></td>
+					</tr>
+					<tr>
+						<td class="wrapper"><a href="#Loadout">Loadout</a></td>
 						<td class="summary">Loadout.</td>
-						</tr>
-						<tr>
-						<td class="wrapper" ><a href="#Mission">Mission</a></td>
+					</tr>
+					<tr>
+						<td class="wrapper"><a href="#Mission">Mission</a></td>
 						<td class="summary">Mission.</td>
-						</tr>
-						<tr>
-						<td class="wrapper" ><a href="#ReferencePoint">ReferencePoint</a></td>
+					</tr>
+					<tr>
+						<td class="wrapper"><a href="#ReferencePoint">ReferencePoint</a></td>
 						<td class="summary">Reference point information.</td>
-						</tr>
-						<tr>
-						<td class="wrapper" ><a href="#RefuelOptions">RefuelOptions</a></td>
+					</tr>
+					<tr>
+						<td class="wrapper"><a href="#RefuelOptions">RefuelOptions</a></td>
 						<td class="summary">Unit refueling options.</td>
-						</tr>
-						<tr>
-						<td class="wrapper" ><a href="#Side">Side</a></td>
+					</tr>
+					<tr>
+						<td class="wrapper"><a href="#Side">Side</a></td>
 						<td class="summary">Side perspective.</td>
-						</tr>
-						<tr>
-						<td class="wrapper" ><a href="#Unit">Unit</a></td>
+					</tr>
+					<tr>
+						<td class="wrapper"><a href="#Unit">Unit</a></td>
 						<td class="summary">Represents a active unit.</td>
-						</tr>
-						<tr>
-						<td class="wrapper" ><a href="#Zone">Zone</a></td>
+					</tr>
+					<tr>
+						<td class="wrapper"><a href="#Zone">Zone</a></td>
 						<td class="summary">Exclusion/No navigatation zone.</td>
-						</tr>
-					</table>
+					</tr>
+				</table>
 				<a class="anchor" id="Selectors"></a>
 				<h2>Selectors</h2>
 				<p>
@@ -919,84 +1126,84 @@
 				</p>
 				<table class="function_list">
 					<tr>
-					<td class="selector" ><a href="#ActionUpdate">ActionUpdate</a></td>
-					<td class="summary">Action update.</td>
+						<td class="selector"><a href="#ActionUpdate">ActionUpdate</a></td>
+						<td class="summary">Action update.</td>
 					</tr>
 					<tr>
-					<td class="selector" ><a href="#ConditionUpdate">ConditionUpdate</a></td>
-					<td class="summary">Condition update.</td>
+						<td class="selector"><a href="#ConditionUpdate">ConditionUpdate</a></td>
+						<td class="summary">Condition update.</td>
 					</tr>
 					<tr>
-					<td class="selector" ><a href="#ContactSelector">ContactSelector</a></td>
-					<td class="summary">Contact selector.</td>
+						<td class="selector"><a href="#ContactSelector">ContactSelector</a></td>
+						<td class="summary">Contact selector.</td>
 					</tr>
 					<tr>
-					<td class="selector" ><a href="#DamageOptions">DamageOptions</a></td>
-					<td class="summary">Unit damage.</td>
+						<td class="selector"><a href="#DamageOptions">DamageOptions</a></td>
+						<td class="summary">Unit damage.</td>
 					</tr>
 					<tr>
-					<td class="selector" ><a href="#DoctrineSelector">DoctrineSelector</a></td>
-					<td class="summary">Selects a doctrine.</td>
+						<td class="selector"><a href="#DoctrineSelector">DoctrineSelector</a></td>
+						<td class="summary">Selects a doctrine.</td>
 					</tr>
 					<tr>
-					<td class="selector" ><a href="#DoctrineWRASelector">DoctrineWRASelector</a></td>
-					<td class="summary">Selects a WRA doctrine.</td>
+						<td class="selector"><a href="#DoctrineWRASelector">DoctrineWRASelector</a></td>
+						<td class="summary">Selects a WRA doctrine.</td>
 					</tr>
 					<tr>
-					<td class="selector" ><a href="#EventTCAUpdate">EventTCAUpdate</a></td>
-					<td class="summary">Event Trigger/Condition/Action update.</td>
+						<td class="selector"><a href="#EventTCAUpdate">EventTCAUpdate</a></td>
+						<td class="summary">Event Trigger/Condition/Action update.</td>
 					</tr>
 					<tr>
-					<td class="selector" ><a href="#EventUpdate">EventUpdate</a></td>
-					<td class="summary">Event update.</td>
+						<td class="selector"><a href="#EventUpdate">EventUpdate</a></td>
+						<td class="summary">Event update.</td>
 					</tr>
 					<tr>
-					<td class="selector" ><a href="#NewMission">NewMission</a></td>
-					<td class="summary">New mission options.</td>
+						<td class="selector"><a href="#NewMission">NewMission</a></td>
+						<td class="summary">New mission options.</td>
 					</tr>
 					<tr>
-					<td class="selector" ><a href="#NewUnit">NewUnit</a></td>
-					<td class="summary">New unit selector.</td>
+						<td class="selector"><a href="#NewUnit">NewUnit</a></td>
+						<td class="summary">New unit selector.</td>
 					</tr>
 					<tr>
-					<td class="selector" ><a href="#ReferencePointSelector">ReferencePointSelector</a></td>
-					<td class="summary">Reference point selector.</td>
+						<td class="selector"><a href="#ReferencePointSelector">ReferencePointSelector</a></td>
+						<td class="summary">Reference point selector.</td>
 					</tr>
 					<tr>
-					<td class="selector" ><a href="#SideOption">SideOption</a></td>
-					<td class="summary">Side options.</td>
+						<td class="selector"><a href="#SideOption">SideOption</a></td>
+						<td class="summary">Side options.</td>
 					</tr>
 					<tr>
-					<td class="selector" ><a href="#SpecialAction">SpecialAction</a></td>
-					<td class="summary">Special action selector.</td>
+						<td class="selector"><a href="#SpecialAction">SpecialAction</a></td>
+						<td class="summary">Special action selector.</td>
 					</tr>
 					<tr>
-					<td class="selector" ><a href="#TriggerUpdate">TriggerUpdate</a></td>
-					<td class="summary">Trigger update.</td>
+						<td class="selector"><a href="#TriggerUpdate">TriggerUpdate</a></td>
+						<td class="summary">Trigger update.</td>
 					</tr>
 					<tr>
-					<td class="selector" ><a href="#UnitSelector">UnitSelector</a></td>
-					<td class="summary">Select a unit.</td>
+						<td class="selector"><a href="#UnitSelector">UnitSelector</a></td>
+						<td class="summary">Select a unit.</td>
 					</tr>
 					<tr>
-					<td class="selector" ><a href="#UpdateUnit">UpdateUnit</a></td>
-					<td class="summary">Update unit sensor/mount/weapon selector.</td>
+						<td class="selector"><a href="#UpdateUnit">UpdateUnit</a></td>
+						<td class="summary">Update unit sensor/mount/weapon selector.</td>
 					</tr>
 					<tr>
-					<td class="selector" ><a href="#UpdateUnitCargo">UpdateUnitCargo</a></td>
-					<td class="summary">Update unit cargo selector.</td>
+						<td class="selector"><a href="#UpdateUnitCargo">UpdateUnitCargo</a></td>
+						<td class="summary">Update unit cargo selector.</td>
 					</tr>
 					<tr>
-					<td class="selector" ><a href="#VPContactSelector">VPContactSelector</a></td>
-					<td class="summary">Contact selector.</td>
+						<td class="selector"><a href="#VPContactSelector">VPContactSelector</a></td>
+						<td class="summary">Contact selector.</td>
 					</tr>
 					<tr>
-					<td class="selector" ><a href="#Weapon2Magazine">Weapon2Magazine</a></td>
-					<td class="summary">Select magazine and weapon.</td>
+						<td class="selector"><a href="#Weapon2Magazine">Weapon2Magazine</a></td>
+						<td class="summary">Select magazine and weapon.</td>
 					</tr>
 					<tr>
-					<td class="selector" ><a href="#Weapon2Mount">Weapon2Mount</a></td>
-					<td class="summary">Select mount and weapon.</td>
+						<td class="selector"><a href="#Weapon2Mount">Weapon2Mount</a></td>
+						<td class="summary">Select mount and weapon.</td>
 					</tr>
 				</table>
 
@@ -1032,34 +1239,34 @@
 					</li>
 				</ul>
 
-				<a name = "ConditionUpdate"></a>
+				<a name="ConditionUpdate"></a>
 				<h3>ConditionUpdate</h3>
 				<p>Condition update.</p>
-				
+
 				<ul class="ul-no-bullets">
 					<li><span class="parameter">ID</span>
 						<span class="types"><span class="string">string</span></span>
-					The GUID of the condition <span class="readonly">READ ONLY</span>
+						The GUID of the condition <span class="readonly">READ ONLY</span>
 					</li>
 					<li><span class="parameter">Description</span>
 						<span class="types"><span class="string">string</span></span>
-					Description or GUID of condition
+						Description or GUID of condition
 					</li>
 					<li><span class="parameter">NewName</span>
 						<span class="types"><span class="string">string</span></span>
-					If specified, the new name of the condition
+						If specified, the new name of the condition
 					</li>
 					<li><span class="parameter">Mode</span>
 						<span class="types"><span class="string">string</span></span>
-					Operation to do - 'list', 'add', 'remove', 'update' (default) SE_Set...()
+						Operation to do - 'list', 'add', 'remove', 'update' (default) SE_Set...()
 					</li>
 					<li><span class="parameter">Type</span>
 						<span class="types"><span class="string">string</span></span>
-					Type of condition [required only for 'add' option]
+						Type of condition [required only for 'add' option]
 					</li>
 					<li><span class="parameter">Other</span>
 						<span class="types"><span class="type">various</span></span>
-					values apply to Type of condition.
+						values apply to Type of condition.
 					</li>
 				</ul>
 			</div>
