@@ -1,4 +1,5 @@
 <html>
+
 <head>
 	<title>Command Lua Docs | 1141.1</title>
 	<link rel="stylesheet" type="text/css" href="style.css" />
@@ -104,7 +105,7 @@
 						<li><a href="#ScenEdit_SetMine">ScenEdit_SetMine</a></li>
 					</ul>
 				</p>
-				
+
 				<p>Check them out in the <a href="#Functions">Functions</a> section or by clicking the links above.
 				</p>
 				<a class="anchor" id="Introduction"></a>
@@ -212,6 +213,30 @@
 					</ul>
 					<li><span class="readonly">READ ONLY</span> properties are denoted by a tag with the words READ ONLY
 						in all caps, on a yellow background.</li>
+					<li>
+						<details>
+							<summary>
+								Sections with long enumerations or data pools have a drop-down carat to show the
+								relevant data. This reduces visual clutter when looking at other items while allowing
+								quick access to data without leaving the page.
+							</summary>
+							<ul>
+								<li>Here</li>
+								<li>is</li>
+								<li>an</li>
+								<li>example</li>
+								<li>of</li>
+								<li>visual</li>
+								<li>clutter</li>
+								<li>that</li>
+								<li>is</li>
+								<li>hidden</li>
+								<li>with</li>
+								<li>this</li>
+								<li>convention</li>
+							</ul>
+						</details>
+					</li>
 				</ul>
 				<div class="example">
 					<code>
@@ -675,76 +700,96 @@
 					</code>
 				</div>
 				<h4><a class="anchor" id="LoadoutRole"></a>LoadoutRole</h4>
-				<p>
-					A <span class="types"><span class='string'>string</span></span> and <span class="types"><span class='number'>number</span></span> that correlates to the role of a loadout in the database.
-					<ul class="ul-2-columns">
-						<li>None = 1001 </li>
-						<li>Intercept_BVR = 2001 </li>
-						<li>Intercept_WVR = 2002 </li>
-						<li>AirSuperiority_BVR = 2003 </li>
-						<li>AirSuperiority_WVR = 2004 </li>
-						<li>Poinliefence_BVR = 2005 </li>
-						<li>Poinliefence_WVR = 2006 </li>
-						<li>GunsOnly = 2007 </li>
-						<li>AntiSatellite_Intercept = 2101 </li>
-						<li>AirborneLaser = 2102 </li>
-						<li>LandNaval_Strike = 3001 </li>
-						<li>LandNaval_Standoff = 3002 </li>
-						<li>LandNaval_SEAD_ARM = 3003 </li>
-						<li>LandNaval_SEAD_TALD = 3004 </li>
-						<li>LandNaval_DEAD = 3005 </li>
-						<li>LandOnly_Strike = 3101 </li>
-						<li>LandOnly_Standoff = 3102 </li>
-						<li>LandOnly_SEAD_ARM = 3103 </li>
-						<li>LandOnly_SEAD_TALD = 3104 </li>
-						<li>LandOnly_DEAD = 3105 </li>
-						<li>NavalOnly_Strike = 3201 </li>
-						<li>NavalOnly_Standoff = 3202 </li>
-						<li>NavalOnly_SEAD_ARM = 3203 </li>
-						<li>NavalOnly_SEAD_TALD = 3204 </li>
-						<li>NavalOnly_DEAD = 3205 </li>
-						<li>BAI_CAS = 3401 </li>
-						<li>Buddy_Illumination = 3501 </li>
-						<li>OECM = 4001 </li>
-						<li>AEW = 4002 </li>
-						<li>CommandPost = 4003</li>
-						<li>ChaffLaying = 4004 </li>
-						<li>SearchAndRescue = 4101 </li>
-						<li>CombatSearchAndRescue = 4102 </li>
-						<li>MineSweeping = 4201 </li>
-						<li>MineRecon = 4202 </li>
-						<li>NavalMineLaying = 4301 </li>
-						<li>ASW_Patrol = 6001 </li>
-						<li>ASW_Attack = 6002 </li>
-						<li>Forward_Observer = 7001 </li>
-						<li>Area_Surveillance = 7002 </li>
-						<li>Armed_Recon = 7003 </li>
-						<li>Unarmed_Recon = 7004 </li>
-						<li>Maritime_Surveillance = 7005 </li>
-						<li>Paratroopers = 7101 </li>
-						<li>Troop_Transport = 7102 </li>
-						<li>Cargo = 7201 </li>
-						<li>AirRefueling = 8001 </li>
-						<li>Training = 8101 </li>
-						<li>TargetTow = 8102 </li>
-						<li>Targelirone = 8103 </li>
-						<li>Ferry = 9001 </li>
-						<li>Unavailable = 9002 </li>
-						<li>Reserve = 9003 </li>
-						<li>ArmedFerry = 9004 </li>
-					</ul>
+				<details>
+					<p>
+						<summary>
+
+							A <span class="types"><span class='string'>string</span></span> and <span
+								class="types"><span class='number'>number</span></span> that correlates to the role of a
+							loadout in the
+							database.
+
+						</summary>
+					</P>
+					<p>
+						<ul class="ul-no-bullets">
+							<li>None = 1001 </li>
+							<li>Intercept_BVR = 2001 </li>
+							<li>Intercept_WVR = 2002 </li>
+							<li>AirSuperiority_BVR = 2003 </li>
+							<li>AirSuperiority_WVR = 2004 </li>
+							<li>PointDefence_BVR = 2005 </li>
+							<li>PointDefence_WVR = 2006 </li>
+							<li>GunsOnly = 2007 </li>
+							<li>AntiSatellite_Intercept = 2101 </li>
+							<li>AirborneLaser = 2102 </li>
+							<li>LandNaval_Strike = 3001 </li>
+							<li>LandNaval_Standoff = 3002 </li>
+							<li>LandNaval_SEAD_ARM = 3003 </li>
+							<li>LandNaval_SEAD_TALD = 3004 </li>
+							<li>LandNaval_DEAD = 3005 </li>
+							<li>LandOnly_Strike = 3101 </li>
+							<li>LandOnly_Standoff = 3102 </li>
+							<li>LandOnly_SEAD_ARM = 3103 </li>
+							<li>LandOnly_SEAD_TALD = 3104 </li>
+							<li>LandOnly_DEAD = 3105 </li>
+							<li>NavalOnly_Strike = 3201 </li>
+							<li>NavalOnly_Standoff = 3202 </li>
+							<li>NavalOnly_SEAD_ARM = 3203 </li>
+							<li>NavalOnly_SEAD_TALD = 3204 </li>
+							<li>NavalOnly_DEAD = 3205 </li>
+							<li>BAI_CAS = 3401 </li>
+							<li>Buddy_Illumination = 3501 </li>
+							<li>OECM = 4001 </li>
+							<li>AEW = 4002 </li>
+							<li>CommandPost = 4003</li>
+							<li>ChaffLaying = 4004 </li>
+							<li>SearchAndRescue = 4101 </li>
+							<li>CombatSearchAndRescue = 4102 </li>
+							<li>MineSweeping = 4201 </li>
+							<li>MineRecon = 4202 </li>
+							<li>NavalMineLaying = 4301 </li>
+							<li>ASW_Patrol = 6001 </li>
+							<li>ASW_Attack = 6002 </li>
+							<li>Forward_Observer = 7001 </li>
+							<li>Area_Surveillance = 7002 </li>
+							<li>Armed_Recon = 7003 </li>
+							<li>Unarmed_Recon = 7004 </li>
+							<li>Maritime_Surveillance = 7005 </li>
+							<li>Paratroopers = 7101 </li>
+							<li>Troop_Transport = 7102 </li>
+							<li>Cargo = 7201 </li>
+							<li>AirRefueling = 8001 </li>
+							<li>Training = 8101 </li>
+							<li>TargetTow = 8102 </li>
+							<li>TargetDrone = 8103 </li>
+							<li>Ferry = 9001 </li>
+							<li>Unavailable = 9002 </li>
+							<li>Reserve = 9003 </li>
+							<li>ArmedFerry = 9004 </li>
+						</ul>
+				</details>
 				</p>
+
 				<h4><a class="anchor" id="LoadoutTimeOfDay"></a>LoadoutTimeOfDay</h4>
-				<p>
-					A <span class="types"><span class='string'>string</span></span> and <span class="types"><span
-							class='number'>number</span></span> that correlates to the time of day specified for a
-					loadout in the database.
-					<ul class="ul-2-columns">
-						<li>None = 1001</li>
-						<li>DayNight = 2001</li>
-						<li>NightOnly = 2002</li>
-						<li>DayOnly = 2003</li>
-					</ul>
+				<details>
+					<p>
+						<summary>
+
+							A <span class="types"><span class='string'>string</span></span> and <span
+								class="types"><span class='number'>number</span></span> that correlates to the time of
+							day specified for a
+							loadout in the database.
+					</p>
+					</summary>
+					<p>
+						<ul class="ul-no-bullets">
+							<li>None = 1001</li>
+							<li>DayNight = 2001</li>
+							<li>NightOnly = 2002</li>
+							<li>DayOnly = 2003</li>
+						</ul>
+				</details>
 				</p>
 				<div class="note-alert">
 					<p>
@@ -753,24 +798,25 @@
 					</p>
 				</div>
 				<h4><a class="anchor" id="LoadoutWeather"></a>LoadoutWeather</h4>
-				<p>
-					A <span class="types"><span class='string'>string</span></span> and <span class="types"><span
-							class='number'>number</span></span> that correlates to the time of day specified for a
-					loadout in the database.
-					<table>
-						<tr>
-							<td>None = 1001</td>
-						</tr>
-						<tr>
-							<td>AllWeather = 2001</td>
-						</tr>
-						<tr>
-							<td>LimitedAllWeather = 2002</td>
-						</tr>
-						<tr>
-							<td>ClearWeather = 2003</td>
-						</tr>
-					</table>
+				<details>
+					<p>
+						<summary>
+
+							A <span class="types"><span class='string'>string</span></span> and <span
+								class="types"><span class='number'>number</span></span> that correlates to the time of
+							day specified for a
+							loadout in the database.
+					</p>
+					</summary>
+					<p>
+						<ul class="ul-no-bullets">
+							<li>None = 1001</li>
+							<li>AllWeather = 2001</li>
+							<li>LimitedAllWeather = 2002</li>
+							<li>ClearWeather = 2003</li>
+						</ul>
+
+				</details>
 				</p>
 				<div class="note-alert">
 					<p>
@@ -1267,7 +1313,8 @@
 				</p>
 				<h4>Syntax</h4>
 				<p>
-					<code class="syntax-example">ScenEdit_AddExplosion(<span class="parameter"><a href="#table_Explosion">Explosion</a></span>)</code>
+					<code
+						class="syntax-example">ScenEdit_AddExplosion(<span class="parameter"><a href="#table_Explosion">Explosion</a></span>)</code>
 				</p>
 				<h4>Parameters</h4>
 				<ul>
@@ -1338,7 +1385,8 @@
 						class="selector"><a href="#selector_UnitSelector">UnitSelector</a></span>.</p>
 				<h4>Syntax</h4>
 				<p>
-					<code class="syntax-example">ScenEdit_GetUnit(<span class="parameter"><a href="#selector_UnitSelector">UnitSelector</a></span>)</code>
+					<code
+						class="syntax-example">ScenEdit_GetUnit(<span class="parameter"><a href="#selector_UnitSelector">UnitSelector</a></span>)</code>
 				</p>
 				<h5>Example</h5>
 				<p><code>ScenEdit_GetUnit({name='Eagle #1',side='Blue'})</code></p>
@@ -1712,4 +1760,5 @@
 		</div>
 	</div>
 </body>
+
 </html>
