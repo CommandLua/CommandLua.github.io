@@ -75,12 +75,17 @@ code {
 	border-collapse: collapse;
 	color: #393939;
 	line-height: 1.5em;
+	max-width: 100%;
 }
 
 code::after,
 code::before {
  letter-spacing:-.2em;
  content:"\00a0"
+}
+
+.syntax-example {
+	overflow-x: auto;
 }
 
 .example code {
@@ -96,7 +101,7 @@ code::before {
 	font-family: Consolas,"Liberation Mono",Menlo,Courier,monospace;
 	margin-top: 0;
 	max-width: 100%;
-	overflow-x: scroll;
+	overflow-x: auto;
   	overflow-y: auto;
 }
 
@@ -288,6 +293,13 @@ strong {
 
 .tab4 {
 	text-indent: 20em;
+}
+
+.ul-2-columns {
+	columns: 2;
+	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 
 #header-container {

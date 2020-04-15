@@ -1,5 +1,4 @@
 <html>
-
 <head>
 	<title>Command Lua Docs | 1141.1</title>
 	<link rel="stylesheet" type="text/css" href="style.css" />
@@ -94,17 +93,18 @@
 				<p>
 					The release of Command: Modern Operations version 1141.1 brings a slew of new functions to the
 					Command Lua API:
+					<ul class="ul-2-columns">
+						<li><a href="#ScenEdit_DistributeWeaponAtAirbase">ScenEdit_DistributeWeaponAtAirbase</a></li>
+						<li><a href="#ScenEdit_ClearAllAircraft">ScenEdit_ClearAllAircraft</a></li>
+						<li><a href="#ScenEdit_ClearAllMagazines">ScenEdit_ClearAllMagazines</a></li>
+						<li><a href="#ScenEdit_AddMinefield">ScenEdit_AddMinefield</a></li>
+						<li><a href="#ScenEdit_DeleteMine">ScenEdit_DeleteMine</a></li>
+						<li><a href="#ScenEdit_DeleteMinefield">ScenEdit_DeleteMinefield</a></li>
+						<li><a href="#ScenEdit_GetMinefield">ScenEdit_GetMinefield</a></li>
+						<li><a href="#ScenEdit_SetMine">ScenEdit_SetMine</a></li>
+					</ul>
 				</p>
-				<ul class="ul-no-bullets">
-					<li><a href="#ScenEdit_DistributeWeaponAtAirbase">ScenEdit_DistributeWeaponAtAirbase</a></li>
-					<li><a href="#ScenEdit_ClearAllAircraft">ScenEdit_ClearAllAircraft</a></li>
-					<li><a href="#ScenEdit_ClearAllMagazines">ScenEdit_ClearAllMagazines</a></li>
-					<li><a href="#ScenEdit_AddMinefield">ScenEdit_AddMinefield</a></li>
-					<li><a href="#ScenEdit_DeleteMine">ScenEdit_DeleteMine</a></li>
-					<li><a href="#ScenEdit_DeleteMinefield">ScenEdit_DeleteMinefield</a></li>
-					<li><a href="#ScenEdit_GetMinefield">ScenEdit_GetMinefield</a></li>
-					<li><a href="#ScenEdit_SetMine">ScenEdit_SetMine</a></li>
-				</ul>
+				
 				<p>Check them out in the <a href="#Functions">Functions</a> section or by clicking the links above.
 				</p>
 				<a class="anchor" id="Introduction"></a>
@@ -677,143 +677,86 @@
 				<h4><a class="anchor" id="LoadoutRole"></a>LoadoutRole</h4>
 				<p>
 					A <span class="types"><span class='string'>string</span></span> and <span class="types"><span class='number'>number</span></span> that correlates to the role of a loadout in the database.
-					<table>
-						<tr>
-							<td>None = 1001 </td>
-							<td>Intercept_BVR = 2001 </td>
-						</tr>
-						<tr>
-							<td>Intercept_WVR = 2002 </td>
-							<td>AirSuperiority_BVR = 2003 </td>
-						</tr>
-						<tr>
-							<td>AirSuperiority_WVR = 2004 </td>
-							<td>PointDefence_BVR = 2005 </td>
-						</tr>
-						<tr>
-							<td>PointDefence_WVR = 2006 </td>
-							<td>GunsOnly = 2007 </td>
-						</tr>
-						<tr>
-							<td>AntiSatellite_Intercept = 2101 </td>
-							<td>AirborneLaser = 2102 </td>
-						</tr>
-						<tr>
-							<td>LandNaval_Strike = 3001 </td>
-							<td>LandNaval_Standoff = 3002 </td>
-						</tr>
-						<tr>
-							<td>LandNaval_SEAD_ARM = 3003 </td>
-							<td>LandNaval_SEAD_TALD = 3004 </td>
-						</tr>
-						<tr>
-							<td>LandNaval_DEAD = 3005 </td>
-							<td>LandOnly_Strike = 3101 </td>
-						</tr>
-						<tr>
-							<td>LandOnly_Standoff = 3102 </td>
-							<td>LandOnly_SEAD_ARM = 3103 </td>
-						</tr>
-						<tr>
-							<td>LandOnly_SEAD_TALD = 3104 </td>
-							<td>LandOnly_DEAD = 3105 </td>
-						</tr>
-						<tr>
-							<td>NavalOnly_Strike = 3201 </td>
-							<td>NavalOnly_Standoff = 3202 </td>
-						</tr>
-						<tr>
-							<td>NavalOnly_SEAD_ARM = 3203 </td>
-							<td>NavalOnly_SEAD_TALD = 3204 </td>
-						</tr>
-						<tr>
-							<td>NavalOnly_DEAD = 3205 </td>
-							<td>BAI_CAS = 3401 </td>
-						</tr>
-						<tr>
-							<td>Buddy_Illumination = 3501 </td>
-							<td>OECM = 4001 </td>
-						</tr>
-						<tr>
-							<td>AEW = 4002 </td>
-							<td>CommandPost = 4003</td>
-						</tr>
-						<tr>
-							<td>ChaffLaying = 4004 </td>
-							<td>SearchAndRescue = 4101 </td>
-						</tr>
-						<tr>
-							<td>CombatSearchAndRescue = 4102 </td>
-							<td>MineSweeping = 4201 </td>
-						</tr>
-						<tr>
-							<td>MineRecon = 4202 </td>
-							<td>NavalMineLaying = 4301 </td>
-						</tr>
-						<tr>
-							<td>ASW_Patrol = 6001 </td>
-							<td>ASW_Attack = 6002 </td>
-						</tr>
-						<tr>
-							<td>Forward_Observer = 7001 </td>
-							<td>Area_Surveillance = 7002 </td>
-						</tr>
-						<tr>
-							<td>Armed_Recon = 7003 </td>
-							<td>Unarmed_Recon = 7004 </td>
-						</tr>
-						<tr>
-							<td>Maritime_Surveillance = 7005 </td>
-							<td>Paratroopers = 7101 </td>
-						</tr>
-						<tr>
-							<td>Troop_Transport = 7102 </td>
-							<td>Cargo = 7201 </td>
-						</tr>
-						<tr>
-							<td>AirRefueling = 8001 </td>
-							<td>Training = 8101 </td>
-						</tr>
-						<tr>
-							<td>TargetTow = 8102 </td>
-							<td>TargetDrone = 8103 </td>
-						</tr>
-						<tr>
-							<td>Ferry = 9001 </td>
-							<td>Unavailable = 9002 </td>
-						</tr>
-						<tr>
-							<td>Reserve = 9003 </td>
-							<td>ArmedFerry = 9004 </td>
-						</tr>
-					</table>
+					<ul class="ul-2-columns">
+						<li>None = 1001 </li>
+						<li>Intercept_BVR = 2001 </li>
+						<li>Intercept_WVR = 2002 </li>
+						<li>AirSuperiority_BVR = 2003 </li>
+						<li>AirSuperiority_WVR = 2004 </li>
+						<li>Poinliefence_BVR = 2005 </li>
+						<li>Poinliefence_WVR = 2006 </li>
+						<li>GunsOnly = 2007 </li>
+						<li>AntiSatellite_Intercept = 2101 </li>
+						<li>AirborneLaser = 2102 </li>
+						<li>LandNaval_Strike = 3001 </li>
+						<li>LandNaval_Standoff = 3002 </li>
+						<li>LandNaval_SEAD_ARM = 3003 </li>
+						<li>LandNaval_SEAD_TALD = 3004 </li>
+						<li>LandNaval_DEAD = 3005 </li>
+						<li>LandOnly_Strike = 3101 </li>
+						<li>LandOnly_Standoff = 3102 </li>
+						<li>LandOnly_SEAD_ARM = 3103 </li>
+						<li>LandOnly_SEAD_TALD = 3104 </li>
+						<li>LandOnly_DEAD = 3105 </li>
+						<li>NavalOnly_Strike = 3201 </li>
+						<li>NavalOnly_Standoff = 3202 </li>
+						<li>NavalOnly_SEAD_ARM = 3203 </li>
+						<li>NavalOnly_SEAD_TALD = 3204 </li>
+						<li>NavalOnly_DEAD = 3205 </li>
+						<li>BAI_CAS = 3401 </li>
+						<li>Buddy_Illumination = 3501 </li>
+						<li>OECM = 4001 </li>
+						<li>AEW = 4002 </li>
+						<li>CommandPost = 4003</li>
+						<li>ChaffLaying = 4004 </li>
+						<li>SearchAndRescue = 4101 </li>
+						<li>CombatSearchAndRescue = 4102 </li>
+						<li>MineSweeping = 4201 </li>
+						<li>MineRecon = 4202 </li>
+						<li>NavalMineLaying = 4301 </li>
+						<li>ASW_Patrol = 6001 </li>
+						<li>ASW_Attack = 6002 </li>
+						<li>Forward_Observer = 7001 </li>
+						<li>Area_Surveillance = 7002 </li>
+						<li>Armed_Recon = 7003 </li>
+						<li>Unarmed_Recon = 7004 </li>
+						<li>Maritime_Surveillance = 7005 </li>
+						<li>Paratroopers = 7101 </li>
+						<li>Troop_Transport = 7102 </li>
+						<li>Cargo = 7201 </li>
+						<li>AirRefueling = 8001 </li>
+						<li>Training = 8101 </li>
+						<li>TargetTow = 8102 </li>
+						<li>Targelirone = 8103 </li>
+						<li>Ferry = 9001 </li>
+						<li>Unavailable = 9002 </li>
+						<li>Reserve = 9003 </li>
+						<li>ArmedFerry = 9004 </li>
+					</ul>
 				</p>
 				<h4><a class="anchor" id="LoadoutTimeOfDay"></a>LoadoutTimeOfDay</h4>
 				<p>
-					A <span class="types"><span class='string'>string</span></span> and <span class="types"><span class='number'>number</span></span> that correlates to the time of day specified for a loadout in the database.
-					<table>
-						<tr>
-							<td>None = 1001</td>
-						</tr>
-						<tr>
-							<td>DayNight = 2001</td>
-						</tr>
-						<tr>
-							<td>NightOnly = 2002</td>
-						</tr>	
-						<tr>
-							<td>DayOnly = 2003</td>
-						</tr>
-					</table>
+					A <span class="types"><span class='string'>string</span></span> and <span class="types"><span
+							class='number'>number</span></span> that correlates to the time of day specified for a
+					loadout in the database.
+					<ul class="ul-2-columns">
+						<li>None = 1001</li>
+						<li>DayNight = 2001</li>
+						<li>NightOnly = 2002</li>
+						<li>DayOnly = 2003</li>
+					</ul>
 				</p>
 				<div class="note-alert">
 					<p>
-						<strong>Note:</strong> As of v1141.1 loadout time of day restrictions are not enforced for aircraft launch, however <strong>they do affect quick-turnaround</strong>.
-					</p>				
+						<strong>Note:</strong> As of v1141.1 loadout time of day restrictions are not enforced for
+						aircraft launch, however <strong>they do affect quick-turnaround</strong>.
+					</p>
 				</div>
 				<h4><a class="anchor" id="LoadoutWeather"></a>LoadoutWeather</h4>
 				<p>
-					A <span class="types"><span class='string'>string</span></span> and <span class="types"><span class='number'>number</span></span> that correlates to the time of day specified for a loadout in the database.
+					A <span class="types"><span class='string'>string</span></span> and <span class="types"><span
+							class='number'>number</span></span> that correlates to the time of day specified for a
+					loadout in the database.
 					<table>
 						<tr>
 							<td>None = 1001</td>
@@ -823,7 +766,7 @@
 						</tr>
 						<tr>
 							<td>LimitedAllWeather = 2002</td>
-						</tr>	
+						</tr>
 						<tr>
 							<td>ClearWeather = 2003</td>
 						</tr>
@@ -831,12 +774,16 @@
 				</p>
 				<div class="note-alert">
 					<p>
-						<strong>Note:</strong> As of v1141.1 loadout weather restrictions are not enforced, however the individual weapons in a loadout are affected by weather. For example: There are no restrictions on launching an aircraft with a loadout carrying laser-guided bombs, however they will not be able to use those weapons if the target is obscured by cloud, fog or heavy precipitation.
+						<strong>Note:</strong> As of v1141.1 loadout weather restrictions are not enforced, however the
+						individual weapons in a loadout are affected by weather. For example: There are no restrictions
+						on launching an aircraft with a loadout carrying laser-guided bombs, however they will not be
+						able to use those weapons if the target is obscured by cloud, fog or heavy precipitation.
 					</p>
 				</div>
 				<h4><a class="anchor" id="Longitude"></a>Longitude</h4>
 				<p>
-					Longitude is degrees E or W of Greenwich line as 'W 60.20.10' or as +/- as -60.336. The data in the tables is held as a signed <span class="types"><span class="number"></span>number</span>. 
+					Longitude is degrees E or W of Greenwich line as 'W 60.20.10' or as +/- as -60.336. The data in the
+					tables is held as a signed <span class="types"><span class="number"></span>number</span>.
 				</p>
 				<h5>Example</h5>
 				<div class="example">
@@ -917,14 +864,481 @@
 					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-				<h3>ScenEdit_GetUnit()</h3>
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+				<a class="anchor" id="FunctionIndex"></a>
+				<ul class="ul-2-columns">
+					<li>
+						<a href="#GetBuildNumber">GetBuildNumber()</a>
+					</li>
+					<li>
+						<a href="#GetScenarioTitle">GetScenarioTitle()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_AddExplosion">ScenEdit_AddExplosion()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_AddMinefield">ScenEdit_AddMinefield(s)</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_AddMission">ScenEdit_AddMission()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_AddReferencePoint">ScenEdit_AddReferencePoint()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_AddReloadsToUnit">ScenEdit_AddReloadsToUnit()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_AddSide">ScenEdit_AddSide()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_AddUnit">ScenEdit_AddUnit()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_AddWeaponToUnitMagazine">ScenEdit_AddWeaponToUnitMagazine()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_AddZone">ScenEdit_AddZone()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_AssignUnitAsTarget">ScenEdit_AssignUnitAsTarget()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_AssignUnitToMission">ScenEdit_AssignUnitToMission()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_AttackContact">ScenEdit_AttackContact()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_ClearKeyValue">ScenEdit_ClearKeyValue()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_CurrentLocalTime">ScenEdit_CurrentLocalTime()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_CurrentTime">ScenEdit_CurrentTime()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_DeleteMine">ScenEdit_DeleteMine()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_DeleteMinefield">ScenEdit_DeleteMinefield()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_DeleteMission">ScenEdit_DeleteMission()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_DeleteReferencePoint">ScenEdit_DeleteReferencePoint()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_DeleteUnit">ScenEdit_DeleteUnit()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_EndScenario">ScenEdit_EndScenario()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_EventX">ScenEdit_EventX()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_ExecuteEventAction">ScenEdit_ExecuteEventAction()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_ExecuteSpecialAction">ScenEdit_ExecuteSpecialAction()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_ExportInst">ScenEdit_ExportInst()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_ExportMission">ScenEdit_ExportMission()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_ExportScenarioToXML">ScenEdit_ExportScenarioToXML()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_FillMagsForLoadout">ScenEdit_FillMagsForLoadout()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_GetContact">ScenEdit_GetContact()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_GetContacts">ScenEdit_GetContacts()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_GetDoctrine">ScenEdit_GetDoctrine()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_GetDoctrineWRA">ScenEdit_GetDoctrineWRA()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_GetEvent">ScenEdit_GetEvent()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_GetEvents">ScenEdit_GetEvents()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_GetKeyValue">ScenEdit_GetKeyValue()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_GetLoadout">ScenEdit_GetLoadout()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_GetMinefield">ScenEdit_GetMinefield()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_GetMission">ScenEdit_GetMission()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_GetReferencePoints">ScenEdit_GetReferencePoints()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_GetScenHasStarted">ScenEdit_GetScenHasStarted()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_GetScore">ScenEdit_GetScore()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_GetSideIsHuman">ScenEdit_GetSideIsHuman()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_GetSideOptions">ScenEdit_GetSideOptions()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_GetSidePosture">ScenEdit_GetSidePosture()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_GetSpecialAction">ScenEdit_GetSpecialAction()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_GetTimeOfDay">ScenEdit_GetTimeOfDay()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_GetUnit">ScenEdit_GetUnit()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_GetWeather">ScenEdit_GetWeather()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_HostUnitToParent">ScenEdit_HostUnitToParent()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_ImportInst">ScenEdit_ImportInst()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_ImportMission">ScenEdit_ImportMission()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_ImportScenarioFromXML">ScenEdit_ImportScenarioFromXML()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_InputBox">ScenEdit_InputBox()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_KillUnit">ScenEdit_KillUnit()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_MsgBox">ScenEdit_MsgBox()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_PlaySound">ScenEdit_PlaySound()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_PlayVideo">ScenEdit_PlayVideo()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_MsgBox">ScenEdit_MsgBox()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_PlayerSide">ScenEdit_PlayerSide()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_QueryDB">ScenEdit_QueryDB()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_RefuelUnit">ScenEdit_RefuelUnit()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_RemoveSide">ScenEdit_RemoveSide()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_RemoveUnitAsTarget">ScenEdit_RemoveUnitAsTarget()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_RemoveZone">ScenEdit_RemoveZone()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_RunScript">ScenEdit_RunScript()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_SelectedUnits">ScenEdit_SelectedUnits()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_SetAction">ScenEdit_SetAction()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_SetCondition">ScenEdit_SetCondition()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_SetDoctrine">ScenEdit_SetDoctrine()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_SetDoctrineWRA">ScenEdit_SetDoctrineWRA()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_SetEMCON">ScenEdit_SetEMCON()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_SetEvent">ScenEdit_SetEvent()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_SetEventAction">ScenEdit_SetEventAction()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_SetEventCondition">ScenEdit_SetEventCondition()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_SetEventTrigger">ScenEdit_SetEventTrigger()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_SetKeyValue">ScenEdit_SetKeyValue()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_SetLoadout">ScenEdit_SetLoadout()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_SetMine">ScenEdit_SetMine()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_SetMission">ScenEdit_SetMission()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_SetReferencePoint">ScenEdit_SetReferencePoint()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_SetScore">ScenEdit_SetScore()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_SetSideOptions">ScenEdit_SetSideOptions()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_SetSidePosture">ScenEdit_SetSidePosture()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_SetSpecialAction">ScenEdit_SetSpecialAction()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_SetTime">ScenEdit_SetTime()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_SetTrigger">ScenEdit_SetTrigger()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_SetUnit">ScenEdit_SetUnit()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_SetUnitDamage">ScenEdit_SetUnitDamage()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_SetUnitSide">ScenEdit_SetUnitSide()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_SetWeather">ScenEdit_SetWeather()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_SetZone">ScenEdit_SetZone()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_SpecialMessage">ScenEdit_SpecialMessage()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_TransferCargo">ScenEdit_TransferCargo()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_UnitC">ScenEdit_UnitC()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_UnitX">ScenEdit_UnitX()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_UnitY">ScenEdit_UnitY()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_UnloadCargo">ScenEdit_UnloadCargo()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_UpdateUnit">ScenEdit_UpdateUnit()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_UpdateUnitCargo">ScenEdit_UpdateUnitCargo()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_UseAttachment">ScenEdit_UseAttachment()</a>
+					</li>
+					<li>
+						<a href="#ScenEdit_UseAttachmentOnSide">ScenEdit_UseAttachmentOnSide()</a>
+					</li>
+					<li>
+						<a href="#Tool_Bearing">Tool_Bearing()</a>
+					</li>
+					<li>
+						<a href="#Tool_DumpEvents">Tool_DumpEvents()</a>
+					</li>
+					<li>
+						<a href="#Tool_EmulateNoConsole">Tool_EmulateNoConsole()</a>
+					</li>
+					<li>
+						<a href="#Tool_Range">Tool_Range()</a>
+					</li>
+					<li>
+						<a href="#VP_ExportUnits">VP_ExportUnits()</a>
+					</li>
+					<li>
+						<a href="#VP_GetContact">VP_GetContact()</a>
+					</li>
+					<li>
+						<a href="#VP_GetSide">VP_GetSide()</a>
+					</li>
+					<li>
+						<a href="#VP_GetUnit">VP_GetUnit()</a>
+					</li>
+					<li>
+						<a href="#World_GetCircleFromPoint">World_GetCircleFromPoint()</a>
+					</li>
+					<li>
+						<a href="#World_GetElevation">World_GetElevation()</a>
+					</li>
+					<li>
+						<a href="#World_GetLocation">World_GetLocation()</a>
+					</li>
+					<li>
+						<a href="#World_GetPointFromBearing">World_GetPointFromBearing()</a>
+					</li>
+				</ul>
+				<hr>
+				<h3><a class="anchor" id="GetBuildNumber"></a>GetBuildNumber()</h3>
+				<p>
+					Returns the build number of the game executable.
+				</p>
+				<h4>Parameters</h4>
+				<ul>
+					<li>None</li>
+				</ul>
+				<h4>Returns</h4>
+				<ul>
+					<li>
+						<span class="types"><span class="string">string</span></span>
+						The build number of the game executable.
+					</li>
+				</ul>
+				<h5>Example</h5>
+				<div class="example">
+					<code>
+						<span class="print"></span>(GetBuildNumber())<br>
+						<span class="output">>>> 1134.3</span>
+					</code>
+				</div>
+				<hr>
+				<h3><a class="anchor" id="GetScenarioTitle"></a>GetScenarioTitle()</h3>
+				<p>
+					Returns the title of the currently loaded scenario.
+				</p>
+				<h4>Parameters</h4>
+				<ul>
+					<li>None</li>
+				</ul>
+				<h4>Returns</h4>
+				<ul>
+					<li>
+						<span class="types"><span class="string">string</span></span>
+						The title of the currently loaded scenario.
+					</li>
+				</ul>
+				<h5>Example</h5>
+				<div class="example">
+					<code>
+						<span class="print"></span>(GetScenarioTitle())<br>
+						<span class="output">>>> Lone Wolf</span>
+					</code>
+				</div>
+				<hr>
+				<h3><a class="anchor" id="ScenEdit_AddExplosion"></a>ScenEdit_AddExplosion()</h3>
+				<p>
+					Detonates a warhead at a specified location.
+				</p>
+				<h4>Syntax</h4>
+				<p>
+					<code class="syntax-example">ScenEdit_AddExplosion(<span class="parameter"><a href="#table_Explosion">Explosion</a></span>)</code>
+				</p>
+				<h4>Parameters</h4>
+				<ul>
+					<li>
+						<span class="table"><a href="#table_Explosion">Explosion</a></span>
+						Describes the explosion.
+					</li>
+				</ul>
+				<h5>Example</h5>
+				<div class="example">
+					<code>ScenEdit_AddExplosion({warheadid=<span class="number">253</span>, lat=unit.latitude, lon=unit.longitude, altitude=unit.altitude})</code>
+				</div>
+				</p>
+				<hr>
+				<h3><a class="anchor" id="ScenEdit_AddMinefield"></a>ScenEdit_AddMinefield()</h3>
+				<p>
+					Attempt to lay a minefield
+				</p>
+				<h4>Syntax</h4>
+				<p>
+					<code class="syntax-example">
+						ScenEdit_AddMinefield(
+							<span class="parameter">side</span>,
+							<span class="parameter">dbid</span>,
+							<span class="parameter">number</span>,
+							<span class="parameter">delay</span>,
+							<span class="parameter">area</span>
+							)
+					</code>
+				</p>
+				<h5>Example</h5>
+				<p>
+					<code class="syntax-example">
+						ScenEdit_AddMinefield ( { side='Blue', dbid=2345, number=100, delay=60000, area={'rp-1','rp-2','rp-3','rp-4'} } )
+					</code>
+				</p>
+				<h4>Parameters</h4>
+				<ul>
+					<li><span class="parameter">side</span>
+						<span class="types"><span class="string">string</span></span>
+						Side name or guid</li>
+					<li><span class="parameter">dbid</span>
+						<span class="types"><span class="number">number</span></span>
+						The database id of the mine to use</li>
+					<li><span class="parameter">number</span>
+						<span class="types"><span class="number">number</span></span>
+						The number to try to lay</li>
+					<li><span class="parameter">delay</span>
+						<span class="types"><span class="number">number</span></span>
+						The arming delay in seconds</li>
+					<li><span class="parameter">area</span>
+						<span class="table">table</span>
+						The area (as table of RP points) to lay mines in</li>
+				</ul>
+				<h4>Returns</h4>
+				<p>
+					<span class="types"><span class="number">number</span></span>
+					number of mines laid</p>
+				<h5>Example</h5>
+				<div class="example">
+					<code>
+						<span class="keyword">local</span> a = ScenEdit_AddMinefield({side=<span class="string">'Blue'</span>, dbid=<span class="number">2345</span>, number=<span class="number">100</span>, delay=<span class="number">60000</span>, area={<span class="string">'rp-1'</span>,<span class="string">'rp-2'</span>,<span class="string">'rp-3'</span>,<span class="string">'rp-4'</span>} } )
+					</code>
+				</div>
+				<hr>
+				<h3><a class="anchor" id="ScenEdit_GetUnit"></a>ScenEdit_GetUnit()</h3>
 				<p>Returns a <span class="wrapper"><a href="#wrapper_Unit">Unit</a></span> wrapper using a <span
 						class="selector"><a href="#selector_UnitSelector">UnitSelector</a></span>.</p>
 				<h4>Syntax</h4>
 				<p>
-					<code>ScenEdit_GetUnit(<span class="parameter"><a href="#selector_UnitSelector">UnitSelector</a></span>)</code>
+					<code class="syntax-example">ScenEdit_GetUnit(<span class="parameter"><a href="#selector_UnitSelector">UnitSelector</a></span>)</code>
 				</p>
 				<h5>Example</h5>
 				<p><code>ScenEdit_GetUnit({name='Eagle #1',side='Blue'})</code></p>
@@ -972,7 +1386,7 @@
 								<span class="string">'f4f9e0af-15c2-4582-8e80-b827c2ec2f56'</span>
 								<span class="operator">})</span>
 							<br>
-							<span class="print">print</span>
+							<span class="print"></span>
 							<span class="operator">(</span>
 							myUnit
 							<span class="operator">)</span>
@@ -1019,7 +1433,7 @@
 							<span class="string">'CG 56 San Jacinto'</span>
 							<span class="operator">})</span>
 							<br>
-							<span class="print">print</span>
+							<span class="print"></span>
 							<span class="operator">(</span>
 							myUnit
 							<span class="operator">)</span>
@@ -1050,6 +1464,7 @@
 						</code>
 					</p>
 				</div>
+
 				<a class="anchor" id="Wrappers"></a>
 				<h2>Wrappers</h2>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -1124,90 +1539,111 @@
 					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 				</p>
-				<table class="function_list">
-					<tr>
-						<td class="selector"><a href="#ActionUpdate">ActionUpdate</a></td>
-						<td class="summary">Action update.</td>
-					</tr>
-					<tr>
-						<td class="selector"><a href="#ConditionUpdate">ConditionUpdate</a></td>
-						<td class="summary">Condition update.</td>
-					</tr>
-					<tr>
-						<td class="selector"><a href="#ContactSelector">ContactSelector</a></td>
-						<td class="summary">Contact selector.</td>
-					</tr>
-					<tr>
-						<td class="selector"><a href="#DamageOptions">DamageOptions</a></td>
-						<td class="summary">Unit damage.</td>
-					</tr>
-					<tr>
-						<td class="selector"><a href="#DoctrineSelector">DoctrineSelector</a></td>
-						<td class="summary">Selects a doctrine.</td>
-					</tr>
-					<tr>
-						<td class="selector"><a href="#DoctrineWRASelector">DoctrineWRASelector</a></td>
-						<td class="summary">Selects a WRA doctrine.</td>
-					</tr>
-					<tr>
-						<td class="selector"><a href="#EventTCAUpdate">EventTCAUpdate</a></td>
-						<td class="summary">Event Trigger/Condition/Action update.</td>
-					</tr>
-					<tr>
-						<td class="selector"><a href="#EventUpdate">EventUpdate</a></td>
-						<td class="summary">Event update.</td>
-					</tr>
-					<tr>
-						<td class="selector"><a href="#NewMission">NewMission</a></td>
-						<td class="summary">New mission options.</td>
-					</tr>
-					<tr>
-						<td class="selector"><a href="#NewUnit">NewUnit</a></td>
-						<td class="summary">New unit selector.</td>
-					</tr>
-					<tr>
-						<td class="selector"><a href="#ReferencePointSelector">ReferencePointSelector</a></td>
-						<td class="summary">Reference point selector.</td>
-					</tr>
-					<tr>
-						<td class="selector"><a href="#SideOption">SideOption</a></td>
-						<td class="summary">Side options.</td>
-					</tr>
-					<tr>
-						<td class="selector"><a href="#SpecialAction">SpecialAction</a></td>
-						<td class="summary">Special action selector.</td>
-					</tr>
-					<tr>
-						<td class="selector"><a href="#TriggerUpdate">TriggerUpdate</a></td>
-						<td class="summary">Trigger update.</td>
-					</tr>
-					<tr>
-						<td class="selector"><a href="#UnitSelector">UnitSelector</a></td>
-						<td class="summary">Select a unit.</td>
-					</tr>
-					<tr>
-						<td class="selector"><a href="#UpdateUnit">UpdateUnit</a></td>
-						<td class="summary">Update unit sensor/mount/weapon selector.</td>
-					</tr>
-					<tr>
-						<td class="selector"><a href="#UpdateUnitCargo">UpdateUnitCargo</a></td>
-						<td class="summary">Update unit cargo selector.</td>
-					</tr>
-					<tr>
-						<td class="selector"><a href="#VPContactSelector">VPContactSelector</a></td>
-						<td class="summary">Contact selector.</td>
-					</tr>
-					<tr>
-						<td class="selector"><a href="#Weapon2Magazine">Weapon2Magazine</a></td>
-						<td class="summary">Select magazine and weapon.</td>
-					</tr>
-					<tr>
-						<td class="selector"><a href="#Weapon2Mount">Weapon2Mount</a></td>
-						<td class="summary">Select mount and weapon.</td>
-					</tr>
-				</table>
-
-
+				<p>
+					<ul class="ul-2-columns">
+						<li>
+							<span class="selector">
+								<a href="#ActionUpdate">ActionUpdate</a>
+							</span>
+						</li>
+						<li>
+							<span class="selector">
+								<a href="#ConditionUpdate">ConditionUpdate</a>
+							</span>
+						</li>
+						<li>
+							<span class="selector">
+								<a href="#ContactSelector">ContactSelector</a>
+							</span>
+						</li>
+						<li>
+							<span class="selector">
+								<a href="#DamageOptions">DamageOptions</a>
+							</span>
+						</li>
+						<li>
+							<span class="selector">
+								<a href="#DoctrineSelector">DoctrineSelector</a>
+							</span>
+						</li>
+						<li>
+							<span class="selector">
+								<a href="#DoctrineWRASelector">DoctrineWRASelector</a>
+							</span>
+						</li>
+						<li>
+							<span class="selector">
+								<a href="#EventTCAUpdate">EventTCAUpdate</a>
+							</span>
+						</li>
+						<li>
+							<span class="selector">
+								<a href="#EventUpdate">EventUpdate</a>
+							</span>
+						</li>
+						<li>
+							<span class="selector">
+								<a href="#NewMission">NewMission</a>
+							</span>
+						</li>
+						<li>
+							<span class="selector">
+								<a href="#NewUnit">NewUnit</a>
+							</span>
+						</li>
+						<li>
+							<span class="selector">
+								<a href="#ReferencePointSelector">ReferencePointSelector</a>
+							</span>
+						</li>
+						<li>
+							<span class="selector">
+								<a href="#SideOption">SideOption</a>
+							</span>
+						</li>
+						<li>
+							<span class="selector">
+								<a href="#SpecialAction">SpecialAction</a>
+							</span>
+						</li>
+						<li>
+							<span class="selector">
+								<a href="#TriggerUpdate">TriggerUpdate</a>
+							</span>
+						</li>
+						<li>
+							<span class="selector">
+								<a href="#UnitSelector">UnitSelector</a>
+							</span>
+						</li>
+						<li>
+							<span class="selector">
+								<a href="#UpdateUnit">UpdateUnit</a>
+							</span>
+						</li>
+						<li>
+							<span class="selector">
+								<a href="#UpdateUnitCargo">UpdateUnitCargo</a>
+							</span>
+						</li>
+						<li>
+							<span class="selector">
+								<a href="#VPContactSelector">VPContactSelector</a>
+							</span>
+						</li>
+						<li>
+							<span class="selector">
+								<a href="#Weapon2Magazine">Weapon2Magazine</a>
+							</span>
+						</li>
+						<li>
+							<span class="selector">
+								<a href="#Weapon2Mount">Weapon2Mount</a>
+							</span>
+						</li>
+					</ul>
+				</p>
+				<hr>
 				<a class="anchor" id="ActionUpdate"></a>
 				<h3>ActionUpdate</h3>
 				<p>Action update.</p>
@@ -1238,7 +1674,7 @@
 						values apply to Type of action.
 					</li>
 				</ul>
-
+				<hr>
 				<a name="ConditionUpdate"></a>
 				<h3>ConditionUpdate</h3>
 				<p>Condition update.</p>
@@ -1276,5 +1712,4 @@
 		</div>
 	</div>
 </body>
-
 </html>
