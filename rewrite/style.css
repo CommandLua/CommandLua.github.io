@@ -240,7 +240,7 @@ strong {
 }
 
 .string {
-	color: red;
+	color: #f54235;
 }
 
 .number {
@@ -256,7 +256,7 @@ strong {
 }
 
 .boolean, .local, .print, .nil, .comparator {
-	color: blue;
+	color: #388fff;
 }
 
 .print::before {
