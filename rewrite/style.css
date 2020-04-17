@@ -247,6 +247,9 @@ strong {
 	color: goldenrod;
 }
 
+.method {
+	color: rgb(47, 255, 116);
+}
 .function {
 	color: black;
 }
