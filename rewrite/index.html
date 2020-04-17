@@ -24,7 +24,7 @@
 			</div>
 			<div id="header-nav">
 				<a class="selected" href="index.html">Reference</a>
-				<a href="/guides/">Guides</a>
+				<!-- <a href="/guides/">Guides</a> -->
 				<a href="https://www.matrixgames.com/forums/tt.asp?forumid=1681">Forum</a>
 			</div>
 		</div>
@@ -337,12 +337,12 @@
 					disposal.
 				</p>
 
-				<p>
+				<!-- <p>
 					If you've never written a line of code in your life, <strong>don't panic--we've got you</strong>. We
 					have a comprehensive set of <a href="#Guides">Guides</a> to get you started. Once you've conquered
 					the <a href="#Guides">Guides</a> section, you'll be ready to jump in the deep end and start using
 					the <a href="#Functions">Functions</a> to bend Command to your will!
-				</p>
+				</p> -->
 
 				<a class="anchor" id="ExternalResources"></a>
 				<h3>External Resources</h3>
@@ -387,7 +387,7 @@
 					</p>
 				</div>
 
-				<h5>Example 1</h5>
+				<!-- <h5>Example 1</h5>
 				<p>
 					In the code below, note that incorrect case returns an undesired value while using the correct case
 					returns the desired value.
@@ -449,8 +449,7 @@
 								</span>
 							</code>
 					</p>
-				</div>
-
+				</div> -->
 
 				<a class="anchor" id="ErrorHandling"></a>
 				<h3>Error Handling</h3>
@@ -799,85 +798,277 @@
 					</code>
 				</div>
 				<hr>
-				<h3><a class="anchor" id="dataType_Size"></a>Size</h3>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-				</p>
 				<hr>
-				<h3><a class="anchor" id="dataType_Stance"></a>Stance</h3>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-				</p>
+				<a class="anchor" id="dataType_Size"></a>
+					<h3>Size</h3>
+					<p>Size various size attributes (eg flightsize in mission).</p>
+					<p> When setting the value, either the number or the description (in quotes) can be used.</p>   
+					<p><details><summary>Size Codes</p>
+					</summary>
+					<p>Flight size:</p>
+					<ul class="ul-no-bullets">
+						<li>0 - None*</li>
+						<li>1 - SingleAircraft</li>
+						<li>2 - TwoAircraft</li>
+						<li>3 - ThreeAircraft</li>
+						<li>4 - FourAircraft</li>
+						<li>6 - SixAircraft</li>
+					</ul>
+				
+					<p> Flight quantity:</p>
+					<ul class="ul-no-bullets">
+						<li>0 - None</li>
+						<li>1 - Flight_x1</li>
+						<li>2 - Flight_x2</li>
+						<li>3 - Flight_x3</li>
+						<li>4 - Flight_x4</li>
+						<li>6 - Flight_x6</li>
+						<li>8 - Flight_x8</li>
+						<li>12 - Flight_x12</li>
+						<li>All - All</li>
+					</ul>
+				
+					<p> Group size:</p>
+					<ul class="ul-no-bullets">
+						<li>0 - None*</li>
+						<li>1 - SingleVessel</li>
+						<li>2 - TwoVessel</li>
+						<li>3 - ThreeVessel</li>
+						<li>4 - FourVessel</li>
+						<li>6 - SixVessel</li>
+					</ul>
+					
+					<p> *This can also be set by using a value of 'all'.</p></details>
+				
+					<hr>
+				<a class="anchor" id="dataType_Stance"></a>
+					<h3>Stance</h3>
+					<p>
+						Stance/Posture: how one side sees another.
+					</p>
+					
+					<p>When setting the value, either the number or the description (in quotes) can be used.</p>
+					<p><details><summary>Stance Codes</p>
+					 
+					</summary>
+					<ul class="ul-no-bullets">
+						<li>0 - Neutral</li>
+						<li>1 - Friendly</li>
+						<li>2 - Unfriendly</li>
+						<li>3 - Hostile</li>
+						<li>4 - Unknown</li>
+					</ul>
+					 </details>
+					<hr>
+				<a class="anchor" id="dataType_TargetTypeWRA"></a>
+					<h3>TargetTypeWRA</h3>
+					<p>Target type.</p>
+					<p><details><summary>Target Type Codes</p>
+					</summary>
+					<ul class="ul-2-columns">
+						<li>None - 1001</li>
+						<li>Decoy - 1002</li>
+						<li>Air_Contact_Unknown_Type - 1999</li>
+						<li>Aircraft_Unspecified - 2000</li>
+						<li>Aircraft_5th_Generation - 2001</li>
+						<li>Aircraft_4th_Generation - 2002</li>
+						<li>Aircraft_3rd_Generation - 2003</li>
+						<li>Aircraft_Less_Capable - 2004</li>
+						<li>Aircraft_High_Perf_Bombers - 2011</li>
+						<li>Aircraft_Medium_Perf_Bombers - 2012</li>
+						<li>Aircraft_Low_Perf_Bombers - 2013</li>
+						<li>Aircraft_High_Perf_Recon_EW - 2021</li>
+						<li>Aircraft_Medium_Perf_Recon_EW - 2022</li>
+						<li>Aircraft_Low_Perf_Recon_EW - 2023</li>
+						<li>Aircraft_AEW - 2031</li>
+						<li>Helicopter_Unspecified - 2100</li>
+						<li>Guided_Weapon_Unspecified - 2200</li>
+						<li>Guided_Weapon_Supersonic_Sea_Skimming - 2201</li>
+						<li>Guided_Weapon_Subsonic_Sea_Skimming - 2202</li>
+						<li>Guided_Weapon_Supersonic - 2203</li>
+						<li>Guided_Weapon_Subsonic - 2204</li>
+						<li>Guided_Weapon_Ballistic - 2211</li>
+						<li>Satellite_Unspecified - 2300</li>
+						<li>Surface_Contact_Unknown_Type - 2999</li>
+						<li>Ship_Unspecified - 3000</li>
+						<li>Ship_Carrier_0_25000_tons - 3001</li>
+						<li>Ship_Carrier_25001_45000_tons - 3002</li>
+						<li>Ship_Carrier_45001_95000_tons - 3003</li>
+						<li>Ship_Carrier_95000_tons - 3004</li>
+						<li>Ship_Surface_Combatant_0_500_tons - 3101</li>
+						<li>Ship_Surface_Combatant_501_1500_tons - 3102</li>
+						<li>Ship_Surface_Combatant_1501_5000_tons - 3103</li>
+						<li>Ship_Surface_Combatant_5001_10000_tons - 3104</li>
+						<li>Ship_Surface_Combatant_10001_25000_tons - 3105</li>
+						<li>Ship_Surface_Combatant_25001_45000_tons - 3106</li>
+						<li>Ship_Surface_Combatant_45001_95000_tons - 3107</li>
+						<li>Ship_Surface_Combatant_95000_tons - 3108</li>
+						<li>Ship_Amphibious_0_500_tons - 3201</li>
+						<li>Ship_Amphibious_501_1500_tons - 3202</li>
+						<li>Ship_Amphibious_1501_5000_tons - 3203</li>
+						<li>Ship_Amphibious_5001_10000_tons - 3204</li>
+						<li>Ship_Amphibious_10001_25000_tons - 3205</li>
+						<li>Ship_Amphibious_25001_45000_tons - 3206</li>
+						<li>Ship_Amphibious_45001_95000_tons - 3207</li>
+						<li>Ship_Amphibious_95000_tons - 3208</li>
+						<li>Ship_Auxiliary_0_500_tons - 3301</li>
+						<li>Ship_Auxiliary_501_1500_tons - 3302</li>
+						<li>Ship_Auxiliary_1501_5000_tons - 3303</li>
+						<li>Ship_Auxiliary_5001_10000_tons - 3304</li>
+						<li>Ship_Auxiliary_10001_25000_tons - 3305</li>
+						<li>Ship_Auxiliary_25001_45000_tons - 3306</li>
+						<li>Ship_Auxiliary_45001_95000_tons - 3307</li>
+						<li>Ship_Auxiliary_95000_tons - 3308</li>
+						<li>Ship_Merchant_Civilian_0_500_tons - 3401</li>
+						<li>Ship_Merchant_Civilian_501_1500_tons - 3402</li>
+						<li>Ship_Merchant_Civilian_1501_5000_tons - 3403</li>
+						<li>Ship_Merchant_Civilian_5001_10000_tons - 3404</li>
+						<li>Ship_Merchant_Civilian_10001_25000_tons - 3405</li>
+						<li>Ship_Merchant_Civilian_25001_45000_tons - 3406</li>
+						<li>Ship_Merchant_Civilian_45001_95000_tons - 3407</li>
+						<li>Ship_Merchant_Civilian_95000_tons - 3408</li>
+						<li>Submarine_Surfaced - 3501</li>
+						<li>Subsurface_Contact_Unknown_Type - 3999</li>
+						<li>Submarine_Unspecified - 4000</li>
+						<li>Land_Contact_Unknown_Type - 4999</li>
+						<li>Land_Structure_Soft_Unspecified - 5000</li>
+						<li>Land_Structure_Soft_Building_Surface - 5001</li>
+						<li>Land_Structure_Soft_Building_Reveted - 5002</li>
+						<li>Land_Structure_Soft_Structure_Open - 5005</li>
+						<li>Land_Structure_Soft_Structure_Reveted - 5006</li>
+						<li>Land_Structure_Soft_Aerostat_Moring - 5011</li>
+						<li>Land_Structure_Hardened_Unspecified - 5100</li>
+						<li>Land_Structure_Hardened_Building_Surface - 5101</li>
+						<li>Land_Structure_Hardened_Building_Reveted - 5102</li>
+						<li>Land_Structure_Hardened_Building_Bunker - 5103</li>
+						<li>Land_Structure_Hardened_Building_Underground - 5104</li>
+						<li>Land_Structure_Hardened_Structure_Open - 5105</li>
+						<li>Land_Structure_Hardened_Structure_Reveted - 5106</li>
+						<li>Runway_Facility_Unspecified - 5200</li>
+						<li>Runway - 5201</li>
+						<li>Runway_Grade_Taxiway - 5202</li>
+						<li>Runway_Access_Point - 5203</li>
+						<li>Radar_Unspecified - 5300</li>
+						<li>Mobile_Target_Soft_Unspecified - 5400</li>
+						<li>Mobile_Target_Soft_Mobile_Vehicle - 5401</li>
+						<li>Mobile_Target_Soft_Mobile_Personnel - 5402</li>
+						<li>Mobile_Target_Hardened_Unspecified - 5500</li>
+						<li>Mobile_Target_Hardened_Mobile_Vehicle - 5501</li>
+						<li>Underwater_Structure - 5601</li>
+						<li>Air_Base_Single_Unit_Airfield - 5801</li>
+					</ul>
+					</details>
 				<hr>
-				<h3><a class="anchor" id="dataType_TargetTypeWRA"></a>TargetTypeWRA</h3>
+				<a class="anchor" id="dataType_TimeStamp"></a>
+				<h3>TimeStamp</h3>
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					TimeStamp is a representation of time defined as the number of seconds that have elapsed since 00:00:00 Coordinated Universal Time (UTC), Thursday, 1 January 1970
 				</p>
+				
+						<hr>
+				<a class="anchor" id="dataType_WeaponDoctrine"></a>
+						<h3>WeaponDoctrine</h3>
+						
+						
+					<p><details><summary>Weapon Doctrine Codes
+					</P>
+					 </summary>
+					 <ul class="ul-no-bullets">
+						<li>Value - Number - Explanation</li>
+						<li>LoadoutSetting - 0 - use setting from database</li>
+						<li>Winchester - 2001 - Vanilla Winchester.</li>
+						<li>Winchester_ToO - 2002 - Same as above, but engage nearby bogies with guns after we're out of missiles. Applies to air-to-air missile loadouts only. For guns-only air-to-air loadouts and all air-to-ground loadouts the behaviour is the same as above. PREFERRED OPTION!</li>
+						<li>ShotgunBVR - 3001 - Disengage after firing all Beyond Visual Range (BVR, air-to-air) or Stand-Off (SO, air-to-ground) weapons. This is a risky option as your fighter aircraft may only have one medium-range air-to-air missile (AAM) left, and attempt to engage 'fresh' flights of bogies. Use with caution.</li>
+						<li>ShotgunBVR_WVR - 3002 - Same as above, but if easy targets or threats are nearby then shoot at them with remaining Within Visual Range (WVR, air-to-air) or SR (Short-Range, air-to-ground) weapons before disengaging.</li>
+						<li>ShotgunBVR_WVR_Guns - 3003 - Same as above, but also engage bogies with guns. Applies to air-to-air (A/A) loadouts only. For air-to-ground (A/G) loadouts the behaviour is the same as above.</li>
+						<li>ShotgunOneEngagementBVR - 5001 - Make one engagement with BVR or SO weapons. Continue fighting for as long as there are targets within easy reach and then disengage. This is a safe option as it ensures aircraft do not 'hang around' after they have expended their most potent weapons, and becoming easy targets when engaged by 'fresh' enemy units. </li>
+						<li>ShotgunOneEngagementBVR_Opportunity_WVR - 5002 - Same as above, but if easy targets or threats are nearby, shoot at them with remaining WVR or Short-Range weapons before disengaging. A target is considered 'easy' when within 120% of the remaining WVR or Strike weapon's maximum range. In other words, the fighter won't spend much energy chasing down a target after the Shotgun weapon state has been reached, and will leave the target area as quickly as possible. PREFERRED OPTION!</li>
+						<li>ShotgunOneEngagementBVR_Opportunity_WVR_Guns - 5003 - Same as above, but also engage bogies with guns. Applies to air-to-air (A/A) loadouts only. For air-to-ground (A/G) loadouts the behaviour is the same as above.</li>
+						<li>ShotgunOneEngagementBVR_And_WVR - 5005 - Make one engagement with BVR and WVR, or SO and Strike Weapons. Do not disengage when out of BVR or SO weapons, but continue the engagement with WVR weapons.</li>
+						<li>ShotgunOneEngagementBVR_And_WVR_Opportunity_Guns - 5006 -  </li>
+						<li>ShotgunOneEngagementWVR - 5011 - Make one engagement with WVR or SR weapons. Continue fighting for as long as there are targets within easy reach and then disengage.</li>
+						<li>ShotgunOneEngagementWVR_Guns - 5012 - Same as above but also engage bogies with guns. Applies to air-to-air (A/A) loadouts only. For air-to-ground (A/G) loadouts, the behaviour is the same as above. PREFERRED OPTION!</li>
+						<li>ShotgunOneEngagementGun - 5021 - Make one engagement with guns. Continue fighting for as long as there are targets nearby and then disengage.</li>
+						<li>Shotgun25 - 4001 - Disengage after 1/4 of mission-specific weapons have been expended.</li>
+						<li>Shotgun25_ToO - 4002 - Same as above, but if easy targets or threats are nearby then shoot at those too. Also engage bogies with guns. Applies to air-to-air (A/A) loadouts only.</li>
+						<li>Shotgun50 - 4011 - Disengage after half of mission-specific weapons have been expended.</li>
+						<li>Shotgun50_ToO - 4012 - Same as above, but if easy targets or threats are nearby then shoot at those too. Also engage bogies with guns. Applies to air-to-air (A/A) loadouts only.</li>
+						<li>Shotgun75 - 4021 - Disengage after 3/4 of mission-specific weapons have been expended.</li>
+						<li>Shotgun75_ToO - 4022 - Same as above, but if easy targets or threats are nearby then shoot at those too. Also engage bogies with guns. Applies to air-to-air (A/A) loadouts only.</li>
+					</ul>
+					</details>
+					<hr>
+				<a class="anchor" id="dataType_WeaponType"></a>
+					<h3>WeaponType</h3>
+					<p><details><summary>Weapon Type Codes
+					</P>
+					 </summary>
+					 <ul class="ul-no-bullets">
+						<li>None = 1001</li>
+						<li>GuidedWeapon = 2001</li>
+						<li>Rocket = 2002</li>
+						<li>IronBomb = 2003</li>
+						<li>Gun = 2004</li>
+						<li>Decoy_Expendable = 2005</li>
+						<li>Decoy_Towed = 2006</li>
+						<li>Decoy_Vehicle = 2007</li>
+						<li>TrainingRound = 2008</li>
+						<li>Dispenser = 2009</li>
+						<li>ContactBomb_Suicide = 2010</li>
+						<li>ContactBomb_Sabotage = 2011</li>
+						<li>GuidedProjectile = 2012</li>
+						<li>SensorPod = 3001</li>
+						<li>DropTank = 3002</li>
+						<li>BuddyStore = 3003</li>
+						<li>FerryTank = 3004</li>
+						<li>Torpedo = 4001</li>
+						<li>DepthCharge = 4002</li>
+						<li>Sonobuoy = 4003</li>
+						<li>BottomMine = 4004</li>
+						<li>MooredMine = 4005</li>
+						<li>FloatingMine = 4006</li>
+						<li>MovingMine = 4007</li>
+						<li>RisingMine = 4008</li>
+						<li>DriftingMine = 4009</li>
+						<li>DummyMine = 4011</li>
+						<li>HeliTowedPackage = 4101</li>
+						<li>RV = 5001</li>
+						<li>Laser = 6001</li>
+						<li>HGV = 8001</li>
+						<li>Cargo = 9001</li>
+						<li>Troops = 9002</li>
+						<li>Paratroops = 9003</li>
+					</ul>
+					</details>
+				
 				<hr>
-				<h3><a class="anchor" id="dataType_TimeStamp"></a>TimeStamp</h3>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-				</p>
-				<hr>
-				<h3><a class="anchor" id="dataType_WeaponDoctrine"></a>WeaponDoctrine</h3>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-				</p>
-				<hr>
-				<h3><a class="anchor" id="dataType_WeaponType"></a>WeaponType</h3>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-				</p>
-				<hr>
-				<h3><a class="anchor" id="dataType_Weather"></a>Weather</h3>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-				</p>
+				<a class="anchor" id="dataType_Weather"></a>
+				<h3>Weather</h3>
+				<p>Weather conditions.</p>
+				<ul>
+					<li>
+						<span class="parameter">temp</span><span class="types"><span class="number">number</span></span> Temperature (average for GetWeather(), or time-of-day for unit/contact)
+					</li>
+					<li>
+						<span class="parameter">rainfall</span><span class="types"><span class="number">number</span></span> Rainfall rate
+					</li>
+					<li>
+						<span class="parameter">undercloud</span><span class="types"><span class="number">number</span></span> Fraction under cloud
+					</li>
+					<li>
+						<span class="parameter">seastate</span><span class="types"><span class="number">number</span></span> Sea state
+					</li>
+				</ul>
 				<hr>
 				<a class="anchor" id="Functions"></a>
 				<h2>Functions</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				<!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
 					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
 					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
 					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-				</p>
+				</p> -->
 				<a class="anchor" id="FunctionIndex"></a>
 				<ul class="ul-2-columns">
 					<li><a href="#GetBuildNumber">GetBuildNumber()</a></li>
