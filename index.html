@@ -668,9 +668,10 @@
 							database.
 			
 						</summary>
-					</P>
+					</p>
 					<p>
 						<ul class="ul-no-bullets">
+					<li><b>Description = Code</b></li>
 							<li>None = 1001 </li>
 							<li>Intercept_BVR = 2001 </li>
 							<li>Intercept_WVR = 2002 </li>
@@ -742,10 +743,11 @@
 					</summary>
 					<p>
 						<ul class="ul-no-bullets">
-							<li>None = 1001</li>
-							<li>DayNight = 2001</li>
-							<li>NightOnly = 2002</li>
-							<li>DayOnly = 2003</li>
+					<li><b>Description = Code</b></li>
+							<li>None		= 1001</li>
+							<li>DayNight	= 2001</li>
+							<li>NightOnly	= 2002</li>
+							<li>DayOnly		= 2003</li>
 						</ul>
 				</details>
 				</p>
@@ -769,10 +771,11 @@
 					</summary>
 					<p>
 						<ul class="ul-no-bullets">
-							<li>None = 1001</li>
-							<li>AllWeather = 2001</li>
+					<li><b>Description = Code</b></li>
+							<li>None 			= 1001</li>
+							<li>AllWeather 		= 2001</li>
 							<li>LimitedAllWeather = 2002</li>
-							<li>ClearWeather = 2003</li>
+							<li>ClearWeather 	= 2003</li>
 						</ul>
 			
 				</details>
@@ -809,35 +812,38 @@
 					</summary>
 					<p>Flight size:</p>
 					<ul class="ul-no-bullets">
-						<li>0 - None*</li>
-						<li>1 - SingleAircraft</li>
-						<li>2 - TwoAircraft</li>
-						<li>3 - ThreeAircraft</li>
-						<li>4 - FourAircraft</li>
-						<li>6 - SixAircraft</li>
+					<li><b>Description = Code</b></li>
+						<li>None*          = 0 </li>
+						<li>SingleAircraft = 1 </li>
+						<li>TwoAircraft    = 2 </li>
+						<li>ThreeAircraft  = 3 </li>
+						<li>FourAircraft   = 4 </li>
+						<li>SixAircraft    = 6 </li>
 					</ul>
 				
 					<p> Flight quantity:</p>
 					<ul class="ul-no-bullets">
-						<li>0 - None</li>
-						<li>1 - Flight_x1</li>
-						<li>2 - Flight_x2</li>
-						<li>3 - Flight_x3</li>
-						<li>4 - Flight_x4</li>
-						<li>6 - Flight_x6</li>
-						<li>8 - Flight_x8</li>
-						<li>12 - Flight_x12</li>
-						<li>All - All</li>
+					<li><b>Description = Code</b></li>
+						<li>None       = 0  </li>
+						<li>Flight_x1  = 1  </li>
+						<li>Flight_x2  = 2  </li>
+						<li>Flight_x3  = 3  </li>
+						<li>Flight_x4  = 4  </li>
+						<li>Flight_x6  = 6  </li>
+						<li>Flight_x8  = 8  </li>
+						<li>Flight_x12 = 12 </li>
+						<li>All        = All</li>
 					</ul>
 				
 					<p> Group size:</p>
 					<ul class="ul-no-bullets">
-						<li>0 - None*</li>
-						<li>1 - SingleVessel</li>
-						<li>2 - TwoVessel</li>
-						<li>3 - ThreeVessel</li>
-						<li>4 - FourVessel</li>
-						<li>6 - SixVessel</li>
+					<li><b>Description = Code</b></li>
+						<li>None*        = 0</li>
+						<li>SingleVessel = 1</li>
+						<li>TwoVessel    = 2</li>
+						<li>ThreeVessel  = 3</li>
+						<li>FourVessel   = 4</li>
+						<li>SixVessel    = 6</li>
 					</ul>
 					
 					<p> *This can also be set by using a value of 'all'.</p></details>
@@ -854,11 +860,12 @@
 					 
 					</summary>
 					<ul class="ul-no-bullets">
-						<li>0 - Neutral</li>
-						<li>1 - Friendly</li>
-						<li>2 - Unfriendly</li>
-						<li>3 - Hostile</li>
-						<li>4 - Unknown</li>
+					<li><b>Description 	= Code</b></li>
+						<li>Neutral 	= 0</li>
+						<li>Friendly 	= 1</li>
+						<li>Unfriendly 	= 2</li>
+						<li>Hostile 	= 3</li>
+						<li>Unknown 	= 4</li>
 					</ul>
 					 </details>
 					<hr>
@@ -867,97 +874,98 @@
 					<p>Target type.</p>
 					<p><details><summary>Target Type Codes</p>
 					</summary>
+					<p><b>Description 	= Code</b></p>
 					<ul class="ul-2-columns">
-						<li>None - 1001</li>
-						<li>Decoy - 1002</li>
-						<li>Air_Contact_Unknown_Type - 1999</li>
-						<li>Aircraft_Unspecified - 2000</li>
-						<li>Aircraft_5th_Generation - 2001</li>
-						<li>Aircraft_4th_Generation - 2002</li>
-						<li>Aircraft_3rd_Generation - 2003</li>
-						<li>Aircraft_Less_Capable - 2004</li>
-						<li>Aircraft_High_Perf_Bombers - 2011</li>
-						<li>Aircraft_Medium_Perf_Bombers - 2012</li>
-						<li>Aircraft_Low_Perf_Bombers - 2013</li>
-						<li>Aircraft_High_Perf_Recon_EW - 2021</li>
-						<li>Aircraft_Medium_Perf_Recon_EW - 2022</li>
-						<li>Aircraft_Low_Perf_Recon_EW - 2023</li>
-						<li>Aircraft_AEW - 2031</li>
-						<li>Helicopter_Unspecified - 2100</li>
-						<li>Guided_Weapon_Unspecified - 2200</li>
-						<li>Guided_Weapon_Supersonic_Sea_Skimming - 2201</li>
-						<li>Guided_Weapon_Subsonic_Sea_Skimming - 2202</li>
-						<li>Guided_Weapon_Supersonic - 2203</li>
-						<li>Guided_Weapon_Subsonic - 2204</li>
-						<li>Guided_Weapon_Ballistic - 2211</li>
-						<li>Satellite_Unspecified - 2300</li>
-						<li>Surface_Contact_Unknown_Type - 2999</li>
-						<li>Ship_Unspecified - 3000</li>
-						<li>Ship_Carrier_0_25000_tons - 3001</li>
-						<li>Ship_Carrier_25001_45000_tons - 3002</li>
-						<li>Ship_Carrier_45001_95000_tons - 3003</li>
-						<li>Ship_Carrier_95000_tons - 3004</li>
-						<li>Ship_Surface_Combatant_0_500_tons - 3101</li>
-						<li>Ship_Surface_Combatant_501_1500_tons - 3102</li>
-						<li>Ship_Surface_Combatant_1501_5000_tons - 3103</li>
-						<li>Ship_Surface_Combatant_5001_10000_tons - 3104</li>
-						<li>Ship_Surface_Combatant_10001_25000_tons - 3105</li>
-						<li>Ship_Surface_Combatant_25001_45000_tons - 3106</li>
-						<li>Ship_Surface_Combatant_45001_95000_tons - 3107</li>
-						<li>Ship_Surface_Combatant_95000_tons - 3108</li>
-						<li>Ship_Amphibious_0_500_tons - 3201</li>
-						<li>Ship_Amphibious_501_1500_tons - 3202</li>
-						<li>Ship_Amphibious_1501_5000_tons - 3203</li>
-						<li>Ship_Amphibious_5001_10000_tons - 3204</li>
-						<li>Ship_Amphibious_10001_25000_tons - 3205</li>
-						<li>Ship_Amphibious_25001_45000_tons - 3206</li>
-						<li>Ship_Amphibious_45001_95000_tons - 3207</li>
-						<li>Ship_Amphibious_95000_tons - 3208</li>
-						<li>Ship_Auxiliary_0_500_tons - 3301</li>
-						<li>Ship_Auxiliary_501_1500_tons - 3302</li>
-						<li>Ship_Auxiliary_1501_5000_tons - 3303</li>
-						<li>Ship_Auxiliary_5001_10000_tons - 3304</li>
-						<li>Ship_Auxiliary_10001_25000_tons - 3305</li>
-						<li>Ship_Auxiliary_25001_45000_tons - 3306</li>
-						<li>Ship_Auxiliary_45001_95000_tons - 3307</li>
-						<li>Ship_Auxiliary_95000_tons - 3308</li>
-						<li>Ship_Merchant_Civilian_0_500_tons - 3401</li>
-						<li>Ship_Merchant_Civilian_501_1500_tons - 3402</li>
-						<li>Ship_Merchant_Civilian_1501_5000_tons - 3403</li>
-						<li>Ship_Merchant_Civilian_5001_10000_tons - 3404</li>
-						<li>Ship_Merchant_Civilian_10001_25000_tons - 3405</li>
-						<li>Ship_Merchant_Civilian_25001_45000_tons - 3406</li>
-						<li>Ship_Merchant_Civilian_45001_95000_tons - 3407</li>
-						<li>Ship_Merchant_Civilian_95000_tons - 3408</li>
-						<li>Submarine_Surfaced - 3501</li>
-						<li>Subsurface_Contact_Unknown_Type - 3999</li>
-						<li>Submarine_Unspecified - 4000</li>
-						<li>Land_Contact_Unknown_Type - 4999</li>
-						<li>Land_Structure_Soft_Unspecified - 5000</li>
-						<li>Land_Structure_Soft_Building_Surface - 5001</li>
-						<li>Land_Structure_Soft_Building_Reveted - 5002</li>
-						<li>Land_Structure_Soft_Structure_Open - 5005</li>
-						<li>Land_Structure_Soft_Structure_Reveted - 5006</li>
-						<li>Land_Structure_Soft_Aerostat_Moring - 5011</li>
-						<li>Land_Structure_Hardened_Unspecified - 5100</li>
-						<li>Land_Structure_Hardened_Building_Surface - 5101</li>
-						<li>Land_Structure_Hardened_Building_Reveted - 5102</li>
-						<li>Land_Structure_Hardened_Building_Bunker - 5103</li>
-						<li>Land_Structure_Hardened_Building_Underground - 5104</li>
-						<li>Land_Structure_Hardened_Structure_Open - 5105</li>
-						<li>Land_Structure_Hardened_Structure_Reveted - 5106</li>
-						<li>Runway_Facility_Unspecified - 5200</li>
-						<li>Runway - 5201</li>
-						<li>Runway_Grade_Taxiway - 5202</li>
-						<li>Runway_Access_Point - 5203</li>
-						<li>Radar_Unspecified - 5300</li>
-						<li>Mobile_Target_Soft_Unspecified - 5400</li>
-						<li>Mobile_Target_Soft_Mobile_Vehicle - 5401</li>
-						<li>Mobile_Target_Soft_Mobile_Personnel - 5402</li>
-						<li>Mobile_Target_Hardened_Unspecified - 5500</li>
-						<li>Mobile_Target_Hardened_Mobile_Vehicle - 5501</li>
-						<li>Underwater_Structure - 5601</li>
-						<li>Air_Base_Single_Unit_Airfield - 5801</li>
+						<li>None 		= 1001</li>
+						<li>Decoy 		= 1002</li>
+						<li>Air_Contact_Unknown_Type = 1999</li>
+						<li>Aircraft_Unspecified 	= 2000</li>
+						<li>Aircraft_5th_Generation = 2001</li>
+						<li>Aircraft_4th_Generation = 2002</li>
+						<li>Aircraft_3rd_Generation = 2003</li>
+						<li>Aircraft_Less_Capable 	= 2004</li>
+						<li>Aircraft_High_Perf_Bombers = 2011</li>
+						<li>Aircraft_Medium_Perf_Bombers = 2012</li>
+						<li>Aircraft_Low_Perf_Bombers = 2013</li>
+						<li>Aircraft_High_Perf_Recon_EW = 2021</li>
+						<li>Aircraft_Medium_Perf_Recon_EW = 2022</li>
+						<li>Aircraft_Low_Perf_Recon_EW = 2023</li>
+						<li>Aircraft_AEW = 2031</li>
+						<li>Helicopter_Unspecified = 2100</li>
+						<li>Guided_Weapon_Unspecified = 2200</li>
+						<li>Guided_Weapon_Supersonic_Sea_Skimming = 2201</li>
+						<li>Guided_Weapon_Subsonic_Sea_Skimming = 2202</li>
+						<li>Guided_Weapon_Supersonic = 2203</li>
+						<li>Guided_Weapon_Subsonic = 2204</li>
+						<li>Guided_Weapon_Ballistic = 2211</li>
+						<li>Satellite_Unspecified = 2300</li>
+						<li>Surface_Contact_Unknown_Type = 2999</li>
+						<li>Ship_Unspecified = 3000</li>
+						<li>Ship_Carrier_0_25000_tons = 3001</li>
+						<li>Ship_Carrier_25001_45000_tons = 3002</li>
+						<li>Ship_Carrier_45001_95000_tons = 3003</li>
+						<li>Ship_Carrier_95000_tons = 3004</li>
+						<li>Ship_Surface_Combatant_0_500_tons = 3101</li>
+						<li>Ship_Surface_Combatant_501_1500_tons = 3102</li>
+						<li>Ship_Surface_Combatant_1501_5000_tons = 3103</li>
+						<li>Ship_Surface_Combatant_5001_10000_tons = 3104</li>
+						<li>Ship_Surface_Combatant_10001_25000_tons = 3105</li>
+						<li>Ship_Surface_Combatant_25001_45000_tons = 3106</li>
+						<li>Ship_Surface_Combatant_45001_95000_tons = 3107</li>
+						<li>Ship_Surface_Combatant_95000_tons = 3108</li>
+						<li>Ship_Amphibious_0_500_tons = 3201</li>
+						<li>Ship_Amphibious_501_1500_tons = 3202</li>
+						<li>Ship_Amphibious_1501_5000_tons = 3203</li>
+						<li>Ship_Amphibious_5001_10000_tons = 3204</li>
+						<li>Ship_Amphibious_10001_25000_tons = 3205</li>
+						<li>Ship_Amphibious_25001_45000_tons = 3206</li>
+						<li>Ship_Amphibious_45001_95000_tons = 3207</li>
+						<li>Ship_Amphibious_95000_tons = 3208</li>
+						<li>Ship_Auxiliary_0_500_tons = 3301</li>
+						<li>Ship_Auxiliary_501_1500_tons = 3302</li>
+						<li>Ship_Auxiliary_1501_5000_tons = 3303</li>
+						<li>Ship_Auxiliary_5001_10000_tons = 3304</li>
+						<li>Ship_Auxiliary_10001_25000_tons = 3305</li>
+						<li>Ship_Auxiliary_25001_45000_tons = 3306</li>
+						<li>Ship_Auxiliary_45001_95000_tons = 3307</li>
+						<li>Ship_Auxiliary_95000_tons = 3308</li>
+						<li>Ship_Merchant_Civilian_0_500_tons = 3401</li>
+						<li>Ship_Merchant_Civilian_501_1500_tons = 3402</li>
+						<li>Ship_Merchant_Civilian_1501_5000_tons = 3403</li>
+						<li>Ship_Merchant_Civilian_5001_10000_tons = 3404</li>
+						<li>Ship_Merchant_Civilian_10001_25000_tons = 3405</li>
+						<li>Ship_Merchant_Civilian_25001_45000_tons = 3406</li>
+						<li>Ship_Merchant_Civilian_45001_95000_tons = 3407</li>
+						<li>Ship_Merchant_Civilian_95000_tons = 3408</li>
+						<li>Submarine_Surfaced = 3501</li>
+						<li>Subsurface_Contact_Unknown_Type = 3999</li>
+						<li>Submarine_Unspecified = 4000</li>
+						<li>Land_Contact_Unknown_Type = 4999</li>
+						<li>Land_Structure_Soft_Unspecified = 5000</li>
+						<li>Land_Structure_Soft_Building_Surface = 5001</li>
+						<li>Land_Structure_Soft_Building_Reveted = 5002</li>
+						<li>Land_Structure_Soft_Structure_Open = 5005</li>
+						<li>Land_Structure_Soft_Structure_Reveted = 5006</li>
+						<li>Land_Structure_Soft_Aerostat_Moring = 5011</li>
+						<li>Land_Structure_Hardened_Unspecified = 5100</li>
+						<li>Land_Structure_Hardened_Building_Surface = 5101</li>
+						<li>Land_Structure_Hardened_Building_Reveted = 5102</li>
+						<li>Land_Structure_Hardened_Building_Bunker = 5103</li>
+						<li>Land_Structure_Hardened_Building_Underground = 5104</li>
+						<li>Land_Structure_Hardened_Structure_Open = 5105</li>
+						<li>Land_Structure_Hardened_Structure_Reveted = 5106</li>
+						<li>Runway_Facility_Unspecified = 5200</li>
+						<li>Runway = 5201</li>
+						<li>Runway_Grade_Taxiway = 5202</li>
+						<li>Runway_Access_Point = 5203</li>
+						<li>Radar_Unspecified = 5300</li>
+						<li>Mobile_Target_Soft_Unspecified = 5400</li>
+						<li>Mobile_Target_Soft_Mobile_Vehicle = 5401</li>
+						<li>Mobile_Target_Soft_Mobile_Personnel = 5402</li>
+						<li>Mobile_Target_Hardened_Unspecified = 5500</li>
+						<li>Mobile_Target_Hardened_Mobile_Vehicle = 5501</li>
+						<li>Underwater_Structure = 5601</li>
+						<li>Air_Base_Single_Unit_Airfield = 5801</li>
 					</ul>
 					</details>
 				<hr>
@@ -968,15 +976,397 @@
 				</p>
 				
 						<hr>
+
+
+				<a class="anchor" id="dataType_Unit_Aircraft"></a>
+					<h3>UnitAircraft </h3>
+					<p>The category and sub-type for aircraft.</p>
+					<p><details>
+					<summary>Aircraft Category Codes</summary>
+					<p><b>Description 	= Code</b></p>
+					<ul class="ul-no-bullets" >
+					<li>None 			= 1001</li>
+					<li>Fixed Wing 		= 2001</li>
+					<li>Fixed Wing, Carrier Capable = 2002</li>
+					<li>Helicopter 		= 2003</li>
+					<li>Tiltrotor 		= 2004</li>
+					<li>Airship 		= 2006</li>
+					<li>Seaplane 		= 2007</li>
+					<li>Amphibian 		= 2008</li>
+					</ul >
+					</details>
+					<details>
+					<summary>Aircraft SubType Codes</summary>
+					<p><b>Description 	= Code</b></p>
+					<ul class="ul-no-bullets" >
+					<li>None = 1001</li>
+					<li>Fighter = 2001</li>
+					<li>Multirole (Fighter/Attack) = 2002</li>
+					<li>Anti-Satellite Interceptor (ASAT) = 2101</li>
+					<li>Airborne Laser Platform = 2102</li>
+					<li>Attack = 3001</li>
+					<li>Wild Weasel = 3002</li>
+					<li>Bomber = 3101</li>
+					<li>Battlefield Air Interdiction (BAI/CAS) = 3401</li>
+					<li>Electronic Warfare = 4001</li>
+					<li>Airborne Early Warning (AEW) = 4002</li>
+					<li>Airborne Command Post (ACP) = 4003</li>
+					<li>Search And Rescue (SAR) = 4101</li>
+					<li>Mine Sweeper (MCM) = 4201</li>
+					<li>Anti-Submarine Warfare (ASW) = 6001</li>
+					<li>Maritime Patrol Aircraft (MPA) = 6002</li>
+					<li>Forward Observer = 7001</li>
+					<li>Area Surveillance = 7002</li>
+					<li>Recon = 7003</li>
+					<li>Electronic Intelligence (ELINT) = 7004</li>
+					<li>Signals Intelligence (SIGINT) = 7005</li>
+					<li>Transport = 7101</li>
+					<li>Cargo = 7201</li>
+					<li>Commercial = 7301</li>
+					<li>Civilian = 7302</li>
+					<li>Utility = 7401</li>
+					<li>Naval Utility = 7402</li>
+					<li>Tanker (Air Refueling) = 8001</li>
+					<li>Trainer = 8101</li>
+					<li>Target Towing = 8102</li>
+					<li>Target Drone = 8103</li>
+					<li>Unmanned Aerial Vehicle (UAV) = 8201</li>
+					<li>Unmanned Combat Aerial Vehicle (UCAV) = 8202</li>
+					<li>Airship = 8901</li>
+					<li>Aerostat = 8902</li>
+					</ul >
+					</details>
+					</p>
+				<hr>
+
+				<a class="anchor" id="dataType_Unit_Facility"></a>
+					<h3>UnitFacility </h3>
+					<p>The category and sub-type for Facility.</p>
+					<p><details>
+					<summary>Fixed Facility Category Codes</summary>
+					<p><b>Description 	= Code</b></p>
+					<ul class="ul-no-bullets" >
+					<li>1001 = None</li>
+					<li>2001 = Runway</li>
+					<li>2002 = Runway-Grade Taxiway</li>
+					<li>2003 = Runway Access Point</li>
+					<li>3001 = Building (Surface)</li>
+					<li>3002 = Building (Reveted)</li>
+					<li>3003 = Building (Bunker)</li>
+					<li>3004 = Building (Underground)</li>
+					<li>3005 = Structure (Open)</li>
+					<li>3006 = Structure (Reveted)</li>
+					<li>4001 = Underwater</li>
+					<li>5001 = Mobile Vehicle(s)</li>
+					<li>5002 = Mobile Personnel</li>
+					<li>6001 = Aerostat Mooring</li>
+					<li>9001 = Air Base</li>
+					</ul >
+					</details>
+					<details>
+					<summary>Mobile Facility Category Codes</summary>
+					<p><b>Description 	= Code</b></p>
+					<ul class="ul-no-bullets" >
+					<li>0 = None</li>
+					<li>1000 = Infantry</li>
+					<li>2000 = Armor</li>
+					<li>3000 = Artillery Gun</li>
+					<li>4000 = Artillery SSM</li>
+					<li>5000 = AAA</li>
+					<li>6000 = SAM</li>
+					<li>7000 = Engineer</li>
+					<li>8000 = Supply</li>
+					<li>9000 = Surveillance</li>
+					<li>10000 = Recon</li>
+					<li>11000 = MechInfantry</li>
+					</ul >
+					</details>
+					</p>
+				<hr>
+
+				<a class="anchor" id="dataType_Unit_Satellite"></a>
+					<h3>UnitSatellite </h3>
+					<p>The category and sub-type for Satellite.</p>
+					<p><details>
+					<summary>Satellite Category Codes</summary>
+					<p><b>Description 	= Code</b></p>
+					<ul class="ul-no-bullets" >
+					<li>1001 = None</li>
+					<li>2001 = Geo-Stationary</li>
+					<li>2002 = Something Else</li>
+					<li>2003 = Unmanned Test Vehicle</li>
+					</ul >
+					</details>
+					<details>
+					<summary>Satellite SubType Codes</summary>
+					<p><b>Description 	= Code</b></p>
+					<ul class="ul-no-bullets" >
+					<li>1001 = None</li>
+					<li>2001 = IMGSAT</li>
+					<li>2002 = RORSAT</li>
+					<li>2003 = EORSAT</li>
+					<li>2004 = SIGINT</li>
+					<li>2005 = ELINT</li>
+					<li>2006 = NOSS</li>
+					<li>2007 = MASINT</li>
+					<li>2008 = Reusable Test Vehicle</li>
+					</ul >
+					</details>
+					</p>
+				<hr>
+
+				<a class="anchor" id="dataType_Unit_Ship"></a>
+					<h3>UnitShip </h3>
+					<p>The category and sub-type for Ship.</p>
+					<p><details>
+					<summary>Ship Category Codes</summary>
+					<p><b>Description 	= Code</b></p>
+					<ul class="ul-no-bullets" >
+					<li>1001 = None</li>
+					<li>2001 = Carrier (Aviation Ship)</li>
+					<li>2002 = Surface Combatant</li>
+					<li>2003 = Amphibious</li>
+					<li>2004 = Auxiliary</li>
+					<li>2005 = Merchant</li>
+					<li>2006 = Civilian</li>
+					<li>2007 = Surface Combatant (Aviation Capable)</li>
+					<li>2008 = Mobile Offshore Base (Aviation Capable)</li>
+					</ul >
+					</details>
+					<details>
+					<summary>Ship SubType Codes</summary>
+					<p><b>Description 	= Code</b></p>
+					<ul class="ul-2-columns" >
+					<li>1001 = None</li>
+					<li>2001 = CV - Aircraft Carrier</li>
+					<li>2002 = CVA - Attack Carrier</li>
+					<li>2003 = CVB - Large Aircraft Carrier</li>
+					<li>2004 = CVE - Escort Aircraft Carrier</li>
+					<li>2005 = CVGH - Guided Missile Helicopter Carrier</li>
+					<li>2006 = CVH - Helicopter Carrier</li>
+					<li>2007 = CVL - Light Aircraft Carrier</li>
+					<li>2008 = CVN - Nuclear Powered Aircraft Carrier</li>
+					<li>2009 = CVS - Seaplane Carrier</li>
+					<li>2010 = CVS - Anti-Submarine Aircraft Carrier</li>
+					<li>2011 = AVT - Training Carrier</li>
+					<li>3001 = B - Battleship</li>
+					<li>3002 = BB - Battleship</li>
+					<li>3003 = BBC - Command Battleship</li>
+					<li>3004 = BBG - Guided Missile Battleship</li>
+					<li>3005 = BBH - Helicopter Battleship</li>
+					<li>3006 = BCGN - Nuclear Powered Guided Missile Battle Cruiser</li>
+					<li>3007 = BM - Monitor</li>
+					<li>3101 = C - Cruiser</li>
+					<li>3102 = CA - Heavy Cruiser</li>
+					<li>3103 = CAG - Heavy Guided Missile Cruiser</li>
+					<li>3104 = CB - Large Cruiser</li>
+					<li>3105 = CBG - Large Guided Missile Cruiser</li>
+					<li>3106 = CG - Guided Missile Cruiser</li>
+					<li>3107 = CGH - Guided Missile Helicopter Cruiser</li>
+					<li>3108 = CGN - Nuclear Powered Guided Missile Cruiser</li>
+					<li>3109 = CL - Light Cruiser</li>
+					<li>3110 = CLAA - Light Anti-Aircraft Cruiser</li>
+					<li>3111 = CLC - Light Command Cruiser</li>
+					<li>3112 = CLG - Light Guided Missile Cruiser</li>
+					<li>3113 = CLH - Light Helicopter Cruiser</li>
+					<li>3114 = CS - Scout Cruiser</li>
+					<li>3201 = D - Destroyer</li>
+					<li>3202 = DD - Destroyer</li>
+					<li>3203 = DDG - Guided Missile Destroyer</li>
+					<li>3204 = DDH - Helicopter Destroyer</li>
+					<li>3205 = DDK - ASW Submarine Killer Destroyer</li>
+					<li>3206 = DDR - Radar Picket Destroyer</li>
+					<li>3207 = DE - Destroyer Escort</li>
+					<li>3208 = DEG - Guided Missile Destroyer Escort</li>
+					<li>3209 = DER - Radar Picket Destroyer Escort</li>
+					<li>3210 = DL - Destroyer</li>
+					<li>3211 = DLG - Guided Missile Destroyer</li>
+					<li>3212 = DM - Destroyer Minelayer (converted destroyer)</li>
+					<li>3301 = F - Frigate</li>
+					<li>3302 = FF - Frigate</li>
+					<li>3303 = FFG - Guided Missile Frigate</li>
+					<li>3304 = FFL - Corvette</li>
+					<li>3305 = PF - Patrol Frigate</li>
+					<li>3306 = LCS - Littoral Combat Ship</li>
+					<li>3307 = OPV - Offshore Patrol Vessel</li>
+					<li>3308 = USV - Unmanned Surface Vessel</li>
+					<li>3401 = PB - Patrol Boat</li>
+					<li>3402 = PC - Coastal Patrol Boat</li>
+					<li>3403 = PC - Submarine Chaser</li>
+					<li>3404 = PCE - Submarine Chaser Escort</li>
+					<li>3405 = PCF - Fast Patrol Craft</li>
+					<li>3406 = PCFG - Fast Guided Missile Patrol Craft</li>
+					<li>3407 = PG - Patrol Gunboat</li>
+					<li>3408 = PG - Corvette</li>
+					<li>3409 = PGM - Missile Gunboat</li>
+					<li>3410 = PH - Hydrofoil Gunboat</li>
+					<li>3411 = PHM - Missile Hydrofoil</li>
+					<li>3412 = PHT - Hydrofoil Torpedo Boat</li>
+					<li>3413 = PT - Patrol Torpedo Boat</li>
+					<li>3414 = PTS - Patrol Torpedo Boat Small</li>
+					<li>3415 = MTB - Motor Torpedo Boat</li>
+					<li>3416 = WHEC - Coast Guard High Endurance Cutter</li>
+					<li>3417 = WMEC - Coast Guard Medium Endurance Cutter</li>
+					<li>3418 = WPB - Coast Guard Patrol Boat</li>
+					<li>3419 = WPG - Coast Guard Patrol Gunboat</li>
+					<li>3420 = MCDV - Maritime Coastal Defense Vessel</li>
+					<li>4000 = AGF - Fleet Flagship</li>
+					<li>4001 = AGC - Amphibious Fleet Flagship</li>
+					<li>4002 = LCAC - Air Cushion Landing Craft</li>
+					<li>4003 = LCC - Amphibious Command Vessel</li>
+					<li>4004 = LCM - Mechanized Landing Craft</li>
+					<li>4005 = LCP - Personnel Landing Craft</li>
+					<li>4006 = LCT - Tank Landing Craft</li>
+					<li>4007 = LCU - Utility Landing Craft</li>
+					<li>4008 = LCVP - Vehicle and Personnel Landing Craft</li>
+					<li>4009 = LFR - Inshore Fire Support Vessel</li>
+					<li>4010 = LHA - Amphibious Assault Ship, General Purpose</li>
+					<li>4011 = LHD - Amphibious Assault Ship, Multi-purpose</li>
+					<li>4012 = LKA - Amphibious Cargo Vessel</li>
+					<li>4013 = LPD - Amphibious Transport Dock Vessel</li>
+					<li>4014 = LPH - Amphibious Assault Helicopter Carrier</li>
+					<li>4015 = LSD - Dock Landing Ship</li>
+					<li>4016 = LSH - Unknown! British Designation!</li>
+					<li>4017 = LSL - Landing Ships Logistic</li>
+					<li>4018 = LSM - Medium Landing Ship</li>
+					<li>4019 = LSM(R) - Medium Landing Ship, Rocket</li>
+					<li>4020 = LST - Tank Landing Ship</li>
+					<li>4021 = LSU - Utility Landing Ship</li>
+					<li>4022 = LSV - Vehicle Landing Ship</li>
+					<li>4023 = LCI - Landing Craft, Infantry</li>
+					<li>4024 = LSDV - Saboteur Infiltration Craft</li>
+					<li>4025 = LCPA - Personnel Landing Craft, Air-Cushioned</li>
+					<li>4026 = EPF - Expeditionary Fast Transport</li>
+					<li>4027 = ESD - Expeditionary Transfer Dock</li>
+					<li>4028 = ESB - Expeditionary Mobile Base</li>
+					<li>5001 = A - Auxiliary</li>
+					<li>5002 = AD - Destroyer Tender</li>
+					<li>5003 = AE - Ammunition Ship</li>
+					<li>5004 = AF - Refrigerated Stores Ship</li>
+					<li>5005 = AFS - Combat Stores Ship</li>
+					<li>5006 = AG - Generic Auxiliary</li>
+					<li>5007 = AGB - Heavy Icebreaker</li>
+					<li>5008 = AGF - Fleet Flagship</li>
+					<li>5009 = AGI - Intelligence Gathering Ship</li>
+					<li>5010 = AGMR - Communications Major Relay Ship</li>
+					<li>5011 = AGOR - Oceanographic Research Ship</li>
+					<li>5012 = AGOS - Ocean Surveillance Ship</li>
+					<li>5013 = AGR - Radar Picket Ship (converted cargo ship)</li>
+					<li>5014 = AGS - Surveying Ship</li>
+					<li>5015 = AGTR - Technical Research Ship</li>
+					<li>5016 = AH - Hospital Ship</li>
+					<li>5017 = AK - Cargo Ship</li>
+					<li>5018 = AKA - Attack Cargo Ship</li>
+					<li>5019 = AKE - Dry Cargo Ship</li>
+					<li>5020 = AKR - Roll-on/Roll-off Cargo Ship</li>
+					<li>5021 = AKS - General Stores Ship</li>
+					<li>5022 = AO - Fleet Oiler</li>
+					<li>5023 = AOE - Fast Combat Support Ship</li>
+					<li>5024 = AOL - Small Oiler</li>
+					<li>5025 = AOR - Replenishment Oiler</li>
+					<li>5026 = AOT - Transport Oiler</li>
+					<li>5027 = APA - Attack Personnel Transport Ship</li>
+					<li>5028 = APD - Troop Transport (High Speed)</li>
+					<li>5029 = AR - Repair Ship</li>
+					<li>5030 = AS - Submarine Tender</li>
+					<li>5031 = ATC - Armored Troop Carrier (Tango Boat)</li>
+					<li>5032 = ATA - Auxiliary Ocean Tug</li>
+					<li>5033 = ATS - Salvage Tug</li>
+					<li>5034 = AV - Seaplane Tender</li>
+					<li>5035 = AX - Training Vessel</li>
+					<li>5036 = ASR - Submarine Rescue Ship</li>
+					<li>5037 = AP - Personnel Transport Ship</li>
+					<li>5038 = DSV - Diving Support Vessel / Deep Submergence Vehicle</li>
+					<li>5039 = AGM - Missile Range instrumentation Ship</li>
+					<li>5040 = AD - Destroyer Tender</li>
+					<li>5101 = T-AGOS - MSC Ocean Surveillance Ship</li>
+					<li>5102 = T-AH  - MSC Hospital Ship</li>
+					<li>5103 = T-AK - Cargo Ship</li>
+					<li>5104 = T-AKE - MSC Dry Cargo Ship</li>
+					<li>5105 = T-AKR - MSC Roll-on/Roll-off Cargo Ship</li>
+					<li>5106 = T-AO - MSC Fleet Oiler</li>
+					<li>5107 = T-AO - MSC Transport Oiler</li>
+					<li>5108 = T-MLP - MSC Mobile Landing Platforms</li>
+					<li>6001 = MCD - Mine Countermeasures Drone</li>
+					<li>6002 = MCM - Mine Countermeasures Ship</li>
+					<li>6003 = MCS - Mine Countermeasures Support Ship</li>
+					<li>6004 = MHC - Coastal Minehunter</li>
+					<li>6005 = ML - Minelayer</li>
+					<li>6006 = MSC - Coastal Minesweeper</li>
+					<li>6007 = MSF - Steel Hull Fleet Minesweeper</li>
+					<li>6008 = MSI - Inshore Minesweeper</li>
+					<li>6010 = MSO - Ocean Minesweeper</li>
+					<li>6011 = MST - Minesweeper Tender</li>
+					<li>6012 = MHI - Mine Hunter Inshore</li>
+					<li>6013 = MM - Controlled Minefield Tender</li>
+					<li>7001 = YAG - Miscellaneous Service Craft</li>
+					<li>7002 = YRT - Torpedo Retriever</li>
+					<li>7003 = YRM - Missile Retriever</li>
+					<li>9001 = Civilian</li>
+					<li>9002 = Merchant</li>
+					<li>9003 = Platform</li>
+					<li>9004 = NGS Buoy</li>
+					<li>9005 = Bottom Fixed Array Sonar</li>
+					<li>9006 = Moored Sonobuoy</li>
+					<li>9007 = Special (Land Unit/Satellite)</li>
+					<li>9008 = Small Watercraft</li>
+					<li>9011 = Mobile Offshore Base (MOB)</li>
+					</ul >
+					</details>
+					</p>
+				<hr>
+
+				<a class="anchor" id="dataType_Unit_Submarine"></a>
+					<h3>UnitSubmarine </h3>
+					<p>The category and sub-type for Submarine.</p>
+					<p><details>
+					<summary>Submarine Category Codes</summary>
+					<p><b>Description 	= Code</b></p>
+					<ul class="ul-no-bullets" >
+					<li>1001 = None</li>
+					<li>2001 = Submarine</li>
+					<li>2002 = Biologics</li>
+					<li>2003 = False Target</li>
+					</ul >
+					</details>
+					<details>
+					<summary>Submarine SubType Codes</summary>
+					<p><b>Description 	= Code</b></p>
+					<ul class="ul-no-bullets" >
+					<li>1001 = None</li>
+					<li>2001 = AGSS - Auxilary/Experimental Submarine</li>
+					<li>2002 = APSS - Auxiliary Cargo Submarine</li>
+					<li>2003 = SS - Attack/Fleet Submarine</li>
+					<li>2004 = SSB - Ballistic Missile Submarine</li>
+					<li>2005 = SSBN - Nuclear Powered Ballistic Missile Submarine</li>
+					<li>2006 = SSG - Guided Missile Attack Submarine</li>
+					<li>2007 = SSGN - Nuclear Powered Guided Missile Attack Submarine</li>
+					<li>2008 = SSK - Hunter-Killer Submarine</li>
+					<li>2009 = SSM - Midget Submarine</li>
+					<li>2010 = SSN - Nuclear Powered Attack Submarine</li>
+					<li>2011 = SSP - Transport Submarine</li>
+					<li>2012 = SSR - Radar Picket Submarine</li>
+					<li>2013 = SSRN - Nuclear Powered Radar Picket Submarine</li>
+					<li>3001 = SDV - Swimmer Delivery Vehicle</li>
+					<li>4001 = ROV - Remotely Operated Vehicle</li>
+					<li>4002 = UUV - Unmanned Underwater Vehicle</li>
+					<li>4003 = Unmanned Underwater Glider</li>
+					<li>9001 = Biologics</li>
+					<li>9002 = False Target</li>
+					</ul >
+					</details>
+					</p>
+				<hr>
+
 				<a class="anchor" id="dataType_WeaponDoctrine"></a>
 						<h3>WeaponDoctrine</h3>
 						
 						
 					<p><details><summary>Weapon Doctrine Codes
-					</P>
+					</p>
 					 </summary>
+						<p><b>Value - Number - Explanation</b></p>
 					 <ul class="ul-no-bullets">
-						<li>Value - Number - Explanation</li>
 						<li>LoadoutSetting - 0 - use setting from database</li>
 						<li>Winchester - 2001 - Vanilla Winchester.</li>
 						<li>Winchester_ToO - 2002 - Same as above, but engage nearby bogies with guns after we're out of missiles. Applies to air-to-air missile loadouts only. For guns-only air-to-air loadouts and all air-to-ground loadouts the behaviour is the same as above. PREFERRED OPTION!</li>
@@ -1003,8 +1393,9 @@
 				<a class="anchor" id="dataType_WeaponType"></a>
 					<h3>WeaponType</h3>
 					<p><details><summary>Weapon Type Codes
-					</P>
+					</p>
 					 </summary>
+					<p><b>Description 	= Code</b></p>
 					 <ul class="ul-no-bullets">
 						<li>None = 1001</li>
 						<li>GuidedWeapon = 2001</li>
@@ -7352,42 +7743,21 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 					<details>
 						<p>
 							<summary>
-								Fuel Types <span class="byline">
-									<p>(click to expand)</p>
-								</span>
+								Fuel Types
 						</p>
 						</summary>
 						<ul class="ul-no-bullets">
-							<li>
-								1001 - NoFuel
-							</li>
-							<li>
-								2001 - AviationFuel
-							</li>
-							<li>
-								3001 - DieselFuel
-							</li>
-							<li>
-								3002 - OilFuel
-							</li>
-							<li>
-								3003 -GasFuel
-							</li>
-							<li>
-								4001 - Battery
-							</li>
-							<li>
-								4002 - AirIndepedent
-							</li>
-							<li>
-								5001 - RocketFuel
-							</li>
-							<li>
-								5002 - TorpedoFuel
-							</li>
-							<li>
-								5003 - WeaponCoast
-							</li>
+							<li><b>Description = Code</b></li>
+							<li>NoFuel          = 1001 </li>   
+							<li>AviationFuel	= 2001 </li>   
+							<li>DieselFuel		= 3001 </li>   
+							<li>OilFuel			= 3002 </li>   
+							<li>GasFuel			= 3003 </li>   
+							<li>Battery			= 4001 </li>   
+							<li>AirIndepedent	= 4002 </li>   
+							<li>RocketFuel		= 5001 </li>   
+							<li>TorpedoFuel		= 5002 </li>   
+							<li>WeaponCoast		= 5003 </li>
 						</ul>
 					</details>
 					<h4>Fields</h4>
