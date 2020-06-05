@@ -58,613 +58,655 @@
 					<li><a href="#Tables">Tables</a></li>
 				</ul>
 			</div>
-			<div id="main">
-				<a class="anchor" id="News"></a>
-				<h2>News</h2>
-				<h4>Command Lua Docs gets a makeover!</h4>
-				<div class="byline">
-					<p>
-						<sub>April 17th 2020</sub>
-					</p>
-				</div>
-				<p><strong>After 5 years using the <a href="https://stevedonovan.github.io/ldoc/">LDoc format</a>, the
-						Command Lua API Documentation struts into the 2020's with a sleek new interface, inspired by
-						industry leaders in web documentation.</strong> The new look is accompanied by an extensive
-					re-write and reorganisation of existing content, consolidation of content from various sources, and
-					brand new content to assist Lua newbies and pros alike in their Command Lua adventures.</p>
-				<p>The old site can be found <a href="./oldsite/index.html">here</a> for metathesiophobics, however it
-					won't be updated.</p>
-				<h4>Version 1142.2</h4>
-				<div class="byline">
-					<p>
-						<sub>April 9th 2020</sub>
-					</p>
-				</div>
-				<p>
-					The release of Command: Modern Operations version 1141.1 brings a slew of new functions to the
-					Command Lua API:
-					<ul class="ul-2-columns">
-						<!-- <li><a href="#ScenEdit_DistributeWeaponAtAirbase">ScenEdit_DistributeWeaponAtAirbase</a></li>
-						<li><a href="#ScenEdit_ClearAllAircraft">ScenEdit_ClearAllAircraft</a></li>
-						<li><a href="#ScenEdit_ClearAllMagazines">ScenEdit_ClearAllMagazines</a></li> -->
-						<li><a href="#ScenEdit_AddMinefield">ScenEdit_AddMinefield</a></li>
-						<li><a href="#ScenEdit_DeleteMine">ScenEdit_DeleteMine</a></li>
-						<li><a href="#ScenEdit_DeleteMinefield">ScenEdit_DeleteMinefield</a></li>
-						<li><a href="#ScenEdit_GetMinefield">ScenEdit_GetMinefield</a></li>
-						<li><a href="#ScenEdit_SetMine">ScenEdit_SetMine</a></li>
-					</ul>
-				</p>
+            <div id="main">
+                <a class="anchor" id="News"></a>
+                <h2>News</h2>
+                <h4>Command Lua Docs gets a makeover!</h4>
+                <div class="byline">
+                    <p>
+                        <sub>April 17th 2020</sub>
+                    </p>
+                </div>
+                <p>
+                    <strong>
+                        After 5 years using the <a href="https://stevedonovan.github.io/ldoc/">LDoc format</a>, the
+                        Command Lua API Documentation struts into the 2020's with a sleek new interface, inspired by
+                        industry leaders in web documentation.
+                    </strong> The new look is accompanied by an extensive
+                    re-write and reorganisation of existing content, consolidation of content from various sources, and
+                    brand new content to assist Lua newbies and pros alike in their Command Lua adventures.
+                </p>
+                <p>
+                    The old site can be found <a href="./oldsite/index.html">here</a> for metathesiophobics, however it
+                    won't be updated.
+                </p>
+                <h4>Version 1142.2</h4>
+                <div class="byline">
+                    <p>
+                        <sub>April 9th 2020</sub>
+                    </p>
+                </div>
+                <p>
+                    The release of Command: Modern Operations version 1141.1 brings a slew of new functions to the
+                    Command Lua API:
+                    <ul class="ul-2-columns">
+                        <!-- <li><a href="#ScenEdit_DistributeWeaponAtAirbase">ScenEdit_DistributeWeaponAtAirbase</a></li>
+            <li><a href="#ScenEdit_ClearAllAircraft">ScenEdit_ClearAllAircraft</a></li>
+            <li><a href="#ScenEdit_ClearAllMagazines">ScenEdit_ClearAllMagazines</a></li> -->
+                        <li><a href="#ScenEdit_AddMinefield">ScenEdit_AddMinefield</a></li>
+                        <li><a href="#ScenEdit_DeleteMine">ScenEdit_DeleteMine</a></li>
+                        <li><a href="#ScenEdit_DeleteMinefield">ScenEdit_DeleteMinefield</a></li>
+                        <li><a href="#ScenEdit_GetMinefield">ScenEdit_GetMinefield</a></li>
+                        <li><a href="#ScenEdit_SetMine">ScenEdit_SetMine</a></li>
+                    </ul>
+                </p>
 
-				<p>Check them out in the <a href="#Functions">Functions</a> section or by clicking the links above.
-				</p>
+                <p>
+                    Check them out in the <a href="#Functions">Functions</a> section or by clicking the links above.
+                </p>
 
-				<a class="anchor" id="Future Enhancements"></a>
-				<h2>Future Enhancements</h2>
-				<p>
-Additions:
-<ul>
-<p>ScenEdit_AddUnit = Allow for type of 'Weapon' to be added</p>
-<p>ScenEdit_AddCustomLoss(side, table {'name',count}) = Add entries to the loss list so it can displyed. It wil also show up in the <side_wrapper>.losses 
-<br>e.g. ScenEdit_AddCustomLoss('sidea', {{'removethis',0},{'Casualties', 10000}})</p>
+                <a class="anchor" id="Future Enhancements"></a>
+                <h2>Future Enhancements</h2>
+                <p>
+                    Additions:
+                <p>
+                    <ul>
+                        <li>
+                            ScenEdit_AddUnit = Allow for type of 'Weapon' to be added
+                        </li>
+                        <li>
+                            ScenEdit_AddCustomLoss(side, table {'name',count}) = Add entries to the loss list so it can displyed. 
+                            <br>It wil also show up in the wrapper side.losses
+                                <br>e.g. ScenEdit_AddCustomLoss('sidea', {{'removethis',0},{'Casualties', 10000}})
+                        </li>
+                        <li>
+                            Unit Wrapper - category code of the unit type
+                            <br>
+                            <span class="types"><span class="parameter"> category </span></span> =
+                            <span class="types"><span class="number"> Category code </span></span> (as defined in the Data Types)
+                        </li>
+                        <li>
+                            Side Wrapper - side losses to date
+                            <br>
+                            <span class="types"><span class="parameter"> losses </span></span> =
+                            <span class="types"><span class="table"> Table of items {type, dbid, name, count}</span></span>
+                        </li>
+                        <li>
+                            Side Wrapper - side expenditure to date
+                            <br>
+                            <span class="types"><span class="parameter"> expenditures </span></span> =
+                            <span class="types"><span class="table"> Table of items {type, dbid, name, count}</span></span>
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                Changes:
+                <ul>
+                    <li>
+                    Side Wrapper - units filtered by Type, with optional category and subtype<br><span class="types"><span class="method">unitsBy(type,[category,[subtype]])</span></span> = <span class="types"><span class="table">filtered units</span></span>
+                        <br>e.g. side:unitsBy('Ship', 2002, 3003) would return table of Ships of  category 'Surface Combatant' and subtype of 'Command Battleship'
+                    </li>
+                </ul>
+                </p>
 
-<p>Unit Wrapper - category code of the unit type<br><span class="types"><span class="parameter"> category </span></span> = <span class="types"><span class="number"> Category code </span></span> (as defined in the Data Types)</p>
+                <a class="anchor" id="Introduction"></a>
+                <h2>Introduction</h2>
+                <p>
+                    Welcome to the documentation for the Command Lua Application Programming Interface (API). The
+                    Command Lua API allows users to control behaviour of Command directly by using the Lua scripting
+                    language, providing a flexible and easy to use tool for users to extend or customize the built-in
+                    functionality of Command.
+                </p>
 
-<p>Side Wrapper - side losses to date<br><span class="types"><span class="parameter"> losses </span></span> = <span class="types"><span class="table"> Table of items {type, dbid, name, count}</span></span></p>
-<p>Side Wrapper - side expenditure to date<br><span class="types"><span class="parameter"> expenditures </span></span> = <span class="types"><span class="table"> Table of items {type, dbid, name, count}</span></span></p>
+                <h3>What Can I Do With the Command Lua API?</h3>
+                <p>
+                    Since the Command Lua API interfaces directly with the source code of Command, users are provided
+                    with the ability to implement virtually any desired behaviour. Some common uses include:
+                </p>
+                <ul>
+                    <li>Precise placement and orientation of units using the console</li>
+                    <li>Customised message pop-ups</li>
+                    <li>Randomising gameplay elements such as weather, unit types, positions etc</li>
+                    <li>Extending existing AI behaviour</li>
+                    <li>'Spawning' of units in conjunction with the event editor</li>
+                    <li>Implementation of additional features, such as:</li>
+                    <ul>
+                        <li>Downed pilots</li>
+                        <li>Combat search and rescue</li>
+                        <li>'Purchasing' additional units</li>
+                        <li>Extended communications modelling</li>
+                    </ul>
+                </ul>
 
-</ul>
+                <p>
+                    While the above items are common uses for the Command Lua API, the integration with source code
+                    allows users to custom-design virtually any feature or modification that they desire.
+                </p>
 
-Changes: 
-<ul>
-<p>Side Wrapper - units filtered by Type, with optional category and subtype<br><span class="types"><span class="method">unitsBy(type,[category,[subtype]])</span></span> = <span class="types"><span class="table">filtered units</span></span>
-<br>e.g. side:unitsBy('Ship', 2002, 3003) would return table of Ships of  category 'Surface Combatant' and subtype of 'Command Battleship'</p>
-</ul>
-				</p>
+                <a class="anchor" id="top"></a>
 
-				<a class="anchor" id="Introduction"></a>
-				<h2>Introduction</h2>
-				<p>
-					Welcome to the documentation for the Command Lua Application Programming Interface (API). The
-					Command Lua API allows users to control behaviour of Command directly by using the Lua scripting
-					language, providing a flexible and easy to use tool for users to extend or customize the built-in
-					functionality of Command.
-				</p>
+                <h3><a class="anchor" id="HowToUse"></a>How to Use These Docs</h3>
+                <p>
+                    Not everyone is a programmer--and even experienced programmers are daunted by dry, wall-of-text
+                    documentation. With this in mind, we have taken steps to make the documentation for the Command Lua
+                    API accessible to users of all levels of skill, while retaining the depth and detail of technical
+                    documentation. To achieve this:
+                </p>
+                <ul>
+                    <li>
+                        Examples are offered where practical
+                    </li>
+                    <li>
+                        Color coding and linking are used extensively, and
+                    </li>
+                    <li>
+                        Simple language is used to explain concepts wherever possible
+                    </li>
+                </ul>
 
-				<h3>What Can I Do With the Command Lua API?</h3>
-				<p>
-					Since the Command Lua API interfaces directly with the source code of Command, users are provided
-					with the ability to implement virtually any desired behaviour. Some common uses include:
-				</p>
-				<ul>
-					<li>Precise placement and orientation of units using the console</li>
-					<li>Customised message pop-ups</li>
-					<li>Randomising gameplay elements such as weather, unit types, positions etc</li>
-					<li>Extending existing AI behaviour</li>
-					<li>'Spawning' of units in conjunction with the event editor</li>
-					<li>Implementation of additional features, such as:</li>
-					<ul>
-						<li>Downed pilots</li>
-						<li>Combat search and rescue</li>
-						<li>'Purchasing' additional units</li>
-						<li>Extended communications modelling</li>
-					</ul>
-				</ul>
+                <h5>Need Help?</h5>
+                <p>
+                    Even the best written documentation is no match for a discussion with an expert. We have a lively
+                    community of users of all levels--from casual Lua neophytes to professional users who work with the
+                    Command Lua API as their primary job--and the place to get in touch with them is the <a href="https://www.matrixgames.com/forums/tt.asp?forumid=1681">Lua Legion</a> subforum on the <a href="https://www.matrixgames.com/forums/tt.asp?forumid=1154">Official Command Forums</a>. The
+                    forum is actively monitored by WarfareSims staff, and most questions are answered within 24 hours.
+                </p>
 
-				<p>
-					While the above items are common uses for the Command Lua API, the integration with source code
-					allows users to custom-design virtually any feature or modification that they desire.
-				</p>
+                <h5>Found Something Wrong?</h5>
+                <p>
+                    We're human too; there are bound to be mistakes or inaccuracies in documentation for live, complex,
+                    evolving software. If you find something that is incorrect or unclear, please let us know by
+                    <!-- using
+        the <a href="#ReportAProblem">report a problem</a> form or  -->
+                    dropping us a message on the <a href="">Official Discord</a>, <a href="https://twitter.com/warfaresims">Twitter</a> or <a href="https://www.facebook.com/WarfareSims/">FaceBook</a>. Better yet, <a href="https://www.matrixgames.com/forums/tt.asp?forumid=1154">come join the community</a>!
+                </p>
+                <h4>Conventions</h4>
+                <p>
+                    The following conventions are used throughout this documentation to allow at-a-glance visualisation
+                    of data types, code snippets and example code.
+                </p>
+                <ul class="ul-no-bullets">
+                    <li>
+                        <code>Code within text</code> is differentiated from normal text with a border, additional
+                        spacing and a console-like font.
+                    </li>
+                    <li>
+                        <span class="parameter"><a href="">Parameter</a></span> references appear similar to in-text
+                        code with a light blue background. The text links to the relevant documentation (although not in
+                        this example, as a parameter can be any of the types below).
+                    </li>
+                    <li>
+                        <span class="selector"><a href="#Selectors">Selector</a></span> references appear similar to
+                        in-text code with a light green background. The text links to the relevant <a href="#Selectors">Selector</a> documentation.
+                    </li>
+                    <li>
+                        <span class="wrapper"><a href="#Wrappers">Wrapper</a></span> references appear similar to
+                        in-text code with a light purple background. The text links to the relevant <a href="#Wrappers">Wrapper</a> documentation.
+                    </li>
+                    <li>
+                        <span class="table"><a href="#Tables">Table</a></span> references appear similar to in-text code
+                        with a light orange background. The text links to the relevant <a href="#Tables">Table</a>
+                        documentation.
+                    </li>
 
-				<a class="anchor" id="top"></a>
+                    <li>
+                        <span class="types"><a href="#DataTypes">Data type</a></span> descriptions appear similar to
+                        in-text code with bold font a dark grey background. If the Data Type is not one of the standard
+                        Lua data types, the text is white and links to the relevant <a href="#DataTypes">Data Type</a>
+                        documentation. Otherwise, the text is color coded to match the appearance of the datatype in the
+                        console:
+                    </li>
+                    <ul>
+                        <li><span class="types"><span class="string">string</span></li>
+                        <li><span class="types"><span class="boolean">boolean</span></li>
+                        <li><span class="types"><span class="number">number</span></li>
+                    </ul>
+                    <li>
+                        <span class="readonly">READ ONLY</span> properties are denoted by a tag with the words READ ONLY
+                        in all caps, on a yellow background.
+                    </li>
+                    <li>
+                        <details>
+                            <summary>
+                                Sections with long enumerations or data pools have a drop-down carat to show the
+                                relevant data. This reduces visual clutter when looking at other items while allowing
+                                quick access to data without leaving the page.
+                            </summary>
+                            <ul>
+                                <li>Here</li>
+                                <li>is</li>
+                                <li>an</li>
+                                <li>example</li>
+                                <li>of</li>
+                                <li>visual</li>
+                                <li>clutter</li>
+                                <li>that</li>
+                                <li>is</li>
+                                <li>hidden</li>
+                                <li>with</li>
+                                <li>this</li>
+                                <li>convention</li>
+                            </ul>
+                        </details>
+                    </li>
+                </ul>
+                <div class="example">
+                    <code>
+                        <span class="comment">--Example code is written as it appears in the Command Lua console, with additional spacing and indentation for clarity</span>
+                        <br>
+                        <br>
+                        <span class="comment">
+                            --[[
+                            <br>
+                            Native Lua functions, comparators and boolean values are blue
+                            <br>
+                            Operators (+,-,/,*) and constructors ( (,),{,} ) are purple
+                            <br>
+                            Strings are red
+                            <br>
+                            Numbers are gold
+                            <br>
+                            Variables and function names are black
+                            <br>
+                            ]]
+                        </span>
+                        <br>
+                        <br>
+                        <span class="local">local</span>
+                        mission
+                        <span class="operator">=</span>
+                        ScenEdit_AddMission
+                        <span class="operator">(</span>
+                        <span class="string">'USA'</span>,
+                        <span class="string">'Marker strike'</span>,
+                        <span class="string">'strike'</span>,
+                        <span class="operator">{</span>
+                        type
+                        <span class="operator">=</span>
+                        <span class="string">'land'</span>
+                        <span class="operator">}</span>
+                        <span class="operator">)</span>
+                        <br>
+                        <span class="comparator">if</span> mission
+                        <span class="operator">==</span>
+                        <span class="nil" />
+                        <span class="comparator">then</span>
+                        <br>
+                        <span class="tab1">
+                            <span class="comparator">&nbsp;&nbsp;&nbsp;&nbsp;if</span>
+                            _errnum_
+                            <span class="operator">~=</span>
+                            <span class="number">0</span>
+                            <span class="comparator">then</span>
+                            <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="print" />
+                            <span class="operator">(</span>
+                            <span class="string">'Failed to add:'</span>
+                            .. _errmsg_
+                            <span class="operator">)</span>
+                            <br>
+                            <span class="comparator">&nbsp;&nbsp;&nbsp;&nbsp;else</span>
+                            <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="print" />
+                            <span class="operator">(</span>
+                            <span class="string">'Something else'</span>
+                            <span class="operator">)</span>
+                            <br>
+                            <span class="comparator">&nbsp;&nbsp;&nbsp;&nbsp;end</span>
+                            <br>
+                            <span class="comparator">else</span>
+                            <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="print"></span>
+                            <span class="operator">(</span>
+                            <span class="string">
+                                mission</span?
+                                <span class="operator">)</span>
+                                <br>
+                                <span class="comparator">end</span>
+                            </span>
+                    </code>
+                </div>
+                <div class="note-alert">
+                    <p>
+                        <strong>Note:</strong> Information that is particularly useful or worthy of special mention
+                        appears in centered boxes with a blue background.
+                    </p>
+                </div>
 
-				<h3><a class="anchor" id="HowToUse"></a>How to Use These Docs</h3>
-				<p>
-					Not everyone is a programmer--and even experienced programmers are daunted by dry, wall-of-text
-					documentation. With this in mind, we have taken steps to make the documentation for the Command Lua
-					API accessible to users of all levels of skill, while retaining the depth and detail of technical
-					documentation. To achieve this:
-				</p>
-				<ul>
-					<li>
-						Examples are offered where practical
-					</li>
-					<li>
-						Color coding and linking are used extensively, and
-					</li>
-					<li>
-						Simple language is used to explain concepts wherever possible
-					</li>
-				</ul>
+                <div class="note-caution">
+                    <p>
+                        <strong>Caution:</strong> Advice on common pitfalls appears in centered boxes with a yellow
+                        background.
+                    </p>
+                </div>
 
-				<h5>Need Help?</h5>
-				<p>
-					Even the best written documentation is no match for a discussion with an expert. We have a lively
-					community of users of all levels--from casual Lua neophytes to professional users who work with the
-					Command Lua API as their primary job--and the place to get in touch with them is the <a
-						href="https://www.matrixgames.com/forums/tt.asp?forumid=1681">Lua Legion</a> subforum on the <a
-						href="https://www.matrixgames.com/forums/tt.asp?forumid=1154">Official Command Forums</a>. The
-					forum is actively monitored by WarfareSims staff, and most questions are answered within 24 hours.
-				</p>
+                <div class="note-warning">
+                    <p>
+                        <strong>Warning:</strong> Information that could prevent you from losing work or otherwise
+                        disrupting your workflow appears in centered boxes with a red background. <strong>
+                            If you see one
+                            of these, pay attention!
+                        </strong>
+                    </p>
+                </div>
+                </p>
+                <h3><a class="anchor" id="FirstSteps"></a>First Steps</h3>
+                <p>
+                    If you're already familiar with writing scripts in Lua, dive right in and take a look at the <a href="#Functions">Functions</a> section. This is the meat of the Command Lua API--the direct
+                    interface with the source code that makes things happen.
+                </p>
 
-				<h5>Found Something Wrong?</h5>
-				<p>
-					We're human too; there are bound to be mistakes or inaccuracies in documentation for live, complex,
-					evolving software. If you find something that is incorrect or unclear, please let us know by 
-					<!-- using
-					the <a href="#ReportAProblem">report a problem</a> form or  -->
-					dropping us a message on the <a
-						href="">Official Discord</a>, <a href="https://twitter.com/warfaresims">Twitter</a> or <a
-						href="https://www.facebook.com/WarfareSims/">FaceBook</a>. Better yet, <a
-						href="https://www.matrixgames.com/forums/tt.asp?forumid=1154">come join the community</a>!
-				</p>
-				<h4>Conventions</h4>
-				<p>The following conventions are used throughout this documentation to allow at-a-glance visualisation
-					of data types, code snippets and example code.</p>
-				<ul class="ul-no-bullets">
-					<li><code>Code within text</code> is differentiated from normal text with a border, additional
-						spacing and a console-like font.</li>
-					<li><span class="parameter"><a href="">Parameter</a></span> references appear similar to in-text
-						code with a light blue background. The text links to the relevant documentation (although not in
-						this example, as a parameter can be any of the types below).</li>
-					<li><span class="selector"><a href="#Selectors">Selector</a></span> references appear similar to
-						in-text code with a light green background. The text links to the relevant <a
-							href="#Selectors">Selector</a> documentation.</li>
-					<li><span class="wrapper"><a href="#Wrappers">Wrapper</a></span> references appear similar to
-						in-text code with a light purple background. The text links to the relevant <a
-							href="#Wrappers">Wrapper</a> documentation.</li>
-					<li><span class="table"><a href="#Tables">Table</a></span> references appear similar to in-text code
-						with a light orange background. The text links to the relevant <a href="#Tables">Table</a>
-						documentation.</li>
+                <p>
+                    If you're somewhat familiar with programming in general--but not Lua in particular--take a look at
+                    the <a href="#ExternalResources">External Resources</a> for a primer on Lua as a language, then head
+                    on over to the <a href="#Functions">Functions</a> section to get to grips with the tools at your
+                    disposal.
+                </p>
 
-					<li><span class="types"><a href="#DataTypes">Data type</a></span> descriptions appear similar to
-						in-text code with bold font a dark grey background. If the Data Type is not one of the standard
-						Lua data types, the text is white and links to the relevant <a href="#DataTypes">Data Type</a>
-						documentation. Otherwise, the text is color coded to match the appearance of the datatype in the
-						console:</li>
-					<ul>
-						<li><span class="types"><span class="string">string</span></li>
-						<li><span class="types"><span class="boolean">boolean</span></li>
-						<li><span class="types"><span class="number">number</span></li>
-					</ul>
-					<li><span class="readonly">READ ONLY</span> properties are denoted by a tag with the words READ ONLY
-						in all caps, on a yellow background.</li>
-					<li>
-						<details>
-							<summary>
-								Sections with long enumerations or data pools have a drop-down carat to show the
-								relevant data. This reduces visual clutter when looking at other items while allowing
-								quick access to data without leaving the page.
-							</summary>
-							<ul>
-								<li>Here</li>
-								<li>is</li>
-								<li>an</li>
-								<li>example</li>
-								<li>of</li>
-								<li>visual</li>
-								<li>clutter</li>
-								<li>that</li>
-								<li>is</li>
-								<li>hidden</li>
-								<li>with</li>
-								<li>this</li>
-								<li>convention</li>
-							</ul>
-						</details>
-					</li>
-				</ul>
-				<div class="example">
-					<code>
-						<span class="comment">--Example code is written as it appears in the Command Lua console, with additional spacing and indentation for clarity</span>
-						<br>
-						<br>
-						<span class="comment">--[[
-							<br>
-							Native Lua functions, comparators and boolean values are blue
-							<br>
-							Operators (+,-,/,*) and constructors ( (,),{,} ) are purple
-							<br>
-							Strings are red
-							<br>
-							Numbers are gold
-							<br>
-							Variables and function names are black
-							<br>
-							]]
-						</span>
-						<br>
-						<br>
-						<span class="local">local</span>
-						mission
-						<span class="operator">=</span>
-						ScenEdit_AddMission
-						<span class="operator">(</span>
-						<span class="string">'USA'</span>,
-						<span class="string">'Marker strike'</span>,
-						<span class="string">'strike'</span>,
-						<span class="operator">{</span>
-						type
-						<span class="operator">=</span>
-						<span class="string">'land'</span>
-						<span class="operator">}</span>
-						<span class="operator">)</span>
-						<br>
-						<span class="comparator">if</span> mission 
-						<span class="operator">==</span> 
-						<span class="nil"/> 
-						<span class="comparator">then</span>
-						<br>
-						<span class="tab1">
-							<span class="comparator">&nbsp;&nbsp;&nbsp;&nbsp;if</span>
-							_errnum_
-							<span class="operator">~=</span>
-							<span class="number">0</span>
-							<span class="comparator">then</span>
-							<br>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="print"/>
-							<span class="operator">(</span>
-							<span class="string">'Failed to add:'</span>
-							.. _errmsg_
-							<span class="operator">)</span>
-							<br>
-							<span class="comparator">&nbsp;&nbsp;&nbsp;&nbsp;else</span>
-							<br>
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="print"/>
-							<span class="operator">(</span>
-							<span class="string">'Something else'</span>
-							<span class="operator">)</span>
-							<br>
-							<span class="comparator">&nbsp;&nbsp;&nbsp;&nbsp;end</span>
-							<br>
-							<span class="comparator">else</span>
-							<br>
-							&nbsp;&nbsp;&nbsp;&nbsp;<span class="print"></span>
-							<span class="operator">(</span>
-							<span class="string">mission</span?
-							<span class="operator">)</span>
-							<br>
-							<span class="comparator">end</span>
-						</span>
-					</code>
-				</div>
-				<div class="note-alert">
-					<p>
-						<strong>Note:</strong> Information that is particularly useful or worthy of special mention
-						appears in centered boxes with a blue background.
-					</p>
-				</div>
+                <!-- <p>
+        If you've never written a line of code in your life, <strong>don't panic--we've got you</strong>. We
+        have a comprehensive set of <a href="#Guides">Guides</a> to get you started. Once you've conquered
+        the <a href="#Guides">Guides</a> section, you'll be ready to jump in the deep end and start using
+        the <a href="#Functions">Functions</a> to bend Command to your will!
+    </p> -->
 
-				<div class="note-caution">
-					<p>
-						<strong>Caution:</strong> Advice on common pitfalls appears in centered boxes with a yellow
-						background.
-					</p>
-				</div>
+                <a class="anchor" id="ExternalResources"></a>
+                <h3>External Resources</h3>
+                <p>The links below contain useful resources for getting started with Lua in general:</p>
+                <ul>
+                    <li>
+                        <a href="http://lua-users.org/wiki/TutorialDirectory">Tutorials from the Lua Users Wiki</a> -
+                        The first four tutorials (<a href="http://lua-users.org/wiki/LuaTypesTutorial">Types</a>, <a href="http://lua-users.org/wiki/AssignmentTutorial">Assignment</a>, <a href="http://lua-users.org/wiki/NumbersTutorial">Numbers</a> and <a href="http://lua-users.org/wiki/StringsTutorial">Strings</a>) as well as the <a href="http://lua-users.org/wiki/TablesTutorial">Tables</a> and <a href="http://lua-users.org/wiki/FunctionsTutorial">Functions</a> tutorials are recommended
+                        reading.
+                    </li>
+                    <li><a href="https://en.wikibooks.org/wiki/Lua_Programming">The Lua Programming WikiBook</a></li>
+                    <li><a href="https://www.lua.org/manual/5.3/">Lua 5.3 Reference Manual</a></li>
+                </ul>
+                <div class="note-alert">
+                    <p>
+                        <strong>Note:</strong> These references are external to WarfareSims and are subject to change.
+                    </p>
+                </div>
 
-				<div class="note-warning">
-					<p>
-						<strong>Warning:</strong> Information that could prevent you from losing work or otherwise
-						disrupting your workflow appears in centered boxes with a red background. <strong>If you see one
-							of these, pay attention!</strong>
-					</p>
-				</div>
-				</p>
-				<h3><a class="anchor" id="FirstSteps"></a>First Steps</h3>
-				<p>
-					If you're already familiar with writing scripts in Lua, dive right in and take a look at the <a
-						href="#Functions">Functions</a> section. This is the meat of the Command Lua API--the direct
-					interface with the source code that makes things happen.
-				</p>
+                <a class="anchor" id="Overview"></a>
+                <h2>Overview</h2>
 
-				<p>
-					If you're somewhat familiar with programming in general--but not Lua in particular--take a look at
-					the <a href="#ExternalResources">External Resources</a> for a primer on Lua as a language, then head
-					on over to the <a href="#Functions">Functions</a> section to get to grips with the tools at your
-					disposal.
-				</p>
+                <a class="anchor" id="CaseSensitivityandConventions"></a>
+                <h3>Case Sensitivity and Conventions</h3>
+                <p>
+                    Lua is a case sensitve language. When accessing object properties directly as in
+                    <code>unit.name</code>, the property should be in lowercase which will match the Lua generated code.
+                </p>
 
-				<!-- <p>
-					If you've never written a line of code in your life, <strong>don't panic--we've got you</strong>. We
-					have a comprehensive set of <a href="#Guides">Guides</a> to get you started. Once you've conquered
-					the <a href="#Guides">Guides</a> section, you'll be ready to jump in the deep end and start using
-					the <a href="#Functions">Functions</a> to bend Command to your will!
-				</p> -->
+                <p>
+                    However, when accessing the properties through the module functions, both the keyword/property and
+                    the value are case insensitive; the code will worry about matching them up.
+                </p>
 
-				<a class="anchor" id="ExternalResources"></a>
-				<h3>External Resources</h3>
-				<p>The links below contain useful resources for getting started with Lua in general:</p>
-				<ul>
-					<li><a href="http://lua-users.org/wiki/TutorialDirectory">Tutorials from the Lua Users Wiki</a> -
-						The first four tutorials (<a href="http://lua-users.org/wiki/LuaTypesTutorial">Types</a>, <a
-							href="http://lua-users.org/wiki/AssignmentTutorial">Assignment</a>, <a
-							href="http://lua-users.org/wiki/NumbersTutorial">Numbers</a> and <a
-							href="http://lua-users.org/wiki/StringsTutorial">Strings</a>) as well as the <a
-							href="http://lua-users.org/wiki/TablesTutorial">Tables</a> and <a
-							href="http://lua-users.org/wiki/FunctionsTutorial">Functions</a> tutorials are recommended
-						reading.</li>
-					<li><a href="https://en.wikibooks.org/wiki/Lua_Programming">The Lua Programming WikiBook</a></li>
-					<li><a href="https://www.lua.org/manual/5.3/">Lua 5.3 Reference Manual</a></li>
-				</ul>
-				<div class="note-alert">
-					<p>
-						<strong>Note:</strong> These references are external to WarfareSims and are subject to change.
-					</p>
-				</div>
+                <div class="note-alert">
+                    <p>
+                        <strong>Note:</strong> There are some special cases where uppercase letters are used to name
+                        fields (e.g. <code>mission.SISH=true</code> which is a shortcut for
+                        <code>scrub_if_side_human</code>). These are documented in the relevant wrapper, selector or
+                        table documentation.
+                    </p>
+                </div>
 
-				<a class="anchor" id="Overview"></a>
-				<h2>Overview</h2>
+                <!-- <h5>Example 1</h5>
+    <p>
+        In the code below, note that incorrect case returns an undesired value while using the correct case
+        returns the desired value.
+    </p>
 
-				<a class="anchor" id="CaseSensitivityandConventions"></a>
-				<h3>Case Sensitivity and Conventions</h3>
-				<p>
-					Lua is a case sensitve language. When accessing object properties directly as in
-					<code>unit.name</code>, the property should be in lowercase which will match the Lua generated code.
-				</p>
+    <div class="example">
+        <p>
+            <code>
+                    <span class="local">local</span>
+                    mission
+                    <span class="operator">=</span>
+                    ScenEdit_AddMission
+                    <span class="operator">(</span>
+                    <span class="string">'USA'</span>,
+                    <span class="string">'Marker strike'</span>,
+                    <span class="string">'strike'</span>,
+                    <span class="operator">{</span>
+                    type
+                    <span class="operator">=</span>
+                    <span class="string">'land'</span>
+                    <span class="operator">}</span>
+                    <span class="operator">)</span>
+                    <br>
+                    <span class="comparator">if</span> mission
+                    <span class="operator">==</span>
+                    <span class="nil"/>
+                    <span class="comparator">then</span>
+                    <br>
+                    <span class="tab1">
+                        <span class="comparator">&nbsp;&nbsp;&nbsp;&nbsp;if</span>
+                        _errnum_
+                        <span class="operator">~=</span>
+                        <span class="number">0</span>
+                        <span class="comparator">then</span>
+                        <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="print"/>
+                        <span class="operator">(</span>
+                        <span class="string">'Failed to add:'</span>
+                        .. _errmsg_
+                        <span class="operator">)</span>
+                        <br>
+                        <span class="comparator">&nbsp;&nbsp;&nbsp;&nbsp;else</span>
+                        <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="print"/>
+                        <span class="operator">(</span>
+                        <span class="string">'Something else'</span>
+                        <span class="operator">)</span>
+                        <br>
+                        <span class="comparator">&nbsp;&nbsp;&nbsp;&nbsp;end</span>
+                        <br>
+                        <span class="comparator">else</span>
+                        <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="print"></span>
+                        <span class="operator">(</span>
+                        <span class="string">mission</span?
+                        <span class="operator">)</span>
+                        <br>
+                        <span class="comparator">end</span>
+                    </span>
+                </code>
+        </p>
+    </div> -->
 
-				<p> However, when accessing the properties through the module functions, both the keyword/property and
-					the value are case insensitive; the code will worry about matching them up.</p>
+                <a class="anchor" id="ErrorHandling"></a>
+                <h3>Error Handling</h3>
+                <p>
+                    Usually when a Lua script fails, an error is thrown that ends the script at that point. While this
+                    may be okay in most cases, it is not often desired.
+                </p>
+                <p>
+                    Whenever a Command Lua function gets an error, it will normally return <code>nil</code>, and the
+                    error message will be available as Lua global variables:
+                </p>
+                <ul>
+                    <li>
+                        <code>_errmsg_</code>: the last error message
+                    </li>
+                    <li>
+                        <code>_errfnc_</code>: the Command Lua function that gave the error
+                    </li>
+                    <li>
+                        <code>_errnum_</code>: the error code (0 is no error, and any value >0 will be an error)
+                    </li>
+                </ul>
+                <p>
+                    Thus if you get back <code>nil</code>, you can check to see if that is due to an error or no data.
+                </p>
 
-				<div class="note-alert">
-					<p>
-						<strong>Note:</strong> There are some special cases where uppercase letters are used to name
-						fields (e.g. <code>mission.SISH=true</code> which is a shortcut for
-						<code>scrub_if_side_human</code>). These are documented in the relevant wrapper, selector or
-						table documentation.
-					</p>
-				</div>
+                <div class="note-alert">
+                    <p>
+                        <strong>Note:</strong> Due to how errors are now handled from SR7, if a command fails in the
+                        console window, it will show an error. If the command runs outside the console (as in an event
+                        script), it will not fail with a visible error but return a nil or or some other value.
+                    </p>
+                </div>
 
-				<!-- <h5>Example 1</h5>
-				<p>
-					In the code below, note that incorrect case returns an undesired value while using the correct case
-					returns the desired value.
-				</p>
+                <h5>Example</h5>
+                <p>
+                    Without the new error handling, the script below would terminate after the
+                    <code>ScenEdit_AddMission()</code> function and the rest of script would not run.
+                </p>
+                <div class="example">
+                    <p>
+                        <code>
+                            <span class="local">local</span>
+                            mission
+                            <span class="operator">=</span>
+                            ScenEdit_AddMission
+                            <span class="operator">(</span>
+                            <span class="string">'USA'</span>,
+                            <span class="string">'Marker strike'</span>,
+                            <span class="string">'strike'</span>,
+                            <span class="operator">{</span>
+                            type
+                            <span class="operator">=</span>
+                            <span class="string">'land'</span>
+                            <span class="operator">}</span>
+                            <span class="operator">)</span>
+                            <br>
+                            <span class="comparator">if</span> mission
+                            <span class="operator">==</span>
+                            <span class="nil" />
+                            <span class="comparator">then</span>
+                            <br>
+                            <span class="tab1">
+                                <span class="comparator">&nbsp;&nbsp;&nbsp;&nbsp;if</span>
+                                _errnum_
+                                <span class="operator">~=</span>
+                                <span class="number">0</span>
+                                <span class="comparator">then</span>
+                                <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="print" />
+                                <span class="operator">(</span>
+                                <span class="string">'Failed to add:'</span>
+                                .. _errmsg_
+                                <span class="operator">)</span>
+                                <br>
+                                <span class="comparator">&nbsp;&nbsp;&nbsp;&nbsp;else</span>
+                                <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="print" />
+                                <span class="operator">(</span>
+                                <span class="string">'Something else'</span>
+                                <span class="operator">)</span>
+                                <br>
+                                <span class="comparator">&nbsp;&nbsp;&nbsp;&nbsp;end</span>
+                                <br>
+                                <span class="comparator">else</span>
+                                <br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="print"></span>
+                                <span class="operator">(</span>
+                                <span class="string">
+                                    mission</span?
+                                    <span class="operator">)</span>
+                                    <br>
+                                    <span class="comparator">end</span>
+                                </span>
+                        </code>
+                    </p>
+                </div>
+                <div class="note-caution">
+                    <p>
+                        <strong>Caution:</strong> One issue with commands running in an event is that sometimes they
+                        fail with an in-game message that actually stops the rest of the script from running.
+                        <strong>Now these event scripts will run without any in-game message showing.</strong> The
+                        designer should check the result of the command and handle any error condition, and let the
+                        remaining script run as needed.
+                    </p>
+                </div>
 
-				<div class="example">
-					<p>
-						<code>
-								<span class="local">local</span>
-								mission
-								<span class="operator">=</span>
-								ScenEdit_AddMission
-								<span class="operator">(</span>
-								<span class="string">'USA'</span>,
-								<span class="string">'Marker strike'</span>,
-								<span class="string">'strike'</span>,
-								<span class="operator">{</span>
-								type
-								<span class="operator">=</span>
-								<span class="string">'land'</span>
-								<span class="operator">}</span>
-								<span class="operator">)</span>
-								<br>
-								<span class="comparator">if</span> mission 
-								<span class="operator">==</span> 
-								<span class="nil"/> 
-								<span class="comparator">then</span>
-								<br>
-								<span class="tab1">
-									<span class="comparator">&nbsp;&nbsp;&nbsp;&nbsp;if</span>
-									_errnum_
-									<span class="operator">~=</span>
-									<span class="number">0</span>
-									<span class="comparator">then</span>
-									<br>
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="print"/>
-									<span class="operator">(</span>
-									<span class="string">'Failed to add:'</span>
-									.. _errmsg_
-									<span class="operator">)</span>
-									<br>
-									<span class="comparator">&nbsp;&nbsp;&nbsp;&nbsp;else</span>
-									<br>
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="print"/>
-									<span class="operator">(</span>
-									<span class="string">'Something else'</span>
-									<span class="operator">)</span>
-									<br>
-									<span class="comparator">&nbsp;&nbsp;&nbsp;&nbsp;end</span>
-									<br>
-									<span class="comparator">else</span>
-									<br>
-									&nbsp;&nbsp;&nbsp;&nbsp;<span class="print"></span>
-									<span class="operator">(</span>
-									<span class="string">mission</span?
-									<span class="operator">)</span>
-									<br>
-									<span class="comparator">end</span>
-								</span>
-							</code>
-					</p>
-				</div> -->
+                <p>
+                    The design intent is to have all command errors behave in the same fashion in the console window;
+                    and the command errors outside a console behave without stopping the script. Which requires the
+                    designer to cater for the specific error conditions.
+                </p>
 
-				<a class="anchor" id="ErrorHandling"></a>
-				<h3>Error Handling</h3>
-				<p>
-					Usually when a Lua script fails, an error is thrown that ends the script at that point. While this
-					may be okay in most cases, it is not often desired.
-				</p>
-				<p>
-					Whenever a Command Lua function gets an error, it will normally return <code>nil</code>, and the
-					error message will be available as Lua global variables:</p>
-				<ul>
-					<li>
-						<code>_errmsg_</code>: the last error message
-					</li>
-					<li>
-						<code>_errfnc_</code>: the Command Lua function that gave the error
-					</li>
-					<li>
-						<code>_errnum_</code>: the error code (0 is no error, and any value >0 will be an error)
-					</li>
-				</ul>
-				<p>
-					Thus if you get back <code>nil</code>, you can check to see if that is due to an error or no data.
-				</p>
+                <p>
+                    To emulate the expected outcome from an event, put 'Tool_EmulateNoConsole(true)' at the start of the
+                    script to be tested; it is not required in the event code as the script is already not running in a
+                    console.
+                </p>
 
-				<div class="note-alert">
-					<p>
-						<strong>Note:</strong> Due to how errors are now handled from SR7, if a command fails in the
-						console window, it will show an error. If the command runs outside the console (as in an event
-						script), it will not fail with a visible error but return a nil or or some other value.
-					</p>
-				</div>
+                <p>
+                    Note also, that the Lua history log should also record the event script errors.
+                </p>
 
-				<h5>Example</h5>
-				<p>
-					Without the new error handling, the script below would terminate after the
-					<code>ScenEdit_AddMission()</code> function and the rest of script would not run.
-				</p>
-				<div class="example">
-					<p>
-						<code>
-								<span class="local">local</span>
-								mission
-								<span class="operator">=</span>
-								ScenEdit_AddMission
-								<span class="operator">(</span>
-								<span class="string">'USA'</span>,
-								<span class="string">'Marker strike'</span>,
-								<span class="string">'strike'</span>,
-								<span class="operator">{</span>
-								type
-								<span class="operator">=</span>
-								<span class="string">'land'</span>
-								<span class="operator">}</span>
-								<span class="operator">)</span>
-								<br>
-								<span class="comparator">if</span> mission 
-								<span class="operator">==</span> 
-								<span class="nil"/> 
-								<span class="comparator">then</span>
-								<br>
-								<span class="tab1">
-									<span class="comparator">&nbsp;&nbsp;&nbsp;&nbsp;if</span>
-									_errnum_
-									<span class="operator">~=</span>
-									<span class="number">0</span>
-									<span class="comparator">then</span>
-									<br>
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="print"/>
-									<span class="operator">(</span>
-									<span class="string">'Failed to add:'</span>
-									.. _errmsg_
-									<span class="operator">)</span>
-									<br>
-									<span class="comparator">&nbsp;&nbsp;&nbsp;&nbsp;else</span>
-									<br>
-									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="print"/>
-									<span class="operator">(</span>
-									<span class="string">'Something else'</span>
-									<span class="operator">)</span>
-									<br>
-									<span class="comparator">&nbsp;&nbsp;&nbsp;&nbsp;end</span>
-									<br>
-									<span class="comparator">else</span>
-									<br>
-									&nbsp;&nbsp;&nbsp;&nbsp;<span class="print"></span>
-									<span class="operator">(</span>
-									<span class="string">mission</span?
-									<span class="operator">)</span>
-									<br>
-									<span class="comparator">end</span>
-								</span>
-							</code>
-					</p>
-				</div>
-				<div class="note-caution">
-					<p>
-						<strong>Caution:</strong> One issue with commands running in an event is that sometimes they
-						fail with an in-game message that actually stops the rest of the script from running.
-						<strong>Now these event scripts will run without any in-game message showing.</strong> The
-						designer should check the result of the command and handle any error condition, and let the
-						remaining script run as needed.
-					</p>
-				</div>
+                <h3><a class="anchor" id="DataTypes"></a>Data Types</h3>
+                <p>
+                    Aside from the regular <span class="types"><span class="string">string</span></span>, <span class="types"><span class="number">number</span></span>, <span class="types"><span class="boolean">boolean</span></span> and <span class="table">table</span> data types inherited from Lua, the Command Lua API has a range of unique data types.
+                </p>
+                <hr>
+                <h3><a class="anchor" id="dataType_Altitude"></a>Altitude</h3>
+                <p>
+                    Altitude is the height or depth of a unit. The altitude is displayed in meters when accessing the
+                    data. It can be set using either meters or feet by adding M or FT after it. The default is M if just
+                    a number is used.
 
-				<p>
-					The design intent is to have all command errors behave in the same fashion in the console window;
-					and the command errors outside a console behave without stopping the script. Which requires the
-					designer to cater for the specific error conditions.
-				</p>
+                    <h5>Example</h5>
+                    <div class="example">
+                        <code>
+                            {altitude = <span class="string">'100 FT'</span>} <br>
+                            <span class="comment">--or</span> <br>
+                            {altitude = <span class="string">'100 M'</span>} <br>
+                            <span class="comment">--or</span> <br>
+                            {altitude = <span class="string">'100'</span>} <span class="comment">--same as 100 M, since default is measured in metres</span>
+                        </code>
+                    </div>
+                </p>
+                <hr>
+                <h3><a class="anchor" id="dataType_Arc"></a>Arc</h3>
+                <p>
+                    Arcs for sensor and mounts.
+                </p>
+                <h5>Arc Codes</h5>
+                <p>
+                    <img src=".\assets\images\datatypes_1_arc_codes.jpg" width="200">
+                </p>
+                <hr>
+                <h3><a class="anchor" id="dataType_DateTime"></a>DateTime</h3>
+                <p>
+                    DateTime is displayed and changed as per LOCALE e.g. US would be 'MM/DD/YYYY HH:MM:SS AM/PM' eg
+                    '8/13/2002 12:14 PM'
+                </p>
+                <hr>
+                <h3><a class="anchor" id="dataType_KeyStore"></a>KeyStore</h3>
+                <p>
+                    The simulation allows for user data to be stored within the save file. This is done by associating
+                    <code>keys</code> with <code>values</code>. <code>Key</code> and <code>value</code> pairs added to
+                    the persistent store are retained when the game is saved and resumed. <code>Keys</code> with
+                    <code>values</code> are both represented as non-<code>nil</code> <span class='types'>
+                        <span class="string">strings</span>
+                    </span>.
 
-				<p>
-					To emulate the expected outcome from an event, put 'Tool_EmulateNoConsole(true)' at the start of the
-					script to be tested; it is not required in the event code as the script is already not running in a
-					console.
-				</p>
-
-				<p>
-					Note also, that the Lua history log should also record the event script errors.
-				</p>
-
-				<h3><a class="anchor" id="DataTypes"></a>Data Types</h3>
-				<p>
-					Aside from the regular <span class="types"><span class="string">string</span></span>, <span class="types"><span class="number">number</span></span>, <span class="types"><span class="boolean">boolean</span></span> and <span class="table">table</span> data types inherited from Lua, the Command Lua API has a range of unique data types.
-				</p>
-				<hr>
-				<h3><a class="anchor" id="dataType_Altitude"></a>Altitude</h3>
-				<p>
-					Altitude is the height or depth of a unit. The altitude is displayed in meters when accessing the
-					data. It can be set using either meters or feet by adding M or FT after it. The default is M if just
-					a number is used.
-			
-					<h5>Example</h5>
-					<div class="example">
-						<code>
-							{altitude = <span class="string">'100 FT'</span>} <br>
-							<span class="comment">--or</span> <br>
-							{altitude = <span class="string">'100 M'</span>} <br>
-							<span class="comment">--or</span> <br>
-							{altitude = <span class="string">'100'</span>} <span class="comment">--same as 100 M, since default is measured in metres</span>
-						</code>
-					</div>
-				</p>
-				<hr>
-				<h3><a class="anchor" id="dataType_Arc"></a>Arc</h3>
-				<p>
-					Arcs for sensor and mounts.
-				</p>
-				<h5>Arc Codes</h5>
-				<p>
-					<img src=".\assets\images\datatypes_1_arc_codes.jpg" width="200">
-				</p>
-				<hr>
-				<h3><a class="anchor" id="dataType_DateTime"></a>DateTime</h3>
-				<p>
-					DateTime is displayed and changed as per LOCALE e.g. US would be 'MM/DD/YYYY HH:MM:SS AM/PM' eg
-					'8/13/2002 12:14 PM'
-				</p>
-				<hr>
-				<h3><a class="anchor" id="dataType_KeyStore"></a>KeyStore</h3>
-				<p>
-					The simulation allows for user data to be stored within the save file. This is done by associating
-					<code>keys</code> with <code>values</code>. <code>Key</code> and <code>value</code> pairs added to
-					the persistent store are retained when the game is saved and resumed. <code>Keys</code> with
-					<code>values</code> are both represented as non-<code>nil</code> <span class='types'><span
-							class="string">strings</span></span>.
-			
-					<div class="note-alert">
-						<p>
-							<strong>Note:</strong> The
-							<span class="types">KeyStore</span>
-							datatype only accepts
-							<span class="types"><span class="string">strings</span></span>
-							as parameters.
-							<span class="types"><span class="number">Numbers</span></span>
-							can only be stored using a
-							<span class="types">KeyStore</span>
-							if the number is first converted to a
-							<span class="types"><span class="string">string</span></span>
-							--e.g. by using the Lua native function <code>tostring()</code>.
-						</p>
-						<o>
-							Conversely, a <span class="types"><span class="number">number</span></span> stored in a
-							<span class="types">KeyStore</span> as a <span class="types"><span class="string">string</span></span>
-							can be converted back to a <span class="types"><span class="number">number</span></span> using the the
-							Lua native
-							function <code>tonumber()</code>.
-						</o>
-					</div>
+                    <div class="note-alert">
+                <p>
+                    <strong>Note:</strong> The
+                    <span class="types">KeyStore</span>
+                    datatype only accepts
+                    <span class="types"><span class="string">strings</span></span>
+                    as parameters.
+                    <span class="types"><span class="number">Numbers</span></span>
+                    can only be stored using a
+                    <span class="types">KeyStore</span>
+                    if the number is first converted to a
+                    <span class="types"><span class="string">string</span></span>
+                    --e.g. by using the Lua native function <code>tostring()</code>.
+                </p>
+                <o>
+                    Conversely, a <span class="types"><span class="number">number</span></span> stored in a
+                    <span class="types">KeyStore</span> as a <span class="types"><span class="string">string</span></span>
+                    can be converted back to a <span class="types"><span class="number">number</span></span> using the the
+                    Lua native
+                    function <code>tonumber()</code>.
+                </o>
+            </div>
 				</p>
 				<hr>
 				<h3><a class="anchor" id="dataType_Latitude"></a>Latitude</h3>
