@@ -1642,6 +1642,7 @@
 					<li><a href="#VP_ExportUnits">VP_ExportUnits()</a></li>
 					<li><a href="#VP_GetContact">VP_GetContact()</a></li>
 					<li><a href="#VP_GetSide">VP_GetSide()</a></li>
+					<li><a href="#VP_GetSides">VP_GetSides()</a></li>
 					<li><a href="#VP_GetUnit">VP_GetUnit()</a></li>
 					<li><a href="#World_GetCircleFromPoint">World_GetCircleFromPoint()</a></li>
 					<li><a href="#World_GetElevation">World_GetElevation()</a></li>
@@ -5234,7 +5235,19 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         <code><span class="keyword">local</span> a = VP_GetSide({Side =<span class="string">'sidea'</span>})<span class="comment">-- a side object</span><span class="keyword">local</span> z = a.nonavzones<span class="comment">--List of no-nav zones for the side if you need to find it</span><span class="keyword">local</span> n = a : getnonavzone(z[<span class="number">1</span>].guid)<span class="comment">-- required zone object for a particular zone</span>n.isactive =<span class="keyword">false</span><span class="comment">-- turn it off</span></code>
     </div>
     </p>
+ 
     <hr>
+    <h3><a class="anchor" id="VP_GetSides"></a>VP_GetSides
+	()</h3>
+    <p>List of sides in the scenario.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li>None</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="Table"> Table </span> Table of side references (name, guid)</p>
+
+ <hr>
     <h3><a class="anchor" id="VP_GetUnit"></a>VP_GetUnit
         (ActiveOrContact)</h3>
     <p>Get
