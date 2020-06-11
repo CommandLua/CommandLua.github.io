@@ -147,7 +147,13 @@
                             <span class="types"><span class="table"> Table of units {name,guid}</span></span>
 <br>e.g. local u = side:unitsInArea({Area = { 'RP-3137', 'RP-3139', 'RP-3136', 'RP-3138'}, TargetFilter = { TargetType = 'Ship' } })
                         </li>
-                    </ul>
+                          <li>
+                            Side Wrapper - missions on the side
+                            <br>
+                            <span class="types"><span class="parameter"> missions </span></span> =
+                            <span class="types"><span class="table"> Table of missions </span></span>
+                        </li>
+                  </ul>
                 </p>
                 <p>
                 Changes:
@@ -1582,7 +1588,6 @@
 					<li><a href="#ScenEdit_GetLoadout">ScenEdit_GetLoadout()</a></li>
 					<li><a href="#ScenEdit_GetMinefield">ScenEdit_GetMinefield()</a></li>
 					<li><a href="#ScenEdit_GetMission">ScenEdit_GetMission()</a></li>
-					<li><a href="#ScenEdit_GetMissions">ScenEdit_GetMissions()</a></li>
 					<li><a href="#ScenEdit_GetReferencePoints">ScenEdit_GetReferencePoints()</a></li>
 					<li><a href="#ScenEdit_GetScenHasStarted">ScenEdit_GetScenHasStarted()</a></li>
 					<li><a href="#ScenEdit_GetScore">ScenEdit_GetScore()</a></li>
@@ -2430,24 +2435,6 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h5>Example</h5>
     <div class="example">
         <code><span class="keyword">local</span> mission = ScenEdit_GetMission(<span class="string">'USA'</span>,<span class="string">'CV CAP Left'</span>)</code>
-    </div>
-    </p>
-    <hr>
-    <h3><a class="anchor" id="ScenEdit_GetMission"></a>ScenEdit_GetMissions
-        (SideNameOrId)</h3>
-    <p>Get details of all
-        missions on side.</p>
-    <h4>Parameters</h4>
-    <ul>
-        <li><span class="parameter">SideNameOrId</span> <span class="types"><span class="string">string</span></span>
-            The
-            mission side</li>
-    </ul>
-    <h4>Returns</h4>
-    <p><span class="Table"><a href="#wrapper_Mission">Mission</a></span>Table of {mission}s.</p>
-    <h5>Example</h5>
-    <div class="example">
-        <code><span class="keyword">local</span> mission = ScenEdit_GetMissions(<span class="string">'USA'</span>)</code>
     </div>
     </p>
     <hr>
