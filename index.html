@@ -11,7 +11,7 @@
 		gtag('config', 'UA-163808192-1');
 	</script>
 
-	<title>Command Lua Docs | 1142.2</title>
+	<title>Command Lua Docs | 1147.7</title>
 	<link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 
@@ -33,7 +33,7 @@
 
 		<div id="content">
 			<div id="page-title">
-				<h2 id="page-title">Command Lua API Documentation, v1142.2</h2>
+				<h2 id="page-title">Command Lua API Documentation, v1147.7</h2>
 				<hr>
 			</div>
 			<div id="nav">
@@ -59,7 +59,15 @@
 				</ul>
 			</div>
             <div id="main">
-                <a class="anchor" id="News"></a>
+                 <h4>Command: Modern Operations release</h4>
+                <div class="byline">
+                    <p>
+                        <sub>July 16th 2020</sub>
+                    </p>
+                </div>
+				<br><br>
+
+               <a class="anchor" id="News"></a>
                 <h2>News</h2>
                 <h4>Command Lua Docs gets a makeover!</h4>
                 <div class="byline">
@@ -80,24 +88,11 @@
                     The old site can be found <a href="./oldsite/index.html">here</a> for metathesiophobics, however it
                     won't be updated.
                 </p>
-                <h4>Version 1142.2</h4>
-                <div class="byline">
-                    <p>
-                        <sub>April 9th 2020</sub>
-                    </p>
-                </div>
-                <p>
-                    The release of Command: Modern Operations version 1141.1 brings a slew of new functions to the
-                    Command Lua API:
+				
+<!--                 
+				<p>
+                    The following new functions are available in this release:
                     <ul class="ul-2-columns">
-                        <!-- <li><a href="#ScenEdit_DistributeWeaponAtAirbase">ScenEdit_DistributeWeaponAtAirbase</a></li>
-            <li><a href="#ScenEdit_ClearAllAircraft">ScenEdit_ClearAllAircraft</a></li>
-            <li><a href="#ScenEdit_ClearAllMagazines">ScenEdit_ClearAllMagazines</a></li> -->
-                        <li><a href="#ScenEdit_AddMinefield">ScenEdit_AddMinefield</a></li>
-                        <li><a href="#ScenEdit_DeleteMine">ScenEdit_DeleteMine</a></li>
-                        <li><a href="#ScenEdit_DeleteMinefield">ScenEdit_DeleteMinefield</a></li>
-                        <li><a href="#ScenEdit_GetMinefield">ScenEdit_GetMinefield</a></li>
-                        <li><a href="#ScenEdit_SetMine">ScenEdit_SetMine</a></li>
                     </ul>
                 </p>
 
@@ -110,61 +105,15 @@
                 <p>
                     Additions:
                 <p>
-                    <ul>
-                        <li>
-                            ScenEdit_AddUnit = Allow for type of 'Weapon' to be added
-                        </li>
-                        <li>
-                            ScenEdit_AddCustomLoss(side, table {'name',count}) = Add entries to the loss list so it can displyed. 
-                            <br>It wil also show up in the wrapper side.losses
-                                <br>e.g. ScenEdit_AddCustomLoss('sidea', {{'removethis',0},{'Casualties', 10000}})
-                        </li>
-                         <li>
-                            SE_AttackContact = Use the wpn_id from aircraft loadout if no mount_id supplied.
-                        </li>
-                       <li>
-                            Unit Wrapper - category code of the unit type
-                            <br>
-                            <span class="types"><span class="parameter"> category </span></span> =
-                            <span class="types"><span class="number"> Category code </span></span> (as defined in the Data Types)
-                        </li>
-                        <li>
-                            Side Wrapper - side losses to date
-                            <br>
-                            <span class="types"><span class="parameter"> losses </span></span> =
-                            <span class="types"><span class="table"> Table of items {type, dbid, name, count}</span></span>
-                        </li>
-                        <li>
-                            Side Wrapper - side expenditure to date
-                            <br>
-                            <span class="types"><span class="parameter"> expenditures </span></span> =
-                            <span class="types"><span class="table"> Table of items {type, dbid, name, count}</span></span>
-                        </li>
-                        <li>
-                            Side Wrapper - units in a defined area with an optional matching type/subtype/unitclass.
-                            <br>
-                            <span class="types"><span class="method"> unitsInArea( table ) </span></span> =
-                            <span class="types"><span class="table"> Table of units {name,guid}</span></span>
-<br>e.g. local u = side:unitsInArea({Area = { 'RP-3137', 'RP-3139', 'RP-3136', 'RP-3138'}, TargetFilter = { TargetType = 'Ship' } })
-                        </li>
-                          <li>
-                            Side Wrapper - missions on the side
-                            <br>
-                            <span class="types"><span class="parameter"> missions </span></span> =
-                            <span class="types"><span class="table"> Table of missions </span></span>
-                        </li>
-                  </ul>
-                </p>
-                <p>
-                Changes:
                 <ul>
-                    <li>
-                    Side Wrapper - units filtered by Type, with optional category and subtype<br><span class="types"><span class="method">unitsBy(type,[category,[subtype]])</span></span> = <span class="types"><span class="table">filtered units</span></span>
-                        <br>e.g. side:unitsBy('Ship', 2002, 3003) would return table of Ships of  category 'Surface Combatant' and subtype of 'Command Battleship'
-                    </li>
                 </ul>
                 </p>
-
+                <p>
+                   Changes:
+                <ul>
+                </ul>
+                </p> -->
+				
                 <a class="anchor" id="Introduction"></a>
                 <h2>Introduction</h2>
                 <p>
@@ -1550,12 +1499,14 @@
 				<ul class="ul-2-columns">
 					<li><a href="#GetBuildNumber">GetBuildNumber()</a></li>
 					<li><a href="#GetScenarioTitle">GetScenarioTitle()</a></li>
+					<li><a href="#ScenEdit_AddCustomLoss">ScenEdit_AddCustomLoss()</a></li>
 					<li><a href="#ScenEdit_AddExplosion">ScenEdit_AddExplosion()</a></li>
 					<li><a href="#ScenEdit_AddMinefield">ScenEdit_AddMinefield(s)</a></li>
 					<li><a href="#ScenEdit_AddMission">ScenEdit_AddMission()</a></li>
 					<li><a href="#ScenEdit_AddReferencePoint">ScenEdit_AddReferencePoint()</a></li>
 					<li><a href="#ScenEdit_AddReloadsToUnit">ScenEdit_AddReloadsToUnit()</a></li>
 					<li><a href="#ScenEdit_AddSide">ScenEdit_AddSide()</a></li>
+					<li><a href="#ScenEdit_AddSpecialAction">ScenEdit_AddSpecialAction()</a></li>
 					<li><a href="#ScenEdit_AddUnit">ScenEdit_AddUnit()</a></li>
 					<li><a href="#ScenEdit_AddWeaponToUnitMagazine">ScenEdit_AddWeaponToUnitMagazine()</a></li>
 					<li><a href="#ScenEdit_AddZone">ScenEdit_AddZone()</a></li>
@@ -1712,6 +1663,28 @@
 					</code>
 				</div>
 				<hr>
+	
+	
+				<h3><a class="anchor" id="ScenEdit_AddCustomLoss"></a>ScenEdit_AddCustomLoss ()</h3>
+				<p>
+					Add entries to the loss list so it can displyed. It wil also show up in the wrapper side.losses.<br>
+					The additional entries replace any existing ones. To remove an entry, use a number of 0.
+				</p>
+				<h4>Parameters</h4>
+				<ul>
+				<li>
+					ScenEdit_AddCustomLoss(<span class="parameter">side name/guid</span>,
+					 <span class="parameter">table <span class="table">of {'name', number}</span>) </span>
+					</li>
+				</ul>
+				<h5>Example</h5>
+				<div class="example">
+					<code>ScenEdit_AddCustomLoss( 'sidea', { {'removethis',0},{'Casualties', 10000} } ) </code>
+				</div>
+				</p>
+				<hr>
+
+
 				<h3><a class="anchor" id="ScenEdit_AddExplosion"></a>ScenEdit_AddExplosion()</h3>
 				<p>
 					Detonates a warhead at a specified location.
@@ -1870,6 +1843,18 @@
     </ul>
     <h4>Returns</h4>
     <p><span class="wrapper"><a href="#wrapper_Side">Side</a></span></p>
+    
+	<hr>
+    <h3><a class="anchor" id="ScenEdit_AddSpecialAction"></a>ScenEdit_AddSpecialAction(table)</h3>
+    <p>Add special action to a side</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">table</span> <span class="selector"><a href="#selector_SpecialAction">SpecialAction</a></span> 
+        The SA details</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="wrapper"><a href="#wrapper_SpecialAction">SpecialAction</a></span>Details of the Special Action</p>
+	
     <hr>
     <h3><a class="anchor" id="ScenEdit_AddUnit"></a>ScenEdit_AddUnit (unit)</h3>
     <p>Adds a unit based on a descriptor.</p>
@@ -1987,9 +1972,11 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     </div>
     </p>
     <hr>
+
     <h3><a class="anchor" id="ScenEdit_AttackContact"></a>ScenEdit_AttackContact (attackerID, contactId, options)</h3>
-    <p>Attack a contact
-        ... as an auto-target or manual target with weapon allocation</p>
+    <p>Attack a contact as an auto-target or manual target with weapon allocation. <br>
+	For a BOL attack, use "BOL" as the contactId. <br>
+	Note: The function will use the WEAPON from the aircraft loadout if applicable when no MOUNT is supplied.</p>
     <h4>Parameters</h4>
     <ul>
         <li><span class="parameter">attackerID</span> <span class="types"><span class="string">string</span></span> The
@@ -5370,7 +5357,8 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         at
         a
         given
-        position</p>
+        position.
+		These details are similar to what is shown by the map cursor box.</p>
     <h4>Parameters</h4>
     <ul>
         <li><span class="parameter">location</span> <span class="types"><span class="type">Point</span></span> The
@@ -5382,10 +5370,17 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
             of</li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="table">table</span>
+    <p><span class="table">table of</span>(<br>
+	altitude,<br>
+	layer( ceiling, floor, strength ),<br>
+	cz(1, 2, 3, 4),<br>
+	slope,<br>
+	cover( text, value)<br>
+	)
     </p>
     <hr>
-    <h3><a class="anchor" id="World_GetPointFromBearing"></a>World_GetPointFromBearing
+    
+	<h3><a class="anchor" id="World_GetPointFromBearing"></a>World_GetPointFromBearing
         (table)</h3>
     <p>Returns
         a
@@ -5426,6 +5421,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 					<li><span class="wrapper"><a href="#wrapper_ReferencePoint">ReferencePoint</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_RefuelOptions">RefuelOptions</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_Side">Side</a></span></li>
+					<li><span class="wrapper"><a href="#wrapper_SpecialAction">SpecialAction</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_Unit">Unit</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_Zone">Zone</a></span></li>
 				</ul>
@@ -6164,7 +6160,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 					<h3>Side</h3>
 		
 		
-					Side perspective.
+					Side perspective
 		
 					</ul>
 		
@@ -6209,6 +6205,20 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							<span class="types"><span class="boolean">boolean</span></span>
 							<span class="readonly">READ ONLY</span>
 						</li>
+	                    <li>
+                            <span class="parameter">losses</span>
+                            <span class="types"><span class="table">Table<span class="table">of {type, dbid, name, number}</span></span></span>losses to date
+                        </li>
+                        <li>
+                            <span class="parameter">expenditures</span>
+                            <span class="types"><span class="table">Table<span class="table">of items {type, dbid, name, number}</span></span></span>expenditure to date
+                        </li>
+                          <li>
+                            <span class="parameter">missions</span>
+                            <span class="types"><span class="table">Table of</span><a href="#wrapper_Mission">missions </a></span>missions for the side
+                        </li>
+						<br>
+						
 						<li><span class="parameter">getexclusionzone</span>
 							<span class="types"><span class="method">method</span></span>
 							(<code>ZoneGUID|ZoneName|ZoneDescription</code>) Returns matching <a href="#wrapper_Zone">Zone</a>
@@ -6221,18 +6231,71 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 						</li>
 						<li><span class="parameter">unitsBy</span>
 							<span class="types"><span class="method">method</span></span>
-							(UnitType) Returns table of units filtered by type of unit for the designated side or nil.
+							(UnitType[[,Category],Subtype]) Returns table of units filtered by type of unit or nil.
+						<div class="example">
+						<code>local u = side:side:unitsBy('Ship')  -- all ships <br>
+						u = side:unitsBy('Ship', 2002, 3003) -- ships fitered for 'Surface combatant' and 'BBC'
+						</code>
+						</div>						
+
 						</li>
 						<li><span class="parameter">contactsBy</span>
 							<span class="types"><span class="method">method</span></span>
-							(UnitType) Returns table of current contacts filtered by type of unit for the designated side or
-							nil.
+							(UnitType) Returns table of current contacts filtered by type of unit or nil.
 						</li>
+                        <li><span class="parameter">unitsInArea</span>
+                            <span class="types"><span class="method">method</span></span>
+							(<code><span class="table">{Area[,TargetFilter]}</span></code>) Returns table of units {name,guid} filtered by type of unit
+						<h5>Example</h5>
+						<div class="example">
+						<code>local u = side:unitsInArea({Area = { 'RP-3137', 'RP-3139', 'RP-3136', 'RP-3138'}, TargetFilter = { TargetType = 'Ship' } })
+						</code>
+						</div>
+	                    </li>
 					</ul>
 		
 		
 		
+						<hr>
+					<a class="anchor" id="wrapper_SpecialAction"></a>
+					<h3>Special action</h3>
 		
+							Special action details
+							
+					</ul>
+		
+					<ul class='ul-no-bullets'>
+						<li><span class="parameter">name</span>
+							<span class="types"><span class="string">string</span></span>
+							The event name.
+						</li>
+						<li><span class="parameter">guid</span>
+							<span class="types"><span class="string">string</span></span>
+							The event GUID. <span class="readonly">READ ONLY</span>
+						</li>
+						<li><span class="parameter">description</span>
+							<span class="types"><span class="string">string</span></span>
+							The event GUID.
+						</li>
+						<li><span class="parameter">isActive</span>
+							<span class="types"><span class="boolean">boolean</span></span>
+							The event is active
+						</li>
+						<li><span class="parameter">isRepeatable</span>
+							<span class="types"><span class="boolean">boolean</span></span>
+							The event repeats
+						</li>
+						<li><span class="parameter">side</span>
+							<span class="types"><span class="string">string</span></span>
+							The side GUID
+						</li>
+						<li><span class="parameter">ScriptText</span>
+							<span class="types"><span class="string">string</span></span>
+							The Lua script
+						</li>
+
+					</ul>
+	
 		
 		
 		
@@ -6453,23 +6516,6 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							<span class="types"><span class="boolean">boolean</span></span>
 							Sprint and drift 'True/False'
 						</li>
-						<li><span class="parameter">inArea</span>
-							<span class="types"><span class="method">method</span></span>
-							({area}) Is unit in the 'area' defined by table of RPs (true/false)
-						</li>
-						<li><span class="parameter">delete</span>
-							<span class="types"><span class="method">method</span></span>
-							() Immediately removes unit object
-						</li>
-						<li><span class="parameter">filterOnComponent</span>
-							<span class="types"><span class="method">method</span></span>
-							(<code>type</code>) Filters unit on <code>type</code> of component and returns a <a
-								href="#table_Component">Component</a> table.
-						</li>
-						<li><span class="parameter">rangetotarget</span>
-							<span class="types"><span class="method">method</span></span>
-							('contactid') Calculate flat distance to a contact location
-						</li>
 						<li><span class="parameter">hostFacility</span>
 							<span class="table"><a href="#table_Facility">Facility</a></span>
 							Where unit is hosted
@@ -6481,10 +6527,6 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 						<li><span class="parameter">RTB</span>
 							<span class="types"><span class="boolean">boolean</span></span>
 							Trigger the unit to return to base
-						</li>
-						<li><span class="parameter">Launch</span>
-							<span class="types"><span class="method">method</span></span>
-							(true/fale) Trigger the unit to launch from base (true) or abort launch (false)
 						</li>
 						<li><span class="parameter">outOfComms</span>
 							<span class="types"><span class="boolean">boolean</span></span>
@@ -6502,10 +6544,38 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							<span class="types"><span class="boolean">boolean</span></span>
 							Unit obeys EMCON. Turn off to manually set sensors
 						</li>
+						<li><span class="parameter">category</span>
+                            <span class="types"><span class="number"> Category code </span></span> (as defined in the Data Types)
+						</li>
+
+						<br>
 						<li><span class="parameter">sensors</span>
 							<span class="types"><span class="table">table of sensors</span></span>
 							Unit Sensors in table format <br>{sensor_dbid,sensor_guid,sensor_name,sensor_type,sensor_role,sensor_maxrange,sensor_status,sensor_isactive)
 							<br>To set sensor on/off, use table of (sensor_guid,sensor_isactive)
+						</li>
+						<br>
+						
+						<li><span class="parameter">inArea</span>
+							<span class="types"><span class="method">method</span></span>
+							({area}) Is unit in the 'area' defined by table of RPs (true/false)
+						</li>
+						<li><span class="parameter">delete</span>
+							<span class="types"><span class="method">method</span></span>
+							() Immediately removes unit object
+						</li>
+						<li><span class="parameter">filterOnComponent</span>
+							<span class="types"><span class="method">method</span></span>
+							(<code>type</code>) Filters unit on <code>type</code> of component and returns a <a
+								href="#table_Component">Component</a> table.
+						</li>
+						<li><span class="parameter">rangetotarget</span>
+							<span class="types"><span class="method">method</span></span>
+							('contactid') Calculate flat distance to a contact location
+						</li>
+						<li><span class="parameter">Launch</span>
+							<span class="types"><span class="method">method</span></span>
+							(true/fale) Trigger the unit to launch from base (true) or abort launch (false)
 						</li>
 				</p>
 		
@@ -6634,6 +6704,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 									href="#selector_ReferencePointSelector">ReferencePointSelector</a></span></li>
 						<li><span class="selector"><a href="#selector_SideOption">SideOption</a></span></li>
 						<li><span class="selector"><a href="#selector_SpecialAction">SpecialAction</a></span></li>
+						<li><span class="selector"><a href="#selector_TargetFilter">TargetFilter</a></span></li>
 						<li><span class="selector"><a href="#selector_TriggerUpdate">TriggerUpdate</a></span></li>
 						<li><span class="selector"><a href="#selector_UnitSelector">UnitSelector</a></span></li>
 						<li><span class="selector"><a href="#selector_UpdateUnit">UpdateUnit</a></span></li>
@@ -6954,7 +7025,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 					<ul class="ul-no-bullets">
 						<li><span class="parameter">type</span>
 							<span class="types"><span class="string">string</span></span>
-							The type of unit (Ship, Sub, Aircraft, Facility, Satellite)
+							The type of unit (Ship, Sub, Aircraft, Facility, Satellite, Weapon)
 						</li>
 						<li><span class="parameter">unitname</span>
 							<span class="types"><span class="string">string</span></span>
@@ -7103,8 +7174,49 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							<span class="types"><span class="string">string</span></span>
 							If specified, the new description for the action
 						</li>
-					</ul>
+						<li><span class="parameter">Side</span>
+							<span class="types"><span class="string">string</span></span>
+							The name/GUID of the side for the action. Mandatory for AddSpeciaAction()
+						</li>
+						<li><span class="parameter">Mode</span>
+							<span class="types"><span class="string">string</span></span>
+							If specified, the action to apply.
+							Use "mode='remove'" to delete the SA. Use "mode='list'" to list the SAs - all are listed unless 'side=' is supplied.
+						</li>
+						<li><span class="parameter">ScriptText</span>
+							<span class="types"><span class="string">string</span></span>
+							The Lua script for the SA. Note as the script is a multi line string, it requires a '\r\n' to be appended after each line so it is formated in the Editor.
+						</li>
+				</ul>
 
+					<hr>
+
+					<a class="anchor" id="selector_TargetFilter"></a>
+					<h3>TargetFilter</h3>
+					Filter by side, type, subtype, unitclass, unit in that order.
+					</ul>
+					<ul class="ul-no-bullets">
+						<li><span class="parameter">TargetSide</span>
+							<span class="types"><span class="string">string</span></span>
+							The side name or GUID
+						</li>
+						<li><span class="parameter">TargetType</span>
+							<span class="types"><span class="string">string</span></span>
+							Type of unit (ship, sub, etc)
+						</li>
+						<li><span class="parameter">targetSubType</span>
+							<span class="types"><span class="string">string</span></span>
+							Subtype of unit ( )
+						</li>
+						<li><span class="parameter">SpecificUnitClass</span>
+							<span class="types"><span class="number">number</span></span>
+							Class of unit ( )
+						</li>
+						<li><span class="parameter">SpecificUnit</span>
+							<span class="types"><span class="string">string</span></span>
+							Name or GUID of unit
+						</li>
+					</ul>
 					<hr>
 
 					<a class="anchor" id="selector_TriggerUpdate"></a>
