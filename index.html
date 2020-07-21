@@ -253,6 +253,10 @@
                         in all caps, on a yellow background.
                     </li>
                     <li>
+                        <span class="pro_only">PRO ONLY</span> functionality is denoted by a tag with the words PRO ONLY
+                        in all caps, on a lavender background.
+                    </li>
+                    <li>
                         <details>
                             <summary>
                                 Sections with long enumerations or data pools have a drop-down carat to show the
@@ -1515,7 +1519,8 @@
 					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
 					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 				</p> -->
-				<p>Functions marked thus are not available in the base product <span style="font-weight:bold; color: goldenrod;">ScenEdit_ExportScenarioToXML() </span>
+				<p>
+                    Functions listed below are available in all editions of Command.
 				</p>
 				<a class="anchor" id="FunctionIndex"></a>
 				<ul class="ul-2-columns">
@@ -1549,7 +1554,6 @@
 					<li><a href="#ScenEdit_ExecuteSpecialAction">ScenEdit_ExecuteSpecialAction()</a></li>
 					<li><a href="#ScenEdit_ExportInst">ScenEdit_ExportInst()</a></li>
 					<li><a href="#ScenEdit_ExportMission">ScenEdit_ExportMission()</a></li>
-					<li><a href="#ScenEdit_ExportScenarioToXML"><span style="font-weight:bold; color: goldenrod;">ScenEdit_ExportScenarioToXML()</span></a></li>
 					<li><a href="#ScenEdit_FillMagsForLoadout">ScenEdit_FillMagsForLoadout()</a></li>
 					<li><a href="#ScenEdit_GetContact">ScenEdit_GetContact()</a></li>
 					<li><a href="#ScenEdit_GetContacts">ScenEdit_GetContacts()</a></li>
@@ -1574,7 +1578,6 @@
 					<li><a href="#ScenEdit_HostUnitToParent">ScenEdit_HostUnitToParent()</a></li>
 					<li><a href="#ScenEdit_ImportInst">ScenEdit_ImportInst()</a></li>
 					<li><a href="#ScenEdit_ImportMission">ScenEdit_ImportMission()</a></li>
-					<li><a href="#ScenEdit_ImportScenarioFromXML"><span style="font-weight:bold; color: goldenrod;">ScenEdit_ImportScenarioFromXML()</span></a></li>
 					<li><a href="#ScenEdit_InputBox">ScenEdit_InputBox()</a></li>
 					<li><a href="#ScenEdit_KillUnit">ScenEdit_KillUnit()</a></li>
 					<li><a href="#ScenEdit_MsgBox">ScenEdit_MsgBox()</a></li>
@@ -1638,6 +1641,16 @@
 					<li><a href="#World_GetLocation">World_GetLocation()</a></li>
 					<li><a href="#World_GetPointFromBearing">World_GetPointFromBearing()</a></li>
 				</ul>
+                <br>
+                <h3>Command: Professional Edition</h3>
+                <p>
+                    Functions listed below are only available in Command: Professional Edition.
+                </p>
+                <ul class="ul-2-columns">
+                    <li><a href="#ScenEdit_ImportScenarioFromXML">ScenEdit_ImportScenarioFromXML()</a><span class="pro_only">PRO ONLY</span></li>
+                    <li><a href="#ScenEdit_ExportScenarioToXML">ScenEdit_ExportScenarioToXML()</a><span class="pro_only">PRO ONLY</span></li>
+                </ul>
+                <br>
 				<hr>
 				<h3><a class="anchor" id="GetBuildNumber"></a>GetBuildNumber()</h3>
 				<p>
@@ -2213,7 +2226,7 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     </div>
     </p>
     <hr>
-    <h3><a class="anchor" id="ScenEdit_ExportScenarioToXML"></a><span style="font-weight:bold; color: goldenrod;">ScenEdit_ExportScenarioToXML () </span></h3>
+    <h3><a class="anchor" id="ScenEdit_ExportScenarioToXML"></a>ScenEdit_ExportScenarioToXML()<span class="pro_only">PRO ONLY</span></h3>
     <p>Export the entire scenario in XML format.</p>
     <h4>Returns</h4>
     <p><span class="types"><span class="string">string</span></span>The scenario graph in unformatted XML string</p>
@@ -2887,54 +2900,22 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <div class="example">
         <code><span class="keyword">local</span> mission = ScenEdit_ExportMission(<span class="string">'USA'</span>,<span class="string">'Marker strike'</span>})</code>
     </div>
-    </p>
     <hr>
-    <h3><a class="anchor" id="ScenEdit_ImportScenarioFromXML"></a><span style="font-weight:bold; color: goldenrod;">ScenEdit_ImportScenarioFromXML()</span></h3>
-    <p>Import
-        a
-        scenario
-        from
-        provided
-        XML
-        string</p>
+    <h3><a class="anchor" id="ScenEdit_ImportScenarioFromXML"></a>ScenEdit_ImportScenarioFromXML()<span class="pro_only">PRO ONLY</span></h3>
     <h4>Returns</h4>
-    <p><span class="types"><span class="boolean">boolean</span></span> Returns
-        true
-        if
-        the
-        import
-        completed
-        successfully,false
-        otherwise</p>
+    <p><span class="types"><span class="boolean">boolean</span></span> Returns true if the import completed successfully, false otherwise</p>
     <h5>Example</h5>
     <div class="example"><code>ScenEdit_ImportScenarioFromXML({XML=<span class="string">'...'</span>})</code></div>
-    </p>
     <hr>
     <h3><a class="anchor" id="ScenEdit_InputBox"></a>ScenEdit_InputBox
         (string)</h3>
-    <p>Open
-        an
-        input
-        box
-        with
-        the
-        passed
-        prompt.</p>
+    <p>Open an input box with the passed prompt.</p>
     <h4>Parameters</h4>
     <ul>
-        <li><span class="parameter">string</span> <span class="types"><span class="string">string</span></span> The
-            string
-            to
-            display
-            to
-            the
-            user</li>
+        <li><span class="parameter">string</span> <span class="types"><span class="string">string</span></span> The string to display to the user</li>
     </ul>
     <h4>Returns</h4>
-    <p>Data
-        entered
-        into
-        box</p>
+    <p>Data entered into box</p>
     <hr>
     <h3><a class="anchor" id="ScenEdit_KillUnit"></a>ScenEdit_KillUnit
         (unit)</h3>
