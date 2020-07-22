@@ -49,8 +49,9 @@
 					<li><a href="#Overview">Overview</a></li>
 					<ol>
 						<li><a href="#CaseSensitivityandConventions">Case Sensitivity and Conventions</a></li>
-						<li><a href="#DataTypes">Data Types</a></li>
+                        <li><a href="#EventHandling">Event Handling</a></li>
 						<li><a href="#ErrorHandling">Error Handling</a></li>
+                        <li><a href="#DataTypes">Data Types</a></li>
 					</ol>
 					<li><a href="#Functions">Functions</a></li>
 					<li><a href="#Wrappers">Wrappers</a></li>
@@ -506,7 +507,614 @@
                 </code>
         </p>
     </div> -->
+                    <hr>
+                    <a class="anchor" id="EventHandling"></a>
+                    <h3>Event Handling</h3>
+                    <p>
+                        An event consists of one or more triggers, an optional set of conditions, and one or actions to perform when the trigger(s) and condition(s) are fulfilled. With Lua, you can create triggers, conditions and actions independently of the editor, and create or modify events with them.
+                    </p>
 
+                    <p>
+                        There are separate functions to handle the creation, update and deletion of the components of an event.
+                    </p>
+                    <h4>ScenEdit_SetTrigger( { table } )</h4>
+                    <p>
+                        As it sounds, a trigger is something that fires off, and results in a success or fail. Apart from a few common keywords, each trigger has a set of keywords.
+                    </p>
+                    <p>
+                        The common keywords used in the Lua table are:
+                    </p>
+                    <ul class="ul-no-bullets">
+                        <li><strong>Description</strong> The name given to the trigger. The keyword 'name' can also be used for this.</li>
+                        <li><strong>Mode</strong> The type of operation to perform. Operations are 'list', 'add', 'remove', and 'update'.</li>
+                        <li><strong>ID</strong> The GUID used to reference the trigger. This is used internally and is only for reference.</li>
+                    </ul>
+                    <p>
+                        The trigger related keywords are listed below.
+                    </p>
+                    <table class="table_borders">
+                        <tr>
+                            <th>Trigger type</th>
+                            <th>Keyword</th>
+                            <th>Comment</th>
+                        </tr>
+                        <tr>
+                            <td>Points</td>
+                            <td>SideID</td>
+                            <td>Side to adjust points for</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>PointValue</td>
+                            <td>Current points</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>ReachDirection</td>
+                            <td>GoOver = 0, MatchExactly = 1, GoUnder = 2</td>
+                        </tr>
+                        <tr>
+                            <td>RandomTime</td>
+                            <td>EarliestTime</td>
+                            <td>Earliest date/time to start checks</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>LatestTime</td>
+                            <td>Latest date/time to stop checks</td>
+                        </tr>
+                        <tr>
+                            <td>RegularTime</td>
+                            <td>Interval</td>
+                            <td>Time interval (1 sec, 2sec, 5sec, etc)</td>
+                        </tr>
+                        <tr>
+                            <td>ScenEnded</td>
+                            <td></td>
+                            <td>No additional keywords</td>
+                        </tr>
+                        <tr>
+                            <td>ScenLoaded</td>
+                            <td></td>
+                            <td>No additional keywords</td>
+                        </tr>
+                        <tr>
+                            <td>Time</td>
+                            <td>Time</td>
+                            <td>Actual date/time to fire on</td>
+                        </tr>
+                        <tr>
+                            <td>UnitDamaged</td>
+                            <td>DamagePercent</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>TargetFilter</td>
+                            <td>See below</td>
+                        </tr>
+                        <tr>
+                            <td>UnitDestroyed</td>
+                            <td>TargetFilter</td>
+                            <td>See below</td>
+                        </tr>
+                        <tr>
+                            <td>UnitDetected</td>
+                            <td>TargetFilter</td>
+                            <td>See below</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>DetectorSideID</td>
+                            <td>Side doing the detecting</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>MCL</td>
+                            <td>Minimum classification level</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Area</td>
+                            <td>Table of reference points</td>
+                        </tr>
+                        <tr>
+                            <td>UnitEmissions</td>
+                            <td>TargetFilter</td>
+                            <td>See below</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>DetectorSideID</td>
+                            <td>Side doing the detecting</td>
+                        </tr>
+                        <tr>
+                            <td>UnitEntersArea</td>
+                            <td>TargetFilter</td>
+                            <td>See below</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Area</td>
+                            <td>Table of reference points</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>ETOA</td>
+                            <td>Earliest date/time of arrival</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>LTOA</td>
+                            <td>Latest date/time of arrival</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>NOT</td>
+                            <td>Not in the area</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>ExitArea</td>
+                            <td>Leaving area</td>
+                        </tr>
+                        <tr>
+                            <td>UnitRemainsInArea</td>
+                            <td>TargetFilter</td>
+                            <td>See below</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Area</td>
+                            <td>Table of reference points</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>TD</td>
+                            <td>Time to remain in area in seconds (or as days:hours:minutes:seconds)</td>
+                        </tr>
+                        <tr>
+                            <td>UnitBaseStatus</td>
+                            <td>TargetFilter</td>
+                            <td>See below </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>TargetStatus</td>
+                            <td>Status number to monitor </td>
+                        </tr>
+                        <tr>
+                            <td>UnitCargoMoved</td>
+                            <td>CargoFilter</td>
+                            <td>See below </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>TargetLimitReceived</td>
+                            <td>Number received to trigger </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>TargetLimitSent</td>
+                            <td>Number sent to trigger </td>
+                        </tr>
+                    </table>
+
+                    <h5>TargetFilter</h5>
+                    <p>A series of filters to apply to units. Only units matching this filter will fire the trigger.</p>
+                    <table class="table_borders">
+                        
+                        <tr>
+                            <th>TargetFilter</th>
+                            <th>TargetSide</th>
+                            <th>Side to fillter on</th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>TargetType</td>
+                            <td>Type of unit (ship, submarine, etc)</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>TargetSubType</td>
+                            <td>Subtype of the above unit type</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>SpecificUnitClass</td>
+                            <td>Unit class (DBID)</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>SpecificUnitID</td>
+                            <td>Actual unit</td>
+                        </tr>
+                    </table>
+                    <p>Note that side is mandatory, but you can specify a unit or type/sub/class. However, if using type/sub/class, you can use</p>
+                        <ul class="ul-no-bullets">
+                            <li>type, or</li>
+                            <li>type and subtype, or </li>
+                            <li>type, subtype (optional as it is inferred from class) and class. </li>
+                        </ul>
+                    
+                    <h5>TargetType</h5>
+                    <p></p>
+                    <table class="table_borders">
+                        <tr>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td>Aircraft</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>Ship</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>Submarine</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>Facility</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>Aimpoint</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>Weapon</td>
+                            <td>6</td>
+                        </tr>
+                        <tr>
+                            <td>Satellite </td>
+                            <td>7</td>
+                        </tr>
+                    </table>
+
+                    <h5>CargoFilter</h5> 
+                    <p>A series of filters to apply to cargo items, similar to the TargetFilter.</p>
+                    <table class="table_borders">
+                        
+                        <tr>
+                            <th>TargetFilter</th>
+                            <th>TargetType</th>
+                            <th>Type of cargo item (personel[1000],etc)</th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>SpecificUnitClass</td>
+                            <td>Cargo class (DBID)</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>SpecificUnitID</td>
+                            <td>Actual cargo item</td>
+                        </tr>
+                    </table>
+                    
+                    <h5>TargetType</h5>
+                    <p></p>
+                    <table class="table_borders">
+                        <tr>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <td>Aircraft</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>Ship</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>Submarine</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>Facility</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>Aimpoint</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>Weapon</td>
+                            <td>6</td>
+                        </tr>
+                        <tr>
+                            <td>Satellite </td>
+                            <td>7</td>
+                        </tr>
+                    </table>
+
+                    <h5>Examples</h5>
+                    <p>Create a trigger for a specific unit leaving an area</p>
+                    <div class="example"><code>local a = ScenEdit_SetTrigger({mode=<span class="string">'add'</span>,<br>
+                        type=<span class="string">'UnitEntersArea'</span>,<br>
+                        name=<span class="string">'Sagami exiting hot zone'</span>,<br>
+                        targetfilter={SPECIFICUNIT=<span class="string">'AOE 421 Sagami'</span>},<br>
+                        area={<span class="string">'rp-1126'</span>,<span class="string">'rp-1127'</span>,<span class="string">'rp-1128'</span>,<span class="string">'rp-1129'</span>},<br>
+                        exitarea=<span class="boolean">true</span>})</code>
+                    </div>
+                    <div class="note-alert">
+                        <p>
+                            <strong>Note:</strong> The variable <code>a</code> will contain the trigger information. It will be <code>nil</code> if the trigger failed in a non-interactive script as in an event.
+                        </p>
+                    </div>
+                    <p>Rename the trigger to <i>'any type of AOE entering hot zone'</i></p>
+                    <div class="example">
+                        <code>local a = ScenEdit_SetTrigger({mode=<span class="string">'update'</span>,<br>type=<span class="string">'UnitEntersArea'</span>,<br>name=<span class="string">'Sagami exiting hot zone'</span>,<br>rename=<span class="string">'Any AOE entering hot zone'</span>,<br>targetfilter={TargetSubType = <span class="string">'5023'</span>,TargetType = <span class="string">'2'</span>,TargetSide=<span class="string">'sidea'</span>},<br>area={<span class="string">'rp-1126'</span>,<span class="string">'rp-1127'</span>,<span class="string">'rp-1128'</span>,<span class="string">'rp-1129'</span>},<br>exitarea=<span class="boolean">false</span>})</code>
+                    </div>
+                    
+                    <p>Remove the trigger named <i>'any type of AOE entering hot zone'</i></p>
+                    <div class="example">
+                        <code>local a = ScenEdit_SetTrigger({mode=<span class="string">'remove'</span>,type=<span class="string">'UnitEntersArea'</span>,name=<span class="string">'Any AOE entering hot zone'</span>})</code>
+                    </div>
+                    <div class="note-alert">
+                        <p>
+                            <strong>Note:</strong> If the trigger is assigned to an event, it can't be removed until removed from the event.
+                        </p>
+                    </div>
+                    <hr>
+                    <h4>ScenEdit_SetCondition( { table } )</h4>
+                    <p>
+                        As it sounds, a condition is something that can be further applied once the trigger has fired, and results in a success or fail. Apart from a few common keywords, each condition has a set of keywords.
+                    </p>
+                    <p>
+                        The common keywords used in the Lua table are:
+                        <ul class="ul-no-bullets">
+                            <li><strong>Description:</strong> the name given to the condition. The keyword 'name' can also be used for this.</li>
+                            <li><strong>Mode:</strong> type of operation to perform. Operations are 'list', 'add', 'remove', and 'update'.</li>
+                            <li><strong>ID:</strong> the GUID used to reference the condition. This is used internally and is only for reference.</li>
+                        </ul>
+                    </p>
+                    <p>
+                        The condition related keywords are listed below.
+                    </p>
+                    <table class="table_borders">
+                        <tr>
+                            <th>Condition type</th>
+                            <th>Keyword</th>
+                            <th>Comment</th>
+                        </tr>
+                        <tr>
+                            <td>LuaScript</td>
+                            <td>ScriptText</td>
+                            <td>A Lua script</td>
+                        </tr>
+                        <tr>
+                            <td>ScenHasStarted</td>
+                            <td>NOT</td>
+                            <td>A NOT modifier for scenario NOT started yet</td>
+                        </tr>
+                        <tr>
+                            <td>SidePosture</td>
+                            <td>ObserverSideID</td>
+                            <td>Side that views TargetSide as ...</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>TargetSideID</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>TargetPosture</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>NOT</td>
+                            <td>A NOT modifier to change condition from true to false</td>
+                        </tr>
+                    </table>
+                    <div class="note-caution"> 
+                        <p>
+                            <strong>Caution:</strong> For scripts, use <code>'\r\n'</code> to represent new lines, otherwise a multi-line script may not run.
+                        </p>
+                    </div>
+
+                    <div class="example"><code>ScriptTest=<span class="string">'--comment\r\nif unit ~= nil then\r\n return true\r\n else\r\n return false\r\n end'</span></code></div>
+                    
+                
+                        <h5>Examples</h5>
+
+                    <p>Create a condition for sideA being hostile to sideB</p>
+                    <div class="example">
+                        <code>
+                            local a = ScenEdit_SetCondition({mode=<span class="string">'add'</span>,<br>
+                                type=<span class="string">'SidePosture'</span>,<br>
+                                name=<span class="string">'sideA hostile to sideB'</span>,<br>
+                                ObserverSideId=<span class="string">'sidea'</span>,<br>
+                                TargetSideId=<span class="string">'sideb'</span>,<br>
+                                targetposture=<span class="string">'hostile'</span>})
+                        </code>
+                    </div>
+                    <div class="note-alert">
+                        <p>
+                            <strong>Note:</strong> The variable <code>a</code> will contain the trigger information. It will be <code>nil</code> if the trigger failed in a non-interactive script as in an event.
+                        </p>
+                    </div>
+                    <hr>
+                    <h4>ScenEdit_SetAction( { table } )</h4>
+                    <p>
+                        As it sounds, a action is something that will be done once the trigger (and condition) are successful. Apart from a few common keywords, each action has a set of keywords.
+                    </p>
+                    <p>
+                        The common keywords used in the Lua table are:
+                        <ul class="ul-no-bullets">
+                            <li><strong>Description:</strong> the name given to the condition. The keyword 'name' can also be used for this.</li>
+                            <li><strong>Mode:</strong> type of operation to perform. Operations are 'list', 'add', 'remove', and 'update'.</li>
+                            <li><strong>ID:</strong> the GUID used to reference the condition. This is used internally and is only for reference.</li>
+                        </ul>
+                    </p>
+                    <p>The action related keywords are listed below.<br>
+                    <table class="table_borders">
+                        <tr>
+                            <th>Action type</th>
+                            <th>Keyword</th>
+                            <th>Comment</th>
+                        </tr>
+                        <tr>
+                            <td>ChangeMissionStatus</td>
+                            <td>MissionID</td>
+                            <td>Mission identifier</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>NewStatus</td>
+                            <td>New status - active(0) or inactive (1)</td>
+                        </tr>
+                        <tr>
+                            <td>EndScenario</td>
+                            <td></td>
+                            <td>No additional keywords</td>
+                        </tr>
+                        <tr>
+                            <td>LuaScript</td>
+                            <td>ScriptText</td>
+                            <td>A Lua script</td>
+                        </tr>
+                        <tr>
+                            <td>Message</td>
+                            <td>SideID</td>
+                            <td>Side to see message</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Text</td>
+                            <td>Message text to show</td>
+                        </tr>
+                        <tr>
+                            <td>Points</td>
+                            <td>PointChange</td>
+                            <td>Value to change points by (+/-)</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>SideID</td>
+                            <td>Side affected</td>
+                        </tr>
+                        <tr>
+                            <td>TeleportInArea</td>
+                            <td>UnitIDs</td>
+                            <td>Table of unit GUIDs</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Area</td>
+                            <td>Table of reference points</td>
+                        </tr>
+                    </table>
+                                        <div class="note-caution"> 
+                        <p>
+                            <strong>Caution:</strong> For scripts, use <code>'\r\n'</code> to represent new lines, otherwise a multi-line script may not run.
+                        </p>
+                    </div>
+                    <h5>Examples</h5>
+                    <p>Create a action changes points on SideA</p>
+                    <div class="example">
+                        <code>
+                            local a = ScenEdit_SetAction({mode=<span class="string">'add'</span>,
+                            type=<span class="string">'Points'</span>,
+                            name=<span class="string">'sideA loses some ..'</span>, 
+                            SideId=<span class="string">'sidea'</span>, 
+                            PointChange=<span class="number">-10</span>})
+                        </code>
+                    </div>
+
+                    <div class="note-alert">
+                        <p>
+                            <strong>Note:</strong> The variable <code>a</code> will contain the trigger information. It will be <code>nil</code> if the trigger failed in a non-interactive script as in an event.
+                        </p>
+                    </div>
+                    <hr>
+                    <h4>Modifying Events</h4>
+                    <p>
+                        Triggers, conditions and actions (TCA) can be linked to events. A common format is followed for each one.
+                    </p>
+                    <ul class="ul-no-bullets">
+                        <li>(a) <a href="#ScenEdit_SetEventTrigger">ScenEdit_SetEventTrigger( eventName, { table } )</a></li>
+                        <li>(b) <a href="#ScenEdit_SetEventCondition">ScenEdit_SetEventCondition( eventName, { table } )</a></li>
+                        <li>(c) <a href="#ScenEdit_SetEventAction">ScenEdit_SetEventAction( eventName, { table } )</a></li>
+                    </ul>
+                    <p>
+                        The common keywords used in the Lua table are:
+                        <ul class="ul-no-bullets">
+                            <li><strong>Description:</strong> The name given to the TCA. The keyword 'name' can also be used for this.</li>
+                            <li><strong>Mode:</strong> The type of operation to perform. Operations are 'add', 'remove', and 'replace'.</li>
+                            <li><strong>ID:</strong> The GUID used to reference the TCA. This is used internally and is only for reference.</li>
+                        </ul>
+                        The functions will return the TCA on a success as with the commands above. For the mode='replace', there is an extra keyword 'ReplacedBy' that swaps the old TCA with the new one. The previous one is returned by the function
+                    </p>
+                    <h5>Examples</h5>
+                    <p>Add a new action to an existing event</p>
+                    <div class="example">
+                        <code>local a = ScenEdit_SetEventAction(<span class="string">'test event'</span>, 
+                        {mode=<span class="string">'add'</span>, 
+                        name=<span class="string">'test action points'</span>})</code>
+                    </div>
+                    <div class="note-alert">
+                        <p>
+                            <strong>Note:</strong> The variable <code>a</code> will contain the trigger information. It will be <code>nil</code> if the trigger failed in a non-interactive script as in an event.
+                        </p>
+                    </div>
+
+                    <p>Replace an action in an existing event</p>
+
+                    <div class="example">
+                        <code>local a = ScenEdit_SetEventAction(<span class="string">'test event'</span>, 
+                        {mode=<span class="string">'replace'</span>, 
+                        name=<span class="string">'test action message'</span>, 
+                        replaceby=<span class="string">'test action points'</span>})</code>
+                    </div>
+                    <p>
+                        Events can also be created and modified through Lua: <code>ScenEdit_SetEvent( eventName, { table } )</code>
+                    </p>
+                    <p>The common keywords used in the Lua table are:
+                        <ul class="ul-no-bullets">
+                            <li><strong>Description:</strong> The name given to the Event. The keyword 'name' can also be used for this.</li>
+                            <li><strong>Mode:</strong> The type of operation to perform. Operations are 'add' and 'update'.</li>
+                            <li><strong>ID:</strong> The GUID used to reference the Event. This is used internally and is only for reference.</li>
+                        </ul>
+                        The normal Event keywords are accepted in the 'table'.
+                    </p>
+                        <h5>Examples</h5>
+                    
+                    <p>Add a new event</p>
+                    <p>
+                        <div class="example"><code>local a = ScenEdit_SetEvent(<span class="string">'my new event'</span>, {mode=<span class="string">'add'</span>})</code></div>
+                        <div class="note-alert">
+                        <p>
+                            <strong>Note:</strong> The variable <code>a</code> will contain the trigger information. It will be <code>nil</code> if the trigger failed in a non-interactive script as in an event.
+                        </p>
+                    </div>
+                        The <code>ScenEdit_SetEvent(Trigger/Condition/Action)</code> functions then can be run on the new Event to add the required TCAs. In addtion, <code>ScenEdit_GetEvent(EventDescriptionOrID, level)</code> has been updated to return information on the Event.
+                    </p>
+                    <p>
+                        Use level as:
+                        <ul class="ul-no-bullets">
+                            <li>0 - all details,</li>
+                            <li>1 - triggers,</li>
+                            <li>2 - conditions,</li>
+                            <li>3 - actions,</li>
+                            <li>4 - event detail</li>
+                        </ul>
+                            
+                    </p>
+                    <p>Special variables:
+                        <ul class="ul-no-bullets">
+                        <li><code>_enumTable_</code> List of enumerated variable names and values</li>
+                        <li><code>_errfnc_</code> Lua Function in which error occurred</li>
+                        <li><code>_errmsg_</code> Error message from Lua Function failure</li>
+                        </ul>
+                    </p>
+                    <hr>
                 <a class="anchor" id="ErrorHandling"></a>
                 <h3>Error Handling</h3>
                 <p>
@@ -859,7 +1467,6 @@
 						{longitude = <span class="number">-60.336</span>}
 					</code>
 				</div>
-				<hr>
 				<hr>
 				<a class="anchor" id="dataType_Size"></a>
 					<h3>Size</h3>
@@ -1528,7 +2135,7 @@
 					<li><a href="#GetScenarioTitle">GetScenarioTitle()</a></li>
 					<li><a href="#ScenEdit_AddCustomLoss">ScenEdit_AddCustomLoss()</a></li>
 					<li><a href="#ScenEdit_AddExplosion">ScenEdit_AddExplosion()</a></li>
-					<li><a href="#ScenEdit_AddMinefield">ScenEdit_AddMinefield(s)</a></li>
+					<li><a href="#ScenEdit_AddMinefield">ScenEdit_AddMinefield()</a></li>
 					<li><a href="#ScenEdit_AddMission">ScenEdit_AddMission()</a></li>
 					<li><a href="#ScenEdit_AddReferencePoint">ScenEdit_AddReferencePoint()</a></li>
 					<li><a href="#ScenEdit_AddReloadsToUnit">ScenEdit_AddReloadsToUnit()</a></li>
@@ -1647,8 +2254,8 @@
                     Functions listed below are only available in Command: Professional Edition.
                 </p>
                 <ul class="ul-2-columns">
-                    <li><a href="#ScenEdit_ImportScenarioFromXML">ScenEdit_ImportScenarioFromXML()</a><span class="pro_only">PRO ONLY</span></li>
-                    <li><a href="#ScenEdit_ExportScenarioToXML">ScenEdit_ExportScenarioToXML()</a><span class="pro_only">PRO ONLY</span></li>
+                    <li><a href="#ScenEdit_ImportScenarioFromXML">ScenEdit_ImportScenarioFromXML()</a> <span class="pro_only">PRO ONLY</span></li>
+                    <li><a href="#ScenEdit_ExportScenarioToXML">ScenEdit_ExportScenarioToXML()</a> <span class="pro_only">PRO ONLY</span></li>
                 </ul>
                 <br>
 				<hr>
@@ -2009,9 +2616,8 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     <hr>
 
     <h3><a class="anchor" id="ScenEdit_AttackContact"></a>ScenEdit_AttackContact (attackerID, contactId, options)</h3>
-    <p>Attack a contact as an auto-target or manual target with weapon allocation. <br>
-	For a BOL attack, use "BOL" as the contactId. <br>
-	Note: The function will use the WEAPON from the aircraft loadout if applicable when no MOUNT is supplied.</p>
+    <p>Attack a contact as an auto-target or manual target with weapon allocation.</p>
+	<p>For a BOL attack, use "BOL" as the contactId.</p>
     <h4>Parameters</h4>
     <ul>
         <li><span class="parameter">attackerID</span> <span class="types"><span class="string">string</span></span> The
@@ -2026,12 +2632,16 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
                     }</a></span> Contains type of attack and weapon allocation if required)</li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="types"><span class="boolean">boolean</span></span>True if attack successful assigned</p>
+    <p><span class="types"><span class="boolean">boolean</span></span> True if attack successfully assigned</p>
     <h5>Example</h5>
     <div class="example">
         <code>ScenEdit_AttackContact(attackerID, contactId ,{mode=<span class="string">'1'</span>, mount=<span class="number">438</span>, weapon=<span class="number">1413</span>, qty=<span class="number">10</span>})<span class="comment">-- alloc 10 gunfire</span></code>
     </div>
-    </p>
+    <div class="note-alert">
+        <p>
+            <strong>Note:</strong> The function will use the <strong>weapon</strong> from the aircraft loadout if applicable when no <strong>mount</strong> is supplied.
+        </p>
+    </div>
     <hr>
     <h3><a class="anchor" id="ScenEdit_ClearKeyValue"></a>ScenEdit_ClearKeyValue (key, forCampaign)</h3>
     <p>Clears a key</p>
@@ -2226,7 +2836,7 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     </div>
     </p>
     <hr>
-    <h3><a class="anchor" id="ScenEdit_ExportScenarioToXML"></a>ScenEdit_ExportScenarioToXML()<span class="pro_only">PRO ONLY</span></h3>
+    <h3><a class="anchor" id="ScenEdit_ExportScenarioToXML"></a>ScenEdit_ExportScenarioToXML() <span class="pro_only">PRO ONLY</span></h3>
     <p>Export the entire scenario in XML format.</p>
     <h4>Returns</h4>
     <p><span class="types"><span class="string">string</span></span>The scenario graph in unformatted XML string</p>
@@ -2901,7 +3511,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         <code><span class="keyword">local</span> mission = ScenEdit_ExportMission(<span class="string">'USA'</span>,<span class="string">'Marker strike'</span>})</code>
     </div>
     <hr>
-    <h3><a class="anchor" id="ScenEdit_ImportScenarioFromXML"></a>ScenEdit_ImportScenarioFromXML()<span class="pro_only">PRO ONLY</span></h3>
+    <h3><a class="anchor" id="ScenEdit_ImportScenarioFromXML"></a>ScenEdit_ImportScenarioFromXML() <span class="pro_only">PRO ONLY</span></h3>
     <h4>Returns</h4>
     <p><span class="types"><span class="boolean">boolean</span></span> Returns true if the import completed successfully, false otherwise</p>
     <h5>Example</h5>
