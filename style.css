@@ -445,6 +445,11 @@ strong {
 	margin-top: 0;
 }
 
+#content hr{
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
 #content .ul-no-bullets {
 	list-style: none;
 	padding-left: 20px;
@@ -511,6 +516,29 @@ strong {
 
 #content .table {
 	background-color: #fff5ec;
+}
+
+#content .table_borders {
+	border-collapse: separate;
+	text-align: left;
+	width: 75%;
+	border-spacing: 0px;
+	width:80%; 
+	margin-left:10%; 
+	margin-right:10%
+}
+
+#content .table_borders td{
+	padding: 5px;
+}
+
+#content .table_borders th{
+	background-color: #393939;
+	color: white;
+}
+
+#content .table_borders tr:nth-child(even) {
+	background-color: #f5f5f5;
 }
 
 #content .summary {
