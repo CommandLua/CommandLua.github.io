@@ -2683,10 +2683,10 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     <p>delete a mine</p>
     <h4>Parameters</h4>
     <ul>
-        <li><span class="parameter">side</span> <span class="types"><span class="string">string}</span></span> Side name
+        <li><span class="parameter">side</span> <span class="types"><span class="string">string</span></span> Side name
             or
             guid</li>
-        <li><span class="parameter">guid</span> <span class="types"><span class="string">string}</span></span> Mine guid
+        <li><span class="parameter">guid</span> <span class="types"><span class="string">string</span></span> Mine guid
         </li>
     </ul>
     <h4>Returns</h4>
@@ -2701,7 +2701,7 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     <p>delete a minefield</p>
     <h4>Parameters</h4>
     <ul>
-        <li><span class="parameter">side</span> <span class="types"><span class="string">string}</span></span> Side name
+        <li><span class="parameter">side</span> <span class="types"><span class="string">string</span></span> Side name
             or
             guid</li>
         <li><span class="parameter">area</span> <span class="table">table</span> The area (as
@@ -3030,7 +3030,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <p>get a minefield</p>
     <h4>Parameters</h4>
     <ul>
-        <li><span class="parameter">side</span> <span class="types"><span class="string">string}</span></span> Side name
+        <li><span class="parameter">side</span> <span class="types"><span class="string">string</span></span> Side name
             or
             guid</li>
         <li><span class="parameter">area</span><span class="table">table</span> The area (as
@@ -4618,11 +4618,11 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         mine</p>
     <h4>Parameters</h4>
     <ul>
-        <li><span class="parameter">side</span> <span class="types"><span class="string">string}</span></span> Side
+        <li><span class="parameter">side</span> <span class="types"><span class="string">string</span></span> Side
             name
             or
             guid</li>
-        <li><span class="parameter">guid</span> <span class="types"><span class="string">string}</span></span> Mine
+        <li><span class="parameter">guid</span> <span class="types"><span class="string">string</span></span> Mine
             guid</li>
         <li><span class="parameter">delay</span> <span class="types"><span class="number">number</span></span> The
             arming
@@ -6660,7 +6660,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							A table of the mission specific options. <span class="readonly">READ ONLY</span>
 						</li>
 						<li><span class="parameter">strikemission</span>
-							<span class="types"><a class="type" href="#table_StrikeMission">StrikeMission</a></span>
+							<span class="table"><a href="#table_StrikeMission">StrikeMission</a></span>
 							A table of the mission specific options. <span class="readonly">READ ONLY</span>
 						</li>
 						<li><span class="parameter">cargomission</span>
@@ -6820,26 +6820,26 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 						</li>
 	                    <li>
                             <span class="parameter">losses</span>
-                            <span class="types"><span class="table">Table<span class="table">of {type, dbid, name, number}</span></span></span>losses to date
+                            <span class="table">Table</span> of losses to date - {type, dbid, name, number} 
                         </li>
                         <li>
                             <span class="parameter">expenditures</span>
-                            <span class="types"><span class="table">Table<span class="table">of items {type, dbid, name, number}</span></span></span>expenditure to date
+                            <span class="table">Table</span> of expenditure to date - {type, dbid, name, number}
                         </li>
                           <li>
                             <span class="parameter">missions</span>
-                            <span class="types"><span class="table">Table of</span><a href="#wrapper_Mission">missions </a></span>missions for the side
+                            <span class="table">Table</span> of <span class="wrapper"><a href="#wrapper_Mission">Mission</a></span> wrappers for missions on the side
                         </li>
 						<br>
 						
 						<li><span class="parameter">getexclusionzone</span>
 							<span class="types"><span class="method">method</span></span>
-							(<code>ZoneGUID|ZoneName|ZoneDescription</code>) Returns matching <a href="#wrapper_Zone">Zone</a>
+							(<code>ZoneGUID|ZoneName|ZoneDescription</code>) Returns matching <span class="wrapper"><a href="#wrapper_Zone">Zone</a></span>
 							or nil
 						</li>
 						<li><span class="parameter">getnonavzone</span>
 							<span class="types"><span class="method">method</span></span>
-							(<code>ZoneGUID|ZoneName|ZoneDescription</code>) Returns matching <a href="#wrapper_Zone">Zone</a>
+							(<code>ZoneGUID|ZoneName|ZoneDescription</code>) Returns matching <span class="wrapper"><a href="#wrapper_Zone">Zone</a></span>
 							or nil
 						</li>
 						<li><span class="parameter">unitsBy</span>
@@ -7158,16 +7158,12 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							Unit obeys EMCON. Turn off to manually set sensors
 						</li>
 						<li><span class="parameter">category</span>
-                            <span class="types"><span class="number"> Category code </span></span> (as defined in the Data Types)
+                            <span class="types"><span class="number">Number</span></span> The unit category code for the <a href="#dataType_Unit_Aircraft">Aircraft</a>, <a href="#dataType_Unit_Facility">Facility</a>, <a href="#dataType_Unit_Ship">Ship</a>, <a href="#dataType_Unit_Submarine">Submarine</a> or <a href="#dataType_Unit_Satellite">Satellite</a>.
 						</li>
-
-						<br>
 						<li><span class="parameter">sensors</span>
-							<span class="types"><span class="table">table of sensors</span></span>
-							Unit Sensors in table format <br>{sensor_dbid,sensor_guid,sensor_name,sensor_type,sensor_role,sensor_maxrange,sensor_status,sensor_isactive)
-							<br>To set sensor on/off, use table of (sensor_guid,sensor_isactive)
+							<span class="table">table</span> Table of sensors {sensor_dbid,sensor_guid,sensor_name,sensor_type,sensor_role,sensor_maxrange,sensor_status,sensor_isactive)
+							 To set sensor on/off, use table of {sensor_guid,sensor_isactive}
 						</li>
-						<br>
 						
 						<li><span class="parameter">inArea</span>
 							<span class="types"><span class="method">method</span></span>
@@ -7179,8 +7175,8 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 						</li>
 						<li><span class="parameter">filterOnComponent</span>
 							<span class="types"><span class="method">method</span></span>
-							(<code>type</code>) Filters unit on <code>type</code> of component and returns a <a
-								href="#table_Component">Component</a> table.
+							(<code>type</code>) Filters unit on <code>type</code> of component and returns a <span class="table"><a
+								href="#table_Component">Component</a></span> table.
 						</li>
 						<li><span class="parameter">rangetotarget</span>
 							<span class="types"><span class="method">method</span></span>
@@ -7188,11 +7184,11 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 						</li>
 						<li><span class="parameter">Launch</span>
 							<span class="types"><span class="method">method</span></span>
-							(true/fale) Trigger the unit to launch from base (true) or abort launch (false)
+							(true/false) Trigger the unit to launch from base (true) or abort launch (false)
 						</li>
 				</p>
-		
-				<p> ScenEdit only
+		              <!-- What do we mean by ScenEdit only? The console and Lua script event actions are only available/editable in ScenEdit???-->
+				<p> ScenEdit only 
 					</li>
 					<li><span class="parameter">refuel</span>
 						<span class="types"><span class="boolean">boolean</span></span>
@@ -7219,8 +7215,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 						Desired altitude/depth or 'OFF' to turn off manual mode
 					</li>
 						<li><span class="parameter">sensors</span>
-							<span class="types"><span class="table">table of sensors</span></span>
-							Sensors to in/active in table format (sensor_guid,sensor_isactive)
+                            <span class="table">table</span> Sensors to in/active in table format (sensor_guid,sensor_isactive)
 						</li>
 					</ul>
 		
@@ -7450,7 +7445,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 						Damage points
 					</li>
 					<li><span class="parameter">components</span>
-						<span class="types"><span class="table">table</span></span>
+						<span class="table">table</span>
 						Table of component damage setting { guid, damageLevel }
 					</li>
 				</ul>
@@ -7733,23 +7728,23 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 					</ul>
 					<ul class="ul-no-bullets">
 						<li><span class="parameter">side</span>
-							<span class="types"><span class="string">string}</span></span>
+							<span class="types"><span class="string">string</span></span>
 							Side name
 						</li>
 						<li><span class="parameter">guid</span>
-							<span class="types"><span class="string">string}</span></span>
+							<span class="types"><span class="string">string</span></span>
 							Side guid
 						</li>
 						<li><span class="parameter">awareness</span>
-							<span class="types"><span class="string">string}</span></span>
+							<span class="types"><span class="string">string</span></span>
 							Side awareness
 						</li>
 						<li><span class="parameter">proficiency</span>
-							<span class="types"><span class="string">string}</span></span>
+							<span class="types"><span class="string">string</span></span>
 							Side proficiency
 						</li>
 						<li><span class="parameter">switchto</span>
-							<span class="types"><span class="boolean">boolean}</span></span>
+							<span class="types"><span class="boolean">boolean</span></span>
 							Change game side to above (only applicable with SetSideOptions)
 						</li>
 					</ul>
