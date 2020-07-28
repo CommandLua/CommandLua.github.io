@@ -7161,8 +7161,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
                             <span class="types"><span class="number">Number</span></span> The unit category code for the <a href="#dataType_Unit_Aircraft">Aircraft</a>, <a href="#dataType_Unit_Facility">Facility</a>, <a href="#dataType_Unit_Ship">Ship</a>, <a href="#dataType_Unit_Submarine">Submarine</a> or <a href="#dataType_Unit_Satellite">Satellite</a>.
 						</li>
 						<li><span class="parameter">sensors</span>
-							<span class="table">table</span> Table of sensors {sensor_dbid,sensor_guid,sensor_name,sensor_type,sensor_role,sensor_maxrange,sensor_status,sensor_isactive)
-							 To set sensor on/off, use table of {sensor_guid,sensor_isactive}
+							<span class="table"><a href="#table_Sensor">Sensor</a></span> Unit sensor information
 						</li>
 						
 						<li><span class="parameter">inArea</span>
@@ -7186,37 +7185,37 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							<span class="types"><span class="method">method</span></span>
 							(true/false) Trigger the unit to launch from base (true) or abort launch (false)
 						</li>
-				</p>
+                    </ul>
 		              <!-- What do we mean by ScenEdit only? The console and Lua script event actions are only available/editable in ScenEdit???-->
-				<p> ScenEdit only 
-					</li>
-					<li><span class="parameter">refuel</span>
-						<span class="types"><span class="boolean">boolean</span></span>
-						Trigger the unit to attempt an UNREP
-					</li>
-					<li><span class="parameter">RTB</span>
-						<span class="types"><span class="boolean">boolean</span></span>
-						Trigger the unit to return to base
-					</li>
-					<li><span class="parameter">moveto</span>
-						<span class="types"><span class="boolean">boolean</span></span>
-						Set a desired alt/depth instead of jumping to actual
-					</li>
-					<li><span class="parameter">manualSpeed</span>
-						<span class="types"><span class="string">string</span> or <span class="number">number</span></span>
-						Desired speed or 'OFF' to turn off manual mode
-					</li>
-					<li><span class="parameter">manualThrottle</span>
-						<span class="types"><span class="string">string</span> or <span class="number">number</span></span>
-						Desired throttle or 'OFF' to turn off manual mode
-					</li>
-					<li><span class="parameter">manualAltitude</span>
-						<span class="types"><span class="string">string</span> or <span class="number">number</span></span>
-						Desired altitude/depth or 'OFF' to turn off manual mode
-					</li>
-						<li><span class="parameter">sensors</span>
-                            <span class="table">table</span> Sensors to in/active in table format (sensor_guid,sensor_isactive)
-						</li>
+				    <h5>Modifiable through ScenEdit_ functions only</h5>
+					<ul class="ul-no-bullets">
+    					<li><span class="parameter">refuel</span>
+    						<span class="types"><span class="boolean">boolean</span></span>
+    						Trigger the unit to attempt an UNREP
+    					</li>
+    					<li><span class="parameter">RTB</span>
+    						<span class="types"><span class="boolean">boolean</span></span>
+    						Trigger the unit to return to base
+    					</li>
+    					<li><span class="parameter">moveto</span>
+    						<span class="types"><span class="boolean">boolean</span></span>
+    						Set a desired alt/depth instead of jumping to actual
+    					</li>
+    					<li><span class="parameter">manualSpeed</span>
+    						<span class="types"><span class="string">string</span> or <span class="number">number</span></span>
+    						Desired speed or 'OFF' to turn off manual mode
+    					</li>
+    					<li><span class="parameter">manualThrottle</span>
+    						<span class="types"><span class="string">string</span> or <span class="number">number</span></span>
+    						Desired throttle or 'OFF' to turn off manual mode
+    					</li>
+    					<li><span class="parameter">manualAltitude</span>
+    						<span class="types"><span class="string">string</span> or <span class="number">number</span></span>
+    						Desired altitude/depth or 'OFF' to turn off manual mode
+    					</li>
+    					<li><span class="parameter">sensors</span>
+                            <span class="table"><a href="#table_Sensor">Sensor</a></span> Sensors set to active or inactive in table format (sensor_guid,sensor_isactive)
+    					</li>
 					</ul>
 		
 					<hr>
@@ -8120,6 +8119,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 						<li><span class="table"><a href="#table_MineMission">MineMission</a></span></li>
 						<li><span class="table"><a href="#table_Mount">Mount</a></span></li>
 						<li><span class="table"><a href="#table_PatrolMission">PatrolMission</a></span></li>
+                        <li><span class="table"><a href="#table_Sensor">Sensor</a></span></li>
 						<li><span class="table"><a href="#table_SideContact">SideContact</a></span></li>
 						<li><span class="table"><a href="#table_SideDescription">SideDescription</a></span></li>
 						<li><span class="table"><a href="#table_SideSelector">SideSelector </a></span></li>
@@ -9220,7 +9220,65 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 						</li>
 					</ul>
 
-
+                    <hr>
+                    <a class="anchor" id="table_Sensor"></a>
+                    <h3>Sensor</h3>
+                    <p>
+                        A list of sensors associated with a <span class="wrapper"><a href="#wrapper_Unit">Unit</a></span> wrapper
+                    </p>
+                    <h4>Fields</h4>
+                    <ul class="ul-no-bullets">
+                        <li>
+                            <span class="parameter">sensor_dbid</span>
+                            <span class="types"><span class="string">string</span></span>
+                            The DBID of the sensor.
+                        </li>
+                        <li>
+                            <span class="parameter">sensor_guid</span>
+                            <span class="types"><span class="string">string</span></span>
+                            The GUID of the sensor.
+                        </li>
+                        <li>
+                            <span class="parameter">sensor_name</span>
+                            <span class="types"><span class="string">string</span></span>
+                            The name of the sensor.
+                        </li>
+                        <li>
+                            <span class="parameter">sensor_type</span>
+                            <span class="types"><span class="string">string</span></span>
+                            The high-level type of sensor.
+                        </li>
+                        <li>
+                            <span class="parameter">sensor_role</span>
+                            <span class="types"><span class="string">string</span></span>
+                            The role of the sensor (e.g. 3D Air Search - Medium Range).
+                        </li>
+                        <li>
+                            <span class="parameter">sensor_maxrange</span>
+                            <span class="types"><span class="number">number</span></span>
+                            The maximum range of the sensor.
+                        </li>
+                        <li>
+                            <span class="parameter">sensor_status</span>
+                            <span class="types"><span class="string">string</span></span>
+                            The operational status of the sensor.
+                        </li>
+                        </li>
+                            <span class="parameter">sensor_isactive</span>
+                            <span class="types"><span class="boolean">boolean</span></span>
+                            Whether the sensor is active or not.
+                        </li>
+                    </ul>
+                    <div class="note-alert">
+                        <p>
+                            <strong>Note:</strong> To set sensor on or off, use a table of <code>{sensor_guid,sensor_isactive}</code>
+                        </p>
+                    </div>
+                    <div class="note-caution">
+                        <p>
+                            <strong>Caution:</strong> The GUID returned here is the GUID of the individual sensor component, not the GUID of the parent unit.
+                        </p>
+                    </div>
 					<hr>
 					<a class="anchor" id="table_SideContact"></a>
 					<h3>SideContact</h3>
