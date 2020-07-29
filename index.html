@@ -2396,7 +2396,7 @@
 				<h5>Example</h5>
 				<div class="example">
 					<code>
-						<span class="keyword">local</span> a = ScenEdit_AddMinefield({side=<span class="string">'Blue'</span>, dbid=<span class="number">2345</span>, number=<span class="number">100</span>, delay=<span class="number">60000</span>, area={<span class="string">'rp-1'</span>,<span class="string">'rp-2'</span>,<span class="string">'rp-3'</span>,<span class="string">'rp-4'</span>} } )
+						<span class="local">local</span> a = ScenEdit_AddMinefield({side=<span class="string">'Blue'</span>, dbid=<span class="number">2345</span>, number=<span class="number">100</span>, delay=<span class="number">60000</span>, area={<span class="string">'rp-1'</span>,<span class="string">'rp-2'</span>,<span class="string">'rp-3'</span>,<span class="string">'rp-4'</span>} } )
 					</code>
 				</div>
 				<hr>
@@ -2421,7 +2421,7 @@
         or<code>nil</code> otherwise.</p>
     <h5>Example</h5>
     <div class="example">
-        <code><span class="keyword">local</span> mission = ScenEdit_AddMission(<span class="string">'USA'</span>,<span class="string">'Marker strike'</span>,<span class="string">'strike'</span>,{<span class="global">type</span>=<span class="string">'land'</span>})</code>
+        <code><span class="local">local</span> mission = ScenEdit_AddMission(<span class="string">'USA'</span>,<span class="string">'Marker strike'</span>,<span class="string">'strike'</span>,{<span class="global">type</span>=<span class="string">'land'</span>})</code>
     </div>
 
     <hr>
@@ -2672,8 +2672,8 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
         current time in-game.</p>
     <h5>Example</h5>
     <div class="example"><code>
-<span class="keyword">local</span> now = ScenEdit_CurrentTime()
-<span class="keyword">local</span> elapsed = now - timeFromLastTiggered
+<span class="local">local</span> now = ScenEdit_CurrentTime()
+<span class="local">local</span> elapsed = now - timeFromLastTiggered
 <span class="keyword">if</span> elapsed &gt;<span class="number">60</span>*<span class="number">5</span><span class="keyword">then</span>
 <span class="comment">-- been more than 5 minutes, set the lastTriggered time to now</span> 
  timeFromLastTiggered = now
@@ -2693,7 +2693,7 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     <p><span class="types"><span class="boolean">boolean</span></span>true/false</p>
     <h5>Example</h5>
     <div class="example">
-        <code><span class="keyword">local</span> a = ScenEdit_DeleteMine({side=<span class="string">'Blue'</span>, guid=<span class="string">'cccccccc'</span>} )</code>
+        <code><span class="local">local</span> a = ScenEdit_DeleteMine({side=<span class="string">'Blue'</span>, guid=<span class="string">'cccccccc'</span>} )</code>
     </div>
     </p>
     <hr>
@@ -2711,7 +2711,7 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     <p><span class="types"><span class="number">number</span></span>mines removed</p>
     <h5>Example</h5>
     <div class="example">
-        <code><span class="keyword">local</span> a = ScenEdit_DeleteMinefield({side=<span class="string">'Blue'</span>, area={<span class="string">'rp-1'</span>,<span class="string">'rp-2'</span>,<span class="string">'rp-3'</span>,<span class="string">'rp-4'</span>} } )</code>
+        <code><span class="local">local</span> a = ScenEdit_DeleteMinefield({side=<span class="string">'Blue'</span>, area={<span class="string">'rp-1'</span>,<span class="string">'rp-2'</span>,<span class="string">'rp-3'</span>,<span class="string">'rp-4'</span>} } )</code>
     </div>
     </p>
     <hr>
@@ -2730,7 +2730,7 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     <p><span class="types"><span class="boolean">boolean</span></span> True if mission has been removed.</p>
     <h5>Example</h5>
     <div class="example">
-        <code><span class="keyword">local</span> mission = ScenEdit_DeleteMission(<span class="string">'USA'</span>,<span class="string">'Marker strike'</span>)</code>
+        <code><span class="local">local</span> mission = ScenEdit_DeleteMission(<span class="string">'USA'</span>,<span class="string">'Marker strike'</span>)</code>
     </div>
     </p>
     <hr>
@@ -2773,7 +2773,7 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     <h4>Returns</h4>
     <p><span class="wrapper"><a href="#wrapper_Event">Event</a></span>The triggering event</p>
     <h5>Example</h5>
-    <div class="example"><code><span class="keyword">local</span> event = ScenEdit_EventX()</code></div>
+    <div class="example"><code><span class="local">local</span> event = ScenEdit_EventX()</code></div>
     </p>
     <hr>
     <h3><a class="anchor" id="ScenEdit_ExecuteEventAction"></a>ScenEdit_ExecuteEventAction (EventDescriptionOrID)</h3>
@@ -2832,7 +2832,7 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
                 }</span></span>Mission GUID exported.</p>
     <h5>Example</h5>
     <div class="example">
-        <code><span class="keyword">local</span> mission = ScenEdit_ExportMission(<span class="string">'USA'</span>,<span class="string">'Marker strike'</span>})</code>
+        <code><span class="local">local</span> mission = ScenEdit_ExportMission(<span class="string">'USA'</span>,<span class="string">'Marker strike'</span>})</code>
     </div>
     </p>
     <hr>
@@ -2902,7 +2902,7 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     <p><span class="types"><span class="type">{ Contacts}</span></span>Table of contact details</p>
     <h5>Example</h5>
     <div class="example">
-        <code><span class="keyword">local</span> con = ScenEdit_GetContacts(<span class="string">'south korea'</span>)</code>
+        <code><span class="local">local</span> con = ScenEdit_GetContacts(<span class="string">'south korea'</span>)</code>
     </div>
     </p>
     <hr>
@@ -3043,7 +3043,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         area</p>
     <h5>Example</h5>
     <div class="example">
-        <code><span class="keyword">local</span> a = ScenEdit_GetMinefield({side=<span class="string">'Blue'</span>, area={<span class="string">'rp-1'</span>,<span class="string">'rp-2'</span>,<span class="string">'rp-3'</span>,<span class="string">'rp-4'</span>} } )</code>
+        <code><span class="local">local</span> a = ScenEdit_GetMinefield({side=<span class="string">'Blue'</span>, area={<span class="string">'rp-1'</span>,<span class="string">'rp-2'</span>,<span class="string">'rp-3'</span>,<span class="string">'rp-4'</span>} } )</code>
     </div>
     </p>
     <hr>
@@ -3066,7 +3066,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         exists or<code>nil</code>otherwise.</p>
     <h5>Example</h5>
     <div class="example">
-        <code><span class="keyword">local</span> mission = ScenEdit_GetMission(<span class="string">'USA'</span>,<span class="string">'CV CAP Left'</span>)</code>
+        <code><span class="local">local</span> mission = ScenEdit_GetMission(<span class="string">'USA'</span>,<span class="string">'CV CAP Left'</span>)</code>
     </div>
     </p>
     <hr>
@@ -3093,7 +3093,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         the selector</p>
     <h5>Example</h5>
     <div class="example">
-        <code><span class="keyword">local</span> points = ScenEdit_GetReferencePoints({side=<span class="string">"United States"</span>, area={<span class="string">"rp-100"</span>,<span class="string">"rp-101"</span>,<span class="string">"rp-102"</span>,<span class="string">"rp-103"</span>,<span class="string">"rp-104"</span>})</code>
+        <code><span class="local">local</span> points = ScenEdit_GetReferencePoints({side=<span class="string">"United States"</span>, area={<span class="string">"rp-100"</span>,<span class="string">"rp-101"</span>,<span class="string">"rp-102"</span>,<span class="string">"rp-103"</span>,<span class="string">"rp-104"</span>})</code>
     </div>
     </p>
     <hr>
@@ -3107,7 +3107,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         scenario has
         started</p>
     <h5>Example</h5>
-    <div class="example"><code><span class="keyword">local</span> state = ScenEdit_GetScenHasStarted()</code></div>
+    <div class="example"><code><span class="local">local</span> state = ScenEdit_GetScenHasStarted()</code></div>
     </p>
     <hr>
     <h3><a class="anchor" id="ScenEdit_GetScore"></a>ScenEdit_GetScore
@@ -3508,7 +3508,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         imported.</p>
     <h5>Example</h5>
     <div class="example">
-        <code><span class="keyword">local</span> mission = ScenEdit_ExportMission(<span class="string">'USA'</span>,<span class="string">'Marker strike'</span>})</code>
+        <code><span class="local">local</span> mission = ScenEdit_ExportMission(<span class="string">'USA'</span>,<span class="string">'Marker strike'</span>})</code>
     </div>
     <hr>
     <h3><a class="anchor" id="ScenEdit_ImportScenarioFromXML"></a>ScenEdit_ImportScenarioFromXML() <span class="pro_only">PRO ONLY</span></h3>
@@ -3682,7 +3682,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         current
         side</p>
     <h5>Example</h5>
-    <div class="example"><code><span class="keyword">local</span> side = ScenEdit_PlayerSide()</code></div>
+    <div class="example"><code><span class="local">local</span> side = ScenEdit_PlayerSide()</code></div>
     </p>
     <hr>
     <h3><a class="anchor" id="ScenEdit_QueryDB"></a>ScenEdit_QueryDB
@@ -3718,7 +3718,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <p><span class="wrapper">object</span>Object wrapper</p>
     <h5>Example</h5>
     <div class="example">
-        <code><span class="keyword">local</span> a = ScenEdit_QueryDB(<span class="string">'weapon'</span>,<span class="number">1398</span>)</code>
+        <code><span class="local">local</span> a = ScenEdit_QueryDB(<span class="string">'weapon'</span>,<span class="number">1398</span>)</code>
     </div>
     </p>
     <hr>
@@ -4636,7 +4636,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h5>Example</h5>
 
     <div class="example">
-        <code><span class="keyword">local</span> a = ScenEdit_SetMine({side=<span class="string">'Blue'</span>, guid=<span class="string">'cccccccc'</span>, [delay=<span class="number">99999</span>]} )</code>
+        <code><span class="local">local</span> a = ScenEdit_SetMine({side=<span class="string">'Blue'</span>, guid=<span class="string">'cccccccc'</span>, [delay=<span class="number">99999</span>]} )</code>
     </div>
     </p>
     <hr>
@@ -4677,7 +4677,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h5>Example</h5>
 
     <div class="example">
-        <code><span class="keyword">local</span> mission = ScenEdit_SetMission(<span class="string">'USA'</span>,<span class="string">'CV CAP Left'</span>,{TankerUsage=<span class="number">1</span>,OnStation=<span class="number">2</span>})</code>
+        <code><span class="local">local</span> mission = ScenEdit_SetMission(<span class="string">'USA'</span>,<span class="string">'CV CAP Left'</span>,{TankerUsage=<span class="number">1</span>,OnStation=<span class="number">2</span>})</code>
     </div>
     </p>
     <hr>
@@ -5394,7 +5394,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
                 <code>ScenEdit_SetUnitDamage({side=UnitX().side, unitname=UnitX().name, fires=<span class="number">1</span>, components={ {<span class="string">'rudder'</span>,<span class="string">'Medium'</span>}, {<span class="string">'type'</span>,<span class="global">type</span>=<span class="string">'sensor'</span>,<span class="number">1</span>} } })</code>
             </div>
 
-            <div class="example"> <code><span class="keyword">local</span> unit = ScenEdit_UnitX()</code> </div>
+            <div class="example"> <code><span class="local">local</span> unit = ScenEdit_UnitX()</code> </div>
 
     <hr>
     <h3><a class="anchor" id="ScenEdit_UnitY"></a>ScenEdit_UnitY
@@ -5440,7 +5440,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
             </div>
 
             <div class="example">
-                <code><span class="keyword">local</span> by = ScenEdit_UnitY()
+                <code><span class="local">local</span> by = ScenEdit_UnitY()
 <span class="global">print</span>(<span class="string">'Y:'</span>);<span class="global">print</span>( by)
 <span class="global">print</span>(<span class="string">'Detected by: '</span>);<span class="global">print</span>( by.unit.name ..<span class="string">' of type '</span> .. by.unit.<span class="global">type</span> ..<span class="string">' from '</span> .. by.unit.side)
 <span class="global">print</span>(<span class="string">'Sensor: '</span>);<span class="global">print</span>( by.sensor[<span class="number">1</span>].name ..<span class="string">' of type '</span> .. by.sensor[<span class="number">1</span>].<span class="global">type</span>);</code>
@@ -5814,8 +5814,8 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h5>Example</h5>
 
     <div class="example">
-        <code><span class="keyword">local</span> vp = VP_GetSide({name =<span class="string">"NATO"</span>})
-<span class="keyword">local</span> cp = vp.contacts<span class="comment">--List Of contacts</span><span class="keyword">local</span> guid = cp[<span class="number">12</span>].objectid<span class="comment">-- a specific contact</span><span class="keyword">local</span> contact = VP_GetContact({guid=guid})<span class="comment">-- details of contact as distinct to unit details</span></code>
+        <code><span class="local">local</span> vp = VP_GetSide({name =<span class="string">"NATO"</span>})
+<span class="local">local</span> cp = vp.contacts<span class="comment">--List Of contacts</span><span class="local">local</span> guid = cp[<span class="number">12</span>].objectid<span class="comment">-- a specific contact</span><span class="local">local</span> contact = VP_GetContact({guid=guid})<span class="comment">-- details of contact as distinct to unit details</span></code>
     </div>
     </p>
     <hr>
@@ -5860,7 +5860,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h5>Example</h5>
 
     <div class="example">
-        <code><span class="keyword">local</span> a = VP_GetSide({Side =<span class="string">'sidea'</span>})<span class="comment">-- a side object</span><span class="keyword">local</span> z = a.nonavzones<span class="comment">--List of no-nav zones for the side if you need to find it</span><span class="keyword">local</span> n = a : getnonavzone(z[<span class="number">1</span>].guid)<span class="comment">-- required zone object for a particular zone</span>n.isactive =<span class="keyword">false</span><span class="comment">-- turn it off</span></code>
+        <code><span class="local">local</span> a = VP_GetSide({Side =<span class="string">'sidea'</span>})<span class="comment">-- a side object</span><span class="local">local</span> z = a.nonavzones<span class="comment">--List of no-nav zones for the side if you need to find it</span><span class="local">local</span> n = a : getnonavzone(z[<span class="number">1</span>].guid)<span class="comment">-- required zone object for a particular zone</span>n.isactive =<span class="keyword">false</span><span class="comment">-- turn it off</span></code>
     </div>
     </p>
  
@@ -5931,7 +5931,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         <span class="table">table</span> Table of <span class="types">Points</span>
     </p>
     <div class="example">
-        <code><span class="keyword">local</span> circle = World_GetCircleFromPoint({latitude = <span class="string">'-37.8307390636104'</span>longitude = <span class="string">'144.932549348204'</span>, numpoints = <span class="number">12</span>})</code>
+        <code><span class="local">local</span> circle = World_GetCircleFromPoint({latitude = <span class="string">'-37.8307390636104'</span>longitude = <span class="string">'144.932549348204'</span>, numpoints = <span class="number">12</span>})</code>
     </div>
     <hr>
     <h3><a class="anchor" id="World_GetElevation"></a>World_GetElevation
@@ -6487,7 +6487,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 						<code>
 							<span class="comment">-- first trigger; as a 'Unit Detected'; what was the target
 							filter values<br>
-							</span><span class="keyword">local</span> Event = ScenEdit_EventX() <br>
+							</span><span class="local">local</span> Event = ScenEdit_EventX() <br>
 							<span class="comment">-- current
 							active event<br>
 							</span><span class="global">print</span>(event.details.triggers[<span
@@ -7248,16 +7248,16 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 		
 					<div class="example">
 						<code>
-							<span class="keyword">local</span> a = VP_GetSide({Side =<span class="string">'side1'</span>}) <br>
+							<span class="local">local</span> a = VP_GetSide({Side =<span class="string">'side1'</span>}) <br>
 							<span class="comment">-- a side object
 				</span> <br>
-				<span class="keyword">local</span> z = a.nonavzones <br>
+				<span class="local">local</span> z = a.nonavzones <br>
 				--List Of no-nav zones For the side If you need To find it<br>
 		
 				For i, zone <span class="keyword">in</span> <span class="global">ipairs</span>(z) <span class="keyword">do</span>
 				<span class="global">print</span>(<span class="string">"Zone #"</span> .. i)
 				<span class="global">print</span>(zone)
-				<span class="keyword">local</span> n = a :  getnonavzone(z[i].guid) <span class="comment">-- zone object
+				<span class="local">local</span> n = a :  getnonavzone(z[i].guid) <span class="comment">-- zone object
 				</span>     <span class="global">print</span>(<span class="string">'Details: '</span> .. n.description .. <span class="string">' Active: '</span> .. <span class="global">tostring</span>(n.isactive) )
 				n.area = {<span class="string">'rp-9'</span>,<span class="string">'rp-10'</span>, <span class="string">'rp-8'</span> <span class="comment">-- replace with a list of visible RPs for the side
 				</span> n.area = {
