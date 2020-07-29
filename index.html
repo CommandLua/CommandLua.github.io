@@ -5981,15 +5981,12 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     
 	<h3><a class="anchor" id="World_GetPointFromBearing"></a>World_GetPointFromBearing
         (table)</h3>
-    <p>Returns
-        a
-        location
-        based
-        on
-        bearing.</p>
+    <p>Returns a location based on bearing.</p>
     <h4>Parameters</h4>
     <ul>
-        <li><span class="parameter">table</span> <span class="types"><span class="type">Point</span></span></li>
+        <li>
+            <span class="parameter">table</span> <code>{latitude, longitude, distance, bearing}</code>
+        </li>
     </ul>
     <h4>Returns</h4>
     <p>Table
@@ -5998,7 +5995,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         new
         point
     </p>
-
+    <div class="example">
+        <code><span class="local">local</span> position = World_GetPointFromBearing({latitude = <span class="string">'-37.8307390636104'</span>longitude = <span class="string">'144.932549348204'</span>, distance = <span class="number">12</span>, bearing = <span class="number">90</span>})</code>
+    </div>
 				
 				<a class="anchor" id="Wrappers"></a>
 				<h2>Wrappers</h2>
