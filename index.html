@@ -5805,17 +5805,15 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
             interrogate</li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="wrapper"><a href="#wrapper_Contact">Contact</a></span>The
-        information
-        associated
-        with
-        the
-        contact</p>
+    <p><span class="wrapper"><a href="#wrapper_Contact">Contact</a></span> The information associated with the contact</p>
     <h5>Example</h5>
-
     <div class="example">
-        <code><span class="local">local</span> vp = VP_GetSide({name =<span class="string">"NATO"</span>})
-<span class="local">local</span> cp = vp.contacts<span class="comment">--List Of contacts</span><span class="local">local</span> guid = cp[<span class="number">12</span>].objectid<span class="comment">-- a specific contact</span><span class="local">local</span> contact = VP_GetContact({guid=guid})<span class="comment">-- details of contact as distinct to unit details</span></code>
+        <code>
+            <span class="local">local</span> side = VP_GetSide({name =<span class="string">"NATO"</span>})<br>
+            <span class="local">local</span> contacts = side.contacts<span class="comment"> --List Of contacts</span><br>
+            <span class="local">local</span> guid = contacts[<span class="number">12</span>].objectid<span class="comment"> -- GUID of a specific contact</span><br>
+            <span class="local">local</span> a_contact = VP_GetContact({guid=guid})<span class="comment"> -- details of contact as distinct to unit details</span><br>
+        </code>
     </div>
     </p>
     <hr>
