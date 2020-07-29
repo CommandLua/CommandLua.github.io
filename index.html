@@ -5966,33 +5966,16 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <hr>
     <h3><a class="anchor" id="World_GetLocation"></a>World_GetLocation
         (location)</h3>
-    <p>Returns
-        table
-        of
-        details
-        at
-        a
-        given
-        position.
-		These details are similar to what is shown by the map cursor box.</p>
+    <p>Returns table of details at a given position. These details are similar to what is shown by the map cursor box.</p>
     <h4>Parameters</h4>
     <ul>
-        <li><span class="parameter">location</span> <span class="types"><span class="type">Point</span></span> The
-            position
-            to
-            find
-            the
-            details
-            of</li>
+        <li>
+            <span class="parameter">location</span> <span class="types"><span class="type">Point</span></span> The position to return the values for.
+        </li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="table">table of</span>(<br>
-	altitude,<br>
-	layer( ceiling, floor, strength ),<br>
-	cz(1, 2, 3, 4),<br>
-	slope,<br>
-	cover( text, value)<br>
-	)
+    <p>
+        <span class="table">table</span> <code>{altitude, layer {ceiling, floor, strength}, cz{1, 2, 3, 4}, slope, cover {text, value}}</code>
     </p>
     <hr>
     
