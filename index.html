@@ -2807,15 +2807,16 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     <p>Export unit(s) to an inst file.</p>
     <h4>Parameters</h4>
     <ul>
-        <li><span class="parameter">side</span> <span class="types"><span class="string">string</span></span> The side
-            to
-            import the inst file as</li>
-        <li><span class="parameter">unitList</span> <span class="table">table</span> list of
-            unit(s) to create as INST file</li>
-        <li><span class="parameter">fileData</span> <span class="table">table</span> Table of {
-            filename, name, comment } for the
-            INST file</li>
+        <li><span class="parameter">side</span> <span class="types"><span class="string">string</span></span> The name or GUID of the side owning the exported units</li>
+        <li><span class="parameter">unitList</span> <span class="table">table</span> list of GUIDs of units to be written to INST file</li>
+        <li><span class="parameter">fileData</span> <span class="table">table</span> Table of <code>{filename=<span class="types"><span class="string">string</span></span>, name=<span class="types"><span class="string">string</span></span>, comment=<span class="types"><span class="string">string</span></span>}</code> for the INST file. Filename is mandatory.</li>
     </ul>
+    <h5>Example</h5>
+    <div class="example">
+        <code>
+            ScenEdit_ExportInst(<span class="string">'Russia'</span>, {<span class="string">'c1a0e312-9ccc-43d1-9e6c-01899c8433d9'</span>}, {filename=<span class="string">'ssbn_patrol.inst'</span>,name=<span class="string">'SSBN on Patrol'</span>,comment=<span class="string">'Russian SSBN on patrol in Barents'</span>})
+        </code>
+    </div>
     <hr>
     <h3><a class="anchor" id="ScenEdit_ExportMission"></a>ScenEdit_ExportMission (SideNameOrId,MissionNameOrId)</h3>
     <p>Export mission parameters... as a XML file in folder Command_base/Defaults.[Experimental as this should really be
@@ -2837,7 +2838,6 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     <div class="example">
         <code><span class="local">local</span> mission = ScenEdit_ExportMission(<span class="string">'USA'</span>,<span class="string">'Marker strike'</span>})</code>
     </div>
-    </p>
     <hr>
     <h3><a class="anchor" id="ScenEdit_ExportScenarioToXML"></a>ScenEdit_ExportScenarioToXML() <span class="pro_only">PRO ONLY</span></h3>
     <p>Export the entire scenario in XML format.</p>
