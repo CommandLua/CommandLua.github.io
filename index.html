@@ -5259,46 +5259,23 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h4>Returns</h4>
     <p><span class="wrapper"><a href="#wrapper_Zone">Zone</a></span></p>
     <hr>
-    <h3><a class="anchor" id="ScenEdit_SpecialMessage"></a>ScenEdit_SpecialMessage
-        (side,message)</h3>
-    <p>Displays
-        a
-        special
-        message
-        consisting
-        of
-        the
-        HTML
-        text
-        <code>message</code>to
-        side
-        `side.Can
-        include
-        an
-        optional
-        location
-        to
-        jump
-        to</p>
+    <h3><a class="anchor" id="ScenEdit_SpecialMessage"></a>ScenEdit_SpecialMessage(side, message, location [optional])</h3>
+    <p>Displays a special message consisting of the HTML text <span class="parameter">message</span> to the side specified by <span class="parameter">side</span>. An optional parameter <span class="parameter">location</span> allows the player to jump to the specified map position by clicking a button in a pop-up window.</p>
     <h4>Parameters</h4>
     <ul>
-        <li><span class="parameter">side</span> <span class="types"><span class="string">string</span></span> The
-            side
-            name/guid
-            to
-            display
-            the
-            message
-            on</li>
-        <li><span class="parameter">message</span> <span class="types"><span class="string">string</span></span> The
-            HTML
-            text
-            to
-            display
-            to
-            the
-            player</li>
+        <li><span class="parameter">side</span> <span class="types"><span class="string">string</span></span> The side name/guid to display the message to, or <code>'playerside'</code> (see Note below)</li>
+        <li><span class="parameter">message</span> <span class="types"><span class="string">string</span></span> The HTML text to display to the player. Plain text is also accepted.</li>
+        <li>[Optional] <span class="parameter">location</span><span class="types">Point</span> The position that the 'Jump to Location' button takes the player to if clicked.</li>
     </ul>
+    
+    <h4>Returns</h4>
+    <p><span class="types"><span class="number">number</span></span> 1 if successful, raises an error if unsuccessful.</p>
+    <h5>Example</h5>
+    <div class="example">
+        <code>ScenEdit_SpecialMessage(<span class="string">'playerside'</span>,<span class="string">'Here\'s a message!'</span>,{latitude = <span class="number">1.2</span>,longitude = <span class="number">3.4</span>})</code>
+    </div>
+    <div class="note-alert"><p><strong>Note:</strong> The string <code>'playerside'</code> is a special name that refers to whichever side is currently under player control and can be used to ensure that a special message is visible regardless of the player switching sides during the session or choosing a different side at scenario start.</p></div>
+    <div class="note-caution"><p><strong>Caution:</strong> Players can disable pop-ups for special messages in the game options. Ensure that players are aware of the need to turn this feature on if special messages are essential to scenario function.</p></div>
     <hr>
     <h3><a class="anchor" id="ScenEdit_TransferCargo"></a>ScenEdit_TransferCargo
         (fromUnit,toUnit,cargoList)</h3>
