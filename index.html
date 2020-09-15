@@ -2240,6 +2240,7 @@
 					<li><a href="#Tool_Range">Tool_Range()</a></li>
 					<li><a href="#VP_ExportUnits">VP_ExportUnits()</a></li>
 					<li><a href="#VP_GetContact">VP_GetContact()</a></li>
+					<li><a href="#VP_GetScenario">VP_GetScenario()</a></li>
 					<li><a href="#VP_GetSide">VP_GetSide()</a></li>
 					<li><a href="#VP_GetSides">VP_GetSides()</a></li>
 					<li><a href="#VP_GetUnit">VP_GetUnit()</a></li>
@@ -5797,6 +5798,13 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     </div>
     </p>
     <hr>
+    <h3><a class="anchor" id="VP_GetScenario"></a>VP_GetScenario()</h3>
+    <p>Exposes current scenario information.</p>
+    <h4>Parameters</h4>
+    <p>None</p>
+    <h4>Returns</h4>
+    <p><span class='wrapper'><a href="#Wrapper_Scenario">Scenario</a></span></p>
+    <hr>
     <h3><a class="anchor" id="VP_GetSide"></a>VP_GetSide
         (side)</h3>
     <p>Side
@@ -5996,6 +6004,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 					<li><span class="wrapper"><a href="#wrapper_Mission">Mission</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_ReferencePoint">ReferencePoint</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_RefuelOptions">RefuelOptions</a></span></li>
+					<li><span class="wrapper"><a href="#wrapper_Scenario">Scenario</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_Side">Side</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_SpecialAction">SpecialAction</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_Unit">Unit</a></span></li>
@@ -6728,17 +6737,111 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							</code>
 					</div>
 		
-		
-		
+					<hr>
+					<a class="anchor" id="Wrapper_Scenario"></a>
+					<h3>Scenario</h3>
+					<ul class='ul-no-bullets'>
+						<li><span class="parameter">FileName</span>
+							<span class="types"><span class="string">string</span></span>
+							Name of the scenario file (.scen/.save)
+						</li>
+						<li><span class="parameter">Title</span>
+							<span class="types"><span class="string">string</span></span>
+							Title of the scenario
+						</li>
+						<li><span class="parameter">ScenSetting</span>
+							<span class="types"><span class="string">string</span></span>
+							The setting of the scenario
+						</li>
+						<li><span class="parameter">ScenDate</span>
+							<span class="types"><span class="number">number</span></span>
+							Year of settings
+						</li>
+						<li><span class="parameter">Difficulty</span>
+							<span class="types"><span class="number">number</span></span>
+							Difficulty rating
+						</li>
+						<li><span class="parameter">Complexity</span>
+							<span class="types"><span class="number">number</span></span>
+							Complexity rating
+						</li>
+						<li><span class="parameter">StartTime</span>
+							<span class="types"><span class="string">string</span></span>
+							Starting time
+						</li>
+						<li><span class="parameter">Duration</span>
+							<span class="types"><span class="string">string</span></span>
+							Length of scenario as days:hours:minutes:seconds
+						</li>
+						<li><span class="parameter">CurrentTime</span>
+							<span class="types"><span class="string">string</span></span>
+							Current scenario time
+						</li>
+						<li><span class="parameter">DBUsed</span>
+							<span class="types"><span class="string">string</span></span>
+							Name of database being used
+						</li>
+						<li><span class="parameter">SaveVersion</span>
+							<span class="types"><span class="string">string</span></span>
+							Game version last saved under
+						</li>
+						<li><span class="parameter">CampaignScore</span>
+							<span class="types"><span class="number">number</span></span>
+							Current campaign score
+						</li>
+						<li><span class="parameter">CampaignSessionID</span>
+							<span class="types"><span class="string">string</span></span>
+							Current campaign session id
+						</li>
+						<li><span class="parameter">CampaignID</span>
+							<span class="types"><span class="string">string</span></span>
+							Campaign guid
+						</li>
+						<li><span class="parameter">InCampaignMode</span>
+							<span class="types"><span class="boolean">boolean</span></span>
+							Currently in campaign mode
+						</li>
+						<li><span class="parameter">StartTimeNum</span>
+							<span class="types"><span class="number">number</span></span>
+							Starting time as a number (of seconds) equivalent
+						</li>
+						<li><span class="parameter">DurationNum</span>
+							<span class="types"><span class="number">number</span></span>
+							Length of scenario as a number (of seconds) equivalent
+						</li>
+						<li><span class="parameter">CurrentTime</span>
+							<span class="types"><span class="number">number</span></span>
+							Current scenario time as a number (of seconds) equivalent
+						</li>
+						<li><span class="parameter">guid</span>
+							<span class="types"><span class="string">string</span></span>
+							Current scenario GUID
+						</li>
+						<li><span class="parameter">PlayerSide</span>
+							<span class="types"><span class="string">string</span></span>
+							Current player side GUID
+						</li>
+						<li><span class="parameter">HasStarted</span>
+							<span class="types"><span class="boolean">boolean</span></span>
+							Scenario in play
+						</li>
+						<li><span class="parameter">TimeCompression</span>
+							<span class="types"><span class="number">number</span></span>
+							Compression mode
+						</li>
+						<li><span class="parameter">Sides</span>
+							<span class="types"><span class="number">number</span></span>
+							Number of sides in scenario
+						</li>
+					</ul>
 		
 					<hr>
 					<a class="anchor" id="wrapper_Side"></a>
 					<h3>Side</h3>
 		
 		
-					Side perspective
-		
-					</ul>
+					<p>Side perspective</p>
+	
 		
 					<ul class='ul-no-bullets'>
 						<li><span class="parameter">guid</span>
