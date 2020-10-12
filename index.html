@@ -3965,20 +3965,30 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         an
         attachment
         <a href="#ScenEdit_UseAttachment">ScenEdit_UseAttachment</a></p>
+
+    <h3><a class="anchor" id="ScenEdit_RunScript"></a>ScenEdit_RunScript (script[, useAbsolutePath])</h3> 
+    <p>
+        Runs a script from a file. The file <code>script</code> must be inside the [Command]\Lua directory, or else the game will not be able to load it. You can make the file point to files within a sub-directory of this, as in 'library\cklib.lua'. The file to find will be of the form [Command]\Lua\[<code>script</code>]. A file can also be loaded indirectly from an attachment: <a href="#ScenEdit_UseAttachment">ScenEdit_UseAttachment</a>
+    </p>
+    <p>
+        The optional useAbsolutePath parameter is only available in Command Professional Edition.
+    </p>
     <h4>Parameters</h4>
     <ul>
-        <li><span class="parameter">script</span> The
-            file
-            containing
-            the
-            script
-            to
-            run.</li>
+        <li><span class="parameter">script</span><span class="types"><span class="string">string</span></span> The path to the desired Lua script.</li>
+        <li><span class="parameter">useAbsolutePath</span> <span class="types"><span class="boolean">boolean</span></span> <span class="pro_only">PRO ONLY</span> Optional, defaults to false. If true, the file path is treated as absolute. If false, the file path is treated as relative to [Command]\Lua\ </li>
     </ul>
-    <h5>Example</h5>
-    <div class="example"><code>ScenEdit_RunScript(<span class="string">'mylibrary.lua'</span>)</code></div>
-    </p>
+    <h5>Examples</h5>
+    <div class="example"><code>ScenEdit_RunScript(<span class="string">'mylibrary.lua'</span>) <span class="comment">--Treats the path as relative to [Command PE]\Lua</span></code></div>
+    <div class="example"><code>ScenEdit_RunScript(<span class="string">'subfolder/mylibrary.lua'</span>) <span class="comment">--Treats the path as relative to [Command PE]\Lua</span></code></div>
+    <div class="example"><code>ScenEdit_RunScript(<span class="string">'subfolder\\mylibrary.lua'</span>) <span class="comment">--Treats the path as relative to [Command PE]\Lua</span></code></div>
+    <div class="example"><code>ScenEdit_RunScript(<span class="string">'C:/Users/myname/Desktop/mylibrary.lua'</span>, <span class="boolean">true</span>) <span class="comment">--Treats the path as absolute</span></code></div>
+    <div class="example"><code>ScenEdit_RunScript(<span class="string">'mylibrary.lua'</span>, <span class="boolean">false</span>) <span class="comment">--Treats the path as relative to [Command PE]\Lua</span></code></div>
+    
+    <div class="note-alert"><p><strong>Note:</strong> Windows uses the backslash (\) character to separate file path elements, however a single backslash in a Lua string is treated as an escape character. For this reason forward slash (/) characters are accepted in file paths as well as double backslash characters (\\).</p></div>
+
     <hr>
+
     <h3><a class="anchor" id="ScenEdit_SelectedUnits"></a>ScenEdit_SelectedUnits
         ()</h3>
     <p>list
