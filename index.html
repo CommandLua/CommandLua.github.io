@@ -19,7 +19,8 @@
 	<div id="header-container">
 		<div id="header">
 			<div id="header-logo">
-				<h1><a href="index.html"><img src="./assets/images/CommandLuaLogo.svg" height=45px alt="CommandLua"></a>
+				<h1>
+                    <a href="index.html"><img src="./assets/images/CommandLuaLogo.svg" height=45px alt="CommandLua"></a>
 				</h1>
 			</div>
 			<div id="header-nav">
@@ -30,11 +31,10 @@
 		</div>
 	</div>
 	<div id="container">
-
 		<div id="content">
 			<div id="page-title">
 				<h2 id="page-title">Command Lua API Documentation, v1147.10</h2>
-				<hr>
+                <hr> <!-- NEW SECTION -->
 			</div>
 			<div id="nav">
 				<ul>
@@ -60,8 +60,7 @@
 				</ul>
 			</div>
             <div id="main">
-
-               <a class="anchor" id="News"></a>
+                <a class="anchor" id="News"></a>
                 <h2>News</h2>
                 <h4>Command: Modern Operations v1147.10</h4>
                 <div class="byline">
@@ -167,18 +166,14 @@
                 </ul>
 
                 <p>
-                    While the above items are common uses for the Command Lua API, the integration with source code
-                    allows users to custom-design virtually any feature or modification that they desire.
+                    While the above items are common uses for the Command Lua API, the integration with source code allows users to custom-design virtually any feature or modification that they desire. 
                 </p>
 
                 <a class="anchor" id="top"></a>
 
                 <h3><a class="anchor" id="HowToUse"></a>How to Use These Docs</h3>
                 <p>
-                    Not everyone is a programmer--and even experienced programmers are daunted by dry, wall-of-text
-                    documentation. With this in mind, we have taken steps to make the documentation for the Command Lua
-                    API accessible to users of all levels of skill, while retaining the depth and detail of technical
-                    documentation. To achieve this:
+                    Not everyone is a programmer--and even experienced programmers are daunted by dry, wall-of-text documentation. With this in mind, we have taken steps to make the documentation for the Command Lua API accessible to users of all levels of skill, while retaining the depth and detail of technical documentation. To achieve this: 
                 </p>
                 <ul>
                     <li>
@@ -194,60 +189,26 @@
 
                 <h5>Need Help?</h5>
                 <p>
-                    Even the best written documentation is no match for a discussion with an expert. We have a lively
-                    community of users of all levels--from casual Lua neophytes to professional users who work with the
-                    Command Lua API as their primary job--and the place to get in touch with them is the <a href="https://www.matrixgames.com/forums/tt.asp?forumid=1681">Lua Legion</a> subforum on the <a href="https://www.matrixgames.com/forums/tt.asp?forumid=1154">Official Command Forums</a>. The
-                    forum is actively monitored by WarfareSims staff, and most questions are answered within 24 hours.
+                    Even the best written documentation is no match for a discussion with an expert. We have a lively community of users of all levels--from casual Lua neophytes to professional users who work with the Command Lua API as their primary job--and the place to get in touch with them is the <a href="https://www.matrixgames.com/forums/tt.asp?forumid=1681">Lua Legion</a> subforum on the <a href="https://www.matrixgames.com/forums/tt.asp?forumid=1154">Official Command Forums</a>. The forum is actively monitored by WarfareSims staff, and most questions are answered within 24 hours. 
                 </p>
 
                 <h5>Found Something Wrong?</h5>
                 <p>
-                    We're human too; there are bound to be mistakes or inaccuracies in documentation for live, complex,
-                    evolving software. If you find something that is incorrect or unclear, please let us know by
-                    <!-- using
-        the <a href="#ReportAProblem">report a problem</a> form or  -->
-                    dropping us a message on the <a href="">Official Discord</a>, <a href="https://twitter.com/warfaresims">Twitter</a> or <a href="https://www.facebook.com/WarfareSims/">FaceBook</a>. Better yet, <a href="https://www.matrixgames.com/forums/tt.asp?forumid=1154">come join the community</a>!
-                </p>
+                    We're human too; there are bound to be mistakes or inaccuracies in documentation for live, complex, evolving software. If you find something that is incorrect or unclear, please let us know by dropping us a message on the <a href="">Official Discord</a>, <a href="https://twitter.com/warfaresims">Twitter</a> or <a href="https://www.facebook.com/WarfareSims/">FaceBook</a>. Better yet, <a href="https://www.matrixgames.com/forums/tt.asp?forumid=1154">come join the community</a>! </p>
                 <h4>Conventions</h4>
                 <p>
-                    The following conventions are used throughout this documentation to allow at-a-glance visualisation
-                    of data types, code snippets and example code.
-                </p>
+                    The following conventions are used throughout this documentation to allow at-a-glance visualisation of data types, code snippets and example code. </p>
                 <ul class="ul-no-bullets">
-                    <li>
-                        <code>Code within text</code> is differentiated from normal text with a border, additional
-                        spacing and a console-like font.
-                    </li>
-                    <li>
-                        <span class="parameter"><a href="">Parameter</a></span> references appear similar to in-text
-                        code with a light blue background. The text links to the relevant documentation (although not in
-                        this example, as a parameter can be any of the types below).
-                    </li>
-                    <li>
-                        <span class="selector"><a href="#Selectors">Selector</a></span> references appear similar to
-                        in-text code with a light green background. The text links to the relevant <a href="#Selectors">Selector</a> documentation.
-                    </li>
-                    <li>
-                        <span class="wrapper"><a href="#Wrappers">Wrapper</a></span> references appear similar to
-                        in-text code with a light purple background. The text links to the relevant <a href="#Wrappers">Wrapper</a> documentation.
-                    </li>
-                    <li>
-                        <span class="table"><a href="#Tables">Table</a></span> references appear similar to in-text code
-                        with a light orange background. The text links to the relevant <a href="#Tables">Table</a>
-                        documentation.
-                    </li>
-
-                    <li>
-                        <span class="types"><a href="#DataTypes">Data type</a></span> descriptions appear similar to
-                        in-text code with bold font a dark grey background. If the Data Type is not one of the standard
-                        Lua data types, the text is white and links to the relevant <a href="#DataTypes">Data Type</a>
-                        documentation. Otherwise, the text is color coded to match the appearance of the datatype in the
-                        console:
-                    </li>
+                    <li><code>Code within text</code> is differentiated from normal text with a border, additional spacing and a console-like font.</li>
+                    <li><span class="parameter"><a href="">Parameter</a></span> references appear similar to in-text code with a light blue background. The text links to the relevant documentation (although not in this example, as a parameter can be any of the types below).</li>
+                    <li><span class="selector"><a href="#Selectors">Selector</a></span> references appear similar to in-text code with a light green background. The text links to the relevant <a href="#Selectors">Selector</a> documentation.</li>
+                    <li><span class="wrapper"><a href="#Wrappers">Wrapper</a></span> references appear similar to in-text code with a light purple background. The text links to the relevant <a href="#Wrappers">Wrapper</a> documentation.</li>
+                    <li><span class="table"><a href="#Tables">Table</a></span> references appear similar to in-text code with a light orange background. The text links to the relevant <a href="#Tables">Table</a> documentation.</li> 
+                    <li><span class="types"><a href="#DataTypes">Data type</a></span> descriptions appear similar to in-text code with bold font a dark grey background. If the Data Type is not one of the standard Lua data types, the text is white and links to the relevant <a href="#DataTypes">Data Type</a> documentation. Otherwise, the text is color coded to match the appearance of the datatype in the console:</li>
                     <ul>
-                        <li><span class="types"><span class="string">string</span></li>
-                        <li><span class="types"><span class="boolean">boolean</span></li>
-                        <li><span class="types"><span class="number">number</span></li>
+                        <li><span class="types"><span class="string">string</span></span></li>
+                        <li><span class="types"><span class="boolean">boolean</span></span></li>
+                        <li><span class="types"><span class="number">number</span></span></li>
                     </ul>
                     <li>
                         <span class="readonly">READ ONLY</span> properties are denoted by a tag with the words READ ONLY
@@ -395,22 +356,11 @@
                     disposal.
                 </p>
 
-                <!-- <p>
-        If you've never written a line of code in your life, <strong>don't panic--we've got you</strong>. We
-        have a comprehensive set of <a href="#Guides">Guides</a> to get you started. Once you've conquered
-        the <a href="#Guides">Guides</a> section, you'll be ready to jump in the deep end and start using
-        the <a href="#Functions">Functions</a> to bend Command to your will!
-    </p> -->
-
                 <a class="anchor" id="ExternalResources"></a>
                 <h3>External Resources</h3>
                 <p>The links below contain useful resources for getting started with Lua in general:</p>
                 <ul>
-                    <li>
-                        <a href="http://lua-users.org/wiki/TutorialDirectory">Tutorials from the Lua Users Wiki</a> -
-                        The first four tutorials (<a href="http://lua-users.org/wiki/LuaTypesTutorial">Types</a>, <a href="http://lua-users.org/wiki/AssignmentTutorial">Assignment</a>, <a href="http://lua-users.org/wiki/NumbersTutorial">Numbers</a> and <a href="http://lua-users.org/wiki/StringsTutorial">Strings</a>) as well as the <a href="http://lua-users.org/wiki/TablesTutorial">Tables</a> and <a href="http://lua-users.org/wiki/FunctionsTutorial">Functions</a> tutorials are recommended
-                        reading.
-                    </li>
+                    <li><a href="http://lua-users.org/wiki/TutorialDirectory">Tutorials from the Lua Users Wiki</a> - The first four tutorials (<a href="http://lua-users.org/wiki/LuaTypesTutorial">Types</a>, <a href="http://lua-users.org/wiki/AssignmentTutorial">Assignment</a>, <a href="http://lua-users.org/wiki/NumbersTutorial">Numbers</a> and <a href="http://lua-users.org/wiki/StringsTutorial">Strings</a>) as well as the <a href="http://lua-users.org/wiki/TablesTutorial">Tables</a> and <a href="http://lua-users.org/wiki/FunctionsTutorial">Functions</a> tutorials are recommended reading.</li>
                     <li><a href="https://en.wikibooks.org/wiki/Lua_Programming">The Lua Programming WikiBook</a></li>
                     <li><a href="https://www.lua.org/manual/5.3/">Lua 5.3 Reference Manual</a></li>
                 </ul>
@@ -443,71 +393,9 @@
                         table documentation.
                     </p>
                 </div>
+                    
+<hr> <!-- NEW SECTION -->
 
-                <!-- <h5>Example 1</h5>
-    <p>
-        In the code below, note that incorrect case returns an undesired value while using the correct case
-        returns the desired value.
-    </p>
-
-    <div class="example">
-        <p>
-            <code>
-                    <span class="local">local</span>
-                    mission
-                    <span class="operator">=</span>
-                    ScenEdit_AddMission
-                    <span class="operator">(</span>
-                    <span class="string">'USA'</span>,
-                    <span class="string">'Marker strike'</span>,
-                    <span class="string">'strike'</span>,
-                    <span class="operator">{</span>
-                    type
-                    <span class="operator">=</span>
-                    <span class="string">'land'</span>
-                    <span class="operator">}</span>
-                    <span class="operator">)</span>
-                    <br>
-                    <span class="comparator">if</span> mission
-                    <span class="operator">==</span>
-                    <span class="nil"/>
-                    <span class="comparator">then</span>
-                    <br>
-                    <span class="tab1">
-                        <span class="comparator">&nbsp;&nbsp;&nbsp;&nbsp;if</span>
-                        _errnum_
-                        <span class="operator">~=</span>
-                        <span class="number">0</span>
-                        <span class="comparator">then</span>
-                        <br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="print"/>
-                        <span class="operator">(</span>
-                        <span class="string">'Failed to add:'</span>
-                        .. _errmsg_
-                        <span class="operator">)</span>
-                        <br>
-                        <span class="comparator">&nbsp;&nbsp;&nbsp;&nbsp;else</span>
-                        <br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="print"/>
-                        <span class="operator">(</span>
-                        <span class="string">'Something else'</span>
-                        <span class="operator">)</span>
-                        <br>
-                        <span class="comparator">&nbsp;&nbsp;&nbsp;&nbsp;end</span>
-                        <br>
-                        <span class="comparator">else</span>
-                        <br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="print"></span>
-                        <span class="operator">(</span>
-                        <span class="string">mission</span?
-                        <span class="operator">)</span>
-                        <br>
-                        <span class="comparator">end</span>
-                    </span>
-                </code>
-        </p>
-    </div> -->
-                    <hr>
                     <a class="anchor" id="EventHandling"></a>
                     <h3>Event Handling</h3>
                     <p>
@@ -860,7 +748,9 @@
                             <strong>Note:</strong> If the trigger is assigned to an event, it can't be removed until removed from the event.
                         </p>
                     </div>
-                    <hr>
+                    
+<hr> <!-- NEW SECTION -->
+
                     <h4>ScenEdit_SetCondition( { table } )</h4>
                     <p>
                         As it sounds, a condition is something that can be further applied once the trigger has fired, and results in a success or fail. Apart from a few common keywords, each condition has a set of keywords.
@@ -940,7 +830,9 @@
                             <strong>Note:</strong> The variable <code>a</code> will contain the trigger information. It will be <code>nil</code> if the trigger failed in a non-interactive script as in an event.
                         </p>
                     </div>
-                    <hr>
+                    
+<hr> <!-- NEW SECTION -->
+
                     <h4>ScenEdit_SetAction( { table } )</h4>
                     <p>
                         As it sounds, a action is something that will be done once the trigger (and condition) are successful. Apart from a few common keywords, each action has a set of keywords.
@@ -1033,7 +925,9 @@
                             <strong>Note:</strong> The variable <code>a</code> will contain the trigger information. It will be <code>nil</code> if the trigger failed in a non-interactive script as in an event.
                         </p>
                     </div>
-                    <hr>
+                    
+<hr> <!-- NEW SECTION -->
+
                     <h4>Modifying Events</h4>
                     <p>
                         Triggers, conditions and actions (TCA) can be linked to events. A common format is followed for each one.
@@ -1114,7 +1008,9 @@
                         <li><code>_errmsg_</code> Error message from Lua Function failure</li>
                         </ul>
                     </p>
-                    <hr>
+                    
+<hr> <!-- NEW SECTION -->
+
                 <a class="anchor" id="ErrorHandling"></a>
                 <h3>Error Handling</h3>
                 <p>
@@ -1241,7 +1137,9 @@
                 <p>
                     Aside from the regular <span class="types"><span class="string">string</span></span>, <span class="types"><span class="number">number</span></span>, <span class="types"><span class="boolean">boolean</span></span> and <span class="table">table</span> data types inherited from Lua, the Command Lua API has a range of unique data types.
                 </p>
-                <hr>
+                
+<hr> <!-- NEW SECTION -->
+
                 <h3><a class="anchor" id="dataType_Altitude"></a>Altitude</h3>
                 <p>
                     Altitude is the height or depth of a unit. The altitude is displayed in meters when accessing the
@@ -1259,7 +1157,9 @@
                         </code>
                     </div>
                 </p>
-                <hr>
+                
+<hr> <!-- NEW SECTION -->
+
                 <h3><a class="anchor" id="dataType_Arc"></a>Arc</h3>
                 <p>
                     Arcs for sensor and mounts.
@@ -1268,13 +1168,17 @@
                 <p>
                     <img src=".\assets\images\datatypes_1_arc_codes.jpg" width="200">
                 </p>
-                <hr>
+                
+<hr> <!-- NEW SECTION -->
+
                 <h3><a class="anchor" id="dataType_DateTime"></a>DateTime</h3>
                 <p>
                     DateTime is displayed and changed as per LOCALE e.g. US would be 'MM/DD/YYYY HH:MM:SS AM/PM' eg
                     '8/13/2002 12:14 PM'
                 </p>
-                <hr>
+                
+<hr> <!-- NEW SECTION -->
+
                 <h3><a class="anchor" id="dataType_KeyStore"></a>KeyStore</h3>
                 <p>
                     The simulation allows for user data to be stored within the save file. This is done by associating
@@ -1307,7 +1211,9 @@
                 </o>
             </div>
 				</p>
-				<hr>
+				
+<hr> <!-- NEW SECTION -->
+
 				<h3><a class="anchor" id="dataType_Latitude"></a>Latitude</h3>
 				<p>
 					Latitude is degrees N or S of the equator as 'S 60.20.10' or as +/- as -60.336. The data in the
@@ -1321,7 +1227,9 @@
 						{latitude = <span class="number">-60.336</span>}
 					</code>
 				</div>
-				<hr>
+				
+<hr> <!-- NEW SECTION -->
+
 				<h3><a class="anchor" id="dataType_LoadoutRole"></a>LoadoutRole</h3>
 				<details>
 					<p>
@@ -1394,7 +1302,9 @@
 						</ul>
 				</details>
 				</p>
-				<hr>
+				
+<hr> <!-- NEW SECTION -->
+
 				<h3><a class="anchor" id="dataType_LoadoutTimeOfDay"></a>LoadoutTimeOfDay</h3>
 				<details>
 					<p>
@@ -1422,7 +1332,9 @@
 						aircraft launch, however <strong>they do affect quick-turnaround</strong>.
 					</p>
 				</div>
-				<hr>
+				
+<hr> <!-- NEW SECTION -->
+
 				<h3><a class="anchor" id="dataType_LoadoutWeather"></a>LoadoutWeather</h3>
 				<details>
 					<p>
@@ -1453,7 +1365,9 @@
 						able to use those weapons if the target is obscured by cloud, fog or heavy precipitation.
 					</p>
 				</div>
-				<hr>
+				
+<hr> <!-- NEW SECTION -->
+
 				<h3><a class="anchor" id="dataType_Longitude"></a>Longitude</h3>
 				<p>
 					Longitude is degrees E or W of Greenwich line as 'W 60.20.10' or as +/- as -60.336. The data in the
@@ -1467,7 +1381,9 @@
 						{longitude = <span class="number">-60.336</span>}
 					</code>
 				</div>
-				<hr>
+				
+<hr> <!-- NEW SECTION -->
+
 				<a class="anchor" id="dataType_Size"></a>
 					<h3>Size</h3>
 					<p>Size various size attributes (eg flightsize in mission).</p>
@@ -1512,7 +1428,9 @@
 					
 					<p> *This can also be set by using a value of 'all'.</p></details>
 				
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 				<a class="anchor" id="dataType_Stance"></a>
 					<h3>Stance</h3>
 					<p>
@@ -1532,7 +1450,9 @@
 						<li>Unknown 	= 4</li>
 					</ul>
 					 </details>
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 				<a class="anchor" id="dataType_TargetTypeWRA"></a>
 					<h3>TargetTypeWRA</h3>
 					<p>Target type.</p>
@@ -1632,14 +1552,18 @@
 						<li>Air_Base_Single_Unit_Airfield = 5801</li>
 					</ul>
 					</details>
-				<hr>
+				
+<hr> <!-- NEW SECTION -->
+
 				<a class="anchor" id="dataType_TimeStamp"></a>
 				<h3>TimeStamp</h3>
 				<p>
 					TimeStamp is a representation of time defined as the number of seconds that have elapsed since 00:00:00 Coordinated Universal Time (UTC), Thursday, 1 January 1970
 				</p>
 				
-						<hr>
+						
+<hr> <!-- NEW SECTION -->
+
 
 
 				<a class="anchor" id="dataType_Unit_Aircraft"></a>
@@ -1701,7 +1625,9 @@
 					</ul >
 					</details>
 					</p>
-				<hr>
+				
+<hr> <!-- NEW SECTION -->
+
 
 				<a class="anchor" id="dataType_Unit_Facility"></a>
 					<h3>UnitFacility </h3>
@@ -1746,7 +1672,9 @@
 					</ul >
 					</details>
 					</p>
-				<hr>
+				
+<hr> <!-- NEW SECTION -->
+
 
 				<a class="anchor" id="dataType_Unit_Satellite"></a>
 					<h3>UnitSatellite </h3>
@@ -1777,7 +1705,9 @@
 					</ul >
 					</details>
 					</p>
-				<hr>
+				
+<hr> <!-- NEW SECTION -->
+
 
 				<a class="anchor" id="dataType_Unit_Ship"></a>
 					<h3>UnitShip </h3>
@@ -1978,7 +1908,9 @@
 					</ul >
 					</details>
 					</p>
-				<hr>
+				
+<hr> <!-- NEW SECTION -->
+
 
 				<a class="anchor" id="dataType_Unit_Submarine"></a>
 					<h3>UnitSubmarine </h3>
@@ -2020,7 +1952,9 @@
 					</ul >
 					</details>
 					</p>
-				<hr>
+				
+<hr> <!-- NEW SECTION -->
+
 
 				<a class="anchor" id="dataType_WeaponDoctrine"></a>
 						<h3>WeaponDoctrine</h3>
@@ -2053,7 +1987,9 @@
 						<li>Shotgun75_ToO - 4022 - Same as above, but if easy targets or threats are nearby then shoot at those too. Also engage bogies with guns. Applies to air-to-air (A/A) loadouts only.</li>
 					</ul>
 					</details>
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 				<a class="anchor" id="dataType_WeaponType"></a>
 					<h3>WeaponType</h3>
 					<p><details><summary>Weapon Type Codes
@@ -2098,7 +2034,9 @@
 					</ul>
 					</details>
 				
-				<hr>
+				
+<hr> <!-- NEW SECTION -->
+
 				<a class="anchor" id="dataType_Weather"></a>
 				<h3>Weather</h3>
 				<p>Weather conditions.</p>
@@ -2116,7 +2054,9 @@
 						<span class="parameter">seastate</span><span class="types"><span class="number">number</span></span> Sea state
 					</li>
 				</ul>
-				<hr>
+				
+<hr> <!-- NEW SECTION -->
+
 				<a class="anchor" id="Functions"></a>
 				<h2>Functions</h2>
 				<!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -2259,7 +2199,9 @@
                     <li><a href="#ScenEdit_ExportScenarioToXML">ScenEdit_ExportScenarioToXML()</a> <span class="pro_only">PRO ONLY</span></li>
                 </ul>
                 <br>
-				<hr>
+				
+<hr> <!-- NEW SECTION -->
+
 				<h3><a class="anchor" id="GetBuildNumber"></a>GetBuildNumber()</h3>
 				<p>
 					Returns the build number of the game executable.
@@ -2282,7 +2224,9 @@
 						<span class="output">>>> 1134.3</span>
 					</code>
 				</div>
-				<hr>
+				
+<hr> <!-- NEW SECTION -->
+
 				<h3><a class="anchor" id="GetScenarioTitle"></a>GetScenarioTitle()</h3>
 				<p>
 					Returns the title of the currently loaded scenario.
@@ -2305,7 +2249,9 @@
 						<span class="output">>>> Lone Wolf</span>
 					</code>
 				</div>
-				<hr>
+				
+<hr> <!-- NEW SECTION -->
+
 	
 	
 				<h3><a class="anchor" id="ScenEdit_AddCustomLoss"></a>ScenEdit_AddCustomLoss ()</h3>
@@ -2325,7 +2271,9 @@
 					<code>ScenEdit_AddCustomLoss( 'sidea', { {'removethis',0},{'Casualties', 10000} } ) </code>
 				</div>
 				</p>
-				<hr>
+				
+<hr> <!-- NEW SECTION -->
+
 
 
 				<h3><a class="anchor" id="ScenEdit_AddExplosion"></a>ScenEdit_AddExplosion()</h3>
@@ -2349,7 +2297,9 @@
 					<code>ScenEdit_AddExplosion({warheadid=<span class="number">253</span>, lat=unit.latitude, lon=unit.longitude, altitude=unit.altitude})</code>
 				</div>
 				</p>
-				<hr>
+				
+<hr> <!-- NEW SECTION -->
+
 				<h3><a class="anchor" id="ScenEdit_AddMinefield"></a>ScenEdit_AddMinefield()</h3>
 				<p>
 					Attempt to lay a minefield
@@ -2400,7 +2350,9 @@
 						<span class="local">local</span> a = ScenEdit_AddMinefield({side=<span class="string">'Blue'</span>, dbid=<span class="number">2345</span>, number=<span class="number">100</span>, delay=<span class="number">60000</span>, area={<span class="string">'rp-1'</span>,<span class="string">'rp-2'</span>,<span class="string">'rp-3'</span>,<span class="string">'rp-4'</span>} } )
 					</code>
 				</div>
-				<hr>
+				
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_AddMission"></a>ScenEdit_AddMission (SideNameOrId, MissionNameOrId, MissionType,
         MissionOptions)</h3>
     <p>Add new mission.</p>
@@ -2425,7 +2377,9 @@
         <code><span class="local">local</span> mission = ScenEdit_AddMission(<span class="string">'USA'</span>,<span class="string">'Marker strike'</span>,<span class="string">'strike'</span>,{<span class="global">type</span>=<span class="string">'land'</span>})</code>
     </div>
 
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_AddReferencePoint"></a>ScenEdit_AddReferencePoint (descriptor)</h3>
     <p>Add new reference point(s).</p>
     <p>This function adds new reference point(s) as defined by a descriptor.As this function also calls
@@ -2461,7 +2415,9 @@
     <div class="example">
         <code>ScenEdit_AddReferencePoint( {side=<span class="string">'sidea'</span>, RelativeTo=<span class="string">'USN Dewey'</span>, bearing=<span class="number">45</span> ,distance=<span class="number">20</span>, clear=<span class="keyword">true</span> })</code>
     </div>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_AddReloadsToUnit"></a>ScenEdit_AddReloadsToUnit (descriptor)</h3>
     <p>Adds weapons into a mount.</p>
     <h4>Parameters</h4>
@@ -2477,7 +2433,9 @@
         <code>ScenEdit_AddReloadsToUnit({unitname=<span class="string">'Mech Inf #1'</span>, wpn_dbid=<span class="number">773</span>, number=<span class="number">1</span>, w_max=<span class="number">10</span>})</code>
     </div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_AddSide"></a>ScenEdit_AddSide (table)</h3>
     <p>Add a side with the specified name.</p>
     <h4>Parameters</h4>
@@ -2490,7 +2448,9 @@
     <div class="example">
         <code>ScenEdit_AddSide({name=<span class="string">'OPFOR'</span>})</code>
     </div>
-	<hr>
+	
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_AddSpecialAction"></a>ScenEdit_AddSpecialAction(table)</h3>
     <p>Add special action to a side</p>
     <h4>Parameters</h4>
@@ -2501,7 +2461,9 @@
     <h4>Returns</h4>
     <p><span class="wrapper"><a href="#wrapper_SpecialAction">SpecialAction</a></span> Details of the Special Action</p>
 	
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_AddUnit"></a>ScenEdit_AddUnit (unit)</h3>
     <p>Adds a unit based on a descriptor.</p>
     <h4>Parameters</h4>
@@ -2526,7 +2488,9 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     </div>
 
 
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_AddWeaponToUnitMagazine"></a>ScenEdit_AddWeaponToUnitMagazine (descriptor)</h3>
     <p>Adds weapons into a magazine.</p>
     <h4>Parameters</h4>
@@ -2543,7 +2507,9 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
         <code>ScenEdit_AddWeaponToUnitMagazine({unitname=<span class="string">'Ammo'</span>, wpn_dbid=<span class="number">773</span>, number=<span class="number">1</span>, w_max=<span class="number">10</span>})</code>
     </div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_AddZone"></a>ScenEdit_AddZone (sideName, zoneType, table)</h3>
     <p>Add no-nav or exclusion zone.<br />...The RPs are normally visible to the side. They can start out 'hidden' by
         adding
@@ -2561,7 +2527,9 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     </ul>
     <h4>Returns</h4>
     <p><span class="wrapper"><a href="#wrapper_Zone">{ Zone }</a></span></p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_AssignUnitAsTarget"></a>ScenEdit_AssignUnitAsTarget (AUNameOrIDOrTable,
         MissionNameOrID)</h3>
     <p>Assigns targets to a Strike mission.</p>
@@ -2590,7 +2558,9 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     </div>
 
 
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_AssignUnitToMission"></a>ScenEdit_AssignUnitToMission (unitname, mission, escort)
     </h3>
     <p>Assign a unit to a mission.</p>
@@ -2617,7 +2587,9 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
         <code>ScenEdit_AssignUnitToMission(<span class="string">"Bar #1"</span>,<span class="string">"Strike"</span>)</code>
     </div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
 
     <h3><a class="anchor" id="ScenEdit_AttackContact"></a>ScenEdit_AttackContact (attackerID, contactId, options)</h3>
     <p>Attack a contact as an auto-target or manual target with weapon allocation.</p>
@@ -2646,7 +2618,9 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
             <strong>Note:</strong> The function will use the <strong>weapon</strong> from the aircraft loadout if applicable when no <strong>mount</strong> is supplied.
         </p>
     </div>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_ClearKeyValue"></a>ScenEdit_ClearKeyValue (key, forCampaign)</h3>
     <p>Clears a key</p>
     <p> .. or all keys from the persistent key store.</p>
@@ -2663,12 +2637,16 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     <h5>Example</h5>
     <div class="example"><code>ScenEdit_ClearKeyValue(<span class="string">"A"</span>)</code></div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_CurrentLocalTime"></a>ScenEdit_CurrentLocalTime ()</h3>
     <p>Get the current scenario local time.</p>
     <h4>Returns</h4>
     <p><span class="types"><span class="string">string</span></span>The local time as HH:MM:SS.</p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_CurrentTime"></a>ScenEdit_CurrentTime ()</h3>
     <p>Get the current scenario time.</p>
     <h4>Returns</h4>
@@ -2682,7 +2660,9 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
 <span class="comment">-- been more than 5 minutes, set the lastTriggered time to now</span> 
  timeFromLastTiggered = now
 <span class="keyword">end</span></code></div>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_DeleteMine"></a>ScenEdit_DeleteMine (side, guid)</h3>
     <p>delete a mine</p>
     <h4>Parameters</h4>
@@ -2700,7 +2680,9 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
         <code><span class="local">local</span> a = ScenEdit_DeleteMine({side=<span class="string">'Blue'</span>, guid=<span class="string">'cccccccc'</span>} )</code>
     </div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_DeleteMinefield"></a>ScenEdit_DeleteMinefield (side, area)</h3>
     <p>delete a minefield</p>
     <h4>Parameters</h4>
@@ -2718,7 +2700,9 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
         <code><span class="local">local</span> a = ScenEdit_DeleteMinefield({side=<span class="string">'Blue'</span>, area={<span class="string">'rp-1'</span>,<span class="string">'rp-2'</span>,<span class="string">'rp-3'</span>,<span class="string">'rp-4'</span>} } )</code>
     </div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_DeleteMission"></a>ScenEdit_DeleteMission (SideNameOrId, MissionNameOrId)</h3>
     <p>Delete mission... unassigns any units attached to it.</p>
     <h4>Parameters</h4>
@@ -2737,7 +2721,9 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
         <code><span class="local">local</span> mission = ScenEdit_DeleteMission(<span class="string">'USA'</span>,<span class="string">'Marker strike'</span>)</code>
     </div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_DeleteReferencePoint"></a>ScenEdit_DeleteReferencePoint (selector)</h3>
     <p>Delete a reference point.</p>
     <p>Given a reference point selector, this function will remove it.</p>
@@ -2749,7 +2735,9 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     </ul>
     <h4>Returns</h4>
     <p><span class="types"><span class="boolean">boolean</span></span>True if deleted</p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_DeleteUnit"></a>ScenEdit_DeleteUnit (unit, include)</h3>
     <p>Deletes unit... and no event triggers.</p>
     <h4>Parameters</h4>
@@ -2762,13 +2750,17 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
         <code>ScenEdit_DeleteUnit({side=<span class="string">"United States"</span>, unitname=<span class="string">"USS Abcd"</span>})</code>
     </div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_EndScenario"></a>ScenEdit_EndScenario ()</h3>
     <p>Ends the current scenario.</p>
     <h5>Example</h5>
     <div class="example"><code>ScenEdit_EndScenario()</code></div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_EventX"></a>ScenEdit_EventX ()</h3>
     <p>Active Event
         .. that has been triggered.Otherwise, a<code>nil</code> is returned.</p>
@@ -2779,7 +2771,9 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     <h5>Example</h5>
     <div class="example"><code><span class="local">local</span> event = ScenEdit_EventX()</code></div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_ExecuteEventAction"></a>ScenEdit_ExecuteEventAction (EventDescriptionOrID)</h3>
     <p>Execute a Lua Event action script... but does not show results of execution of the
         action</p>
@@ -2790,7 +2784,9 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     </ul>
     <h4>Returns</h4>
     <p><span class="types"><span class="string">string</span></span>"Ok" on execution or nothing.</p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_ExecuteSpecialAction"></a>ScenEdit_ExecuteSpecialAction (eventNameOrId)</h3>
     <p>Execute a Lua Special action script
         .. but does not show results of execution of the
@@ -2803,7 +2799,9 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     </ul>
     <h4>Returns</h4>
     <p><span class="types"><span class="string">string</span></span>"Ok" on execution or nothing.</p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_ExportInst"></a>ScenEdit_ExportInst (side, unitList, fileData)</h3>
     <p>Export unit(s) to an inst file.</p>
     <h4>Parameters</h4>
@@ -2818,7 +2816,9 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
             ScenEdit_ExportInst(<span class="string">'Russia'</span>, {<span class="string">'c1a0e312-9ccc-43d1-9e6c-01899c8433d9'</span>}, {filename=<span class="string">'ssbn_patrol.inst'</span>,name=<span class="string">'SSBN on Patrol'</span>,comment=<span class="string">'Russian SSBN on patrol in Barents'</span>})
         </code>
     </div>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_ExportMission"></a>ScenEdit_ExportMission (SideNameOrId,MissionNameOrId)</h3>
     <p>Export mission parameters... as a XML file in folder Command_base/Defaults.[Experimental as this should really be
         treated like
@@ -2839,7 +2839,9 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     <div class="example">
         <code><span class="local">local</span> mission = ScenEdit_ExportMission(<span class="string">'USA'</span>,<span class="string">'Marker strike'</span>})</code>
     </div>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_ExportScenarioToXML"></a>ScenEdit_ExportScenarioToXML() <span class="pro_only">PRO ONLY</span></h3>
     <p>Export the entire scenario in XML format.</p>
     <h4>Returns</h4>
@@ -2847,7 +2849,9 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     <h5>Example</h5>
     <div class="example"><code>theXML = ScenEdit_ExportScenarioToXML()</code></div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_FillMagsForLoadout"></a>ScenEdit_FillMagsForLoadout (unit,loadoutid, quantity)
     </h3>
     <p>Fill a unit's magazine(s) with aircraft
@@ -2872,7 +2876,9 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
         <code>ScenEdit_FillMagsForLoadout(<span class="string">'{unit='</span>RAF Lakenheath<span class="string">', loadoutid=45162, quantity=12}'</span>)</code>
     </div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_GetContact"></a>ScenEdit_GetContact (contact)</h3>
     <p>Fetches a contact based on a selector.</p>
     <p>This function is mostly identical to<a href="#ScenEdit_GetUnit">ScenEdit_GetUnit</a>except that if
@@ -2892,7 +2898,9 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
         <code>ScenEdit_GetContact({side=<span class="string">"United States"</span>, guid=<span class="string">"c4114322-900c-428d-a3e3-0af701e81a7a"</span>})</code>
     </div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_GetContacts"></a>ScenEdit_GetContacts (side)</h3>
     <p>Contacts from a side.</p>
     <h4>Parameters</h4>
@@ -2909,7 +2917,9 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
         <code><span class="local">local</span> con = ScenEdit_GetContacts(<span class="string">'south korea'</span>)</code>
     </div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_GetDoctrine"></a>ScenEdit_GetDoctrine (selector)</h3>
     <p>Gets the doctrine of the
         designated object.</p>
@@ -2931,7 +2941,9 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     <div class="example">
         <code>ScenEdit_GetDoctrine({side=<span class="string">"Soviet Union"</span>}).use_nuclear_weapons</code></div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_GetDoctrineWRA"></a>ScenEdit_GetDoctrineWRA
         (selector)</h3>
     <p>Gets the WRA doctrine.</p>
@@ -2957,7 +2969,9 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     <div class="example">
         <code>ScenEdit_GetDoctrineWRA({side=<span class="string">'sidea'</span>, target_type=<span class="string">'Surface_Contact_Unknown_Type'</span>, weapon_id=<span class="number">1575</span>})</code>
     </div>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_GetEvent"></a>ScenEdit_GetEvent
         (EventDescriptionOrID,level)</h3>
     <p>Gets the properties of an event.</p>
@@ -2972,7 +2986,9 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     </ul>
     <h4>Returns</h4>
     <p><span class="wrapper"><a href="#wrapper_Event">Event</a></span>The event details</p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_GetEvents"></a>ScenEdit_GetEvents (level)</h3>
     <p>Gets all events.</p>
     <h4>Parameters</h4>
@@ -2984,7 +3000,9 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     </ul>
     <h4>Returns</h4>
     <p><span class="wrapper"><a href="#wrapper_Event"> { Event}</a></span>Table of event details</p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_GetKeyValue"></a>ScenEdit_GetKeyValue (key,forCampaign)</h3>
     <p>Gets the value for a key
         from the persistent key
@@ -3010,7 +3028,9 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     <div class="example"><code>ScenEdit_SetKeyValue(<span class="string">"A"</span>,<span class="string">"2"</span>)
 ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- returns "2"</span></code></div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_GetLoadout"></a>ScenEdit_GetLoadout
         (loadoutinfo)</h3>
     <p>Gets the loadout details
@@ -3028,7 +3048,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     </ul>
     <h4>Returns</h4>
     <p><span class="wrapper"><a href="#wrapper_Loadout">Loadout</a></span>Loadout wrapper</p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_GetMinefield"></a>ScenEdit_GetMinefield
         (side, area)</h3>
     <p>get a minefield</p>
@@ -3050,7 +3072,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         <code><span class="local">local</span> a = ScenEdit_GetMinefield({side=<span class="string">'Blue'</span>, area={<span class="string">'rp-1'</span>,<span class="string">'rp-2'</span>,<span class="string">'rp-3'</span>,<span class="string">'rp-4'</span>} } )</code>
     </div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_GetMission"></a>ScenEdit_GetMission
         (SideNameOrId,MissionNameOrId)</h3>
     <p>Get details of a
@@ -3073,7 +3097,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         <code><span class="local">local</span> mission = ScenEdit_GetMission(<span class="string">'USA'</span>,<span class="string">'CV CAP Left'</span>)</code>
     </div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_GetReferencePoints"></a>ScenEdit_GetReferencePoints
         (selector)</h3>
     <p>Get a set of
@@ -3100,7 +3126,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         <code><span class="local">local</span> points = ScenEdit_GetReferencePoints({side=<span class="string">"United States"</span>, area={<span class="string">"rp-100"</span>,<span class="string">"rp-101"</span>,<span class="string">"rp-102"</span>,<span class="string">"rp-103"</span>,<span class="string">"rp-104"</span>})</code>
     </div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_GetScenHasStarted"></a>ScenEdit_GetScenHasStarted
         ()</h3>
     <p>Has the
@@ -3113,7 +3141,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h5>Example</h5>
     <div class="example"><code><span class="local">local</span> state = ScenEdit_GetScenHasStarted()</code></div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_GetScore"></a>ScenEdit_GetScore
         (side)</h3>
     <p>Get a
@@ -3135,7 +3165,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h5>Example</h5>
     <div class="example"><code>ScenEdit_GetScore(<span class="string">"PlayerSide"</span>)</code></div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_GetSideIsHuman"></a>ScenEdit_GetSideIsHuman
         (sidename)</h3>
     <p>Returns
@@ -3169,7 +3201,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         specified
         is
         human</p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_GetSideOptions"></a>ScenEdit_GetSideOptions
         (options)</h3>
     <p>Get
@@ -3190,7 +3224,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h5>Example</h5>
     <div class="example"><code>ScenEdit_GetSideOptions({side=<span class="string">'SideA'</span>})</code></div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_GetSidePosture"></a>ScenEdit_GetSidePosture
         (sideA,sideB)</h3>
     <p>Gets
@@ -3226,7 +3262,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         of
         'N','F','H',or
         'A'.</p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_GetSpecialAction"></a>ScenEdit_GetSpecialAction
         (action_info)</h3>
     <p>Gets
@@ -3246,7 +3284,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
             to
             retrieve</li>
     </ul>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_GetTimeOfDay"></a>ScenEdit_GetTimeOfDay
         (table)</h3>
     <p>Get
@@ -3287,7 +3327,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h5>Example</h5>
     <div class="example"><code>ScenEdit_GetTimeOfDay(<span class="global">table</span>)</code></div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
 	<h3><a class="anchor" id="ScenEdit_GetUnit"></a>ScenEdit_GetUnit()</h3>
 	<p>Returns a <span class="wrapper"><a href="#wrapper_Unit">Unit</a></span> wrapper using a <span
 			class="selector"><a href="#selector_UnitSelector">UnitSelector</a></span>.</p>
@@ -3420,7 +3462,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 			</code>
 		</p>
 	</div>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_HostUnitToParent"></a>ScenEdit_HostUnitToParent
         (host_info)</h3>
     <p>Host/base
@@ -3444,7 +3488,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         <li><span class="parameter">host_info</span> <span class="table"><a href="#table_HostUnit">HostUnit</a></span>
             The information about the hosting request</li>
     </ul>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_ImportInst"></a>ScenEdit_ImportInst
         (side,filename)</h3>
     <p>Imports
@@ -3468,7 +3514,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
             inst
             file</li>
     </ul>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_ImportMission"></a>ScenEdit_ImportMission
         (SideNameOrId,MissionNameOrId)</h3>
     <p>Import
@@ -3514,13 +3562,17 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <div class="example">
         <code><span class="local">local</span> mission = ScenEdit_ExportMission(<span class="string">'USA'</span>,<span class="string">'Marker strike'</span>})</code>
     </div>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_ImportScenarioFromXML"></a>ScenEdit_ImportScenarioFromXML() <span class="pro_only">PRO ONLY</span></h3>
     <h4>Returns</h4>
     <p><span class="types"><span class="boolean">boolean</span></span> Returns true if the import completed successfully, false otherwise</p>
     <h5>Example</h5>
     <div class="example"><code>ScenEdit_ImportScenarioFromXML({XML=<span class="string">'...'</span>})</code></div>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_InputBox"></a>ScenEdit_InputBox
         (string)</h3>
     <p>Open an input box with the passed prompt.</p>
@@ -3530,7 +3582,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     </ul>
     <h4>Returns</h4>
     <p>Data entered into box</p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_KillUnit"></a>ScenEdit_KillUnit
         (unit)</h3>
     <p>Kill
@@ -3548,7 +3602,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h5>Example</h5>
     <div class="example"><code>
  ScenEdit_KillUnit({side=<span class="string">'SideA'</span>,unitname=<span class="string">'ship'</span>})</code></div>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_MsgBox"></a>ScenEdit_MsgBox
         (string,style)</h3>
     <p>Show
@@ -3601,7 +3657,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <p>button
         number
         pressed.</p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_PlaySound"></a>ScenEdit_PlaySound
         (string,delay)</h3>
     <p>Play
@@ -3634,7 +3692,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         find
         the
         file</p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_PlayVideo"></a>ScenEdit_PlayVideo
         (string,fullscreen,delay)</h3>
     <p>Play
@@ -3671,7 +3731,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         find
         the
         file</p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_PlayerSide"></a>ScenEdit_PlayerSide
         ()</h3>
     <p>The
@@ -3688,7 +3750,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h5>Example</h5>
     <div class="example"><code><span class="local">local</span> side = ScenEdit_PlayerSide()</code></div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_QueryDB"></a>ScenEdit_QueryDB
         (objectType,DBID)</h3>
     <p>Query
@@ -3725,7 +3789,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         <code><span class="local">local</span> a = ScenEdit_QueryDB(<span class="string">'weapon'</span>,<span class="number">1398</span>)</code>
     </div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_RefuelUnit"></a>ScenEdit_RefuelUnit
         (unitOptions)</h3>
     <p>Cause
@@ -3791,7 +3857,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
                 ScenEdit_RefuelUnit({side=<span class="string">"United States"</span>, unitname=<span class="string">"USS Test"</span>, missions={<span class="string">"Pitstop"</span>}})
             </code>
     </div>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_RemoveSide"></a>ScenEdit_RemoveSide
         (table)</h3>
     <p>Remove
@@ -3810,7 +3878,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     </ul>
     <h4>Returns</h4>
     <p><span class="wrapper"><a href="#wrapper_Side">Side</a></span></p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_RemoveUnitAsTarget"></a>ScenEdit_RemoveUnitAsTarget
         (AUNameOrIDOrTable,MissionNameOrID)</h3>
     <p>Removes
@@ -3859,7 +3929,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         <code>ScenEdit_RemoveUnitAsTarget({<span class="string">'target1'</span>,<span class="string">'target2'</span>},<span class="string">'Land strike'</span>)</code>
     </div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_RemoveZone"></a>ScenEdit_RemoveZone
         (sideName,zoneType,table)</h3>
     <p>Remove
@@ -3902,7 +3974,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h4>Returns</h4>
     <p><span class="wrapper"><a href="#wrapper_Zone">{ Zone
                 }</a></span></p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_RunScript"></a>ScenEdit_RunScript
         (script)</h3>
     <p>Runs
@@ -3978,7 +4052,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h5>Example</h5>
     <div class="example"><code>ScenEdit_RunScript(<span class="string">'mylibrary.lua'</span>)</code></div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_SelectedUnits"></a>ScenEdit_SelectedUnits
         ()</h3>
     <p>list
@@ -3995,7 +4071,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         table
         'units'and
         'contacts'.</p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_SetAction"></a>ScenEdit_SetAction
         (options)</h3>
     <p>Sets
@@ -4020,7 +4098,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         or
         previous
         value)</p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_SetCondition"></a>ScenEdit_SetCondition
         (options)</h3>
     <p>Sets
@@ -4039,7 +4119,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     </ul>
     <h4>Returns</h4>
     <p><span class="table">table</span> Table of condition options (new or previous value)</p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_SetDoctrine"></a>ScenEdit_SetDoctrine
         (selector,doctrine)</h3>
     <p>Set
@@ -4109,7 +4191,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
             <code>ScenEdit_SetDoctrine({side=<span class="string">"Soviet Union"</span>, unitname=<span class="string">"Bear #2"</span>}, {use_nuclear_weapons=<span class="string">"yes"</span> })</code>
         </div>
 
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_SetDoctrineWRA"></a>ScenEdit_SetDoctrineWRA
         (selector,options)</h3>
     <p>
@@ -4197,7 +4281,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <div class="example">
         <code>ScenEdit_SetDoctrineWRA({guid =<span class="string">'a1a52edf-3541-4b55-bea4-58d4e1ab11dc'</span>, target_type=<span class="string">'Surface_Contact_Unknown_Type'</span>, weapon_dbid=<span class="number">1575</span>}, {<span class="string">'max'</span>,<span class="string">'inherit'</span>,<span class="number">90</span>,<span class="string">'inherit'</span>})</code>
     </div>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_SetEMCON"></a>ScenEdit_SetEMCON
         (type,name,emcon)</h3>
     <p>Sets
@@ -4385,7 +4471,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
                 <code>ScenEdit_SetEMCON(<span class="string">'Unit'</span>,<span class="string">'Camel 2'</span>,<span class="string">'OECM=Active'</span>)</code>
             </div>
 
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_SetEvent"></a>ScenEdit_SetEvent
         (EventDescriptionOrID,options)</h3>
     <p>Sets
@@ -4420,7 +4508,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         or
         previous
         value)</p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_SetEventAction"></a>ScenEdit_SetEventAction
         (EventDescriptionOrID,options)</h3>
     <p>Sets
@@ -4453,7 +4543,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         or
         previous
         value)</p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_SetEventCondition"></a>ScenEdit_SetEventCondition
         (EventDescriptionOrID,options)</h3>
     <p>Sets
@@ -4486,7 +4578,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         or
         previous
         value)</p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_SetEventTrigger"></a>ScenEdit_SetEventTrigger
         (EventDescriptionOrID,options)</h3>
     <p>Sets
@@ -4519,7 +4613,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         or
         previous
         value)</p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_SetKeyValue"></a>ScenEdit_SetKeyValue
         (key,value,forCampaign)</h3>
     <p>Sets
@@ -4594,7 +4690,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <div class="example"><code>ScenEdit_SetKeyValue(<span class="string">"A"</span>,<span class="string">"B"</span>)
 ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- returns "B"</span></code></div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_SetLoadout"></a>ScenEdit_SetLoadout
         (loadoutinfo)</h3>
     <p>Sets
@@ -4614,7 +4712,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     </ul>
     <h4>Returns</h4>
     <p><span class="types"><span class="boolean">boolean</span></span>True</p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_SetMine"></a>ScenEdit_SetMine
         (side,guid,delay)</h3>
     <p>update
@@ -4643,7 +4743,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         <code><span class="local">local</span> a = ScenEdit_SetMine({side=<span class="string">'Blue'</span>, guid=<span class="string">'cccccccc'</span>, [delay=<span class="number">99999</span>]} )</code>
     </div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_SetMission"></a>ScenEdit_SetMission
         (SideName,MissionNameOrId,MissionOptions)</h3>
     <p>Set
@@ -4684,7 +4786,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         <code><span class="local">local</span> mission = ScenEdit_SetMission(<span class="string">'USA'</span>,<span class="string">'CV CAP Left'</span>,{TankerUsage=<span class="number">1</span>,OnStation=<span class="number">2</span>})</code>
     </div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_SetReferencePoint"></a>ScenEdit_SetReferencePoint
         (descriptor)</h3>
     <p>Update
@@ -4801,7 +4905,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
                 <code>ScenEdit_SetReferencePoint({side=<span class="string">"United States"</span>, area={<span class="string">"rp-100"</span>,<span class="string">"rp-101"</span>,<span class="string">"rp-102"</span>,<span class="string">"rp-103"</span>,<span class="string">"rp-104"</span>}, highlighted =<span class="keyword">true</span>})</code>
             </div>
 
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_SetScore"></a>ScenEdit_SetScore
         (side,score,reason)</h3>
     <p>Sets
@@ -4843,7 +4949,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         <code>ScenEdit_SetScore(<span class="string">"PlayerSide"</span>,<span class="number">20</span>,<span class="string">"Reset score"</span>)</code>
     </div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_SetSideOptions"></a>ScenEdit_SetSideOptions
         (options)</h3>
     <p>Set
@@ -4870,7 +4978,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         <code>ScenEdit_SetSideOptions(<span class="string">'{side='</span>SideA<span class="string">',awareness='</span>OMNI<span class="string">',PROFICIENCY='</span>ace')</code>
     </div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_SetSidePosture"></a>ScenEdit_SetSidePosture
         (sideAName,sideBName,posture)</h3>
     <p>Set
@@ -4973,7 +5083,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         <code>ScenEdit_SetSidePosture(<span class="string">"LuaSideA"</span>,<span class="string">"LuaSideB"</span>,<span class="string">"H"</span>)</code>
     </div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_SetSpecialAction"></a>ScenEdit_SetSpecialAction
         (action_info)</h3>
     <p>Sets
@@ -4993,7 +5105,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
             to
             modify</li>
     </ul>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_SetTime"></a>ScenEdit_SetTime
         (new_time)</h3>
     <p>Sets
@@ -5024,7 +5138,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         <code>ScenEdit_SetTime({Date=<span class="string">"2.12.2007"</span>, Time=<span class="string">"22.46.23"</span>})</code>
     </div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_SetTrigger"></a>ScenEdit_SetTrigger
         (options)</h3>
     <p>Sets
@@ -5051,7 +5167,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         or
         previous
         value)</p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_SetUnit"></a>ScenEdit_SetUnit
         (unit)</h3>
     <p>Sets
@@ -5101,7 +5219,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
             <code>ScenEdit_SetUnit({side=<span class="string">"United States"</span>, unitname=<span class="string">"USS Test"</span>, heading=<span class="number">0</span>, HoldPosition=<span class="number">1</span>, HoldFire=<span class="number">1</span>,Proficiency=<span class="string">"Ace"</span>, Autodetectable=<span class="string">"yes"</span>})</code>
         </div>
 
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_SetUnitDamage"></a>ScenEdit_SetUnitDamage
         (options)</h3>
     <p>Set
@@ -5126,7 +5246,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         <code>ScenEdit_SetUnitDamage({side=<span class="string">'SideA'</span>, unitname=<span class="string">'Ship'</span>, fires=<span class="number">1</span>, components={ {<span class="string">'rudder'</span>,<span class="string">'Medium'</span>}, {<span class="string">'type'</span>,<span class="global">type</span>=<span class="string">'sensor'</span>,<span class="number">1</span>} } })</code>
     </div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_SetUnitSide"></a>ScenEdit_SetUnitSide
         (sidedesc)</h3>
     <p>Changes
@@ -5157,7 +5279,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         <code>ScenEdit_SetUnitSide({side=<span class="string">'Old Side'</span>, name=<span class="string">'Eagle #1'</span>, newside=<span class="string">'New Side'</span>})</code>
     </div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_SetWeather"></a>ScenEdit_SetWeather
         (temperature,rainfall,undercloud,seastate)</h3>
     <p>Set
@@ -5219,7 +5343,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         <code>ScenEdit_SetWeather(<span class="global">math</span>.random(<span class="number">0</span>,<span class="number">25</span>),<span class="global">math</span>.random(<span class="number">0</span>,<span class="number">50</span>),<span class="global">math</span>.random(<span class="number">0</span>,<span class="number">10</span>)/<span class="number">10.0</span>,<span class="global">math</span>.random(<span class="number">0</span>,<span class="number">9</span>))</code>
     </div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_SetZone"></a>ScenEdit_SetZone
         (sideName,zoneType,table)</h3>
     <p>update
@@ -5259,7 +5385,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     </ul>
     <h4>Returns</h4>
     <p><span class="wrapper"><a href="#wrapper_Zone">Zone</a></span></p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_SpecialMessage"></a>ScenEdit_SpecialMessage(side, message, location [optional])</h3>
     <p>Displays a special message consisting of the HTML text <span class="parameter">message</span> to the side specified by <span class="parameter">side</span>. An optional parameter <span class="parameter">location</span> allows the player to jump to the specified map position by clicking a button in a pop-up window.</p>
     <h4>Parameters</h4>
@@ -5277,7 +5405,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     </div>
     <div class="note-alert"><p><strong>Note:</strong> The string <code>'playerside'</code> is a special name that refers to whichever side is currently under player control and can be used to ensure that a special message is visible regardless of the player switching sides during the session or choosing a different side at scenario start.</p></div>
     <div class="note-caution"><p><strong>Caution:</strong> Players can disable pop-ups for special messages in the game options. Ensure that players are aware of the need to turn this feature on if special messages are essential to scenario function.</p></div>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_TransferCargo"></a>ScenEdit_TransferCargo
         (fromUnit,toUnit,cargoList)</h3>
     <p>Transfer
@@ -5312,7 +5442,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <p><span class="types"><span class="boolean">boolean</span></span>Successful
         or
         not</p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_UnitC"></a>ScenEdit_UnitC
         ()</h3>
     <p>Detected
@@ -5342,7 +5474,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         descriptor
         or
         <code>nil</code></p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_UnitX"></a>ScenEdit_UnitX
         ()</h3>
     <p>Activating
@@ -5377,7 +5511,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 
             <div class="example"> <code><span class="local">local</span> unit = ScenEdit_UnitX()</code> </div>
 
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_UnitY"></a>ScenEdit_UnitY
         ()</h3>
     <p>Detecting
@@ -5427,7 +5563,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 <span class="global">print</span>(<span class="string">'Sensor: '</span>);<span class="global">print</span>( by.sensor[<span class="number">1</span>].name ..<span class="string">' of type '</span> .. by.sensor[<span class="number">1</span>].<span class="global">type</span>);</code>
             </div>
 
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_UnloadCargo"></a>ScenEdit_UnloadCargo
         (fromUnit,cargoList)</h3>
     <p>Unload
@@ -5451,7 +5589,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     </ul>
     <h4>Returns</h4>
     <p><span class="types"><span class="boolean">boolean</span></span> Successful or not</p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_UpdateUnit"></a>ScenEdit_UpdateUnit
         (options)</h3>
     <p>Update
@@ -5487,7 +5627,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
                 <code>ScenEdit_UpdateUnit({guid=<span class="string">'2cd64757-1b66-4609-ad56-df41bee652e5'</span>,mode=<span class="string">'delta'</span>,file=<span class="string">'new.ini'</span>})</code>
             </div>
 
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_UpdateUnitCargo"></a>ScenEdit_UpdateUnitCargo
         (options)</h3>
     <p>Update
@@ -5519,7 +5661,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
                 <code>ScenEdit_UpdateUnitCargo({guid=<span class="string">'2cd64757-1b66-4609-ad56-df41bee652e5'</span>, mode=<span class="string">'remove_cargo'</span>, cargo={<span class="string">'871aea14-d963-4052-a7fc-ed36e97bb732'</span>,{<span class="number">5</span>,<span class="number">752</span>}} })</code>
             </div>
 
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_UseAttachment"></a>ScenEdit_UseAttachment
         (attachment)</h3>
     <p>Import
@@ -5550,7 +5694,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
             the
             attachment</li>
     </ul>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="ScenEdit_UseAttachmentOnSide"></a>ScenEdit_UseAttachmentOnSide
         (attachment,sidename)</h3>
     <p>Use
@@ -5597,7 +5743,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
             attachment
             into</li>
     </ul>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="Tool_Bearing"></a>Tool_Bearing
         ()</h3>
     <p>Get
@@ -5632,7 +5780,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
                 <code>Tool_Bearing( {latitude=<span class="string">'33.1991547589118'</span>, longitude=<span class="string">'138.376876749942'</span>},<span class="string">'8269b881-20ce-4f2e-baa0-6823e46d55a4'</span> )</code>
             </div>
 
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="Tool_DumpEvents"></a>Tool_DumpEvents
         ()</h3>
     <p>Dump
@@ -5653,7 +5803,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         events
         with
         trigger/condition/action</p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="Tool_EmulateNoConsole"></a>Tool_EmulateNoConsole
         ()</h3>
     <p>Emulates
@@ -5679,7 +5831,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 
     </p>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="Tool_Range"></a>Tool_Range
         ()</h3>
     <p>Get
@@ -5718,7 +5872,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
                 <code>Tool_Range( {latitude=<span class="string">'33.1991547589118'</span>, longitude=<span class="string">'138.376876749942'</span>},<span class="string">'8269b881-20ce-4f2e-baa0-6823e46d55a4'</span> )</code>
             </div>
 
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="VP_ExportUnits"></a>VP_ExportUnits
         (table,filename)</h3>
     <p>Export
@@ -5761,7 +5917,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         or
         failure
         {Filter}</p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="VP_GetContact"></a>VP_GetContact
         (ContactGUID)</h3>
     <p>Get
@@ -5797,14 +5955,18 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         </code>
     </div>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="VP_GetScenario"></a>VP_GetScenario()</h3>
     <p>Exposes current scenario information.</p>
     <h4>Parameters</h4>
     <p>None</p>
     <h4>Returns</h4>
     <p><span class='wrapper'><a href="#Wrapper_Scenario">Scenario</a></span></p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="VP_GetSide"></a>VP_GetSide
         (side)</h3>
     <p>Side
@@ -5850,7 +6012,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     </div>
     </p>
  
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="VP_GetSides"></a>VP_GetSides
 	()</h3>
     <p>List of sides in the scenario.</p>
@@ -5861,7 +6025,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h4>Returns</h4>
     <p><span class="Table"> Table </span> Table of side references (name, guid)</p>
 
- <hr>
+ 
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="VP_GetUnit"></a>VP_GetUnit
         (ActiveOrContact)</h3>
     <p>Get
@@ -5896,7 +6062,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         with
         the
         unit</p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="World_GetCircleFromPoint"></a>World_GetCircleFromPoint
         (table)</h3>
     <p>Returns
@@ -5919,37 +6087,19 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <div class="example">
         <code><span class="local">local</span> circle = World_GetCircleFromPoint({latitude = <span class="string">'-37.8307390636104'</span>longitude = <span class="string">'144.932549348204'</span>, numpoints = <span class="number">12</span>})</code>
     </div>
-    <hr>
-    <h3><a class="anchor" id="World_GetElevation"></a>World_GetElevation
-        (location)</h3>
-    <p>Returns
-        the
-        elevation
-        in
-        meters
-        of
-        a
-        given
-        position</p>
+    
+<hr> <!-- NEW SECTION -->
+
+    <h3><a class="anchor" id="World_GetElevation"></a>World_GetElevation (location)</h3> 
+    <p>Returns the elevation in meters of a given position</p>
     <h4>Parameters</h4>
     <ul>
-        <li><span class="parameter">location</span> <span class="types"><span class="type">Point</span></span> The
-            position
-            to
-            find
-            the
-            elevation
-            of</li>
+        <li><span class="parameter">location</span> <span class="types"><span class="type">Point</span></span> The position to find the elevation of</li> 
     </ul>
     <h4>Returns</h4>
-    <p><span class="types"><span class="number">number</span></span> The
-        elevation
-        of
-        the
-        point
-        in
-        meters</p>
-    <hr>
+    <p><span class="types"><span class="number">number</span></span> The elevation of the point in meters</p>
+<hr> <!-- NEW SECTION -->
+
     <h3><a class="anchor" id="World_GetLocation"></a>World_GetLocation
         (location)</h3>
     <p>Returns table of details at a given position. These details are similar to what is shown by the map cursor box.</p>
@@ -5963,7 +6113,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <p>
         <span class="table">table</span> <code>{altitude, layer {ceiling, floor, strength}, cz{1, 2, 3, 4}, slope, cover {text, value}}</code>
     </p>
-    <hr>
+    
+<hr> <!-- NEW SECTION -->
+
     
 	<h3><a class="anchor" id="World_GetPointFromBearing"></a>World_GetPointFromBearing
         (table)</h3>
@@ -5975,11 +6127,8 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         </li>
     </ul>
     <h4>Returns</h4>
-    <p>Table
-        of
-        the
-        new
-        point
+    <p>
+        Table of the new point
     </p>
     <div class="example">
         <code><span class="local">local</span> position = World_GetPointFromBearing({latitude = <span class="string">'-37.8307390636104'</span>longitude = <span class="string">'144.932549348204'</span>, distance = <span class="number">12</span>, bearing = <span class="number">90</span>})</code>
@@ -5988,11 +6137,8 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 				<a class="anchor" id="Wrappers"></a>
 				<h2>Wrappers</h2>
 				<p>
-					These define the information that is returned from some functions. This information can be usually
-					modified either directly (object.field) or by a wrapper Set(..) function. The particular wrapper
-					Set(..) function is preferred as some validation is performed on the input to ensure that it is
-					within the bounds of the field being updated.
-				</p>
+					These define the information that is returned from some functions. This information can be usually modified either directly (object.field) or by a wrapper Set(..) function. The particular wrapper Set(..) function is preferred as some validation is performed on the input to ensure that it is within the bounds of the field being updated. 
+                </p>
 				<ul class="ul-2-columns">
 					<li><span class="wrapper"><a href="#wrapper_AttackOptions">AttackOptions</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_Contact">Contact</a></span></li>
@@ -6010,7 +6156,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 					<li><span class="wrapper"><a href="#wrapper_Unit">Unit</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_Zone">Zone</a></span></li>
 				</ul>
-				<hr>
+				
+<hr> <!-- NEW SECTION -->
+
 				<a class="anchor" id="wrapper_AttackOptions"></a>
 				<h3>AttackOptions</h3>
 				<p>
@@ -6034,7 +6182,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 						How many to allocate
 					</li>
 				</ul>
-				<hr>
+				
+<hr> <!-- NEW SECTION -->
+
 				<a class="anchor" id="wrapper_Contact"></a>
 				<h3>Contact</h3>
 				<p> This is from the perspective of the side being looked at. What is a contact for one side, may not be the
@@ -6178,7 +6328,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 		
 		
 		
-				<hr>
+				
+<hr> <!-- NEW SECTION -->
+
 				<a class="anchor" id="wrapper_Doctrine"></a>
 				<h3>Doctrine</h3>
 		
@@ -6373,7 +6525,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 		
 		
 		
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="wrapper_DoctrineWRA"></a>
 					<h3>DoctrineWRA</h3>
 		
@@ -6411,7 +6565,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 		
 		
 		
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="wrapper_Event"></a>
 					<h3>Event</h3>
 		
@@ -6484,7 +6640,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 		
 		
 		
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="wrapper_Group"></a>
 					<h3>Group</h3>
 		
@@ -6522,7 +6680,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 						</li>
 					</ul>
 		
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="wrapper_Loadout"></a>
 					<h3>Loadout</h3>
 					Loadout.
@@ -6553,7 +6713,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 		
 		
 		
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="wrapper_Mission"></a>
 					<h3>Mission</h3>
 		
@@ -6647,7 +6809,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 		
 		
 		
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="wrapper_ReferencePoint"></a>
 					<h3>ReferencePoint</h3>
 		
@@ -6701,7 +6865,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 		
 		
 		
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="wrapper_RefuelOptions"></a>
 					<h3>RefuelOptions</h3>
 		
@@ -6737,7 +6903,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							</code>
 					</div>
 		
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="Wrapper_Scenario"></a>
 					<h3>Scenario</h3>
 					<p>Details of the current scenario. Note the mixed case of the field names.</p>
@@ -6836,7 +7004,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 						</li>
 					</ul>
 		
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="wrapper_Side"></a>
 					<h3>Side</h3>
 		
@@ -6936,7 +7106,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 		
 		
 		
-						<hr>
+						
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="wrapper_SpecialAction"></a>
 					<h3>Special action</h3>
 		
@@ -6979,7 +7151,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 		
 		
 		
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="wrapper_Unit"></a>
 					<h3>Unit</h3>
 		
@@ -7285,7 +7459,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     					</li>
 					</ul>
 		
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="wrapper_Zone"></a>
 					<h3>Zone</h3>
 		
@@ -7389,7 +7565,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 						<li><span class="selector"><a href="#selector_Weapon2Mount">Weapon2Mount</a></span></li>
 					</ul>
 				</p>
-				<hr>
+				
+<hr> <!-- NEW SECTION -->
+
 				<a class="anchor" id="selector_ActionUpdate"></a>
 				<h3>ActionUpdate</h3>
 				<p>
@@ -7422,7 +7600,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 						<strong>Note:</strong> Other various values apply to the type of action.
 					</p>
 				</div>
-				<hr>
+				
+<hr> <!-- NEW SECTION -->
+
 				<a class="anchor" id="selector_ConditionUpdate"></a>
 				<h3>ConditionUpdate</h3>
 				<p>
@@ -7455,7 +7635,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 						<strong>Note:</strong> Other various values apply to the type of condition.
 					</p>
 				</div>
-				<hr>
+				
+<hr> <!-- NEW SECTION -->
+
 				<a class="anchor" id="selector_ContactSelector"></a>
 				<h3>ContactSelector</h3>
 				<p>
@@ -7479,7 +7661,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 						the GUID from there.
 					</li>
 				</ul>
-				<hr>
+				
+<hr> <!-- NEW SECTION -->
+
 				<a class="anchor" id="selector_DamageOptions"></a>
 				<h3>DamageOptions</h3>
 				<p>Unit damage. The component table list consists of entries for each component, identified by guid and
@@ -7521,7 +7705,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
             components={{<span class="string">'16a883a2-8e7f-4313-aae7-0af644c16337'</span>,<span class="string">'none'</span>},{<span class="string">'rudder'</span>,<span class="string">'Medium'</span>},{<span class="string">'type'</span>,<span class="global">type</span>=<span class="string">'sensor'</span>,<span class="number">1</span>}}}')
         </code>
 				</div>
-				<hr>
+				
+<hr> <!-- NEW SECTION -->
+
 				<a class="anchor" id="selector_DoctrineSelector"></a>
 				<h3>DoctrineSelector</h3>
 				<p>
@@ -7550,7 +7736,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 						If a strike mission, adding 'escort=true' will update the escort doctrine
 					</li>
 				</ul>
-				<hr>
+				
+<hr> <!-- NEW SECTION -->
+
 				<a class="anchor" id="selector_DoctrineWRASelector"></a>
 				<h3>DoctrineWRASelector</h3>
 				<p>
@@ -7596,7 +7784,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 					</li>
 				</ul>
 
-				<hr>
+				
+<hr> <!-- NEW SECTION -->
+
 
 				<a class="anchor" id="selector_EventTCAUpdate"></a>
 				<h3>EventTCAUpdate</h3>
@@ -7619,7 +7809,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 					</li>
 				</ul>
 
-				<hr>
+				
+<hr> <!-- NEW SECTION -->
+
 
 				<a class="anchor" id="selector_EventUpdate"></a>
 				<h3>EventUpdate</h3>
@@ -7662,7 +7854,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 					</li>
 				</ul>
 
-				<hr>
+				
+<hr> <!-- NEW SECTION -->
+
 
 				<a class="anchor" id="selector_NewMission"></a>
 				<h3>NewMission</h3>
@@ -7685,7 +7879,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 					</li>
 				</ul>
 
-				<hr>
+				
+<hr> <!-- NEW SECTION -->
+
 
 				<a class="anchor" id="selector_NewUnit"></a>
 				<h3>NewUnit</h3>
@@ -7747,7 +7943,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 						</li>
 					</ul>
 
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 
 					<a class="anchor" id="selector_ReferencePointSelector"></a>
 					<h3>ReferencePointSelector</h3>
@@ -7784,7 +7982,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 						</li>
 					</ul>
 
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 
 					<a class="anchor" id="selector_SideOption"></a>
 					<h3>SideOption</h3>
@@ -7815,7 +8015,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 						</li>
 					</ul>
 
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 
 					<a class="anchor" id="selector_SpecialAction"></a>
 					<h3>SpecialAction</h3>
@@ -7863,7 +8065,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 						</li>
 				</ul>
 
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 
 					<a class="anchor" id="selector_TargetFilter"></a>
 					<h3>TargetFilter</h3>
@@ -7891,7 +8095,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							Name or GUID of unit
 						</li>
 					</ul>
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 
 					<a class="anchor" id="selector_TriggerUpdate"></a>
 					<h3>TriggerUpdate</h3>
@@ -7926,7 +8132,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							<strong>Note:</strong> Other various values apply to the type of trigger.
 						</p>
 					</div>
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="selector_UnitSelector"></a>
 					<h3>UnitSelector</h3>
 					<p>
@@ -7961,7 +8169,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							The guid of the unit to select
 						</li>
 					</ul>
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="selector_UpdateUnit"></a>
 					<h3>UpdateUnit</h3>
 					<p>
@@ -8022,7 +8232,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							The effective arcs for the particular mount [override defaults]
 						</li>
 					</ul>
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="selector_UpdateUnitCargo"></a>
 					<h3>UpdateUnitCargo</h3>
 					<p>
@@ -8043,7 +8255,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							List of cargo to update: table of {guids}, or { {number, DBID}}
 						</li>
 					</ul>
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="selector_VPContactSelector"></a>
 					<h3>VPContactSelector</h3>
 					<p>
@@ -8065,7 +8279,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							sides.
 						</p>
 					</div>
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="selector_Weapon2Magazine"></a>
 					<h3>Weapon2Magazine</h3>
 					<p>
@@ -8115,7 +8331,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							If true, will fill out the weapon record to its maximum
 						</li>
 					</ul>
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="selector_Weapon2Mount"></a>
 					<h3>Weapon2Mount</h3>
 					<p>
@@ -8199,7 +8417,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 						<li><span class="table"><a href="#table_ZoneMarker">ZoneMarker</a></span></li>
 					</ul>
 					<br>
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="table_AAR"></a>
 					<h3>AAR</h3>
 					<p>Air-to-Air Refueling options; these are updated by ScenEdit_SetMission()</p>
@@ -8255,7 +8475,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							Use 'internal' or set a range. The code will match the lowest availble setting
 						</li>
 					</ul>
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="table_Cargo"></a>
 					<h3>Cargo</h3>
 					<p>
@@ -8319,7 +8541,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							Inoperative reason
 						</li>
 					</ul>
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="table_CargoMission"></a>
 					<h3>CargoMission</h3>
 					<p>CargoMission options; these are updated by ScenEdit_SetMission()</p>
@@ -8387,7 +8611,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							Table of reference point names and/or GUIDs
 						</li>
 					</ul>
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="table_Component"></a>
 					<h3>Component</h3>
 					<p>
@@ -8433,7 +8659,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							Damage Severity [if not operational]
 						</li>
 					</ul>
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="table_EMmatch"></a>
 					<h3>EMmatch</h3>
 					<p>
@@ -8472,7 +8700,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							Applicable to Facility and Ships
 						</li>
 					</ul>
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="table_Emissions"></a>
 					<h3>Emissions</h3>
 					<p>
@@ -8520,7 +8750,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							Sensor range
 						</li>
 					</ul>
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="table_Explosion"></a>
 					<h3>Explosion</h3>
 					<p>
@@ -8558,7 +8790,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 					</code>
 						</div>
 					</ul>
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="table_Facility"></a>
 					<h3>Facility</h3>
 					<p>
@@ -8597,7 +8831,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							Units present
 						</li>
 					</ul>
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="table_FerryMission"></a>
 					<h3>FerryMission</h3>
 					<p>
@@ -8635,7 +8871,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							<span class="types"><span class="boolean">boolean</span></span>
 						</li>
 					</ul>
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="table_Fuel"></a>
 					<h3>Fuel</h3>
 					<p>
@@ -8693,7 +8931,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							</span>u.fuel = fuel
 						</code>
 					</div>
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="table_FuelState"></a>
 					<h3>FuelState</h3>
 					<p>
@@ -8718,15 +8958,13 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 						</li>
 					</ul>
 					<h5>Example</h5>
-					<div class="example">
-						<code>
-						<span class="local">local</span> fuel = u.fuel <br>
-						fuel[<span class="number">3001</span>].current = <span class="number">400</span> <br>
-						u.fuel = fuel
-					</code>
-					</div>
-					<hr>
-					<a class="anchor" id="table_HostUnit"></a>
+					<div class="example"> <code> <span class="local">local</span> fuel = u.fuel <br> fuel[<span class="number">3001</span>].current = <span class="number">400</span> <br> u.fuel = fuel </code> </div> 
+
+                    
+<hr> <!-- NEW SECTION -->
+
+					
+                    <a class="anchor" id="table_HostUnit"></a>
 					<h3>HostUnit</h3>
 					<p>
 						Requests that a unit be hosted/based to another
@@ -8734,33 +8972,21 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 					<h4>Fields</h4>
 					<ul class="ul-no-bullets">
 						<li>
-							<span class="parameter">HostedUnitNameOrID</span>
-							<span class="types"><span class="string">string</span></span>
-							The name or GUID of the unit to put into the host
-						</li>
+							<span class="parameter">HostedUnitNameOrID</span> <span class="types"><span class="string">string</span></span> The name or GUID of the unit to put into the host </li>
 						<li>
-							<span class="parameter">SelectedHostNameOrID</span>
-							<span class="types"><span class="string">string</span></span>
-							The name or GUID of the host to put the unit into
-							use SetUnit() with 'base=xxx' to assign the unit to a 'base'
-						</li>
-					</ul>
-					<hr>
+							<span class="parameter">SelectedHostNameOrID</span> <span class="types"><span class="string">string</span></span> The name or GUID of the host to put the unit into use SetUnit() with 'base=xxx' to assign the unit to a 'base'
+                        </li> 
+                    </ul>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="table_LatLon"></a>
 					<h3>LatLon</h3>
 					<p>
-						A Position on the map, referred to with latitude (north/south) and longitude (east/west)
-						coordinates. These can
-						be represented in two forms, degrees minutes seconds, and decimal degrees. The Command Lua API
-						supports both
-						forms.
-					</p>
+						A Position on the map, referred to with latitude (north/south) and longitude (east/west) coordinates. These can be represented in two forms, degrees minutes seconds, and decimal degrees. The Command Lua API supports both forms. </p>
 					<p>
-						A set of latitude and longitude to define a point. Within the simulation, the values are
-						recorded in
-						decimal
-						degrees.
-					</p>
+						A set of latitude and longitude to define a point. Within the simulation, the values are recorded in decimal degrees. 
+                    </p>
 					<h4>Fields</h4>
 					<ul class="ul-no-bullets">
 						<li>
@@ -8772,7 +8998,11 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							<span class="types"><span class="number">number</span></span>
 						</li>
 					</ul>
-					<hr>
+
+					
+<hr> <!-- NEW SECTION -->
+
+
 					<a class="anchor" id="table_LoadoutInfo"></a>
 					<h3>LoadoutInfo</h3>
 					<p>
@@ -8831,7 +9061,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							Deduct 'number' rather than add
 						</li>
 					</ul>
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="table_Magazine"></a>
 					<h3>Magazine</h3>
 					<p>
@@ -8876,7 +9108,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							Table of weapon loads in magazine
 						</li>
 					</ul>
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="table_MineClearMission"></a>
 					<h3>MineClearMission</h3>
 					<p>
@@ -8965,7 +9199,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 					</ul>
 
 
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="table_MineMission"></a>
 					<h3>MineMission</h3>
 
@@ -9059,7 +9295,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							'1:4:30:0'
 						</li>
 					</ul>
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="table_Mount"></a>
 					<h3>Mount</h3>
 					<p>
@@ -9104,7 +9342,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							Table of weapon loads on mount
 						</li>
 					</ul>
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="table_PatrolMission"></a>
 					<h3>PatrolMission</h3>
 					<p>
@@ -9287,7 +9527,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 						</li>
 					</ul>
 
-                    <hr>
+                    
+<hr> <!-- NEW SECTION -->
+
                     <a class="anchor" id="table_Sensor"></a>
                     <h3>Sensor</h3>
                     <p>
@@ -9346,7 +9588,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
                             <strong>Caution:</strong> The GUID returned here is the GUID of the individual sensor component, not the GUID of the parent unit.
                         </p>
                     </div>
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="table_SideContact"></a>
 					<h3>SideContact</h3>
 					<p>
@@ -9368,7 +9612,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							The name of the contact.
 						</li>
 					</ul>
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="table_SideDescription"></a>
 					<h3>SideDescription</h3>
 					<p>
@@ -9398,7 +9644,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
                             <strong>Caution:</strong> The order in which these paramaters are passed is important!
                         </p>
                     </div>
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="table_SideSelector"></a>
 					<h3>SideSelector </h3>
 					<p>
@@ -9417,7 +9665,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							The name of the side to select.
 						</li>
 					</ul>
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="table_SideUnit"></a>
 					<h3>SideUnit</h3>
 					<p>
@@ -9436,14 +9686,14 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							The name of the unit.
 						</li>
 					</ul>
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="table_StrikeMission"></a>
 					<h3>StrikeMission</h3>
 					<p>
-						StrikeMission options; these are updated by ScenEdit_SetMission(). Note that these are split
-						between
-						the escorts and strikers
-					</p>
+						StrikeMission options; these are updated by ScenEdit_SetMission(). Note that these are split between the escorts and strikers 
+                    </p>
 					<h4>Fields</h4>
 					<ul class="ul-no-bullets">
 						<li>
@@ -9590,7 +9840,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							<span class="types"><span class="string">string</span></span>
 						</li>
 					</ul>
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="table_SupportMission"></a>
 					<h3>SupportMission</h3>
 					<p>
@@ -9722,7 +9974,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							<span class="types"><span class="string">string</span></span>
 						</li>
 					</ul>
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="table_WRA"></a>
 					<h3>WRA</h3>
 					<p>WRA settings</p>
@@ -9754,7 +10008,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
                             <strong>Note:</strong> The absence of a field implies that it is <strong>not</strong> used.
                         </p>
                     </div>
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="table_Waypoint"></a>
 					<h3>Waypoint</h3>
 					<p>
@@ -9800,7 +10056,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							Enter desired altitude AGL to set altitude as terrain-following
 						</li>
 					</ul>
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="table_WeaponLoaded"></a>
 					<h3>WeaponLoaded</h3>
 					<p>
@@ -9844,7 +10102,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							Type of weapon
 						</li>
 					</ul>
-					<hr>
+					
+<hr> <!-- NEW SECTION -->
+
 					<a class="anchor" id="table_ZoneMarker"></a>
 					<h3>ZoneMarker</h3>
 					<p>
