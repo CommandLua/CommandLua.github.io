@@ -5232,62 +5232,41 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <hr>
     <h3><a class="anchor" id="ScenEdit_SetZone"></a>ScenEdit_SetZone
         (sideName,zoneType,table)</h3>
-    <p>update
-        no-nav
-        or
-        exclusion
-        zone.<br />...Only
-        need
-        to
-        pass
-        the
-        parts
-        to
-        update</p>
+    <p>update no-nav or exclusion zone.<br />...Only need to pass the parts to update</p>
     <h4>Parameters</h4>
     <ul>
-        <li><span class="parameter">sideName</span> <span class="types"><span class="string">string</span></span> Side
-            name/GUID</li>
-        <li><span class="parameter">zoneType</span> <span class="types"><span class="string">string</span></span> Type
-            of
-            zone
-            to
-            remove: 0
-            = no-nav, 1
-            = exclusion</li>
-        <li><span class="parameter">table</span> <span class="table">table</span> Description, Isactive, Area
-            { of
-            RPs
-            }, Affects
-            { of
-            UnitTypes
-            }, MarkAs
-            (exc
-            only), Locked
-            (non
-            only)</li>
+        <li><span class="parameter">sideName</span> <span class="types"><span class="string">string</span></span> Side name/GUID</li> 
+        <li><span class="parameter">zoneType</span> <span class="types"><span class="string">string</span></span> Type of zone to remove: 0 = no-nav, 1 = exclusion</li>
+        <li><span class="parameter">table</span> <span class="table">table</span> Description, Isactive, Area { of RPs }, Affects { of UnitTypes }, MarkAs (exc only), Locked (non only)</li>
     </ul>
     <h4>Returns</h4>
     <p><span class="wrapper"><a href="#wrapper_Zone">Zone</a></span></p>
+
     <hr>
-    <h3><a class="anchor" id="ScenEdit_SpecialMessage"></a>ScenEdit_SpecialMessage(side, message, location [optional])</h3>
-    <p>Displays a special message consisting of the HTML text <span class="parameter">message</span> to the side specified by <span class="parameter">side</span>. An optional parameter <span class="parameter">location</span> allows the player to jump to the specified map position by clicking a button in a pop-up window.</p>
+
+    <h3><a class="anchor" id="ScenEdit_SpecialMessage"></a>ScenEdit_SpecialMessage(side, message, location [optional], forceMapRecenter [optional])</h3>
+    <p>Displays a special message consisting of the HTML text <span class="parameter">message</span> to the side specified by <span class="parameter">side</span>. The optional parameter <span class="parameter">location</span> allows the player to jump to the specified map position by clicking a button in a pop-up window. If a location is set the optional parameter <span class="parameter">forceMapRecenter</span> can be used to recentre the map on the specified location without giving the player a choice. The 'Jump to location' button will be preserved for the player to if they wish to return to the same position after moving the map away.</p>
     <h4>Parameters</h4>
     <ul>
         <li><span class="parameter">side</span> <span class="types"><span class="string">string</span></span> The side name/guid to display the message to, or <code>'playerside'</code> (see Note below)</li>
         <li><span class="parameter">message</span> <span class="types"><span class="string">string</span></span> The HTML text to display to the player. Plain text is also accepted.</li>
         <li>[Optional] <span class="parameter">location</span><span class="types">Point</span> The position that the 'Jump to Location' button takes the player to if clicked.</li>
+        <li>[Optional] <span class="parameter">forceMapRecenter</span><span class="types"><span class="boolean">boolean</span></span> Move the players map to centre on the specified location without prompting the player.</li>
     </ul>
     
     <h4>Returns</h4>
     <p><span class="types"><span class="number">number</span></span> 1 if successful, raises an error if unsuccessful.</p>
-    <h5>Example</h5>
+    <h5>Examples</h5>
     <div class="example">
-        <code>ScenEdit_SpecialMessage(<span class="string">'playerside'</span>,<span class="string">'Here\'s a message!'</span>,{latitude = <span class="number">1.2</span>,longitude = <span class="number">3.4</span>})</code>
+        <code>ScenEdit_SpecialMessage(<span class="string">'playerside'</span>,<span class="string">'Here\'s a message!'</span>)</code>
+        <code>ScenEdit_SpecialMessage(<span class="string">'playerside'</span>,<span class="string">'Here\'s a message that will offer the player a location to jump to!'</span>,{latitude = <span class="number">1.2</span>,longitude = <span class="number">3.4</span>})</code>
+        <code>ScenEdit_SpecialMessage(<span class="string">'playerside'</span>,<span class="string">'Here\'s a message that will take the player to a point on the map without asking first!'</span>,{latitude = <span class="number">1.2</span>,longitude = <span class="number">3.4</span>}, <span class="boolean">true</span>)</code>
     </div>
     <div class="note-alert"><p><strong>Note:</strong> The string <code>'playerside'</code> is a special name that refers to whichever side is currently under player control and can be used to ensure that a special message is visible regardless of the player switching sides during the session or choosing a different side at scenario start.</p></div>
-    <div class="note-caution"><p><strong>Caution:</strong> Players can disable pop-ups for special messages in the game options. Ensure that players are aware of the need to turn this feature on if special messages are essential to scenario function.</p></div>
+    <div class="note-caution"><p><strong>Caution:</strong> Players can disable pop-ups for special messages in the game options. Ensure that players are aware of the need to turn this feature on if special messages are essential to scenario function.</p><p>If pop-ups are disabled, the players map will not be automatically recentered if <span class="parameter">forceMapRecenter</span> is set.</p></div>
+    
     <hr>
+
     <h3><a class="anchor" id="ScenEdit_TransferCargo"></a>ScenEdit_TransferCargo
         (fromUnit,toUnit,cargoList)</h3>
     <p>Transfer
