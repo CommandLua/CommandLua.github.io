@@ -7252,7 +7252,19 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							<span class="types"><span class="method">method</span></span>
 							(true/false) Trigger the unit to launch from base (true) or abort launch (false)
 						</li>
+						<li><span class="parameter">updateorbit</span>
+							<span class="types"><span class="method">method</span></span>
+							Update the orbit for a satellite by specifying a TLE. See below for a complete usage example.
+							<div class="example">
+                    	<code>
+                    		theSat = ScenEdit_GetUnit({guid=<span class="string">'56f830c1-d0e2-430a-985e-0e301cc01eff'</span>})<br>
+                    		theTLE = <span class="string">'Resurs P1\n1 39186U 13030A   17013.12537468  .00000446  00000-0  16942-4 0  9992\n2 39186  97.3847  79.3911 0015157 247.7411 195.8488 15.31966970198820'</span><br>
+							theSat:updateorbit({TLE=theTLE})
+                    	</code>
+                    </div>
+						</li>
                     </ul>
+                    
 		              <!-- What do we mean by ScenEdit only? The console and Lua script event actions are only available/editable in ScenEdit???-->
 				    <h5>Modifiable through ScenEdit_ functions only</h5>
 					<ul class="ul-no-bullets">
