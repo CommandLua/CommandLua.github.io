@@ -5464,7 +5464,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         <li><span class="parameter">options</span> <span class="selector"><a
                     href="#selector_UpdateUnit">UpdateUnit</a></span> The
             unit
-            sensor/mount/weapon
+            sensor/mount/weapon/comms/magazine
             details
             to
             update</li>
@@ -7993,13 +7993,13 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							<span class="types"><span class="string">string</span></span>
 							The function to perform (add_ sensor,remove_ sensor,add_ mount,remove_ mount,add_
 							weapon,remove_
-							weapon,add_comms,remove_comms,delta)
+							weapon,add_comms,remove_comms,add_magazine,remove_magazine,add_magazine_only,delta)
 						</li>
 						<li><span class="parameter">dbid</span>
 							<span class="types"><span class="number">number</span></span>
 							The database id of the item to add [required for 'add_' mode]. If used with 'remove_' mode,
 							and
-							no sensorid/mountid, the first matching DBID will be removed.
+							no sensorid/mountid/commsid/magid, the first matching DBID will be removed.
 						</li>
 						<li><span class="parameter">sensorid</span>
 							<span class="types"><span class="string">string</span></span>
@@ -8017,7 +8017,12 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 						<li><span class="parameter">commsid</span>
 							<span class="types"><span class="string">string</span></span>
 							The identifier (guid) of the particular communication device to remove [required for remove_
-							mount mode]
+							comms mode]
+						</li>
+						<li><span class="parameter">magid</span>
+							<span class="types"><span class="string">string</span></span>
+							The identifier (guid) of the particular magazine to remove [required for remove_
+							magazine mode]
 						</li>
 						<li><span class="parameter">file</span>
 							<span class="types"><span class="string">string</span></span>
