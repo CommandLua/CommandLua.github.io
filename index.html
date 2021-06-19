@@ -13,6 +13,7 @@
 
 	<title>Command Lua Docs</title>
 	<link rel="stylesheet" type="text/css" href="style.css" />
+	
 </head>
 
 <body>
@@ -33,7 +34,7 @@
 
 		<div id="content">
 			<div id="page-title">
-				<h2 id="page-title">Command Lua API Documentation, v1147.10</h2>
+				<h2 id="page-title">Command Lua API Documentation, v1147.25</h2>
 				<hr>
 			</div>
 			<div id="nav">
@@ -63,6 +64,13 @@
 
                <a class="anchor" id="News"></a>
                 <h2>News</h2>
+				<h4>Future updates after this version<h4>
+				<p>
+                    <ul>
+                        <li>New property on "Unit" wrapper: avoidCavitation, readytime, unassign, oldDamagePercent</li>
+                        <li>New property on "SetUnit" function: AvoidCavitation, TimeToReady_Minutes, Unassign</li>
+                    </ul>
+				</p>
                 <h4>Command: Modern Operations v1147.10</h4>
                 <div class="byline">
                     <p>
@@ -6152,15 +6160,18 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 					</li>
 					<li><span class="parameter">targetedBy</span>
 						<span class="table">table</span>
-						Table of unit guids that have this contact as a target
+						Table of unit guids that have this contact as a target <br>
+						(Note that the starting idex of this table is '0' rather than '1' as normal Lua tables)
 					</li>
 					<li><span class="parameter">firingAt</span>
 						<span class="table">table</span>
-						Table of contact guids that this contact is firing at
+						Table of contact guids that this contact is firing at<br>
+						(Note that the starting idex of this table is '0' rather than '1' as normal Lua tables)
 					</li>
 					<li><span class="parameter">firedOn</span>
 						<span class="table">table</span>
-						Table of guids that are firing on this contact
+						Table of guids that are firing on this contact<br>
+						(Note that the starting idex of this table is '0' rather than '1' as normal Lua tables)
 					</li>
 					<li><span class="parameter">DropContact</span>
 						<span class="types"><span class="method">method</span></span>
@@ -7082,8 +7093,10 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							If setting the group, use a text name of an existing group or a new name to create a group. To remove unit from a group, use "none" as the name.
 						</li>
 						<li><span class="parameter">readytime</span>
-							<span class="types"><span class="string">string</span></span>
-							how long aircraft/ship takes to be ready. 
+							<span class="types"><span class="string">string</span> or <span class="number">number</span></span>
+							how long aircraft/ship takes to be ready. <br>
+							Set the time in seconds<br>
+							Can use 'TimeToReady_Minutes=' in SetUnit() to set the ready time in minutes for aircraft and ship/sub.
 						</li>
 						<li><span class="parameter">airbornetime</span>
 							<span class="types"><span class="number">number</span></span>
@@ -7178,15 +7191,18 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 						</li>
 						<li><span class="parameter">targetedBy</span>
 							<span class="table">table</span>
-							Table of unit guids that have this unit as a target
+							Table of unit guids that have this unit as a target<br>
+						(Note that the starting idex of this table is '0' rather than '1' as normal Lua tables)
 						</li>
 						<li><span class="parameter">firingAt</span>
 							<span class="table">table</span>
-							Table of contact guids that this unit is firing at
+							Table of contact guids that this unit is firing at<br>
+						(Note that the starting idex of this table is '0' rather than '1' as normal Lua tables)
 						</li>
 						<li><span class="parameter">firedOn</span>
 							<span class="table">table</span>
-							Table of guids that are firing on this unit
+							Table of guids that are firing on this unit<br>
+						(Note that the starting idex of this table is '0' rather than '1' as normal Lua tables)
 						</li>
 						<li><span class="parameter">formation</span>
 							<span class="table">table</span>
@@ -7255,6 +7271,14 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 						<li><span class="parameter">Launch</span>
 							<span class="types"><span class="method">method</span></span>
 							(true/false) Trigger the unit to launch from base (true) or abort launch (false)
+						</li>
+						<li><span class="parameter">unassign</span>
+							<span class="types"><span class="boolean">boolean</span></span>
+							unassign unit (performs basic actions of hotkey 'u') 
+						</li>
+						<li><span class="parameter">oldDamagePercent</span>
+							<span class="types"><span class="single">single</span></span>
+							changes the last damage percent used by damage trigger 
 						</li>
 						<li><span class="parameter">updateorbit</span>
 							<span class="types"><span class="method">method</span></span>
