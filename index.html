@@ -64,6 +64,14 @@
 
                <a class="anchor" id="News"></a>
                 <h2>News</h2>
+                <h4>Command: Modern Operations [future build]</h4>
+                <div class="byline">
+                </div>
+				<p>
+                    <ul>
+                        <li>New property on "Unit" wrapper: isEscort</li>
+                    </ul>
+				</p>
                 <h4>Command: Modern Operations v1147.26</h4>
                 <div class="byline">
                     <p>
@@ -7285,6 +7293,14 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							<span class="types"><span class="single">single</span></span>
 							changes the last damage percent used by damage trigger 
 						</li>
+						<li><span class="parameter">isEscort</span>
+							<span class="types"><span class="boolean">boolean</span></span>
+							is unit asssigned to escort in mission <span class="readonly">READ ONLY</span>
+						</li>
+						<li><span class="parameter">isOperating</span>
+							<span class="types"><span class="boolean">boolean</span></span>
+							is unit is operational, not landed or docked <span class="readonly">READ ONLY</span>
+						</li>
 						<li><span class="parameter">updateorbit</span>
 							<span class="types"><span class="method">method</span></span>
 							Update the orbit for a satellite by specifying a TLE. See below for a complete usage example.
@@ -7296,6 +7312,27 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
                     	</code>
                     </div>
 						</li>
+						<li><span class="parameter">IsMine</span>
+							<span class="types"><span class="boolean">boolean</span></span>
+							is weapon a mine <span class="readonly">READ ONLY</span>
+						</li>
+						<li><span class="parameter">IsUnguidedBallisticWeapon</span>
+							<span class="types"><span class="boolean">boolean</span></span>
+							is weapon a Unguided Ballistic Weapon <span class="readonly">READ ONLY</span>
+						</li>
+						<li><span class="parameter">IsBallisticMissile</span>
+							<span class="types"><span class="boolean">boolean</span></span>
+							is weapon a Ballistic Weapon <span class="readonly">READ ONLY</span>
+						</li>
+						<li><span class="parameter">IsDecoy</span>
+							<span class="types"><span class="boolean">boolean</span></span>
+							is weapon a decoy <span class="readonly">READ ONLY</span>
+						</li>
+						<li><span class="parameter">IsNuke</span>
+							<span class="types"><span class="boolean">boolean</span></span>
+							is weapon a nuke <span class="readonly">READ ONLY</span>
+						</li>
+
                     </ul>
                     
 		              <!-- What do we mean by ScenEdit only? The console and Lua script event actions are only available/editable in ScenEdit???-->
