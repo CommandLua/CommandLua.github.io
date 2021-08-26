@@ -34,7 +34,7 @@
 
 		<div id="content">
 			<div id="page-title">
-				<h2 id="page-title">Command Lua API Documentation, v1147.26</h2>
+				<h2 id="page-title">Command Lua API Documentation, v1147.30</h2>
 				<hr>
 			</div>
 			<div id="nav">
@@ -64,7 +64,15 @@
 
                <a class="anchor" id="News"></a>
                 <h2>News</h2>
-                <h4>Command: Modern Operations [future build]</h4>
+                 <h4>Command: Modern Operations [future build]</h4>
+                <div class="byline">
+                </div>
+				<p>
+                    <ul>
+                        <li>New property on "Unit" wrapper: jammed, jammer, pitch, groundSpeed</li>
+                    </ul>
+				</p>
+               <h4>Command: Modern Operations v1147.30</h4>
                 <div class="byline">
                 </div>
 				<p>
@@ -7331,6 +7339,22 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 						<li><span class="parameter">IsNuke</span>
 							<span class="types"><span class="boolean">boolean</span></span>
 							is weapon a nuke <span class="readonly">READ ONLY</span>
+						</li>
+						<li><span class="parameter">jammer</span>
+							<span class="types"><span class="boolean">boolean</span></span>
+							unit is acting as a jammer <span class="readonly">READ ONLY</span>
+						</li>
+						<li><span class="parameter">jammed</span>
+							<span class="types"><span class="boolean">boolean</span></span>
+							unit is being jammed <span class="readonly">READ ONLY</span>
+						</li>
+						<li><span class="parameter">pitch</span>
+							<span class="types"><span class="number">number</span></span>
+							aircraft or missile pitch <span class="readonly">READ ONLY</span>
+						</li>
+						<li><span class="parameter">groundSpeed</span>
+							<span class="types"><span class="number">number</span></span>
+							aircraft or missile speed <span class="readonly">READ ONLY</span>
 						</li>
 
                     </ul>
