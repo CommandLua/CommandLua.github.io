@@ -64,12 +64,13 @@
 
                <a class="anchor" id="News"></a>
                 <h2>News</h2>
-                 <h4>Command: Modern Operations [future build]</h4>
+                 <h4>Command: Modern Operations [in future build]</h4>
                 <div class="byline">
                 </div>
 				<p>
                     <ul>
                         <li>New property on "Unit" wrapper: jammed, jammer, pitch, groundSpeed</li>
+                        <li>New property on "Unit" wrapper: airbornetime_v, readytime_v, crew</li>
                     </ul>
 				</p>
                <h4>Command: Modern Operations v1147.30</h4>
@@ -7114,14 +7115,22 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							If setting the group, use a text name of an existing group or a new name to create a group. To remove unit from a group, use "none" as the name.
 						</li>
 						<li><span class="parameter">readytime</span>
-							<span class="types"><span class="string">string</span> or <span class="number">number</span></span>
-							how long aircraft/ship takes to be ready. <br>
+							<span class="types"><span class="string">string [READ]</span> or <span class="number">number [SET]</span></span>
+							how long aircraft/ship takes to be ready as "days:hours:minutes:seconds". <br>
 							Set the time in seconds<br>
 							Can use 'TimeToReady_Minutes=' in SetUnit() to set the ready time in minutes for aircraft and ship/sub.
 						</li>
+						<li><span class="parameter">readytime_v</span>
+							<span class="types"><span class="number"></span></span>
+							how long aircraft/ship takes to be ready in seconds. <span class="readonly">READ ONLY</span>
+						</li>
 						<li><span class="parameter">airbornetime</span>
+							<span class="types"><span class="string">datetime</span></span>
+							how long aircraft has been flying as "days:hours:minutes:seconds". <span class="readonly">READ ONLY</span>
+						</li>
+						<li><span class="parameter">airbornetime_v</span>
 							<span class="types"><span class="number">number</span></span>
-							how long aircraft has been flying. <span class="readonly">READ ONLY</span>
+							how long aircraft has been flying in seconds. <span class="readonly">READ ONLY</span>
 						</li>
 						<li><span class="parameter">loadoutdbid</span>
 							<span class="types"><span class="number">number</span></span>
@@ -7355,6 +7364,10 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 						<li><span class="parameter">groundSpeed</span>
 							<span class="types"><span class="number">number</span></span>
 							aircraft or missile speed <span class="readonly">READ ONLY</span>
+						</li>
+						<li><span class="parameter">crew</span>
+							<span class="types"><span class="number">number</span></span>
+							crew size (nil if not defined) <span class="readonly">READ ONLY</span>
 						</li>
 
                     </ul>
