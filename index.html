@@ -71,6 +71,8 @@
                     <ul>
                         <li>New property on "Unit" wrapper: jammed, jammer, pitch, groundSpeed</li>
                         <li>New property on "Unit" wrapper: airbornetime_v, readytime_v, crew</li>
+                        <li>New property on "Contact" wrapper: lastDetections</li>
+                        <li>New method on "Scenario" wrapper: ResetLossExp, ResetScore</li>
                     </ul>
 				</p>
                <h4>Command: Modern Operations v1147.30</h4>
@@ -5833,7 +5835,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h4>Parameters</h4>
     <p>None</p>
     <h4>Returns</h4>
-    <p><span class='wrapper'><a href="#Wrapper_Scenario">Scenario</a></span></p>
+    <p><span class='wrapper'><a href="#wrapper_Scenario">Scenario</a></span></p>
     <hr>
     <h3><a class="anchor" id="VP_GetSide"></a>VP_GetSide
         (side)</h3>
@@ -6202,6 +6204,10 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 					<li><span class="parameter">inArea</span>
 						<span class="types"><span class="method">method</span></span>
 						({area}) Is contact in the 'area' defined by table of RPs (true/false)
+					</li>
+					<li><span class="parameter">lastDetections</span>
+						<span class="table"><a href="#table_LastDetections">LastDetections</a></span>
+						Table of detects on the contact
 					</li>
 				</ul>
 		
@@ -6771,7 +6777,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 					</div>
 		
 					<hr>
-					<a class="anchor" id="Wrapper_Scenario"></a>
+					<a class="anchor" id="wrapper_Scenario"></a>
 					<h3>Scenario</h3>
 					<p>Details of the current scenario. Note the mixed case of the field names.</p>
 					<ul class='ul-no-bullets'>
@@ -6866,6 +6872,14 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 						<li><span class="parameter">Sides</span>
 							<span class="types"><span class="number">number</span></span>
 							Number of sides in scenario
+						</li>
+						<li><span class="parameter">ResetLossExp</span>
+							<span class="types"><span class="method">method</span></span>
+							Clears the loss and expenditure logs in scenario
+						</li>
+						<li><span class="parameter">ResetScore</span>
+							<span class="types"><span class="method">method</span></span>
+							Clears the score and log in scenario
 						</li>
 					</ul>
 		
@@ -8305,6 +8319,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 						<li><span class="table"><a href="#table_Fuel">Fuel</a></span></li>
 						<li><span class="table"><a href="#table_FuelState">FuelState</a></span></li>
 						<li><span class="table"><a href="#table_HostUnit">HostUnit</a></span></li>
+						<li><span class="table"><a href="#table_LastDetections">LastDetections</a></span></li>
 						<li><span class="table"><a href="#table_LatLon">LatLon</a></span></li>
 						<li><span class="table"><a href="#table_LoadoutInfo">LoadoutInfo</a></span></li>
 						<li><span class="table"><a href="#table_Magazine">Magazine</a></span></li>
@@ -8869,6 +8884,35 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 							<span class="types"><span class="string">string</span></span>
 							The name or GUID of the host to put the unit into
 							use SetUnit() with 'base=xxx' to assign the unit to a 'base'
+						</li>
+					</ul>
+					<hr>
+					<a class="anchor" id="table_LastDetections"></a>
+					<h3>LastDetection</h3>
+					<p>
+						Contact detection details
+					</p>
+					<h4>Fields</h4>
+					<ul class="ul-no-bullets">
+						<li>
+							<span class="parameter">detector_guid</span>
+							<span class="types"><span class="string">string</span></span>
+							The GUID of the detecting unit
+						</li>
+						<li>
+							<span class="parameter">detect_sensor_guid</span>
+							<span class="types"><span class="string">string</span></span>
+							The GUID of the sensor on the detecting unit
+						</li>
+						<li>
+							<span class="parameter">age</span>
+							<span class="types"><span class="number">number</span></span>
+							Seconds since detection made
+						</li>
+						<li>
+							<span class="parameter">range</span>
+							<span class="types"><span class="number">number</span></span>
+							Estimated range at detect time
 						</li>
 					</ul>
 					<hr>
