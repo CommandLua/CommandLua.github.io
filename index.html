@@ -12,8 +12,10 @@
 	</script>
 
 	<title>Command Lua Docs</title>
-	<link rel="stylesheet" type="text/css" href="style.css" />
+	<link rel="stylesheet" type="text/css" href="style.css" / >
 	
+
+
 </head>
 
 <body>
@@ -6048,24 +6050,13 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 				<p>
 					Attack options.
 				</p>
-				<ul class='ul-no-bullets'>
-					<li><span class="parameter">mode</span>
-						<span class="types"><span class="string">string</span></span>
-						Targeting mode "AutoTargeted"|"0", "ManualWeaponAlloc"|"1"
-					</li>
-					<li><span class="parameter">mount</span>
-						<span class="types"><span class="number">number</span></span>
-						The attacker's mount DBID
-					</li>
-					<li><span class="parameter">weapon</span>
-						<span class="types"><span class="number">number</span></span>
-						The attacker's weapon DBID
-					</li>
-					<li><span class="parameter">qty</span>
-						<span class="types"><span class="number">number</span></span>
-						How many to allocate
-					</li>
-				</ul>
+	<table class="table_borders" style="width: 100%; margin-left: 0px;">
+   	<tr><th>Field</th><th>Description</th><th>Type</th><th>Comments</td></tr>
+	<tr><td class="parameter">mode </td><td>Targeting mode </td><td class="types"><span class="string">string</span></td><td>"AutoTargeted"|"0", "ManualWeaponAlloc"|"1"</td></tr>
+	<tr><td class="parameter">mount </td><td> The attacker's mount DBID</td><td class="types"><span class="number">number</span></td></td></tr>
+	<tr><td class="parameter">weapon </td><td> The attacker's weapon DBID</td><td class="types"><span class="number">number</span></td></td></tr>
+	<tr><td class="parameter">qty </td><td>How many to allocate</td><td class="types"><span class="number">number</span></td></td></tr>
+	</table>
 				<hr>
 				<a class="anchor" id="wrapper_Contact"></a>
 				<h3>Contact</h3>
@@ -8345,57 +8336,74 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 					<h3>AAR</h3>
 					<p>Air-to-Air Refueling options; these are updated by ScenEdit_SetMission()</p>
 					</ul>
-					<h4>Fields</h4>
-					<ul class="ul-no-bullets">
-						<li>
-							<span class="parameter">use_refuel_unrep</span>
-							<span class="types"><span class="string">string</span></span>
-							This is same as the one from Doctrine setting
-						</li>
-						<li>
-							<span class="parameter">tankerUsage</span>
-							<span class="types"><span class="string">string</span> or <span
-									class="number">number</span></span>
-							Automatic(0), Mission(1)
-						</li>
-						<li>
-							<span class="parameter">launchMissionWithoutTankersInPlace</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-						</li>
-						<li>
-							<span class="parameter">tankerMissionList</span>
-							<span class="types"><span class="type">{mission name</span> or <span
-									class="type">GUID</span></span>
-							Table of missions to use as source of refuellers
-						</li>
-						<li>
-							<span class="parameter">tankerMinNumber_total</span>
-							<span class="types"><span class="number">number</span></span>
-						</li>
-						<li>
-							<span class="parameter">tankerMinNumber_airborne</span>
-							<span class="types"><span class="number">number</span></span>
-						</li>
-						<li>
-							<span class="parameter">tankerMinNumber_station</span>
-							<span class="types"><span class="number">number</span></span>
-						</li>
-						<li>
-							<span class="parameter">maxReceiversInQueuePerTanker_airborne</span>
-							<span class="types"><span class="number">number</span></span>
-						</li>
-						<li>
-							<span class="parameter">fuelQtyToStartLookingForTanker_airborne</span>
-							<span class="types"><span class="number">number</span></span>
-							Percentage of fuel (0-100)
-						</li>
-						<li>
-							<span class="parameter">tankerMaxDistance_airborne</span>
-							<span class="types"><span class="string">string</span> or <span
-									class="number">number</span></span>
-							Use 'internal' or set a range. The code will match the lowest availble setting
-						</li>
-					</ul>
+   					<table class="table_borders" style="width: 100%; margin-left: 0px;">
+ 					<tr>
+ 					<th>Field</th><th>Description</th><th>Type</th><th>Comments</td>
+ 					</tr>
+ <tr>
+	<td class="parameter" >use_refuel_unrep</td>
+	<td>Can use refuel/replenishment? </td>
+	<td class="types"><span class="string">string</span></td>
+	<td></td>
+</tr>
+<tr>
+	<td class="parameter">tankerUsage</td>
+	<td>Is tanker reserved for missions?</td>
+	<td class="types"><span class="string">string</span> or <br><span
+									class="number">number</span></td>
+	<td>Automatic(0), Mission(1)</td>
+</tr>
+<tr>
+	<td class="parameter">launchMissionWithoutTankersInPlace</td>
+	<td></td>
+	<td class="types"><span class="boolean">boolean</span></td>
+	<td></td>
+</tr>
+<tr>	
+	<td class="parameter">tankerMissionList</td>
+	<td>Table of missions to use as source of refuellers</td>
+	<td class="types"><span class="string">mission name</span> or <br><span
+									class="string">GUID</span></td>
+	<td></td>
+</tr>
+<tr>	
+	<td class="parameter">tankerMinNumber_total</td>
+	<td></td>
+	<td class="types"><span class="number">number</span></td>
+	<td></td>
+</tr>
+<tr>	
+	<td class="parameter">tankerMinNumber_airborne</td>
+	<td></td>
+	<td class="types"><span class="number">number</span></td>
+	<td></td>
+</tr>
+<tr>	
+	<td class="parameter">tankerMinNumber_station</td>
+	<td></td>
+	<td class="types"><span class="number">number</span></td>
+	<td></td>
+</tr>
+<tr>	
+	<td class="parameter">maxReceiversInQueuePerTanker_airborne</td>
+	<td></td>
+	<td class="types"><span class="number">number</span></td>
+	<td></td>
+</tr>
+<tr>	
+	<td class="parameter">fuelQtyToStartLookingForTanker_airborne</td>
+	<td>Minimum percentage of fuel (0-100) that tanking will be requested</td>
+	<td class="types"><span class="number">number</span></td>
+	<td></td>
+</tr>
+<tr>	
+	<td class="parameter">tankerMaxDistance_airborne</td>
+	<td>A tanker will be selected within this range</td>
+	<td class="types"><span class="string">string</span> or <br><span
+									class="number">number</span></td>
+	<td>Use 'internal' range or set a range. </td>
+</tr>
+	</table>
 					<hr>
 					<a class="anchor" id="table_Cargo"></a>
 					<h3>Cargo</h3>
