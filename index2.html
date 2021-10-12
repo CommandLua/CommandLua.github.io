@@ -2695,7 +2695,7 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
             contact being attacked as GUID or Name (GUID is better as the name can change as
             its classification
             changes)</li>
-        <li><span class="parameter">options</span> <span class="wrapper"><a href="#wrapper_AttackOptions">{
+        <li><span class="parameter">options</span> <span class="selector"><a href="#selector_AttackOptions">{
                     AttackOptions
                     }</a></span> Contains type of attack and weapon allocation if required)</li>
     </ul>
@@ -6078,7 +6078,6 @@ end
 				</p>
 
 				<ul class="ul-2-columns">
-					<li><span class="wrapper"><a href="#wrapper_AttackOptions">AttackOptions</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_Contact">Contact</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_Doctrine">Doctrine</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_DoctrineWRA">DoctrineWRA</a></span></li>
@@ -6093,19 +6092,6 @@ end
 					<li><span class="wrapper"><a href="#wrapper_Unit">Unit</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_Zone">Zone</a></span></li>
 				</ul>
-				<hr>
-				<a class="anchor" id="wrapper_AttackOptions"></a>
-				<h3>AttackOptions</h3>
-				<p>
-					Attack options.
-				</p>
-	<table class="table_borders" style="width: 100%; margin-left: 0px;">
-   	<tr><th>Field</th><th>Description</th><th>Type</th><th>Comments</td></tr>
-	<tr><td class="parameter">mode </td><td>Targeting mode </td><td class="types"><span class="string">string</span></td><td>"AutoTargeted"|"0", "ManualWeaponAlloc"|"1"</td></tr>
-	<tr><td class="parameter">mount </td><td> The attacker's mount DBID</td><td class="types"><span class="number">number</span></td></td></tr>
-	<tr><td class="parameter">qty </td><td>How many to allocate</td><td class="types"><span class="number">number</span></td></td></tr>
-	<tr><td class="parameter">weapon </td><td> The attacker's weapon DBID</td><td class="types"><span class="number">number</span></td></td></tr>
-	</table>
 				<hr>
 				<a class="anchor" id="wrapper_Contact"></a>
 				<h3>Contact</h3>
@@ -6390,28 +6376,29 @@ end
 					<h3>Side</h3>
 		
 		
-					<p>Side perspective</p>
+					<p>From the perspective of this Side</p>
 	
 <table class="table_borders" style="width: 100%; margin-left: 0px;">
 <tr><th>Field</th><th>Description</th><th>Type</th><th>Comments</td></tr>
+<tr><td class="parameter">AddOrUpdateContact </td><td>Add or update a contact for this side</td><td><span class="types"><span class="method">method</span></span>(ContactData)<br>Returns <span class="types"><a href="#wrapper_Contact">Contact</a></span></td><td> ContactData = {date=,time=,range=,SENSORPARENTID=,SENSORID=, TARGETID }</td></tr>
 <tr><td class="parameter">awareness</td><td></td><td><span class="types"><a href="#dataType_Awareness">Awareness</a></span> </td> <td>  READ ONLY</td></tr>
-<tr><td class="parameter">contacts </td><td></td><td><span class="types"><a href="#dataType_SideContact">SideContact</a></span> </td> <td> Table of current contacts for the designated side. READ ONLY</td></tr>
-<tr><td class="parameter">contactsBy </td><td></td><td><span class="types"><span class="method">method</span></span>(UnitType)</td><td>  Returns table of current contacts filtered by type of unit or nil.</td></tr>
-<tr><td class="parameter">exclusionzones</td><td></td><td><span class="types"><a href="#dataType_Zone">Zone</a></span> </td> <td>Zones for the designated side READ ONLY</td></tr>
+<tr><td class="parameter">contacts <span class="readonly">READ ONLY</span></td><td>Table of contacts known to this side</td><td><span class="table">table</span><br><span class="types"><a href="#dataType_SideContact">SideContact</a></span> </td> <td> {guid, name}</td></tr>
+<tr><td class="parameter">contactsBy </td><td>Table of contacts filtered by (UnitType)</td><td><span class="types"><span class="method">method</span></span>(UnitType)</td><td>  {guid, name} or nil if no match</td></tr>
+<tr><td class="parameter">exclusionzones <span class="readonly">READ ONLY</span></td><td>Table of exclusion zones defined for this side</td><td><span class="table">table</span><br><span class="types"><a href="#dataType_Zone">Zone</a></span> </td> <td> {guid, name, description}</td></tr>
 <tr><td class="parameter">expenditures </td><td></td><td><span class="types"><span class="table">table</span></span></td><td> of expenditure to date - {type, dbid, name, number}</td></tr>
-<tr><td class="parameter">getexclusionzone </td><td></td><td><span class="types"><span class="method">method</span></span>(ZoneGUID|ZoneName|ZoneDescription)</td><td>  Returns matching Zone or nil</td></tr>
-<tr><td class="parameter">getnonavzone </td><td></td><td><span class="types"><span class="method">method</span></span>(ZoneGUID|ZoneName|ZoneDescription))</td><td>  Returns matching Zone or nil</td></tr>
-<tr><td class="parameter">guid </td><td></td><td><span class="types"><span class="string">string</span></span></td><td> The GUID of the side.</td></tr>
+<tr><td class="parameter">getexclusionzone </td><td>Get the specific Zone</td><td><span class="types"><span class="method">method</span></span>(ZoneId)</td><td> Accepts GUID (preferred), Name or Description from the Zone as the identifier</td></tr>
+<tr><td class="parameter">getnonavzone </td><td>Get the specific Zone</td><td><span class="types"><span class="method">method</span></span>(ZoneId))</td><td> Accepts GUID (preferred), Name or Description from the Zone as the identifier</td></tr>
+<tr><td class="parameter">guid <span class="readonly">READ ONLY</span></td><td>The GUID of the object</td><td><span class="types"><a href="#dataType_GUID">GUID</span></td><td></td></tr>
 <tr><td class="parameter">hasmines </td><td></td><td><span class="types"><span class="boolean">boolean</span></span></td><td> READ ONLY</td></tr>
 <tr><td class="parameter">losses </td><td></td><td><span class="types"><span class="table">table</span></span></td><td> of losses to date - {type, dbid, name, number}</td></tr>
 <tr><td class="parameter">missions </td><td></td><td><span class="types"><span class="table">table</span></span></td><td> of Mission wrappers for missions on the side</td></tr>
-<tr><td class="parameter">name </td><td></td><td><span class="types"><span class="string">string</span></span></td><td> The name of the side.</td></tr>
-<tr><td class="parameter">nonavzones</td><td></td><td><span class="types"><a href="#dataType_Zone">Zone</a></span> </td> <td> Zones for the designated side READ ONLY</td></tr>
+<tr><td class="parameter">name </td><td>The name of the side</td><td><span class="types"><span class="string">string</span></span></td><td> </td></tr>
+<tr><td class="parameter">nonavzones <span class="readonly">READ ONLY</span></td><td>Table of no-go zones defined for this side</td><td><span class="table">table</span><br><span class="types"><a href="#dataType_Zone">Zone</a></span> </td> <td> {guid, name, description}</td></tr>
 <tr><td class="parameter">proficiency</td><td></td><td><span class="types"><a href="#dataType_Proficiency">Proficiency</a></span> </td> <td>  READ ONLY</td></tr>
-<tr><td class="parameter">rps </td><td></td><td><span class="types"><a href="#dataType_Zone">Zone</a></span> </td> <td> RPs for the designated side READ ONLY</td></tr>
-<tr><td class="parameter">units </td><td></td><td><span class="types"><a href="#dataType_SideUnit">SideUnit</a></span> </td> <td> Table of units for the designated side. READ ONLY</td></tr>
-<tr><td class="parameter">unitsBy </td><td></td><td><span class="types"><span class="method">method</span></span>(UnitType[[,Category],Subtype])</td><td>  Returns table of units filtered by type of unit or nil.</td></tr>
-<tr><td class="parameter">unitsInArea </td><td></td><td><span class="types"><span class="method">method</span></span>({Area[,TargetFilter]})</td><td>  Returns table of units {name,guid} filtered by type of unit</td></tr>
+<tr><td class="parameter">rps <span class="readonly">READ ONLY</span></td><td>Table of reference points defined for this side</td><td><span class="table">table</span><br><span class="types"><a href="#dataType_Zone">Zone</a></span> </td> <td> {guid, name, longitude, latitude, side, highlighted, locked, [bearingtype, relativeto]}</td></tr>
+<tr><td class="parameter">units <span class="readonly">READ ONLY</span></td><td>Table of units on side</td><td><span class="table">table</span><br><span class="types"><a href="#dataType_SideUnit" title=" of Unit {guid, name}">SideUnit</a></span> </td> <td></td></tr>
+<tr><td class="parameter">unitsBy <span class="types"><span class="method">method</span> <br> (UnitType[[,Category],Subtype])</td><td>Table of units of (UnitType)</td><td><span class="table">table</span><br><span class="types"><a href="#dataType_SideUnit" title=" of Unit {guid, name} of Unit">SideUnit</a></span> </td><td> optional of (Category) and (SubType) or nil if no match to filters.</td></tr>
+<tr><td class="parameter">unitsInArea <span class="types"><span class="method">method</span> <br> ({Area[,TargetFilter]})</span></td><td>Table of units inside (Area)</td><td><span class="table">table</span><br><span class="types"><a href="#dataType_SideUnit" title=" of Unit {guid, name} of Unit">SideUnit</a></span> </td><td> optional of (TargetFilter) or nil if no match to filter<br>Define Area {RPs} and<br> TargetFilter {TargetType,TargetSubType,SpecificUnitClass,SpecificUnitID } links</td></tr>
 
 </table>
 
@@ -6508,11 +6495,9 @@ end
 <tr><td class="parameter">loadoutdbid</td><td></td><td><span class="types"><span class="number">number</span></span></td><td>current aircraft loadout DBID. READ ONLY</td></tr>
 <tr><td class="parameter">longitude</td><td></td><td><span class="types"><a href="#dataType_WRA">WRA</a></span> </td> <td> Longitude The longitude of the unit .</td></tr>
 <tr><td class="parameter">magazines</td><td></td><td><span class="types"><a href="#dataType_WRA">WRA</a></span> </td> <td> Magazine A table of magazines (with weapon loads) in the unit or group. Can be updated by ScenEdit_AddWeaponToUnitMagazine READ ONLY</td></tr>
-<tr><td class="parameter">manualAltitude </td><td></td><td><span class="types"><span class="string">string</span></span></td><td> or</td><td></td><td><span class="types"><span class="number">number</span></span></td><td>Desired altitude/depth or 'OFF' to turn off manual mode</td></tr>
-<tr><td class="parameter">manualAltitude </td><td></td><td><span class="types"><span class="string">string</span></span></td><td> or</td><td></td><td><span class="types"><span class="number">number</span></span></td><td>Desired altitude/depth or 'OFF' to turn off manual mode Modifiable through ScenEdit_ functions only</td></tr>
-<tr><td class="parameter">manualSpeed </td><td></td><td><span class="types"><span class="string">string</span></span></td><td> or</td><td></td><td><span class="types"><span class="number">number</span></span></td><td>Desired speed or 'OFF' to turn off manual mode</td></tr>
-<tr><td class="parameter">manualSpeed </td><td></td><td><span class="types"><span class="string">string</span></span></td><td> or</td><td></td><td><span class="types"><span class="number">number</span></span></td><td>Desired speed or 'OFF' to turn off manual mode Modifiable through ScenEdit_ functions only</td></tr>
-<tr><td class="parameter">manualThrottle </td><td></td><td><span class="types"><span class="string">string</span></span></td><td> or</td><td></td><td><span class="types"><span class="number">number</span></span></td><td>Desired throttle or 'OFF' to turn off manual mode Modifiable through ScenEdit_ functions only</td></tr>
+<tr><td class="parameter">manualAltitude </td><td></td><td><span class="types"><span class="string">string</span></span> or <span class="types"><span class="number">number</span></span></td><td>Desired altitude/depth or 'OFF' to turn off manual mode Modifiable through ScenEdit_ functions only</td></tr>
+<tr><td class="parameter">manualSpeed </td><td></td><td><span class="types"><span class="string">string</span></span> or <span class="types"><span class="number">number</span></span></td><td>Desired speed or 'OFF' to turn off manual mode Modifiable through ScenEdit_ functions only</td></tr>
+<tr><td class="parameter">manualThrottle </td><td></td><td><span class="types"><span class="string">string</span></span> or <span class="types"><span class="number">number</span></span></td><td>Desired throttle or 'OFF' to turn off manual mode Modifiable through ScenEdit_ functions only</td></tr>
 <tr><td class="parameter">mission </td><td></td><td><span class="types"><a href="#dataType_WRA">WRA</a></span> </td> <td>Mission The unit's assigned mission. Can be changed by setting to the Mission name or guid (calls ScenEdit_AssignUnitToMission)</td></tr>
 <tr><td class="parameter">mounts</td><td></td><td><span class="types"><a href="#dataType_WRA">WRA</a></span> </td> <td> Mount A table of mounts (with weapon loads) in the unit or group. Can be updated by ScenEdit_AddReloadsToUnit READ ONLY</td></tr>
 <tr><td class="parameter">moveto </td><td></td><td><span class="types"><span class="boolean">boolean</span></span></td><td> Set a desired alt/depth instead of jumping to actual Modifiable through ScenEdit_ functions only</td></tr>
@@ -6528,9 +6513,7 @@ end
 <tr><td class="parameter">readytime </td><td></td><td><span class="types"><span class="string">string</span></span></td><td> [READ] or number [SET] how long aircraft/ship takes to be ready as "days:hours:minutes:seconds".<br>Set the time in seconds<br>Can use 'TimeToReady_Minutes=' in SetUnit() to set the ready time in minutes for aircraft and ship/sub.</td></tr>
 <tr><td class="parameter">readytime_v </td><td></td><td> how long aircraft/ship takes to be ready in seconds. READ ONLY</td></tr>
 <tr><td class="parameter">refuel </td><td></td><td><span class="types"><span class="boolean">boolean</span></span></td><td> Trigger the unit to attempt an UNREP Modifiable through ScenEdit_ functions only</td></tr>
-<tr><td class="parameter">RTB </td><td></td><td><span class="types"><span class="method">method</span></span>()</td><td> Trigger the unit to return to base, or cancel an RTB.</td></tr>
 <tr><td class="parameter">RTB </td><td></td><td><span class="types"><span class="boolean">boolean</span></span></td><td> Trigger the unit to return to base Modifiable through ScenEdit_ functions only</td></tr>
-<tr><td class="parameter">sensors </td><td></td><td><span class="types"><a href="#dataType_WRA">WRA</a></span> </td> <td>Sensor Unit sensor information</td></tr>
 <tr><td class="parameter">sensors </td><td></td><td><span class="types"><a href="#dataType_WRA">WRA</a></span> </td> <td>Sensor Sensors set to active or inactive in table format (sensor_guid,sensor_isactive) Modifiable through ScenEdit_ functions only</td></tr>
 <tr><td class="parameter">side </td><td></td><td><span class="types"><span class="string">string</span></span></td><td> The unit's side. READ ONLY</td></tr>
 <tr><td class="parameter">speed</td><td></td><td><span class="types"><span class="number">number</span></span></td><td>The unit's current speed.</td></tr>
@@ -6566,8 +6549,8 @@ end
 		
 <table class="table_borders" style="width: 100%; margin-left: 0px;">
 <tr><th>Field</th><th>Description</th><th>Type</th><th>Comments</td></tr>
-<tr><td class="parameter">affects </td><td>Table of unit types that are affected by this zone</td><td><span class="types"><a href="#dataType_Unit__Types">unitTypes</a></span> </td> <td> To affect ships and submarines<br><code>z.affects = { 'ship', 3 }</code><br>Use the text or number from the unitTypes </td></tr>
-<tr><td class="parameter">area </td><td>Table of reference point sets defining the zone</td><td><span class="types"><a href="#wrapper_ReferencePoint">AreaMarker</a></span> </td> <td>  Can be updated by a table of RP names,<br> or a table of new RP values.</td></tr>
+<tr><td class="parameter">affects </td><td>Table of unit types that are affected by this zone</td><td><span class="table">table</span><br><span class="types"><a href="#dataType_Unit__Types">unitTypes</a></span> </td> <td> To affect ships and submarines<br><code>z.affects = { 'ship', 3 }</code><br>Use the text or number from the unitTypes </td></tr>
+<tr><td class="parameter">area </td><td>Table of reference point sets defining the zone</td><td><span class="table">table</span><br><span class="types"><a href="#dataType_Area">Area</a></span> </td> <td>  Can be updated by a table of RP names,<br> or a table of new RP values.</td></tr>
 <tr><td class="parameter">description </td><td>The description of the zone</td><td><span class="types"><span class="string">string</span></span></td><td> </td></tr>
 <tr><td class="parameter">guid <span class="readonly">READ ONLY</span></td><td>The GUID of the zone</td><td><span class="types"><a href="#dataType_GUID">GUID</span></td><td></td></tr>
 <tr><td class="parameter">isactive </td><td>Zone is active?</td><td><span class="types"><span class="boolean">boolean</span></span></td><td> </td></tr>
@@ -6589,12 +6572,12 @@ end
 				<span class="local">local</span> z = a.nonavzones <br>
 				--List Of no-nav zones For the side If you need To find it<br>
 		
-				For i, zone <span class="keyword">in</span> <span class="global">ipairs</span>(z) <span class="keyword">do</span><br>
+				for i, zone <span class="keyword">in</span> <span class="global">ipairs</span>(z) <span class="keyword">do</span><br>
 				<span class="global">print</span>(<span class="string">"Zone #"</span> .. i)<br>
 				<span class="global">print</span>(zone)<br>
 				<span class="local">local</span> n = a :  getnonavzone(z[i].guid) <span class="comment">-- zone object</span><br>
 				<span class="global">print</span>(<span class="string">'Details: '</span> .. n.description .. <span class="string">' Active: '</span> .. <span class="global">tostring</span>(n.isactive) )<br>
-				</span> End</code></div> 
+				</span> end</code></div> 
 				
 				
 				<a class="anchor" id="Selectors"></a>
@@ -6614,6 +6597,7 @@ end
 				<p>
 					<ul class="ul-2-columns">
 						<li><span class="selector"><a href="#selector_ActionUpdate">ActionUpdate</a></span></li>
+						<li><span class="selector"><a href="#selector_AttackOptions">AttackOptions</a></span></li>
 						<li><span class="selector"><a href="#selector_ConditionUpdate">ConditionUpdate</a></span></li>
 						<li><span class="selector"><a href="#selector_ContactSelector">ContactSelector</a></span></li>
 						<li><span class="selector"><a href="#selector_DamageOptions">DamageOptions</a></span></li>
@@ -6673,6 +6657,19 @@ end
 						<strong>Note:</strong> Other various values apply to the type of action.
 					</p>
 				</div>
+				<hr>
+				<a class="anchor" id="selector_AttackOptions"></a>
+				<h3>AttackOptions</h3>
+				<p>
+					Attack options.
+				</p>
+	<table class="table_borders" style="width: 100%; margin-left: 0px;">
+   	<tr><th>Field</th><th>Description</th><th>Type</th><th>Comments</td></tr>
+	<tr><td class="parameter">mode </td><td>Targeting mode </td><td class="types"><span class="string">string</span></td><td>"AutoTargeted"|"0", "ManualWeaponAlloc"|"1"</td></tr>
+	<tr><td class="parameter">mount </td><td> The attacker's mount DBID</td><td class="types"><span class="number">number</span></td></td></tr>
+	<tr><td class="parameter">qty </td><td>How many to allocate</td><td class="types"><span class="number">number</span></td></td></tr>
+	<tr><td class="parameter">weapon </td><td> The attacker's weapon DBID</td><td class="types"><span class="number">number</span></td></td></tr>
+	</table>
 				<hr>
 				<a class="anchor" id="selector_ConditionUpdate"></a>
 				<h3>ConditionUpdate</h3>
