@@ -75,6 +75,7 @@
                         <li>New property on "Unit" wrapper: airbornetime_v, readytime_v, crew</li>
                         <li>New property on "Contact" wrapper: lastDetections</li>
                         <li>New method on "Scenario" wrapper: ResetLossExp, ResetScore</li>
+                        <li>Updated method on "Unit" wrapper: filterOnComponent</li>
                     </ul>
 				</p>
                <h4>Command: Modern Operations v1147.30</h4>
@@ -6443,27 +6444,27 @@ end
 		
 <table class="table_borders" style="width: 100%; margin-left: 0px;">
 <tr><th>Field</th><th>Description</th><th>Type</th><th>Comments</td></tr>
-<tr><td class="parameter">AI_EvaluateTargets_enabled </td><td></td><td><span class="types"><span class="boolean">boolean</span></span></td><td> AI evaluates targets</td></tr>
-<tr><td class="parameter">AI_DeterminePrimaryTarget_enabled </td><td></td><td><span class="types"><span class="boolean">boolean</span></span></td><td> AI determines primary target</td></tr>
-<tr><td class="parameter">airbornetime</td><td></td><td><span class="types"><a href="#dataType_WRA">WRA</a></span> </td> <td> datetime how long aircraft has been flying as "days:hours:minutes:seconds". READ ONLY</td></tr>
-<tr><td class="parameter">airbornetime_v</td><td></td><td><span class="types"><span class="number">number</span></span></td><td>how long aircraft has been flying in seconds. READ ONLY</td></tr>
-<tr><td class="parameter">altitude</td><td></td><td><span class="types"><span class="number">number</span></span></td><td>The altitude of the unit in meters.</td></tr>
-<tr><td class="parameter">areaTriggersFired </td><td></td><td><span class="types"><span class="table">table</span></span></td><td> Table of active 'in area' triggers that have fired for unit</td></tr>
-<tr><td class="parameter">ascontact </td><td></td><td><span class="types"><span class="table">table</span></span></td><td> A table {side,guid,name} of this unit seen from the other sides (as contacts). READ ONLY</td></tr>
+<tr><td class="parameter">AI_EvaluateTargets_enabled </td><td>can AI evaluate targets</td><td><span class="types"><span class="boolean">boolean</span></span></td><td> </td></tr>
+<tr><td class="parameter">AI_DeterminePrimaryTarget_enabled </td><td>can AI determine primary target</td><td><span class="types"><span class="boolean">boolean</span></span></td><td> </td></tr>
+<tr><td class="parameter">airbornetime <span class="readonly">READ ONLY</span></td><td>how long aircraft has been flying</td><td><span class="types"><a href="#dataType_DateTime">DateTime</a></span> </td> <td> .. as "days:hours:minutes:seconds"</td></tr>
+<tr><td class="parameter">airbornetime_v </td><td>how long aircraft has been flying in seconds</td><td><span class="types"><span class="number">number</span></span></td><td></td></tr>
+<tr><td class="parameter">altitude</td><td>The altitude of the unit in meters</td><td><span class="types"><span class="number">number</span></span></td><td></td></tr>
+<tr><td class="parameter">areaTriggersFired </td><td>Event 'in area' triggers that have fired for unit</td><td><span class="types"><span class="table">table of</span><br><span class="types"><a href="#dataType_GUID">GUID</a></span></td><td>The trigger event GUID </td></tr>
+<tr><td class="parameter">ascontact <span class="readonly">READ ONLY</span></td><td></td><td><span class="types"><span class="table">table</span></span></td><td> A table {side,guid,name} of this unit seen from the other sides (as contacts). READ ONLY</td></tr>
 <tr><td class="parameter">assignedUnits </td><td></td><td><span class="types"><span class="table">table</span></span></td><td> Table of boats and aircraft assigned to the unit (base)</td></tr>
 <tr><td class="parameter">autodetectable </td><td></td><td><span class="types"><span class="boolean">boolean</span></span></td><td> True if the unit is automatically detected.</td></tr>
 <tr><td class="parameter">avoidCavitation </td><td></td><td><span class="types"><span class="boolean">boolean</span></span></td><td> Avoid cavitation 'True/False'</td></tr>
 <tr><td class="parameter">base </td><td></td><td><span class="types"><a href="#dataType_Unit">Unit</a></span> </td> <td> The unit's assigned base.</td></tr>
 <tr><td class="parameter">cargo </td><td></td><td><span class="types"><a href="#dataType_WRA">WRA</a></span> </td> <td>Cargo Unit cargo information</td></tr>
 <tr><td class="parameter">category</td><td></td><td><span class="types"><span class="number">number</span></span></td><td>The unit category code for the Aircraft, Facility, Ship, Submarine or Satellite.</td></tr>
-<tr><td class="parameter">classname </td><td></td><td><span class="types"><span class="string">string</span></span></td><td> Unit class name READ ONLY</td></tr>
-<tr><td class="parameter">condition </td><td></td><td><span class="types"><span class="string">string</span></span></td><td> Message on unit dock/air ops status. READ ONLY</td></tr>
-<tr><td class="parameter">condition_v </td><td></td><td><span class="types"><span class="string">string</span></span></td><td> Docking/Air Ops condition value. READ ONLY</td></tr>
-<tr><td class="parameter">components</td><td></td><td><span class="types"><a href="#dataType_WRA">WRA</a></span> </td> <td> Component A table of components on the unit. READ ONLY</td></tr>
+<tr><td class="parameter">classname <span class="readonly">READ ONLY</span></td><td></td><td><span class="types"><span class="string">string</span></span></td><td> Unit class name READ ONLY</td></tr>
+<tr><td class="parameter">condition <span class="readonly">READ ONLY</span></td><td></td><td><span class="types"><span class="string">string</span></span></td><td> Message on unit dock/air ops status. READ ONLY</td></tr>
+<tr><td class="parameter">condition_v <span class="readonly">READ ONLY</span></td><td></td><td><span class="types"><span class="string">string</span></span></td><td> Docking/Air Ops condition value. READ ONLY</td></tr>
+<tr><td class="parameter">components <span class="readonly">READ ONLY</span></td><td></td><td><span class="types"><a href="#dataType_WRA">WRA</a></span> </td> <td> Component A table of components on the unit. READ ONLY</td></tr>
 <tr><td class="parameter">course </td><td></td><td><span class="types"><a href="#dataType_WRA">WRA</a></span> </td> <td>WayPoint  The unit's course, as a table of waypoints</td></tr>
-<tr><td class="parameter">crew</td><td></td><td><span class="types"><span class="number">number</span></span></td><td>crew size (nil if not defined) READ ONLY</td></tr>
-<tr><td class="parameter">damage </td><td></td><td><span class="types"><span class="table">table</span></span></td><td> Table {dp,flood,fires,startDp} of start and current DP, flood and fire level. READ ONLY</td></tr>
-<tr><td class="parameter">DBID</td><td></td><td><span class="types"><span class="number">number</span></span></td><td>The database ID of the unit READ ONLY</td></tr>
+<tr><td class="parameter">crew <span class="readonly">READ ONLY</span></td><td></td><td><span class="types"><span class="number">number</span></span></td><td>crew size (nil if not defined) READ ONLY</td></tr>
+<tr><td class="parameter">damage <span class="readonly">READ ONLY</span></td><td></td><td><span class="types"><span class="table">table</span></span></td><td> Table {dp,flood,fires,startDp} of start and current DP, flood and fire level. READ ONLY</td></tr>
+<tr><td class="parameter">DBID <span class="readonly">READ ONLY</span></td><td></td><td><span class="types"><span class="number">number</span></span></td><td>The database ID of the unit READ ONLY</td></tr>
 <tr><td class="parameter">delete </td><td></td><td><span class="types"><span class="method">method</span></span>()</td><td> () Immediately removes unit object</td></tr>
 <tr><td class="parameter">embarkedUnits </td><td></td><td><span class="types"><span class="table">table</span></span></td><td> Table of boats and aircraft docked/embarked on the unit</td></tr>
 <tr><td class="parameter">filterOnComponent </td><td></td><td><span class="types"><span class="method">method</span></span>()</td><td> (type) Filters unit on type of component and returns a Component table.</td></tr>
@@ -6472,62 +6473,62 @@ end
 <tr><td class="parameter">formation </td><td></td><td><span class="types"><span class="table">table</span></span></td><td> Table of unit's formation info {bearing, type (of bearing), distance, sprint (and drift)</td></tr>
 <tr><td class="parameter">fuel</td><td></td><td><span class="types"><a href="#dataType_WRA">WRA</a></span> </td> <td> Fuel A table of fuel types used by unit.</td></tr>
 <tr><td class="parameter">fuels</td><td></td><td><span class="types"><a href="#dataType_WRA">WRA</a></span> </td> <td> Fuel A table of fuel types in tanks used by unit.</td></tr>
-<tr><td class="parameter">fuelstate </td><td></td><td><span class="types"><span class="string">string</span></span></td><td> Message on unit fuel status. READ ONLY</td></tr>
-<tr><td class="parameter">groundSpeed</td><td></td><td><span class="types"><span class="number">number</span></span></td><td>aircraft or missile speed READ ONLY</td></tr>
+<tr><td class="parameter">fuelstate <span class="readonly">READ ONLY</span></td><td></td><td><span class="types"><span class="string">string</span></span></td><td> Message on unit fuel status. READ ONLY</td></tr>
+<tr><td class="parameter">groundSpeed <span class="readonly">READ ONLY</span></td><td></td><td><span class="types"><span class="number">number</span></span></td><td>aircraft or missile speed READ ONLY</td></tr>
 <tr><td class="parameter">group </td><td></td><td><span class="types"><a href="#dataType_WRA">WRA</a></span> </td> <td>Group The unit's group. If setting the group, use a text name of an existing group or a new name to create a group. To remove unit from a group, use "none" as the name.</td></tr>
-<tr><td class="parameter">guid </td><td></td><td><span class="types"><span class="string">string</span></span></td><td> The unit's unique ID. READ ONLY</td></tr>
+<tr><td class="parameter">guid <span class="readonly">READ ONLY</span></td><td></td><td><span class="types"><span class="string">string</span></span></td><td> The unit's unique ID. READ ONLY</td></tr>
 <tr><td class="parameter">heading</td><td></td><td><span class="types"><span class="number">number</span></span></td><td>The unit's heading .</td></tr>
 <tr><td class="parameter">holdposition </td><td></td><td><span class="types"><span class="boolean">boolean</span></span></td><td> True if the unit should hold.</td></tr>
 <tr><td class="parameter">holdfire </td><td></td><td><span class="types"><span class="table">table</span></span></td><td> Doctrine WCS setting for {air,surface,subsurface,land}. READ ONLY</td></tr>
 <tr><td class="parameter">hostFacility </td><td></td><td><span class="types"><a href="#dataType_WRA">WRA</a></span> </td> <td>Facility Where unit is hosted</td></tr>
-<tr><td class="parameter">inArea </td><td></td><td><span class="types"><span class="method">method</span></span>()</td><td> ({area}) Is unit in the 'area' defined by table of RPs (true/false)</td></tr>
-<tr><td class="parameter">IsBallisticMissile </td><td></td><td><span class="types"><span class="boolean">boolean</span></span></td><td> is weapon a Ballistic Weapon READ ONLY</td></tr>
-<tr><td class="parameter">IsDecoy </td><td></td><td><span class="types"><span class="boolean">boolean</span></span></td><td> is weapon a decoy READ ONLY</td></tr>
-<tr><td class="parameter">isEscort </td><td></td><td><span class="types"><span class="boolean">boolean</span></span></td><td> is unit asssigned to escort in mission READ ONLY</td></tr>
-<tr><td class="parameter">IsMine </td><td></td><td><span class="types"><span class="boolean">boolean</span></span></td><td> is weapon a mine READ ONLY</td></tr>
-<tr><td class="parameter">IsNuke </td><td></td><td><span class="types"><span class="boolean">boolean</span></span></td><td> is weapon a nuke READ ONLY</td></tr>
-<tr><td class="parameter">isOperating </td><td></td><td><span class="types"><span class="boolean">boolean</span></span></td><td> is unit is operational, not landed or docked READ ONLY</td></tr>
-<tr><td class="parameter">IsUnguidedBallisticWeapon </td><td></td><td><span class="types"><span class="boolean">boolean</span></span></td><td> is weapon a Unguided Ballistic Weapon READ ONLY</td></tr>
-<tr><td class="parameter">jammed </td><td></td><td><span class="types"><span class="boolean">boolean</span></span></td><td> unit is being jammed READ ONLY</td></tr>
-<tr><td class="parameter">jammer </td><td></td><td><span class="types"><span class="boolean">boolean</span></span></td><td> unit is acting as a jammer READ ONLY</td></tr>
+<tr><td class="parameter">inArea <span class="readonly">READ ONLY</span></td><td></td><td><span class="types"><span class="method">method</span></span>()</td><td> ({area}) Is unit in the 'area' defined by table of RPs (true/false)</td></tr>
+<tr><td class="parameter">IsBallisticMissile <span class="readonly">READ ONLY</span></td><td></td><td><span class="types"><span class="boolean">boolean</span></span></td><td> is weapon a Ballistic Weapon READ ONLY</td></tr>
+<tr><td class="parameter">IsDecoy <span class="readonly">READ ONLY</span></td><td></td><td><span class="types"><span class="boolean">boolean</span></span></td><td> is weapon a decoy READ ONLY</td></tr>
+<tr><td class="parameter">isEscort <span class="readonly">READ ONLY</span></td><td></td><td><span class="types"><span class="boolean">boolean</span></span></td><td> is unit asssigned to escort in mission READ ONLY</td></tr>
+<tr><td class="parameter">IsMine <span class="readonly">READ ONLY</span></td><td></td><td><span class="types"><span class="boolean">boolean</span></span></td><td> is weapon a mine READ ONLY</td></tr>
+<tr><td class="parameter">IsNuke <span class="readonly">READ ONLY</span></td><td></td><td><span class="types"><span class="boolean">boolean</span></span></td><td> is weapon a nuke READ ONLY</td></tr>
+<tr><td class="parameter">isOperating <span class="readonly">READ ONLY</span></td><td></td><td><span class="types"><span class="boolean">boolean</span></span></td><td> is unit is operational, not landed or docked READ ONLY</td></tr>
+<tr><td class="parameter">IsUnguidedBallisticWeapon <span class="readonly">READ ONLY</span></td><td></td><td><span class="types"><span class="boolean">boolean</span></span></td><td> is weapon a Unguided Ballistic Weapon READ ONLY</td></tr>
+<tr><td class="parameter">jammed <span class="readonly">READ ONLY</span></td><td></td><td><span class="types"><span class="boolean">boolean</span></span></td><td> unit is being jammed READ ONLY</td></tr>
+<tr><td class="parameter">jammer <span class="readonly">READ ONLY</span></td><td></td><td><span class="types"><span class="boolean">boolean</span></span></td><td> unit is acting as a jammer READ ONLY</td></tr>
 <tr><td class="parameter">latitude</td><td></td><td><span class="types"><a href="#dataType_WRA">WRA</a></span> </td> <td> Latitude The latitude of the unit.</td></tr>
 <tr><td class="parameter">Launch </td><td></td><td><span class="types"><span class="method">method</span></span>()</td><td> (true/false) Trigger the unit to launch from base (true) or abort launch (false)</td></tr>
-<tr><td class="parameter">loadoutdbid</td><td></td><td><span class="types"><span class="number">number</span></span></td><td>current aircraft loadout DBID. READ ONLY</td></tr>
+<tr><td class="parameter">loadoutdbid <span class="readonly">READ ONLY</span></td><td></td><td><span class="types"><span class="number">number</span></span></td><td>current aircraft loadout DBID. READ ONLY</td></tr>
 <tr><td class="parameter">longitude</td><td></td><td><span class="types"><a href="#dataType_WRA">WRA</a></span> </td> <td> Longitude The longitude of the unit .</td></tr>
-<tr><td class="parameter">magazines</td><td></td><td><span class="types"><a href="#dataType_WRA">WRA</a></span> </td> <td> Magazine A table of magazines (with weapon loads) in the unit or group. Can be updated by ScenEdit_AddWeaponToUnitMagazine READ ONLY</td></tr>
+<tr><td class="parameter">magazines <span class="readonly">READ ONLY</span></td><td></td><td><span class="types"><a href="#dataType_WRA">WRA</a></span> </td> <td> Magazine A table of magazines (with weapon loads) in the unit or group. Can be updated by ScenEdit_AddWeaponToUnitMagazine READ ONLY</td></tr>
 <tr><td class="parameter">manualAltitude </td><td></td><td><span class="types"><span class="string">string</span></span> or <span class="types"><span class="number">number</span></span></td><td>Desired altitude/depth or 'OFF' to turn off manual mode Modifiable through ScenEdit_ functions only</td></tr>
 <tr><td class="parameter">manualSpeed </td><td></td><td><span class="types"><span class="string">string</span></span> or <span class="types"><span class="number">number</span></span></td><td>Desired speed or 'OFF' to turn off manual mode Modifiable through ScenEdit_ functions only</td></tr>
 <tr><td class="parameter">manualThrottle </td><td></td><td><span class="types"><span class="string">string</span></span> or <span class="types"><span class="number">number</span></span></td><td>Desired throttle or 'OFF' to turn off manual mode Modifiable through ScenEdit_ functions only</td></tr>
 <tr><td class="parameter">mission </td><td></td><td><span class="types"><a href="#dataType_WRA">WRA</a></span> </td> <td>Mission The unit's assigned mission. Can be changed by setting to the Mission name or guid (calls ScenEdit_AssignUnitToMission)</td></tr>
-<tr><td class="parameter">mounts</td><td></td><td><span class="types"><a href="#dataType_WRA">WRA</a></span> </td> <td> Mount A table of mounts (with weapon loads) in the unit or group. Can be updated by ScenEdit_AddReloadsToUnit READ ONLY</td></tr>
+<tr><td class="parameter">mounts <span class="readonly">READ ONLY</span></td><td></td><td><span class="types"><a href="#dataType_WRA">WRA</a></span> </td> <td> Mount A table of mounts (with weapon loads) in the unit or group. Can be updated by ScenEdit_AddReloadsToUnit READ ONLY</td></tr>
 <tr><td class="parameter">moveto </td><td></td><td><span class="types"><span class="boolean">boolean</span></span></td><td> Set a desired alt/depth instead of jumping to actual Modifiable through ScenEdit_ functions only</td></tr>
 <tr><td class="parameter">name </td><td></td><td><span class="types"><span class="string">string</span></span></td><td> The unit's name.</td></tr>
 <tr><td class="parameter">newname </td><td></td><td><span class="types"><span class="string">string</span></span></td><td> If changing existing unit, the unit's new name .</td></tr>
 <tr><td class="parameter">obeyEMCON </td><td></td><td><span class="types"><span class="boolean">boolean</span></span></td><td> Unit obeys EMCON. Turn off to manually set sensors</td></tr>
 <tr><td class="parameter">oldDamagePercent </td><td></td><td><span class="types"><span class="number">number</span></span></td><td> changes the last damage percent used by damage trigger</td></tr>
 <tr><td class="parameter">OODA </td><td></td><td><span class="types"><span class="table">table</span></span></td><td> Table contain unit's "observe, orient, decide, act" values {evasion, targeting, detection}</td></tr>
-<tr><td class="parameter">outOfComms </td><td></td><td><span class="types"><span class="boolean">boolean</span></span></td><td> is unit connected to side comms network (false = connected) READ ONLY</td></tr>
-<tr><td class="parameter">pitch</td><td></td><td><span class="types"><span class="number">number</span></span></td><td>aircraft or missile pitch READ ONLY</td></tr>
+<tr><td class="parameter">outOfComms <span class="readonly">READ ONLY</span></td><td></td><td><span class="types"><span class="boolean">boolean</span></span></td><td> is unit connected to side comms network (false = connected) READ ONLY</td></tr>
+<tr><td class="parameter">pitch <span class="readonly">READ ONLY</span></td><td></td><td><span class="types"><span class="number">number</span></span></td><td>aircraft or missile pitch READ ONLY</td></tr>
 <tr><td class="parameter">proficiency </td><td></td><td><span class="types"><span class="string">string</span></span></td><td> The unit proficiency, "Novice"|0, "Cadet"|1,"Regular"|2, "Veteran"|3, "Ace"|4.</td></tr>
 <tr><td class="parameter">rangetotarget </td><td></td><td><span class="types"><span class="method">method</span></span>()</td><td> ('contactid') Calculate flat distance to a contact location</td></tr>
 <tr><td class="parameter">readytime </td><td></td><td><span class="types"><span class="string">string</span></span></td><td> [READ] or number [SET] how long aircraft/ship takes to be ready as "days:hours:minutes:seconds".<br>Set the time in seconds<br>Can use 'TimeToReady_Minutes=' in SetUnit() to set the ready time in minutes for aircraft and ship/sub.</td></tr>
-<tr><td class="parameter">readytime_v </td><td></td><td> how long aircraft/ship takes to be ready in seconds. READ ONLY</td></tr>
+<tr><td class="parameter">readytime_v <span class="readonly">READ ONLY</span></td><td></td><td> how long aircraft/ship takes to be ready in seconds. READ ONLY</td></tr>
 <tr><td class="parameter">refuel </td><td></td><td><span class="types"><span class="boolean">boolean</span></span></td><td> Trigger the unit to attempt an UNREP Modifiable through ScenEdit_ functions only</td></tr>
 <tr><td class="parameter">RTB </td><td></td><td><span class="types"><span class="boolean">boolean</span></span></td><td> Trigger the unit to return to base Modifiable through ScenEdit_ functions only</td></tr>
 <tr><td class="parameter">sensors </td><td></td><td><span class="types"><a href="#dataType_WRA">WRA</a></span> </td> <td>Sensor Sensors set to active or inactive in table format (sensor_guid,sensor_isactive) Modifiable through ScenEdit_ functions only</td></tr>
-<tr><td class="parameter">side </td><td></td><td><span class="types"><span class="string">string</span></span></td><td> The unit's side. READ ONLY</td></tr>
+<tr><td class="parameter">side <span class="readonly">READ ONLY</span></td><td></td><td><span class="types"><span class="string">string</span></span></td><td> The unit's side. READ ONLY</td></tr>
 <tr><td class="parameter">speed</td><td></td><td><span class="types"><span class="number">number</span></span></td><td>The unit's current speed.</td></tr>
 <tr><td class="parameter">sprintDrift </td><td></td><td><span class="types"><span class="boolean">boolean</span></span></td><td> Sprint and drift 'True/False'</td></tr>
-<tr><td class="parameter">subtype </td><td></td><td><span class="types"><span class="string">string</span></span></td><td> The unit's subtype (if applicable). READ ONLY</td></tr>
+<tr><td class="parameter">subtype <span class="readonly">READ ONLY</span></td><td></td><td><span class="types"><span class="string">string</span></span></td><td> The unit's subtype (if applicable). READ ONLY</td></tr>
 <tr><td class="parameter">targetedBy </td><td></td><td><span class="types"><span class="table">table</span></span></td><td> Table of unit guids that have this unit as a target<br>(Note that the starting idex of this table is '0' rather than '1' as normal Lua tables)</td></tr>
 <tr><td class="parameter">throttle </td><td></td><td><span class="types"><a href="#dataType_WRA">WRA</a></span> </td> <td>Throttle The unit's current throttle setting.</td></tr>
-<tr><td class="parameter">type </td><td></td><td><span class="types"><span class="string">string</span></span></td><td> The type of object, may be 'Facility', 'Ship', 'Submarine', or 'Aircraft'.READ ONLY</td></tr>
+<tr><td class="parameter">type <span class="readonly">READ ONLY</span></td><td></td><td><span class="types"><span class="string">string</span></span></td><td> The type of object, may be 'Facility', 'Ship', 'Submarine', or 'Aircraft'.READ ONLY</td></tr>
 <tr><td class="parameter">unassign </td><td></td><td><span class="types"><span class="boolean">boolean</span></span></td><td> unassign unit (performs basic actions of hotkey 'u')</td></tr>
-<tr><td class="parameter">unitstate </td><td></td><td><span class="types"><span class="string">string</span></span></td><td> Message on unit status. READ ONLY</td></tr>
-<tr><td class="parameter">updateorbit </td><td></td><td><span class="types"><span class="method">method</span></span>()</td><td> Update the orbit for a satellite by specifying a TLE. See below for a complete usage example.</td></tr>
-<tr><td class="parameter">weapon </td><td></td><td><span class="types"><span class="table">table</span></span></td><td> Table of shooter unit, at contact unit and detonated (when destroyed) if a weapon READ ONLY</td></tr>
-<tr><td class="parameter">weaponstate </td><td></td><td><span class="types"><span class="string">string</span></span></td><td> Message on unit weapon status. READ ONLY</td></tr>
-<tr><td class="parameter">weather </td><td></td><td><span class="types"><a href="#dataType_WRA">WRA</a></span> </td> <td>Weather Table of weather parameters (temp, rainfall, underrain, seastate)</td></tr>
+<tr><td class="parameter">unitstate <span class="readonly">READ ONLY</span></td><td></td><td><span class="types"><span class="string">string</span></span></td><td> Message on unit status. READ ONLY</td></tr>
+<tr><td class="parameter">updateorbit <span class="types"><span class="method">method</span> <br> ({ TLE })</span> </td><td>Update a satellite orbit by TLE</td><td>returns???</td><td>See below for a complete usage example.</td></tr>
+<tr><td class="parameter">weapon <span class="readonly">READ ONLY</span></td><td>Weapon details if one</td><td><span class="table">table of </span><br><span class="types"><a href="#dataType_WeaponDets">WeaponDets</a></span> </td><td> .. of shooter unit, at contact unit and detonated (when destroyed) if a weapon </td></tr>
+<tr><td class="parameter">weaponstate <span class="readonly">READ ONLY</span></td><td>Message on unit weapon status</td><td><span class="types"><span class="string">string</span></span></td><td> </td></tr>
+<tr><td class="parameter">weather </td><td>Weather Table </td><td><span class="types"><a href="#dataType_weather">Weather</a></span> </td> <td>.. of weather parameters (temp, rainfall, underrain, seastate)</td></tr>
 
 </table>			
 
@@ -6549,8 +6550,8 @@ end
 		
 <table class="table_borders" style="width: 100%; margin-left: 0px;">
 <tr><th>Field</th><th>Description</th><th>Type</th><th>Comments</td></tr>
-<tr><td class="parameter">affects </td><td>Table of unit types that are affected by this zone</td><td><span class="table">table</span><br><span class="types"><a href="#dataType_Unit__Types">unitTypes</a></span> </td> <td> To affect ships and submarines<br><code>z.affects = { 'ship', 3 }</code><br>Use the text or number from the unitTypes </td></tr>
-<tr><td class="parameter">area </td><td>Table of reference point sets defining the zone</td><td><span class="table">table</span><br><span class="types"><a href="#dataType_Area">Area</a></span> </td> <td>  Can be updated by a table of RP names,<br> or a table of new RP values.</td></tr>
+<tr><td class="parameter">affects </td><td>Table of unit types that are affected by this zone</td><td><span class="table">table of</span><br><span class="types"><a href="#dataType_Unit__Types">unitTypes</a></span> </td> <td> To affect ships and submarines<br><code>z.affects = { 'ship', 3 }</code><br>Use the text or number from the unitTypes </td></tr>
+<tr><td class="parameter">area </td><td>Table of reference point sets defining the zone</td><td><span class="table">table of</span><br><span class="types"><a href="#dataType_Area">Area</a></span> </td> <td>  Can be updated by a table of RP names,<br> or a table of new RP values.</td></tr>
 <tr><td class="parameter">description </td><td>The description of the zone</td><td><span class="types"><span class="string">string</span></span></td><td> </td></tr>
 <tr><td class="parameter">guid <span class="readonly">READ ONLY</span></td><td>The GUID of the zone</td><td><span class="types"><a href="#dataType_GUID">GUID</span></td><td></td></tr>
 <tr><td class="parameter">isactive </td><td>Zone is active?</td><td><span class="types"><span class="boolean">boolean</span></span></td><td> </td></tr>
