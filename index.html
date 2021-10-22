@@ -70,6 +70,16 @@
                 <div class="byline">
                 </div>
 				<p>
+                    <ul> 
+                        <li>New method on "Loadout" wrapper: setExactWeaponQuantity(string wpn_guid, integer quantity) sets weapon current quantity and returns the resulting quantity.</li>
+                        <li>New method on "Unit" wrapper: getUnitMagazine(string magazineguid) returns the specified magazine, if magazine exists on unit<br>		getUnitMountMagazine(string mountguid) returns the magazine for the specified mount, if mount exists on unit</li>
+						<li>Updated method on "Unit" wrapper: filterOnComponent() optional DBID to apply in addition to 'type'</li>
+                    </ul>
+				</p>
+               <h4>Command: Modern Operations v1147.33</h4>
+                <div class="byline">
+                </div>
+				<p>
                     <ul>
                         <li>New property on "Unit" wrapper: jammed, jammer, pitch, groundSpeed</li>
                         <li>New property on "Unit" wrapper: airbornetime_v, readytime_v, crew</li>
