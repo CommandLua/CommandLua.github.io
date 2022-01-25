@@ -5429,7 +5429,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <hr>
     <h3><a class="anchor" id="ScenEdit_UnitY"></a>ScenEdit_UnitY
         ()</h3>
-    <p>Detecting
+    <p>(a) Detecting
         Unit
         ...from
         a
@@ -5439,6 +5439,9 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         trigger.Otherwise,a
         <code>nil</code>is
         returned.</p>
+		<p>(b) Caused by unit .. from a damage/destroyed event.Otherwise,a
+        <code>nil</code>is
+        returned. The unit is the last one to actually cause damage during the event.</p>
     <p> Note
         that
         UnitY()can
@@ -5452,7 +5455,8 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         ScenEdit_UnitY()</p>
     <h4>Returns</h4>
     <p><span class="types"><span class="type">{ table
-                }</span></span>The
+                }</span></span> </p>
+	<p> (a) The
         detecting
         unit
         and
@@ -5462,8 +5466,10 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         {unit
         ={unit
         object},sensor
-        ={[1]={name,type},[2]={name,type},etc}}</p>
-    <h5>Example</h5>
+        ={[1]={name,type},[2]={name,type},etc}}  <br>
+	 (b) Or the unit that caused the last damage</p>
+	 
+	<h5>Example</h5>
 
             <div class="example">
                 <code>ScenEdit_SetUnitDamage({side=UnitY().side, unitname=UnitY().name, fires=<span class="number">1</span>, components={ {<span class="string">'rudder'</span>,<span class="string">'Medium'</span>}, {<span class="string">'type'</span>,<span class="global">type</span>=<span class="string">'sensor'</span>,<span class="number">1</span>} } })</code>
