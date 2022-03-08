@@ -71,6 +71,7 @@
                 </div>
 				<p>
 						<li>Updated method on "Scenario" wrapper: Title can be updated now</li>
+						<li>Corrected function ScenEdit_SetStartTime()</li>
 						<li>[In development] New method on "Unit" wrapper - :getwaypoint() </li>
 						<li>[In development] New wrapper 'waypoints' used by :getwaypoint() </li>
 				</p>
@@ -2299,6 +2300,7 @@
 					<li><a href="#ScenEdit_SetSideOptions">ScenEdit_SetSideOptions()</a></li>
 					<li><a href="#ScenEdit_SetSidePosture">ScenEdit_SetSidePosture()</a></li>
 					<li><a href="#ScenEdit_SetSpecialAction">ScenEdit_SetSpecialAction()</a></li>
+					<li><a href="#ScenEdit_SetStartTime">ScenEdit_SetStartTime()</a></li>
 					<li><a href="#ScenEdit_SetTime">ScenEdit_SetTime()</a></li>
 					<li><a href="#ScenEdit_SetTrigger">ScenEdit_SetTrigger()</a></li>
 					<li><a href="#ScenEdit_SetUnit">ScenEdit_SetUnit()</a></li>
@@ -5087,29 +5089,65 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
             modify</li>
     </ul>
     <hr>
-    <h3><a class="anchor" id="ScenEdit_SetTime"></a>ScenEdit_SetTime
+    <h3><a class="anchor" id="ScenEdit_SetStartTime"></a>ScenEdit_SetStartTime
         (new_time)</h3>
     <p>Sets
         the
-        scenario
-        time
-        (UTC).</p>
+        scenario start
+        time.</p>
     <h4>Parameters</h4>
     <ul>
         <li><span class="parameter">new_time</span> <span class="types"><span class="string">string</span></span> The
             desired
-            UTC
+            datetime
+            as
+            a
+            table</li>
+			<br>
+			<p>
+			The <span class="parameter">new_time</span> table can contain the following:<br>
+			Date = scenario date as MM:DD:YYYY or MM.DD.YYYY<br>
+			Time = sceanrio time as HH:MM:SS or HH.MM.SS<br>
+			Duration = length of scenario as days:hours:minutes<br>
+			</p>
+    </ul>
+    <h5>Example</h5>
+
+    <div class="example">
+        <code>ScenEdit_SetStartTime({Date=<span class="string">"2.12.2007"</span>, Time=<span class="string">"22.46.23"</span>, Duration=<span class="string">"60.5:0:0"</span>})</code>
+    </div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_SetTime"></a>ScenEdit_SetTime
+        (new_time)</h3>
+    <p>Sets
+        the current
+        scenario
+        time.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">new_time</span> <span class="types"><span class="string">string</span></span> The
+            desired
             datetime
             as
             a
             table
-            in
-            MM:DD:YYYY
-            &amp; HH:MM:SS
-            or
-            MM.DD.YYYY
-            &amp; HH.MM.SS
-            format</li>
+			</li>
+			<br>
+			<p>
+			The <span class="parameter">new_time</span> table can contain the following:<br>
+			Date = scenario date as MM:DD:YYYY or MM.DD.YYYY<br>
+			Time = sceanrio time as HH:MM:SS or HH.MM.SS<br>
+			</p>
+			<span class="pro_only">PRO ONLY</span>
+			<p>
+			The <span class="parameter">new_time</span> table can contain the following:<br>
+			Date = scenario date as DD:MM:YYYY or DD.MM.YYYY. Note the change of format from public release.<br>
+			Time = sceanrio time as HH:MM:SS or HH.MM.SS<br>
+			StartDate = scenario start date as DD:MM:YYYY or DD.MM.YYYY.<br>
+			StartTime = sceanrio start time as HH:MM:SS or HH.MM.SS<br>
+			Duration = length of scenario as days:hours:minutes<br>
+			</p>
     </ul>
     <h5>Example</h5>
 
