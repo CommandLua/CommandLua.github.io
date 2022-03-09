@@ -70,6 +70,7 @@
                 <div class="byline">
                 </div>
 				<p>
+						<li>Added function ScenEdit_GetMissions()</li>
 						<li>Updated method on "Scenario" wrapper: Title can be updated now</li>
 						<li>Corrected function ScenEdit_SetStartTime()</li>
 						<li>[In development] New method on "Unit" wrapper - :getwaypoint() </li>
@@ -2255,6 +2256,7 @@
 					<li><a href="#ScenEdit_GetLoadout">ScenEdit_GetLoadout()</a></li>
 					<li><a href="#ScenEdit_GetMinefield">ScenEdit_GetMinefield()</a></li>
 					<li><a href="#ScenEdit_GetMission">ScenEdit_GetMission()</a></li>
+                    <li><a href="#ScenEdit_GetMissions">ScenEdit_GetMissions()</a></li>
 					<li><a href="#ScenEdit_GetReferencePoints">ScenEdit_GetReferencePoints()</a></li>
 					<li><a href="#ScenEdit_GetScenHasStarted">ScenEdit_GetScenHasStarted()</a></li>
 					<li><a href="#ScenEdit_GetScore">ScenEdit_GetScore()</a></li>
@@ -2339,27 +2341,26 @@
                     Functions listed below are only available in Command: Professional Edition.
                 </p>
                 <ul class="ul-2-columns">
-                    <li><a href="#ScenEdit_ImportScenarioFromXML">ScenEdit_ImportScenarioFromXML()</a> <span class="pro_only">PRO ONLY</span></li>
-                    <li><a href="#ScenEdit_ExportScenarioToXML">ScenEdit_ExportScenarioToXML()</a> <span class="pro_only">PRO ONLY</span></li>
-                    <li><a href="#ScenEdit_SetExportOutputRate">ScenEdit_SetExportOutputRate()</a> <span class="pro_only">PRO ONLY</span></li>
-                    <li><a href="#ScenEdit_GetDBFileHash">ScenEdit_GetDBFileHash()</a> <span class="pro_only">PRO ONLY</span></li>
-                    <li><a href="#VP_SetTimeCompression">VP_SetTimeCompression()</a> <span class="pro_only">PRO ONLY</span></li>
                     <li><a href="#Command_SaveScen">Command_SaveScen()</a> <span class="pro_only">PRO ONLY</span></li>
-                    <li><a href="#ScenEdit_ImportDoctrineFromXML">ScenEdit_ImportDoctrineFromXML()</a> <span class="pro_only">PRO ONLY</span></li>
-                    <li><a href="#ScenEdit_ExportDoctrineToXML">ScenEdit_ExportDoctrineToXML()</a> <span class="pro_only">PRO ONLY</span></li>
-                    <li><a href="#ScenEdit_GetDateTimeTicks">ScenEdit_GetDateTimeTicks()</a> <span class="pro_only">PRO ONLY</span></li>
-                    <li><a href="#ScenEdit_DistributeWeaponAtAirbase">ScenEdit_DistributeWeaponAtAirbase()</a> <span class="pro_only">PRO ONLY</span></li>
                     <li><a href="#ScenEdit_ClearAllAircraft">ScenEdit_ClearAllAircraft()</a> <span class="pro_only">PRO ONLY</span></li>
-                    <li><a href="#ScenEdit_DuplicateEmconConfigToSide">ScenEdit_DuplicateEmconConfigToSide()</a> <span class="pro_only">PRO ONLY</span></li>
-                    <li><a href="#ScenEdit_ClearUnitEmconConfigs">ScenEdit_ClearUnitEmconConfigs()</a> <span class="pro_only">PRO ONLY</span></li>
                     <li><a href="#ScenEdit_ClearAllSideUnitsEmconConfigs">ScenEdit_ClearAllSideUnitsEmconConfigs()</a> <span class="pro_only">PRO ONLY</span></li>
-                    <li><a href="#ScenEdit_SetSideEmconAlertness">ScenEdit_SetSideEmconAlertness()</a> <span class="pro_only">PRO ONLY</span></li>
-                    <li><a href="#ScenEdit_SwitchUnitIntermittentEmission">ScenEdit_SwitchUnitIntermittentEmission()</a> <span class="pro_only">PRO ONLY</span></li>
+                    <li><a href="#ScenEdit_ClearUnitEmconConfigs">ScenEdit_ClearUnitEmconConfigs()</a> <span class="pro_only">PRO ONLY</span></li>
+                    <li><a href="#ScenEdit_DistributeWeaponAtAirbase">ScenEdit_DistributeWeaponAtAirbase()</a> <span class="pro_only">PRO ONLY</span></li>
+                    <li><a href="#ScenEdit_DuplicateEmconConfigToSide">ScenEdit_DuplicateEmconConfigToSide()</a> <span class="pro_only">PRO ONLY</span></li>
                     <li><a href="#ScenEdit_DuplicateEmconConfigToUnit">ScenEdit_DuplicateEmconConfigToUnit()</a> <span class="pro_only">PRO ONLY</span></li>
-                    <li><a href="#ScenEdit_SetUnitIntermittentEmissionConfig">ScenEdit_SetUnitIntermittentEmissionConfig()</a> <span class="pro_only">PRO ONLY</span></li>
+                    <li><a href="#ScenEdit_ExportDoctrineToXML">ScenEdit_ExportDoctrineToXML()</a> <span class="pro_only">PRO ONLY</span></li>
+                    <li><a href="#ScenEdit_ExportScenarioToXML">ScenEdit_ExportScenarioToXML()</a> <span class="pro_only">PRO ONLY</span></li>
+                    <li><a href="#ScenEdit_GetDateTimeTicks">ScenEdit_GetDateTimeTicks()</a> <span class="pro_only">PRO ONLY</span></li>
+                    <li><a href="#ScenEdit_GetDBFileHash">ScenEdit_GetDBFileHash()</a> <span class="pro_only">PRO ONLY</span></li>
                     <li><a href="#ScenEdit_GetUnitIntermittentEmissionConfig">ScenEdit_GetUnitIntermittentEmissionConfig()</a> <span class="pro_only">PRO ONLY</span></li>
-                    <li><a href="#ScenEdit_GetMissions">ScenEdit_GetMissions()</a> <span class="pro_only">PRO ONLY</span></li>
+                    <li><a href="#ScenEdit_ImportDoctrineFromXML">ScenEdit_ImportDoctrineFromXML()</a> <span class="pro_only">PRO ONLY</span></li>
+                    <li><a href="#ScenEdit_ImportScenarioFromXML">ScenEdit_ImportScenarioFromXML()</a> <span class="pro_only">PRO ONLY</span></li>
+                    <li><a href="#ScenEdit_SetExportOutputRate">ScenEdit_SetExportOutputRate()</a> <span class="pro_only">PRO ONLY</span></li>
+                    <li><a href="#ScenEdit_SetSideEmconAlertness">ScenEdit_SetSideEmconAlertness()</a> <span class="pro_only">PRO ONLY</span></li>
+                    <li><a href="#ScenEdit_SetUnitIntermittentEmissionConfig">ScenEdit_SetUnitIntermittentEmissionConfig()</a> <span class="pro_only">PRO ONLY</span></li>
+                    <li><a href="#ScenEdit_SwitchUnitIntermittentEmission">ScenEdit_SwitchUnitIntermittentEmission()</a> <span class="pro_only">PRO ONLY</span></li>
                     <li><a href="#ScenEdit_TransformZone">ScenEdit_TransformZone()</a> <span class="pro_only">PRO ONLY</span></li>
+                    <li><a href="#VP_SetTimeCompression">VP_SetTimeCompression()</a> <span class="pro_only">PRO ONLY</span></li>
 
 				
                 </ul>
@@ -5412,13 +5413,16 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h4>Returns</h4>
     <p><span class="wrapper"><a href="#wrapper_Zone">Zone</a></span></p>
     <hr>
-    <h3><a class="anchor" id="ScenEdit_SpecialMessage"></a>ScenEdit_SpecialMessage(side, message, location [optional])</h3>
-    <p>Displays a special message consisting of the HTML text <span class="parameter">message</span> to the side specified by <span class="parameter">side</span>. An optional parameter <span class="parameter">location</span> allows the player to jump to the specified map position by clicking a button in a pop-up window.</p>
+    <h3><a class="anchor" id="ScenEdit_SpecialMessage"></a>ScenEdit_SpecialMessage(side, message, [location, forceMapRecenter])</h3>
+    <p>Displays a special message consisting of the HTML text <span class="parameter">message</span> to the side specified by <span class="parameter">side</span>. <br>
+	Optional parameters <span class="parameter">location</span> allows the player to jump to the specified map position by clicking a button in a pop-up window.<br>
+	<span class="pro_only">PRO ONLY</span><span class="parameter">forceMapRecenter</span> will center map on location.</p>
     <h4>Parameters</h4>
     <ul>
         <li><span class="parameter">side</span> <span class="types"><span class="string">string</span></span> The side name/guid to display the message to, or <code>'playerside'</code> (see Note below)</li>
         <li><span class="parameter">message</span> <span class="types"><span class="string">string</span></span> The HTML text to display to the player. Plain text is also accepted.</li>
         <li>[Optional] <span class="parameter">location</span><span class="types">Point</span> The position that the 'Jump to Location' button takes the player to if clicked.</li>
+        <li>[Optional] <span class="parameter">forceMapRecenter</span><span class="boolean">True/False</span> The map will be centered on location if present.</li>
     </ul>
     
     <h4>Returns</h4>
