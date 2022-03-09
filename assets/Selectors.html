@@ -1,0 +1,892 @@
+<html>
+
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163808192-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-163808192-1');
+	</script>
+
+	<title>Command Lua Docs</title>
+	<link rel="stylesheet" type="text/css" href="style.css" / >
+	
+
+
+</head>
+
+<body>
+	<div id="header-container">
+		<div id="header">
+			<div id="header-logo">
+				<h1><a href="../index2.html"><img src="./images/CommandLuaLogo.svg" height=45px alt="CommandLua"></a>
+				</h1>
+			</div>
+			<div id="header-nav">
+				<a class="selected" href="../index2.html">Reference</a>
+				<!-- <a href="/guides/">Guides</a> -->
+				<a href="https://www.matrixgames.com/forums/tt.asp?forumid=1681">Forum</a>
+			</div>
+		</div>
+	</div>
+	<div id="container">
+
+		<div id="content">
+			<div id="page-title">
+				<h2 id="page-title">Command Lua API Documentation, v1147.34</h2>
+				<hr>
+			</div>
+			<div id="nav">
+				<ul>
+					<li><a href="../index2.html#News">News</a></li>
+					<li><a href="../index2.html#Introduction">Introduction</a></li>
+					<ol>
+						<li><a href="../index2.html#HowToUse">How to Use These Docs</a></li>
+						<li><a href="../index2.html#FirstSteps">First Steps</a></li>
+						<li><a href="../index2.html#ExternalResources">External Resources</a></li>
+					</ol>
+
+					<li><a href="../index2.html#Overview">Overview</a></li>
+					<ol>
+						<li><a href="../index2.html#CaseSensitivityandConventions">Case Sensitivity and Conventions</a></li>
+                        <li><a href="../index2.html#EventHandling">Event Handling</a></li>
+						<li><a href="../index2.html#ErrorHandling">Error Handling</a></li>
+                        <li><a href="../index2.html#DataTypes">Data Types</a></li>
+					</ol>
+					<li><a href="Functions.html">Functions</a></li>
+					<li><a href="Wrappers.html">Wrappers</a></li>
+					<li><a href="Selectors.html">Selectors</a></li>
+					<li><a href="Tables.html">Tables</a></li>
+				</ul>
+			</div>
+            <div id="main">
+
+				<a class="anchor" id="Selectors"></a>
+				<h2>Selectors</h2>
+				<p>
+					These define the information required as part of the 'select' process for the functions. In the case
+					of functions that 'add' things, these are also key elements to the adding process. Other properties
+					may be included in the 'selector' such as when updating an existing table.
+				</p>
+				<p>
+					When selecting units, it is preferrable to use the GUID as the identifier for a precise match. If
+					not, then the side and name for a more limited search. And as a last option, just the name which
+					search all units in the scenario. When using just the name, usually the first matching name is
+					returned. This is okay if the names are unique. Thus including the side, it will only check the
+					units on that side for a match.
+				</p>
+				<p>
+					<ul class="ul-2-columns">
+						<li><span class="selector"><a href="#selector_ActionUpdate">ActionUpdate</a></span></li>
+						<li><span class="selector"><a href="#selector_ConditionUpdate">ConditionUpdate</a></span></li>
+						<li><span class="selector"><a href="#selector_ContactSelector">ContactSelector</a></span></li>
+						<li><span class="selector"><a href="#selector_DamageOptions">DamageOptions</a></span></li>
+						<li><span class="selector"><a href="#selector_DoctrineSelector">DoctrineSelector</a></span></li>
+						<li><span class="selector"><a
+									href="#selector_DoctrineWRASelector">DoctrineWRASelector</a></span></li>
+						<li><span class="selector"><a href="#selector_EventTCAUpdate">EventTCAUpdate</a></span></li>
+						<li><span class="selector"><a href="#selector_EventUpdate">EventUpdate</a></span></li>
+						<li><span class="selector"><a href="#selector_NewMission">NewMission</a></span></li>
+						<li><span class="selector"><a href="#selector_NewUnit">NewUnit</a></span></li>
+						<li><span class="selector"><a
+									href="#selector_ReferencePointSelector">ReferencePointSelector</a></span></li>
+						<li><span class="selector"><a href="#selector_SideOption">SideOption</a></span></li>
+						<li><span class="selector"><a href="#selector_SpecialAction">SpecialAction</a></span></li>
+						<li><span class="selector"><a href="#selector_TargetFilter">TargetFilter</a></span></li>
+						<li><span class="selector"><a href="#selector_TriggerUpdate">TriggerUpdate</a></span></li>
+						<li><span class="selector"><a href="#selector_UnitSelector">UnitSelector</a></span></li>
+						<li><span class="selector"><a href="#selector_UpdateUnit">UpdateUnit</a></span></li>
+						<li><span class="selector"><a href="#selector_UpdateUnitCargo">UpdateUnitCargo</a></span></li>
+						<li><span class="selector"><a href="#selector_VPContactSelector">VPContactSelector</a></span>
+						</li>
+						<li><span class="selector"><a href="#selector_Weapon2Magazine">Weapon2Magazine</a></span></li>
+						<li><span class="selector"><a href="#selector_Weapon2Mount">Weapon2Mount</a></span></li>
+					</ul>
+				</p>
+				<hr>
+				<a class="anchor" id="selector_ActionUpdate"></a>
+				<h3>ActionUpdate</h3>
+				<p>
+					Action update.
+				</p>
+				<ul class="ul-no-bullets">
+					<li><span class="parameter">ID</span>
+						<span class="types"><span class="string">string</span></span>
+						The GUID of the action [READONLY]
+					</li>
+					<li><span class="parameter">Description</span>
+						<span class="types"><span class="string">string</span></span>
+						Description or GUID of action
+					</li>
+					<li><span class="parameter">NewName</span>
+						<span class="types"><span class="string">string</span></span>
+						If specified, the new name of the action
+					</li>
+					<li><span class="parameter">Mode</span>
+						<span class="types"><span class="string">string</span></span>
+						Operation to do - 'list', 'add', 'remove', 'update' (default) SE_Set...()
+					</li>
+					<li><span class="parameter">Type</span>
+						<span class="types"><span class="string">string</span></span>
+						Type of action [required only for 'add' option]
+					</li>
+				</ul>
+				<div class='note-alert'>
+					<p>
+						<strong>Note:</strong> Other various values apply to the type of action.
+					</p>
+				</div>
+				<hr>
+				<a class="anchor" id="selector_ConditionUpdate"></a>
+				<h3>ConditionUpdate</h3>
+				<p>
+					Condition update.
+				</p>
+				<ul class="ul-no-bullets">
+					<li><span class="parameter">ID</span>
+						<span class="types"><span class="string">string</span></span>
+						The GUID of the condition [READONLY]
+					</li>
+					<li><span class="parameter">Description</span>
+						<span class="types"><span class="string">string</span></span>
+						Description or GUID of condition
+					</li>
+					<li><span class="parameter">NewName</span>
+						<span class="types"><span class="string">string</span></span>
+						If specified, the new name of the condition
+					</li>
+					<li><span class="parameter">Mode</span>
+						<span class="types"><span class="string">string</span></span>
+						Operation to do - 'list', 'add', 'remove', 'update' (default) SE_Set...()
+					</li>
+					<li><span class="parameter">Type</span>
+						<span class="types"><span class="string">string</span></span>
+						Type of condition [required only for 'add' option]
+					</li>
+				</ul>
+				<div class='note-alert'>
+					<p>
+						<strong>Note:</strong> Other various values apply to the type of condition.
+					</p>
+				</div>
+				<hr>
+				<a class="anchor" id="selector_ContactSelector"></a>
+				<h3>ContactSelector</h3>
+				<p>
+					Contact selector.
+				</p>
+				<div class="note-alert">
+					<p>
+						<strong>Note:</strong> A unit and its contact GUIDs are different for the same physical unit.
+						The contact
+						GUIDs represent contacts associated with this unit from the perspective of any detecting sides.
+					</p>
+				</div>
+				<ul class="ul-no-bullets">
+					<li><span class="parameter">side</span>
+						<span class="types"><span class="string">string</span></span>
+						The side to find the the contact on.
+					</li>
+					<li><span class="parameter">guid</span>
+						<span class="types"><span class="string">string</span></span>
+						The GUID of the contact. Interrogate ScenEdit_GetContacts(side) for the side's contacts and use
+						the GUID from there.
+					</li>
+				</ul>
+				<hr>
+				<a class="anchor" id="selector_DamageOptions"></a>
+				<h3>DamageOptions</h3>
+				<p>Unit damage. The component table list consists of entries for each component, identified by guid and
+					new level.
+				</p>
+				<h5>Special Cases</h5>
+				<ul>
+					<li>if guid is 'type', then you can set a type of component to be damaged,</li>
+					<li>if damageLevel is 'none', then the component will be repaired.</li>
+					<li>if damageLevel is 'destroyed', then the component will be destroyed.</li>
+					<li>Specific component names ( 'RUDDER','CIC','CARGO','PRESSUREHULL' ) can be referenced.</li>
+				</ul>
+				<ul class="ul-no-bullets">
+					<li><span class="parameter">side</span>
+						<span class="types"><span class="string">string</span></span>
+					</li>
+					<li><span class="parameter">unitname</span>
+						<span class="types"><span class="string">string</span></span>
+					</li>
+					<li><span class="parameter">guid</span>
+						<span class="types"><span class="string">string</span></span>
+					</li>
+					<li><span class="parameter">fires</span>
+						<span class="types"><span class="string">string</span></span>
+					</li>
+					<li><span class="parameter">flood</span>
+						<span class="types"><span class="string">string</span></span>
+					</li>
+					<li><span class="parameter">dp</span>
+						<span class="types"><span class="number">number</span></span>
+						Damage points
+					</li>
+					<li><span class="parameter">components</span>
+						<span class="table">table</span>
+						Table of component damage setting { guid, damageLevel }
+					</li>
+				</ul>
+				<h5>Example</h5>
+				<div class="example">
+					<code>
+            components={{<span class="string">'16a883a2-8e7f-4313-aae7-0af644c16337'</span>,<span class="string">'none'</span>},{<span class="string">'rudder'</span>,<span class="string">'Medium'</span>},{<span class="string">'type'</span>,<span class="global">type</span>=<span class="string">'sensor'</span>,<span class="number">1</span>}}}')
+        </code>
+				</div>
+				<hr>
+				<a class="anchor" id="selector_DoctrineSelector"></a>
+				<h3>DoctrineSelector</h3>
+				<p>
+					Selects a doctrine for a side, mission, group or unit.
+				</p>
+				<ul class="ul-no-bullets">
+					<li><span class="parameter">side</span>
+						<span class="types"><span class="string">string</span></span>
+						The side to select/from
+					</li>
+					<li><span class="parameter">mission</span>
+						<span class="types"><span class="string">string</span></span>
+						The name of the mission to select
+					</li>
+					<li><span class="parameter">unitname</span>
+						<span class="types"><span class="string">string</span></span>
+						The name of the unit (or group) to select
+					</li>
+					<li><span class="parameter">actual</span>
+						<span class="types"><span class="boolean">boolean</span></span>
+						=true Show the actual doctrine setting based on doctrine inheritance (defaults to only showing
+						non-inherited values)
+					</li>
+					<li><span class="parameter">escort</span>
+						<span class="types"><span class="boolean">boolean</span></span>
+						If a strike mission, adding 'escort=true' will update the escort doctrine
+					</li>
+				</ul>
+				<hr>
+				<a class="anchor" id="selector_DoctrineWRASelector"></a>
+				<h3>DoctrineWRASelector</h3>
+				<p>
+					Selects a WRA doctrine for on a side, group, mission, or unit. <code>weapon_id</code> is mandatory.
+				</p>
+				<p>
+					One of <code>side</code>, <code>mission</code>, <code>unitname</code> or <code>guid</code> is
+					mandatory. One of contact_id or target_type is mandatory
+				</p>
+				<p>
+					If no <code>weapon_id</code> is supplied but just the target_type, then a WRA table (WRA_#) is
+					returned for each weapon
+					for the doctrine that can engage the target_type
+				</p>
+				<ul class="ul-no-bullets">
+					<li><span class="parameter">side</span>
+						<span class="types"><span class="string">string</span></span>
+						The side to select/from
+					</li>
+					<li><span class="parameter">mission</span>
+						<span class="types"><span class="string">string</span></span>
+						The name of the mission to select
+					</li>
+					<li><span class="parameter">unitname</span>
+						<span class="types"><span class="string">string</span></span>
+						The name of the unit to select
+					</li>
+					<li><span class="parameter">guid</span>
+						<span class="types"><span class="string">string</span></span>
+						The unit GUID to select
+					</li>
+					<li><span class="parameter">weapon_id</span>
+						<span class="types"><span class="string">string</span></span>
+						The weapon database id
+					</li>
+					<li><span class="parameter">contact_id</span>
+						<span class="types"><span class="string">string</span></span>
+						A contact GUID (mutually exclusive with target_type)
+					</li>
+					<li><span class="parameter">target_type</span>
+						<span class="types"><span class="string">string</span></span>
+						The target type (mutually exclusive with contact_id)
+					</li>
+				</ul>
+
+				<hr>
+
+				<a class="anchor" id="selector_EventTCAUpdate"></a>
+				<h3>EventTCAUpdate</h3>
+
+
+				Event Trigger/Condition/Action update.
+				</ul>
+				<ul class="ul-no-bullets">
+					<li><span class="parameter">GUID</span>
+						<span class="types"><span class="string">string</span></span>
+						The GUID of the trigger
+					</li>
+					<li><span class="parameter">Description</span>
+						<span class="types"><span class="string">string</span></span>
+						The description or ID of the T/C/A
+					</li>
+					<li><span class="parameter">Mode</span>
+						<span class="types"><span class="string">string</span></span>
+						Operation to do - 'add', 'remove', replace', 'update' (default) SE_Set...()
+					</li>
+				</ul>
+
+				<hr>
+
+				<a class="anchor" id="selector_EventUpdate"></a>
+				<h3>EventUpdate</h3>
+
+
+				Event update.
+				</ul>
+				<ul class="ul-no-bullets">
+					<li><span class="parameter">ID</span>
+						<span class="types"><span class="string">string</span></span>
+						The GUID of the event [READONLY]
+					</li>
+					<li><span class="parameter">Description</span>
+						<span class="types"><span class="string">string</span></span>
+						If specified, the new description for the event
+					</li>
+					<li><span class="parameter">NewName</span>
+						<span class="types"><span class="string">string</span></span>
+						If specified, the new name of the event
+					</li>
+					<li><span class="parameter">IsActive</span>
+						<span class="types"><span class="boolean">boolean</span></span>
+						If the event is active
+					</li>
+					<li><span class="parameter">IsRepeatable</span>
+						<span class="types"><span class="boolean">boolean</span></span>
+						If the event can occur multiple times
+					</li>
+					<li><span class="parameter">IsShown</span>
+						<span class="types"><span class="boolean">boolean</span></span>
+						If the event is shown in message log
+					</li>
+					<li><span class="parameter">Probability</span>
+						<span class="types"><span class="number">number</span></span>
+						Chance of it happening
+					</li>
+					<li><span class="parameter">Mode</span>
+						<span class="types"><span class="string">string</span></span>
+						Operation to do - 'add', 'update' (default), 'remove'
+					</li>
+				</ul>
+
+				<hr>
+
+				<a class="anchor" id="selector_NewMission"></a>
+				<h3>NewMission</h3>
+
+
+				New mission options.
+				</ul>
+				<ul class="ul-no-bullets">
+					<li><span class="parameter">type</span>
+						<span class="types"><span class="string">string</span></span>
+						Mission sub-type (Applies to Patrol and Strike)
+					</li>
+					<li><span class="parameter">destination</span>
+						<span class="types"><span class="string">string</span></span>
+						Ferry mission destination
+					</li>
+					<li><span class="parameter">zone</span>
+						<span class="types"><span class="string">string</span></span>
+						A table of reference points as names or GUIDs (Can apply to Patrol, Support, Mining, Cargo)
+					</li>
+				</ul>
+
+				<hr>
+
+				<a class="anchor" id="selector_NewUnit"></a>
+				<h3>NewUnit</h3>
+
+
+				New unit selector.
+				</p>
+				<p> ... lists minimum fields required. Other fields from<span class="wrapper"><a
+							href="#wrapper_Unit">Unit</a></span> may be included.
+					</ul>
+					<ul class="ul-no-bullets">
+						<li><span class="parameter">type</span>
+							<span class="types"><span class="string">string</span></span>
+							The type of unit (Ship, Sub, Aircraft, Facility, Satellite, Weapon)
+						</li>
+						<li><span class="parameter">unitname</span>
+							<span class="types"><span class="string">string</span></span>
+							The name of the unit
+						</li>
+						<li><span class="parameter">side</span>
+							<span class="types"><span class="string">string</span></span>
+							The side name or GUID to add unit to
+						</li>
+						<li><span class="parameter">dbid</span>
+							<span class="types"><span class="number">number</span></span>
+							The database id of the unit
+						</li>
+						<li><span class="parameter">latitude</span>
+							<span class="types"><a class="type" href="index.html#Latitude">Latitude</a></span>
+							Not required if a<code>base</code> is defined
+						</li>
+						<li><span class="parameter">longitude</span>
+							<span class="types"><a class="type" href="index.html#Longitude">Longitude</a></span>
+							Not required if a<code>base</code> is defined
+						</li>
+						<li><span class="parameter">base</span>
+							<span class="types"><span class="string">string</span></span>
+							Unit base name or GUID where the unit will be 'hosted' (applicable to AIR, SHIP, SUB)
+						</li>
+						<li><span class="parameter">loadoutid</span>
+							<span class="types"><span class="number">number</span></span>
+							Aircraft database loadout id (applicable to AIR)
+						</li>
+						<li><span class="parameter">altitude</span>
+							<span class="types"><span class="number">number</span></span>
+							Unit altitude (applicable to AIR)
+						</li>
+						<li><span class="parameter">depth</span>
+							<span class="types"><span class="number">number</span></span>
+							Unit depth (applicable to SUBMARINE - note no sign)
+						</li>
+						<li><span class="parameter">orbit</span>
+							<span class="types"><span class="number">number</span></span>
+							Orbit index (applicable to SATELLITE)
+						</li>
+						<li><span class="parameter">guid</span>
+							<span class="types"><span class="string">string</span></span>
+							Optional custom GUID to override auto one
+						</li>
+					</ul>
+
+					<hr>
+
+					<a class="anchor" id="selector_ReferencePointSelector"></a>
+					<h3>ReferencePointSelector</h3>
+
+
+					Reference point selector.
+				</p>
+				<p>To select reference point(s), specify either</p>
+				<ul class="ul-no-bullets">
+					<li><code>name</code> and<code>side</code>, to select a reference point<code>name</code> belonging
+						to<code>side</code> [name AND side if possible] or</li>
+					<li><code>guid</code>, if the unique ID of the reference point is known [preferred] or</li>
+					<li><code>area</code>, table of reference points (name or guid)</li>
+				</ul>
+				<p> GUID method takes precedence over name/side if both present.
+					</ul>
+					<ul class="ul-no-bullets">
+						<li><span class="parameter">side</span>
+							<span class="types"><span class="string">string</span></span>
+							The side the reference point is visible to
+						</li>
+						<li><span class="parameter">name</span>
+							<span class="types"><span class="string">string</span></span>
+							The name of the reference point
+						</li>
+						<li><span class="parameter">guid</span>
+							<span class="types"><span class="string">string</span></span>
+							The unique identifier for the reference point
+						</li>
+						<li><span class="parameter">area</span>
+							<span class="types"><span class="string">name</span></span> or <span class="types"><span
+									class="string">GUID</span></span>
+							Table of reference points by name and/or guid (used with the Set()/Get() functions)
+						</li>
+					</ul>
+
+					<hr>
+
+					<a class="anchor" id="selector_SideOption"></a>
+					<h3>SideOption</h3>
+
+
+					Side options.
+					</ul>
+					<ul class="ul-no-bullets">
+						<li><span class="parameter">side</span>
+							<span class="types"><span class="string">string</span></span>
+							Side name
+						</li>
+						<li><span class="parameter">guid</span>
+							<span class="types"><span class="string">string</span></span>
+							Side guid
+						</li>
+						<li><span class="parameter">awareness</span>
+							<span class="types"><span class="string">string</span></span>
+							Side awareness
+						</li>
+						<li><span class="parameter">proficiency</span>
+							<span class="types"><span class="string">string</span></span>
+							Side proficiency
+						</li>
+						<li><span class="parameter">switchto</span>
+							<span class="types"><span class="boolean">boolean</span></span>
+							Change game side to above (only applicable with SetSideOptions)
+						</li>
+					</ul>
+
+					<hr>
+
+					<a class="anchor" id="selector_SpecialAction"></a>
+					<h3>SpecialAction</h3>
+
+
+					Special action selector.
+					</ul>
+					<ul class="ul-no-bullets">
+						<li><span class="parameter">GUID</span>
+							<span class="types"><span class="string">string</span></span>
+							The GUID of the special action [READONLY]
+						</li>
+						<li><span class="parameter">ActionNameOrID</span>
+							<span class="types"><span class="string">string</span></span>
+							The name or ID of the special action
+						</li>
+						<li><span class="parameter">IsActive</span>
+							<span class="types"><span class="boolean">boolean</span></span>
+							If the action is visible to the player
+						</li>
+						<li><span class="parameter">IsRepeatable</span>
+							<span class="types"><span class="boolean">boolean</span></span>
+							If the player can use the action multiple times
+						</li>
+						<li><span class="parameter">NewName</span>
+							<span class="types"><span class="string">string</span></span>
+							If specified, the new name of the action
+						</li>
+						<li><span class="parameter">Description</span>
+							<span class="types"><span class="string">string</span></span>
+							If specified, the new description for the action
+						</li>
+						<li><span class="parameter">Side</span>
+							<span class="types"><span class="string">string</span></span>
+							The name/GUID of the side for the action. Mandatory for AddSpeciaAction()
+						</li>
+						<li><span class="parameter">Mode</span>
+							<span class="types"><span class="string">string</span></span>
+							If specified, the action to apply.
+							Use "mode='remove'" to delete the SA. Use "mode='list'" to list the SAs - all are listed unless 'side=' is supplied.
+						</li>
+						<li><span class="parameter">ScriptText</span>
+							<span class="types"><span class="string">string</span></span>
+							The Lua script for the SA. Note as the script is a multi line string, it requires a '\r\n' to be appended after each line so it is formated in the Editor.
+						</li>
+				</ul>
+
+					<hr>
+
+					<a class="anchor" id="selector_TargetFilter"></a>
+					<h3>TargetFilter</h3>
+					Filter by side, type, subtype, unitclass, unit in that order.
+					</ul>
+					<ul class="ul-no-bullets">
+						<li><span class="parameter">TargetSide</span>
+							<span class="types"><span class="string">string</span></span>
+							The side name or GUID
+						</li>
+						<li><span class="parameter">TargetType</span>
+							<span class="types"><span class="string">string</span></span>
+							Type of unit (ship, sub, etc)
+						</li>
+						<li><span class="parameter">targetSubType</span>
+							<span class="types"><span class="string">string</span></span>
+							Subtype of unit ( )
+						</li>
+						<li><span class="parameter">SpecificUnitClass</span>
+							<span class="types"><span class="number">number</span></span>
+							Class of unit ( )
+						</li>
+						<li><span class="parameter">SpecificUnit</span>
+							<span class="types"><span class="string">string</span></span>
+							Name or GUID of unit
+						</li>
+					</ul>
+					<hr>
+
+					<a class="anchor" id="selector_TriggerUpdate"></a>
+					<h3>TriggerUpdate</h3>
+
+
+					Trigger update.
+					</ul>
+					<ul class="ul-no-bullets">
+						<li><span class="parameter">ID</span>
+							<span class="types"><span class="string">string</span></span>
+							The GUID of the trigger [READONLY]
+						</li>
+						<li><span class="parameter">Description</span>
+							<span class="types"><span class="string">string</span></span>
+							Description or GUID of trigger
+						</li>
+						<li><span class="parameter">NewName</span>
+							<span class="types"><span class="string">string</span></span>
+							If specified, the new name of the trigger
+						</li>
+						<li><span class="parameter">Mode</span>
+							<span class="types"><span class="string">string</span></span>
+							Operation to do - 'list', 'add', 'remove', 'update' (default) SE_Set...()
+						</li>
+						<li><span class="parameter">Type</span>
+							<span class="types"><span class="string">string</span></span>
+							Type of trigger [required only for 'add' option]
+						</li>
+					</ul>
+					<div class='note-alert'>
+						<p>
+							<strong>Note:</strong> Other various values apply to the type of trigger.
+						</p>
+					</div>
+					<hr>
+					<a class="anchor" id="selector_UnitSelector"></a>
+					<h3>UnitSelector</h3>
+					<p>
+						Select a unit based on either the side and name or the unique identifier (GUID).
+					</p>
+
+					<p>
+						You can use either:
+					</p>
+					<ul>
+						<li>
+							<code>name</code> <strong>and</strong> <code>side</code>;
+						</li>
+						<li>
+							<strong>or</strong> <code>GUID</code>.
+						</li>
+					</ul>
+					<p>
+						If both are given, then the <code>GUID</code> is used preferentially.
+					</p>
+					<ul class="ul-no-bullets">
+						<li><span class="parameter">name</span>
+							<span class="types"><span class="string">string</span></span>
+							The name of the unit to select
+						</li>
+						<li><span class="parameter">side</span>
+							<span class="types"><span class="string">string</span></span>
+							The side of the unit to select
+						</li>
+						<li><span class="parameter">guid</span>
+							<span class="types"><span class="string">string</span></span>
+							The guid of the unit to select
+						</li>
+					</ul>
+					<hr>
+					<a class="anchor" id="selector_UpdateUnit"></a>
+					<h3>UpdateUnit</h3>
+					<p>
+						Lists minimum fields required. Other fields from <span class="wrapper"><a
+								href="#wrapper_Unit">Unit</a></span> may be included. For the 'delta' mode, the function
+						willl look for a matching GUID (or unit name if no GUID match) in the INI file.
+					</p>
+					</ul>
+					<ul class="ul-no-bullets">
+						<li><span class="parameter">guid</span>
+							<span class="types"><span class="string">string</span></span>
+							The unit identifier
+						</li>
+						<li><span class="parameter">mode</span>
+							<span class="types"><span class="string">string</span></span>
+							The function to perform (add_ sensor,remove_ sensor,add_ mount,remove_ mount,add_
+							weapon,remove_
+							weapon,add_comms,remove_comms,add_magazine,remove_magazine,add_magazine_only,delta)
+						</li>
+						<li><span class="parameter">dbid</span>
+							<span class="types"><span class="number">number</span></span>
+							The database id of the item to add [required for 'add_' mode]. If used with 'remove_' mode,
+							and
+							no sensorid/mountid/commsid/magid, the first matching DBID will be removed.
+						</li>
+						<li><span class="parameter">sensorid</span>
+							<span class="types"><span class="string">string</span></span>
+							The identifier (guid) of the particular sensor to remove [required for remove_ sensor mode]
+						</li>
+						<li><span class="parameter">mountid</span>
+							<span class="types"><span class="string">string</span></span>
+							The identifier (guid) of the particular mount to remove [required for remove_ mount mode]
+						</li>
+						<li><span class="parameter">weaponid</span>
+							<span class="types"><span class="string">string</span></span>
+							The identifier (guid) of the particular weapon to remove [required for remove_ weapon mode].
+							Must have a preceeding mountid to update
+						</li>
+						<li><span class="parameter">commsid</span>
+							<span class="types"><span class="string">string</span></span>
+							The identifier (guid) of the particular communication device to remove [required for remove_
+							comms mode]
+						</li>
+						<li><span class="parameter">magid</span>
+							<span class="types"><span class="string">string</span></span>
+							The identifier (guid) of the particular magazine to remove [required for remove_
+							magazine mode]
+						</li>
+						<li><span class="parameter">file</span>
+							<span class="types"><span class="string">string</span></span>
+							File name of the INI delta to apply [required for delta mode]
+						</li>
+						<li><span class="parameter">arc_detect</span>
+							<span class="types"><a href="#dataType_Arc">Arc</a></span>
+							The effective arcs for the particular sensor to detect in [override defaults]
+						</li>
+						<li><span class="parameter">arc_track</span>
+							<span class="types"><a href="#dataType_Arc">Arc</a></span>
+							The effective arcs for the particular sensor to track/illuminate in [override defaults]
+						</li>
+						<li><span class="parameter">arc_mount</span>
+							<span class="types"><a href="#dataType_Arc">Arc</a></span>
+							The effective arcs for the particular mount [override defaults]
+						</li>
+					</ul>
+					<hr>
+					<a class="anchor" id="selector_UpdateUnitCargo"></a>
+					<h3>UpdateUnitCargo</h3>
+					<p>
+						Lists minimum fields required. Other fields from <span class="wrapper"><a
+								href="#wrapper_Unit">Unit</a></span> may be included.
+					</p>
+					<ul class="ul-no-bullets">
+						<li><span class="parameter">guid</span>
+							<span class="types"><span class="string">string</span></span>
+							The unit identifier
+						</li>
+						<li><span class="parameter">mode</span>
+							<span class="types"><span class="string">string</span></span>
+							The function to perform (add_ cargo,remove_ cargo)
+						</li>
+						<li><span class="parameter">cargoList</span>
+							<span class="types"><a class="type" href="index.html#Cargo">{ Cargo }</a></span>
+							List of cargo to update: table of {guids}, or { {number, DBID}}
+						</li>
+					</ul>
+					<hr>
+					<a class="anchor" id="selector_VPContactSelector"></a>
+					<h3>VPContactSelector</h3>
+					<p>
+						Contact selector.
+					</p>
+					<ul class="ul-no-bullets">
+						<li><span class="parameter">guid</span>
+							<span class="types"><span class="string">string</span></span>
+							The GUID of the contact. Interrogate VP_GetSide().contacts for the side's contacts and use
+							the
+							GUID from there.
+						</li>
+					</ul>
+					<div class="note-alert">
+						<p>
+							<strong>Note:</strong> A unit and its contact GUIDs are different for the same physical
+							unit. The contact
+							GUIDs represent contacts associated with this unit from the perspective of any detecting
+							sides.
+						</p>
+					</div>
+					<hr>
+					<a class="anchor" id="selector_Weapon2Magazine"></a>
+					<h3>Weapon2Magazine</h3>
+					<p>
+						Select magazine and weapon. A group magazine, for example, tend to have multiple magazines, with
+						the same name. So you can specify a particular magazine by the GUID--or leave it out and the
+						function will try to fill up any available space with the weapon.
+					</p>
+					<ul class="ul-no-bullets">
+						<li><span class="parameter">side</span>
+							<span class="types"><span class="string">string</span></span>
+							The side name/GUID of the unit with magazine
+						</li>
+						<li><span class="parameter">unitname</span>
+							<span class="types"><span class="string">string</span></span>
+							The name/GUID of unit with magazine
+						</li>
+						<li><span class="parameter">guid</span>
+							<span class="types"><span class="string">string</span></span>
+							GUID of the unit with magazine
+						</li>
+						<li><span class="parameter">mag_guid</span>
+							<span class="types"><span class="string">string</span></span>
+							The magazine GUID
+						</li>
+						<li><span class="parameter">wpn_dbid</span>
+							<span class="types"><span class="string">string</span></span>
+							The weapon database ID
+						</li>
+						<li><span class="parameter">number</span>
+							<span class="types"><span class="number">number</span></span>
+							Number to add
+						</li>
+						<li><span class="parameter">maxcap</span>
+							<span class="types"><span class="number">number</span></span>
+							Maximum capacity of the weapon to store
+						</li>
+						<li><span class="parameter">remove</span>
+							<span class="types"><span class="boolean">boolean</span></span>
+							If true, this will debuct the number of weapons
+						</li>
+						<li><span class="parameter">new</span>
+							<span class="types"><span class="boolean">boolean</span></span>
+							If true, will add the weapon if it does not exist
+						</li>
+						<li><span class="parameter">fillout</span>
+							<span class="types"><span class="boolean">boolean</span></span>
+							If true, will fill out the weapon record to its maximum
+						</li>
+					</ul>
+					<hr>
+					<a class="anchor" id="selector_Weapon2Mount"></a>
+					<h3>Weapon2Mount</h3>
+					<p>
+						Select mount and weapon. You can specify a particular mount by the GUID--or leave it out and the
+						function will try to fill up any available space with the weapon.
+					</p>
+					<ul class="ul-no-bullets">
+						<li><span class="parameter">side</span>
+							<span class="types"><span class="string">string</span></span>
+							The side name/GUID of the unit with mount
+						</li>
+						<li><span class="parameter">unitname</span>
+							<span class="types"><span class="string">string</span></span>
+							The name/GUID of unit with mount
+						</li>
+						<li><span class="parameter">guid</span>
+							<span class="types"><span class="string">string</span></span>
+							GUID of the unit with mount
+						</li>
+						<li><span class="parameter">mount_guid</span>
+							<span class="types"><span class="string">string</span></span>
+							The mount GUID
+						</li>
+						<li><span class="parameter">wpn_dbid</span>
+							<span class="types"><span class="string">string</span></span>
+							The weapon database ID
+						</li>
+						<li><span class="parameter">number</span>
+							<span class="types"><span class="number">number</span></span>
+							Number to add
+						</li>
+						<li><span class="parameter">remove</span>
+							<span class="types"><span class="boolean">boolean</span></span>
+							If true, this will debuct the number of weapons
+						</li>
+						<li><span class="parameter">fillout</span>
+							<span class="types"><span class="boolean">boolean</span></span>
+							If true, will fill out the weapon record to its maximum
+						</li>
+					</ul>
+
+			
+			<div id="footer">
+				<p>Copyright &copy; WarfareSims 2020</p>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

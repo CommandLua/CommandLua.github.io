@@ -1,0 +1,4020 @@
+<html>
+
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163808192-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-163808192-1');
+	</script>
+
+	<title>Command Lua Docs</title>
+	<link rel="stylesheet" type="text/css" href="style.css" / >
+	
+
+
+</head>
+
+<body>
+	<div id="header-container">
+		<div id="header">
+			<div id="header-logo">
+				<h1><a href="../index2.html"><img src="./images/CommandLuaLogo.svg" height=45px alt="CommandLua"></a>
+				</h1>
+			</div>
+			<div id="header-nav">
+				<a class="selected" href="../index2.html">Reference</a>
+				<!-- <a href="/guides/">Guides</a> -->
+				<a href="https://www.matrixgames.com/forums/tt.asp?forumid=1681">Forum</a>
+			</div>
+		</div>
+	</div>
+	<div id="container">
+
+		<div id="content">
+			<div id="page-title">
+				<h2 id="page-title">Command Lua API Documentation, v1147.34</h2>
+				<hr>
+			</div>
+			<div id="nav">
+				<ul>
+					<li><a href="../index2.html#News">News</a></li>
+					<li><a href="../index2.html#Introduction">Introduction</a></li>
+					<ol>
+						<li><a href="../index2.html#HowToUse">How to Use These Docs</a></li>
+						<li><a href="../index2.html#FirstSteps">First Steps</a></li>
+						<li><a href="../index2.html#ExternalResources">External Resources</a></li>
+					</ol>
+
+					<li><a href="../index2.html#Overview">Overview</a></li>
+					<ol>
+						<li><a href="../index2.html#CaseSensitivityandConventions">Case Sensitivity and Conventions</a></li>
+                        <li><a href="../index2.html#EventHandling">Event Handling</a></li>
+						<li><a href="../index2.html#ErrorHandling">Error Handling</a></li>
+                        <li><a href="../index2.html#DataTypes">Data Types</a></li>
+					</ol>
+					<li><a href="Functions.html">Functions</a></li>
+					<li><a href="Wrappers.html">Wrappers</a></li>
+					<li><a href="Selectors.html">Selectors</a></li>
+					<li><a href="Tables.html">Tables</a></li>
+				</ul>
+			</div>
+            <div id="main">
+
+				<a class="anchor" id="Functions"></a>
+				<h2>Functions</h2>
+				<!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p> -->
+				<p>
+                    Functions listed below are available in all editions of Command.
+				</p>
+				<a class="anchor" id="FunctionIndex"></a>
+				<ul class="ul-2-columns">
+					<li><a href="#GetBuildNumber">GetBuildNumber()</a></li>
+					<li><a href="#GetScenarioTitle">GetScenarioTitle()</a></li>
+					<li><a href="#ScenEdit_AddCustomLoss">ScenEdit_AddCustomLoss()</a></li>
+					<li><a href="#ScenEdit_AddExplosion">ScenEdit_AddExplosion()</a></li>
+					<li><a href="#ScenEdit_AddMinefield">ScenEdit_AddMinefield()</a></li>
+					<li><a href="#ScenEdit_AddMission">ScenEdit_AddMission()</a></li>
+					<li><a href="#ScenEdit_AddReferencePoint">ScenEdit_AddReferencePoint()</a></li>
+					<li><a href="#ScenEdit_AddReloadsToUnit">ScenEdit_AddReloadsToUnit()</a></li>
+					<li><a href="#ScenEdit_AddSide">ScenEdit_AddSide()</a></li>
+					<li><a href="#ScenEdit_AddSpecialAction">ScenEdit_AddSpecialAction()</a></li>
+					<li><a href="#ScenEdit_AddUnit">ScenEdit_AddUnit()</a></li>
+					<li><a href="#ScenEdit_AddWeaponToUnitMagazine">ScenEdit_AddWeaponToUnitMagazine()</a></li>
+					<li><a href="#ScenEdit_AddZone">ScenEdit_AddZone()</a></li>
+					<li><a href="#ScenEdit_AssignUnitAsTarget">ScenEdit_AssignUnitAsTarget()</a></li>
+					<li><a href="#ScenEdit_AssignUnitToMission">ScenEdit_AssignUnitToMission()</a></li>
+					<li><a href="#ScenEdit_AttackContact">ScenEdit_AttackContact()</a></li>
+					<li><a href="#ScenEdit_ClearKeyValue">ScenEdit_ClearKeyValue()</a></li>
+					<li><a href="#ScenEdit_CurrentLocalTime">ScenEdit_CurrentLocalTime()</a></li>
+					<li><a href="#ScenEdit_CurrentTime">ScenEdit_CurrentTime()</a></li>
+					<li><a href="#ScenEdit_DeleteMine">ScenEdit_DeleteMine()</a></li>
+					<li><a href="#ScenEdit_DeleteMinefield">ScenEdit_DeleteMinefield()</a></li>
+					<li><a href="#ScenEdit_DeleteMission">ScenEdit_DeleteMission()</a></li>
+					<li><a href="#ScenEdit_DeleteReferencePoint">ScenEdit_DeleteReferencePoint()</a></li>
+					<li><a href="#ScenEdit_DeleteUnit">ScenEdit_DeleteUnit()</a></li>
+					<li><a href="#ScenEdit_EndScenario">ScenEdit_EndScenario()</a></li>
+					<li><a href="#ScenEdit_EventX">ScenEdit_EventX()</a></li>
+					<li><a href="#ScenEdit_ExecuteEventAction">ScenEdit_ExecuteEventAction()</a></li>
+					<li><a href="#ScenEdit_ExecuteSpecialAction">ScenEdit_ExecuteSpecialAction()</a></li>
+					<li><a href="#ScenEdit_ExportInst">ScenEdit_ExportInst()</a></li>
+					<li><a href="#ScenEdit_ExportMission">ScenEdit_ExportMission()</a></li>
+					<li><a href="#ScenEdit_FillMagsForLoadout">ScenEdit_FillMagsForLoadout()</a></li>
+					<li><a href="#ScenEdit_GetContact">ScenEdit_GetContact()</a></li>
+					<li><a href="#ScenEdit_GetContacts">ScenEdit_GetContacts()</a></li>
+					<li><a href="#ScenEdit_GetDoctrine">ScenEdit_GetDoctrine()</a></li>
+					<li><a href="#ScenEdit_GetDoctrineWRA">ScenEdit_GetDoctrineWRA()</a></li>
+					<li><a href="#ScenEdit_GetEvent">ScenEdit_GetEvent()</a></li>
+					<li><a href="#ScenEdit_GetEvents">ScenEdit_GetEvents()</a></li>
+					<li><a href="#ScenEdit_GetKeyValue">ScenEdit_GetKeyValue()</a></li>
+					<li><a href="#ScenEdit_GetLoadout">ScenEdit_GetLoadout()</a></li>
+					<li><a href="#ScenEdit_GetMinefield">ScenEdit_GetMinefield()</a></li>
+					<li><a href="#ScenEdit_GetMission">ScenEdit_GetMission()</a></li>
+                    <li><a href="#ScenEdit_GetMissions">ScenEdit_GetMissions()</a></li>
+					<li><a href="#ScenEdit_GetReferencePoints">ScenEdit_GetReferencePoints()</a></li>
+					<li><a href="#ScenEdit_GetScenHasStarted">ScenEdit_GetScenHasStarted()</a></li>
+					<li><a href="#ScenEdit_GetScore">ScenEdit_GetScore()</a></li>
+					<li><a href="#ScenEdit_GetSideIsHuman">ScenEdit_GetSideIsHuman()</a></li>
+					<li><a href="#ScenEdit_GetSideOptions">ScenEdit_GetSideOptions()</a></li>
+					<li><a href="#ScenEdit_GetSidePosture">ScenEdit_GetSidePosture()</a></li>
+					<li><a href="#ScenEdit_GetSpecialAction">ScenEdit_GetSpecialAction()</a></li>
+					<li><a href="#ScenEdit_GetTimeOfDay">ScenEdit_GetTimeOfDay()</a></li>
+					<li><a href="#ScenEdit_GetUnit">ScenEdit_GetUnit()</a></li>
+					<li><a href="#ScenEdit_GetWeather">ScenEdit_GetWeather()</a></li>
+					<li><a href="#ScenEdit_HostUnitToParent">ScenEdit_HostUnitToParent()</a></li>
+					<li><a href="#ScenEdit_ImportInst">ScenEdit_ImportInst()</a></li>
+					<li><a href="#ScenEdit_ImportMission">ScenEdit_ImportMission()</a></li>
+					<li><a href="#ScenEdit_InputBox">ScenEdit_InputBox()</a></li>
+					<li><a href="#ScenEdit_KillUnit">ScenEdit_KillUnit()</a></li>
+					<li><a href="#ScenEdit_MsgBox">ScenEdit_MsgBox()</a></li>
+					<li><a href="#ScenEdit_PlaySound">ScenEdit_PlaySound()</a></li>
+					<li><a href="#ScenEdit_PlayVideo">ScenEdit_PlayVideo()</a></li>
+					<li><a href="#ScenEdit_MsgBox">ScenEdit_MsgBox()</a></li>
+					<li><a href="#ScenEdit_PlayerSide">ScenEdit_PlayerSide()</a></li>
+					<li><a href="#ScenEdit_QueryDB">ScenEdit_QueryDB()</a></li>
+					<li><a href="#ScenEdit_RefuelUnit">ScenEdit_RefuelUnit()</a></li>
+					<li><a href="#ScenEdit_RemoveSide">ScenEdit_RemoveSide()</a></li>
+					<li><a href="#ScenEdit_RemoveUnitAsTarget">ScenEdit_RemoveUnitAsTarget()</a></li>
+					<li><a href="#ScenEdit_RemoveZone">ScenEdit_RemoveZone()</a></li>
+					<li><a href="#ScenEdit_RunScript">ScenEdit_RunScript()</a></li>
+					<li><a href="#ScenEdit_SelectedUnits">ScenEdit_SelectedUnits()</a></li>
+					<li><a href="#ScenEdit_SetAction">ScenEdit_SetAction()</a></li>
+					<li><a href="#ScenEdit_SetCondition">ScenEdit_SetCondition()</a></li>
+					<li><a href="#ScenEdit_SetDoctrine">ScenEdit_SetDoctrine()</a></li>
+					<li><a href="#ScenEdit_SetDoctrineWRA">ScenEdit_SetDoctrineWRA()</a></li>
+					<li><a href="#ScenEdit_SetEMCON">ScenEdit_SetEMCON()</a></li>
+					<li><a href="#ScenEdit_SetEvent">ScenEdit_SetEvent()</a></li>
+					<li><a href="#ScenEdit_SetEventAction">ScenEdit_SetEventAction()</a></li>
+					<li><a href="#ScenEdit_SetEventCondition">ScenEdit_SetEventCondition()</a></li>
+					<li><a href="#ScenEdit_SetEventTrigger">ScenEdit_SetEventTrigger()</a></li>
+					<li><a href="#ScenEdit_SetKeyValue">ScenEdit_SetKeyValue()</a></li>
+					<li><a href="#ScenEdit_SetLoadout">ScenEdit_SetLoadout()</a></li>
+					<li><a href="#ScenEdit_SetMine">ScenEdit_SetMine()</a></li>
+					<li><a href="#ScenEdit_SetMission">ScenEdit_SetMission()</a></li>
+					<li><a href="#ScenEdit_SetReferencePoint">ScenEdit_SetReferencePoint()</a></li>
+					<li><a href="#ScenEdit_SetScore">ScenEdit_SetScore()</a></li>
+					<li><a href="#ScenEdit_SetSideOptions">ScenEdit_SetSideOptions()</a></li>
+					<li><a href="#ScenEdit_SetSidePosture">ScenEdit_SetSidePosture()</a></li>
+					<li><a href="#ScenEdit_SetSpecialAction">ScenEdit_SetSpecialAction()</a></li>
+					<li><a href="#ScenEdit_SetStartTime">ScenEdit_SetStartTime()</a></li>
+					<li><a href="#ScenEdit_SetTime">ScenEdit_SetTime()</a></li>
+					<li><a href="#ScenEdit_SetTrigger">ScenEdit_SetTrigger()</a></li>
+					<li><a href="#ScenEdit_SetUnit">ScenEdit_SetUnit()</a></li>
+					<li><a href="#ScenEdit_SetUnitDamage">ScenEdit_SetUnitDamage()</a></li>
+					<li><a href="#ScenEdit_SetUnitSide">ScenEdit_SetUnitSide()</a></li>
+					<li><a href="#ScenEdit_SetWeather">ScenEdit_SetWeather()</a></li>
+					<li><a href="#ScenEdit_SetZone">ScenEdit_SetZone()</a></li>
+					<li><a href="#ScenEdit_SpecialMessage">ScenEdit_SpecialMessage()</a></li>
+					<li><a href="#ScenEdit_TransferCargo">ScenEdit_TransferCargo()</a></li>
+					<li><a href="#ScenEdit_UnitC">ScenEdit_UnitC()</a></li>
+					<li><a href="#ScenEdit_UnitX">ScenEdit_UnitX()</a></li>
+					<li><a href="#ScenEdit_UnitY">ScenEdit_UnitY()</a></li>
+					<li><a href="#ScenEdit_UnloadCargo">ScenEdit_UnloadCargo()</a></li>
+					<li><a href="#ScenEdit_UpdateUnit">ScenEdit_UpdateUnit()</a></li>
+					<li><a href="#ScenEdit_UpdateUnitCargo">ScenEdit_UpdateUnitCargo()</a></li>
+					<li><a href="#ScenEdit_UseAttachment">ScenEdit_UseAttachment()</a></li>
+					<li><a href="#ScenEdit_UseAttachmentOnSide">ScenEdit_UseAttachmentOnSide()</a></li>
+					<li><a href="#Tool_Bearing">Tool_Bearing()</a></li>
+					<li><a href="#Tool_DumpEvents">Tool_DumpEvents()</a></li>
+					<li><a href="#Tool_EmulateNoConsole">Tool_EmulateNoConsole()</a></li>
+					<li><a href="#Tool_Range">Tool_Range()</a></li>
+					<li><a href="#VP_ExportUnits">VP_ExportUnits()</a></li>
+					<li><a href="#VP_GetContact">VP_GetContact()</a></li>
+					<li><a href="#VP_GetScenario">VP_GetScenario()</a></li>
+					<li><a href="#VP_GetSide">VP_GetSide()</a></li>
+					<li><a href="#VP_GetSides">VP_GetSides()</a></li>
+					<li><a href="#VP_GetUnit">VP_GetUnit()</a></li>
+					<li><a href="#World_GetCircleFromPoint">World_GetCircleFromPoint()</a></li>
+					<li><a href="#World_GetElevation">World_GetElevation()</a></li>
+					<li><a href="#World_GetLocation">World_GetLocation()</a></li>
+					<li><a href="#World_GetPointFromBearing">World_GetPointFromBearing()</a></li>
+				</ul>
+                <br>
+                <h3>Command: Professional Edition</h3>
+                <p>
+                    Functions listed below are only available in Command: Professional Edition.
+                </p>
+                <ul class="ul-2-columns">
+                    <li><a href="#Command_SaveScen">Command_SaveScen()</a> <span class="pro_only">PRO ONLY</span></li>
+                    <li><a href="#ScenEdit_ClearAllAircraft">ScenEdit_ClearAllAircraft()</a> <span class="pro_only">PRO ONLY</span></li>
+                    <li><a href="#ScenEdit_ClearAllSideUnitsEmconConfigs">ScenEdit_ClearAllSideUnitsEmconConfigs()</a> <span class="pro_only">PRO ONLY</span></li>
+                    <li><a href="#ScenEdit_ClearUnitEmconConfigs">ScenEdit_ClearUnitEmconConfigs()</a> <span class="pro_only">PRO ONLY</span></li>
+                    <li><a href="#ScenEdit_DistributeWeaponAtAirbase">ScenEdit_DistributeWeaponAtAirbase()</a> <span class="pro_only">PRO ONLY</span></li>
+                    <li><a href="#ScenEdit_DuplicateEmconConfigToSide">ScenEdit_DuplicateEmconConfigToSide()</a> <span class="pro_only">PRO ONLY</span></li>
+                    <li><a href="#ScenEdit_DuplicateEmconConfigToUnit">ScenEdit_DuplicateEmconConfigToUnit()</a> <span class="pro_only">PRO ONLY</span></li>
+                    <li><a href="#ScenEdit_ExportDoctrineToXML">ScenEdit_ExportDoctrineToXML()</a> <span class="pro_only">PRO ONLY</span></li>
+                    <li><a href="#ScenEdit_ExportScenarioToXML">ScenEdit_ExportScenarioToXML()</a> <span class="pro_only">PRO ONLY</span></li>
+                    <li><a href="#ScenEdit_GetDateTimeTicks">ScenEdit_GetDateTimeTicks()</a> <span class="pro_only">PRO ONLY</span></li>
+                    <li><a href="#ScenEdit_GetDBFileHash">ScenEdit_GetDBFileHash()</a> <span class="pro_only">PRO ONLY</span></li>
+                    <li><a href="#ScenEdit_GetUnitIntermittentEmissionConfig">ScenEdit_GetUnitIntermittentEmissionConfig()</a> <span class="pro_only">PRO ONLY</span></li>
+                    <li><a href="#ScenEdit_ImportDoctrineFromXML">ScenEdit_ImportDoctrineFromXML()</a> <span class="pro_only">PRO ONLY</span></li>
+                    <li><a href="#ScenEdit_ImportScenarioFromXML">ScenEdit_ImportScenarioFromXML()</a> <span class="pro_only">PRO ONLY</span></li>
+                    <li><a href="#ScenEdit_SetExportOutputRate">ScenEdit_SetExportOutputRate()</a> <span class="pro_only">PRO ONLY</span></li>
+                    <li><a href="#ScenEdit_SetSideEmconAlertness">ScenEdit_SetSideEmconAlertness()</a> <span class="pro_only">PRO ONLY</span></li>
+                    <li><a href="#ScenEdit_SetUnitIntermittentEmissionConfig">ScenEdit_SetUnitIntermittentEmissionConfig()</a> <span class="pro_only">PRO ONLY</span></li>
+                    <li><a href="#ScenEdit_SwitchUnitIntermittentEmission">ScenEdit_SwitchUnitIntermittentEmission()</a> <span class="pro_only">PRO ONLY</span></li>
+                    <li><a href="#ScenEdit_TransformZone">ScenEdit_TransformZone()</a> <span class="pro_only">PRO ONLY</span></li>
+                    <li><a href="#VP_SetTimeCompression">VP_SetTimeCompression()</a> <span class="pro_only">PRO ONLY</span></li>
+
+				
+                </ul>
+                <br>
+				<hr>
+				<h3><a class="anchor" id="GetBuildNumber"></a>GetBuildNumber()</h3>
+				<p>
+					Returns the build number of the game executable.
+				</p>
+				<h4>Parameters</h4>
+				<ul>
+					<li>None</li>
+				</ul>
+				<h4>Returns</h4>
+				<ul>
+					<li>
+						<span class="types"><span class="string">string</span></span>
+						The build number of the game executable.
+					</li>
+				</ul>
+				<h5>Example</h5>
+				<div class="example">
+					<code>
+						<span class="print"></span>(GetBuildNumber())<br>
+						<span class="output">>>> 1134.3</span>
+					</code>
+				</div>
+				<hr>
+				<h3><a class="anchor" id="GetScenarioTitle"></a>GetScenarioTitle()</h3>
+				<p>
+					Returns the title of the currently loaded scenario.
+				</p>
+				<h4>Parameters</h4>
+				<ul>
+					<li>None</li>
+				</ul>
+				<h4>Returns</h4>
+				<ul>
+					<li>
+						<span class="types"><span class="string">string</span></span>
+						The title of the currently loaded scenario.
+					</li>
+				</ul>
+				<h5>Example</h5>
+				<div class="example">
+					<code>
+						<span class="print"></span>(GetScenarioTitle())<br>
+						<span class="output">>>> Lone Wolf</span>
+					</code>
+				</div>
+				<hr>
+	
+	
+				<h3><a class="anchor" id="ScenEdit_AddCustomLoss"></a>ScenEdit_AddCustomLoss ()</h3>
+				<p>
+					Add entries to the loss list so it can displyed. It wil also show up in the wrapper side.losses.<br>
+					The additional entries replace any existing ones. To remove an entry, use a number of 0.
+				</p>
+				<h4>Parameters</h4>
+				<ul>
+					<li><span class="parameter">side </span>
+						 <span class="types"><span class="string">string </span></span> Side name or guid</li>
+					<li> <span class="parameter">table </span>
+						 <span class="table"> list of</span>
+					<ul>
+						<li><span class="types"><span class="string">string </span></span>Name of loss item</li>
+						<li><span class="types"><span class="number">number </span></span>new number</li>
+					</ul></li>
+				</ul>
+				<h4>Returns</h4>
+				<ul>
+				<li>
+					ScenEdit_AddCustomLoss(<span class="parameter">side name/guid</span>,
+					 <span class="parameter">table <span class="table">of {'name', number}</span>) </span>
+					</li>
+				</ul>
+				<h5>Example</h5>
+				<div class="example">
+					<code>ScenEdit_AddCustomLoss( 'sidea', { {'removethis',0},{'Casualties', 10000} } ) </code>
+				</div>
+				</p>
+				<hr>
+
+
+				<h3><a class="anchor" id="ScenEdit_AddExplosion"></a>ScenEdit_AddExplosion()</h3>
+				<p>
+					Detonates a warhead at a specified location.
+				</p>
+				<h4>Syntax</h4>
+				<p>
+					<code
+						class="syntax-example">ScenEdit_AddExplosion(<span class="parameter"><a href="#table_Explosion">Explosion</a></span>)</code>
+				</p>
+				<h4>Parameters</h4>
+				<ul>
+					<li>
+						<span class="table"><a href="#table_Explosion">Explosion</a></span>
+						Describes the explosion.
+					</li>
+				</ul>
+				<h5>Example</h5>
+				<div class="example">
+					<code>ScenEdit_AddExplosion({warheadid=<span class="number">253</span>, lat=unit.latitude, lon=unit.longitude, altitude=unit.altitude})</code>
+				</div>
+				</p>
+				<hr>
+				<h3><a class="anchor" id="ScenEdit_AddMinefield"></a>ScenEdit_AddMinefield()</h3>
+				<p>
+					Attempt to lay a minefield
+				</p>
+				<h4>Syntax</h4>
+				<p>
+					<code class="syntax-example">
+						ScenEdit_AddMinefield(
+							<span class="parameter">side</span>,
+							<span class="parameter">dbid</span>,
+							<span class="parameter">number</span>,
+							<span class="parameter">delay</span>,
+							<span class="parameter">area</span>
+							)
+					</code>
+				</p>
+				<h5>Example</h5>
+				<p>
+					<code class="syntax-example">
+						ScenEdit_AddMinefield ( { side='Blue', dbid=2345, number=100, delay=60000, area={'rp-1','rp-2','rp-3','rp-4'} } )
+					</code>
+				</p>
+				<h4>Parameters</h4>
+				<ul>
+					<li><span class="parameter">side</span>
+						<span class="types"><span class="string">string</span></span>
+						Side name or guid</li>
+					<li><span class="parameter">dbid</span>
+						<span class="types"><span class="number">number</span></span>
+						The database id of the mine to use</li>
+					<li><span class="parameter">number</span>
+						<span class="types"><span class="number">number</span></span>
+						The number to try to lay</li>
+					<li><span class="parameter">delay</span>
+						<span class="types"><span class="number">number</span></span>
+						The arming delay in seconds</li>
+					<li><span class="parameter">area</span>
+						<span class="table">table</span>
+						The area (as table of RP points) to lay mines in</li>
+				</ul>
+				<h4>Returns</h4>
+				<p>
+					<span class="types"><span class="number">number</span></span>
+					number of mines laid</p>
+				<h5>Example</h5>
+				<div class="example">
+					<code>
+						<span class="local">local</span> a = ScenEdit_AddMinefield({side=<span class="string">'Blue'</span>, dbid=<span class="number">2345</span>, number=<span class="number">100</span>, delay=<span class="number">60000</span>, area={<span class="string">'rp-1'</span>,<span class="string">'rp-2'</span>,<span class="string">'rp-3'</span>,<span class="string">'rp-4'</span>} } )
+					</code>
+				</div>
+				<hr>
+    <h3><a class="anchor" id="ScenEdit_AddMission"></a>ScenEdit_AddMission (SideNameOrId, MissionNameOrId, MissionType,
+        MissionOptions)</h3>
+    <p>Add new mission.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">SideNameOrId</span> <span class="types"><span class="string">string</span></span>
+            The
+            mission side</li>
+        <li><span class="parameter">MissionNameOrId</span> <span class="types"><span class="string">string</span></span>
+            The
+            mission name</li>
+        <li><span class="parameter">MissionType</span> <span class="types"><span class="string">string</span></span> The
+            mission type (Strike, Ferry, Patrol, etc)</li>
+        <li><span class="parameter">MissionOptions</span> <span class="selector"><a
+                    href="#selector_NewMission">NewMission</a></span> The mission specific options as a table</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="wrapper"><a href="#wrapper_Mission">Mission</a></span>A mission descriptor of the added mission
+        or<code>nil</code> otherwise.</p>
+    <h5>Example</h5>
+    <div class="example">
+        <code><span class="local">local</span> mission = ScenEdit_AddMission(<span class="string">'USA'</span>,<span class="string">'Marker strike'</span>,<span class="string">'strike'</span>,{<span class="global">type</span>=<span class="string">'land'</span>})</code>
+    </div>
+
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_AddReferencePoint"></a>ScenEdit_AddReferencePoint (descriptor)</h3>
+    <p>Add new reference point(s).</p>
+    <p>This function adds new reference point(s) as defined by a descriptor.As this function also calls
+        ScenEdit_SetReferencePoint() at the end, those parameters can also be passed in this function.</p>
+    <p>It can take a new referrnce point, or a table of new reference points.The descriptor<b>must</b> contain at least
+        a
+        side, and one set of latitude and longitude, or an area defined by one or more latitude and longitude values.
+        Points
+        can also be relative to a unit based on bearing and distence.This applies to ALL bearing type rp(s) in the
+        function.
+        Field = RelativeTo The unit name/GUID that the RP(s) are relative to.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li>
+            <span class="parameter">descriptor</span> <span class="selector"><a
+                    href="#selector_ReferencePointSelector">ReferencePointSelector</a> or <a class="type"
+                    href="#wrapper_ReferencePoint">{ReferencePoint}</a>
+            </span> The reference point details to be created. Field 'area' can be<br>(a) Table of reference points
+            {name,
+            longitude, latitude} if 'RelativeTo' not used, or<br> (b) table of reference points {name, bearing,
+            distance} if
+            'RelativeTo' used.<br> Leaving out name will default it to noraml 'RP-..'
+        </li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="wrapper"><a href="#wrapper_ReferencePoint">ReferencePoint</a></span>The reference point
+        wrapper for the new reference point, or the first one in an area.</p>
+    <h5>Example</h5>
+    <div class="example">
+        <code>ScenEdit_AddReferencePoint( {side=<span class="string">"United States"</span>, name=<span class="string">"Downed Pilot"</span>, lat=<span class="number">0.1</span>, lon=<span class="number">4</span>, highlighted=<span class="keyword">true</span>})</code>
+    </div>
+
+    <div class="example">
+        <code>ScenEdit_AddReferencePoint( {side=<span class="string">'sidea'</span>, RelativeTo=<span class="string">'USN Dewey'</span>, bearing=<span class="number">45</span> ,distance=<span class="number">20</span>, clear=<span class="keyword">true</span> })</code>
+    </div>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_AddReloadsToUnit"></a>ScenEdit_AddReloadsToUnit (descriptor)</h3>
+    <p>Adds weapons into a mount.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li>
+        	<span class="parameter">descriptor</span><span class="selector"><a href="#selector_Weapon2Mount">Weapon2Mount</a></span> Describes the weapon and mount to update
+        </li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="number">number</span></span> Number of items added to the magazine</p>
+    <h5>Example</h5>
+    <div class="example">
+        <code>ScenEdit_AddReloadsToUnit({unitname=<span class="string">'Mech Inf #1'</span>, wpn_dbid=<span class="number">773</span>, number=<span class="number">1</span>, w_max=<span class="number">10</span>})</code>
+    </div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_AddSide"></a>ScenEdit_AddSide (table)</h3>
+    <p>Add a side with the specified name.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">table</span> Table with 'name' key</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="wrapper"><a href="#wrapper_Side">Side</a></span></p>
+    <h5>Example</h5>
+    <div class="example">
+        <code>ScenEdit_AddSide({name=<span class="string">'OPFOR'</span>})</code>
+    </div>
+	<hr>
+    <h3><a class="anchor" id="ScenEdit_AddSpecialAction"></a>ScenEdit_AddSpecialAction(table)</h3>
+    <p>Add special action to a side</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">table</span> <span class="selector"><a href="#selector_SpecialAction">SpecialAction</a></span> 
+        The SA details</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="wrapper"><a href="#wrapper_SpecialAction">SpecialAction</a></span> Details of the Special Action</p>
+	
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_AddUnit"></a>ScenEdit_AddUnit (unit)</h3>
+    <p>Adds a unit based on a descriptor.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">unit</span> <span class="selector"><a href="#selector_NewUnit">NewUnit</a></span>
+            The unit details to add</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="wrapper"><a href="#wrapper_Unit">Unit</a></span> A complete descriptor for the added unit
+    </p>
+    <h5>Example</h5>
+
+    <div class="example">
+        <code>ScenEdit_AddUnit({<span class="global">type</span> =<span class="string">'Aircraft'</span>, name =<span class="string">'F-15C Eagle'</span>, loadoutid =<span class="number">16934</span>,
+heading =<span class="number">0</span>, dbid =<span class="number">3500</span>, side =<span class="string">'NATO'</span>, Latitude=<span class="string">"N46.00.00"</span>,Longitude=<span class="string">"E25.00.00"</span>,
+altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="string">"false"</span>,holdfire=<span class="string">"true"</span>,proficiency=<span class="number">4</span>})</code>
+    </div>
+
+
+    <div class="example">
+        <code>ScenEdit_AddUnit({<span class="global">type</span> =<span class="string">'Air'</span>, unitname =<span class="string">'F-15C Eagle'</span>, loadoutid =<span class="number">16934</span>, dbid =<span class="number">3500</span>, side =<span class="string">'NATO'</span>, Lat=<span class="string">"5.123"</span>,Lon=<span class="string">"-12.51"</span>,alt=<span class="number">5000</span>})</code>
+    </div>
+
+
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_AddWeaponToUnitMagazine"></a>ScenEdit_AddWeaponToUnitMagazine (descriptor)</h3>
+    <p>Adds weapons into a magazine.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">descriptor</span> <span class="selector"><a
+                    href="#selector_Weapon2Magazine">Weapon2Magazine</a></span> Describes the weapon and magazine to
+            update
+        </li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="number">number</span></span> Number of items added to the magazine</p>
+    <h5>Example</h5>
+    <div class="example">
+        <code>ScenEdit_AddWeaponToUnitMagazine({unitname=<span class="string">'Ammo'</span>, wpn_dbid=<span class="number">773</span>, number=<span class="number">1</span>, w_max=<span class="number">10</span>})</code>
+    </div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_AddZone"></a>ScenEdit_AddZone (sideName, zoneType, table)</h3>
+    <p>Add no-nav or exclusion zone.<br />...The RPs are normally visible to the side. They can start out 'hidden' by
+        adding
+        hidden=1 to
+        the table</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">sideName</span> <span class="types"><span class="string">string</span></span> Side
+            name/GUID</li>
+        <li><span class="parameter">zoneType</span> <span class="types"><span class="string">string</span></span> Type
+            of
+            zone to add: 0 = no-nav, 1 = exclusion</li>
+        <li><span class="parameter">table</span> <span class="types"><span class="type">table</span></span> Description,
+            Isactive, Area { of RPs }, Affects { of UnitTypes }, MarkAs (exc only), Locked (non only)</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="wrapper"><a href="#wrapper_Zone">{ Zone }</a></span></p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_AssignUnitAsTarget"></a>ScenEdit_AssignUnitAsTarget (AUNameOrIDOrTable,
+        MissionNameOrID)</h3>
+    <p>Assigns targets to a Strike mission.</p>
+    <p> 'UnitX' can be used as a unit descriptor.Contacts can also be assigned. Refer to the VP_ functions for details
+    </p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">AUNameOrIDOrTable</span> <span class="types"><span class="string">string</span>
+                or<span class="type">table</span></span> The name/GUID of the unit, or a table of<code>name/GUID</code>
+            to add
+            to target list</li>
+        <li><span class="parameter">MissionNameOrID</span> <span class="types"><span class="string">string</span></span>
+            The
+            mission to update</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="type">{ GUID }</span></span>A table of targets added</p>
+    <h5>Example</h5>
+
+    <div class="example">
+        <code>ScenEdit_AssignUnitAsTarget({<span class="string">'target1'</span>,<span class="string">'target2'</span>},<span class="string">'Land strike'</span>)</code>
+    </div>
+
+    <div class="example">
+        <code>ScenEdit_AssignUnitAsTarget(<span class="string">'UnitX'</span>,<span class="string">'Land strike'</span>)</code>
+    </div>
+
+
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_AssignUnitToMission"></a>ScenEdit_AssignUnitToMission (unitname, mission, escort)
+    </h3>
+    <p>Assign a unit to a mission.</p>
+    <p>The function takes a unit and mission descriptor, and assigns the unit to the mission if it
+        exists. Produces a
+        pop up
+        error (not catchable) if the unit or mission does not exist.The 'UnitX' can be used as the unit descriptor</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">unitname</span> <span class="types"><span class="string">string</span></span> The
+            name/GUID of the unit to assign</li>
+        <li><span class="parameter">mission</span> <span class="types"><span class="string">string</span></span> The
+            mission
+            name/GUID to use</li>
+        <li><span class="parameter">escort</span> <span class="types"><span class="boolean">boolean</span></span>
+            [Default=False]
+            If the mission is a strike one, then assign unit to the 'Escort' for the
+            strike</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="boolean">boolean</span></span>True/False for Successful/Failure</p>
+    <h5>Example</h5>
+    <div class="example">
+        <code>ScenEdit_AssignUnitToMission(<span class="string">"Bar #1"</span>,<span class="string">"Strike"</span>)</code>
+    </div>
+    </p>
+    <hr>
+
+    <h3><a class="anchor" id="ScenEdit_AttackContact"></a>ScenEdit_AttackContact (attackerID, contactId, options)</h3>
+    <p>Attack a contact as an auto-target or manual target with weapon allocation.</p>
+	<p>For a BOL attack, use "BOL" as the contactId.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">attackerID</span> <span class="types"><span class="string">string</span></span> The
+            unit
+            attacking as GUID or Name</li>
+        <li><span class="parameter">contactId</span> <span class="types"><span class="string">string</span></span> The
+            contact being attacked as GUID or Name (GUID is better as the name can change as
+            its classification
+            changes)</li>
+        <li><span class="parameter">options</span> <span class="wrapper"><a href="#wrapper_AttackOptions">{
+                    AttackOptions
+                    }</a></span> Contains type of attack and weapon allocation if required)</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="boolean">boolean</span></span> True if attack successfully assigned</p>
+    <h5>Example</h5>
+    <div class="example">
+        <code>ScenEdit_AttackContact(attackerID, contactId ,{mode=<span class="string">'1'</span>, mount=<span class="number">438</span>, weapon=<span class="number">1413</span>, qty=<span class="number">10</span>})<span class="comment">-- alloc 10 gunfire</span></code>
+    </div>
+    <div class="note-alert">
+        <p>
+            <strong>Note:</strong> The function will use the <strong>weapon</strong> from the aircraft loadout if applicable when no <strong>mount</strong> is supplied.
+        </p>
+    </div>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_ClearKeyValue"></a>ScenEdit_ClearKeyValue (key, forCampaign)</h3>
+    <p>Clears a key</p>
+    <p> .. or all keys from the persistent key store.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">key</span> <span class="types"><span class="string">string</span></span> The key to
+            clear or empty for all</li>
+        <li><span class="parameter">forCampaign</span> <span class="types"><span class="boolean">boolean</span></span>
+            Use key
+            store for passing ed to next scenario in campaign. Optional, default = false</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="boolean">boolean</span></span>Success or failure.</p>
+    <h5>Example</h5>
+    <div class="example"><code>ScenEdit_ClearKeyValue(<span class="string">"A"</span>)</code></div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_CurrentLocalTime"></a>ScenEdit_CurrentLocalTime ()</h3>
+    <p>Get the current scenario local time.</p>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="string">string</span></span>The local time as HH:MM:SS.</p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_CurrentTime"></a>ScenEdit_CurrentTime ()</h3>
+    <p>Get the current scenario time.</p>
+    <h4>Returns</h4>
+    <p><span class="types"><a class="type" href="#dataType_TimeStamp">TimeStamp</a></span>The UTC Unix timestamp of the
+        current time in-game.</p>
+    <h5>Example</h5>
+    <div class="example"><code>
+<span class="local">local</span> now = ScenEdit_CurrentTime()
+<span class="local">local</span> elapsed = now - timeFromLastTiggered
+<span class="keyword">if</span> elapsed &gt;<span class="number">60</span>*<span class="number">5</span><span class="keyword">then</span>
+<span class="comment">-- been more than 5 minutes, set the lastTriggered time to now</span> 
+ timeFromLastTiggered = now
+<span class="keyword">end</span></code></div>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_DeleteMine"></a>ScenEdit_DeleteMine (side, guid)</h3>
+    <p>delete a mine</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">side</span> <span class="types"><span class="string">string</span></span> Side name
+            or
+            guid</li>
+        <li><span class="parameter">guid</span> <span class="types"><span class="string">string</span></span> Mine guid
+        </li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="boolean">boolean</span></span>true/false</p>
+    <h5>Example</h5>
+    <div class="example">
+        <code><span class="local">local</span> a = ScenEdit_DeleteMine({side=<span class="string">'Blue'</span>, guid=<span class="string">'cccccccc'</span>} )</code>
+    </div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_DeleteMinefield"></a>ScenEdit_DeleteMinefield (side, area)</h3>
+    <p>delete a minefield</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">side</span> <span class="types"><span class="string">string</span></span> Side name
+            or
+            guid</li>
+        <li><span class="parameter">area</span> <span class="table">table</span> The area (as
+            table of RP points) to lay mines in</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="number">number</span></span>mines removed</p>
+    <h5>Example</h5>
+    <div class="example">
+        <code><span class="local">local</span> a = ScenEdit_DeleteMinefield({side=<span class="string">'Blue'</span>, area={<span class="string">'rp-1'</span>,<span class="string">'rp-2'</span>,<span class="string">'rp-3'</span>,<span class="string">'rp-4'</span>} } )</code>
+    </div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_DeleteMission"></a>ScenEdit_DeleteMission (SideNameOrId, MissionNameOrId)</h3>
+    <p>Delete mission... unassigns any units attached to it.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">SideNameOrId</span> <span class="types"><span class="string">string</span></span>
+            The
+            mission side</li>
+        <li><span class="parameter">MissionNameOrId</span> <span class="types"><span class="string">string</span></span>
+            The
+            mission name</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="boolean">boolean</span></span> True if mission has been removed.</p>
+    <h5>Example</h5>
+    <div class="example">
+        <code><span class="local">local</span> mission = ScenEdit_DeleteMission(<span class="string">'USA'</span>,<span class="string">'Marker strike'</span>)</code>
+    </div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_DeleteReferencePoint"></a>ScenEdit_DeleteReferencePoint (selector)</h3>
+    <p>Delete a reference point.</p>
+    <p>Given a reference point selector, this function will remove it.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">selector</span> <span class="selector"><a
+                    href="#selector_ReferencePointSelector">ReferencePointSelector</a></span> The reference point to
+            delete.</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="boolean">boolean</span></span>True if deleted</p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_DeleteUnit"></a>ScenEdit_DeleteUnit (unit, include)</h3>
+    <p>Deletes unit... and no event triggers.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">unit</span></li>
+        <li><span class="parameter">include</span> attached units with group for deleting</li>
+    </ul>
+    <h5>Example</h5>
+    <div class="example">
+        <code>ScenEdit_DeleteUnit({side=<span class="string">"United States"</span>, unitname=<span class="string">"USS Abcd"</span>})</code>
+    </div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_EndScenario"></a>ScenEdit_EndScenario ()</h3>
+    <p>Ends the current scenario.</p>
+    <h5>Example</h5>
+    <div class="example"><code>ScenEdit_EndScenario()</code></div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_EventX"></a>ScenEdit_EventX ()</h3>
+    <p>Active Event
+        .. that has been triggered.Otherwise, a<code>nil</code> is returned.</p>
+    <p> Note that EventX() can also be used as a shortcut for
+        ScenEdit_EventX()</p>
+    <h4>Returns</h4>
+    <p><span class="wrapper"><a href="#wrapper_Event">Event</a></span>The triggering event</p>
+    <h5>Example</h5>
+    <div class="example"><code><span class="local">local</span> event = ScenEdit_EventX()</code></div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_ExecuteEventAction"></a>ScenEdit_ExecuteEventAction (EventDescriptionOrID)</h3>
+    <p>Execute a Lua Event action script... but does not show results of execution of the
+        action</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">EventDescriptionOrID</span> <span class="types"><span
+                    class="string">string</span></span> The description or ID of the event action</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="string">string</span></span>"Ok" on execution or nothing.</p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_ExecuteSpecialAction"></a>ScenEdit_ExecuteSpecialAction (eventNameOrId)</h3>
+    <p>Execute a Lua Special action script
+        .. but does not show results of execution of the
+        action</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">eventNameOrId</span> <span class="types"><span class="string">string</span></span>
+            The
+            name or ID of the event action</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="string">string</span></span>"Ok" on execution or nothing.</p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_ExportInst"></a>ScenEdit_ExportInst (side, unitList, fileData)</h3>
+    <p>Export unit(s) to an inst file.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">side</span> <span class="types"><span class="string">string</span></span> The name or GUID of the side owning the exported units</li>
+        <li><span class="parameter">unitList</span> <span class="table">table</span> list of GUIDs of units to be written to INST file</li>
+        <li><span class="parameter">fileData</span> <span class="table">table</span> Table of <code>{filename=<span class="types"><span class="string">string</span></span>, name=<span class="types"><span class="string">string</span></span>, comment=<span class="types"><span class="string">string</span></span>}</code> for the INST file. Filename is mandatory.</li>
+    </ul>
+    <h5>Example</h5>
+    <div class="example">
+        <code>
+            ScenEdit_ExportInst(<span class="string">'Russia'</span>, {<span class="string">'c1a0e312-9ccc-43d1-9e6c-01899c8433d9'</span>}, {filename=<span class="string">'ssbn_patrol.inst'</span>,name=<span class="string">'SSBN on Patrol'</span>,comment=<span class="string">'Russian SSBN on patrol in Barents'</span>})
+        </code>
+    </div>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_ExportMission"></a>ScenEdit_ExportMission (SideNameOrId,MissionNameOrId)</h3>
+    <p>Export mission parameters... as a XML file in folder Command_base/Defaults.[Experimental as this should really be
+        treated like
+        an attachment so can be imported with Scenario]</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">SideNameOrId</span> <span class="types"><span class="string">string</span></span>
+            The
+            mission side</li>
+        <li><span class="parameter">MissionNameOrId</span> <span class="types"><span class="string">string</span></span>
+            The
+            mission name</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="type">{ guid
+                }</span></span>Mission GUID exported.</p>
+    <h5>Example</h5>
+    <div class="example">
+        <code><span class="local">local</span> mission = ScenEdit_ExportMission(<span class="string">'USA'</span>,<span class="string">'Marker strike'</span>})</code>
+    </div>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_ExportScenarioToXML"></a>ScenEdit_ExportScenarioToXML() <span class="pro_only">PRO ONLY</span></h3>
+    <p>Export the entire scenario in XML format.</p>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="string">string</span></span>The scenario graph in unformatted XML string</p>
+    <h5>Example</h5>
+    <div class="example"><code>theXML = ScenEdit_ExportScenarioToXML()</code></div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_FillMagsForLoadout"></a>ScenEdit_FillMagsForLoadout (unit,loadoutid, quantity)
+    </h3>
+    <p>Fill a unit's magazine(s) with aircraft
+        stores
+        ... for a specified loadout ID.(options)</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">unit</span> <span class="selector"><a
+                    href="#selector_UnitSelector">UnitSelector</a></span> The unit to select (name or GUID)</li>
+        <li><span class="parameter">loadoutid</span> <span class="types"><span class="number">number</span></span> ID of
+            the
+            desired loadout</li>
+        <li><span class="parameter">quantity</span> <span class="types"><span class="number">number</span></span> How
+            many
+            'packs' of the specified
+            loadout to populate for</li>
+    </ul>
+    <h4>Returns</h4>
+    <p>List of reports for successful (or not)additions</p>
+    <h5>Example</h5>
+    <div class="example">
+        <code>ScenEdit_FillMagsForLoadout(<span class="string">'{unit='</span>RAF Lakenheath<span class="string">', loadoutid=45162, quantity=12}'</span>)</code>
+    </div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_GetContact"></a>ScenEdit_GetContact (contact)</h3>
+    <p>Fetches a contact based on a selector.</p>
+    <p>This function is mostly identical to<a href="#ScenEdit_GetUnit">ScenEdit_GetUnit</a>except that if
+        references contacts on a side,</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">contact</span> <span class="selector"><a
+                    href="#selector_ContactSelector">ContactSelector</a></span> The contact to select. Must be
+            defined by a side and contact GUID
+            for that side.</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="wrapper"><a href="#wrapper_Contact">Contact</a></span>A contact descriptor if it
+        or<code>nil</code>otherwise.</p>
+    <h5>Example</h5>
+    <div class="example">
+        <code>ScenEdit_GetContact({side=<span class="string">"United States"</span>, guid=<span class="string">"c4114322-900c-428d-a3e3-0af701e81a7a"</span>})</code>
+    </div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_GetContacts"></a>ScenEdit_GetContacts (side)</h3>
+    <p>Contacts from a side.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">side</span> <span class="types"><span class="string">string</span></span> The
+            name/guid
+            of the side's
+            contacts.</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="type">{ Contacts}</span></span>Table of contact details</p>
+    <h5>Example</h5>
+    <div class="example">
+        <code><span class="local">local</span> con = ScenEdit_GetContacts(<span class="string">'south korea'</span>)</code>
+    </div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_GetDoctrine"></a>ScenEdit_GetDoctrine (selector)</h3>
+    <p>Gets the doctrine of the
+        designated object.</p>
+    <p>This function looks up the
+        doctrine of the object selected
+        by selector, and throws an
+        exception if the unit does
+        not exist.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">selector</span> <span class="selector"><a
+                    href="#selector_DoctrineSelector">DoctrineSelector</a></span> The selector for the object
+            to look up</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="wrapper"><a href="#wrapper_Doctrine">Doctrine</a></span>The doctrine of the selected
+        object</p>
+    <h5>Example</h5>
+    <div class="example">
+        <code>ScenEdit_GetDoctrine({side=<span class="string">"Soviet Union"</span>}).use_nuclear_weapons</code></div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_GetDoctrineWRA"></a>ScenEdit_GetDoctrineWRA
+        (selector)</h3>
+    <p>Gets the WRA doctrine.</p>
+    <p>Returns the WRA setting In a
+        table For the selected
+        side/mission/unit based On
+        the target type.Nothing returned Or empty
+        values means that the weapon
+        Is Not For the target type.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">selector</span> <span class="selector"><a
+                    href="#selector_DoctrineWRASelector">DoctrineWRASelector</a></span> The selector for the
+            object to look up</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="wrapper"><a href="#wrapper_DoctrineWRA">DoctrineWRA</a></span>The WRA doctrine of the
+        selected object</p>
+    <h5>Example</h5>
+    <div class="example">
+        <code>ScenEdit_GetDoctrineWRA({guid =<span class="string">'a1a52edf-3541-4b55-bea4-58d4e1ab11dc'</span>, contact_id=<span class="string">'Boeing 747-8F #610'</span>, weapon_id=<span class="number">1575</span>})</code>
+    </div>
+    <div class="example">
+        <code>ScenEdit_GetDoctrineWRA({side=<span class="string">'sidea'</span>, target_type=<span class="string">'Surface_Contact_Unknown_Type'</span>, weapon_id=<span class="number">1575</span>})</code>
+    </div>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_GetEvent"></a>ScenEdit_GetEvent
+        (EventDescriptionOrID,level)</h3>
+    <p>Gets the properties of an event.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">EventDescriptionOrID</span> <span class="types"><span
+                    class="string">string</span></span> The event to retrieve</li>
+        <li><span class="parameter">level</span> <span class="types"><span class="number">number</span></span> The
+            detail
+            required: 0 - full event, (limit
+            return to 1 - triggers, 2 - conditions, 3 - actions, 4 - event)</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="wrapper"><a href="#wrapper_Event">Event</a></span>The event details</p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_GetEvents"></a>ScenEdit_GetEvents (level)</h3>
+    <p>Gets all events.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">level</span> <span class="types"><span class="number">number</span></span> The
+            detail
+            required: 0 - full event, (limit
+            return to 1 - triggers, 2 - conditions, 3 - actions, 4 - event)</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="wrapper"><a href="#wrapper_Event"> { Event}</a></span>Table of event details</p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_GetKeyValue"></a>ScenEdit_GetKeyValue (key,forCampaign)</h3>
+    <p>Gets the value for a key
+        from the persistent key
+        store.</p>
+    <p>This function retrieves a
+        value put into the store by
+        <a href="#ScenEdit_SetKeyValue">ScenEdit_SetKeyValue</a>.The keys must be identical.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">key</span> <span class="types"><span class="string">string</span></span> The key to
+            fetch the
+            associated value of</li>
+        <li><span class="parameter">forCampaign</span> <span class="types"><span class="boolean">boolean</span></span>
+            Read from
+            the store
+            being passed to next
+            scenario in campaign. Optional, default = false</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="string">string</span></span>The value associated with
+        the key. "" if none exists.</p>
+    <h5>Example</h5>
+    <div class="example"><code>ScenEdit_SetKeyValue(<span class="string">"A"</span>,<span class="string">"2"</span>)
+ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- returns "2"</span></code></div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_GetLoadout"></a>ScenEdit_GetLoadout
+        (loadoutinfo)</h3>
+    <p>Gets the loadout details
+        for a unit. Use
+        loadoutid =0 or omit to
+        get the a/c current
+        loadout status (ie
+        number
+        of weapons left)</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">loadoutinfo</span> <span class="table"><a
+                    href="#table_LoadoutInfo">LoadoutInfo</a></span> The loadout
+            information to apply</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="wrapper"><a href="#wrapper_Loadout">Loadout</a></span>Loadout wrapper</p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_GetMinefield"></a>ScenEdit_GetMinefield
+        (side, area)</h3>
+    <p>get a minefield</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">side</span> <span class="types"><span class="string">string</span></span> Side name
+            or
+            guid</li>
+        <li><span class="parameter">area</span><span class="table">table</span> The area (as
+            table
+            of RP points) to lay
+            mines in</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="table">table</span>table of mines in the
+        area</p>
+    <h5>Example</h5>
+    <div class="example">
+        <code><span class="local">local</span> a = ScenEdit_GetMinefield({side=<span class="string">'Blue'</span>, area={<span class="string">'rp-1'</span>,<span class="string">'rp-2'</span>,<span class="string">'rp-3'</span>,<span class="string">'rp-4'</span>} } )</code>
+    </div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_GetMission"></a>ScenEdit_GetMission
+        (SideNameOrId,MissionNameOrId)</h3>
+    <p>Get details of a
+        mission.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">SideNameOrId</span> <span class="types"><span class="string">string</span></span>
+            The
+            mission side</li>
+        <li><span class="parameter">MissionNameOrId</span> <span class="types"><span class="string">string</span></span>
+            The
+            mission name</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="wrapper"><a href="#wrapper_Mission">Mission</a></span>A mission descriptor
+        if the mission
+        exists or<code>nil</code>otherwise.</p>
+    <h5>Example</h5>
+    <div class="example">
+        <code><span class="local">local</span> mission = ScenEdit_GetMission(<span class="string">'USA'</span>,<span class="string">'CV CAP Left'</span>)</code>
+    </div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_GetReferencePoints"></a>ScenEdit_GetReferencePoints
+        (selector)</h3>
+    <p>Get a set of
+        reference
+        point(s).</p>
+    <p>Given a reference
+        point selector,the function
+        will return a
+        table of the
+        reference point
+        descriptors.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">selector</span> <span class="selector"><a
+                    href="#selector_ReferencePointSelector">ReferencePointSelector</a></span></li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="wrapper"><a href="#wrapper_ReferencePoint">{ReferencePoint}</a></span>The table of
+        reference point
+        descriptors for
+        the selector</p>
+    <h5>Example</h5>
+    <div class="example">
+        <code><span class="local">local</span> points = ScenEdit_GetReferencePoints({side=<span class="string">"United States"</span>, area={<span class="string">"rp-100"</span>,<span class="string">"rp-101"</span>,<span class="string">"rp-102"</span>,<span class="string">"rp-103"</span>,<span class="string">"rp-104"</span>})</code>
+    </div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_GetScenHasStarted"></a>ScenEdit_GetScenHasStarted
+        ()</h3>
+    <p>Has the
+        scenario
+        started?</p>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="boolean">boolean</span></span>True if the
+        scenario has
+        started</p>
+    <h5>Example</h5>
+    <div class="example"><code><span class="local">local</span> state = ScenEdit_GetScenHasStarted()</code></div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_GetScore"></a>ScenEdit_GetScore
+        (side)</h3>
+    <p>Get a
+        given
+        side's
+        score.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">side</span> <span class="types"><span class="string">string</span></span> The
+            name
+            of
+            the
+            side</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="number">number</span></span>The
+        side's
+        score</p>
+    <h5>Example</h5>
+    <div class="example"><code>ScenEdit_GetScore(<span class="string">"PlayerSide"</span>)</code></div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_GetSideIsHuman"></a>ScenEdit_GetSideIsHuman
+        (sidename)</h3>
+    <p>Returns
+        true
+        if
+        side
+        is
+        played
+        by a
+        human
+        player</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">sidename</span> <span class="types"><span class="string">string</span></span> The
+            name
+            of
+            the
+            side
+            to
+            check
+            if
+            is
+            human
+            controlled</li>
+    </ul>
+    <h4>Returns</h4>
+    <p>True
+        iff
+        the
+        side
+        specified
+        is
+        human</p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_GetSideOptions"></a>ScenEdit_GetSideOptions
+        (options)</h3>
+    <p>Get
+        side
+        options....for
+        components
+        on
+        unit.(options)</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">options</span> <span class="selector"><a
+                    href="#selector_SideSelector">SideSelector</a></span></li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="selector"><a href="#selector_SideOption">SideOption</a></span> The
+        side
+        options</p>
+    <h5>Example</h5>
+    <div class="example"><code>ScenEdit_GetSideOptions({side=<span class="string">'SideA'</span>})</code></div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_GetSidePosture"></a>ScenEdit_GetSidePosture
+        (sideA,sideB)</h3>
+    <p>Gets
+        the
+        posture
+        of
+        one
+        side
+        towards
+        another.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">sideA</span> <span class="types"><span class="string">string</span></span> The
+            name
+            of
+            the
+            first
+            side</li>
+        <li><span class="parameter">sideB</span> <span class="types"><span class="string">string</span></span> The
+            name
+            of
+            the
+            second
+            side</li>
+    </ul>
+    <h4>Returns</h4>
+    <p>The
+        posture
+        of
+        sideA
+        towards
+        sideB,one
+        of
+        'N','F','H',or
+        'A'.</p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_GetSpecialAction"></a>ScenEdit_GetSpecialAction
+        (action_info)</h3>
+    <p>Gets
+        the
+        properties
+        of
+        an
+        existing
+        special
+        action.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">action_info</span> <span class="selector"><a
+                    href="#selector_SpecialAction">SpecialAction</a></span> The
+            special
+            action
+            to
+            retrieve</li>
+    </ul>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_GetTimeOfDay"></a>ScenEdit_GetTimeOfDay
+        (table)</h3>
+    <p>Get
+        the
+        current
+        time
+        of
+        day
+        at
+        a
+        location
+        use
+        an
+        unit
+        selector
+        (guid
+        or
+        side/name)or
+        position
+        selector
+        (latitude,longitude)</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">table</span> <span class="table">table</span> The
+            unit
+            location
+            or
+            position</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="table">table</span>table
+        {'tod'[0=Day
+        2=Night
+        3=Dawn
+        4=Dusk],'localtime'[local
+        time],'zulutime'[zulu
+        time],'TOD'['day','night','dawn','dusk']}</p>
+    <h5>Example</h5>
+    <div class="example"><code>ScenEdit_GetTimeOfDay(<span class="global">table</span>)</code></div>
+    </p>
+    <hr>
+	<h3><a class="anchor" id="ScenEdit_GetUnit"></a>ScenEdit_GetUnit()</h3>
+	<p>Returns a <span class="wrapper"><a href="#wrapper_Unit">Unit</a></span> wrapper using a <span
+			class="selector"><a href="#selector_UnitSelector">UnitSelector</a></span>.</p>
+	<h4>Syntax</h4>
+	<p>
+		<code
+			class="syntax-example">ScenEdit_GetUnit(<span class="parameter"><a href="#selector_UnitSelector">UnitSelector</a></span>)</code>
+	</p>
+	<h5>Example</h5>
+	<p><code>ScenEdit_GetUnit({name='Eagle #1',side='Blue'})</code></p>
+	<p>
+		This function returns the properties of a specified unit. If no unit is found the function
+		returns <code>nil</code> if run non-interactively, and raises an exception if run from the
+		console (see note below for a technique to bypass this behaviour if desired).
+	</p>
+	<h4>Parameters</h4>
+	<ul>
+		<li><span class="selector"><a href="#selector_UnitSelector">UnitSelector</a></span> The unit to
+			select.</li>
+	</ul>
+
+	<h4>Returns</h4>
+	<ul>
+		<li><span class="wrapper"><a href="#wrapper_Unit">Unit</a></span> if the unit exists, or</li>
+		<li><code>nil</code></li>
+	</ul>
+
+	<div class="note-alert">
+		<p>
+			<strong>Note:</strong> When run interactively (i.e. in the console) ScenEdit_GetUnit() will
+			raise an exception if the selected unit is not found. This can be prevented using <a
+				href="#Tool_EmulateNoConsole()">Tool_EmulateNoConsole()</a>.
+		</p>
+	</div>
+
+	<h4>Use</h4>
+	<p>
+		The <span class="selector"><a href="#selector_UnitSelector">UnitSelector</a></span> accepts either a
+		<code>name</code> and <code>side</code>, or a
+		<code>guid</code> to return a <code>unit</code>
+	</p>
+
+	<h5>Example 1</h5>
+	<div class="example">
+		<p>
+			<code>
+				<span class="local">local</span>
+				myUnit
+				<span class="operator">=</span> 
+				ScenEdit_GetUnit<span class="operator">({</span>
+					guid=
+					<span class="string">'f4f9e0af-15c2-4582-8e80-b827c2ec2f56'</span>
+					<span class="operator">})</span>
+				<br>
+				<span class="print"></span>
+				<span class="operator">(</span>
+				myUnit
+				<span class="operator">)</span>
+				<br><br>
+				<span class="output"> >> unit {
+						type = 'Ship', 
+						subtype = '3106', 
+						name = 'CG 56 San Jacinto', 
+						side = 'United States', 
+						guid = 'f4f9e0af-15c2-4582-8e80-b827c2ec2f56', 
+						class = 'CG 56 San Jacinto [Ticonderoga Baseline 3, VLS]', 
+						proficiency = 'Regular', 
+						latitude = '22.3252605703301', 
+						longitude = '62.1828983227462', 
+						altitude = '0', 
+						heading = '0', 
+						speed = '10', 
+						throttle = 'FullStop', 
+						autodetectable = 'False', 
+						group = 'Bush CSG', 
+						mounts = '25', 
+						magazines = '32', 
+						unitstate = 'Unassigned', 
+						fuelstate = 'None', 
+						weaponstate = 'None', 
+					}
+				</span>
+			</code>
+		</p>
+	</div>
+	<h5>Example 2</h5>
+	<div class="example">
+		<p>
+			<code>
+				<span class="local">local</span>
+				myUnit
+				<span class="operator">=</span> 
+				ScenEdit_GetUnit<span class="operator">({</span>
+				side
+				<span class="operator">=</span> 
+				<span class="string">'United States'</span>
+				, name
+				<span class="operator">=</span>
+				<span class="string">'CG 56 San Jacinto'</span>
+				<span class="operator">})</span>
+				<br>
+				<span class="print"></span>
+				<span class="operator">(</span>
+				myUnit
+				<span class="operator">)</span>
+				<br><br>
+				<span class="output"> >> unit {
+					type = 'Ship', 
+					subtype = '3106', 
+					name = 'CG 56 San Jacinto', 
+					side = 'United States', 
+					guid = 'f4f9e0af-15c2-4582-8e80-b827c2ec2f56', 
+					class = 'CG 56 San Jacinto [Ticonderoga Baseline 3, VLS]', 
+					proficiency = 'Regular', 
+					latitude = '22.3252605703301', 
+					longitude = '62.1828983227462', 
+					altitude = '0', 
+					heading = '0', 
+					speed = '10', 
+					throttle = 'FullStop', 
+					autodetectable = 'False', 
+					group = 'Bush CSG', 
+					mounts = '25', 
+					magazines = '32', 
+					unitstate = 'Unassigned', 
+					fuelstate = 'None', 
+					weaponstate = 'None', 
+					}
+				</span>
+			</code>
+		</p>
+	</div>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_HostUnitToParent"></a>ScenEdit_HostUnitToParent
+        (host_info)</h3>
+    <p>Host/base
+        ..to
+        the
+        specified
+        host.SelectedHostNameOrID'option:the
+        unit
+        will
+        be
+        moved
+        from
+        any
+        location,including
+        flying,to
+        the
+        new
+        location.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">host_info</span> <span class="table"><a href="#table_HostUnit">HostUnit</a></span>
+            The information about the hosting request</li>
+    </ul>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_ImportInst"></a>ScenEdit_ImportInst
+        (side,filename)</h3>
+    <p>Imports
+        an
+        inst
+        file.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">side</span> <span class="types"><span class="string">string</span></span> The
+            side
+            to
+            import
+            the
+            inst
+            file
+            as</li>
+        <li><span class="parameter">filename</span> <span class="types"><span class="string">string</span></span> The
+            filename
+            of
+            the
+            inst
+            file</li>
+    </ul>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_ImportMission"></a>ScenEdit_ImportMission
+        (SideNameOrId,MissionNameOrId)</h3>
+    <p>Import
+        mission
+        parameters...from
+        a
+        XML
+        file
+        in
+        folder
+        Command_base/Defaults.[Experimental
+        as
+        this
+        should
+        really
+        be
+        treated
+        like
+        an
+        attachment
+        so
+        can
+        be
+        imported
+        with
+        Scenario]</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">SideNameOrId</span> <span class="types"><span class="string">string</span></span>
+            The
+            mission
+            side</li>
+        <li><span class="parameter">MissionNameOrId</span> <span class="types"><span class="string">string</span></span>
+            The
+            mission
+            name</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="string">guid</span></span> Mission
+        GUID
+        imported.</p>
+    <h5>Example</h5>
+    <div class="example">
+        <code><span class="local">local</span> mission = ScenEdit_ExportMission(<span class="string">'USA'</span>,<span class="string">'Marker strike'</span>})</code>
+    </div>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_ImportScenarioFromXML"></a>ScenEdit_ImportScenarioFromXML() <span class="pro_only">PRO ONLY</span></h3>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="boolean">boolean</span></span> Returns true if the import completed successfully, false otherwise</p>
+    <h5>Example</h5>
+    <div class="example"><code>ScenEdit_ImportScenarioFromXML({XML=<span class="string">'...'</span>})</code></div>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_InputBox"></a>ScenEdit_InputBox
+        (string)</h3>
+    <p>Open an input box with the passed prompt.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">string</span> <span class="types"><span class="string">string</span></span> The string to display to the user</li>
+    </ul>
+    <h4>Returns</h4>
+    <p>Data entered into box</p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_KillUnit"></a>ScenEdit_KillUnit
+        (unit)</h3>
+    <p>Kill
+        unit....and
+        triggers
+        event.(unit)</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">unit</span></li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="boolean">boolean</span></span>True
+        if
+        successful</p>
+    <h5>Example</h5>
+    <div class="example"><code>
+ ScenEdit_KillUnit({side=<span class="string">'SideA'</span>,unitname=<span class="string">'ship'</span>})</code></div>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_MsgBox"></a>ScenEdit_MsgBox
+        (string,style)</h3>
+    <p>Show
+        a
+        message
+        box
+        with
+        a
+        passed
+        string.</p>
+    <p> Style
+        numbers
+        1
+        =OK
+        and
+        Cancel
+        buttons.2
+        =Abort,Retry,and
+        Ignore
+        buttons.3
+        =Yes,No,and
+        Cancel
+        buttons
+        4
+        =Yes
+        and
+        No
+        buttons.5
+        =Retry
+        and
+        Cancel
+        buttons.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">string</span> <span class="types"><span class="string">string</span></span> The
+            string
+            to
+            display
+            to
+            the
+            user</li>
+        <li><span class="parameter">style</span> <span class="types"><span class="number">number</span></span> The
+            style
+            of
+            the
+            message
+            box</li>
+    </ul>
+    <h4>Returns</h4>
+    <p>button
+        number
+        pressed.</p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_PlaySound"></a>ScenEdit_PlaySound
+        (string,delay)</h3>
+    <p>Play
+        a
+        sound
+        file.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">string</span> <span class="types"><span class="string">string</span></span> The
+            name
+            of
+            the
+            file. Assumed
+            to
+            be
+            in
+            the
+            Sounds\Effects
+            folder</li>
+        <li><span class="parameter">delay</span> <span class="types"><span class="number">number</span></span> Delay
+            to
+            playing</li>
+    </ul>
+    <h4>Returns</h4>
+    <p>bool
+        False
+        if
+        it
+        can't
+        find
+        the
+        file</p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_PlayVideo"></a>ScenEdit_PlayVideo
+        (string,fullscreen,delay)</h3>
+    <p>Play
+        a
+        video
+        file.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">string</span> <span class="types"><span class="string">string</span></span> The
+            name
+            of
+            the
+            file. Assumed
+            to
+            be
+            in
+            the
+            Video
+            folder</li>
+        <li><span class="parameter">fullscreen</span> <span class="types"><span class="boolean">boolean</span></span>
+            Shown
+            in
+            full
+            screen</li>
+        <li><span class="parameter">delay</span> <span class="types"><span class="number">number</span></span> Delay
+            to
+            showing</li>
+    </ul>
+    <h4>Returns</h4>
+    <p>string
+        "N"if
+        it
+        can't
+        find
+        the
+        file</p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_PlayerSide"></a>ScenEdit_PlayerSide
+        ()</h3>
+    <p>The
+        player's
+        current
+        side.</p>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="string">string</span></span>The
+        name
+        of
+        the
+        current
+        side</p>
+    <h5>Example</h5>
+    <div class="example"><code><span class="local">local</span> side = ScenEdit_PlayerSide()</code></div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_QueryDB"></a>ScenEdit_QueryDB
+        (objectType,DBID)</h3>
+    <p>Query
+        database
+        use
+        the
+        wrapper_object_variable.fields
+        to
+        see
+        what
+        can
+        be
+        returned</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">objectType</span> <span class="types"><span class="string">string</span></span> The
+            type
+            of
+            item
+            to
+            query; 'weapon', 'mount', 'sensor'</li>
+        <li><span class="parameter">DBID</span> <span class="types"><span class="number">number</span></span> The
+            databse
+            id
+            of
+            item
+            to
+            query</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="wrapper">object</span>Object wrapper</p>
+    <h5>Example</h5>
+    <div class="example">
+        <code><span class="local">local</span> a = ScenEdit_QueryDB(<span class="string">'weapon'</span>,<span class="number">1398</span>)</code>
+    </div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_RefuelUnit"></a>ScenEdit_RefuelUnit
+        (unitOptions)</h3>
+    <p>Cause
+        unit
+        to
+        refuel.</p>
+    <p> The
+        unit
+        should
+        follow
+        it's
+        AAR
+        configuration.You
+        can
+        force
+        it
+        use
+        a
+        specific
+        tanker
+        or
+        ones
+        from
+        a
+        set
+        of
+        missions.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">unitOptions</span> <span class="wrapper"><a
+                    href="#wrapper_RefuelOptions">RefuelOptions</a></span> The
+            unit
+            and
+            refueling
+            options.</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="string">string</span></span>If
+        successful,then
+        empty
+        string.Else
+        message
+        showing
+        why
+        it
+        failed
+        to</p>
+    <h5>Example</h5>
+    <div class="example">
+        <code>
+                ScenEdit_RefuelUnit({side=<span class="string">"United States"</span>, unitname=<span class="string">"USS Test"</span>})
+            </code>
+    </div>
+
+    <div class="example">
+        <code>
+                ScenEdit_RefuelUnit({side=<span class="string">"United States"</span>, unitname=<span class="string">"USS Test"</span>, tanker=<span class="string">"Hose #1"</span>})
+            </code>
+    </div>
+
+    <div class="example">
+        <code>
+                ScenEdit_RefuelUnit({side=<span class="string">"United States"</span>, unitname=<span class="string">"USS Test"</span>, missions={<span class="string">"Pitstop"</span>}})
+            </code>
+    </div>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_RemoveSide"></a>ScenEdit_RemoveSide
+        (table)</h3>
+    <p>Remove
+        side
+        from
+        play.This
+        removes
+        ALL
+        units
+        and
+        contacts.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">side</span><span class="table"><a href="#table_Side">side</a></span> The
+            side to remove</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="wrapper"><a href="#wrapper_Side">Side</a></span></p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_RemoveUnitAsTarget"></a>ScenEdit_RemoveUnitAsTarget
+        (AUNameOrIDOrTable,MissionNameOrID)</h3>
+    <p>Removes
+        targets
+        from
+        a
+        Strike
+        mission.</p>
+    <p>The
+        'UnitX'can
+        be
+        used
+        as
+        a
+        unit
+        descriptor</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">AUNameOrIDOrTable</span> <span class="types"><span
+                    class="string">string</span></span> or
+            <span class="table">table</span> The
+            name/GUID
+            of
+            the
+            unit, or
+            a
+            table
+            of
+            <code>name/GUID</code> to
+            remove
+            from
+            target
+            list</li>
+        <li><span class="parameter">MissionNameOrID</span> <span class="types"><span class="string">string</span></span>
+            The
+            mission</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="table">table</span>A
+        table
+        of
+        targets
+        removed</p>
+    <h5>Example</h5>
+    <div class="example">
+        <code>ScenEdit_RemoveUnitAsTarget({<span class="string">'target1'</span>,<span class="string">'target2'</span>},<span class="string">'Land strike'</span>)</code>
+    </div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_RemoveZone"></a>ScenEdit_RemoveZone
+        (sideName,zoneType,table)</h3>
+    <p>Remove
+        no-nav
+        or
+        exclusion
+        zone.<br />...Note
+        that
+        this
+        will
+        drop
+        the
+        zone
+        with
+        any
+        area
+        RPs</p>
+    <h4>Parameters</h4>
+    <li><span class="parameter">sideName</span><span class="types"><span class="string">string</span></span>Side
+        name/GUID</li>
+    <li><span class="parameter">zoneType</span><span class="types"><span class="string">string</span></span>Type
+        of
+        zone
+        to
+        remove:0
+        =no-nav,1
+        =exclusion</li>
+    <li><span class="parameter">table</span><span class="table">table</span> Description,Isactive,Area
+        {of
+        RPs
+        },Affects
+        {of
+        UnitTypes
+        },MarkAs
+        (exc
+        only),Locked
+        (non
+        only)</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="wrapper"><a href="#wrapper_Zone">{ Zone
+                }</a></span></p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_RunScript"></a>ScenEdit_RunScript
+        (script)</h3>
+    <p>Runs
+        a
+        script
+        from
+        a
+        file.The
+        file
+        <code>script</code>must
+        be
+        inside
+        the
+        [Command
+        base
+        directory]/Lua
+        directory,or
+        else
+        the
+        game
+        will
+        not
+        be
+        able
+        to
+        load
+        it.You
+        can
+        make
+        the
+        file
+        point
+        to
+        files
+        within
+        a
+        sub-directory
+        of
+        this,as
+        in
+        'library/cklib.lua'The
+        file
+        to
+        find
+        will
+        be
+        of
+        the
+        form
+        [Command
+        base
+        directory]/Lua/[<code>script</code>]A
+        file
+        can
+        also
+        be
+        loaded
+        indirectly
+        from
+        an
+        attachment
+        <a href="#ScenEdit_UseAttachment">ScenEdit_UseAttachment</a></p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">script</span> The
+            file
+            containing
+            the
+            script
+            to
+            run.</li>
+    </ul>
+    <h5>Example</h5>
+    <div class="example"><code>ScenEdit_RunScript(<span class="string">'mylibrary.lua'</span>)</code></div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_SelectedUnits"></a>ScenEdit_SelectedUnits
+        ()</h3>
+    <p>list
+        of
+        selected
+        unit
+        ids</p>
+    <h4>Returns</h4>
+    <p><span class="table">table</span> Table
+        of
+        unit
+        ids
+        as
+        table
+        'units'and
+        'contacts'.</p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_SetAction"></a>ScenEdit_SetAction
+        (options)</h3>
+    <p>Sets
+        the
+        attributes
+        of
+        an
+        action.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">options</span> <span class="selector"><a
+                    href="#selector_ActionUpdate">ActionUpdate</a></span> The
+            action
+            options</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="table">table</span> Table
+        of
+        action
+        options
+        (new
+        or
+        previous
+        value)</p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_SetCondition"></a>ScenEdit_SetCondition
+        (options)</h3>
+    <p>Sets
+        the
+        attributes
+        of
+        an
+        condition.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">options</span> <span class="selector"><a href="#selector_ConditionUpdate">{
+                    ConditionUpdate
+                    }</a></span> The
+            condition
+            options</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="table">table</span> Table of condition options (new or previous value)</p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_SetDoctrine"></a>ScenEdit_SetDoctrine
+        (selector,doctrine)</h3>
+    <p>Set
+        the
+        doctrine
+        of
+        the
+        designated
+        object.</p>
+    <p>This
+        function
+        uses
+        selector
+        to
+        find
+        the
+        thing
+        to
+        modify,then
+        modifies
+        the
+        doctrine
+        of
+        that
+        object
+        based
+        on
+        the
+        given
+        object.Can
+        be
+        used
+        to
+        affect
+        doctrine
+        for
+        Side,Mission,Unit/Group</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">selector</span> <span class="selector"><a
+                    href="#selector_DoctrineSelector">DoctrineSelector</a></span> The
+            selector
+            for
+            the
+            object
+            to
+            modify.</li>
+        <li><span class="parameter">doctrine</span> <span class="wrapper"><a
+                    href="#wrapper_Doctrine">Doctrine</a></span> A
+            table
+            of
+            doctrines
+            to
+            update</li>
+    </ul>
+    <h5>Example</h5>
+
+        <div class="example">
+            <code>ScenEdit_SetDoctrine({side=<span class="string">"Soviet Union"</span>}, {kinematic_range_for_torpedoes =<span class="string">"AutomaticAndManualFire"</span>,use_nuclear_weapons=<span class="string">"yes"</span> })</code>
+        </div>
+
+        <div class="example">
+            <code>ScenEdit_SetDoctrine({side=<span class="string">"Soviet Union"</span>, mission=<span class="string">"ASW PATROL"</span>}, {kinematic_range_for_torpedoes =<span class="string">"AutomaticAndManualFire"</span>,use_nuclear_weapons=<span class="string">"yes"</span> })</code>
+        </div>
+
+        <div class="example">
+            <code>ScenEdit_SetDoctrine({side=<span class="string">"Soviet Union"</span>, unitname=<span class="string">"Bear #2"</span>}, {use_nuclear_weapons=<span class="string">"yes"</span> })</code>
+        </div>
+
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_SetDoctrineWRA"></a>ScenEdit_SetDoctrineWRA
+        (selector,options)</h3>
+    <p>
+
+            <p>Sets
+                the
+                WRA
+                doctrine.</p>
+        <p>Returns
+            the
+            WRA
+            setting
+            like
+            GetDoctrineWRA</p>
+        <p> The
+            values
+            below
+            can
+            be
+            used
+            in
+            the
+            option
+            settings
+            'inherit' = reverts
+            to
+            the
+            side
+            level
+            setting
+            'system' = reverts
+            to
+            the
+            database
+            level
+            setting
+            (does
+            not
+            apply
+            to
+            'firing_range') 'max' = use
+            the
+            appropriate
+            maximum
+            setting
+            'none' = not
+            to
+            be
+            used</p>
+    </p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">selector</span> <span class="selector"><a
+                    href="#selector_DoctrineWRASelector">DoctrineWRASelector</a></span> The
+            selector
+            for
+            the
+            object
+            to
+            update</li>
+        <li><span class="parameter">options</span> <span class="table"><a href="#table_WRA">WRA</a></span> Table
+            of
+            settings
+            {qty_salvo, shooter_salvo,firing_range,self_defence}. The
+            order
+            IS
+            IMPORTANT
+            as
+            no
+            keys
+            used.</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="wrapper"><a href="#wrapper_DoctrineWRA">DoctrineWRA</a></span>The
+        WRA
+        doctrine
+        of
+        the
+        selected
+        object</p>
+    <h5>Example</h5>
+    <div class="example">
+        <code>ScenEdit_SetDoctrineWRA({guid =<span class="string">'a1a52edf-3541-4b55-bea4-58d4e1ab11dc'</span>, target_type=<span class="string">'Surface_Contact_Unknown_Type'</span>, weapon_dbid=<span class="number">1575</span>}, {<span class="string">'inherit'</span>,<span class="string">'inherit'</span>,<span class="string">'system'</span>,<span class="string">'inherit'</span>})</code>
+    </div>
+    <div class="example">
+        <code>ScenEdit_SetDoctrineWRA({guid =<span class="string">'a1a52edf-3541-4b55-bea4-58d4e1ab11dc'</span>, target_type=<span class="string">'Surface_Contact_Unknown_Type'</span>, weapon_dbid=<span class="number">1575</span>}, {<span class="string">'max'</span>,<span class="string">'inherit'</span>,<span class="number">90</span>,<span class="string">'inherit'</span>})</code>
+    </div>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_SetEMCON"></a>ScenEdit_SetEMCON
+        (type,name,emcon)</h3>
+    <p>Sets
+            the
+            EMCON
+            of
+            the
+            selected
+            object. Select
+            the
+            object
+            by
+            specifying
+            the
+            type
+            and
+            the
+            object's
+            name.</p>
+        <p> Type
+            is
+            the
+            type
+            of
+            object
+            to
+            set
+            the
+            EMCON
+            on. It
+            can
+            be
+            one
+            of
+            4
+            values:
+        </p>
+        <ul>
+            <li>Side
+                - Set
+                an
+                entire
+                side's
+                EMCON
+                (e.g. United
+                States
+                using
+                active
+                radar)</li>
+            <li>Mission
+                - Set
+                the
+                EMCON
+                for
+                a
+                mission
+                (e.g. Minesweepers
+                active
+                sonar)</li>
+            <li>Group
+                - Set
+                the
+                EMCON
+                for
+                an
+                entire
+                group
+                (e.g
+                Package
+                #20
+                active
+                radar)</li>
+            <li>Unit
+                - Set
+                the
+                EMCON
+                for
+                a
+                single
+                group
+                (e.g. Hornet
+                #14
+                passive
+                radar)</li>
+        </ul>
+    </p>
+    <p> emcon
+        is
+        a
+        compound
+        structure.The
+        string
+        follows
+        the
+        following
+        grammar,with
+        each
+        clause
+        separated
+        by
+        a
+        semicolon
+        (;)</p>
+    <ul>
+        <li><code>Inherit</code> indicates
+            that
+            the
+            output
+            EMCON
+            should
+            be
+            at
+            least
+            the
+            parent's
+            EMCON. Inherit
+            must
+            come
+            first.</li>
+        <li>A
+            transmitter
+            "set" statement. Each
+            is
+            of
+            the
+            form
+            <code>type=status</code>, where
+            type
+            can
+            be
+            any
+            one
+            of
+            <code>Radar</code>, <code>Sonar</code>, and
+            <code>OECM</code>, and
+            status
+            can
+            be
+            any
+            one
+            of
+            <code>Passive</code> or
+            <code>Active</code>.</li>
+        </p>
+    </ul>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">type</span> <span class="types"><span class="string">string</span></span> The
+            type
+            of
+            the
+            thing
+            to
+            set
+            the
+            EMCON
+            on.</li>
+        <li><span class="parameter">name</span> <span class="types"><span class="string">string</span></span> The
+            name
+            or
+            GUID
+            of
+            the
+            object
+            to
+            select.</li>
+        <li><span class="parameter">emcon</span> <span class="types"><span class="string">string</span></span> The
+            new
+            EMCON
+            for
+            the
+            object.</li>
+    </ul>
+    <h5>Example</h5>
+
+            <div class="example">
+                <code>ScenEdit_SetEMCON(<span class="string">'Side'</span>,<span class="string">'NATO'</span>,<span class="string">'Radar=Active;Sonar=Passive'</span>)</code>
+            </div>
+
+            <div class="example">
+                <code>ScenEdit_SetEMCON(<span class="string">'Mission'</span>,<span class="string">'ASW Patrol #1'</span>,<span class="string">'Inherit;Sonar=Active'</span>)</code>
+            </div>
+
+            <div class="example">
+                <code>ScenEdit_SetEMCON(<span class="string">'Unit'</span>,<span class="string">'Camel 2'</span>,<span class="string">'OECM=Active'</span>)</code>
+            </div>
+
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_SetEvent"></a>ScenEdit_SetEvent
+        (EventDescriptionOrID,options)</h3>
+    <p>Sets
+        the
+        attributes
+        of
+        an
+        event.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">EventDescriptionOrID</span> <span class="types"><span
+                    class="string">string</span></span> The
+            event
+            name/GUID
+            to
+            perform
+            operation
+            on</li>
+        <li><span class="parameter">options</span> <span class="selector"><a href="#selector_EventUpdate">{
+                    EventUpdate
+                    }</a></span> The
+            event
+            options</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="type">{ table
+                }</span></span>Table
+        of
+        event
+        options
+        (new
+        or
+        previous
+        value)</p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_SetEventAction"></a>ScenEdit_SetEventAction
+        (EventDescriptionOrID,options)</h3>
+    <p>Sets
+        the
+        attributes
+        of
+        a
+        T/C/A.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">EventDescriptionOrID</span> <span class="types"><span
+                    class="string">string</span></span> The
+            action
+            name/GUID
+            to
+            perform
+            operation
+            on</li>
+        <li><span class="parameter">options</span> <span class="selector"><a href="#selector_EventTCAUpdate">{
+                    EventTCAUpdate
+                    }</a></span> The
+            options</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="type">{ table
+                }</span></span>Table
+        of
+        options
+        (new
+        or
+        previous
+        value)</p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_SetEventCondition"></a>ScenEdit_SetEventCondition
+        (EventDescriptionOrID,options)</h3>
+    <p>Sets
+        the
+        attributes
+        of
+        a
+        T/C/A.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">EventDescriptionOrID</span> <span class="types"><span
+                    class="string">string</span></span> The
+            condition
+            name/GUID
+            to
+            perform
+            operation
+            on</li>
+        <li><span class="parameter">options</span> <span class="selector"><a href="#selector_EventTCAUpdate">{
+                    EventTCAUpdate
+                    }</a></span> The
+            options</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="type">{ table
+                }</span></span>Table
+        of
+        options
+        (new
+        or
+        previous
+        value)</p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_SetEventTrigger"></a>ScenEdit_SetEventTrigger
+        (EventDescriptionOrID,options)</h3>
+    <p>Sets
+        the
+        attributes
+        of
+        a
+        T/C/A.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">EventDescriptionOrID</span> <span class="types"><span
+                    class="string">string</span></span> The
+            trigger
+            name/GUID
+            to
+            perform
+            operation
+            on</li>
+        <li><span class="parameter">options</span> <span class="selector"><a href="#selector_EventTCAUpdate">{
+                    EventTCAUpdate
+                    }</a></span> The
+            options</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="type">{ table
+                }</span></span>Table
+        of
+        options
+        (new
+        or
+        previous
+        value)</p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_SetKeyValue"></a>ScenEdit_SetKeyValue
+        (key,value,forCampaign)</h3>
+    <p>Sets
+        the
+        value
+        for
+        a
+        key
+        in
+        the
+        persistent
+        key
+        store.</p>
+    <p>This
+        function
+        allows
+        you
+        to
+        add
+        values,associated
+        with
+        keys,to
+        a
+        persistent
+        store
+        <a href="#dataType_KeyStore">KeyStore</a>that
+        is
+        retained
+        when
+        the
+        game
+        is
+        saved
+        and
+        resumed.Keys
+        and
+        values
+        are
+        both
+        represented
+        as
+        non-<code>nil</code>strings.The
+        value
+        is
+        retrieved
+        by
+        <a href="#ScenEdit_GetKeyValue">ScenEdit_GetKeyValue</a>.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">key</span> <span class="types"><span class="string">string</span></span> The
+            key
+            to
+            associate
+            with</li>
+        <li><span class="parameter">value</span> <span class="types"><span class="string">string</span></span> The
+            value
+            to
+            associate</li>
+        <li><span class="parameter">forCampaign</span> <span class="types"><span class="boolean">boolean</span></span>
+            Pass
+            the
+            store
+            to
+            next
+            scenario
+            in
+            campaign. Optional, default
+            = false</li>
+    </ul>
+    <h5>Example</h5>
+
+    <div class="example"><code>ScenEdit_SetKeyValue(<span class="string">"A"</span>,<span class="string">"B"</span>)
+ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- returns "B"</span></code></div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_SetLoadout"></a>ScenEdit_SetLoadout
+        (loadoutinfo)</h3>
+    <p>Sets
+        the
+        loadout
+        for
+        a
+        unit</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">loadoutinfo</span> <span class="table"><a
+                    href="#table_LoadoutInfo">LoadoutInfo</a></span> The
+            loadout
+            information
+            to
+            apply</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="boolean">boolean</span></span>True</p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_SetMine"></a>ScenEdit_SetMine
+        (side,guid,delay)</h3>
+    <p>update
+        a
+        mine</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">side</span> <span class="types"><span class="string">string</span></span> Side
+            name
+            or
+            guid</li>
+        <li><span class="parameter">guid</span> <span class="types"><span class="string">string</span></span> Mine
+            guid</li>
+        <li><span class="parameter">delay</span> <span class="types"><span class="number">number</span></span> The
+            arming
+            delay
+            in
+            seconds
+            [optional]</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="boolean">boolean</span></span>true/false</p>
+    <h5>Example</h5>
+
+    <div class="example">
+        <code><span class="local">local</span> a = ScenEdit_SetMine({side=<span class="string">'Blue'</span>, guid=<span class="string">'cccccccc'</span>, [delay=<span class="number">99999</span>]} )</code>
+    </div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_SetMission"></a>ScenEdit_SetMission
+        (SideName,MissionNameOrId,MissionOptions)</h3>
+    <p>Set
+        details
+        for
+        a
+        mission.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">SideName</span> <span class="types"><span class="string">string</span></span> The
+            mission
+            side</li>
+        <li><span class="parameter">MissionNameOrId</span> <span class="types"><span class="string">string</span></span>
+            The
+            mission
+            name</li>
+        <li><span class="parameter">MissionOptions</span> <span class="wrapper"><a
+                    href="#wrapper_Mission">Mission</a></span> The
+            mission
+            options
+            as
+            a
+            table.</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="wrapper"><a href="#wrapper_Mission">Mission</a></span>A
+        mission
+        descriptor
+        if
+        the
+        mission
+        exists
+        or
+        <code>nil</code>otherwise.</p>
+    <h5>Example</h5>
+
+    <div class="example">
+        <code><span class="local">local</span> mission = ScenEdit_SetMission(<span class="string">'USA'</span>,<span class="string">'CV CAP Left'</span>,{TankerUsage=<span class="number">1</span>,OnStation=<span class="number">2</span>})</code>
+    </div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_SetReferencePoint"></a>ScenEdit_SetReferencePoint
+        (descriptor)</h3>
+    <p>Update
+        a
+        reference
+        point(s)with
+        new
+        values.</p>
+    <p>Given
+        a
+        valid
+        <a href="#selector_ReferencePointSelector">ReferencePointSelector</a>as
+        part
+        of
+        the
+        descriptor,the
+        function
+        wil
+        update
+        the
+        values
+        contained
+        in
+        the
+        descriptor.Values
+        may
+        be
+        omitted
+        from
+        the
+        descriptor
+        if
+        they
+        are
+        intended
+        to
+        remain
+        unmodified.The
+        'area'selector
+        is
+        useful
+        for
+        changing
+        some
+        common
+        attribute,like
+        locking
+        or
+        highlighting,in
+        bulk.</p>
+    <p> Additional
+        key=value
+        options
+        are;<br>NEWNAME='string'to
+        rename
+        a
+        reference
+        point
+        <br>TOGGLEHIGHLIGHTED
+        =True
+        to
+        flip
+        the
+        reference
+        point(s)highlight
+        <br>CLEAR
+        =True
+        to
+        remove
+        the
+        'relative
+        to'of
+        the
+        reference
+        point(s)</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">descriptor</span> <span class="wrapper"><a
+                    href="#wrapper_ReferencePoint">ReferencePoint</a></span> A
+            valid
+            selector
+            with
+            other
+            values
+            to
+            update.</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="wrapper"><a href="#wrapper_ReferencePoint">ReferencePoint</a></span>The
+        reference
+        point
+        descriptor
+        for
+        the
+        reference
+        point
+        or
+        first
+        one
+        in
+        the
+        area.</p>
+    <h5>Example</h5>
+
+            <div class="example">
+                <code>ScenEdit_SetReferencePoint({side=<span class="string">"United States"</span>, name=<span class="string">"Downed Pilot"</span>, lat=<span class="number">0.5</span>})</code>
+            </div>
+
+            <div class="example">
+                <code>ScenEdit_SetReferencePoint({side=<span class="string">"United States"</span>, name=<span class="string">"Downed Pilot"</span>, lat=<span class="number">0.5</span>, lon=<span class="string">"N50.50.50"</span>, highlighted =<span class="keyword">true</span>})</code>
+            </div>
+
+            <div class="example">
+                <code>ScenEdit_SetReferencePoint({side=<span class="string">"United States"</span>, area={<span class="string">"rp-100"</span>,<span class="string">"rp-101"</span>,<span class="string">"rp-102"</span>,<span class="string">"rp-103"</span>,<span class="string">"rp-104"</span>}, highlighted =<span class="keyword">true</span>})</code>
+            </div>
+
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_SetScore"></a>ScenEdit_SetScore
+        (side,score,reason)</h3>
+    <p>Sets
+        a
+        given
+        side's
+        score.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">side</span> <span class="types"><span class="string">string</span></span> The
+            name/GUID
+            of
+            the
+            side</li>
+        <li><span class="parameter">score</span> <span class="types"><span class="number">number</span></span> The
+            new
+            score
+            for
+            the
+            side</li>
+        <li><span class="parameter">reason</span> <span class="types"><span class="string">string</span></span> The
+            reason
+            for
+            the
+            score
+            to
+            change</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="number">number</span></span>The
+        new
+        score
+        for
+        the
+        side</p>
+    <h5>Example</h5>
+
+    <div class="example">
+        <code>ScenEdit_SetScore(<span class="string">"PlayerSide"</span>,<span class="number">20</span>,<span class="string">"Reset score"</span>)</code>
+    </div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_SetSideOptions"></a>ScenEdit_SetSideOptions
+        (options)</h3>
+    <p>Set
+        side
+        options....AWARENESS
+        and
+        PROFICIENCY.(options)</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">options</span> <span class="types"><span class="type">SideOptions</span></span> The
+            side
+            items
+            to
+            be
+            changed.</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="selector"><a href="#selector_SideOption">{ SideOption
+                }</a></span>The
+        side
+        options</p>
+    <h5>Example</h5>
+    <div class="example">
+        <code>ScenEdit_SetSideOptions(<span class="string">'{side='</span>SideA<span class="string">',awareness='</span>OMNI<span class="string">',PROFICIENCY='</span>ace')</code>
+    </div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_SetSidePosture"></a>ScenEdit_SetSidePosture
+        (sideAName,sideBName,posture)</h3>
+    <p>Set
+        the
+        posture
+        of
+        a
+        side
+        towards
+        another.</p>
+    <p> This
+        will
+        set
+        side
+        A's
+        posture
+        towards
+        side
+        B
+        to
+        the
+        specified
+        posture.This
+        is
+        the
+        same
+        as
+        <a href="#dataType_Stance">Stance</a>,but
+        only
+        the
+        first
+        character
+        of
+        the
+        name
+        is
+        used
+        as
+        shown
+        in
+        the
+        table</p>
+    <p> Posture
+        codes:<style>
+            tr:not(:first-child) {
+                border-top: 1px solid black;
+            }
+
+            td {
+                padding: .5em;
+            }
+        </style>
+        <table style="border-spacing: 0.5rem;">
+            <tr>
+                <td>F</td>
+                <td>Friendly</td>
+            </tr>
+            <tr>
+                <td>H</td>
+                <td>Hostile</td>
+            </tr>
+            <tr>
+                <td>N</td>
+                <td>Neutral</td>
+            </tr>
+            <tr>
+                <td>U</td>
+                <td>Unfriendly</td>
+            </tr>
+        </table>
+    </p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">sideAName</span> <span class="types"><span class="string">string</span></span> Side
+            A's
+            name
+            or
+            GUID</li>
+        <li><span class="parameter">sideBName</span> <span class="types"><span class="string">string</span></span> Side
+            B's
+            name
+            or
+            GUID</li>
+        <li><span class="parameter">posture</span> <span class="types"><span class="string">string</span></span> The
+            posture
+            of
+            side
+            A
+            towards
+            side
+            B</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="boolean">boolean</span></span>True/False
+        for
+        Successful/Failure</p>
+    <h5>Example</h5>
+
+    <div class="example">
+        <code>ScenEdit_SetSidePosture(<span class="string">"LuaSideA"</span>,<span class="string">"LuaSideB"</span>,<span class="string">"H"</span>)</code>
+    </div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_SetSpecialAction"></a>ScenEdit_SetSpecialAction
+        (action_info)</h3>
+    <p>Sets
+        the
+        properties
+        of
+        an
+        existing
+        special
+        action.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">action_info</span> <span class="selector"><a
+                    href="#selector_SpecialAction">SpecialAction</a></span> The
+            special
+            action
+            to
+            modify</li>
+    </ul>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_SetStartTime"></a>ScenEdit_SetStartTime
+        (new_time)</h3>
+    <p>Sets
+        the
+        scenario start
+        time.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">new_time</span> <span class="types"><span class="string">string</span></span> The
+            desired
+            datetime
+            as
+            a
+            table</li>
+			<br>
+			<p>
+			The <span class="parameter">new_time</span> table can contain the following:<br>
+			Date = scenario date as MM:DD:YYYY or MM.DD.YYYY<br>
+			Time = sceanrio time as HH:MM:SS or HH.MM.SS<br>
+			Duration = length of scenario as days:hours:minutes<br>
+			</p>
+    </ul>
+    <h5>Example</h5>
+
+    <div class="example">
+        <code>ScenEdit_SetStartTime({Date=<span class="string">"2.12.2007"</span>, Time=<span class="string">"22.46.23"</span>, Duration=<span class="string">"60.5:0:0"</span>})</code>
+    </div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_SetTime"></a>ScenEdit_SetTime
+        (new_time)</h3>
+    <p>Sets
+        the current
+        scenario
+        time.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">new_time</span> <span class="types"><span class="string">string</span></span> The
+            desired
+            datetime
+            as
+            a
+            table
+			</li>
+			<br>
+			<p>
+			The <span class="parameter">new_time</span> table can contain the following:<br>
+			Date = scenario date as MM:DD:YYYY or MM.DD.YYYY<br>
+			Time = sceanrio time as HH:MM:SS or HH.MM.SS<br>
+			</p>
+			<span class="pro_only">PRO ONLY</span>
+			<p>
+			The <span class="parameter">new_time</span> table can contain the following:<br>
+			Date = scenario date as DD:MM:YYYY or DD.MM.YYYY. Note the change of format from public release.<br>
+			Time = sceanrio time as HH:MM:SS or HH.MM.SS<br>
+			StartDate = scenario start date as DD:MM:YYYY or DD.MM.YYYY.<br>
+			StartTime = sceanrio start time as HH:MM:SS or HH.MM.SS<br>
+			Duration = length of scenario as days:hours:minutes<br>
+			</p>
+    </ul>
+    <h5>Example</h5>
+
+    <div class="example">
+        <code>ScenEdit_SetTime({Date=<span class="string">"2.12.2007"</span>, Time=<span class="string">"22.46.23"</span>})</code>
+    </div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_SetTrigger"></a>ScenEdit_SetTrigger
+        (options)</h3>
+    <p>Sets
+        the
+        attributes
+        of
+        a
+        trigger.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">options</span> <span class="selector"><a href="#selector_TriggerUpdate">{
+                    TriggerUpdate
+                    }</a></span> The
+            trigger
+            options</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="type">{ table
+                }</span></span>Table
+        of
+        trigger
+        options
+        (new
+        or
+        previous
+        value)</p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_SetUnit"></a>ScenEdit_SetUnit
+        (unit)</h3>
+    <p>Sets
+        the
+        properties
+        of
+        a
+        unit
+        that
+        already
+        exists.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">unit</span> <span class="wrapper"><a href="#wrapper_Unit">Unit</a></span>
+            The
+            unit
+            to
+            edit. Must
+            be
+            at
+            least
+            a
+            selector.</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="wrapper"><a href="#wrapper_Unit">Unit</a></span>A complete descriptor for the added unit
+    </p>
+    <h5>Example</h5>
+
+        <div class="example">
+            <code>ScenEdit_SetUnit({side=<span class="string">"United States"</span>, unitname=<span class="string">"USS Test"</span>, lat =<span class="number">5</span>})</code>
+        </div>
+
+        <div class="example">
+            <code>ScenEdit_SetUnit({side=<span class="string">"United States"</span>, unitname=<span class="string">"USS Test"</span>, lat =<span class="number">5</span>})</code>
+        </div>
+
+        <div class="example">
+            <code>ScenEdit_SetUnit({side=<span class="string">"United States"</span>, unitname=<span class="string">"USS Test"</span>, lat =<span class="number">5</span>, lon =<span class="string">"N50.20.10"</span>})</code>
+        </div>
+
+        <div class="example">
+            <code>ScenEdit_SetUnit({side=<span class="string">"United States"</span>, unitname=<span class="string">"USS Test"</span>, newname=<span class="string">"USS Barack Obama"</span>})</code>
+        </div>
+
+        <div class="example">
+            <code>ScenEdit_SetUnit({side=<span class="string">"United States"</span>, unitname=<span class="string">"USS Test"</span>, heading=<span class="number">0</span>, HoldPosition=<span class="number">1</span>, HoldFire=<span class="number">1</span>,Proficiency=<span class="string">"Ace"</span>, Autodetectable=<span class="string">"yes"</span>})</code>
+        </div>
+
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_SetUnitDamage"></a>ScenEdit_SetUnitDamage
+        (options)</h3>
+    <p>Set
+        unit
+        damage....for
+        components
+        on
+        unit.(options)</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">options</span> <span class="selector"><a
+                    href="#selector_DamageOptions">DamageOptions</a></span></li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="table"><a href="#table_Component">Component</a></span>The
+        unit's
+        components
+        object</p>
+    <h5>Example</h5>
+
+    <div class="example">
+        <code>ScenEdit_SetUnitDamage({side=<span class="string">'SideA'</span>, unitname=<span class="string">'Ship'</span>, fires=<span class="number">1</span>, components={ {<span class="string">'rudder'</span>,<span class="string">'Medium'</span>}, {<span class="string">'type'</span>,<span class="global">type</span>=<span class="string">'sensor'</span>,<span class="number">1</span>} } })</code>
+    </div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_SetUnitSide"></a>ScenEdit_SetUnitSide
+        (sidedesc)</h3>
+    <p>Changes
+        the
+        side
+        of
+        a
+        unit</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">sidedesc</span> <span class="table"><a
+                    href="#table_SideDescription">SideDescription</a></span> The
+            sides
+            to
+            change
+            for
+            the
+            unit. Group
+            will
+            change
+            attached
+            units</li>
+    </ul>
+    <!-- ScenEdit_SetUnitSide({side=sideName,name=v.guid,newside=newSide.name}) -->
+    <h5>Example</h5>
+
+    <div class="example">
+        <code>ScenEdit_SetUnitSide({side=<span class="string">'Old Side'</span>, name=<span class="string">'Eagle #1'</span>, newside=<span class="string">'New Side'</span>})</code>
+    </div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_SetWeather"></a>ScenEdit_SetWeather
+        (temperature,rainfall,undercloud,seastate)</h3>
+    <p>Set
+        the
+        current
+        weather
+        conditions.</p>
+    <p>This
+        function
+        takes
+        four
+        numbers
+        that
+        describe
+        the
+        desired
+        weather
+        conditions.These
+        conditions
+        are
+        applied
+        globally.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">temperature</span> <span class="types"><span class="number">number</span></span> The
+            current
+            baseline
+            temperature
+            (in
+            deg
+            C). Varies
+            by
+            latitude.</li>
+        <li><span class="parameter">rainfall</span> <span class="types"><span class="number">number</span></span> The
+            rainfall
+            rate, 0-50.</li>
+        <li><span class="parameter">undercloud</span> <span class="types"><span class="number">number</span></span> The
+            amount
+            of
+            sky
+            that
+            is
+            covered
+            in
+            cloud, 0.0-1.0</li>
+        <li><span class="parameter">seastate</span> <span class="types"><span class="number">number</span></span> The
+            current
+            sea
+            state
+            0-9.</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="boolean">boolean</span></span>True/False
+        for
+        Successful/Failure</p>
+    <h5>Example</h5>
+
+    <div class="example">
+        <code>ScenEdit_SetWeather(<span class="global">math</span>.random(<span class="number">0</span>,<span class="number">25</span>),<span class="global">math</span>.random(<span class="number">0</span>,<span class="number">50</span>),<span class="global">math</span>.random(<span class="number">0</span>,<span class="number">10</span>)/<span class="number">10.0</span>,<span class="global">math</span>.random(<span class="number">0</span>,<span class="number">9</span>))</code>
+    </div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_SetZone"></a>ScenEdit_SetZone
+        (sideName,zoneType,table)</h3>
+    <p>update
+        no-nav
+        or
+        exclusion
+        zone.<br />...Only
+        need
+        to
+        pass
+        the
+        parts
+        to
+        update</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">sideName</span> <span class="types"><span class="string">string</span></span> Side
+            name/GUID</li>
+        <li><span class="parameter">zoneType</span> <span class="types"><span class="string">string</span></span> Type
+            of
+            zone
+            to
+            remove: 0
+            = no-nav, 1
+            = exclusion</li>
+        <li><span class="parameter">table</span> <span class="table">table</span> Description, Isactive, Area
+            { of
+            RPs
+            }, Affects
+            { of
+            UnitTypes
+            }, MarkAs
+            (exc
+            only), Locked
+            (non
+            only)</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="wrapper"><a href="#wrapper_Zone">Zone</a></span></p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_SpecialMessage"></a>ScenEdit_SpecialMessage(side, message, [location, forceMapRecenter])</h3>
+    <p>Displays a special message consisting of the HTML text <span class="parameter">message</span> to the side specified by <span class="parameter">side</span>. <br>
+	Optional parameters <span class="parameter">location</span> allows the player to jump to the specified map position by clicking a button in a pop-up window.<br>
+	<span class="pro_only">PRO ONLY</span><span class="parameter">forceMapRecenter</span> will center map on location.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">side</span> <span class="types"><span class="string">string</span></span> The side name/guid to display the message to, or <code>'playerside'</code> (see Note below)</li>
+        <li><span class="parameter">message</span> <span class="types"><span class="string">string</span></span> The HTML text to display to the player. Plain text is also accepted.</li>
+        <li>[Optional] <span class="parameter">location</span><span class="types">Point</span> The position that the 'Jump to Location' button takes the player to if clicked.</li>
+        <li>[Optional] <span class="parameter">forceMapRecenter</span><span class="boolean">True/False</span> The map will be centered on location if present.</li>
+    </ul>
+    
+    <h4>Returns</h4>
+    <p><span class="types"><span class="number">number</span></span> 1 if successful, raises an error if unsuccessful.</p>
+    <h5>Example</h5>
+    <div class="example">
+        <code>ScenEdit_SpecialMessage(<span class="string">'playerside'</span>,<span class="string">'Here\'s a message!'</span>,{latitude = <span class="number">1.2</span>,longitude = <span class="number">3.4</span>})</code>
+    </div>
+    <div class="note-alert"><p><strong>Note:</strong> The string <code>'playerside'</code> is a special name that refers to whichever side is currently under player control and can be used to ensure that a special message is visible regardless of the player switching sides during the session or choosing a different side at scenario start.</p></div>
+    <div class="note-caution"><p><strong>Caution:</strong> Players can disable pop-ups for special messages in the game options. Ensure that players are aware of the need to turn this feature on if special messages are essential to scenario function.</p></div>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_TransferCargo"></a>ScenEdit_TransferCargo
+        (fromUnit,toUnit,cargoList)</h3>
+    <p>Transfer
+        cargo
+        ..list
+        from
+        'mother'to
+        'child'</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">fromUnit</span> <span class="selector"><a
+                    href="#selector_UnitSelector">UnitSelector</a></span> The
+            unit
+            with
+            cargo</li>
+        <li><span class="parameter">toUnit</span> <span class="selector"><a
+                    href="#selector_UnitSelector">UnitSelector</a></span> The
+            unit
+            to
+            get
+            cargo</li>
+        <li><span class="parameter">cargoList</span> <span class="table"><a href="#table_Cargo">Cargo</a></span> List
+            of
+            cargo
+            to
+            transfer: table
+            of
+            {guids}, or
+            { {number,DBID}, [{DBID}]}</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="boolean">boolean</span></span>Successful
+        or
+        not</p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_UnitC"></a>ScenEdit_UnitC
+        ()</h3>
+    <p>Detected
+        Contact
+        ...from
+        a
+        Unit
+        Detected
+        event
+        trigger.Otherwise,a
+        <code>nil</code>is
+        returned.</p>
+    <p> Note
+        that
+        UnitC()can
+        also
+        be
+        used
+        as
+        a
+        shortcut
+        for
+        ScenEdit_UnitC()</p>
+    <h4>Returns</h4>
+    <p><span class="wrapper"><a href="#wrapper_Contact">Contact</a></span>A
+        contact
+        descriptor
+        or
+        <code>nil</code></p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_UnitX"></a>ScenEdit_UnitX
+        ()</h3>
+    <p>Activating
+        Unit
+        ..that
+        triggered
+        the
+        current
+        Event.Otherwise,a
+        <code>nil</code>is
+        returned.</p>
+    <p> Note
+        that
+        UnitX()can
+        also
+        be
+        used
+        as
+        a
+        shortcut
+        for
+        ScenEdit_UnitX()</p>
+    <h4>Returns</h4>
+    <p><span class="wrapper"><a href="#wrapper_Unit">Unit</a></span>The
+        triggering
+        unit</p>
+    <h5>Example</h5>
+
+            <div class="example">
+                <code>ScenEdit_SetUnitDamage({side=UnitX().side, unitname=UnitX().name, fires=<span class="number">1</span>, components={ {<span class="string">'rudder'</span>,<span class="string">'Medium'</span>}, {<span class="string">'type'</span>,<span class="global">type</span>=<span class="string">'sensor'</span>,<span class="number">1</span>} } })</code>
+            </div>
+
+            <div class="example"> <code><span class="local">local</span> unit = ScenEdit_UnitX()</code> </div>
+
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_UnitY"></a>ScenEdit_UnitY
+        ()</h3>
+    <p>(a) Detecting
+        Unit
+        ...from
+        a
+        Unit
+        Detected
+        event
+        trigger.Otherwise,a
+        <code>nil</code>is
+        returned.</p>
+		<p>(b) Caused by unit .. from a damage/destroyed event.Otherwise,a
+        <code>nil</code>is
+        returned. The unit is the last one to actually cause damage during the event.</p>
+    <p> Note
+        that
+        UnitY()can
+        also
+        be
+        used
+        as
+        a
+        shortcut
+        for
+        ScenEdit_UnitY()</p>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="type">{ table
+                }</span></span> </p>
+	<p> (a) The
+        detecting
+        unit
+        and
+        sensors
+        used
+        as
+        {unit
+        ={unit
+        object},sensor
+        ={[1]={name,type},[2]={name,type},etc}}  <br>
+	 (b) Or the unit that caused the last damage</p>
+	 
+	<h5>Example</h5>
+
+            <div class="example">
+                <code>ScenEdit_SetUnitDamage({side=UnitY().side, unitname=UnitY().name, fires=<span class="number">1</span>, components={ {<span class="string">'rudder'</span>,<span class="string">'Medium'</span>}, {<span class="string">'type'</span>,<span class="global">type</span>=<span class="string">'sensor'</span>,<span class="number">1</span>} } })</code>
+            </div>
+
+            <div class="example">
+                <code><span class="local">local</span> by = ScenEdit_UnitY()
+<span class="global">print</span>(<span class="string">'Y:'</span>);<span class="global">print</span>( by)
+<span class="global">print</span>(<span class="string">'Detected by: '</span>);<span class="global">print</span>( by.unit.name ..<span class="string">' of type '</span> .. by.unit.<span class="global">type</span> ..<span class="string">' from '</span> .. by.unit.side)
+<span class="global">print</span>(<span class="string">'Sensor: '</span>);<span class="global">print</span>( by.sensor[<span class="number">1</span>].name ..<span class="string">' of type '</span> .. by.sensor[<span class="number">1</span>].<span class="global">type</span>);</code>
+            </div>
+
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_UnloadCargo"></a>ScenEdit_UnloadCargo
+        (fromUnit,cargoList)</h3>
+    <p>Unload
+        cargo</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">fromUnit</span> <span class="selector"><a
+                    href="#selector_UnitSelector">UnitSelector</a></span> The
+            unit
+            with
+            cargo</li>
+        <li><span class="parameter">cargoList</span> <span class="table"><a href="#table_Cargo">{ Cargo
+                    }</a></span> List
+            of
+            cargo
+            to
+            unload: table
+            of
+            {guids}, or
+            { { number, DBID}}</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="boolean">boolean</span></span> Successful or not</p>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_UpdateUnit"></a>ScenEdit_UpdateUnit
+        (options)</h3>
+    <p>Update
+        items
+        on
+        a
+        unit.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">options</span> <span class="selector"><a
+                    href="#selector_UpdateUnit">UpdateUnit</a></span> The
+            unit
+            sensor/mount/weapon/comms/magazine
+            details
+            to
+            update</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="wrapper"><a href="#wrapper_Unit">Unit</a></span>The
+        updated
+        unit</p>
+    <h5>Example</h5>
+
+            <div class="example">
+                <code>ScenEdit_UpdateUnit({guid=<span class="string">'2cd64757-1b66-4609-ad56-df41bee652e5'</span>,mode=<span class="string">'add_sensor'</span>,dbid=<span class="number">3352</span>})</code>
+            </div>
+
+            <div class="example">
+                <code>ScenEdit_UpdateUnit({guid=<span class="string">'2cd64757-1b66-4609-ad56-df41bee652e5'</span>,mode=<span class="string">'remove_sensor'</span>,dbid=<span class="number">3352</span>,sensorId=<span class="string">'871aea14-d963-4052-a7fc-ed36e97bb732'</span>})</code>
+            </div>
+
+            <div class="example">
+                <code>ScenEdit_UpdateUnit({guid=<span class="string">'2cd64757-1b66-4609-ad56-df41bee652e5'</span>,mode=<span class="string">'delta'</span>,file=<span class="string">'new.ini'</span>})</code>
+            </div>
+
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_UpdateUnitCargo"></a>ScenEdit_UpdateUnitCargo
+        (options)</h3>
+    <p>Update
+        cargo
+        on
+        a
+        unit.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">options</span> <span class="table"><a
+                    href="#table_UpdateUnitCargo">UpdateUnitCargo</a></span> The
+            unit
+            cargo
+            details
+            to
+            update</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="wrapper"><a href="#wrapper_Unit">Unit</a></span>The
+        updated
+        unit</p>
+    <h5>Example</h5>
+
+            <div class="example">
+                <code>ScenEdit_UpdateUnitCargo({guid=<span class="string">'2cd64757-1b66-4609-ad56-df41bee652e5'</span>, mode=<span class="string">'add_cargo'</span>, cargo={{<span class="number">5</span>,<span class="number">752</span>},{<span class="number">700</span>}} })</code>
+            </div>
+
+            <div class="example">
+                <code>ScenEdit_UpdateUnitCargo({guid=<span class="string">'2cd64757-1b66-4609-ad56-df41bee652e5'</span>, mode=<span class="string">'remove_cargo'</span>, cargo={<span class="string">'871aea14-d963-4052-a7fc-ed36e97bb732'</span>,{<span class="number">5</span>,<span class="number">752</span>}} })</code>
+            </div>
+
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_UseAttachment"></a>ScenEdit_UseAttachment
+        (attachment)</h3>
+    <p>Import
+        an
+        attachment
+        into
+        the
+        scene.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">attachment</span> <span class="types"><span class="string">string</span></span>
+            Either
+            the
+            name
+            of
+            the
+            attachment
+			(as shown 
+			in the 
+			properties 
+			section
+			when
+			created/added) 
+            or
+            the
+            GUID
+            of
+            the
+            attachment</li>
+    </ul>
+    <hr>
+    <h3><a class="anchor" id="ScenEdit_UseAttachmentOnSide"></a>ScenEdit_UseAttachmentOnSide
+        (attachment,sidename)</h3>
+    <p>Use
+        an
+        attachment
+        on
+        a
+        side
+        (used
+        for
+        .inst
+        files
+        as
+        attachments).</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">attachment</span> <span class="types"><span class="string">string</span></span>
+            Either
+            the
+            name
+            of
+            the
+            attachment
+			(as shown 
+			in the 
+			properties 
+			section
+			when
+			created/added) 
+            or
+            the
+            GUID
+            of
+            the
+            attachment</li>
+        <li><span class="parameter">sidename</span> <span class="types"><span class="string">string</span></span> The
+            name
+            of
+            the
+            side
+            to
+            import
+            the
+            attachment
+            into</li>
+    </ul>
+    <hr>
+    <h3><a class="anchor" id="Tool_Bearing"></a>Tool_Bearing
+        ()</h3>
+    <p>Get
+        bearing
+        between
+        points.</p>
+    <p> The
+        points
+        can
+        be
+        a
+        GUID
+        of
+        a
+        unit/contact
+        or
+        a
+        latitude/longitude
+        point.(fromHere,toHere)</p>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="number">number</span></span>The
+        bearing
+    </p>
+    </p>
+    <h5>Example</h5>
+
+            <div class="example">
+                <code>Tool_Bearing(<span class="string">'8269b881-20ce-4f2e-baa0-6823e46d55a4'</span>,<span class="string">'004aa55d-d553-428d-a727-26853737c8f4'</span> )</code>
+            </div>
+
+            <div class="example">
+                <code>Tool_Bearing( {latitude=<span class="string">'33.1991547589118'</span>, longitude=<span class="string">'138.376876749942'</span>},<span class="string">'8269b881-20ce-4f2e-baa0-6823e46d55a4'</span> )</code>
+            </div>
+
+    <hr>
+    <h3><a class="anchor" id="Tool_DumpEvents"></a>Tool_DumpEvents
+        ()</h3>
+    <p>Dump
+        scenario
+        events...useful
+        for
+        checking.Also
+        writes
+        a
+        file
+        to
+        the
+        scenario
+        folder()</p>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="type">xml</span></span>Dump
+        of
+        events
+        with
+        trigger/condition/action</p>
+    <hr>
+    <h3><a class="anchor" id="Tool_EmulateNoConsole"></a>Tool_EmulateNoConsole
+        ()</h3>
+    <p>Emulates
+        no
+        console...useful
+        running
+        event
+        code
+        in
+        the
+        console
+        and
+        seeing
+        how
+        it
+        behaves
+        as
+        an
+        'event'(mode)</p>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="boolean">boolean</span></span>If
+        interactive
+
+    </p>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="Tool_Range"></a>Tool_Range
+        ()</h3>
+    <p>Get
+        range
+        between
+        points.</p>
+    <p> The
+        points
+        can
+        be
+        a
+        GUID
+        of
+        a
+        unit/contact
+        or
+        a
+        latitude/longitude
+        point.(fromHere,toHere)</p>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="number">number</span></span>The
+        horizontal
+        distance
+        in
+        NM
+
+    </p>
+    </p>
+    <h5>Example</h5>
+
+            <div class="example">
+                <code>Tool_Range(<span class="string">'8269b881-20ce-4f2e-baa0-6823e46d55a4'</span>,<span class="string">'004aa55d-d553-428d-a727-26853737c8f4'</span> )</code>
+            </div>
+
+            <div class="example">
+                <code>Tool_Range( {latitude=<span class="string">'33.1991547589118'</span>, longitude=<span class="string">'138.376876749942'</span>},<span class="string">'8269b881-20ce-4f2e-baa0-6823e46d55a4'</span> )</code>
+            </div>
+
+    <hr>
+    <h3><a class="anchor" id="VP_ExportUnits"></a>VP_ExportUnits
+        (table,filename)</h3>
+    <p>Export
+        unit
+        details</p>
+    <p> ...to
+        a
+        file
+        for
+        later
+        import
+        parameters
+        filename,filter
+        by
+        unit
+        type,side</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">table</span> <span class="table">table</span> of
+            Filters: TARGETSIDE, TARGETTYPE, TARGETSUBTYPE, SPECIFICUNITCLASS, SPECIFICUNIT. The
+            values
+            are
+            like
+            the
+            Event
+            Target
+            triigers, but
+            can
+            take
+            multiple
+            ones. As
+            in
+            TargetType={'aircraft','submarine'}}</li>
+        <li><span class="parameter">filename</span> <span class="types"><span class="string">string</span></span> of
+            exported
+            file</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="boolean">boolean</span></span>Success
+        or
+        failure
+        {Filter}</p>
+    <hr>
+    <h3><a class="anchor" id="VP_GetContact"></a>VP_GetContact
+        (ContactGUID)</h3>
+    <p>Get
+        contact
+        details
+        This
+        will
+        get
+        the
+        information
+        about
+        a
+        contact
+        unit</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">ContactGUID</span> <span class="selector"><a
+                    href="#selector_VPContactSelector">VPContactSelector</a></span> The
+            contact
+            selector
+            to
+            interrogate</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="wrapper"><a href="#wrapper_Contact">Contact</a></span> The information associated with the contact</p>
+    <h5>Example</h5>
+    <div class="example">
+        <code>
+            <span class="local">local</span> side = VP_GetSide({name =<span class="string">"NATO"</span>})<br>
+            <span class="local">local</span> contacts = side.contacts<span class="comment"> --List Of contacts</span><br>
+            <span class="local">local</span> guid = contacts[<span class="number">12</span>].objectid<span class="comment"> -- GUID of a specific contact</span><br>
+            <span class="local">local</span> a_contact = VP_GetContact({guid=guid})<span class="comment"> -- details of contact as distinct to unit details</span><br>
+        </code>
+    </div>
+    </p>
+    <hr>
+    <h3><a class="anchor" id="VP_GetScenario"></a>VP_GetScenario()</h3>
+    <p>Exposes current scenario information.</p>
+    <h4>Parameters</h4>
+    <p>None</p>
+    <h4>Returns</h4>
+    <p><span class='wrapper'><a href="#wrapper_Scenario">Scenario</a></span></p>
+    <hr>
+    <h3><a class="anchor" id="VP_GetSide"></a>VP_GetSide
+        (side)</h3>
+    <p>Side
+        information
+        from
+        player's
+        perspective.</p>
+    <p>Gets
+        a
+        side
+        object
+        from
+        the
+        perspective
+        of
+        the
+        player.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">side</span> <span class="selector"><a
+                    href="#selector_SideSelector">SideSelector</a></span> The
+            side
+            to
+            get
+            information
+            about.</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="wrapper"><a href="#wrapper_Side">Side</a></span>Information
+        about
+        the
+        side
+        selected,from
+        the
+        perspective
+        of
+        the
+        player.</p>
+    <h5>Example</h5>
+
+    <div class="example">
+        <code><span class="local">local</span> a = VP_GetSide({Side =<span class="string">'sidea'</span>})<span class="comment">-- a side object</span><span class="local">local</span> z = a.nonavzones<span class="comment">--List of no-nav zones for the side if you need to find it</span><span class="local">local</span> n = a : getnonavzone(z[<span class="number">1</span>].guid)<span class="comment">-- required zone object for a particular zone</span>n.isactive =<span class="keyword">false</span><span class="comment">-- turn it off</span></code>
+    </div>
+    </p>
+ 
+    <hr>
+    <h3><a class="anchor" id="VP_GetSides"></a>VP_GetSides
+	()</h3>
+    <p>List of sides in the scenario.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li>None</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="Table"> Table </span> Table of side references (name, guid)</p>
+
+ <hr>
+    <h3><a class="anchor" id="VP_GetUnit"></a>VP_GetUnit
+        (ActiveOrContact)</h3>
+    <p>Get
+        unit
+        details
+        This
+        will
+        get
+        the
+        information
+        about
+        an
+        active
+        unit
+        or
+        a
+        contact
+        unit</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">ActiveOrContact</span> <span class="selector"><a
+                    href="#selector_UnitSelector">UnitSelector</a></span> The
+            unit
+            selector
+            to
+            interrogate</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="wrapper"><a href="#wrapper_Unit">Unit</a></span>The
+        information
+        associated
+        with
+        the
+        unit</p>
+    <hr>
+    <h3><a class="anchor" id="World_GetCircleFromPoint"></a>World_GetCircleFromPoint
+        (table)</h3>
+    <p>Returns
+        a
+        circle
+        around
+        point.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">latitude</span> <span class="types"><a href="dataType_LatLon">Latitude</a></span>
+        </li>
+        <li><span class="parameter">longitude</span> <span class="types"><a href="dataType_LatLon">Longitude</a></span>
+        </li>
+        <li><span class="parameter">numpoints</span> <span class="types"><span class="number">number</span></span></li>
+    </ul>
+    <h4>Returns</h4>
+    <p>
+        <span class="table">table</span> Table of <span class="types">Points</span>
+    </p>
+    <div class="example">
+        <code><span class="local">local</span> circle = World_GetCircleFromPoint({latitude = <span class="string">'-37.8307390636104'</span>longitude = <span class="string">'144.932549348204'</span>, numpoints = <span class="number">12</span>})</code>
+    </div>
+    <hr>
+    <h3><a class="anchor" id="World_GetElevation"></a>World_GetElevation
+        (location)</h3>
+    <p>Returns
+        the
+        elevation
+        in
+        meters
+        of
+        a
+        given
+        position</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li><span class="parameter">location</span> <span class="types"><span class="type">Point</span></span> The
+            position
+            to
+            find
+            the
+            elevation
+            of</li>
+    </ul>
+    <h4>Returns</h4>
+    <p><span class="types"><span class="number">number</span></span> The
+        elevation
+        of
+        the
+        point
+        in
+        meters</p>
+    <hr>
+    <h3><a class="anchor" id="World_GetLocation"></a>World_GetLocation
+        (location)</h3>
+    <p>Returns table of details at a given position. These details are similar to what is shown by the map cursor box.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li>
+            <span class="parameter">location</span> <span class="types"><span class="type">Point</span></span> The position to return the values for.
+        </li>
+    </ul>
+    <h4>Returns</h4>
+    <p>
+        <span class="table">table</span> <code>{altitude, layer {ceiling, floor, strength}, cz{1, 2, 3, 4}, slope, cover {text, value}}</code>
+    </p>
+    <hr>
+    
+	<h3><a class="anchor" id="World_GetPointFromBearing"></a>World_GetPointFromBearing
+        (table)</h3>
+    <p>Returns a location based on bearing.</p>
+    <h4>Parameters</h4>
+    <ul>
+        <li>
+            <span class="parameter">table</span> <code>{latitude, longitude, distance, bearing}</code>
+        </li>
+    </ul>
+    <h4>Returns</h4>
+    <p>Table
+        of
+        the
+        new
+        point
+    </p>
+    <div class="example">
+        <code><span class="local">local</span> position = World_GetPointFromBearing({latitude = <span class="string">'-37.8307390636104'</span>longitude = <span class="string">'144.932549348204'</span>, distance = <span class="number">12</span>, bearing = <span class="number">90</span>})</code>
+    </div>
+				
+			<div id="footer">
+				<p>Copyright &copy; WarfareSims 2020</p>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
