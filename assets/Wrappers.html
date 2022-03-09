@@ -35,10 +35,6 @@
 	<div id="container">
 
 		<div id="content">
-			<div id="page-title">
-				<h2 id="page-title">Command Lua API Documentation, v1147.34</h2>
-				<hr>
-			</div>
 			<div id="nav">
 				<ul>
 					<li><a href="../index2.html#News">News</a></li>
@@ -156,11 +152,11 @@ end
 					<td>The contact actual GUID. <span class="readonly">READ ONLY</span></td>
 					</td></tr>
 					<tr><td><span class="parameter">latitude</span></td>
-					<td><span class="types"><a href="#dataType_Latitude">Latitude</a></span></td>
+					<td><span class="types"><a href="datatypes.html#dataType_Latitude">Latitude</a></span></td>
 					<td>The latitude of the contact. <span class="readonly">READ ONLY</span></td>
 					</td></tr>
 					<tr><td><span class="parameter">longitude</span>
-					<td><span class="types"><a href="#dataType_Longitude">Longitude</a></span></td>
+					<td><span class="types"><a href="datatypes.html#dataType_Longitude">Longitude</a></span></td>
 					<td>The longitude of the contact. <span class="readonly">READ ONLY</span></td>
 					</td></tr>
 					<tr><td><span class="parameter">speed</span>
@@ -192,7 +188,7 @@ end
 					<td>Type of contact. <span class="readonly">READ ONLY</span>
 					</td></tr>
 					<tr><td><span class="parameter">areaofuncertainty</span>
-					<td><span class="table"><a href="#table_LatLon">LatLon</a></span>
+					<td><span class="table"><a href="tables.html#table_LatLon">LatLon</a></span>
 					<td>Table of points defining the area of contact. <span class="readonly">READ ONLY</span>
 					</td></tr>
 					<tr><td><span class="parameter">type_description</span>
@@ -208,7 +204,7 @@ end
 					<td>Contact classification. <span class="readonly">READ ONLY</span>
 					</td></tr>
 					<tr><td><span class="parameter">potentialmatches</span>
-					<td><span class="table"><a href="#table_EMmatch">EMmatch</a></span>
+					<td><span class="table"><a href="tables.html#table_EMmatch">EMmatch</a></span>
 					<td>Table {EMmatch} on potential EMCON emission matches. <span class="readonly">READ ONLY</span>
 					</td></tr>
 					<tr><td><span class="parameter">side</span>
@@ -233,7 +229,7 @@ end
 					<td>True to filtered out contact
 					</td></tr>
 					<tr><td><span class="parameter">weather</span>
-					<td><span class="types"><a href="#dataType_Weather">Weather</a></span>
+					<td><span class="types"><a href="datatypes.html#dataType_Weather">Weather</a></span>
 					<td>Table of weather parameters (temp, rainfall, underrain, seastate)
 					</td></tr>
 					<tr><td><span class="parameter">BDA</span>
@@ -241,7 +237,7 @@ end
 					<td>Table of battle damage assessment (fires, flood, structural)
 					</td></tr>
 					<tr><td><span class="parameter">emissions</span>
-					<td><span class="table"><a href="#table_Emissions">Emissions</a></span>
+					<td><span class="table"><a href="tables.html#table_Emissions">Emissions</a></span>
 					<td>Table of detected emmissions from contact
 					</td></tr>
 					<tr><td><span class="parameter">detectionBy</span>
@@ -273,7 +269,7 @@ end
 					<td>Is contact in the 'area' defined by table of RPs (true/false)
 					</td></tr>
 					<tr><td><span class="parameter">lastDetections</span>
-					<td><span class="table"><a href="#table_LastDetections">LastDetections</a></span>
+					<td><span class="table"><a href="tables.html#table_LastDetections">LastDetections</a></span>
 					<td>Table of detects on the contact
 					</td></tr>
 	</table>
@@ -393,7 +389,7 @@ end
 						<td>No(0), YesLastUnit(1), YesFirstUnit(2), YesLeaveGroup(3)
 						</td></tr>
 						<tr><td><span class="parameter">weapon_state_planned</span>
-						<td><span class="types"><a href="#dataType_WeaponDoctrine"></a>WeaponDoctrine</a></span>
+						<td><span class="types"><a href="datatypes.html#dataType_WeaponDoctrine"></a>WeaponDoctrine</a></span>
 						<td>See Weapon Doctrine table below
 						</td></tr>
 						<tr><td><span class="parameter">weapon_state_rtb</span>
@@ -521,7 +517,7 @@ end
 						<td>Weapon name [info]
 						</td></tr>
 						<td><span class="parameter">target_type</span>
-						<td><span class="types"><a href="#dataType_TargetTypeWRA">TargetTypeWRA</a></span>
+						<td><span class="types"><a href="datatypes.html#dataType_TargetTypeWRA">TargetTypeWRA</a></span>
 						<td>Type of target [info]
 						</td></tr>
 						<td><span class="parameter">level</span>
@@ -529,7 +525,7 @@ end
 						<td>The doctrine selected (at unit/mission/side) - useful Is just using GUIDs [info]
 						</td></tr>
 						<td><span class="parameter">wra</span>
-						<td><span class="table"><a href="#table_WRA">WRA</a></span>
+						<td><span class="table"><a href="tables.html#table_WRA">WRA</a></span>
 						<td>The WRA doctrine for a single weapon, or wra_# for each weapon against a specific target_type
 						</td></tr>
 	</tr></table>
@@ -669,12 +665,12 @@ end
 						</td></tr>
 						<td><span class="parameter">roles</span>
 						<td><span class="table">table</span>
-						<td>Table of loadout usage {<a href="#dataType_LoadoutRole">LoadoutRole</a>, <a
-								href="#dataType_LoadoutTimeOfDay">LoadoutTimeOfDay</a>, <a
-								href="#dataType_LoadoutWeather">LoadoutWeather</a>}
+						<td>Table of loadout usage {<a href="datatypes.html#dataType_LoadoutRole">LoadoutRole</a>, <a
+								href="datatypes.html#dataType_LoadoutTimeOfDay">LoadoutTimeOfDay</a>, <a
+								href="datatypes.html#dataType_LoadoutWeather">LoadoutWeather</a>}
 						</td></tr>
 						<td><span class="parameter">weapons</span>
-						<td><span class="table"><a href="#table_WeaponLoaded">WeaponLoaded</a></span>
+						<td><span class="table"><a href="tables.html#table_WeaponLoaded">WeaponLoaded</a></span>
 						<td>Table of weapons in loadout
 						</td></tr>
 	</tr></table>
@@ -713,11 +709,11 @@ end
 						<td>Mission belongs to side
 						</td></tr>
 						<td><span class="parameter">starttime</span>
-						<td><span class="types"><a href="#dataType_DateTime">DateTime</a></span>
+						<td><span class="types"><a href="datatypes.html#dataType_DateTime">DateTime</a></span>
 						<td>Time mission starts
 						</td></tr>
 						<td><span class="parameter">endtime</span>
-						<td><span class="types"><a href="#dataType_DateTime">DateTime</a></span>
+						<td><span class="types"><a href="datatypes.html#dataType_DateTime">DateTime</a></span>
 						<td>Time mission ends
 						</td></tr>
 						<td><span class="parameter">type</span>
@@ -741,35 +737,35 @@ end
 						<td>A table of targets assigned to mission. <span class="readonly">READ ONLY</span>
 						</td></tr>
 						<td><span class="parameter">aar</span>
-						<td><span class="table"><a href="#table_AAR">AAR</a></span>
+						<td><span class="table"><a href="tables.html#table_AAR">AAR</a></span>
 						<td>A table of the mission air-to-air refueling options. <span class="readonly">READ ONLY</span>
 						</td></tr>
 						<td><span class="parameter">ferrymission</span>
-						<td><span class="table"><a href="#table_FerryMission">FerryMission</a></span>
+						<td><span class="table"><a href="tables.html#table_FerryMission">FerryMission</a></span>
 						<td>A table of the mission specific options. <span class="readonly">READ ONLY</span>
 						</td></tr>
 						<td><span class="parameter">mineclearmission</span>
-						<td><span class="table"><a href="#table_MineClearMission">MineClearMission</a></span>
+						<td><span class="table"><a href="tables.html#table_MineClearMission">MineClearMission</a></span>
 						<td>A table of the mission specific options. <span class="readonly">READ ONLY</span>
 						</td></tr>
 						<td><span class="parameter">minemission</span>
-						<td><span class="table"><a href="#table_MineMission">MineMission</a></span>
+						<td><span class="table"><a href="tables.html#table_MineMission">MineMission</a></span>
 						<td>A table of the mission specific options. <span class="readonly">READ ONLY</span>
 						</td></tr>
 						<td><span class="parameter">supportmission</span>
-						<td><span class="table"><a href="#table_SupportMission">SupportMission</a></span>
+						<td><span class="table"><a href="tables.html#table_SupportMission">SupportMission</a></span>
 						<td>A table of the mission specific options. <span class="readonly">READ ONLY</span>
 						</td></tr>
 						<td><span class="parameter">patrolmission</span>
-						<td><span class="table"><a href="#table_PatrolMission">PatrolMission</a></span>
+						<td><span class="table"><a href="tables.html#table_PatrolMission">PatrolMission</a></span>
 						<td>A table of the mission specific options. <span class="readonly">READ ONLY</span>
 						</td></tr>
 						<td><span class="parameter">strikemission</span>
-						<td><span class="table"><a href="#table_StrikeMission">StrikeMission</a></span>
+						<td><span class="table"><a href="tables.html#table_StrikeMission">StrikeMission</a></span>
 						<td>A table of the mission specific options. <span class="readonly">READ ONLY</span>
 						</td></tr>
 						<td><span class="parameter">cargomission</span>
-						<td><span class="table"><a href="#table_CargoMission">CargoMission</a></span>
+						<td><span class="table"><a href="tables.html#table_CargoMission">CargoMission</a></span>
 						<td>A table of the mission specific options. <span class="readonly">READ ONLY</span>
 						</td></tr>
 	</tr></table>
@@ -804,11 +800,11 @@ end
 						<td>The name of the reference point
 						</td></tr>
 						<td><span class="parameter">latitude</span>
-						<td><span class="types"><a href="#dataType_Latitude">Latitude</a></span>
+						<td><span class="types"><a href="datatypes.html#dataType_Latitude">Latitude</a></span>
 						<td>The latitude of the reference point
 						</td></tr>
 						<td><span class="parameter">longitude</span>
-						<td><span class="types"><a href="#dataType_Longitude">Longitude</a></span>
+						<td><span class="types"><a href="datatypes.html#dataType_Longitude">Longitude</a></span>
 						<td>The longitude of the reference point
 						</td></tr>
 						<td><span class="parameter">highlighted</span>
@@ -999,11 +995,11 @@ end
 						<td>The name of the side.
 						</td></tr>
 						<td><span class="parameter">units</span>
-						<td><span class="table"><a href="#table_SideUnit">SideUnit</a></span>
+						<td><span class="table"><a href="tables.html#table_SideUnit">SideUnit</a></span>
 						<td>Table of units for the designated side. <span class="readonly">READ ONLY</span>
 						</td></tr>
 						<td><span class="parameter">contacts</span>
-						<td><span class="table"><a href="#table_SideContact">SideContact</a></span>
+						<td><span class="table"><a href="tables.html#table_SideContact">SideContact</a></span>
 						<td>Table of current contacts for the designated side. <span class="readonly">READ ONLY</span>
 						</td></tr>
 						<td><span class="parameter">exclusionzones</span>
@@ -1172,11 +1168,11 @@ end
 						<td>The unit's assigned base.
 						</td></tr>
 						<td><span class="parameter">latitude</span>
-						<td><span class="types"><a href="#dataType_Latitude">Latitude</a></span>
+						<td><span class="types"><a href="datatypes.html#dataType_Latitude">Latitude</a></span>
 						<td>The latitude of the unit.
 						</td></tr>
 						<td><span class="parameter">longitude</span>
-						<td><span class="types"><a href="#dataType_Longitude">Longitude</a></span>
+						<td><span class="types"><a href="datatypes.html#dataType_Longitude">Longitude</a></span>
 						<td>The longitude of the unit .
 						</td></tr>
 						<td><span class="parameter">DBID</span>
@@ -1224,11 +1220,11 @@ end
 						<td>The unit's course, as a table of waypoints (latitude,longitude)
 						</td></tr>
 						<td><span class="parameter">fuel</span>
-						<td><span class="table"><a href="#table_Fuel">Fuel</a></span>
+						<td><span class="table"><a href="tables.html#table_Fuel">Fuel</a></span>
 						<td>A table of fuel types used by unit.
 						</td></tr>
 						<td><span class="parameter">fuels</span>
-						<td><span class="table"><a href="#table_Fuel">Fuel</a></span>
+						<td><span class="table"><a href="tables.html#table_Fuel">Fuel</a></span>
 						<td>A table of fuel types in tanks used by unit.
 						</td></tr>
 						<td><span class="parameter">mission</span>
@@ -1301,19 +1297,19 @@ end
 								class="readonly">READ ONLY</span>
 						</td></tr>
 						<td><span class="parameter">magazines</span>
-						<td><span class="table"><a href="#table_Magazine">Magazine</a></span>
+						<td><span class="table"><a href="tables.html#table_Magazine">Magazine</a></span>
 						<td>A table of magazines (with weapon loads) in the unit or group.<br> Can be updated by <a
-								href="#table_ScenEdit_AddWeaponToUnitMagazine">ScenEdit_AddWeaponToUnitMagazine</a>
+								href="tables.html#table_ScenEdit_AddWeaponToUnitMagazine">ScenEdit_AddWeaponToUnitMagazine</a>
 							<span class="readonly">READ ONLY</span>
 						</td></tr>
 						<td><span class="parameter">mounts</span>
-						<td><span class="table"><a href="#table_Mount">Mount</a></span>
+						<td><span class="table"><a href="tables.html#table_Mount">Mount</a></span>
 						<td>A table of mounts (with weapon loads) in the unit or group.<br> Can be updated by <a
-								href="#table_ScenEdit_AddReloadsToUnit">ScenEdit_AddReloadsToUnit</a> <span
+								href="tables.html#table_ScenEdit_AddReloadsToUnit">ScenEdit_AddReloadsToUnit</a> <span
 								class="readonly">READ ONLY</span>
 						</td></tr>
 						<td><span class="parameter">components</span>
-						<td><span class="table"><a href="#table_Component">Component</a></span>
+						<td><span class="table"><a href="tables.html#table_Component">Component</a></span>
 						<td>A table of components on the unit. <span class="readonly">READ ONLY</span>
 						</td></tr>
 						<td><span class="parameter">ascontact</span>
@@ -1322,7 +1318,7 @@ end
 								class="readonly">READ ONLY</span>
 						</td></tr>
 						<td><span class="parameter">weather</span>
-						<td><span class="types"><a href="#dataType_Weather">Weather</a></span>
+						<td><span class="types"><a href="datatypes.html#dataType_Weather">Weather</a></span>
 						<td>Table of weather parameters (temp, rainfall, underrain, seastate)
 						</td></tr>
 						<td><span class="parameter">areaTriggersFired</span>
@@ -1374,11 +1370,11 @@ end
 						<td>Avoid cavitation 'True/False'
 						</td></tr>
 						<td><span class="parameter">hostFacility</span>
-						<td><span class="table"><a href="#table_Facility">Facility</a></span>
+						<td><span class="table"><a href="tables.html#table_Facility">Facility</a></span>
 						<td>Where unit is hosted
 						</td></tr>
 						<td><span class="parameter">cargo</span>
-						<td><span class="table"><a href="#table_Cargo">Cargo</a></span>
+						<td><span class="table"><a href="tables.html#table_Cargo">Cargo</a></span>
 						<td>Unit cargo information
 						</td></tr>
 						<td><span class="parameter">RTB</span>
@@ -1403,10 +1399,10 @@ end
 						</td></tr>
 						<td><span class="parameter">category</span>
                         <td><span class="types"><span class="number">Number</span></span> 
-						<td>The unit category code for the <a href="#dataType_Unit_Aircraft">Aircraft</a>, <a href="#dataType_Unit_Facility">Facility</a>, <a href="#dataType_Unit_Ship">Ship</a>, <a href="#dataType_Unit_Submarine">Submarine</a> or <a href="#dataType_Unit_Satellite">Satellite</a>.
+						<td>The unit category code for the <a href="datatypes.html#dataType_Unit_Aircraft">Aircraft</a>, <a href="datatypes.html#dataType_Unit_Facility">Facility</a>, <a href="datatypes.html#dataType_Unit_Ship">Ship</a>, <a href="datatypes.html#dataType_Unit_Submarine">Submarine</a> or <a href="datatypes.html#dataType_Unit_Satellite">Satellite</a>.
 						</td></tr>
 						<td><span class="parameter">sensors</span>
-						<td><span class="table"><a href="#table_Sensor">Sensor</a></span>
+						<td><span class="table"><a href="tables.html#table_Sensor">Sensor</a></span>
 						<td>Unit sensor information
 						</td></tr>
 						
@@ -1421,7 +1417,7 @@ end
 						<td><span class="parameter">filterOnComponent</span>
 						<td><span class="types"><span class="method">method</span>(type)</span>
 						<td> Filters unit on <code>type</code> of component and returns a <span class="table"><a
-								href="#table_Component">Component</a></span> table.
+								href="tables.html#table_Component">Component</a></span> table.
 						</td></tr>
 						<td><span class="parameter">rangetotarget</span>
 						<td><span class="types"><span class="method">method</span>('contactid')</span>
@@ -1552,7 +1548,7 @@ theSat:updateorbit({TLE=theTLE})
     					<td>Desired altitude/depth or 'OFF' to turn off manual mode
 						</td></tr>
     					<td><span class="parameter">sensors</span>
-                        <td><span class="table"><a href="#table_Sensor">Sensor</a></span> Sensors set to active or inactive in table format (sensor_guid,sensor_isactive)
+                        <td><span class="table"><a href="tables.html#table_Sensor">Sensor</a></span> Sensors set to active or inactive in table format (sensor_guid,sensor_isactive)
 						</td></tr>
 	</tr></table>
 		

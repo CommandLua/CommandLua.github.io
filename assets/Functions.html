@@ -11,6 +11,7 @@
 		gtag('config', 'UA-163808192-1');
 	</script>
 
+
 	<title>Command Lua Docs</title>
 	<link rel="stylesheet" type="text/css" href="style.css" / >
 	
@@ -35,10 +36,6 @@
 	<div id="container">
 
 		<div id="content">
-			<div id="page-title">
-				<h2 id="page-title">Command Lua API Documentation, v1147.34</h2>
-				<hr>
-			</div>
 			<div id="nav">
 				<ul>
 					<li><a href="../index2.html#News">News</a></li>
@@ -62,6 +59,7 @@
 					<li><a href="Tables.html">Tables</a></li>
 				</ul>
 			</div>
+			
             <div id="main">
 
 				<a class="anchor" id="Functions"></a>
@@ -315,12 +313,12 @@
 				<h4>Syntax</h4>
 				<p>
 					<code
-						class="syntax-example">ScenEdit_AddExplosion(<span class="parameter"><a href="#table_Explosion">Explosion</a></span>)</code>
+						class="syntax-example">ScenEdit_AddExplosion(<span class="parameter"><a href="tables.html#table_Explosion">Explosion</a></span>)</code>
 				</p>
 				<h4>Parameters</h4>
 				<ul>
 					<li>
-						<span class="table"><a href="#table_Explosion">Explosion</a></span>
+						<span class="table"><a href="tables.html#table_Explosion">Explosion</a></span>
 						Describes the explosion.
 					</li>
 				</ul>
@@ -395,10 +393,10 @@
         <li><span class="parameter">MissionType</span> <span class="types"><span class="string">string</span></span> The
             mission type (Strike, Ferry, Patrol, etc)</li>
         <li><span class="parameter">MissionOptions</span> <span class="selector"><a
-                    href="#selector_NewMission">NewMission</a></span> The mission specific options as a table</li>
+                    href="selectors.html#selector_NewMission">NewMission</a></span> The mission specific options as a table</li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="wrapper"><a href="#wrapper_Mission">Mission</a></span>A mission descriptor of the added mission
+    <p><span class="wrapper"><a href="wrappers.html#wrapper_Mission">Mission</a></span>A mission descriptor of the added mission
         or<code>nil</code> otherwise.</p>
     <h5>Example</h5>
     <div class="example">
@@ -421,8 +419,8 @@
     <ul>
         <li>
             <span class="parameter">descriptor</span> <span class="selector"><a
-                    href="#selector_ReferencePointSelector">ReferencePointSelector</a> or <a class="type"
-                    href="#wrapper_ReferencePoint">{ReferencePoint}</a>
+                    href="selectors.html#selector_ReferencePointSelector">ReferencePointSelector</a> or <a class="type"
+                    href="wrappers.html#wrapper_ReferencePoint">{ReferencePoint}</a>
             </span> The reference point details to be created. Field 'area' can be<br>(a) Table of reference points
             {name,
             longitude, latitude} if 'RelativeTo' not used, or<br> (b) table of reference points {name, bearing,
@@ -431,7 +429,7 @@
         </li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="wrapper"><a href="#wrapper_ReferencePoint">ReferencePoint</a></span>The reference point
+    <p><span class="wrapper"><a href="wrappers.html#wrapper_ReferencePoint">ReferencePoint</a></span>The reference point
         wrapper for the new reference point, or the first one in an area.</p>
     <h5>Example</h5>
     <div class="example">
@@ -447,7 +445,7 @@
     <h4>Parameters</h4>
     <ul>
         <li>
-        	<span class="parameter">descriptor</span><span class="selector"><a href="#selector_Weapon2Mount">Weapon2Mount</a></span> Describes the weapon and mount to update
+        	<span class="parameter">descriptor</span><span class="selector"><a href="selectors.html#selector_Weapon2Mount">Weapon2Mount</a></span> Describes the weapon and mount to update
         </li>
     </ul>
     <h4>Returns</h4>
@@ -465,7 +463,7 @@
         <li><span class="parameter">table</span> Table with 'name' key</li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="wrapper"><a href="#wrapper_Side">Side</a></span></p>
+    <p><span class="wrapper"><a href="wrappers.html#wrapper_Side">Side</a></span></p>
     <h5>Example</h5>
     <div class="example">
         <code>ScenEdit_AddSide({name=<span class="string">'OPFOR'</span>})</code>
@@ -475,22 +473,22 @@
     <p>Add special action to a side</p>
     <h4>Parameters</h4>
     <ul>
-        <li><span class="parameter">table</span> <span class="selector"><a href="#selector_SpecialAction">SpecialAction</a></span> 
+        <li><span class="parameter">table</span> <span class="selector"><a href="selectors.html#selector_SpecialAction">SpecialAction</a></span> 
         The SA details</li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="wrapper"><a href="#wrapper_SpecialAction">SpecialAction</a></span> Details of the Special Action</p>
+    <p><span class="wrapper"><a href="wrappers.html#wrapper_SpecialAction">SpecialAction</a></span> Details of the Special Action</p>
 	
     <hr>
     <h3><a class="anchor" id="ScenEdit_AddUnit"></a>ScenEdit_AddUnit (unit)</h3>
     <p>Adds a unit based on a descriptor.</p>
     <h4>Parameters</h4>
     <ul>
-        <li><span class="parameter">unit</span> <span class="selector"><a href="#selector_NewUnit">NewUnit</a></span>
+        <li><span class="parameter">unit</span> <span class="selector"><a href="selectors.html#selector_NewUnit">NewUnit</a></span>
             The unit details to add</li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="wrapper"><a href="#wrapper_Unit">Unit</a></span> A complete descriptor for the added unit
+    <p><span class="wrapper"><a href="wrappers.html#wrapper_Unit">Unit</a></span> A complete descriptor for the added unit
     </p>
     <h5>Example</h5>
 
@@ -512,7 +510,7 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     <h4>Parameters</h4>
     <ul>
         <li><span class="parameter">descriptor</span> <span class="selector"><a
-                    href="#selector_Weapon2Magazine">Weapon2Magazine</a></span> Describes the weapon and magazine to
+                    href="selectors.html#selector_Weapon2Magazine">Weapon2Magazine</a></span> Describes the weapon and magazine to
             update
         </li>
     </ul>
@@ -540,7 +538,7 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
             Isactive, Area { of RPs }, Affects { of UnitTypes }, MarkAs (exc only), Locked (non only)</li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="wrapper"><a href="#wrapper_Zone">{ Zone }</a></span></p>
+    <p><span class="wrapper"><a href="wrappers.html#wrapper_Zone">{ Zone }</a></span></p>
     <hr>
     <h3><a class="anchor" id="ScenEdit_AssignUnitAsTarget"></a>ScenEdit_AssignUnitAsTarget (AUNameOrIDOrTable,
         MissionNameOrID)</h3>
@@ -611,7 +609,7 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
             contact being attacked as GUID or Name (GUID is better as the name can change as
             its classification
             changes)</li>
-        <li><span class="parameter">options</span> <span class="wrapper"><a href="#wrapper_AttackOptions">{
+        <li><span class="parameter">options</span> <span class="wrapper"><a href="wrappers.html#wrapper_AttackOptions">{
                     AttackOptions
                     }</a></span> Contains type of attack and weapon allocation if required)</li>
     </ul>
@@ -652,7 +650,7 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     <h3><a class="anchor" id="ScenEdit_CurrentTime"></a>ScenEdit_CurrentTime ()</h3>
     <p>Get the current scenario time.</p>
     <h4>Returns</h4>
-    <p><span class="types"><a class="type" href="#dataType_TimeStamp">TimeStamp</a></span>The UTC Unix timestamp of the
+    <p><span class="types"><a class="type" href="datatypes.html#dataType_TimeStamp">TimeStamp</a></span>The UTC Unix timestamp of the
         current time in-game.</p>
     <h5>Example</h5>
     <div class="example"><code>
@@ -724,7 +722,7 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     <h4>Parameters</h4>
     <ul>
         <li><span class="parameter">selector</span> <span class="selector"><a
-                    href="#selector_ReferencePointSelector">ReferencePointSelector</a></span> The reference point to
+                    href="selectors.html#selector_ReferencePointSelector">ReferencePointSelector</a></span> The reference point to
             delete.</li>
     </ul>
     <h4>Returns</h4>
@@ -755,7 +753,7 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     <p> Note that EventX() can also be used as a shortcut for
         ScenEdit_EventX()</p>
     <h4>Returns</h4>
-    <p><span class="wrapper"><a href="#wrapper_Event">Event</a></span>The triggering event</p>
+    <p><span class="wrapper"><a href="wrappers.html#wrapper_Event">Event</a></span>The triggering event</p>
     <h5>Example</h5>
     <div class="example"><code><span class="local">local</span> event = ScenEdit_EventX()</code></div>
     </p>
@@ -836,7 +834,7 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     <h4>Parameters</h4>
     <ul>
         <li><span class="parameter">unit</span> <span class="selector"><a
-                    href="#selector_UnitSelector">UnitSelector</a></span> The unit to select (name or GUID)</li>
+                    href="selectors.html#selector_UnitSelector">UnitSelector</a></span> The unit to select (name or GUID)</li>
         <li><span class="parameter">loadoutid</span> <span class="types"><span class="number">number</span></span> ID of
             the
             desired loadout</li>
@@ -860,12 +858,12 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     <h4>Parameters</h4>
     <ul>
         <li><span class="parameter">contact</span> <span class="selector"><a
-                    href="#selector_ContactSelector">ContactSelector</a></span> The contact to select. Must be
+                    href="selectors.html#selector_ContactSelector">ContactSelector</a></span> The contact to select. Must be
             defined by a side and contact GUID
             for that side.</li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="wrapper"><a href="#wrapper_Contact">Contact</a></span>A contact descriptor if it
+    <p><span class="wrapper"><a href="wrappers.html#wrapper_Contact">Contact</a></span>A contact descriptor if it
         or<code>nil</code>otherwise.</p>
     <h5>Example</h5>
     <div class="example">
@@ -901,11 +899,11 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     <h4>Parameters</h4>
     <ul>
         <li><span class="parameter">selector</span> <span class="selector"><a
-                    href="#selector_DoctrineSelector">DoctrineSelector</a></span> The selector for the object
+                    href="selectors.html#selector_DoctrineSelector">DoctrineSelector</a></span> The selector for the object
             to look up</li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="wrapper"><a href="#wrapper_Doctrine">Doctrine</a></span>The doctrine of the selected
+    <p><span class="wrapper"><a href="wrappers.html#wrapper_Doctrine">Doctrine</a></span>The doctrine of the selected
         object</p>
     <h5>Example</h5>
     <div class="example">
@@ -924,11 +922,11 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     <h4>Parameters</h4>
     <ul>
         <li><span class="parameter">selector</span> <span class="selector"><a
-                    href="#selector_DoctrineWRASelector">DoctrineWRASelector</a></span> The selector for the
+                    href="selectors.html#selector_DoctrineWRASelector">DoctrineWRASelector</a></span> The selector for the
             object to look up</li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="wrapper"><a href="#wrapper_DoctrineWRA">DoctrineWRA</a></span>The WRA doctrine of the
+    <p><span class="wrapper"><a href="wrappers.html#wrapper_DoctrineWRA">DoctrineWRA</a></span>The WRA doctrine of the
         selected object</p>
     <h5>Example</h5>
     <div class="example">
@@ -951,7 +949,7 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
             return to 1 - triggers, 2 - conditions, 3 - actions, 4 - event)</li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="wrapper"><a href="#wrapper_Event">Event</a></span>The event details</p>
+    <p><span class="wrapper"><a href="wrappers.html#wrapper_Event">Event</a></span>The event details</p>
     <hr>
     <h3><a class="anchor" id="ScenEdit_GetEvents"></a>ScenEdit_GetEvents (level)</h3>
     <p>Gets all events.</p>
@@ -963,7 +961,7 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
             return to 1 - triggers, 2 - conditions, 3 - actions, 4 - event)</li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="wrapper"><a href="#wrapper_Event"> { Event}</a></span>Table of event details</p>
+    <p><span class="wrapper"><a href="wrappers.html#wrapper_Event"> { Event}</a></span>Table of event details</p>
     <hr>
     <h3><a class="anchor" id="ScenEdit_GetKeyValue"></a>ScenEdit_GetKeyValue (key,forCampaign)</h3>
     <p>Gets the value for a key
@@ -1003,11 +1001,11 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h4>Parameters</h4>
     <ul>
         <li><span class="parameter">loadoutinfo</span> <span class="table"><a
-                    href="#table_LoadoutInfo">LoadoutInfo</a></span> The loadout
+                    href="tables.html#table_LoadoutInfo">LoadoutInfo</a></span> The loadout
             information to apply</li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="wrapper"><a href="#wrapper_Loadout">Loadout</a></span>Loadout wrapper</p>
+    <p><span class="wrapper"><a href="wrappers.html#wrapper_Loadout">Loadout</a></span>Loadout wrapper</p>
     <hr>
     <h3><a class="anchor" id="ScenEdit_GetMinefield"></a>ScenEdit_GetMinefield
         (side, area)</h3>
@@ -1045,7 +1043,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
             mission name</li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="wrapper"><a href="#wrapper_Mission">Mission</a></span>A mission descriptor
+    <p><span class="wrapper"><a href="wrappers.html#wrapper_Mission">Mission</a></span>A mission descriptor
         if the mission
         exists or<code>nil</code>otherwise.</p>
     <h5>Example</h5>
@@ -1068,10 +1066,10 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h4>Parameters</h4>
     <ul>
         <li><span class="parameter">selector</span> <span class="selector"><a
-                    href="#selector_ReferencePointSelector">ReferencePointSelector</a></span></li>
+                    href="selectors.html#selector_ReferencePointSelector">ReferencePointSelector</a></span></li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="wrapper"><a href="#wrapper_ReferencePoint">{ReferencePoint}</a></span>The table of
+    <p><span class="wrapper"><a href="wrappers.html#wrapper_ReferencePoint">{ReferencePoint}</a></span>The table of
         reference point
         descriptors for
         the selector</p>
@@ -1161,10 +1159,10 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h4>Parameters</h4>
     <ul>
         <li><span class="parameter">options</span> <span class="selector"><a
-                    href="#selector_SideSelector">SideSelector</a></span></li>
+                    href="selectors.html#selector_SideSelector">SideSelector</a></span></li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="selector"><a href="#selector_SideOption">SideOption</a></span> The
+    <p><span class="selector"><a href="selectors.html#selector_SideOption">SideOption</a></span> The
         side
         options</p>
     <h5>Example</h5>
@@ -1220,7 +1218,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h4>Parameters</h4>
     <ul>
         <li><span class="parameter">action_info</span> <span class="selector"><a
-                    href="#selector_SpecialAction">SpecialAction</a></span> The
+                    href="selectors.html#selector_SpecialAction">SpecialAction</a></span> The
             special
             action
             to
@@ -1269,12 +1267,12 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     </p>
     <hr>
 	<h3><a class="anchor" id="ScenEdit_GetUnit"></a>ScenEdit_GetUnit()</h3>
-	<p>Returns a <span class="wrapper"><a href="#wrapper_Unit">Unit</a></span> wrapper using a <span
-			class="selector"><a href="#selector_UnitSelector">UnitSelector</a></span>.</p>
+	<p>Returns a <span class="wrapper"><a href="wrappers.html#wrapper_Unit">Unit</a></span> wrapper using a <span
+			class="selector"><a href="selectors.html#selector_UnitSelector">UnitSelector</a></span>.</p>
 	<h4>Syntax</h4>
 	<p>
 		<code
-			class="syntax-example">ScenEdit_GetUnit(<span class="parameter"><a href="#selector_UnitSelector">UnitSelector</a></span>)</code>
+			class="syntax-example">ScenEdit_GetUnit(<span class="parameter"><a href="selectors.html#selector_UnitSelector">UnitSelector</a></span>)</code>
 	</p>
 	<h5>Example</h5>
 	<p><code>ScenEdit_GetUnit({name='Eagle #1',side='Blue'})</code></p>
@@ -1285,13 +1283,13 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 	</p>
 	<h4>Parameters</h4>
 	<ul>
-		<li><span class="selector"><a href="#selector_UnitSelector">UnitSelector</a></span> The unit to
+		<li><span class="selector"><a href="selectors.html#selector_UnitSelector">UnitSelector</a></span> The unit to
 			select.</li>
 	</ul>
 
 	<h4>Returns</h4>
 	<ul>
-		<li><span class="wrapper"><a href="#wrapper_Unit">Unit</a></span> if the unit exists, or</li>
+		<li><span class="wrapper"><a href="wrappers.html#wrapper_Unit">Unit</a></span> if the unit exists, or</li>
 		<li><code>nil</code></li>
 	</ul>
 
@@ -1305,7 +1303,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
 
 	<h4>Use</h4>
 	<p>
-		The <span class="selector"><a href="#selector_UnitSelector">UnitSelector</a></span> accepts either a
+		The <span class="selector"><a href="selectors.html#selector_UnitSelector">UnitSelector</a></span> accepts either a
 		<code>name</code> and <code>side</code>, or a
 		<code>guid</code> to return a <code>unit</code>
 	</p>
@@ -1421,7 +1419,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         location.</p>
     <h4>Parameters</h4>
     <ul>
-        <li><span class="parameter">host_info</span> <span class="table"><a href="#table_HostUnit">HostUnit</a></span>
+        <li><span class="parameter">host_info</span> <span class="table"><a href="tables.html#table_HostUnit">HostUnit</a></span>
             The information about the hosting request</li>
     </ul>
     <hr>
@@ -1736,7 +1734,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h4>Parameters</h4>
     <ul>
         <li><span class="parameter">unitOptions</span> <span class="wrapper"><a
-                    href="#wrapper_RefuelOptions">RefuelOptions</a></span> The
+                    href="wrappers.html#wrapper_RefuelOptions">RefuelOptions</a></span> The
             unit
             and
             refueling
@@ -1785,11 +1783,11 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         contacts.</p>
     <h4>Parameters</h4>
     <ul>
-        <li><span class="parameter">side</span><span class="table"><a href="#table_Side">side</a></span> The
+        <li><span class="parameter">side</span><span class="table"><a href="tables.html#table_Side">side</a></span> The
             side to remove</li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="wrapper"><a href="#wrapper_Side">Side</a></span></p>
+    <p><span class="wrapper"><a href="wrappers.html#wrapper_Side">Side</a></span></p>
     <hr>
     <h3><a class="anchor" id="ScenEdit_RemoveUnitAsTarget"></a>ScenEdit_RemoveUnitAsTarget
         (AUNameOrIDOrTable,MissionNameOrID)</h3>
@@ -1880,7 +1878,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         only)</li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="wrapper"><a href="#wrapper_Zone">{ Zone
+    <p><span class="wrapper"><a href="wrappers.html#wrapper_Zone">{ Zone
                 }</a></span></p>
     <hr>
     <h3><a class="anchor" id="ScenEdit_RunScript"></a>ScenEdit_RunScript
@@ -1987,7 +1985,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h4>Parameters</h4>
     <ul>
         <li><span class="parameter">options</span> <span class="selector"><a
-                    href="#selector_ActionUpdate">ActionUpdate</a></span> The
+                    href="selectors.html#selector_ActionUpdate">ActionUpdate</a></span> The
             action
             options</li>
     </ul>
@@ -2011,7 +2009,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         condition.</p>
     <h4>Parameters</h4>
     <ul>
-        <li><span class="parameter">options</span> <span class="selector"><a href="#selector_ConditionUpdate">{
+        <li><span class="parameter">options</span> <span class="selector"><a href="selectors.html#selector_ConditionUpdate">{
                     ConditionUpdate
                     }</a></span> The
             condition
@@ -2060,7 +2058,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h4>Parameters</h4>
     <ul>
         <li><span class="parameter">selector</span> <span class="selector"><a
-                    href="#selector_DoctrineSelector">DoctrineSelector</a></span> The
+                    href="selectors.html#selector_DoctrineSelector">DoctrineSelector</a></span> The
             selector
             for
             the
@@ -2068,7 +2066,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
             to
             modify.</li>
         <li><span class="parameter">doctrine</span> <span class="wrapper"><a
-                    href="#wrapper_Doctrine">Doctrine</a></span> A
+                    href="wrappers.html#wrapper_Doctrine">Doctrine</a></span> A
             table
             of
             doctrines
@@ -2143,14 +2141,14 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h4>Parameters</h4>
     <ul>
         <li><span class="parameter">selector</span> <span class="selector"><a
-                    href="#selector_DoctrineWRASelector">DoctrineWRASelector</a></span> The
+                    href="selectors.html#selector_DoctrineWRASelector">DoctrineWRASelector</a></span> The
             selector
             for
             the
             object
             to
             update</li>
-        <li><span class="parameter">options</span> <span class="table"><a href="#table_WRA">WRA</a></span> Table
+        <li><span class="parameter">options</span> <span class="table"><a href="tables.html#table_WRA">WRA</a></span> Table
             of
             settings
             {qty_salvo, shooter_salvo,firing_range,self_defence}. The
@@ -2163,7 +2161,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
             used.</li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="wrapper"><a href="#wrapper_DoctrineWRA">DoctrineWRA</a></span>The
+    <p><span class="wrapper"><a href="wrappers.html#wrapper_DoctrineWRA">DoctrineWRA</a></span>The
         WRA
         doctrine
         of
@@ -2384,7 +2382,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
             perform
             operation
             on</li>
-        <li><span class="parameter">options</span> <span class="selector"><a href="#selector_EventUpdate">{
+        <li><span class="parameter">options</span> <span class="selector"><a href="selectors.html#selector_EventUpdate">{
                     EventUpdate
                     }</a></span> The
             event
@@ -2419,7 +2417,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
             perform
             operation
             on</li>
-        <li><span class="parameter">options</span> <span class="selector"><a href="#selector_EventTCAUpdate">{
+        <li><span class="parameter">options</span> <span class="selector"><a href="selectors.html#selector_EventTCAUpdate">{
                     EventTCAUpdate
                     }</a></span> The
             options</li>
@@ -2452,7 +2450,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
             perform
             operation
             on</li>
-        <li><span class="parameter">options</span> <span class="selector"><a href="#selector_EventTCAUpdate">{
+        <li><span class="parameter">options</span> <span class="selector"><a href="selectors.html#selector_EventTCAUpdate">{
                     EventTCAUpdate
                     }</a></span> The
             options</li>
@@ -2485,7 +2483,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
             perform
             operation
             on</li>
-        <li><span class="parameter">options</span> <span class="selector"><a href="#selector_EventTCAUpdate">{
+        <li><span class="parameter">options</span> <span class="selector"><a href="selectors.html#selector_EventTCAUpdate">{
                     EventTCAUpdate
                     }</a></span> The
             options</li>
@@ -2525,7 +2523,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         a
         persistent
         store
-        <a href="#dataType_KeyStore">KeyStore</a>that
+        <a href="datatypes.html#dataType_KeyStore">KeyStore</a>that
         is
         retained
         when
@@ -2586,7 +2584,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h4>Parameters</h4>
     <ul>
         <li><span class="parameter">loadoutinfo</span> <span class="table"><a
-                    href="#table_LoadoutInfo">LoadoutInfo</a></span> The
+                    href="tables.html#table_LoadoutInfo">LoadoutInfo</a></span> The
             loadout
             information
             to
@@ -2641,7 +2639,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
             mission
             name</li>
         <li><span class="parameter">MissionOptions</span> <span class="wrapper"><a
-                    href="#wrapper_Mission">Mission</a></span> The
+                    href="wrappers.html#wrapper_Mission">Mission</a></span> The
             mission
             options
             as
@@ -2649,7 +2647,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
             table.</li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="wrapper"><a href="#wrapper_Mission">Mission</a></span>A
+    <p><span class="wrapper"><a href="wrappers.html#wrapper_Mission">Mission</a></span>A
         mission
         descriptor
         if
@@ -2676,7 +2674,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <p>Given
         a
         valid
-        <a href="#selector_ReferencePointSelector">ReferencePointSelector</a>as
+        <a href="selectors.html#selector_ReferencePointSelector">ReferencePointSelector</a>as
         part
         of
         the
@@ -2743,7 +2741,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h4>Parameters</h4>
     <ul>
         <li><span class="parameter">descriptor</span> <span class="wrapper"><a
-                    href="#wrapper_ReferencePoint">ReferencePoint</a></span> A
+                    href="wrappers.html#wrapper_ReferencePoint">ReferencePoint</a></span> A
             valid
             selector
             with
@@ -2753,7 +2751,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
             update.</li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="wrapper"><a href="#wrapper_ReferencePoint">ReferencePoint</a></span>The
+    <p><span class="wrapper"><a href="wrappers.html#wrapper_ReferencePoint">ReferencePoint</a></span>The
         reference
         point
         descriptor
@@ -2841,7 +2839,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
             changed.</li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="selector"><a href="#selector_SideOption">{ SideOption
+    <p><span class="selector"><a href="selectors.html#selector_SideOption">{ SideOption
                 }</a></span>The
         side
         options</p>
@@ -2878,7 +2876,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         the
         same
         as
-        <a href="#dataType_Stance">Stance</a>,but
+        <a href="datatypes.html#dataType_Stance">Stance</a>,but
         only
         the
         first
@@ -2967,7 +2965,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h4>Parameters</h4>
     <ul>
         <li><span class="parameter">action_info</span> <span class="selector"><a
-                    href="#selector_SpecialAction">SpecialAction</a></span> The
+                    href="selectors.html#selector_SpecialAction">SpecialAction</a></span> The
             special
             action
             to
@@ -3051,7 +3049,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         trigger.</p>
     <h4>Parameters</h4>
     <ul>
-        <li><span class="parameter">options</span> <span class="selector"><a href="#selector_TriggerUpdate">{
+        <li><span class="parameter">options</span> <span class="selector"><a href="selectors.html#selector_TriggerUpdate">{
                     TriggerUpdate
                     }</a></span> The
             trigger
@@ -3081,7 +3079,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         exists.</p>
     <h4>Parameters</h4>
     <ul>
-        <li><span class="parameter">unit</span> <span class="wrapper"><a href="#wrapper_Unit">Unit</a></span>
+        <li><span class="parameter">unit</span> <span class="wrapper"><a href="wrappers.html#wrapper_Unit">Unit</a></span>
             The
             unit
             to
@@ -3093,7 +3091,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
             selector.</li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="wrapper"><a href="#wrapper_Unit">Unit</a></span>A complete descriptor for the added unit
+    <p><span class="wrapper"><a href="wrappers.html#wrapper_Unit">Unit</a></span>A complete descriptor for the added unit
     </p>
     <h5>Example</h5>
 
@@ -3129,10 +3127,10 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h4>Parameters</h4>
     <ul>
         <li><span class="parameter">options</span> <span class="selector"><a
-                    href="#selector_DamageOptions">DamageOptions</a></span></li>
+                    href="selectors.html#selector_DamageOptions">DamageOptions</a></span></li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="table"><a href="#table_Component">Component</a></span>The
+    <p><span class="table"><a href="tables.html#table_Component">Component</a></span>The
         unit's
         components
         object</p>
@@ -3154,7 +3152,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h4>Parameters</h4>
     <ul>
         <li><span class="parameter">sidedesc</span> <span class="table"><a
-                    href="#table_SideDescription">SideDescription</a></span> The
+                    href="tables.html#table_SideDescription">SideDescription</a></span> The
             sides
             to
             change
@@ -3274,7 +3272,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
             only)</li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="wrapper"><a href="#wrapper_Zone">Zone</a></span></p>
+    <p><span class="wrapper"><a href="wrappers.html#wrapper_Zone">Zone</a></span></p>
     <hr>
     <h3><a class="anchor" id="ScenEdit_SpecialMessage"></a>ScenEdit_SpecialMessage(side, message, [location, forceMapRecenter])</h3>
     <p>Displays a special message consisting of the HTML text <span class="parameter">message</span> to the side specified by <span class="parameter">side</span>. <br>
@@ -3308,17 +3306,17 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h4>Parameters</h4>
     <ul>
         <li><span class="parameter">fromUnit</span> <span class="selector"><a
-                    href="#selector_UnitSelector">UnitSelector</a></span> The
+                    href="selectors.html#selector_UnitSelector">UnitSelector</a></span> The
             unit
             with
             cargo</li>
         <li><span class="parameter">toUnit</span> <span class="selector"><a
-                    href="#selector_UnitSelector">UnitSelector</a></span> The
+                    href="selectors.html#selector_UnitSelector">UnitSelector</a></span> The
             unit
             to
             get
             cargo</li>
-        <li><span class="parameter">cargoList</span> <span class="table"><a href="#table_Cargo">Cargo</a></span> List
+        <li><span class="parameter">cargoList</span> <span class="table"><a href="tables.html#table_Cargo">Cargo</a></span> List
             of
             cargo
             to
@@ -3356,7 +3354,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         for
         ScenEdit_UnitC()</p>
     <h4>Returns</h4>
-    <p><span class="wrapper"><a href="#wrapper_Contact">Contact</a></span>A
+    <p><span class="wrapper"><a href="wrappers.html#wrapper_Contact">Contact</a></span>A
         contact
         descriptor
         or
@@ -3385,7 +3383,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
         for
         ScenEdit_UnitX()</p>
     <h4>Returns</h4>
-    <p><span class="wrapper"><a href="#wrapper_Unit">Unit</a></span>The
+    <p><span class="wrapper"><a href="wrappers.html#wrapper_Unit">Unit</a></span>The
         triggering
         unit</p>
     <h5>Example</h5>
@@ -3460,11 +3458,11 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h4>Parameters</h4>
     <ul>
         <li><span class="parameter">fromUnit</span> <span class="selector"><a
-                    href="#selector_UnitSelector">UnitSelector</a></span> The
+                    href="selectors.html#selector_UnitSelector">UnitSelector</a></span> The
             unit
             with
             cargo</li>
-        <li><span class="parameter">cargoList</span> <span class="table"><a href="#table_Cargo">{ Cargo
+        <li><span class="parameter">cargoList</span> <span class="table"><a href="tables.html#table_Cargo">{ Cargo
                     }</a></span> List
             of
             cargo
@@ -3487,7 +3485,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h4>Parameters</h4>
     <ul>
         <li><span class="parameter">options</span> <span class="selector"><a
-                    href="#selector_UpdateUnit">UpdateUnit</a></span> The
+                    href="selectors.html#selector_UpdateUnit">UpdateUnit</a></span> The
             unit
             sensor/mount/weapon/comms/magazine
             details
@@ -3495,7 +3493,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
             update</li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="wrapper"><a href="#wrapper_Unit">Unit</a></span>The
+    <p><span class="wrapper"><a href="wrappers.html#wrapper_Unit">Unit</a></span>The
         updated
         unit</p>
     <h5>Example</h5>
@@ -3523,7 +3521,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h4>Parameters</h4>
     <ul>
         <li><span class="parameter">options</span> <span class="table"><a
-                    href="#table_UpdateUnitCargo">UpdateUnitCargo</a></span> The
+                    href="tables.html#table_UpdateUnitCargo">UpdateUnitCargo</a></span> The
             unit
             cargo
             details
@@ -3531,7 +3529,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
             update</li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="wrapper"><a href="#wrapper_Unit">Unit</a></span>The
+    <p><span class="wrapper"><a href="wrappers.html#wrapper_Unit">Unit</a></span>The
         updated
         unit</p>
     <h5>Example</h5>
@@ -3804,14 +3802,14 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h4>Parameters</h4>
     <ul>
         <li><span class="parameter">ContactGUID</span> <span class="selector"><a
-                    href="#selector_VPContactSelector">VPContactSelector</a></span> The
+                    href="selectors.html#selector_VPContactSelector">VPContactSelector</a></span> The
             contact
             selector
             to
             interrogate</li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="wrapper"><a href="#wrapper_Contact">Contact</a></span> The information associated with the contact</p>
+    <p><span class="wrapper"><a href="wrappers.html#wrapper_Contact">Contact</a></span> The information associated with the contact</p>
     <h5>Example</h5>
     <div class="example">
         <code>
@@ -3828,7 +3826,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h4>Parameters</h4>
     <p>None</p>
     <h4>Returns</h4>
-    <p><span class='wrapper'><a href="#wrapper_Scenario">Scenario</a></span></p>
+    <p><span class='wrapper'><a href="wrappers.html#wrapper_Scenario">Scenario</a></span></p>
     <hr>
     <h3><a class="anchor" id="VP_GetSide"></a>VP_GetSide
         (side)</h3>
@@ -3850,7 +3848,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h4>Parameters</h4>
     <ul>
         <li><span class="parameter">side</span> <span class="selector"><a
-                    href="#selector_SideSelector">SideSelector</a></span> The
+                    href="selectors.html#selector_SideSelector">SideSelector</a></span> The
             side
             to
             get
@@ -3858,7 +3856,7 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
             about.</li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="wrapper"><a href="#wrapper_Side">Side</a></span>Information
+    <p><span class="wrapper"><a href="wrappers.html#wrapper_Side">Side</a></span>Information
         about
         the
         side
@@ -3908,14 +3906,14 @@ ScenEdit_GetKeyValue(<span class="string">"A"</span>)<span class="comment">-- re
     <h4>Parameters</h4>
     <ul>
         <li><span class="parameter">ActiveOrContact</span> <span class="selector"><a
-                    href="#selector_UnitSelector">UnitSelector</a></span> The
+                    href="selectors.html#selector_UnitSelector">UnitSelector</a></span> The
             unit
             selector
             to
             interrogate</li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="wrapper"><a href="#wrapper_Unit">Unit</a></span>The
+    <p><span class="wrapper"><a href="wrappers.html#wrapper_Unit">Unit</a></span>The
         information
         associated
         with
