@@ -86,7 +86,6 @@ end
 
 				</p>
 				<ul class="ul-2-columns">
-					<li><span class="wrapper"><a href="#wrapper_AttackOptions">AttackOptions</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_Contact">Contact</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_Doctrine">Doctrine</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_DoctrineWRA">DoctrineWRA</a></span></li>
@@ -104,31 +103,6 @@ end
 					<li><span class="wrapper"><a href="#wrapper_Zone">Zone</a></span></li>
 				</ul>
 				<hr>
-				<a class="anchor" id="wrapper_AttackOptions"></a>
-				<h3>AttackOptions</h3>
-				<p>
-					Attack options.
-				</p>
-	<table class="table_borders" style="width: 100%; margin-left: 0px;">
-   	<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
-	<tr><td> <span class="parameter">mode </span></td>
-	<td><span class="types" ><span class="string">string</span></td>
-	<td>Targeting mode </td>
-	<td>"AutoTargeted"|"0", "ManualWeaponAlloc"|"1"</td></tr>
-	<tr><td><span class="parameter">mount </span></td>
-	<td><span class="types"><span class="number">number</span></td>
-	<td> The attacker's mount DBID</td>
-	</td></tr>
-	<tr><td><span class="parameter">weapon </span></td>
-	<td><span class="types"><span class="number">number</span></td>
-	<td> The attacker's weapon DBID</td>
-	</td></tr>
-	<tr><td><span class="parameter">qty </span></td>
-	<td><span class="types"><span class="number">number</span></td>
-	<td>How many to allocate</td>
-	</td></tr>
-	</table>
-				<hr>
 				<a class="anchor" id="wrapper_Contact"></a>
 				<h3>Contact</h3>
 				<p> This is from the perspective of the side being looked at. What is a contact for one side, may not be the
@@ -139,137 +113,144 @@ end
 				</p>
 	<table class="table_borders" style="width: 100%; margin-left: 0px;">
    	<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+					<tr><td><span class="parameter">guid</span><span class="readonly">READ ONLY</span></td>
+					<td><span class="types"><span class="string">string</span></span></td>
+					<td>The contact GUID </td>
+					</td></tr>
 					<tr><td> <span class="parameter">name</span></td>
 					<td><span class="types"><span class="string">string</span></span></td>
-					<td>The contact name. </td>
+					<td>The contact name </td>
 					</td></tr>
-					<tr><td><span class="parameter">guid</span></td>
+					<tr><td><span class="parameter">actualunitid</span><span class="readonly">READ ONLY</span></td>
 					<td><span class="types"><span class="string">string</span></span></td>
-					<td>The contact GUID. <span class="readonly">READ ONLY</span></td>
+					<td>The contact actual unit GUID </td>
 					</td></tr>
-					<tr><td><span class="parameter">actualunitid</span></td>
-					<td><span class="types"><span class="string">string</span></span></td>
-					<td>The contact actual GUID. <span class="readonly">READ ONLY</span></td>
-					</td></tr>
-					<tr><td><span class="parameter">latitude</span></td>
+					<tr><td><span class="parameter">latitude</span><span class="readonly">READ ONLY</span></td>
 					<td><span class="types"><a href="DataTypes.html#dataType_Latitude">Latitude</a></span></td>
-					<td>The latitude of the contact. <span class="readonly">READ ONLY</span></td>
+					<td>The latitude of the contact </td>
 					</td></tr>
-					<tr><td><span class="parameter">longitude</span>
+					<tr><td><span class="parameter">longitude</span><span class="readonly">READ ONLY</span></td>
 					<td><span class="types"><a href="DataTypes.html#dataType_Longitude">Longitude</a></span></td>
-					<td>The longitude of the contact. <span class="readonly">READ ONLY</span></td>
+					<td>The longitude of the contact </td>
 					</td></tr>
-					<tr><td><span class="parameter">speed</span>
-					<td><span class="types"><span class="number">number</span></span>
-					<td>Speed if known <span class="readonly">READ ONLY</span>
+					<tr><td><span class="parameter">speed</span><span class="readonly">READ ONLY</span></td>
+					<td><span class="types"><span class="number">number</span></span></td>
+					<td>Speed if known, else nil
 					</td></tr>
-					<tr><td><span class="parameter">heading</span>
-					<td><span class="types"><span class="number">number</span></span>
-					<td>Heading if known <span class="readonly">READ ONLY</span>
+					<tr><td><span class="parameter">heading</span><span class="readonly">READ ONLY</span></td>
+					<td><span class="types"><span class="number">number</span></span></td>
+					<td>Heading if known, else nil
 					</td></tr>
-					<tr><td><span class="parameter">altitude</span>
-					<td><span class="types"><span class="number">number</span></span>
-					<td>Altitude if known <span class="readonly">READ ONLY</span>
+					<tr><td><span class="parameter">altitude</span><span class="readonly">READ ONLY</span></td>
+					<td><span class="types"><span class="number">number</span></span></td>
+					<td>Altitude if known, else nil
 					</td></tr>
-					<tr><td><span class="parameter">missile_defence</span>
-					<td><span class="types"><span class="number">number</span></span>
-					<td>Applicable to Facility and Ships. -1 = unknown contact <span class="readonly">READ ONLY</span>
+					<tr><td><span class="parameter">posture</span></td>
+					<td><span class="types"><a href="DataTypes.html#dataType_Stance">Stance(letter)</a></span></td>
+					<td>Posture from the perspective of the owner of the contact
 					</td></tr>
-					<tr><td><span class="parameter">age</span>
-					<td><span class="types"><span class="number">number</span></span>
-					<td>How long has contact been detected (in seconds) <span class="readonly">READ ONLY</span>
+					<tr><td><span class="parameter">observer</span><span class="readonly">READ ONLY</span></td>
+					<td><span class="wrapper"><a href="#wrapper_Side">Side</a></span></td>
+					<td>The contact original detecting side or nil if same as requesting side 
 					</td></tr>
-					<tr><td><span class="parameter">type</span>
-					<td><span class="types"><span class="string">string</span></span>
-					<td>Type of contact. <span class="readonly">READ ONLY</span>
+					<tr><td><span class="parameter">observer_posture</span></td>
+					<td><span class="types"><a href="DataTypes.html#dataType_Stance">Stance(letter)</a></span></td>
+					<td>Posture from the perspective of the original detector of the contact
 					</td></tr>
-					<tr><td><span class="parameter">typed</span>
-					<td><span class="types"><span class="number">number</span></span>
-					<td>Type of contact. <span class="readonly">READ ONLY</span>
+					<tr><td><span class="parameter">areaofuncertainty</span><span class="readonly">READ ONLY</span></td>
+					<td><span class="table"><a href="Tables.html#table_LatLon">LatLon</a></span></td>
+					<td>Table of points defining the area of contact
 					</td></tr>
-					<tr><td><span class="parameter">areaofuncertainty</span>
-					<td><span class="table"><a href="Tables.html#table_LatLon">LatLon</a></span>
-					<td>Table of points defining the area of contact. <span class="readonly">READ ONLY</span>
+					<tr><td><span class="parameter">type</span><span class="readonly">READ ONLY</span></td>
+					<td><span class="types"><a href="DataTypes.html#dataType_ContactType">ContactType</a></span></span></td>
+					<td>Type of contact 
 					</td></tr>
-					<tr><td><span class="parameter">type_description</span>
-					<td><span class="types"><span class="string">string</span></span>
-					<td>Contact type description. <span class="readonly">READ ONLY</span>
+					<tr><td><span class="parameter">typed</span><span class="readonly">READ ONLY</span></td>
+					<td><span class="types"><span class="number">number</span></span></td>
+					<td>Type of contact as a number
 					</td></tr>
-					<tr><td><span class="parameter">actualunitdbid</span>
-					<td><span class="types"><span class="number">number</span></span>
-					<td>Actual contact type. <span class="readonly">READ ONLY</span>
+					<tr><td><span class="parameter">type_description</span><span class="readonly">READ ONLY</span></td>
+					<td><span class="types"><span class="string">string</span></span></td>
+					<td>Contact description based on detection classification 
 					</td></tr>
-					<tr><td><span class="parameter">classificationlevel</span>
-					<td><span class="types"><span class="string">string</span></span>
-					<td>Contact classification. <span class="readonly">READ ONLY</span>
+					<tr><td><span class="parameter">actualunitdbid</span><span class="readonly">READ ONLY</span></td>
+					<td><span class="types"><span class="number">number</span></span></td>
+					<td>Actual unit DB id based on detection classification, else 0
 					</td></tr>
-					<tr><td><span class="parameter">potentialmatches</span>
-					<td><span class="table"><a href="Tables.html#table_EMmatch">EMmatch</a></span>
-					<td>Table {EMmatch} on potential EMCON emission matches. <span class="readonly">READ ONLY</span>
+					<tr><td><span class="parameter">classificationlevel</span><span class="readonly">READ ONLY</span></td>
+					<td><span class="types"><a href="DataTypes.html#dataType_ContactIdStatus">IdStatus</a></span></span></td>
+					<td>Level of contact classification 
 					</td></tr>
-					<tr><td><span class="parameter">side</span>
-					<td><span class="wrapper"><a href="#wrapper_Side">Side</a></span>
-					<td>Contact's actual side. <span class="readonly">READ ONLY</span>
+					<tr><td><span class="parameter">potentialmatches</span><span class="readonly">READ ONLY</span></td>
+					<td><span class="table"><a href="Tables.html#table_EMmatch">EMmatch</a></span></td>
+					<td>Table {EMmatch} of potential EMCON emission matches 
 					</td></tr>
-					<tr><td><span class="parameter">fromside</span>
-					<td><span class="wrapper"><a href="#wrapper_Side">Side</a></span>
-					<td>The side who sees this contact. <span class="readonly">READ ONLY</span>
+					<tr><td><span class="parameter">side</span><span class="readonly">READ ONLY</span></td>
+					<td><span class="wrapper"><a href="#wrapper_Side">Side</a></span></td>
+					<td>Contact actual side  if known, else nil 
 					</td></tr>
-					<tr><td><span class="parameter">detectedBySide</span>
-					<td><span class="wrapper"><a href="#wrapper_Side">Side</a></span>
-					<td>The side who originally saw this contact. Would be same as fromside unless shared <span
-							class="readonly">READ ONLY</span>
+					<tr><td><span class="parameter">fromside</span><span class="readonly">READ ONLY</span></td>
+					<td><span class="wrapper"><a href="#wrapper_Side">Side</a></span></td>
+					<td>The side who owns this contact, else nil 
 					</td></tr>
-					<tr><td><span class="parameter">posture</span>
-					<td><span class="types"><span class="string">string</span></span>
-					<td>Posture towards contact.
+					<tr><td><span class="parameter">detectedBySide</span><span class="readonly">READ ONLY</span></td>
+					<td><span class="wrapper"><a href="#wrapper_Side">Side</a></span></td>
+					<td>Which side actually detected this contact (instead of having it shared by someone else)
 					</td></tr>
-					<tr><td><span class="parameter">FilterOut</span>
-					<td><span class="types"><span class="boolean">True/False</span></span>
-					<td>True to filtered out contact
+					<tr><td><span class="parameter">missile_defence</span><span class="readonly">READ ONLY</span></td>
+					<td><span class="types"><span class="number">number</span></span></td>
+					<td>Applicable to Facility and Ships. If id is 'know class' or higher, else -1 for unknown contact 
 					</td></tr>
-					<tr><td><span class="parameter">weather</span>
-					<td><span class="types"><a href="DataTypes.html#dataType_Weather">Weather</a></span>
-					<td>Table of weather parameters (temp, rainfall, underrain, seastate)
+					<tr><td><span class="parameter">age</span><span class="readonly">READ ONLY</span></td>
+					<td><span class="types"><span class="number">number</span></span></td>
+					<td>How long has contact been detected for (in seconds) 
 					</td></tr>
-					<tr><td><span class="parameter">BDA</span>
-					<td><span class="table">table</span>
-					<td>Table of battle damage assessment (fires, flood, structural)
+					<tr><td><span class="parameter">BDA</span><span class="readonly">READ ONLY</span></td>
+					<td><span class="table">table</span></td>
+					<td>Table of battle damage assessment (FIRES, FLOOD, STRUCTURAL), else nil
 					</td></tr>
-					<tr><td><span class="parameter">emissions</span>
-					<td><span class="table"><a href="Tables.html#table_Emissions">Emissions</a></span>
-					<td>Table of detected emmissions from contact
+					<tr><td><span class="parameter">emissions</span><span class="readonly">READ ONLY</span></td>
+					<td><span class="table"><a href="Tables.html#table_Emissions">Emissions</a></span></td>
+					<td>Table of detected emmissions from contact, else nil if no detected emissions
 					</td></tr>
-					<tr><td><span class="parameter">detectionBy</span>
-					<td><span class="table">table</span>
-					<td>Table of how long ago was detected by type (radar, esm, visual, infrared, sonaractive,
-						sonarpassive)
+					<tr><td><span class="parameter">detectionBy</span><span class="readonly">READ ONLY</span></td>
+					<td><span class="table">table</span></td>
+					<td>Table of how long ago was detected by a sensor type (Radar, ESM, Visual, Infrared, SonarActive,
+						SonarPassive)
 					</td></tr>
-					<tr><td><span class="parameter">targetedBy</span>
-					<td><span class="table">table</span>
+					<tr><td><span class="parameter">targetedBy</span><span class="readonly">READ ONLY</span></td>
+					<td><span class="table">table</span></td>
 					<td>Table of unit guids that have this contact as a target <br>
 						(Note that the starting idex of this table is '0' rather than '1' as normal Lua tables)
 					</td></tr>
-					<tr><td><span class="parameter">firingAt</span>
-					<td><span class="table">table</span>
+					<tr><td><span class="parameter">firingAt</span><span class="readonly">READ ONLY</span></td>
+					<td><span class="table">table</span></td>
 					<td>Table of contact guids that this contact is firing at<br>
 						(Note that the starting idex of this table is '0' rather than '1' as normal Lua tables)
 					</td></tr>
-					<tr><td><span class="parameter">firedOn</span>
-					<td><span class="table">table</span>
+					<tr><td><span class="parameter">firedOn</span><span class="readonly">READ ONLY</span></td>
+					<td><span class="table">table</span></td>
 					<td>Table of guids that are firing on this contact<br>
 						(Note that the starting idex of this table is '0' rather than '1' as normal Lua tables)
 					</td></tr>
-					<tr><td><span class="parameter">DropContact</span>
-					<td><span class="types"><span class="method">method</span>()</span>
-					<td>Drops contact from the reporting side
+					<tr><td><span class="parameter">DropContact</span></td>
+					<td><span class="types"><span class="method">method</span>()</span></td>
+					<td>Drops contact from the perspective side (who is looking at this contact)
 					</td></tr>
-					<tr><td><span class="parameter">inArea</span>
-					<td><span class="types"><span class="method">method</span>({area})</span>
-					<td>Is contact in the 'area' defined by table of RPs (true/false)
+					<tr><td><span class="parameter">FilterOut</span></td>
+					<td><span class="types"><span class="boolean">True/False</span></span></td>
+					<td>Filtered out status on this contact
 					</td></tr>
-					<tr><td><span class="parameter">lastDetections</span>
-					<td><span class="table"><a href="Tables.html#table_LastDetections">LastDetections</a></span>
+					<tr><td><span class="parameter">weather</span></td>
+					<td><span class="types"><a href="DataTypes.html#dataType_Weather">Weather</a></span></td>
+					<td>Table of weather parameters (temp, rainfall, underrain, seastate)
+					</td></tr>
+					<tr><td><span class="parameter">inArea</span></td>
+					<td><span class="types"><span class="method">method</span>({area})</span></td>
+					<td>Is contact in the 'area' defined by table of RPs [returns <span class="types"><span class="return">True/False</span></span> ]
+					</td></tr>
+					<tr><td><span class="parameter">lastDetections</span></td>
+					<td><span class="table"><a href="Tables.html#table_LastDetections">LastDetections</a></span></td>
 					<td>Table of detects on the contact
 					</td></tr>
 	</table>

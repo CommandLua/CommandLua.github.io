@@ -76,26 +76,27 @@
 				</p>
 				<p>
 					<ul class="ul-2-columns">
-						<li><span class="selector"><a href="#selector_ActionUpdate">ActionUpdate</a></span></li>
-						<li><span class="selector"><a href="#selector_ConditionUpdate">ConditionUpdate</a></span></li>
+						<li><span class="selector"><a href="#selector_AttackOptions">AttackOptions</a></span></li>
 						<li><span class="selector"><a href="#selector_ContactSelector">ContactSelector</a></span></li>
 						<li><span class="selector"><a href="#selector_DamageOptions">DamageOptions</a></span></li>
 						<li><span class="selector"><a href="#selector_DoctrineSelector">DoctrineSelector</a></span></li>
 						<li><span class="selector"><a
 									href="#selector_DoctrineWRASelector">DoctrineWRASelector</a></span></li>
+						<li><span class="selector"><a href="#selector_ActionUpdate">EventActionUpdate</a></span></li>
+						<li><span class="selector"><a href="#selector_ConditionUpdate">EventConditionUpdate</a></span></li>
+						<li><span class="selector"><a href="#selector_SpecialAction">EventSpecialAction</a></span></li>
 						<li><span class="selector"><a href="#selector_EventTCAUpdate">EventTCAUpdate</a></span></li>
+						<li><span class="selector"><a href="#selector_TriggerUpdate">EventTriggerUpdate</a></span></li>
 						<li><span class="selector"><a href="#selector_EventUpdate">EventUpdate</a></span></li>
 						<li><span class="selector"><a href="#selector_NewMission">NewMission</a></span></li>
 						<li><span class="selector"><a href="#selector_NewUnit">NewUnit</a></span></li>
 						<li><span class="selector"><a
 									href="#selector_ReferencePointSelector">ReferencePointSelector</a></span></li>
 						<li><span class="selector"><a href="#selector_SideOption">SideOption</a></span></li>
-						<li><span class="selector"><a href="#selector_SpecialAction">SpecialAction</a></span></li>
 						<li><span class="selector"><a href="#selector_TargetFilter">TargetFilter</a></span></li>
-						<li><span class="selector"><a href="#selector_TriggerUpdate">TriggerUpdate</a></span></li>
 						<li><span class="selector"><a href="#selector_UnitSelector">UnitSelector</a></span></li>
-						<li><span class="selector"><a href="#selector_UpdateUnit">UpdateUnit</a></span></li>
-						<li><span class="selector"><a href="#selector_UpdateUnitCargo">UpdateUnitCargo</a></span></li>
+						<li><span class="selector"><a href="#selector_UpdateUnit">UnitUpdate</a></span></li>
+						<li><span class="selector"><a href="#selector_UpdateUnitCargo">UnitCargoUpdate</a></span></li>
 						<li><span class="selector"><a href="#selector_VPContactSelector">VPContactSelector</a></span>
 						</li>
 						<li><span class="selector"><a href="#selector_Weapon2Magazine">Weapon2Magazine</a></span></li>
@@ -106,7 +107,7 @@
 				<a class="anchor" id="selector_ActionUpdate"></a>
 				<h3>ActionUpdate</h3>
 				<p>
-					Action update.
+					Update the Event Action.
 				</p>
 				<ul class="ul-no-bullets">
 					<li><span class="parameter">ID</span>
@@ -135,6 +136,31 @@
 						<strong>Note:</strong> Other various values apply to the type of action.
 					</p>
 				</div>
+				<hr>
+				<a class="anchor" id="selector_AttackOptions"></a>
+				<h3>AttackOptions</h3>
+				<p>
+					What weapons to attack with.
+				</p>
+	<table class="table_borders" style="width: 100%; margin-left: 0px;">
+   	<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+	<tr><td> <span class="parameter">mode </span></td>
+	<td><span class="types" ><a href="DataTypes.html#dataType_TargetingMode">TargetingMode</a></span></td>
+	<td>Targeting mode </td>
+	<!--td>"AutoTargeted"|"0", "ManualWeaponAlloc"|"1"</td--></tr>
+	<tr><td><span class="parameter">mount </span></td>
+	<td><span class="types"><span class="number">number</span></td>
+	<td> The attacker's mount DBID</td>
+	</td></tr>
+	<tr><td><span class="parameter">weapon </span></td>
+	<td><span class="types"><span class="number">number</span></td>
+	<td> The attacker's weapon DBID</td>
+	</td></tr>
+	<tr><td><span class="parameter">qty </span></td>
+	<td><span class="types"><span class="number">number</span></td>
+	<td>How many to allocate</td>
+	</td></tr>
+	</table>
 				<hr>
 				<a class="anchor" id="selector_ConditionUpdate"></a>
 				<h3>ConditionUpdate</h3>

@@ -359,37 +359,37 @@
 					<a class="anchor" id="table_EMmatch"></a>
 					<h3>EMmatch</h3>
 					<p>
-						EM matches details
+						EM matches from database. Note the table items are in uppercase
 					</p>
 					<h4>Fields</h4>
 					<ul class="ul-no-bullets">
 						<li>
-							<span class="parameter">dbid</span>
+							<span class="parameter">DBID</span>
 							<span class="types"><span class="number">number</span></span>
 							Databse id.
 						</li>
 						<li>
-							<span class="parameter">name</span>
+							<span class="parameter">NAME</span>
 							<span class="types"><span class="string">string</span></span>
 							Matching id name.
 						</li>
 						<li>
-							<span class="parameter">category</span>
+							<span class="parameter">CATEGORY</span>
 							<span class="types"><span class="string">string</span></span>
 							Not applicable to weapons (Missile,Torpedo)
 						</li>
 						<li>
-							<span class="parameter">type</span>
+							<span class="parameter">TYPE</span>
 							<span class="types"><span class="string">string</span></span>
 							Not applicable to Facility
 						</li>
 						<li>
-							<span class="parameter">subtype</span>
+							<span class="parameter">SUBTYPE</span>
 							<span class="types"><span class="number">number</span></span>
 							Type of item within the contact type ( subtype is "Fighter" within scope of Aircraft)
 						</li>
 						<li>
-							<span class="parameter">missile_defence</span>
+							<span class="parameter">MISSILE_DEFENCE</span>
 							<span class="types"><span class="number">number</span></span>
 							Applicable to Facility and Ships
 						</li>
@@ -413,18 +413,18 @@
 						</li>
 						<li>
 							<span class="parameter">solid</span>
-							<span class="types"><span class="string">string</span></span>
-							Precise detected (True/false)
+							<span class="types"><span class="boolen">True/false</span></span>
+							Precise detected
 						</li>
 						<li>
 							<span class="parameter">sensor_dbid</span>
 							<span class="types"><span class="number">number</span></span>
-							Databse id.
+							Sensor detecting databse id
 						</li>
 						<li>
 							<span class="parameter">sensor_name</span>
 							<span class="types"><span class="string">string</span></span>
-							Sensor name.
+							Sensor name
 						</li>
 						<li>
 							<span class="parameter">sensor_type</span>
@@ -439,7 +439,7 @@
 						<li>
 							<span class="parameter">sensor_maxrange</span>
 							<span class="types"><span class="number">number</span></span>
-							Sensor range
+							Sensor maximum range (nm)
 						</li>
 					</ul>
 					<hr>
@@ -703,14 +703,11 @@
 						A Position on the map, referred to with latitude (north/south) and longitude (east/west)
 						coordinates. These can
 						be represented in two forms, degrees minutes seconds, and decimal degrees. The Command Lua API
-						supports both
-						forms.
+						supports both forms.
 					</p>
 					<p>
 						A set of latitude and longitude to define a point. Within the simulation, the values are
-						recorded in
-						decimal
-						degrees.
+						recorded in	decimal	degrees.
 					</p>
 					<h4>Fields</h4>
 					<ul class="ul-no-bullets">
@@ -723,6 +720,15 @@
 							<span class="types"><span class="number">number</span></span>
 						</li>
 					</ul>
+					<h5>Example</h5>
+					<div class="example">
+						<code>
+au = ScenEdit_GetUnit({name='B-1B Lancer', guid='0SOLWP-0HMB9OFB9A66F'}) <br>
+print(au.course) <br>
+{ [1] = { latitude = 38.477990037757, longitude = -130.951197534651 }, <br>
+[2] = { latitude = 36.3838438349146, longitude = -133.491860024409} }
+						</code>
+					</div>
 					<hr>
 					<a class="anchor" id="table_LoadoutInfo"></a>
 					<h3>LoadoutInfo</h3>

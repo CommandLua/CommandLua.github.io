@@ -67,6 +67,8 @@
  				<ul class="ul-2-columns">
 					<li><span class="datatype"><a href="#dataType_Altitude">Altitde</a></span></li>
 					<li><span class="datatype"><a href="#dataType_Arc">Arc</a></span></li>
+					<li><span class="datatype"><a href="#dataType_ContactIdStatus">ContactIdStatus</a></span></li>
+					<li><span class="datatype"><a href="#dataType_ContactType">ContactType</a></span></li>
 					<li><span class="datatype"><a href="#dataType_DateTime">DateTime</a></span></li>
 					<li><span class="datatype"><a href="#dataType_GUID">GUID</a></span></li>
 					<li><span class="datatype"><a href="#dataType_KeyStore">KeyStore</a></span></li>
@@ -77,6 +79,8 @@
 					<li><span class="datatype"><a href="#dataType_Longitude">Longitude</a></span></li>
 					<li><span class="datatype"><a href="#dataType_Size">Size</a></span></li>
 					<li><span class="datatype"><a href="#dataType_Stance">Stance</a></span></li>
+					
+					<li><span class="datatype"><a href="#dataType_TargetingMode">TargetingMode</a></span></li>
 					<li><span class="datatype"><a href="#dataType_TargetTypeWRA">TargetTypeWRA</a></span></li>
 					<li><span class="datatype"><a href="#dataType_TimeStamp">TimeStamp</a></span></li>
 					<li><span class="datatype"><a href="#dataType_Unit__Types">Unit__Types</a></span></li>
@@ -117,6 +121,55 @@
                     <img src=".\images\datatypes_1_arc_codes.jpg" width="200">
                 </p>
                 <hr>
+
+				<a class="anchor" id="dataType_ContactIdStatus"></a>
+					<h3>ContactIdStatus</h3>
+					<p><details><summary>Identification status
+					</p>
+					 </summary>
+					<p><b>Description 	= Code</b></p>
+					 <ul class="ul-no-bullets">
+        <li>Unknown = 0</li>
+        <li>KnownDomain = 1</li>
+        <li>KnownType = 2</li>
+        <li>KnownClass = 3</li>
+        <li>PreciseID = 4</li>
+					</ul>
+					</details>				
+				<hr>
+				
+				<a class="anchor" id="dataType_ContactType"></a>
+					<h3>ContactType</h3>
+					<p><details><summary>Contact Type Codes
+					</p>
+					 </summary>
+					<p><b>Description 	= Code</b></p>
+					 <ul class="ul-no-bullets">
+        <li>Air = 0</li>
+        <li>Missile = 1</li>
+        <li>Surface = 2</li>
+        <li>Submarine = 3</li>
+        <li>Aimpoint = 5</li>
+        <li>Orbital = 6</li>
+        <li>Facility_Fixed = 7</li>
+        <li>Facility_Mobile = 8</li>
+        <li>Torpedo = 9</li>
+        <li>Mine = 10</li>
+        <li>Explosion = 11</li>
+        <li>Decoy_Air = 13</li>
+        <li>Decoy_Surface = 14</li>
+        <li>Decoy_Land = 15</li>
+        <li>Decoy_Sub = 16</li>
+        <li>Sonobuoy = 17</li>
+        <li>Installation = 18</li>
+        <li>AirBase = 19</li>
+        <li>NavalBase = 20</li>
+        <li>MobileGroup = 21</li>
+        <li>ActivationPoint = 22</li>
+					</ul>
+					</details>				
+				<hr>
+
                 <h3><a class="anchor" id="dataType_DateTime"></a>DateTime</h3>
                 <p>
                     DateTime is displayed and changed as per LOCALE e.g. US would be 'MM/DD/YYYY HH:MM:SS AM/PM' eg
@@ -378,23 +431,36 @@
 						Stance/Posture: how one side sees another.
 					</p>
 					
-					<p>When setting the value, either the number or the description (in quotes) can be used.</p>
+					<p>When setting the value, either the number or the description (in quotes) can be used. <br>
+					In some cases, the single letter code must be used; this is indicated by "Stance(letter)"</p>
 					<p><details><summary>Stance Codes</p>
 					 
 					</summary>
 					<ul class="ul-no-bullets">
-					<li><b>Description 	= Code</b></li>
-						<li>Neutral 	= 0</li>
-						<li>Friendly 	= 1</li>
-						<li>Unfriendly 	= 2</li>
-						<li>Hostile 	= 3</li>
-						<li>Unknown 	= 4</li>
+					<li><b>Description 	= Code (letter)</b></li>
+						<li>Neutral 	= 0 (N)</li>
+						<li>Friendly 	= 1 (F)</li>
+						<li>Unfriendly 	= 2 (U)</li>
+						<li>Hostile 	= 3 (H)</li>
+						<li>Unknown 	= 4 (X)</li>
 					</ul>
 					 </details>
 					<hr>
-				<a class="anchor" id="dataType_TargetTypeWRA"></a>
+					<a class="anchor" id="dataType_TargetingMode"></a>
+					<h3>TargetingMode</h3>
+					<p>How is contact targeted.</p>
+					<p><details><summary>Mode Codes</p>
+					</summary>
+					<p><b>Description 	= Code</b></p>
+					<ul class="ul-no-bullets" >
+						<li>AutoTargeted 		= 0</li>
+						<li>ManualWeaponAlloc 	= 1</li>
+					</ul>
+					</details>
+					<hr>
+					<a class="anchor" id="dataType_TargetTypeWRA"></a>
 					<h3>TargetTypeWRA</h3>
-					<p>Target type.</p>
+					<p>Target type for Weapon Release Authority.</p>
 					<p><details><summary>Target Type Codes</p>
 					</summary>
 					<p><b>Description 	= Code</b></p>
@@ -977,6 +1043,9 @@
 					</details>
 				
 				<hr>
+
+
+
 				<a class="anchor" id="dataType_Weather"></a>
 				<h3>Weather</h3>
 				<p>Weather conditions.</p>
