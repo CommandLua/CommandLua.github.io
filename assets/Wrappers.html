@@ -260,7 +260,7 @@ end
 				<h3>Doctrine</h3>
 		
 		
-				Doctrine options. </p>
+				Doctrine options. These are used by the Set/Get_Doctrine commands currently. </p>
 		
 		
 				<p>For each field, adding the suffix "_player_editable" determines if the player can alter the setting. Not
@@ -280,17 +280,17 @@ end
 						</td></tr>
 						<tr><td><span class="parameter">rtb_when_winchester</span>
 						<td><span class="types"><span class="boolean">True/False</span></span>
-						<td>(obsolete, see the new doctrine options) True if the unit should return to base when out of
-							weapons
+						<td>True if the unit should return to base when out of							weapons
+						<td>Obsolete, see the new doctrine options 
 						</td></tr>
 						<tr><td><span class="parameter">ignore_plotted_course</span>
 						<td><span class="types"><span class="boolean">True/False</span></span>
 						<td>True if the unit should ignore plotted course
 						</td></tr>
 						<tr><td><span class="parameter">engaging_ambiguous_targets</span>
-						<td><span class="types"><span class="string">string</span></span>
+						<td><span class="types"><a href="DataTypes.html#dataType_ROE#BTAT">AmbiguousTtargets</a></span>
+						<td>How is the ambiguosity of the target treated
 						<td>
-						<td>Ignore(0), Optimistic(1), or Pessimistic(2)
 						</td></tr>
 						<tr><td><span class="parameter">automatic_evasion</span>
 						<td><span class="types"><span class="boolean">True/False</span></span>
@@ -301,9 +301,14 @@ end
 						<td>True if the unit should try to avoid approaching its target, only valid for ships
 						</td></tr>
 						<tr><td><span class="parameter">use_refuel_unrep</span>
-						<td><span class="types"><span class="string">string</span></span>
+						<td><span class="types"><a href="DataTypes.html#dataType_ROE#UNREP">UNREP</a></span></span>
+						<td>How is underway replenishment used
 						<td>
-						<td>Always_ExceptTankersRefuellingTankers(0), Never(1), Always_IncludingTankersRefuellingTankers(2)
+						</td></tr>
+						<tr><td><span class="parameter">refuel_unrep_allied</span>
+						<td><span class="types"><a href="DataTypes.html#dataType_ROE#UNREP">UNREP Allies</a></span>
+						<td>Can Allied uniits be replenished</td>
+						<td>
 						</td></tr>
 						<tr><td><span class="parameter">engage_opportunity_targets</span>
 						<td><span class="types"><span class="boolean">True/False</span></span>
@@ -318,158 +323,143 @@ end
 						<td>True if EMCON should be ignored and all systems should go active when engaged
 						</td></tr>
 						<tr><td><span class="parameter">quick_turnaround_for_aircraft</span>
-						<td><span class="types"><span class="string">string</span></span>
+						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Yes = 0 <br> FightersAndASW = 1 <br>No = 2 </span></span></span>
+						<td>  
 						<td>
-						<td>Yes(0), FightersAndASW(1), No(2)
 						</td></tr>
 						<tr><td><span class="parameter">air_operations_tempo</span>
-						<td><span class="types"><span class="string">string</span></span>
+						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Surge = 0 <br> Sustained = 1 </span></span></span>
 						<td>
-						<td>Surge(0), Sustained(1)
+						<td>
 						</td></tr>
 						<tr><td><span class="parameter">kinematic_range_for_torpedoes</span>
-						<td><span class="types"><span class="string">string</span></span>
+						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">AutomaticAndManualFire = 0 <br> ManualFireOnly = 1 <br> No = 2 </span></span></span>
 						<td>
-						<td>AutomaticAndManualFire(0), ManualFireOnly(1), No(2)
+						<td>
 						</td></tr>
 						<tr><td><span class="parameter">weapon_control_status_air</span>
-						<td><span class="types"><span class="string">string</span></span>
-						<td></td>
-						<td>Free(0), Tight(1), Hold(2)
+						<td><span class="types"><a href="DataTypes.html#dataType_ROE#WCS">WCS</a></span>
+						<td>Weapon control for engaging air units</td>
+						<td>
 						</td></tr>
 						<tr><td><span class="parameter">weapon_control_status_surface</span>
-						<td><span class="types"><span class="string">string</span></span>
-						<td></td>
-						<td>Free(0), Tight(1), Hold(2)
+						<td><span class="types"><a href="DataTypes.html#dataType_ROE#WCS">WCS</a></span>
+						<td>Weapon control for engaging surface units</td>
+						<td>
 						</td></tr>
 						<tr><td><span class="parameter">weapon_control_status_subsurface</span>
-						<td><span class="types"><span class="string">string</span></span>
-						<td></td>
-						<td>Free(0), Tight(1), Hold(2)
+						<td><span class="types"><a href="DataTypes.html#dataType_ROE#WCS">WCS</a></span>
+						<td>Weapon control for engaging subsurface units</td>
+						<td>
 						</td></tr>
 						<tr><td><span class="parameter">weapon_control_status_land</span>
-						<td><span class="types"><span class="string">string</span></span>
-						<td></td>
-						<td>Free(0), Tight(1), Hold(2)
-						</td></tr>
-						<tr><td><span class="parameter">refuel_unrep_allied</span>
-						<td><span class="types"><span class="string">string</span></span>
-						<td></td>
-						<td>Yes(0), Yes_ReceiveOnly(1), Yes_DeliverOnly(2), No(3)
+						<td><span class="types"><a href="DataTypes.html#dataType_ROE#WCS">WCS</a></span>
+						<td>Weapon control for engaging land units</td>
+						<td>
 						</td></tr>
 						<tr><td><span class="parameter">fuel_state_planned</span>
-						<td><span class="types"><span class="string">string</span></span>
+						<td><span class="types"><a href="DataTypes.html#dataType_ROE#FuelLevel">JokerFuelLevel</a></span>
 						<td></td>
-						<td>Bingo(0), Joker10Percent(1), Joker20Percent(2), Joker25Percent(3), Joker30Percent(4),
-							Joker40Percent(5), Joker50Percent(6), Joker60Percent(7), Joker70Percent(8), Joker75Percent(9),
-							Joker80Percent(10), Joker90Percent(11)
+						<td>
 						</td></tr>
 						<tr><td><span class="parameter">fuel_state_rtb</span>
-						<td><span class="types"><span class="string">string</span></span>
+						<td><span class="types"><a href="DataTypes.html#dataType_ROE#RTB_Behaviour">OnFuelRTB</a></span>
 						<td></td>
-						<td>No(0), YesLastUnit(1), YesFirstUnit(2), YesLeaveGroup(3)
+						<td>
 						</td></tr>
 						<tr><td><span class="parameter">weapon_state_planned</span>
 						<td><span class="types"><a href="DataTypes.html#dataType_WeaponDoctrine"></a>WeaponDoctrine</a></span>
 						<td>See Weapon Doctrine table below
 						</td></tr>
 						<tr><td><span class="parameter">weapon_state_rtb</span>
-						<td><span class="types"><span class="string">string</span></span>
+						<td><span class="types"><a href="DataTypes.html#dataType_ROE#RTB_Behaviour">OnWeaponRTB</a></span>
 						<td></td>
-						<td>No(0), YesLastUnit(1), YesFirstUnit(2), YesLeaveGroup(3)
+						<td>
 						</td></tr>
 						<tr><td><span class="parameter">gun_strafing</span>
-						<td><span class="types"><span class="string">string</span></span>
+						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">No = 0 <br> Yes = 1<span></span></span>
 						<td></td>
-						<td>No(0), Yes(1)
+						<td>
 						</td></tr>
 						<tr><td><span class="parameter">jettison_ordnance</span>
-						<td><span class="types"><span class="string">string</span></span>
+						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">No = 0 <br> Yes = 1<span></span></span>
 						<td></td>
-						<td>No(0), Yes(1)
+						<td>
 						</td></tr>
 						<tr><td><span class="parameter">avoid_contact</span>
-						<td><span class="types"><span class="string">string</span></span>
+						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">No = 0 <br> Yes_ExceptSelfDefence = 1 <br>Yes_Always = 2 <span></span></span>
 						<td></td>
-						<td>No(0), Yes_ExceptSelfDefence(1), Yes_Always(2)
+						<td>
 						</td></tr>
 						<tr><td><span class="parameter">dive_on_threat</span>
-						<td><span class="types"><span class="string">string</span></span>
+						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Yes = 0 <br> Yes_ESM_Only = 1 <br> Yes_Ships20nm_Aircraft30nm = 2 <br> No = 3 <span></span></span>
 						<td></td>
-						<td>Yes(0), Yes_ESM_Only(1), Yes_Ships20nm_Aircraft30nm(2), No(3)
+						<td>
 						</td></tr>
 						<tr><td><span class="parameter">recharge_on_patrol</span>
-						<td><span class="types"><span class="string">string</span></span>
+						<td><span class="types"><a href="DataTypes.html#dataType_ROE#BatteryRecharge">BatteryRecharge</a></span>
 						<td></td>
-						<td>Recharge_Empty(0), Recharge_10_Percent(10), Recharge_20_Percent(20), Recharge_30_Percent(30),
-							Recharge_40_Percent(40), Recharge_50_Percent(50), Recharge_60_Percent(60),
-							Recharge_70_Percent(70), Recharge_80_Percent(80), Recharge_90_Percent(90)
+						<td>
 						</td></tr>
 						<tr><td><span class="parameter">recharge_on_attack</span>
-						<td><span class="types"><span class="string">string</span></span>
+						<td><span class="types"><a href="DataTypes.html#dataType_ROE#BatteryRecharge">BatteryRecharge</a></span>
 						<td></td>
-						<td>Recharge_Empty(0), Recharge_10_Percent(10), Recharge_20_Percent(20), Recharge_30_Percent(30),
-							Recharge_40_Percent(40), Recharge_50_Percent(50), Recharge_60_Percent(60),
-							Recharge_70_Percent(70), Recharge_80_Percent(80), Recharge_90_Percent(90)
+						<td>
 						</td></tr>
 						<tr><td><span class="parameter">use_aip</span>
-						<td><span class="types"><span class="string">string</span></span>
+						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">No = 0 <br> Yes_AttackOnly = 1 <br>Yes_Always = 2 <span></span></span>
 						<td></td>
-						<td>No(0), Yes_AttackOnly(1), Yes_Always(2)
+						<td>
 						</td></tr>
 						<tr><td><span class="parameter">dipping_sonar</span>
-						<td><span class="types"><span class="string">string</span></span>
+						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Automatically_HoverAnd150ft = 0 <br> ManualAndMissionOnly = 1 <span></span></span>
 						<td></td>
-						<td>Automatically_HoverAnd150ft(0), ManualAndMissionOnly(1)
+						<td>
 						</td></tr>
 						<tr><td><span class="parameter">bvr_logic</span>
-						<td><span class="types"><span class="string">string</span></span>
+						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">StraightIn = 0 <br> Crank = 1 <br> Drag = 2 <span></span></span>
 						<td></td>
-						<td>StraightIn(0), Crank(1), Drag(2)
+						<td>
 						</td></tr>
 						<tr><td><span class="parameter">withdraw_on_damage</span>
-						<td><span class="types"><span class="string">string</span></span>
+						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Ignore = 0 <br> Percent5 = 1 <br> Percent25 = 2 <br> Percent50 = 3 <br> Percent75 = 4 <span></span></span>
 						<td></td>
-						<td>Ignore(0), Percent5(1), Percent25(2), Percent50(3), Percent75(4)
+						<td>
 						</td></tr>
 						<tr><td><span class="parameter">withdraw_on_fuel</span>
-						<td><span class="types"><span class="string">string</span></span>
+						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Ignore = 0 <br> Bingo = 1 <br> Percent25 = 2 <br> Percent50 = 3 <br> Percent75 = 4 <br> Percent100 = 5 <span></span></span>
 						<td></td>
-						<td>Ignore(0), Bingo(1), Percent25(2), Percent50(3), Percent75(4), Percent100(5)
+						<td>
 						</td></tr>
 						<tr><td><span class="parameter">withdraw_on_attack</span>
-						<td><span class="types"><span class="string">string</span></span>
+						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Ignore = 0 <br> Exhausted = 1 <br> Percent25 = 2 <br> Percent50 = 3 <br> Percent75 = 4 <br> Percent100 = 5 <span></span></span>
 						<td></td>
-						<td>Ignore(0), Exhausted(1), Percent25(2), Percent50(3), Percent75(4), Percent100(5),
-							LoadFullWeapons(6)
+						<td>
 						</td></tr>
 						<tr><td><span class="parameter">withdraw_on_defence</span>
-						<td><span class="types"><span class="string">string</span></span>
+						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Ignore = 0 <br> Exhausted = 1 <br> Percent25 = 2 <br> Percent50 = 3 <br> Percent75 = 4 <br> Percent100 = 5 <span></span></span>
 						<td></td>
-						<td>Ignore(0), Exhausted(1), Percent25(2), Percent50(3), Percent75(4), Percent100(5),
-							LoadFullWeapons(6)
+						<td>
 						</td></tr>
 						<tr><td><span class="parameter">deploy_on_damage</span>
-						<td><span class="types"><span class="string">string</span></span>
+						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Ignore = 0 <br> Percent5 = 1 <br> Percent25 = 2 <br> Percent50 = 3 <br> Percent75 = 4 <span></span></span>
 						<td></td>
-						<td>Ignore(0), Percent5(1), Percent25(2), Percent50(3), Percent75(4)
+						<td>
 						</td></tr>
 						<tr><td><span class="parameter">deploy_on_fuel</span>
-						<td><span class="types"><span class="string">string</span></span>
+						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Ignore = 0 <br> Bingo = 1 <br> Percent25 = 2 <br> Percent50 = 3 <br> Percent75 = 4 <br> Percent100 = 5 <span></span></span>
 						<td></td>
-						<td>Ignore(0) Bingo(1), Percent25(2), Percent50(3), Percent75(4), Percent100(5)
+						<td>
 						</td></tr>
 						<tr><td><span class="parameter">deploy_on_attack</span>
-						<td><span class="types"><span class="string">string</span></span>
+						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Ignore = 0 <br> Exhausted = 1 <br> Percent25 = 2 <br> Percent50 = 3 <br> Percent75 = 4 <br> Percent100 = 5 <br> LoadFullWeapons = 6 <span></span></span>
 						<td></td>
-						<td>Ignore(0), Exhausted(1), Percent25(2), Percent50(3), Percent75(4), Percent100(5),
-							LoadFullWeapons(6)
+						<td>
 						</td></tr>
 						<tr><td><span class="parameter">deploy_on_defence</span>
-						<td><span class="types"><span class="string">string</span></span>
+						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Ignore = 0 <br> Exhausted = 1 <br> Percent25 = 2 <br> Percent50 = 3 <br> Percent75 = 4 <br> Percent100 = 5 <br> LoadFullWeapons = 6 <span></span></span>
 						<td></td>
-						<td>Ignore(0), Exhausted(1), Percent25(2), Percent50(3), Percent75(4), Percent100(5),
-							LoadFullWeapons(6)
+						<td>
 						</td></tr>
 	</table>		
 		
@@ -483,27 +473,28 @@ end
 					<h3>DoctrineWRA</h3>
 		
 		
-					WRA Doctrine options.
+					Weapon Release Authority Doctrine options. <br>
+					Options can not be changed thru the wrapper.
 		
 					</ul>
 		
 	<table class="table_borders" style="width: 100%; margin-left: 0px;">
    	<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
-						<td><span class="parameter">weapon_dbid</span>
-						<td><span class="types"><span class="string">string</span></span>
-						<td>Weapon number [info]
-						</td></tr>
-						<td><span class="parameter">weapon_name</span>
-						<td><span class="types"><span class="string">string</span></span>
-						<td>Weapon name [info]
-						</td></tr>
-						<td><span class="parameter">target_type</span>
-						<td><span class="types"><a href="DataTypes.html#dataType_TargetTypeWRA">TargetTypeWRA</a></span>
-						<td>Type of target [info]
-						</td></tr>
 						<td><span class="parameter">level</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>The doctrine selected (at unit/mission/side) - useful Is just using GUIDs [info]
+						</td></tr>
+						<td><span class="parameter">target_type</span>
+						<td><span class="types"><a href="DataTypes.html#dataType_TargetTypeWRA">TargetTypeWRA</a></span>
+						<td>Type of applicable target 
+						</td></tr>
+						<td><span class="parameter">weapon_dbid</span>
+						<td><span class="types"><span class="string">string</span></span>
+						<td>Weapon DB number 
+						</td></tr>
+						<td><span class="parameter">weapon_name</span>
+						<td><span class="types"><span class="string">string</span></span>
+						<td>Weapon name 
 						</td></tr>
 						<td><span class="parameter">wra</span>
 						<td><span class="table"><a href="Tables.html#table_WRA">WRA</a></span>
@@ -512,8 +503,21 @@ end
 	</tr></table>
 		
 		
-		
-		
+	    <div class="example">
+         <code>
+local a =  local a = ScenEdit_GetDoctrineWRA({guid='a1a52edf-3541-4b55-bea4-58d4e1ab11dc',target_type=2000})<br>
+print(a) <br>
+-- output of the WRA wrapper
+{ LEVEL = 'UNIT', <br>
+  WRA_2 = { WEAPON_DBID = 858, QTY_SALVO = 'Max', WEAPON_NAME = '76mm/62 Compact HE Burst [4 rnds]', SHOOTER_SALVO = 'Max', FIRING_RANGE = 'Max', SELF_DEFENCE = 'Max' }, <br>
+  WRA_1 = { WEAPON_DBID = 1630, QTY_SALVO = 'Max', WEAPON_NAME = '20mm/85 Mk15 Phalanx Blk 1 Burst [300 rnds]', SHOOTER_SALVO = 'Max', FIRING_RANGE = 'Max', SELF_DEFENCE = 'Max' }, <br>
+  WRA_3 = { WEAPON_DBID = 926, QTY_SALVO = 1, WEAPON_NAME = 'RIM-162C ESSM', SHOOTER_SALVO = 1, FIRING_RANGE = 'Max', SELF_DEFENCE = 5 }, <br>
+  TARGET_TYPE = Aircraft_Unspecified }<br>
+   		 </code>
+<p>There is a WRA_??? item for each weapon system in the LEVEL selected, in this case a unit, and for the type of target selected ( 2000 = 'Aircraft_Unspecified'). <br>
+It can be filtered more by using the weapon DBID in which case the WEAPON_DBID and WEAPON_NAME will shown on the parent side with LEVEL and TARGET_TYPE. </p>
+    </div>
+	
 		
 		
 		

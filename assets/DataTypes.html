@@ -70,6 +70,7 @@
 					<li><span class="datatype"><a href="#dataType_ContactIdStatus">ContactIdStatus</a></span></li>
 					<li><span class="datatype"><a href="#dataType_ContactType">ContactType</a></span></li>
 					<li><span class="datatype"><a href="#dataType_DateTime">DateTime</a></span></li>
+					<li><span class="datatype"><a href="#dataType_ROE">Doctrine</a></span></li>
 					<li><span class="datatype"><a href="#dataType_GUID">GUID</a></span></li>
 					<li><span class="datatype"><a href="#dataType_KeyStore">KeyStore</a></span></li>
 					<li><span class="datatype"><a href="#dataType_Latitude">Latitude</a></span></li>
@@ -77,7 +78,7 @@
 					<li><span class="datatype"><a href="#dataType_LoadoutTimeOfDay">LoadoutTimeOfDay</a></span></li>
 					<li><span class="datatype"><a href="#dataType_LoadoutWeather">LoadoutWeather</a></span></li>
 					<li><span class="datatype"><a href="#dataType_Longitude">Longitude</a></span></li>
-					<li><span class="datatype"><a href="#dataType_Size">Size</a></span></li>
+					<li><span class="datatype"><a href="#dataType_Longitude">Longitude</a></span></li>
 					<li><span class="datatype"><a href="#dataType_Stance">Stance</a></span></li>
 					
 					<li><span class="datatype"><a href="#dataType_TargetingMode">TargetingMode</a></span></li>
@@ -89,6 +90,7 @@
 					<li><span class="datatype"><a href="#dataType_Unit_Satellite">Satellite</a></span></li>
 					<li><span class="datatype"><a href="#dataType_Unit_Ship">Ship</a></span></li>
 					<li><span class="datatype"><a href="#dataType_Unit_Submarine">Submarine</a></span></li>
+					<li><span class="datatype"><a href="#dataType_WCS">WeaponControl</a></span></li>
 					<li><span class="datatype"><a href="#dataType_WeaponDoctrine">WeaponDoctrine</a></span></li>
 					<li><span class="datatype"><a href="#dataType_WeaponType">WeaponType</a></span></li>
 					<li><span class="datatype"><a href="#dataType_Weather">Weather</a></span></li>
@@ -176,7 +178,108 @@
                     '8/13/2002 12:14 PM'
                 </p>
                 <hr>
-                 <h3><a class="anchor" id="dataType_GUID"></a>GUID</h3>
+
+                <h3><a class="anchor" id="dataType_ROE"></a>Doctrine/ROE</h3>
+					<a class="anchor" id="dataType_ROE#BTAT" ></a>
+					<p><details><summary>Engaging ambiguous targets</p>
+					 </summary>
+					<p><b>Description 	= Code</b></p>
+					 <ul class="ul-no-bullets">
+        <li>Ignore = 0</li>
+        <li>Optimistic = 1</li>
+        <li>Pessimistic = 2</li>
+					</ul>
+					</details>				
+					<a class="anchor" id="dataType_ROE#UNREP" ></a>
+					<p><details><summary>Underway Replenishment</p>
+					 </summary>
+					<p><b>Description 	= Code</b></p>
+					 <ul class="ul-no-bullets">
+		<li>Always_ExceptTankersRefuellingTankers = 0</li>
+        <li>Never = 1</li>
+        <li>Always_IncludingTankersRefuellingTankers = 2</li>
+					</ul>
+					</details>	
+					<p><details><summary>UNREP Allies</p>
+					 </summary>
+					<p><b>Description 	= Code</b></p>
+					 <ul class="ul-no-bullets">
+		<li>Yes = 0</li>
+        <li>Yes_ReceiveOnly = 1</li>
+        <li>Yes_DeliverOnly = 2</li>
+		<li>No = 3</li>
+					</ul>
+					</details>	
+ 
+					<a class="anchor" id="dataType_ROE#FuelLevel" ></a>
+					<p><details><summary>Fuel levels</p>
+					 </summary>
+					<p><b>Description 	= Code</b></p>
+					 <ul class="ul-no-bullets">
+					 <li>Bingo = 0</li>
+					 <li>Joker10Percent = 1</li>
+					 <li>Joker20Percent = 2</li> 
+					 <li>Joker25Percent = 3</li> 
+					 <li>Joker30Percent = 4</li> 
+					 <li>Joker40Percent = 5</li> 
+					 <li>Joker50Percent = 6</li> 
+					 <li>Joker60Percent = 7</li> 
+					 <li>Joker70Percent = 8</li> 
+					 <li>Joker75Percent = 9</li> 
+					 <li>Joker80Percent = 10</li>
+					 <li>Joker90Percent = 11</li>
+					</ul>
+					</details>				
+
+				<a class="anchor" id="dataType_ROE#RTB_Behaviour"></a>
+					
+					<p><details><summary>RTB behaviour when unit reaches RTB (fuel or weapons)</p>
+					 </summary>
+					<p><b>Description 	= Code</b></p>
+					 <ul class="ul-no-bullets">
+						<li>0 = No</li>
+						<li>1 = YesLastUnit</li>
+						<li>2 = YesFirstUnit</li>
+						<li>3 = YesLeaveGroup</li>
+					</ul>
+					</details>
+
+				<a class="anchor" id="dataType_ROE#WCS"></a>
+			
+					<p><details><summary>Weapon Control Codes</p>
+					 </summary>
+					<p><b>Description 	= Code</b></p>
+					 <ul class="ul-no-bullets">
+						<li>0 = Free</li>
+						<li>1 = Tight</li>
+						<li>2 = Hold</li>
+					</ul>
+					</details>
+
+				<a class="anchor" id="dataType_ROE#BatteryRecharge"></a>
+			
+					<p><details><summary>Battery Recharge level</p>
+					 </summary>
+					<p><b>Description 	= Code</b></p>
+					 <ul class="ul-no-bullets">
+						<li>0 = Recharge_Empty</li>
+<li>10 = Recharge_10_Percent</li> 
+<li>20 = Recharge_20_Percent</li> 
+<li>30 = Recharge_30_Percent</li>
+<li>40 = Recharge_40_Percent</li> 
+<li>50 = Recharge_50_Percent</li> 
+<li>60 = Recharge_60_Percent</li>
+<li>70 = Recharge_70_Percent</li> 
+<li>80 = Recharge_80_Percent</li> 
+<li>90 = Recharge_90_Percent</li>
+							
+					</ul>
+					</details>
+
+
+				<hr>
+				
+				<h3><a class="anchor" id="dataType_GUID"></a>GUID</h3>
                 <p>
                     Each object in Command is uniquely identified by a GUID. 
 					<p>A GUID is an acronyom that stands for Globally Unique Identifier. It is a 32 character reference id that is highly unlikely to repeat when generated.</p>
@@ -380,6 +483,23 @@
 					</code>
 				</div>
 				<hr>
+
+				<!--a class="anchor" id="dataType_MissionType"></a>
+					<h3>Type of mission</h3>
+					<p><details><summary>Size Codes</p>
+					</summary>
+					<ul class="ul-no-bullets">
+					<li><b>Description = Code</b></li>
+						<li>None*          = 0 </li>
+					</ul>
+					</details>
+				<hr-->
+				
+				<a class="anchor" id="dataType_TrueFalse"></a>
+					<h3>True/False</h3>
+					<p> True/Yes = 1 <br> False/No = 0 </p>   
+				<hr>
+				
 				<a class="anchor" id="dataType_Size"></a>
 					<h3>Size</h3>
 					<p>Size various size attributes (eg flightsize in mission).</p>
@@ -649,7 +769,7 @@
 
 				<a class="anchor" id="dataType_Unit_Facility"></a>
 					<h3>UnitFacility </h3>
-					<p>The category and sub-type for Facility.</p>
+					<p>The category and sub-type for the various facility types</p>
 					<p><details>
 					<summary>Fixed Facility Category Codes</summary>
 					<p><b>Description 	= Code</b></p>
@@ -672,7 +792,7 @@
 					</ul >
 					</details>
 					<details>
-					<summary>Mobile Facility Category Codes</summary>
+					<summary>Ground/mobile Facility Category Codes<span class="pro_only">PRO ONLY</span></summary>
 					<p><b>Description 	= Code</b></p>
 					<ul class="ul-no-bullets" >
 					<li>0 = None</li>
@@ -965,6 +1085,7 @@
 					</details>
 					</p>
 				<hr>
+
 
 				<a class="anchor" id="dataType_WeaponDoctrine"></a>
 						<h3>WeaponDoctrine</h3>

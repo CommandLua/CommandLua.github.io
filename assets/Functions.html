@@ -229,7 +229,7 @@
 				<hr>
 				<h3><a class="anchor" id="GetBuildNumber"></a>GetBuildNumber()</h3>
 				<p>
-					Returns the build number of the game executable.
+					Returns the build number of the current game executable.
 				</p>
 				<h4>Parameters</h4>
 				<ul>
@@ -275,16 +275,16 @@
 				<hr>
 	
 	
-				<h3><a class="anchor" id="ScenEdit_AddCustomLoss"></a>ScenEdit_AddCustomLoss ()</h3>
+				<h3><a class="anchor" id="ScenEdit_AddCustomLoss"></a>ScenEdit_AddCustomLoss ( SideNameOrId, table )</h3>
 				<p>
-					Add entries to the loss list so it can displyed. It wil also show up in the wrapper side.losses.<br>
+					Add non-device entries to the loss list so it can displyed. It wil also show up in the wrapper side.losses.<br>
 					The additional entries replace any existing ones. To remove an entry, use a number of 0.
 				</p>
 				<h4>Parameters</h4>
 				<ul>
 					<li><span class="parameter">side </span>
-						 <span class="types"><span class="string">string </span></span> Side name or guid</li>
-					<li> <span class="parameter">table </span>
+						 <span class="types"><span class="string">string </span></span> Side name or guid to affect</li>
+					<li> <span class="parameter">table {} </span>
 						 <span class="table"> list of</span>
 					<ul>
 						<li><span class="types"><span class="string">string </span></span>Name of loss item</li>
@@ -293,9 +293,9 @@
 				</ul>
 				<h4>Returns</h4>
 				<ul>
-				<li>
-					ScenEdit_AddCustomLoss(<span class="parameter">side name/guid</span>,
-					 <span class="parameter">table <span class="table">of {'name', number}</span>) </span>
+					<li>
+						<span class="types"><span class="boolen">True/False</span></span>
+						True if successful
 					</li>
 				</ul>
 				<h5>Example</h5>
@@ -306,20 +306,29 @@
 				<hr>
 
 
-				<h3><a class="anchor" id="ScenEdit_AddExplosion"></a>ScenEdit_AddExplosion()</h3>
+				<h3><a class="anchor" id="ScenEdit_AddExplosion"></a>ScenEdit_AddExplosion( table )</h3>
 				<p>
 					Detonates a warhead at a specified location.
 				</p>
+				<!--
 				<h4>Syntax</h4>
 				<p>
 					<code
 						class="syntax-example">ScenEdit_AddExplosion(<span class="parameter"><a href="Tables.html#table_Explosion">Explosion</a></span>)</code>
 				</p>
+				-->
 				<h4>Parameters</h4>
 				<ul>
 					<li>
-						<span class="table"><a href="Tables.html#table_Explosion">Explosion</a></span>
-						Describes the explosion.
+						<span class="parameter">table {} </span><span class="table"><a href="Tables.html#table_Explosion">Explosion</a></span>
+						Describes the explosion parameters
+					</li>
+				</ul>
+				<h4>Returns</h4>
+				<ul>
+					<li>
+						<span class="types"><span class="boolen">True/False</span></span>
+						True if function successful
 					</li>
 				</ul>
 				<h5>Example</h5>
@@ -328,10 +337,13 @@
 				</div>
 				</p>
 				<hr>
-				<h3><a class="anchor" id="ScenEdit_AddMinefield"></a>ScenEdit_AddMinefield()</h3>
+
+				<h3><a class="anchor" id="ScenEdit_AddMinefield"></a>ScenEdit_AddMinefield( table )</h3>
 				<p>
-					Attempt to lay a minefield
+					Attempt to lay a minefield on a Side passing the mine type, number to attempt to lay, the arming delay and the area of the field to sow them in.<br>
+					Normal RPs are checked first, and then No-nav/Exclusion zone RPs for the area to lay mines in.
 				</p>
+				<!--
 				<h4>Syntax</h4>
 				<p>
 					<code class="syntax-example">
@@ -344,34 +356,34 @@
 							)
 					</code>
 				</p>
-				<h5>Example</h5>
-				<p>
-					<code class="syntax-example">
-						ScenEdit_AddMinefield ( { side='Blue', dbid=2345, number=100, delay=60000, area={'rp-1','rp-2','rp-3','rp-4'} } )
-					</code>
-				</p>
+				-->
 				<h4>Parameters</h4>
 				<ul>
-					<li><span class="parameter">side</span>
-						<span class="types"><span class="string">string</span></span>
-						Side name or guid</li>
-					<li><span class="parameter">dbid</span>
-						<span class="types"><span class="number">number</span></span>
-						The database id of the mine to use</li>
-					<li><span class="parameter">number</span>
-						<span class="types"><span class="number">number</span></span>
-						The number to try to lay</li>
-					<li><span class="parameter">delay</span>
-						<span class="types"><span class="number">number</span></span>
-						The arming delay in seconds</li>
-					<li><span class="parameter">area</span>
-						<span class="table">table</span>
-						The area (as table of RP points) to lay mines in</li>
+					<li> <span class="parameter">table {} </span>
+						<ul>
+						<li><span class="parameter">side</span>
+							<span class="types"><span class="string">string</span></span>
+							Side name or guid</li>
+						<li><span class="parameter">dbid</span>
+							<span class="types"><span class="number">number</span></span>
+							The database id of the mine to use</li>
+						<li><span class="parameter">number</span>
+							<span class="types"><span class="number">number</span></span>
+							The number to attempt to lay</li>
+						<li><span class="parameter">delay</span>
+							<span class="types"><span class="number">number</span></span>
+							The arming delay in seconds</li>
+						<li><span class="parameter">area</span>
+							<!--span class="table">table</span-->
+							<span class="types"><span class="tooltip">table<span class="tooltiptext">list of  refernce point guids or names </span></span></span>
+							The area to lay the mines in</li>
+						</ul>
 				</ul>
 				<h4>Returns</h4>
 				<p>
 					<span class="types"><span class="number">number</span></span>
-					number of mines laid</p>
+					number of mines actually laid</p>
+
 				<h5>Example</h5>
 				<div class="example">
 					<code>
@@ -379,139 +391,145 @@
 					</code>
 				</div>
 				<hr>
-    <h3><a class="anchor" id="ScenEdit_AddMission"></a>ScenEdit_AddMission (SideNameOrId, MissionNameOrId, MissionType,
-        MissionOptions)</h3>
-    <p>Add new mission.</p>
+ 
+   <h3><a class="anchor" id="ScenEdit_AddMission"></a>ScenEdit_AddMission (SideNameOrId, MissionNameOrId, MissionType, MissionOptions)</h3>
+    <p>Create a new mission definition based on the supplied parameters</p>
     <h4>Parameters</h4>
     <ul>
         <li><span class="parameter">SideNameOrId</span> <span class="types"><span class="string">string</span></span>
-            The
-            mission side</li>
+            The mission side</li>
         <li><span class="parameter">MissionNameOrId</span> <span class="types"><span class="string">string</span></span>
-            The
-            mission name</li>
-        <li><span class="parameter">MissionType</span> <span class="types"><span class="string">string</span></span> The
-            mission type (Strike, Ferry, Patrol, etc)</li>
+            The mission name. <br>It is suggest to make the mission name unique across the scenario to ensure there are no conflicts as to the side it is applicable to</li>
+        <li><span class="parameter">MissionType</span> <span class="types"><span class="tooltip">value<span class="tooltiptext">Strike, Patrol, Support, Ferry, Mining, Mineclearing, Cargo </span></span></span> The mission type </li>
         <li><span class="parameter">MissionOptions</span> <span class="selector"><a
                     href="Selectors.html#selector_NewMission">NewMission</a></span> The mission specific options as a table</li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="wrapper"><a href="Wrappers.html#wrapper_Mission">Mission</a></span>A mission descriptor of the added mission
-        or<code>nil</code> otherwise.</p>
+    <p><span class="wrapper"><a href="Wrappers.html#wrapper_Mission">Mission</a></span>A mission descriptor of the added mission or<code>nil</code> otherwise</p>
+
     <h5>Example</h5>
     <div class="example">
         <code><span class="local">local</span> mission = ScenEdit_AddMission(<span class="string">'USA'</span>,<span class="string">'Marker strike'</span>,<span class="string">'strike'</span>,{<span class="global">type</span>=<span class="string">'land'</span>})</code>
     </div>
 
     <hr>
-    <h3><a class="anchor" id="ScenEdit_AddReferencePoint"></a>ScenEdit_AddReferencePoint (descriptor)</h3>
-    <p>Add new reference point(s).</p>
-    <p>This function adds new reference point(s) as defined by a descriptor.As this function also calls
-        ScenEdit_SetReferencePoint() at the end, those parameters can also be passed in this function.</p>
-    <p>It can take a new referrnce point, or a table of new reference points.The descriptor<b>must</b> contain at least
-        a
-        side, and one set of latitude and longitude, or an area defined by one or more latitude and longitude values.
-        Points
-        can also be relative to a unit based on bearing and distence.This applies to ALL bearing type rp(s) in the
-        function.
-        Field = RelativeTo The unit name/GUID that the RP(s) are relative to.</p>
+    <h3><a class="anchor" id="ScenEdit_AddReferencePoint"></a>ScenEdit_AddReferencePoint (table)</h3>
+    <p>Create new reference point(s).</p>
+    <p>This function adds new reference point(s) as defined by the table.</p>
+    <p>It can take a single new referrnce point, or a table of new reference points. The descriptor<b>must</b> contain at least a side, and one set of latitude and longitude, or the side and an area defined by one or more latitude and longitude values.<br>
+		Points can also be relative to a specified unit based on bearing and distence. This applies to ALL the rp(s) in the function call, and the unit name/GUID that the RP(s) are relative to has to be on the same side.<br>
+		This is mainly because Reference Points are recorded by side.</p>
     <h4>Parameters</h4>
     <ul>
         <li>
-            <span class="parameter">descriptor</span> <span class="selector"><a
-                    href="Selectors.html#selector_ReferencePointSelector">ReferencePointSelector</a> or <a class="type"
-                    href="Wrappers.html#wrapper_ReferencePoint">{ReferencePoint}</a>
-            </span> The reference point details to be created. Field 'area' can be<br>(a) Table of reference points
-            {name,
-            longitude, latitude} if 'RelativeTo' not used, or<br> (b) table of reference points {name, bearing,
-            distance} if
-            'RelativeTo' used.<br> Leaving out name will default it to noraml 'RP-..'
+            <span class="parameter">table {} </span> <span class="selector"><a
+                    href="Selectors.html#selector_ReferencePointSelector">ReferencePointSelector</a>
+            </span> The reference point details to be created.<br> The field 'area' can be<br>(a) a single reference point with usual id of name, longitude, latitude, highlighted, locked, or<br> (b) a table of new reference points {name, longitude, latitude, ...}.<br> Leaving out name will default it to normal naming convention 'RP-..'
         </li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="wrapper"><a href="Wrappers.html#wrapper_ReferencePoint">ReferencePoint</a></span>The reference point
-        wrapper for the new reference point, or the first one in an area.</p>
+    <p><span class="wrapper"><a href="Wrappers.html#wrapper_ReferencePoint">ReferencePoint</a></span>The reference point wrapper for the new reference point, or the last one in the area if supplied.</p>
+ 
     <h5>Example</h5>
     <div class="example">
-        <code>ScenEdit_AddReferencePoint( {side=<span class="string">"United States"</span>, name=<span class="string">"Downed Pilot"</span>, lat=<span class="number">0.1</span>, lon=<span class="number">4</span>, highlighted=<span class="keyword">true</span>})</code>
+        <code>ScenEdit_AddReferencePoint( {side=<span class="string">"United States"</span>, name=<span class="string">"Downed Pilot"</span>, <br>latitude=<span class="number">0.1</span>, longitude=<span class="number">4</span>, highlighted=<span class="keyword">true</span>})</code>
     </div>
 
     <div class="example">
-        <code>ScenEdit_AddReferencePoint( {side=<span class="string">'sidea'</span>, RelativeTo=<span class="string">'USN Dewey'</span>, bearing=<span class="number">45</span> ,distance=<span class="number">20</span>, clear=<span class="keyword">true</span> })</code>
+        <code>ScenEdit_AddReferencePoint( {side=<span class="string">'sidea'</span>, RelativeTo=<span class="string">'USN Dewey'</span>, <br>bearing=<span class="number">45</span> ,distance=<span class="number">20</span>, clear=<span class="keyword">true</span> })</code>
+    </div>
+    <div class="example">
+        <code>ScenEdit_AddReferencePoint( {side=<span class="string">"United States"</span>, name=<span class="string">"Downed Pilot Area"</span>, <br>area = { {latitude=<span class="number">10</span>, longitude=<span class="number">4</span>, highlighted=<span class="keyword">true</span>},<br> {latitude=<span class="number">15</span>, longitude=<span class="number">4</span>, highlighted=<span class="keyword">true</span>}, {latitude=<span class="number">20</span>, longitude=<span class="number">4</span>} } } )</code>
     </div>
     <hr>
-    <h3><a class="anchor" id="ScenEdit_AddReloadsToUnit"></a>ScenEdit_AddReloadsToUnit (descriptor)</h3>
-    <p>Adds weapons into a mount.</p>
+
+    <h3><a class="anchor" id="ScenEdit_AddReloadsToUnit"></a>ScenEdit_AddReloadsToUnit (table)</h3>
+    <p>Add weapon reloads onto a local mount rather than its magazine for a unit as defined in the table.
+	What is needed to define the table?</p>
     <h4>Parameters</h4>
     <ul>
         <li>
-        	<span class="parameter">descriptor</span><span class="selector"><a href="Selectors.html#selector_Weapon2Mount">Weapon2Mount</a></span> Describes the weapon and mount to update
+        	<span class="parameter">table {}</span><span class="selector"><a href="Selectors.html#selector_Weapon2Mount">Weapon2Mount</a></span> Describes the weapon and mount to update
         </li>
     </ul>
     <h4>Returns</h4>
     <p><span class="types"><span class="number">number</span></span> Number of items added to the magazine</p>
+
     <h5>Example</h5>
     <div class="example">
         <code>ScenEdit_AddReloadsToUnit({unitname=<span class="string">'Mech Inf #1'</span>, wpn_dbid=<span class="number">773</span>, number=<span class="number">1</span>, w_max=<span class="number">10</span>})</code>
     </div>
     </p>
     <hr>
+
     <h3><a class="anchor" id="ScenEdit_AddSide"></a>ScenEdit_AddSide (table)</h3>
-    <p>Add a side with the specified name.</p>
+    <p>Create new side with the specified name.</p>
     <h4>Parameters</h4>
     <ul>
-        <li><span class="parameter">table</span> Table with 'name' key</li>
+        <li><span class="parameter">table {}</span> Table with 'side' key</li>
+    <p><span class="note">The keyword 'name' can be used for 'side' due to an error.</span></p>
     </ul>
     <h4>Returns</h4>
-    <p><span class="wrapper"><a href="Wrappers.html#wrapper_Side">Side</a></span></p>
+    <p><span class="wrapper"><a href="Wrappers.html#wrapper_Side">Side</a></span>Wrapper for the new side</p>
+
     <h5>Example</h5>
     <div class="example">
-        <code>ScenEdit_AddSide({name=<span class="string">'OPFOR'</span>})</code>
+        <code>ScenEdit_AddSide({side=<span class="string">'OPFOR'</span>})</code>
     </div>
 	<hr>
+
     <h3><a class="anchor" id="ScenEdit_AddSpecialAction"></a>ScenEdit_AddSpecialAction(table)</h3>
-    <p>Add special action to a side</p>
+    <p>Add new special action event to a side. These then will show in under the Special Events button.</p>
     <h4>Parameters</h4>
     <ul>
-        <li><span class="parameter">table</span> <span class="selector"><a href="Selectors.html#selector_SpecialAction">SpecialAction</a></span> 
+        <li><span class="parameter">table {}</span> <span class="selector"><a href="Selectors.html#selector_SpecialAction">SpecialAction</a></span> 
         The SA details</li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="wrapper"><a href="Wrappers.html#wrapper_SpecialAction">SpecialAction</a></span> Details of the Special Action</p>
-	
+    <p><span class="wrapper"><a href="Wrappers.html#wrapper_SpecialAction">SpecialAction</a></span> Details of the Special Action</p>	
+
+    <h5>Example</h5>
+    <div class="example">
+        <code>local LfCR = '\r\n'<br>
+local n = '-- comment 1' .. LfCR .. '-- comment 2' .. LfCR ..'local a = GetBuildNumber()' .. LfCR .. "ScenEdit_MsgBox( 'My build is ' .. a,0)" .. LfCR<br>
+local s = ScenEdit_AddSpecialAction({Side ='usa', ActionNameOrID='sp1', description='test for special actions', ScriptText=n})
+		</code>
+	</div>
     <hr>
-    <h3><a class="anchor" id="ScenEdit_AddUnit"></a>ScenEdit_AddUnit (unit)</h3>
-    <p>Adds a unit based on a descriptor.</p>
+
+    <h3><a class="anchor" id="ScenEdit_AddUnit"></a>ScenEdit_AddUnit (table)</h3>
+    <p>Creates a new unit based on the descriptor. <br>As <a href="#ScenEdit_SetUnit">ScenEdit_SetUnit()</a> is called at the end of this function, additional options that are valid for that function, can be passed in to this function. There should be no need to call <a href="#ScenEdit_SetUnit">ScenEdit_SetUnit()</a> seperately.</p>
     <h4>Parameters</h4>
     <ul>
-        <li><span class="parameter">unit</span> <span class="selector"><a href="Selectors.html#selector_NewUnit">NewUnit</a></span>
-            The unit details to add</li>
+        <li><span class="parameter">table {}</span> <span class="selector"><a href="Selectors.html#selector_NewUnit">NewUnit</a></span>
+            The unit details to add. <br>Note that some settings will depend on the type of unit specified, eg aircraft generally need loadouts and altitude whereas neither is needed by a ship.</li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="wrapper"><a href="Wrappers.html#wrapper_Unit">Unit</a></span> A complete descriptor for the added unit
+    <p><span class="wrapper"><a href="Wrappers.html#wrapper_Unit">Unit</a></span> A wrapper defining the added unit. This will be nil if the function failed to add the unit.
     </p>
-    <h5>Example</h5>
 
+    <h5>Example</h5>
     <div class="example">
         <code>ScenEdit_AddUnit({<span class="global">type</span> =<span class="string">'Aircraft'</span>, name =<span class="string">'F-15C Eagle'</span>, loadoutid =<span class="number">16934</span>,
 heading =<span class="number">0</span>, dbid =<span class="number">3500</span>, side =<span class="string">'NATO'</span>, Latitude=<span class="string">"N46.00.00"</span>,Longitude=<span class="string">"E25.00.00"</span>,
 altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="string">"false"</span>,holdfire=<span class="string">"true"</span>,proficiency=<span class="number">4</span>})</code>
     </div>
 
-
     <div class="example">
         <code>ScenEdit_AddUnit({<span class="global">type</span> =<span class="string">'Air'</span>, unitname =<span class="string">'F-15C Eagle'</span>, loadoutid =<span class="number">16934</span>, dbid =<span class="number">3500</span>, side =<span class="string">'NATO'</span>, Lat=<span class="string">"5.123"</span>,Lon=<span class="string">"-12.51"</span>,alt=<span class="number">5000</span>})</code>
     </div>
 
-
+    <div class="example">
+        <code>ScenEdit_AddUnit( {<span class="global">type</span> =<span class="string">'Ship'</span>, unitname =<span class="string">'GOE II Det C'</span>, dbid =<span class="number">3127</span>, side =<span class="string">'USN'</span>, latitude=<span class="string">"5.123"</span>,longitude=<span class="string">"-12.51"</span>,proficiency='Veteran'} )</code>
+    </div>
     <hr>
-    <h3><a class="anchor" id="ScenEdit_AddWeaponToUnitMagazine"></a>ScenEdit_AddWeaponToUnitMagazine (descriptor)</h3>
-    <p>Adds weapons into a magazine.</p>
+
+    <h3><a class="anchor" id="ScenEdit_AddWeaponToUnitMagazine"></a>ScenEdit_AddWeaponToUnitMagazine (table)</h3>
+    <p>Adds weapons into a magazine.<br> Unlike <a href="#ScenEdit_AddReloadsToUnit">ScenEdit_AddReloadsToUnit()</a> this is adjusting the unit's magazine rather than the local mount. For example, adding more AIM-120 missiles to the carrier magazine for loadout refreshing.</p>
     <h4>Parameters</h4>
     <ul>
-        <li><span class="parameter">descriptor</span> <span class="selector"><a
-                    href="Selectors.html#selector_Weapon2Magazine">Weapon2Magazine</a></span> Describes the weapon and magazine to
-            update
+        <li><span class="parameter">table {}</span> <span class="selector"><a
+                    href="Selectors.html#selector_Weapon2Magazine">Weapon2Magazine</a></span> Describes the weapon and magazine to update
         </li>
     </ul>
     <h4>Returns</h4>
@@ -523,40 +541,63 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     </p>
     <hr>
     <h3><a class="anchor" id="ScenEdit_AddZone"></a>ScenEdit_AddZone (sideName, zoneType, table)</h3>
-    <p>Add no-nav or exclusion zone.<br />...The RPs are normally visible to the side. They can start out 'hidden' by
-        adding
-        hidden=1 to
-        the table</p>
+    <p>Create a non-navigation or exclusion zone.<br />...The RPs are normally visible to the side. They can start out 'hidden' by adding hidden=1 to the table</p>
     <h4>Parameters</h4>
     <ul>
-        <li><span class="parameter">sideName</span> <span class="types"><span class="string">string</span></span> Side
-            name/GUID</li>
-        <li><span class="parameter">zoneType</span> <span class="types"><span class="string">string</span></span> Type
-            of
-            zone to add: 0 = no-nav, 1 = exclusion</li>
-        <li><span class="parameter">table</span> <span class="types"><span class="type">table</span></span> Description,
-            Isactive, Area { of RPs }, Affects { of UnitTypes }, MarkAs (exc only), Locked (non only)</li>
+        <li><span class="parameter">sideName</span> <span class="types"><span class="string">string</span></span> Side name/GUID</li>
+        <li><span class="parameter">zoneType</span> <span class="types"><span class="string">string</span></span> Type of zone to add: 0 = no-nav, 1 = exclusion</li>
+        <li><span class="parameter">table {}</span> 
+					<ul>
+						<li><span class="parameter">description</span>
+							<span class="types"><span class="string">string</span></span>
+							Zone name</li>
+						<li><span class="parameter">isactive</span>
+							<span class="types"><span class="boolean">boolean</span></span>
+							Is zone active</li>
+						<li><span class="parameter">locked</span>
+							<span class="types"><span class="boolean">boolean</span></span>
+							Are RPs locked</li>
+						<li><span class="parameter">hidden</span>
+							<span class="types"><span class="boolean">boolean</span></span>
+							Are RPs hidden</li>
+						<li><span class="parameter">affects</span>
+							<span class="types"><span class="tooltip">table {}<span class="tooltiptext">list of  unit types affected</span></span></span>
+							Zone applies to these core unit types</li>
+						<li><span class="parameter">markAs</span>
+							<span class="types"><span class="string">posture</span></span>
+							Units entering zone treated as (posture towards them) [exclusion zone only]</li>
+						<li><span class="parameter">area</span>
+							<!--span class="table">table</span-->
+							<span class="types"><span class="tooltip">table {}<span class="tooltiptext">list of  new reference points with longitude/latitude</span></span></span>
+							The area defining the zone</li>
+						</ul>
     </ul>
     <h4>Returns</h4>
-    <p><span class="wrapper"><a href="Wrappers.html#wrapper_Zone">{ Zone }</a></span></p>
-    <hr>
+    <p><span class="wrapper"><a href="Wrappers.html#wrapper_Zone"> Zone</a> </span>The zone as a wrapper</p>
+ 
+    <h5>Example</h5>
+    <div class="example">
+        <code>local a = ScenEdit_AddZone('sidea', 1, {description='excluding',affects={'ship'},<br>
+area={{latitude = '34.2833063729007', longitude = '138.371434386706', name = 'RP-3136'},<br>{ latitude = '34.2751713567346', longitude = '139.122576855883', name = 'RP-3137'},<br>{ latitude = '33.823657691087', longitude = '139.111731172117', name = 'RP-3138' },<br>{ latitude = '33.8329383336795', longitude = '138.36485402628', name = 'RP-3139'}}, <br>markas='unfriendly' })
+</code>
+    </div>
+ <hr>
+	
     <h3><a class="anchor" id="ScenEdit_AssignUnitAsTarget"></a>ScenEdit_AssignUnitAsTarget (AUNameOrIDOrTable,
         MissionNameOrID)</h3>
     <p>Assigns targets to a Strike mission.</p>
-    <p> 'UnitX' can be used as a unit descriptor.Contacts can also be assigned. Refer to the VP_ functions for details
+    <p> 'UnitX' as the triggering unit, can be used as a unit descriptor.Contacts can also be assigned. Refer to the VP_ functions for details
     </p>
     <h4>Parameters</h4>
     <ul>
         <li><span class="parameter">AUNameOrIDOrTable</span> <span class="types"><span class="string">string</span>
-                or<span class="type">table</span></span> The name/GUID of the unit, or a table of<code>name/GUID</code>
-            to add
-            to target list</li>
+                or <span class="type">table {}</span></span> The name/GUID of the unit, or a table of unit/contact name/GUID
+            to add to target list</li>
         <li><span class="parameter">MissionNameOrID</span> <span class="types"><span class="string">string</span></span>
-            The
-            mission to update</li>
+            The mission to update</li>
     </ul>
     <h4>Returns</h4>
-    <p><span class="types"><span class="type">{ GUID }</span></span>A table of targets added</p>
+    <p><span class="table">table {} of</span><span class="types"><span class="string">string</span></span>A table of target GUIDs added</p>
     <h5>Example</h5>
 
     <div class="example">
@@ -615,6 +656,7 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     </ul>
     <h4>Returns</h4>
     <p><span class="types"><span class="boolean">boolean</span></span> True if attack successfully assigned</p>
+
     <h5>Example</h5>
     <div class="example">
         <code>ScenEdit_AttackContact(attackerID, contactId ,{mode=<span class="string">'1'</span>, mount=<span class="number">438</span>, weapon=<span class="number">1413</span>, qty=<span class="number">10</span>})<span class="comment">-- alloc 10 gunfire</span></code>
@@ -625,16 +667,15 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
         </p>
     </div>
     <hr>
+
     <h3><a class="anchor" id="ScenEdit_ClearKeyValue"></a>ScenEdit_ClearKeyValue (key, forCampaign)</h3>
-    <p>Clears a key</p>
-    <p> .. or all keys from the persistent key store.</p>
+    <p>Clears a key<br>
+     .. or all keys from the persistent key store. To clear all, pass "" as the key.</p>
     <h4>Parameters</h4>
     <ul>
-        <li><span class="parameter">key</span> <span class="types"><span class="string">string</span></span> The key to
-            clear or empty for all</li>
+        <li><span class="parameter">key</span> <span class="types"><span class="string">string</span></span> The key to clear or empty for all</li>
         <li><span class="parameter">forCampaign</span> <span class="types"><span class="boolean">boolean</span></span>
-            Use key
-            store for passing ed to next scenario in campaign. Optional, default = false</li>
+            Use key store for passing data to next scenario in a campaign. Optional, default = false</li>
     </ul>
     <h4>Returns</h4>
     <p><span class="types"><span class="boolean">boolean</span></span>Success or failure.</p>
@@ -642,32 +683,33 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
     <div class="example"><code>ScenEdit_ClearKeyValue(<span class="string">"A"</span>)</code></div>
     </p>
     <hr>
+
     <h3><a class="anchor" id="ScenEdit_CurrentLocalTime"></a>ScenEdit_CurrentLocalTime ()</h3>
     <p>Get the current scenario local time.</p>
     <h4>Returns</h4>
     <p><span class="types"><span class="string">string</span></span>The local time as HH:MM:SS.</p>
+
     <hr>
     <h3><a class="anchor" id="ScenEdit_CurrentTime"></a>ScenEdit_CurrentTime ()</h3>
-    <p>Get the current scenario time.</p>
+    <p>Get the current scenario date/time.</p>
     <h4>Returns</h4>
     <p><span class="types"><a class="type" href="DataTypes.html#dataType_TimeStamp">TimeStamp</a></span>The UTC Unix timestamp of the
         current time in-game.</p>
     <h5>Example</h5>
     <div class="example"><code>
-<span class="local">local</span> now = ScenEdit_CurrentTime()
-<span class="local">local</span> elapsed = now - timeFromLastTiggered
-<span class="keyword">if</span> elapsed &gt;<span class="number">60</span>*<span class="number">5</span><span class="keyword">then</span>
-<span class="comment">-- been more than 5 minutes, set the lastTriggered time to now</span> 
- timeFromLastTiggered = now
+<span class="local">local</span> now = ScenEdit_CurrentTime()<br>
+<span class="local">local</span> elapsed = now - timeFromLastTiggered<br>
+<span class="keyword">if</span> elapsed &gt;<span class="number">60</span>*<span class="number">5</span><span class="keyword">then</span><br>
+<span class="comment">-- been more than 5 minutes, set the lastTriggered time to now</span> <br>
+ timeFromLastTiggered = now<br>
 <span class="keyword">end</span></code></div>
     <hr>
+
     <h3><a class="anchor" id="ScenEdit_DeleteMine"></a>ScenEdit_DeleteMine (side, guid)</h3>
-    <p>delete a mine</p>
+    <p>Delete a specific mine from a side's minefield</p>
     <h4>Parameters</h4>
     <ul>
-        <li><span class="parameter">side</span> <span class="types"><span class="string">string</span></span> Side name
-            or
-            guid</li>
+        <li><span class="parameter">side</span> <span class="types"><span class="string">string</span></span> Side name or guid</li>
         <li><span class="parameter">guid</span> <span class="types"><span class="string">string</span></span> Mine guid
         </li>
     </ul>
@@ -678,16 +720,15 @@ altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="strin
         <code><span class="local">local</span> a = ScenEdit_DeleteMine({side=<span class="string">'Blue'</span>, guid=<span class="string">'cccccccc'</span>} )</code>
     </div>
     </p>
+
     <hr>
     <h3><a class="anchor" id="ScenEdit_DeleteMinefield"></a>ScenEdit_DeleteMinefield (side, area)</h3>
-    <p>delete a minefield</p>
+    <p>Delete all mines in a side's minefield</p>
     <h4>Parameters</h4>
     <ul>
-        <li><span class="parameter">side</span> <span class="types"><span class="string">string</span></span> Side name
-            or
-            guid</li>
-        <li><span class="parameter">area</span> <span class="table">table</span> The area (as
-            table of RP points) to lay mines in</li>
+        <li><span class="parameter">side</span> <span class="types"><span class="string">string</span></span> Side name or guid</li>
+							
+        <li><span class="parameter">area</span> <span class="types"><span class="tooltip">table {}<span class="tooltiptext">list of existing reference points</span></span></span> The area defining the minefield</li>
     </ul>
     <h4>Returns</h4>
     <p><span class="types"><span class="number">number</span></span>mines removed</p>
