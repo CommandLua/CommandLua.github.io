@@ -316,22 +316,22 @@
                         <span class="table"> {} </span>
                         <ul>
                             <li>
-                                <span class="parameter">warheadid </span>
+                                <span class="parameter">warheadid = </span>
                                 <span class="types"><span class="number">number</span></span>
                                 The ID of the warhead to detonate
                             </li>
                             <li>
-                                <span class="parameter">latitude </span>
+                                <span class="parameter">latitude = </span>
                                 <span class="types"><a href="DataTypes.html#dataType_Latitude">latitude</a></span>
                                 The latitude of the detonation
                             </li>
                             <li>
-                                <span class="parameter">longitude </span>
+                                <span class="parameter">longitude = </span>
                                 <span class="types"><a href="DataTypes.html#dataType_Longitude">longitude</a></span>
                                 The longitude of the detonation
                             </li>
                             <li>
-                                <span class="parameter">altitude </span>
+                                <span class="parameter">altitude = </span>
                                 <span class="types"><a href="DataTypes.html#dataType_Altitude">altitude</a></span>
                                 The altitude of the detonation. If no 'altitude' is passed, or the value of the parameter is 'surface', the explosion will occur at 'ground zero' at that location.
                             </li>
@@ -365,39 +365,40 @@
                         <span class="table"> {} </span>
                         <ul>
                             <li>
-                                <span class="parameter">side</span>
+                                <span class="parameter">side = </span>
                                 <span class="types"><span class="string">string</span></span>
                                 The Side name/guid that owns the mines
                             </li>
                             <li>
-                                <span class="parameter">dbid</span>
+                                <span class="parameter">dbid = </span>
                                 <span class="types"><span class="number">number</span></span>
                                 The database id of the mine to use
                             </li>
                             <li>
-                                <span class="parameter">number</span>
+                                <span class="parameter">number = </span>
                                 <span class="types"><span class="number">number</span></span>
                                 The number of mines to attempt to lay
                             </li>
                             <li>
-                                <span class="parameter">delay</span>
+                                <span class="parameter">delay = </span>
                                 <span class="types"><span class="number">number</span></span>
                                 The arming delay in seconds
                             </li>
                             <li>
-                                <span class="parameter">area</span>
+                                <span class="parameter">area = </span>
                                 <span class="table"> {} of multiple</span>
                                 The area to lay the mines in
                                 <ul>
                                     <li>
                                         <span class="types"><span class="string"> string </span></span>
-                                        The refernce point guid/name
+                                        The reference point guid/name
                                     </li>
                                 </ul>
                                 <!--<span class="types"><span class="tooltip">table<span class="tooltiptext">list of  refernce point guids or names </span></span></span>-->
                             </li>
                         </ul>
-</ul>
+                    </li>
+                </ul>
                 <h4>Returns</h4>
                 <p>
                     <span class="types"><span class="number">number</span></span>
@@ -407,28 +408,63 @@
                 <h5>Example</h5>
                 <div class="example">
                     <code>
-                        <span class="local">local</span> a = ScenEdit_AddMinefield({side=<span class="string">'Blue'</span>, dbid=<span class="number">2345</span>, number=<span class="number">100</span>, delay=<span class="number">60000</span>, area={<span class="string">'rp-1'</span>,<span class="string">'rp-2'</span>,<span class="string">'rp-3'</span>,<span class="string">'rp-4'</span>} } )
+                        local a = ScenEdit_AddMinefield( { side='Blue', dbid=2345, number=100, delay=60000, area={'rp-1','rp-2','rp-3','rp-4'} } )
                     </code>
                 </div>
 
                 <hr>
                 <h3><a class="anchor" id="ScenEdit_AddMission"></a>ScenEdit_AddMission (SideNameOrId, MissionNameOrId, MissionType, MissionOptions)</h3>
-                <p>This function adds a new mission to the side based on the supplied options</p>
+                <p>
+                    This function adds a new mission to the side based on the supplied options<br />
+                    It is suggested to make the mission name unique across the scenario to ensure there are no conflicts as to the side it is applicable to
+                </p>
                 <h4>Parameters</h4>
                 <ul>
                     <li>
                         <span class="parameter">SideNameOrId</span> <span class="types"><span class="string">string</span></span>
-                        The mission side
+                        The mission side name/guid
                     </li>
                     <li>
                         <span class="parameter">MissionNameOrId</span> <span class="types"><span class="string">string</span></span>
-                        The mission name. <br>It is suggest to make the mission name unique across the scenario to ensure there are no conflicts as to the side it is applicable to
+                        The mission name as this is a new mission<br>
                     </li>
-                    <li><span class="parameter">MissionType</span> <span class="types"><span class="tooltip">value<span class="tooltiptext">Strike, Patrol, Support, Ferry, Mining, Mineclearing, Cargo </span></span></span> The mission type </li>
                     <li>
-                        <span class="parameter">MissionOptions</span> <span class="selector">
-                            <a href="Selectors.html#selector_NewMission">NewMission</a>
-                        </span> The mission specific options as a table
+                        <span class="parameter">MissionType</span>
+                        <span class="types">
+                            <span class="string">
+                                <span class="tooltip">value<span class="tooltiptext">'Strike', 'Patrol', 'Support', 'Ferry', 'Mining', 'Mineclearing', 'Cargo' </span></span>
+                            </span>
+                        </span>
+                        The type of mission which will control what is valid for the following options
+                    </li>
+                    <li>
+                        <span class="parameter">MissionOptions</span>
+                        <span class="table"> {} </span>
+                        The mission specific options as a table
+                        <ul>
+                            <li>
+                                <span class="parameter">type = </span>
+                                <span class="types"><a href="DataTypes.html#dataType_MissionSubType">MissionSubType</a></span>
+                                Mission sub-type (This only applies to mission types 'Patrol' and 'Strike'. Not required of others)
+                                <br />***** data type MissionSubType to be added *****
+                            </li>
+                            <li>
+                                <span class="parameter">destination = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                A mission destination location name/guid (This only applies to a 'Ferry' mission)
+                            </li>
+                            <li>
+                                <span class="parameter">zone = </span>
+                                <span class="table"> {} of multiple</span>
+                                The area to operate in (This only applies to 'Patrol', 'Support', 'Mining', 'Cargo' missions)
+                                <ul>
+                                    <li>
+                                        <span class="types"><span class="string"> string </span></span>
+                                        The reference point guid/name
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
                 <h4>Returns</h4>
