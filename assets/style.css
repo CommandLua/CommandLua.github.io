@@ -249,7 +249,7 @@ strong {
 	line-height: 1.5em;
 	/*font-style: italic;*/
 	font-weight: 600;
-	background-color: #000000;
+	background-color: Black; /*#00000;*/
 }
 
 .types::after,
