@@ -505,45 +505,46 @@
                                 <span class="types"><span class="string">string</span></span>
                                 The unit name/guid that all the RP(s) relate to, if required
                             </li>
-						    <li>
+                            <li>
                                 <span class="parameter">latitude = </span>
-						        <span class="types"><a href="DataTypes.html#dataType_Latitude">latitude</a></span>
-						        The latitude of the new reference point
-						    </li>
-						    <li>
+                                <span class="types"><a href="DataTypes.html#dataType_Latitude">latitude</a></span>
+                                The latitude of the new reference point
+                            </li>
+                            <li>
                                 <span class="parameter">longitude = </span>
-						        <span class="types"><a href="DataTypes.html#dataType_Longitude">longitude</a></span>
-						        The longitude of the new reference point
-						    </li>
-						    <li>
+                                <span class="types"><a href="DataTypes.html#dataType_Longitude">longitude</a></span>
+                                The longitude of the new reference point
+                            </li>
+                            <li>
                                 <span class="parameter">highlighted = </span>
-						        <span class="types"><span class="boolean">True/False</span></span>
-						        True if the reference point should be selected
-						    </li>
-						    <li>
+                                <span class="types"><span class="boolean">True/False</span></span>
+                                True if the reference point should be selected
+                            </li>
+                            <li>
                                 <span class="parameter">locked = </span>
-						        <span class="types"><span class="boolean">True/False</span></span>
-						        True if the reference point is locked
-						    </li>
-						    <li>
+                                <span class="types"><span class="boolean">True/False</span></span>
+                                True if the reference point is locked
+                            </li>
+                            <li>
                                 <span class="parameter">distance = </span>
-						        <span class="types"><span class="number">distance</span></span>
-						        Distance from the 'relative' unit
-						    </li>
-						    <li>
+                                <span class="types"><span class="number">distance</span></span>
+                                Distance from the 'relative' unit
+                            </li>
+                            <li>
                                 <span class="parameter">bearing = </span>
-						        <span class="types"><span class="number">number (0-360)</span></span>
-						        Bearing from the 'relative' unit
-						    </li>
+                                <span class="types"><span class="number">number (0-360)</span></span>
+                                Bearing from the 'relative' unit
+                            </li>
                             <li>
                                 <span class="parameter">bearingtype = </span>
                                 <span class="types"><span class="tooltip">bearing<span class="tooltiptext">Fixed (0) or Rotating (1)</span></span></span>
                                 Bearing aspect of the reference point
                             </li>
-                            *** Note that the area is only required if you are adding more than one RP in one go.<br />
+                            *** Note that the area is only required if you are adding more than one RP in one go.
+                            <br />
                             <li>
                                 <span class="parameter">area = </span>
-                                        <span class="table"> {} of multiple </span>
+                                <span class="table"> {} of multiple </span>
                                 <ul>
                                     <li>
                                         <span class="parameter">name = </span>
@@ -609,30 +610,84 @@
                 <hr>
                 <h3><a class="anchor" id="ScenEdit_AddReloadsToUnit"></a>ScenEdit_AddReloadsToUnit (table)</h3>
                 <p>
-                    This function adds weapon reloads onto a local mount, rather than to its magazine, for a unit as defined in the table.
-                    <!--What is needed to define the table?-->
+                    This function adds, removes or fills out weapon reloads on a local mount of an unit, rather than be applied to the unit's magazine.<br />
+                    You can specify a particular `mount` by the GUID, or omit it and the function will try to apply the request to any `available` mounts with the `weapon`.
                 </p>
                 <h4>Parameters</h4>
                 <ul>
                     <li>
-                        <span class="parameter">table {}</span><span class="selector"><a href="Selectors.html#selector_Weapon2Mount">Weapon2Mount</a></span> Describes the weapon and mount to update
+                        <span class="parameter">table</span><span class="table"> {} </span>
+                        <ul>
+                            <li>
+                                <span class="parameter">side = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The side name/GUID of the unit
+                            </li>
+                            <li>
+                                <span class="parameter">unitname = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The name of unit
+                            </li>
+                            <li>
+                                <span class="parameter">guid = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The GUID of the unit
+                            </li>
+                            <li>
+                                <span class="parameter">wpn_dbid = </span>
+                                <span class="types"><span class="number">number</span></span>
+                                The weapon database ID to be updated **MANDATORY**
+                            </li>
+                            <li>
+                                <span class="parameter">mount_guid = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The mount GUID on the unit to be updated
+                            </li>
+                            <li>
+                                <span class="parameter">number = </span>
+                                <span class="types"><span class="number">number</span></span>
+                                Number to be added or removed
+                            </li>
+                            <li>
+                                <span class="parameter">remove = </span>
+                                <span class="types"><span class="boolean">True/False</span></span>
+                                If true, this will debuct the number of weapons from the unit/mount
+                            </li>
+                            <li>
+                                <span class="parameter">fillout = </span>
+                                <span class="types"><span class="boolean">True/False</span></span>
+                                If true, this will fill out the weapon record to its maximum. The 'number' doesn't apply.
+                            </li>
+                        </ul>
                     </li>
                 </ul>
                 <h4>Returns</h4>
-                <p><span class="types"><span class="number">number</span></span> The number of items added to the mount</p>
+                <p><span class="types"><span class="number">number</span></span> The number of items added or removed</p>
 
                 <h5>Example</h5>
                 <div class="example">
-                    <code>ScenEdit_AddReloadsToUnit({unitname=<span class="string">'Mech Inf #1'</span>, wpn_dbid=<span class="number">773</span>, number=<span class="number">1</span>, w_max=<span class="number">10</span>})</code>
+                    <code>ScenEdit_AddReloadsToUnit( { side='NATO', unitname='Mech Inf #1', wpn_dbid=773, number=1 } )</code>
                 </div>
-                </p>
+                <div class="example">
+                    <code>ScenEdit_AddReloadsToUnit( { side='NATO', unitname='Mech Inf #1', wpn_dbid=773, mount_guid='GNRIJH-0HM7B6IC7IPUR', number=5, remove=true } )</code>
+                </div>
 
                 <hr>
                 <h3><a class="anchor" id="ScenEdit_AddSide"></a>ScenEdit_AddSide (table)</h3>
                 <p>This function adds a new side with the specified name. The new side can be used after this is done.</p>
                 <h4>Parameters</h4>
                 <ul>
-                    <li><span class="parameter">table {}</span> Table with 'side' key</li>
+                    <li>
+                        <span class="parameter">table</span>
+                        <span class="Table"> {} </span>
+                        <ul>
+                            <li>
+                                <span class="parameter">side = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The name of the new side
+                            </li>
+                        </ul>
+                    </li>
                     <p><span class="note">The keyword 'name' can be used for 'side' due to an error.</span></p>
                 </ul>
                 <h4>Returns</h4>
@@ -649,8 +704,40 @@
                 <h4>Parameters</h4>
                 <ul>
                     <li>
-                        <span class="parameter">table {}</span> <span class="selector"><a href="Selectors.html#selector_SpecialAction">SpecialAction</a></span>
-                        The Special Action event details
+                        <span class="parameter">table</span>
+                        <span class="table"> {} </span> The Special Action event details
+                        <ul>
+                            <li>
+                                <span class="parameter">side = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The name/GUID of the side for the action
+                            </li>
+                            <li>
+                                <span class="parameter">ActionNameOrID = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The name or ID of the special action
+                            </li>
+                            <li>
+                                <span class="parameter">description = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                If specified, the new description for the action
+                            </li>
+                            <li>
+                                <span class="parameter">IsActive = </span>
+                                <span class="types"><span class="boolean">True/False</span></span>
+                                If the action is visible to the player
+                            </li>
+                            <li>
+                                <span class="parameter">IsRepeatable = </span>
+                                <span class="types"><span class="boolean">True/False</span></span>
+                                If the player can use the action multiple times
+                            </li>
+                            <li>
+                                <span class="parameter">ScriptText = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The Lua script for the SA. Note as the script is a multi line string, it requires a '\r\n' to be appended after each line so it is formated in the Editor.
+                            </li>
+                        </ul>
                     </li>
                 </ul>
                 <h4>Returns</h4>
@@ -674,8 +761,71 @@
                 <h4>Parameters</h4>
                 <ul>
                     <li>
-                        <span class="parameter">table {}</span> <span class="selector"><a href="Selectors.html#selector_NewUnit">NewUnit</a></span>
+                        <span class="parameter">table </span>
+                        <span class="table"> {} </span>
                         The unit details to add. <br>Note that some settings will depend on the type of unit specified, eg aircraft generally need loadouts and altitude whereas neither is needed by a ship.
+                        <ul>
+                            <li>
+                                <span class="parameter">type = </span>
+                                <span class="types"><span class="type"><a href="DataTypes.html#dataType_Unit__Types">UnitType</a></span></span>
+                                The core type of unit ( eg Ship, Sub, ...)
+                            </li>
+                            <li>
+                                <span class="parameter">unitname = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The name of the unit
+                            </li>
+                            <li>
+                                <span class="parameter">side = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The side name/GUID to add the unit to
+                            </li>
+                            <li>
+                                <span class="parameter">dbid = </span>
+                                <span class="types"><span class="number">number</span></span>
+                                The database id of the unit
+                            </li>
+                            <li>
+                                <span class="parameter">base = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                Unit base name/GUID where the unit will be 'hosted' (applicable to AIR, SHIP, SUB)
+                            </li>
+                            <li>
+                                <span class="parameter">latitude = </span>
+                                <span class="types"><a class="type" href="DataTypes.html#Latitude">Latitude</a></span>
+                                Not required if a <code>base</code> is defined as unit adopts that location
+                            </li>
+                            <li>
+                                <span class="parameter">longitude = </span>
+                                <span class="types"><a class="type" href="DataTypes.html#Longitude">Longitude</a></span>
+                                Not required if a <code>base</code> is defined as adopts that location
+                            </li>
+                            <li>
+                                <span class="parameter">altitude = </span>
+                                <span class="types"><a class="type" href="DataTypes.html#Altitude">Altitude</a></span>
+                                Unit altitude (applicable to AIR)
+                            </li>
+                            <li>
+                                <span class="parameter">loadoutid = </span>
+                                <span class="types"><span class="number">number</span></span>
+                                Aircraft database loadout id (applicable to AIR)
+                            </li>
+                            <li>
+                                <span class="parameter">depth = </span>
+                                <span class="types"><a class="type" href="DataTypes.html#Altitude">Depth</a></span>
+                                Unit depth (applicable to SUBMARINE - note there is no sign)
+                            </li>
+                            <li>
+                                <span class="parameter">orbit = </span>
+                                <span class="types"><span class="number">number</span></span>
+                                Orbit index (applicable to SATELLITE)
+                            </li>
+                            <li>
+                                <span class="parameter">guid = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                Optional custom GUID to override the auto generated one
+                            </li>
+                         </ul>
                     </li>
                 </ul>
                 <h4>Returns</h4>
@@ -686,9 +836,9 @@
                 <h5>Example</h5>
                 <div class="example">
                     <code>
-                        ScenEdit_AddUnit({<span class="global">type</span> =<span class="string">'Aircraft'</span>, name =<span class="string">'F-15C Eagle'</span>, loadoutid =<span class="number">16934</span>,
-                        heading =<span class="number">0</span>, dbid =<span class="number">3500</span>, side =<span class="string">'NATO'</span>, Latitude=<span class="string">"N46.00.00"</span>,Longitude=<span class="string">"E25.00.00"</span>,
-                        altitude=<span class="string">"5000 ft"</span>,autodetectable=<span class="string">"false"</span>,holdfire=<span class="string">"true"</span>,proficiency=<span class="number">4</span>})
+                        ScenEdit_AddUnit( { type ='Aircraft', name ='F-15C Eagle', loadoutid =16934,
+                        heading =0, dbid =3500, side ='NATO', Latitude="N46.00.00",Longitude="E25.00.00",
+                        altitude="5000 ft",autodetectable="false",holdfire="true",proficiency=4 } )
                     </code>
                 </div>
 
