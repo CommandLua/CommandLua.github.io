@@ -271,7 +271,7 @@
                 <p>
                     This function adds entries to the loss list so they can be reported. This allows adding non-play items (such as casualties) to the Loss & Expenditure view.
                     It wil also show up in the wrapper for Side losses.<br>
-                    Updating the entries replaces was there before hand, so to remove an entry, just use a number of 0.
+                    Updating the entries replaces what was there before hand, so to remove an entry, just use a number of 0.
                 </p>
                 <h4>Parameters</h4>
                 <ul>
@@ -335,7 +335,7 @@
                                 <span class="types"><a href="DataTypes.html#dataType_Altitude">altitude</a></span>
                                 The altitude of the detonation. If no 'altitude' is passed, or the value of the parameter is 'surface', the explosion will occur at 'ground zero' at that location.
                             </li>
-                         </ul>
+                        </ul>
                     </li>
                 </ul>
                 <h4>Returns</h4>
@@ -416,7 +416,8 @@
                 <h3><a class="anchor" id="ScenEdit_AddMission"></a>ScenEdit_AddMission (SideNameOrId, MissionNameOrId, MissionType, MissionOptions)</h3>
                 <p>
                     This function adds a new mission to the side based on the supplied options<br />
-                    It is suggested to make the mission name unique across the scenario to ensure there are no conflicts as to the side it is applicable to
+                    It is suggested to make the mission name unique across the scenario to ensure there are no conflicts as to the side it is applicable to<br />
+                    Once the core mission is added, the mission can be adjusted through a wrapper or <a href="#ScenEdit_SetMission">ScenEdit_SetMission</a>
                 </p>
                 <h4>Parameters</h4>
                 <ul>
@@ -426,7 +427,7 @@
                     </li>
                     <li>
                         <span class="parameter">MissionNameOrId</span> <span class="types"><span class="string">string</span></span>
-                        The mission name as this is a new mission<br>
+                        The mission name as this is a new mission
                     </li>
                     <li>
                         <span class="parameter">MissionType</span>
@@ -440,12 +441,12 @@
                     <li>
                         <span class="parameter">MissionOptions</span>
                         <span class="table"> {} </span>
-                        The mission specific options as a table
+                        The mission specific options
                         <ul>
                             <li>
                                 <span class="parameter">type = </span>
                                 <span class="types"><a href="DataTypes.html#dataType_MissionSubType">MissionSubType</a></span>
-                                Mission sub-type (This only applies to mission types 'Patrol' and 'Strike'. Not required of others)
+                                Mission sub-type (This only applies to mission types 'Patrol' and 'Strike')
                                 <br />***** data type MissionSubType to be added *****
                             </li>
                             <li>
@@ -468,7 +469,7 @@
                     </li>
                 </ul>
                 <h4>Returns</h4>
-                <p><span class="wrapper"><a href="Wrappers.html#wrapper_Mission">Mission</a></span> A mission wrapper for the new mission or <code>nil</code> otherwise</p>
+                <p><span class="wrapper"><a href="Wrappers.html#wrapper_Mission">Mission</a></span> A mission wrapper for the new mission or <code>nil</code> otherwise.<br /> Retaining the mission guid for updating would be desirable rather than rely on the name itself.</p>
 
                 <h5>Example</h5>
                 <div class="example">
@@ -479,16 +480,115 @@
                 <h3><a class="anchor" id="ScenEdit_AddReferencePoint"></a>ScenEdit_AddReferencePoint (table)</h3>
                 <p>This function creates one or more reference point(s) as defined by the table.</p>
                 <p>
-                    It can take a single new referrnce point, or a table of new reference points. The descriptor<b>must</b> contain at least a side, and one set of latitude and longitude, or the side and an area defined by one or more latitude and longitude values.<br>
-                    Points can also be relative to a specified unit based on bearing and distence. This applies to ALL the rp(s) in the function call, and the unit name/GUID that the RP(s) are relative to has to be on the same side.<br>
-                    This is mainly because Reference Points are recorded by side.
+                    It can take a single new referrnce point, or a table of new reference points. The table <b>must</b> contain at least a side, and one set of latitude and longitude, or the side and an area defined by one or more latitude and longitude values.<br>
+                    This is mainly because Reference Points are recorded by side; the same named RP might exist on more than one side which can lead to confusion.
+                    Points can also be relative to a specified unit based on bearing and distance. This applies to ALL the rp(s) in the function call, and the unit name/GUID that the RP(s) are relative to has to be on the same side.<br>
                 </p>
                 <h4>Parameters</h4>
                 <ul>
                     <li>
-                        <span class="parameter">table {} </span> <span class="selector">
-                            <a href="Selectors.html#selector_ReferencePointSelector">ReferencePointSelector</a>
-                        </span> The reference point details to be created.<br> The field 'area' can be<br>(a) a single reference point with usual id of name, longitude, latitude, highlighted, locked, or<br> (b) a table of new reference points {name, longitude, latitude, ...}.<br> Leaving out name will default it to normal naming convention 'RP-..'
+                        <span class="parameter">table</span> <span class="table"> {} </span>
+                        The reference point details to be created.
+                        <ul>
+                            <li>
+                                <span class="parameter">side = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The side the reference point is visible to
+                            </li>
+                            <li>
+                                <span class="parameter">name = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The name of the new reference point
+                            </li>
+                            <li>
+                                <span class="parameter">relativeto = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The unit name/guid that all the RP(s) relate to, if required
+                            </li>
+						    <li>
+                                <span class="parameter">latitude = </span>
+						        <span class="types"><a href="DataTypes.html#dataType_Latitude">latitude</a></span>
+						        The latitude of the new reference point
+						    </li>
+						    <li>
+                                <span class="parameter">longitude = </span>
+						        <span class="types"><a href="DataTypes.html#dataType_Longitude">longitude</a></span>
+						        The longitude of the new reference point
+						    </li>
+						    <li>
+                                <span class="parameter">highlighted = </span>
+						        <span class="types"><span class="boolean">True/False</span></span>
+						        True if the reference point should be selected
+						    </li>
+						    <li>
+                                <span class="parameter">locked = </span>
+						        <span class="types"><span class="boolean">True/False</span></span>
+						        True if the reference point is locked
+						    </li>
+						    <li>
+                                <span class="parameter">distance = </span>
+						        <span class="types"><span class="number">distance</span></span>
+						        Distance from the 'relative' unit
+						    </li>
+						    <li>
+                                <span class="parameter">bearing = </span>
+						        <span class="types"><span class="number">number (0-360)</span></span>
+						        Bearing from the 'relative' unit
+						    </li>
+                            <li>
+                                <span class="parameter">bearingtype = </span>
+                                <span class="types"><span class="tooltip">bearing<span class="tooltiptext">Fixed (0) or Rotating (1)</span></span></span>
+                                Bearing aspect of the reference point
+                            </li>
+                            *** Note that the area is only required if you are adding more than one RP in one go.<br />
+                            <li>
+                                <span class="parameter">area = </span>
+                                        <span class="table"> {} of multiple </span>
+                                <ul>
+                                    <li>
+                                        <span class="parameter">name = </span>
+                                        <span class="types"><span class="string">string</span></span>
+                                        The name of the new reference point
+                                    </li>
+                                    <li>
+                                        <span class="parameter">latitude = </span>
+                                        <span class="types"><a href="DataTypes.html#dataType_Latitude">latitude</a></span>
+                                        The latitude of the new reference point
+                                    </li>
+                                    <li>
+                                        <span class="parameter">longitude = </span>
+                                        <span class="types"><a href="DataTypes.html#dataType_Longitude">longitude</a></span>
+                                        The longitude of the new reference point
+                                    </li>
+                                    <li>
+                                        <span class="parameter">highlighted = </span>
+                                        <span class="types"><span class="boolean">True/False</span></span>
+                                        True if the reference point should be selected
+                                    </li>
+                                    <li>
+                                        <span class="parameter">locked = </span>
+                                        <span class="types"><span class="boolean">True/False</span></span>
+                                        True if the reference point is locked
+                                    </li>
+                                    <li>
+                                        <span class="parameter">distance = </span>
+                                        <span class="types"><span class="number">distance</span></span>
+                                        Distance from the 'relative' unit
+                                    </li>
+                                    <li>
+                                        <span class="parameter">bearing = </span>
+                                        <span class="types"><span class="number">number (0-360)</span></span>
+                                        Bearing from the 'relative' unit
+                                    </li>
+                                    <li>
+                                        <span class="parameter">bearingtype = </span>
+                                        <span class="types"><span class="tooltip">bearing<span class="tooltiptext">Fixed (0) or Rotating (1)</span></span></span>
+                                        Bearing aspect of the reference point
+                                    </li>
+
+                                </ul>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
                 <h4>Returns</h4>
@@ -496,14 +596,14 @@
 
                 <h5>Example</h5>
                 <div class="example">
-                    <code>ScenEdit_AddReferencePoint( {side=<span class="string">"United States"</span>, name=<span class="string">"Downed Pilot"</span>, <br>latitude=<span class="number">0.1</span>, longitude=<span class="number">4</span>, highlighted=<span class="keyword">true</span>})</code>
+                    <code>ScenEdit_AddReferencePoint( {side="United States", name="Downed Pilot", latitude=0.1, longitude=4, highlighted=true } )</code>
                 </div>
 
                 <div class="example">
-                    <code>ScenEdit_AddReferencePoint( {side=<span class="string">'sidea'</span>, RelativeTo=<span class="string">'USN Dewey'</span>, <br>bearing=<span class="number">45</span> ,distance=<span class="number">20</span>, clear=<span class="keyword">true</span> })</code>
+                    <code>ScenEdit_AddReferencePoint( {side='sidea', RelativeTo='USN Dewey', bearing=45 ,distance=20, clear=true } )</code>
                 </div>
                 <div class="example">
-                    <code>ScenEdit_AddReferencePoint( {side=<span class="string">"United States"</span>, name=<span class="string">"Downed Pilot Area"</span>, <br>area = { {latitude=<span class="number">10</span>, longitude=<span class="number">4</span>, highlighted=<span class="keyword">true</span>},<br> {latitude=<span class="number">15</span>, longitude=<span class="number">4</span>, highlighted=<span class="keyword">true</span>}, {latitude=<span class="number">20</span>, longitude=<span class="number">4</span>} } } )</code>
+                    <code>ScenEdit_AddReferencePoint( {side="United States", name="Downed Pilot Area", area = { {latitude=10, longitude=4, highlighted=true},<br> {latitude=15, longitude=4, highlighted=true}, {latitude=20, longitude=4} } } )</code>
                 </div>
 
                 <hr>

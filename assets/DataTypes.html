@@ -100,7 +100,8 @@
                 <p>
                     Altitude is the height or depth of a unit. The altitude is displayed in meters when accessing the
                     data. It can be set using either meters or feet by adding M or FT after it. The default is M if just
-                    a number is used.
+                    a number is used.<br />
+                    The short keyword 'alt' can be used in a Lua table parameter that allows 'altitude'.
 
                     <h5>Example</h5>
                     <div class="example">
@@ -324,10 +325,11 @@
 				</p>
 				<hr>
 				<h3><a class="anchor" id="dataType_Latitude"></a>Latitude</h3>
-				<p>
-					Latitude is degrees N or S of the equator as 'S 60.20.10' or as +/- as -60.336. The data in the
-					tables is held as a signed <span class="types"><span class="number"></span>number</span>.
-				</p>
+                <p>
+                    Latitude is degrees N or S of the equator as 'S 60.20.10' or as +/- as -60.336. The data in the
+                    tables is held as a signed <span class="types"><span class="number"></span>number</span>.<br />
+                    The short keyword 'lat' can be used in a Lua table parameter that allows 'latitude'.
+                </p>
 				<h5>Example</h5>
 				<div class="example">
 					<code>
@@ -470,10 +472,11 @@
 				</div>
 				<hr>
 				<h3><a class="anchor" id="dataType_Longitude"></a>Longitude</h3>
-				<p>
-					Longitude is degrees E or W of Greenwich line as 'W 60.20.10' or as +/- as -60.336. The data in the
-					tables is held as a signed <span class="types"><span class="number"></span>number</span>.
-				</p>
+                <p>
+                    Longitude is degrees E or W of Greenwich line as 'W 60.20.10' or as +/- as -60.336. The data in the
+                    tables is held as a signed <span class="types"><span class="number"></span>number</span>.<br />
+                    The short keyword 'lon' can be used in a Lua table parameter that allows 'longitude'.
+                </p>
 				<h5>Example</h5>
 				<div class="example">
 					<code>
