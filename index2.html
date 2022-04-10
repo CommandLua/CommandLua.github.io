@@ -278,8 +278,11 @@
                         this example, as a parameter can be any of the types below).
                     </li>
                     <li>
-                        <span class="selector"><a href="assets/Selectors.html">Selector</a></span> references appear similar to
-                        in-text code with a light green background. The text links to the relevant <a href="#Selectors">Selector</a> documentation.
+                        <p>
+                            <span class="selector"><a href="assets/Selectors.html">Selector</a></span> references appear similar to
+                            in-text code with a light green background. The text links to the relevant <a href="#Selectors">Selector</a> documentation.<br />
+                            <strong>Note:</strong> This has been mainly replaced by expanding a Selector in a function parameter to the actual parameters used by that function.
+                        </p>
                     </li>
                     <li>
                         <span class="wrapper"><a href="assets/Wrappers.html">Wrapper</a></span> references appear similar to
@@ -290,19 +293,29 @@
                         with a light orange background. The text links to the relevant <a href="#Tables">Table</a>
                         documentation.
                     </li>
+                    <li>
+                        <p>
+                            <span class="table"> {} </span> indicates items in a following list are elements in a Lua table.<br />
+                            <span class="table"> {} of multiple </span> indicates the Lua table can occur multiple times.<br />
+                            <strong>Note:</strong> If there is no 'named' value, then the Lua table would need to be accessed by the [] table convention.
+                        </p>
+                    </li>
 
                     <li>
-                        <span class="types"><a href="assets/DataTypes.html">Data type</a></span> descriptions appear similar to
-                        in-text code with bold font a dark grey background. If the Data Type is not one of the standard
-                        Lua data types, the text is white and links to the relevant <a href="#DataTypes">Data Type</a>
-                        documentation. Otherwise, the text is color coded to match the appearance of the datatype in the
-                        console:
+                        <p>
+                            <span class="types"><a href="assets/DataTypes.html">Data type</a></span> descriptions appear similar to
+                            in-text code with bold font a dark grey background. <br />
+                            If the Data Type is not one of the standard Lua data types, the text is white and<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;a) links to the relevant <a href="#DataTypes">Data Type</a> documentation or<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;b) shows a hover box containing the valid values.<br />
+                            Otherwise, the text is color coded to match the appearance of the standard datatype:
+                            <ul>
+                                <li><span class="types"><span class="string">string</span></span></li>
+                                <li><span class="types"><span class="boolean">boolean</span></span></li>
+                                <li><span class="types"><span class="number">number</span></span></li>
+                            </ul>
+                        </p>
                     </li>
-                    <ul>
-                        <li><span class="types"><span class="string">string</span></li>
-                        <li><span class="types"><span class="boolean">boolean</span></li>
-                        <li><span class="types"><span class="number">number</span></li>
-                    </ul>
                     <li>
                         <span class="readonly">READ ONLY</span> properties are denoted by a tag with the words READ ONLY
                         in all caps, on a yellow background.
