@@ -2896,7 +2896,7 @@
                 <hr>
                 <h3>
                     <a class="anchor" id="ScenEdit_MsgBox"></a>ScenEdit_MsgBox
-                    (string,style)
+                    (string, style)
                 </h3>
                 <p>
                     This function displays a message box with the passed string. The buttons to show are controlled by the 'style'.
@@ -2917,6 +2917,7 @@
                         <span class="types">
                             <span class="tooltip">
                                 value<span class="tooltiptext">
+                                    0 = OK<br />
                                     1 = OK and Cancel buttons<br />
                                     2 = Abort, Retry and Ignore buttons<br />
                                     3 = Yes, No and Cancel buttons<br />
@@ -2948,113 +2949,124 @@
                     Yes = 6,
                     No = 7
                 </p>
- 
+                <h5>Example</h5>
+                <div class="example">
+                    <code>
+                        local a = ScenEdit_MsgBox('Select both a downed pilot to rescue and a nearby friendly unit to perform this special action.',0)
+                    </code>
+                </div>
+
                 <hr>
                 <h3>
                     <a class="anchor" id="ScenEdit_PlaySound"></a>ScenEdit_PlaySound
-                    (string,delay)
+                    (string)
                 </h3>
                 <p>
-                    Play
-                    a
+                    This function plays
+                    a local
                     sound
-                    file.
+                    file from the Sounds\Effects folder.
                 </p>
                 <h4>Parameters</h4>
                 <ul>
                     <li>
-                        <span class="parameter">string</span> <span class="types"><span class="string">string</span></span> The
+                        <span class="parameter">string</span>
+                        <span class="types"><span class="string">string</span></span>
+                        The
                         name
                         of
                         the
-                        file. Assumed
-                        to
-                        be
-                        in
-                        the
-                        Sounds\Effects
-                        folder
+                        file
                     </li>
-                    <li>
-                        <span class="parameter">delay</span> <span class="types"><span class="number">number</span></span> Delay
-                        to
-                        playing
-                    </li>
+                    <!--li>
+            <span class="parameter">delay</span> <span class="types"><span class="number">number</span></span> Delay
+            to
+            playing
+        <li-->
                 </ul>
                 <h4>Returns</h4>
                 <p>
-                    bool
-                    False
-                    if
-                    it
-                    can't
-                    find
-                    the
-                    file
+                    <span class="types"><span class="boolean">True/False</span></span>
+                    True if successful
                 </p>
+                <h5>Example</h5>
+                <div class="example">
+                    <code>
+                        local fileName = 'Static'.. math.random(1,8) .. '.mp3'<br />
+                        ScenEdit_PlaySound(fileName)
+                    </code>
+                </div>
+
                 <hr>
                 <h3>
                     <a class="anchor" id="ScenEdit_PlayVideo"></a>ScenEdit_PlayVideo
-                    (string,fullscreen,delay)
+                    (string, fullscreen, delay)
                 </h3>
                 <p>
-                    Play
-                    a
+                    This function plays
+                    a local
                     video
-                    file.
+                    file from Video folder.
                 </p>
                 <h4>Parameters</h4>
                 <ul>
                     <li>
-                        <span class="parameter">string</span> <span class="types"><span class="string">string</span></span> The
+                        <span class="parameter">string</span>
+                        <span class="types"><span class="string">string</span></span>
+                        The
                         name
                         of
                         the
-                        file. Assumed
-                        to
-                        be
-                        in
-                        the
-                        Video
-                        folder
+                        file
                     </li>
                     <li>
-                        <span class="parameter">fullscreen</span> <span class="types"><span class="boolean">boolean</span></span>
-                        Shown
+                        <span class="parameter">fullscreen</span>
+                        <span class="types"><span class="boolean">True/False</span></span>
+                        Show
                         in
                         full
-                        screen
+                        screen mode
                     </li>
                     <li>
-                        <span class="parameter">delay</span> <span class="types"><span class="number">number</span></span> Delay
-                        to
+                        <span class="parameter">delay</span>
+                        <span class="types"><span class="number">number</span></span>
+                        Delay in seconds before
                         showing
                     </li>
                 </ul>
                 <h4>Returns</h4>
                 <p>
-                    string
-                    "N"if
-                    it
-                    can't
-                    find
-                    the
-                    file
+                    <span class="types"><span class="string">string</span></span>
+                    '' if successful, or 'N' if not able to play it
                 </p>
+
+                <h5>Example</h5>
+                <div class="example">
+                    <code>
+                        ScenEdit_PlayVideo('News_Link_for_Between_Scenario_3_and_4.wmv', true, 0)
+                    </code>
+                </div>
+
                 <hr>
                 <h3>
                     <a class="anchor" id="ScenEdit_PlayerSide"></a>ScenEdit_PlayerSide
                     ()
                 </h3>
                 <p>
-                    The
-                    player's
+                    This function returns the
                     current
-                    side.
+                    side, which is assumed to be the player's.
                 </p>
+                <h4>Parameters</h4>
+                <ul>
+                    <li>
+                        None
+                    </li>
+                </ul>
                 <h4>Returns</h4>
                 <p>
-                    <span class="types"><span class="string">string</span></span>The
+                    <span class="types"><span class="string">string</span></span>
+                    The
                     name
                     of
                     the
@@ -3062,17 +3074,18 @@
                     side
                 </p>
                 <h5>Example</h5>
-                <div class="example"><code><span class="local">local</span> side = ScenEdit_PlayerSide()</code></div>
-                </p>
+                <div class="example">
+                    <code>local side = ScenEdit_PlayerSide()</code>
+                </div>
+
                 <hr>
                 <h3>
                     <a class="anchor" id="ScenEdit_QueryDB"></a>ScenEdit_QueryDB
-                    (objectType,DBID)
+                    (objectType, DBID)
                 </h3>
                 <p>
-                    Query
-                    database
-                    use
+                    This function queries the
+                    database. Use
                     the
                     wrapper_object_variable.fields
                     to
@@ -3080,20 +3093,24 @@
                     what
                     can
                     be
-                    returned
+                    returned<br />
+                    The objects currently supported are 'weapon', 'mount' and 'sensor'.
                 </p>
                 <h4>Parameters</h4>
                 <ul>
                     <li>
-                        <span class="parameter">objectType</span> <span class="types"><span class="string">string</span></span> The
+                        <span class="parameter">objectType</span>
+                        <span class="types"><span class="string">string</span></span>
+                        The
                         type
                         of
                         item
                         to
-                        query; 'weapon', 'mount', 'sensor'
+                        query
                     </li>
                     <li>
-                        <span class="parameter">DBID</span> <span class="types"><span class="number">number</span></span> The
+                        <span class="parameter">DBID</span>
+                        <span class="types"><span class="number">number</span></span> The
                         databse
                         id
                         of
@@ -3104,19 +3121,22 @@
                 </ul>
                 <h4>Returns</h4>
                 <p><span class="wrapper">object</span>Object wrapper</p>
+
                 <h5>Example</h5>
                 <div class="example">
-                    <code><span class="local">local</span> a = ScenEdit_QueryDB(<span class="string">'weapon'</span>,<span class="number">1398</span>)</code>
+                    <code>
+                        local w = ScenEdit_QueryDB( 'weapon', 1398 )<br />
+                        print( w.OODA)  --The OODA loop observe/orient/decide/act
+                    </code>
                 </div>
-                </p>
+
                 <hr>
                 <h3>
                     <a class="anchor" id="ScenEdit_RefuelUnit"></a>ScenEdit_RefuelUnit
-                    (unitOptions)
+                    ( table )
                 </h3>
                 <p>
-                    Cause
-                    unit
+                    This function will make the unit attempt
                     to
                     refuel.
                 </p>
@@ -3146,71 +3166,115 @@
                 <h4>Parameters</h4>
                 <ul>
                     <li>
-                        <span class="parameter">unitOptions</span> <span class="wrapper">
-                            <a href="Wrappers.html#wrapper_RefuelOptions">RefuelOptions</a>
-                        </span> The
-                        unit
-                        and
-                        refueling
-                        options.
+                        <span class="parameter">table</span>
+                        <span class="table"> {} </span>
+                        <ul>
+                            <li>
+                                <span class="parameter">side = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The side name/GUID of the unit
+                            </li>
+                            <li>
+                                <span class="parameter">unitname = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The name of unit
+                            </li>
+                            <li>
+                                <span class="parameter">guid = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The GUID of the unit
+                            </li>
+                            <li>
+                                <span class="parameter">tanker =</span>
+                                <span class="types"><span class="string">string</span></span>
+                                A specific tanker defined by its name (side is assumed to be the same as unit) or GUID.
+                            </li>
+                            <li>
+                                <span class="parameter">missions = </span>
+                                <span class="table"> {} of multiple </span>
+                                <span class="types"><span class="string">string</span></span>
+                                A table of mission names or mission GUIDs.
+                            </li>
+                        </ul>
                     </li>
                 </ul>
                 <h4>Returns</h4>
                 <p>
-                    <span class="types"><span class="string">string</span></span>If
-                    successful,then
+                    <span class="types"><span class="string">string</span></span>
+                    If
+                    successful, then it returns an
                     empty
-                    string.Else
+                    string. Otherwise, a
                     message
                     showing
                     why
                     it
                     failed
-                    to
+                    to refuel is returned
                 </p>
                 <h5>Example</h5>
                 <div class="example">
                     <code>
-                        ScenEdit_RefuelUnit({side=<span class="string">"United States"</span>, unitname=<span class="string">"USS Test"</span>})
+                        ScenEdit_RefuelUnit( {side="United States", unitname="USS Test" } )
                     </code>
                 </div>
 
                 <div class="example">
                     <code>
-                        ScenEdit_RefuelUnit({side=<span class="string">"United States"</span>, unitname=<span class="string">"USS Test"</span>, tanker=<span class="string">"Hose #1"</span>})
+                        ScenEdit_RefuelUnit( {side="United States", unitname="USS Test", tanker="Hose #1" } )
                     </code>
                 </div>
 
                 <div class="example">
                     <code>
-                        ScenEdit_RefuelUnit({side=<span class="string">"United States"</span>, unitname=<span class="string">"USS Test"</span>, missions={<span class="string">"Pitstop"</span>}})
+                        ScenEdit_RefuelUnit( {side="United States", unitname="USS Test", missions={ "Pitstop" } } )
                     </code>
                 </div>
+
                 <hr>
                 <h3>
                     <a class="anchor" id="ScenEdit_RemoveSide"></a>ScenEdit_RemoveSide
                     (table)
                 </h3>
                 <p>
-                    Remove
+                    This function remove a
                     side
                     from
-                    play.This
+                    play. This
                     removes
-                    ALL
+                    <strong>ALL</strong>
                     units
                     and
-                    contacts.
+                    contacts for the side.
                 </p>
                 <h4>Parameters</h4>
                 <ul>
                     <li>
-                        <span class="parameter">side</span><span class="table"><a href="Tables.html#table_Side">side</a></span> The
-                        side to remove
+                        <span class="parameter">table</span>
+                        <span class="table"> {} </span>
+                        <ul>
+                            <li>
+                                <span class="parameter">side = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The side name/GUID to remove
+                            </li>
+                        </ul>
                     </li>
                 </ul>
                 <h4>Returns</h4>
-                <p><span class="wrapper"><a href="Wrappers.html#wrapper_Side">Side</a></span></p>
+                <p>
+                    <span class="wrapper"><a href="Wrappers.html#wrapper_Side">Side</a></span>
+                    A wrapper for the side removed, or <code>nil</code> otherwise
+                </p>
+               
+                <h5>Example</h5>
+                <div class="example">
+                    <code>
+                        local s = ScenEdit_RemoveSide( {side="United States" } )<br />
+                        print( s.name .. ' was removed')
+                    </code>
+                </div>
+
                 <hr>
                 <h3>
                     <a class="anchor" id="ScenEdit_RemoveUnitAsTarget"></a>ScenEdit_RemoveUnitAsTarget
