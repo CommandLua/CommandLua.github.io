@@ -13,7 +13,7 @@
 
 
 	<title>Command Lua Docs</title>
-	<link rel="stylesheet" type="text/css" href="style.css" / >
+	<link rel="stylesheet" type="text/css" href="style.css"  >
 	
 
 
@@ -222,7 +222,7 @@
                     <h4>Use of GUID and Name</h4>
                     <p>
                         When defining a unit to select, you should declare the unit <code>guid</code>, or delcare the
-                        <code>unitname</code> and its <code>side</code>.<br />
+                        <code>unitname</code> and its <code>side</code>. When a name only is supplied, there may be confusion as to which unit is referenced IF the name exists on more than one side.<br />
                         The GUID is always preferable as this refers to the unit regardless of any name changes that may occurr.<br />
                         The same thing applies to a contact. Using the contact GUID means that it won't be affected by the name changes due to identification.
                     </p>
@@ -3266,7 +3266,7 @@
                     <span class="wrapper"><a href="Wrappers.html#wrapper_Side">Side</a></span>
                     A wrapper for the side removed, or <code>nil</code> otherwise
                 </p>
-               
+
                 <h5>Example</h5>
                 <div class="example">
                     <code>
@@ -3281,133 +3281,148 @@
                     (AUNameOrIDOrTable,MissionNameOrID)
                 </h3>
                 <p>
-                    Removes
-                    targets
+                    This function removes
+                    target(s)
                     from
                     a
                     Strike
                     mission.
                 </p>
                 <p>
-                    The
-                    'UnitX'can
+                    The value
+                    'UnitX' can
                     be
-                    used
-                    as
-                    a
-                    unit
-                    descriptor
+                    used in an event
+                    for AUNameOrIDOrTable.
                 </p>
                 <h4>Parameters</h4>
                 <ul>
                     <li>
-                        <span class="parameter">AUNameOrIDOrTable</span> <span class="types">
-                            <span class="string">string</span>
-                        </span> or
-                        <span class="table">table</span> The
-                        name/GUID
-                        of
-                        the
-                        unit, or
-                        a
-                        table
-                        of
-                        <code>name/GUID</code> to
-                        remove
-                        from
-                        target
-                        list
-                    </li>
+                        <span class="parameter">AUNameOrIDOrTable</span>
+                        <ul>
+                            <li>
+                                <span class="types">
+                                    <span class="string">string</span>
+                                </span>The
+                                name/GUID
+                                of
+                                the single
+                                unit
+                            </li>
+                            or
+                            <li>
+                                <span class="table">{} of multiple </span>
+                                <span class="types">
+                                    <span class="string">string</span>
+                                </span>A
+                                table
+                                of
+                                <code>name/GUID</code> to
+                                remove
+                                from
+                                target
+                                list
+                            </li>
+                        </ul>
                     <li>
-                        <span class="parameter">MissionNameOrID</span> <span class="types"><span class="string">string</span></span>
-                        The
-                        mission
+                        <span class="parameter">MissionNameOrID</span>
+                        <span class="types"><span class="string">string</span></span>
+                        The strike
+                        mission name/guid
                     </li>
                 </ul>
                 <h4>Returns</h4>
                 <p>
-                    <span class="table">table</span>A
+                    <span class="table">table {} of</span>
+                    <span class="types"><span class="string">string</span></span>
+                    A
                     table
                     of
-                    targets
+                    target GUIDs
                     removed
                 </p>
                 <h5>Example</h5>
                 <div class="example">
-                    <code>ScenEdit_RemoveUnitAsTarget({<span class="string">'target1'</span>,<span class="string">'target2'</span>},<span class="string">'Land strike'</span>)</code>
+                    <code>ScenEdit_RemoveUnitAsTarget( { 'target1','target2' }, 'Land strike' )</code>
                 </div>
-                </p>
+                <div class="example">
+                    <code>ScenEdit_RemoveUnitAsTarget( 'UnitX', 'Land strike' )</code>
+                </div>
+
                 <hr>
                 <h3>
                     <a class="anchor" id="ScenEdit_RemoveZone"></a>ScenEdit_RemoveZone
-                    (sideName,zoneType,table)
+                    (sideName, zoneType, table)
                 </h3>
                 <p>
-                    Remove
+                    This function removes a
                     no-nav
                     or
                     exclusion
-                    zone.<br />...Note
-                    that
-                    this
-                    will
-                    drop
-                    the
-                    zone
-                    with
-                    any
-                    area
-                    RPs
+                    zone.
                 </p>
+                <p>The RPs attached to the zone will also be removed as they are unique to the zone.</p>
                 <h4>Parameters</h4>
-                <li>
-                    <span class="parameter">sideName</span><span class="types"><span class="string">string</span></span>Side
-                    name/GUID
-                </li>
-                <li>
-                    <span class="parameter">zoneType</span><span class="types"><span class="string">string</span></span>Type
-                    of
-                    zone
-                    to
-                    remove:0
-                    =no-nav,1
-                    =exclusion
-                </li>
-                <li>
-                    <span class="parameter">table</span><span class="table">table</span> Description,Isactive,Area
-                    {of
-                    RPs
-                    },Affects
-                    {of
-                    UnitTypes
-                    },MarkAs
-                    (exc
-                    only),Locked
-                    (non
-                    only)
-                </li>
+                <ul>
+                    <li>
+                        <span class="parameter">sideName</span>
+                        <span class="types"><span class="string">string</span></span>
+                        The Side
+                        name/GUID that owes the zone
+                    </li>
+                    <li>
+                        <span class="parameter">zoneType</span>
+                        <span class="types">
+                            <span class="tooltip">
+                                number<span class="tooltiptext">
+                                    0 = no-nav<br />
+                                    1 = exclusion
+                                </span>
+                            </span>
+                        </span>
+                        The Type
+                        of
+                        zone
+                        to
+                        remove
+                    </li>
+                    <li>
+                        <span class="parameter">table</span>
+                        <span class="table">{} </span>
+                        <ul>
+                            <li>
+                                <span class="parameter">Description =</span>
+                                <span class="types"><span class="string">string</span></span>
+                                The Zone GUID or Name or Description to identify it
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
                 <h4>Returns</h4>
                 <p>
                     <span class="wrapper">
-                        <a href="Wrappers.html#wrapper_Zone">
-                            { Zone
-                            }
-                        </a>
+                        <a href="Wrappers.html#wrapper_Zone">Zone</a>
                     </span>
+                    A zone wrapper for the removed Zone
                 </p>
+
+                <h5>Example</h5>
+                <div class="example">
+                    <code>local oldZone = ScenEdit_RemoveZone( 'Red', 0, { Description = 'my zone' } )</code>
+                </div>
+
                 <hr>
                 <h3>
                     <a class="anchor" id="ScenEdit_RunScript"></a>ScenEdit_RunScript
-                    (script)
+                    (script [,customPath] )
                 </h3>
                 <p>
-                    Runs
+                    This function runs
                     a
                     script
                     from
                     a
-                    file.The
+                    file. The
                     file
                     <code>script</code>must
                     be
@@ -3416,7 +3431,7 @@
                     [Command
                     base
                     directory]/Lua
-                    directory,or
+                    directory, or
                     else
                     the
                     game
@@ -3426,7 +3441,8 @@
                     able
                     to
                     load
-                    it.You
+                    it. <br />
+                    You
                     can
                     make
                     the
@@ -3438,7 +3454,7 @@
                     a
                     sub-directory
                     of
-                    this,as
+                    this, as
                     in
                     'library/cklib.lua'The
                     file
@@ -3451,7 +3467,8 @@
                     form
                     [Command
                     base
-                    directory]/Lua/[<code>script</code>]A
+                    directory]/Lua/[<code>script</code>].<br />
+                    A
                     file
                     can
                     also
@@ -3461,12 +3478,18 @@
                     from
                     an
                     attachment
-                    <a href="#ScenEdit_UseAttachment">ScenEdit_UseAttachment</a>
+                    <a href="#ScenEdit_UseAttachment">ScenEdit_UseAttachment</a><br />
+                </p>
+                <p>
+                    There is an optional parameter to use the full path of 'script' that overrides the above, but putting files outside of the Command folder would make installing a scenario extremely difficult - the user would need to do manual file copying, etc. <br />
+                    This option is more for the Professional user where they make have dedicated scripts on their servers.
                 </p>
                 <h4>Parameters</h4>
                 <ul>
                     <li>
-                        <span class="parameter">script</span> The
+                        <span class="parameter">script</span>
+                        <span class="types"><span class="string">string</span></span>
+                        The
                         file
                         containing
                         the
@@ -3474,96 +3497,249 @@
                         to
                         run.
                     </li>
+                    <li>
+                        <span class="parameter">customPath</span>
+                        <span class="types"><span class="boolean">True/False</span></span>
+                        Use the full path from 'script' name. Optional. Defaults to False.
+                    </li>
                 </ul>
-                <h5>Example</h5>
-                <div class="example"><code>ScenEdit_RunScript(<span class="string">'mylibrary.lua'</span>)</code></div>
+                <h4>Returns</h4>
+                <p>
+                    <span class="types"><span class="string">string</span></span>
+                    Returns "" if successful, or <code>nil</code> otherwise
                 </p>
+
+                <h5>Example</h5>
+                <div class="example"><code>ScenEdit_RunScript( 'mylibrary.lua' )</code></div>
+
                 <hr>
                 <h3>
                     <a class="anchor" id="ScenEdit_SelectedUnits"></a>ScenEdit_SelectedUnits
                     ()
                 </h3>
                 <p>
-                    list
-                    of
-                    selected
-                    unit
-                    ids
+                    This function returns a list (of name and guid)
+                    of the units (actual or contact) currently selected
                 </p>
+                <h4>Parameters</h4>
+                <ul>
+                    <li>
+                        None
+                    </li>
+                </ul>
                 <h4>Returns</h4>
                 <p>
-                    <span class="table">table</span> Table
+                    <span class="table">table {} of</span>
+                    <ul>
+                        <li>
+                            <span class="parameter">units</span>
+                            <span class="table"> {} of multiple</span>
+                            <ul>
+                                <li>
+                                    <span class="parameter">guid</span>
+                                    <span class="types"><span class="string">string</span></span>
+
+                                </li>
+                                <li>
+                                    <span class="parameter">name</span>
+                                    <span class="types"><span class="string">string</span></span>
+
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="parameter">contacts</span>
+                            <span class="table"> {} of multiple</span>
+                            <ul>
+                                <li>
+                                    <span class="parameter">guid</span>
+                                    <span class="types"><span class="string">string</span></span>
+
+                                </li>
+                                <li>
+                                    <span class="parameter">name</span>
+                                    <span class="types"><span class="string">string</span></span>
+
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    A Table
                     of
-                    unit
                     ids
-                    as
-                    table
+                    for selected
                     'units'and
                     'contacts'.
                 </p>
+
+                <h5>Example</h5>
+                <div class="example">
+                    <code>
+                        local selected = ScenEdit_SelectedUnits( )<br />
+                        print(selected.units)  -- list of selected units
+                    </code>
+                </div>
+
                 <hr>
                 <h3>
                     <a class="anchor" id="ScenEdit_SetAction"></a>ScenEdit_SetAction
-                    (options)
+                    (table)
                 </h3>
                 <p>
-                    Sets
+                    This function Sets
                     the
                     attributes
                     of
                     an
-                    action.
+                    Event action.
+                </p>
+                <p>
+                    The available operation/modes available are:
+                    <ul>
+                        <li>'list'   : dumps the Action currently installed</li>
+                        <li>'add'    : adds a new Action</li>
+                        <li>'remove' : deletes the Action. The Action won't be deleted if it is in an Event.</li>
+                        <li>'update' : modifies the Action</li>
+                    </ul>
                 </p>
                 <h4>Parameters</h4>
                 <ul>
                     <li>
-                        <span class="parameter">options</span> <span class="selector">
-                            <a href="Selectors.html#selector_ActionUpdate">ActionUpdate</a>
-                        </span> The
-                        action
-                        options
+                        <span class="parameter">table</span>
+                        <span class="table">{} </span>
+                        <ul>
+                            <li>
+                                <span class="parameter">description =</span>
+                                <span class="types"><span class="string">string</span></span>
+                                Action GUID or Description
+                            </li>
+                            <li>
+                                <span class="parameter">mode =</span>
+                                <span class="types">
+                                    <span class="tooltip">
+                                        string
+                                        <span class="tooltiptext">"add", "remove", "update", "list"</span>
+                                    </span>
+                                </span>
+                                Type of action to take on details
+                            </li>
+                            <li>
+                                <span class="parameter">rename =</span> or <span class="parameter">newname =</span>
+                                <span class="types"><span class="string">string</span></span>
+                                New Description for the Action. Applicable to mode 'update' only
+                            </li>
+                            <li>
+                                <span class="parameter">type =</span>
+                                <span class="types"><span class="string">string</span></span>
+                                Type of Action. Applicable to mode 'add' only
+                            </li>
+                            <!--
+
+                other Lua keywords that apply to various Event TCAs
+                    EarliestTime
+                    ETOA
+                    LatestTime
+                    LTOA
+                    Interval
+                    TargetFilter
+                    CargoFilter
+                    Area
+                    "SideID", "DetectorSideID", "ObserverSideID", "TargetSideID"
+                    TargetPosture
+                    MCL
+                    TD
+                    MissionID
+                    UnitIDs
+                    Newname for Event and Special Action rename??? Need to make consistent in code
+                -->
+                        </ul>
                     </li>
                 </ul>
                 <h4>Returns</h4>
                 <p>
-                    <span class="table">table</span> Table
+                    <span class="table">table {}</span> Table
                     of
-                    action
-                    options
-                    (new
-                    or
-                    previous
-                    value)
+                    action values (needs to be expanded )
                 </p>
+
+                <h5>Example</h5>
+                <div class="example">
+                    <code>
+                        local action = ScenEdit_SetAction( { description='my action', mode = 'list' } )<br />
+                        print(action)  -- list of action settings
+                    </code>
+                    <code>
+                        local action = ScenEdit_SetAction( { description='my action', mode = 'remove' } )<br />
+                        print(action)  -- list of the removed action settings
+                    </code>
+                </div>
+
                 <hr>
                 <h3>
                     <a class="anchor" id="ScenEdit_SetCondition"></a>ScenEdit_SetCondition
-                    (options)
+                    ( table )
                 </h3>
                 <p>
-                    Sets
+                    This function Sets
                     the
                     attributes
                     of
-                    an
-                    condition.
+                    an Event
+                    Condition.
                 </p>
                 <h4>Parameters</h4>
                 <ul>
                     <li>
-                        <span class="parameter">options</span> <span class="selector">
-                            <a href="Selectors.html#selector_ConditionUpdate">
-                                {
-                                ConditionUpdate
-                                }
-                            </a>
-                        </span> The
-                        condition
-                        options
+                        <span class="parameter">table</span>
+                        <span class="table">{} </span>
+                        <ul>
+                            <li>
+                                <span class="parameter">description =</span>
+                                <span class="types"><span class="string">string</span></span>
+                                Condition GUID or Description
+                            </li>
+                            <li>
+                                <span class="parameter">mode =</span>
+                                <span class="types">
+                                    <span class="tooltip">
+                                        string
+                                        <span class="tooltiptext">"add", "remove", "update", "list"</span>
+                                    </span>
+                                </span>
+                                Type of action to take on details
+                            </li>
+                            <li>
+                                <span class="parameter">rename =</span> or <span class="parameter">newname =</span>
+                                <span class="types"><span class="string">string</span></span>
+                                New Description for the Condition. Applicable to mode 'update' only
+                            </li>
+                            <li>
+                                <span class="parameter">type =</span>
+                                <span class="types"><span class="string">string</span></span>
+                                Type of Condition. Applicable to mode 'add' only
+                            </li>
+                        </ul>
                     </li>
                 </ul>
                 <h4>Returns</h4>
-                <p><span class="table">table</span> Table of condition options (new or previous value)</p>
+                <p>
+                    <span class="table">table {}</span> Table
+                    of
+                    condition values (needs to be expanded )
+                </p>
+
+                <h5>Example</h5>
+                <div class="example">
+                    <code>
+                        local action = ScenEdit_SetContion( { description='my condition', mode = 'list' } )<br />
+                        print(action)  -- list of condition settings
+                    </code>
+                    <code>
+                        local action = ScenEdit_SetContion( { description='my condition', mode = 'remove' } )<br />
+                        print(action)  -- list of the removed condition settings
+                    </code>
+                </div>
+
                 <hr>
                 <h3>
                     <a class="anchor" id="ScenEdit_SetDoctrine"></a>ScenEdit_SetDoctrine
@@ -4833,10 +5009,10 @@
                 <hr>
                 <h3>
                     <a class="anchor" id="ScenEdit_SetTrigger"></a>ScenEdit_SetTrigger
-                    (options)
+                    ( table )
                 </h3>
                 <p>
-                    Sets
+                    This function Sets
                     the
                     attributes
                     of
@@ -4846,33 +5022,56 @@
                 <h4>Parameters</h4>
                 <ul>
                     <li>
-                        <span class="parameter">options</span> <span class="selector">
-                            <a href="Selectors.html#selector_TriggerUpdate">
-                                {
-                                TriggerUpdate
-                                }
-                            </a>
-                        </span> The
-                        trigger
-                        options
+                        <span class="parameter">table</span>
+                        <span class="table">{} </span>
+                        <ul>
+                            <li>
+                                <span class="parameter">description =</span>
+                                <span class="types"><span class="string">string</span></span>
+                                Trigger GUID or Description
+                            </li>
+                            <li>
+                                <span class="parameter">mode =</span>
+                                <span class="types">
+                                    <span class="tooltip">
+                                        string
+                                        <span class="tooltiptext">"add", "remove", "update", "list"</span>
+                                    </span>
+                                </span>
+                                Type of action to take on details
+                            </li>
+                            <li>
+                                <span class="parameter">rename =</span> or <span class="parameter">newname =</span>
+                                <span class="types"><span class="string">string</span></span>
+                                New Description for the Trigger. Applicable to mode 'update' only
+                            </li>
+                            <li>
+                                <span class="parameter">type =</span>
+                                <span class="types"><span class="string">string</span></span>
+                                Type of Trigger. Applicable to mode 'add' only
+                            </li>
+                        </ul>
                     </li>
                 </ul>
                 <h4>Returns</h4>
                 <p>
-                    <span class="types">
-                        <span class="type">
-                            { table
-                            }
-                        </span>
-                    </span>Table
+                    <span class="table">table {}</span> Table
                     of
-                    trigger
-                    options
-                    (new
-                    or
-                    previous
-                    value)
+                    trigger values (needs to be expanded )
                 </p>
+
+                <h5>Example</h5>
+                <div class="example">
+                    <code>
+                        local action = ScenEdit_SetTrigger( { description='my trigger', mode = 'list' } )<br />
+                        print(action)  -- list of trigger settings
+                    </code>
+                    <code>
+                        local action = ScenEdit_SetTrigger( { description='my trigger', mode = 'remove' } )<br />
+                        print(action)  -- list of the removed trigger settings
+                    </code>
+                </div>
+
                 <hr>
                 <h3>
                     <a class="anchor" id="ScenEdit_SetUnit"></a>ScenEdit_SetUnit
@@ -5671,7 +5870,7 @@
                     interactive
 
                 </p>
-                </p>
+
                 <hr>
                 <h3>
                     <a class="anchor" id="Tool_Range"></a>Tool_Range
@@ -5721,72 +5920,80 @@
                 <hr>
                 <h3>
                     <a class="anchor" id="VP_ExportUnits"></a>VP_ExportUnits
-                    (table,filename)
+                    (table, filename)
                 </h3>
                 <p>
-                    Export
+                    This function exports the current scenario
                     unit
-                    details
-                </p>
-                <p>
-                    ...to
-                    a
-                    file
-                    for
-                    later
-                    import
-                    parameters
-                    filename,filter
-                    by
-                    unit
-                    type,side
+                    details to a file for examination. <br />
+                    The data could be used to create/copy to an import INST file for later including in a scenario.
+                    The export can be optionally filtered similar to the
+                    Event
+                    Target
+                    trigger.
                 </p>
                 <h4>Parameters</h4>
                 <ul>
                     <li>
-                        <span class="parameter">table</span> <span class="table">table</span> of
-                        Filters: TARGETSIDE, TARGETTYPE, TARGETSUBTYPE, SPECIFICUNITCLASS, SPECIFICUNIT. The
-                        values
-                        are
-                        like
-                        the
-                        Event
-                        Target
-                        triigers, but
-                        can
-                        take
-                        multiple
-                        ones. As
-                        in
-                        TargetType={'aircraft','submarine'}}
+                        <span class="parameter">table</span><span class="table"> {} </span>
+                        <ul>
+                            <li>
+                                <span class="parameter">targetSide = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The side name/GUID
+                            </li>
+                            <li>
+                                <span class="parameter">targetType = </span>
+                                <span class="table"> {} of multiple </span>
+                                <span class="types"><span class="string">string</span></span>
+                                List of unit types like {'aircraft','submarine'}
+                            </li>
+                            <li>
+                                <span class="parameter">targetSubtype = </span>
+                                <span class="table"> {} of multiple </span>
+                                <span class="types"><span class="number">number</span></span>
+                            </li>
+                            <li>
+                                <span class="parameter">specifcUnitClass = </span>
+                                <span class="table"> {} of multiple </span>
+                                <span class="types"><span class="number">number</span></span>
+                            </li>
+                            <li>
+                                <span class="parameter">specificUnit = </span>
+                                <span class="table"> {} of multiple </span>
+                                <span class="types"><span class="string">string</span></span>
+                                Unit GUIDs
+                            </li>
+                        </ul>
                     </li>
                     <li>
-                        <span class="parameter">filename</span> <span class="types"><span class="string">string</span></span> of
-                        exported
-                        file
+                        <span class="parameter">filename</span>
+                        <span class="types"><span class="string">string</span></span>
+                        Export
+                        file name
                     </li>
                 </ul>
                 <h4>Returns</h4>
                 <p>
-                    <span class="types"><span class="boolean">boolean</span></span>Success
+                    <span class="types"><span class="boolean">True/False</span></span>Success
                     or
                     failure
-                    {Filter}
                 </p>
+                <h5>Example</h5>
+                <div class="example">
+                    <code>
+                        local ok = VP_ExportUnits( { tagetside ="NATO", targettype = {'aircraft','submarine'}  }, core_units )
+                    </code>
+                </div>
+
                 <hr>
                 <h3>
                     <a class="anchor" id="VP_GetContact"></a>VP_GetContact
-                    (ContactGUID)
+                    ( table )
                 </h3>
                 <p>
-                    Get
-                    contact
+                    This function returns
                     details
-                    This
-                    will
-                    get
-                    the
-                    information
                     about
                     a
                     contact
@@ -5795,50 +6002,61 @@
                 <h4>Parameters</h4>
                 <ul>
                     <li>
-                        <span class="parameter">ContactGUID</span> <span class="selector">
-                            <a href="Selectors.html#selector_VPContactSelector">VPContactSelector</a>
-                        </span> The
-                        contact
-                        selector
-                        to
-                        interrogate
+                        <span class="parameter">table</span><span class="table"> {} </span>
+                        <ul>
+                            <li>
+                                <span class="parameter">guid = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The GUID of the contact
+                            </li>
+                        </ul>
                     </li>
                 </ul>
                 <h4>Returns</h4>
-                <p><span class="wrapper"><a href="Wrappers.html#wrapper_Contact">Contact</a></span> The information associated with the contact</p>
+                <p>
+                    <span class="wrapper"><a href="Wrappers.html#wrapper_Contact">Contact</a></span>
+                    Contact object
+                </p>
+
                 <h5>Example</h5>
                 <div class="example">
                     <code>
-                        <span class="local">local</span> side = VP_GetSide({name =<span class="string">"NATO"</span>})<br>
-                        <span class="local">local</span> contacts = side.contacts<span class="comment"> --List Of contacts</span><br>
-                        <span class="local">local</span> guid = contacts[<span class="number">12</span>].objectid<span class="comment"> -- GUID of a specific contact</span><br>
-                        <span class="local">local</span> a_contact = VP_GetContact({guid=guid})<span class="comment"> -- details of contact as distinct to unit details</span><br>
+                        local side = VP_GetSide( { name ="NATO" } )<br>
+                        local contacts = side.contacts<span class="comment"> --List Of contacts</span><br>
+                        local con_guid = contacts[12].objectid<span class="comment"> -- GUID of a specific contact</span><br>
+                        local a_contact = VP_GetContact( { guid = con_guid } )<span class="comment"> -- details of contact as distinct to unit details</span><br>
                     </code>
                 </div>
-                </p>
+
                 <hr>
-                <h3><a class="anchor" id="VP_GetScenario"></a>VP_GetScenario()</h3>
-                <p>Exposes current scenario information.</p>
+                <h3>
+                    <a class="anchor" id="VP_GetScenario"></a>VP_GetScenario
+                    ()
+                </h3>
+                <p>This function returns the current scenario information.</p>
                 <h4>Parameters</h4>
-                <p>None</p>
+                <ul>
+                    <li>
+                        None
+                    </li>
+                </ul>
                 <h4>Returns</h4>
-                <p><span class='wrapper'><a href="Wrappers.html#wrapper_Scenario">Scenario</a></span></p>
+                <p>
+                    <span class='wrapper'><a href="Wrappers.html#wrapper_Scenario">Scenario</a></span>
+                    The Scenario object
+                </p>
+                <h5>Example</h5>
+                <div class="example">
+                    <code>local scen = VP_GetScenario( ) </code>
+                </div>
+
                 <hr>
                 <h3>
                     <a class="anchor" id="VP_GetSide"></a>VP_GetSide
-                    (side)
+                    ( table )
                 </h3>
                 <p>
-                    Side
-                    information
-                    from
-                    player's
-                    perspective.
-                </p>
-                <p>
-                    Gets
-                    a
-                    side
+                    This function returns the Side
                     object
                     from
                     the
@@ -5850,100 +6068,113 @@
                 <h4>Parameters</h4>
                 <ul>
                     <li>
-                        <span class="parameter">side</span> <span class="selector">
-                            <a href="Selectors.html#selector_SideSelector">SideSelector</a>
-                        </span> The
-                        side
-                        to
-                        get
-                        information
-                        about.
+                        <span class="parameter">table</span><span class="table"> {} </span>
+                        <ul>
+                            <li>
+                                <span class="parameter">side = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The name of the side
+                            </li>
+                            <li>
+                                <span class="parameter">guid = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The GUID of the side
+                            </li>
+                        </ul>
                     </li>
                 </ul>
                 <h4>Returns</h4>
                 <p>
-                    <span class="wrapper"><a href="Wrappers.html#wrapper_Side">Side</a></span>Information
-                    about
-                    the
-                    side
-                    selected,from
-                    the
-                    perspective
-                    of
-                    the
-                    player.
+                    <span class="wrapper"><a href="Wrappers.html#wrapper_Side">Side</a></span>
+                    The side object
                 </p>
-                <h5>Example</h5>
 
+                <h5>Example</h5>
                 <div class="example">
-                    <code><span class="local">local</span> a = VP_GetSide({Side =<span class="string">'sidea'</span>})<span class="comment">-- a side object</span><span class="local">local</span> z = a.nonavzones<span class="comment">--List of no-nav zones for the side if you need to find it</span><span class="local">local</span> n = a : getnonavzone(z[<span class="number">1</span>].guid)<span class="comment">-- required zone object for a particular zone</span>n.isactive =<span class="keyword">false</span><span class="comment">-- turn it off</span></code>
+                    <code>local side = VP_GetSide( { Side ='sidea' } ) </code>
                 </div>
-                </p>
 
                 <hr>
                 <h3>
                     <a class="anchor" id="VP_GetSides"></a>VP_GetSides
                     ()
                 </h3>
-                <p>List of sides in the scenario.</p>
+                <p>This function returns a list of the sides in the scenario.</p>
                 <h4>Parameters</h4>
                 <ul>
                     <li>None</li>
                 </ul>
                 <h4>Returns</h4>
-                <p><span class="Table"> Table </span> Table of side references (name, guid)</p>
+                <p>
+                    <span class="table">{} of multiple </span>
+                    <span class="wrapper"><a href="Wrappers.html#wrapper_Side">Side</a></span>
+                    Side objects
+
+                </p>
+
+                <h5>Example</h5>
+                <div class="example">
+                    <code>local sides = VP_GetSides( )</code>
+                </div>
 
                 <hr>
                 <h3>
                     <a class="anchor" id="VP_GetUnit"></a>VP_GetUnit
-                    (ActiveOrContact)
+                    ( table )
                 </h3>
                 <p>
-                    Get
-                    unit
-                    details
-                    This
-                    will
-                    get
-                    the
+                    This function returns
                     information
                     about
                     an
                     active
                     unit
                     or
-                    a
-                    contact
-                    unit
+                    a contact's actual unit.
                 </p>
                 <h4>Parameters</h4>
                 <ul>
                     <li>
-                        <span class="parameter">ActiveOrContact</span> <span class="selector">
-                            <a href="Selectors.html#selector_UnitSelector">UnitSelector</a>
-                        </span> The
-                        unit
-                        selector
-                        to
-                        interrogate
+                        <span class="parameter">table</span><span class="table"> {} </span>
+                        <ul>
+                            <!--li>
+                    <span class="parameter">side = </span>
+                    <span class="types"><span class="string">string</span></span>
+                    The side name/GUID of the unit
+                </li-->
+                            <li>
+                                <span class="parameter">unitname = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The name of unit or contact
+                            </li>
+                            <li>
+                                <span class="parameter">guid = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The GUID of the unit or contact
+                            </li>
+                        </ul>
                     </li>
                 </ul>
                 <h4>Returns</h4>
                 <p>
                     <span class="wrapper"><a href="Wrappers.html#wrapper_Unit">Unit</a></span>The
-                    information
-                    associated
-                    with
+                    wrapper of
                     the
-                    unit
+                    unit. If a 'contact' was passed, then this is the 'actual' unit.
                 </p>
+
+                <h5>Example</h5>
+                <div class="example">
+                    <code>local unit = VP_GetUnit( { guid = 'f4f9e0af-15c2-4582-8e80-b827c2ec2f56' } )</code>
+                </div>
+
                 <hr>
                 <h3>
                     <a class="anchor" id="World_GetCircleFromPoint"></a>World_GetCircleFromPoint
-                    (table)
+                    ( table )
                 </h3>
                 <p>
-                    Returns
+                    This function returns
                     a
                     circle
                     around
@@ -5952,28 +6183,60 @@
                 <h4>Parameters</h4>
                 <ul>
                     <li>
-                        <span class="parameter">latitude</span> <span class="types"><a href="dataType_LatLon">Latitude</a></span>
+                        <span class="parameter">table</span>
+                        <span class="table">{} </span>
+                        <ul>
+                            <li>
+                                <span class="parameter">latitude =</span>
+                                <span class="types"><a href="DataTypes.html#dataType_Latitude">latitude</a></span>
+                                The location of the central point
+                            </li>
+                            <li>
+                                <span class="parameter">longitude =</span>
+                                <span class="types"><a href="DataTypes.html#dataType_Longitude">longitude</a></span>
+                                The location of the central point
+                            </li>
+                            <li>
+                                <span class="parameter">numpoints =</span>
+                                <span class="types"><span class="number">number</span></span>
+                                The number of points to generate on the circle's arc. A minimum of 3 is required
+                            </li>
+                            <li>
+                                <span class="parameter">radius =</span>
+                                <span class="types"><span class="number">number</span></span>
+                                The radius (NM) around the central point
+                            </li>
+                        </ul>
                     </li>
-                    <li>
-                        <span class="parameter">longitude</span> <span class="types"><a href="dataType_LatLon">Longitude</a></span>
-                    </li>
-                    <li><span class="parameter">numpoints</span> <span class="types"><span class="number">number</span></span></li>
-                    <li><span class="parameter">radius</span> <span class="types"><span class="number">number</span></span></li>
                 </ul>
                 <h4>Returns</h4>
-                <p>
-                    <span class="table">table</span> Table of <span class="types">Points</span>
-                </p>
+                <span class="table">{} of multiple </span>
+                Points on the circle
+                <ul>
+                    <li>
+                        <span class="parameter">latitude</span>
+                        <span class="types"><a href="DataTypes.html#dataType_Latitude">latitude</a></span>
+                        The latitude of a point on the circle
+                    </li>
+                    <li>
+                        <span class="parameter">longitude</span>
+                        <span class="types"><a href="DataTypes.html#dataType_Longitude">longitude</a></span>
+                        The longitude of a point on the circle
+                    </li>
+                </ul>
+
+                <h5>Example</h5>
                 <div class="example">
-                    <code><span class="local">local</span> circle = World_GetCircleFromPoint({latitude = <span class="string">'-37.8307390636104'</span>longitude = <span class="string">'144.932549348204'</span>, numpoints = <span class="number">12</span>})</code>
+                    <code>local circle = World_GetCircleFromPoint( { latitude = '-37.8307390636104', longitude = '144.932549348204', numpoints = 12 } )</code>
                 </div>
+
                 <hr>
                 <h3>
                     <a class="anchor" id="World_GetElevation"></a>World_GetElevation
-                    (location)
+                    ( table )
                 </h3>
                 <p>
-                    Returns
+                    This function returns
                     the
                     elevation
                     in
@@ -5981,18 +6244,25 @@
                     of
                     a
                     given
-                    position
+                    point
                 </p>
                 <h4>Parameters</h4>
                 <ul>
                     <li>
-                        <span class="parameter">location</span> <span class="types"><span class="type">Point</span></span> The
-                        position
-                        to
-                        find
-                        the
-                        elevation
-                        of
+                        <span class="parameter">table</span>
+                        <span class="table">{} </span>
+                        <ul>
+                            <li>
+                                <span class="parameter">latitude = </span>
+                                <span class="types"><a href="DataTypes.html#dataType_Latitude">latitude</a></span>
+                                The latitude of the point
+                            </li>
+                            <li>
+                                <span class="parameter">longitude = </span>
+                                <span class="types"><a href="DataTypes.html#dataType_Longitude">longitude</a></span>
+                                The longitude of the point
+                            </li>
+                        </ul>
                     </li>
                 </ul>
                 <h4>Returns</h4>
@@ -6003,49 +6273,184 @@
                     the
                     point
                     in
-                    meters
+                    meters. (does this show -ve or only land????)
                 </p>
+
+                <h5>Example</h5>
+                <div class="example">
+                    <code>
+                        local value = World_GetElevation ( { latitude = '-37.8307390636104', longitude = '144.932549348204' } )
+                    </code>
+                </div>
+
                 <hr>
                 <h3>
                     <a class="anchor" id="World_GetLocation"></a>World_GetLocation
-                    (location)
+                    ( table )
                 </h3>
-                <p>Returns table of details at a given position. These details are similar to what is shown by the map cursor box.</p>
+                <p>This function returns details of a given position. These details are similar to what is shown by the map cursor box.</p>
                 <h4>Parameters</h4>
                 <ul>
                     <li>
-                        <span class="parameter">location</span> <span class="types"><span class="type">Point</span></span> The position to return the values for.
+                        <span class="parameter">table</span>
+                        <span class="table">{} </span>
+                        <ul>
+                            <li>
+                                <span class="parameter">latitude = </span>
+                                <span class="types"><a href="DataTypes.html#dataType_Latitude">latitude</a></span>
+                                The latitude of the point
+                            </li>
+                            <li>
+                                <span class="parameter">longitude = </span>
+                                <span class="types"><a href="DataTypes.html#dataType_Longitude">longitude</a></span>
+                                The longitude of the point
+                            </li>
+                        </ul>
                     </li>
                 </ul>
                 <h4>Returns</h4>
-                <p>
-                    <span class="table">table</span> <code>{altitude, layer {ceiling, floor, strength}, cz{1, 2, 3, 4}, slope, cover {text, value}}</code>
-                </p>
-                <hr>
+                <span class="table">{} of </span>
+                <ul>
+                    <li>
+                        <span class="parameter">altitude</span>
+                        <span class="types"><span class="number">number</span></span>
+                        Altitude (+) or depth (-)
+                    </li>
+                    <li>
+                        <span class="parameter">layer</span>
+                        <span class="table">{} of </span>
+                        Layer information
+                        <ul>
+                            <li>
+                                <span class="parameter">ceiling</span>
+                                <span class="types"><span class="number">number</span></span>
+                            </li>
+                            <li>
+                                <span class="parameter">floor</span>
+                                <span class="types"><span class="number">number</span></span>
+                            </li>
+                            <li>
+                                <span class="parameter">strength</span>
+                                <span class="types"><span class="number">number</span></span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="parameter">cz</span>
+                        <span class="table">{} of </span>
+                        Convergence zone information
+                        <ul>
+                            <li>
+                                <span class="parameter">1</span>
+                                <span class="types"><span class="number">number</span></span>
+                            </li>
+                            <li>
+                                <span class="parameter">2</span>
+                                <span class="types"><span class="number">number</span></span>
+                            </li>
+                            <li>
+                                <span class="parameter">3</span>
+                                <span class="types"><span class="number">number</span></span>
+                            </li>
+                            <li>
+                                <span class="parameter">4</span>
+                                <span class="types"><span class="number">number</span></span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="parameter">slope</span>
+                        <span class="types"><span class="number">number</span></span>
+                        The slope rating (0 - 100)
+                    </li>
+                    <li>
+                        <span class="parameter">cover</span>
+                        <span class="table">{} of </span>
+                        Cover information
+                        <ul>
+                            <li>
+                                <span class="parameter">text</span>
+                                <span class="types"><span class="string">string</span></span>
+                                The description of the cover at location
+                            </li>
+                            <li>
+                                <span class="parameter">value</span>
+                                <span class="types"><span class="number">number</span></span>
+                                The numeric value of the cover at location (need table of value/description)
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
 
-                <h3>
-                    <a class="anchor" id="World_GetPointFromBearing"></a>World_GetPointFromBearing
-                    (table)
-                </h3>
-                <p>Returns a location based on bearing.</p>
-                <h4>Parameters</h4>
-                <ul>
-                    <li>
-                        <span class="parameter">table</span> <code>{latitude, longitude, distance, bearing}</code>
-                    </li>
-                </ul>
-                <h4>Returns</h4>
-                <p>
-                    Table
-                    of
-                    the
-                    new
-                    point
-                </p>
+                <h5>Example</h5>
                 <div class="example">
-                    <code><span class="local">local</span> position = World_GetPointFromBearing({latitude = <span class="string">'-37.8307390636104'</span>longitude = <span class="string">'144.932549348204'</span>, distance = <span class="number">12</span>, bearing = <span class="number">90</span>})</code>
+                    <code>
+                        local position_data = World_GetLocation ( { latitude = '-37.8307390636104', longitude = '144.932549348204' } )
+                    </code>
                 </div>
 
+                <hr>
+                <h3>
+                    <a class="anchor" id="World_GetPointFromBearing"></a>World_GetPointFromBearing
+                    ( table )
+                </h3>
+                <p>This function returns a location based on bearing from a point.</p>
+                <h4>Parameters</h4>
+                <ul>
+                    <li>
+                        <span class="parameter">table</span>
+                        <span class="table">{} </span>
+                        <ul>
+                            <li>
+                                <span class="parameter">latitude = </span>
+                                <span class="types"><a href="DataTypes.html#dataType_Latitude">latitude</a></span>
+                                The latitude of the start point
+                            </li>
+                            <li>
+                                <span class="parameter">longitude = </span>
+                                <span class="types"><a href="DataTypes.html#dataType_Longitude">longitude</a></span>
+                                The longitude of the start point
+                            </li>
+                            <li>
+                                <span class="parameter">distance =</span>
+                                <span class="types"><span class="number">number</span></span>
+                                The distance from the start point (NM)
+                            </li>
+                            <li>
+                                <span class="parameter">bearing = </span>
+                                <span class="types"><span class="number">number (0-360)</span></span>
+                                The Bearing from the start point
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <h4>Returns</h4>
+                <span class="table">{} of </span>
+                the
+                new
+                location point
+                <ul>
+                    <li>
+                        <span class="parameter">latitude</span>
+                        <span class="types"><a href="DataTypes.html#dataType_Latitude">latitude</a></span>
+                        The latitude of the new point
+                    </li>
+                    <li>
+                        <span class="parameter">longitude</span>
+                        <span class="types"><a href="DataTypes.html#dataType_Longitude">longitude</a></span>
+                        The longitude of the new point
+                    </li>
+                </ul>
+
+                <h5>Example</h5>
+                <div class="example">
+                    <code>
+                        local new_pos = World_GetPointFromBearing( { latitude = '-37.8307390636104', longitude = '144.932549348204',<br />
+                        distance = 12, bearing = 90 } )
+                    </code>
+                </div>
+
+                <hr /><hr />
                 <div>
                     <h2>Command: Professional Edition</h2>
                     <p>
@@ -6125,6 +6530,8 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 </body>
 
 </html>
