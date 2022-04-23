@@ -5352,59 +5352,86 @@
                 </div>
                 <div class="note-alert"><p><strong>Note:</strong> The string <code>'playerside'</code> is a special name that refers to whichever side is currently under player control and can be used to ensure that a special message is visible regardless of the player switching sides during the session or choosing a different side at scenario start.</p></div>
                 <div class="note-caution"><p><strong>Caution:</strong> Players can disable pop-ups for special messages in the game options. Ensure that players are aware of the need to turn this feature on if special messages are essential to scenario function.</p></div>
+
                 <hr>
                 <h3>
                     <a class="anchor" id="ScenEdit_TransferCargo"></a>ScenEdit_TransferCargo
-                    (fromUnit,toUnit,cargoList)
+                    (fromUnit, toUnit, cargoList)
                 </h3>
                 <p>
-                    Transfer
+                    This function Transfers a
                     cargo
-                    ..list
-                    from
-                    'mother'to
-                    'child'
+                    list
+                    from a
+                    'parent' to a
+                    'child' unit
                 </p>
                 <h4>Parameters</h4>
                 <ul>
                     <li>
-                        <span class="parameter">fromUnit</span> <span class="selector">
-                            <a href="Selectors.html#selector_UnitSelector">UnitSelector</a>
-                        </span> The
-                        unit
-                        with
+                        <span class="parameter">fromUnit</span>
+                        <span class="types"><span class="string">string</span></span>
+                        The
+                        unit name/guid
+                        with the
                         cargo
                     </li>
                     <li>
-                        <span class="parameter">toUnit</span> <span class="selector">
-                            <a href="Selectors.html#selector_UnitSelector">UnitSelector</a>
-                        </span> The
-                        unit
-                        to
-                        get
+                        <span class="parameter">toUnit</span>
+                        <span class="types"><span class="string">string</span></span>
+                        The
+                        unit name/guid
+                        get the
                         cargo
                     </li>
                     <li>
-                        <span class="parameter">cargoList</span> <span class="table"><a href="Tables.html#table_Cargo">Cargo</a></span> List
-                        of
-                        cargo
-                        to
-                        transfer: table
-                        of
-                        {guids}, or
-                        { {number,DBID}, [{DBID}]}
+                        <span class="parameter">cargoList </span>
+                        <span class="table"> {} of multiple</span>
+                        cargo to affect
+                        <ul>
+                            <li>
+                                <span class="types"><span class="string">string</span></span>
+                                Cargo GUID - treated as one unit to act on
+                            </li>
+                            or
+                            <li>
+                                <span class="table"> {} of</span>
+                                <span class="types"><span class="number">number</span></span>
+                                Cargo database id (DBID) and is treated as one unit to act on
+                            </li>
+                            or
+                            <li>
+                                <span class="table"> {} of</span>
+                                <ul>
+                                    <li>
+                                        <span class="types"><span class="number">number</span></span>
+                                        Number to act on
+                                    </li>
+                                    <li>
+                                        <span class="types"><span class="number">number</span></span>
+                                        Cargo DBID to affect
+                                    </li>
+                                </ul>
+                                Note the order of 'number to affect' and 'DBID'
+                            </li>
+                        </ul>
                     </li>
                 </ul>
                 <h4>Returns</h4>
                 <p>
-                    <span class="types"><span class="boolean">boolean</span></span>Successful
+                    <span class="types"><span class="boolean">True/False</span></span>Successful
                     or
                     not
                 </p>
+                <h5>Example</h5>
+                <div class="example">
+                    <code>ScenEdit_TransferCargo( '2cd64757-1b66-4609-ad56-df41bee652e5','Perth RAN', { {5,752}, {700 } } )</code>
+                </div>
+
                 <hr>
                 <h3>
                     <a class="anchor" id="ScenEdit_UnitC"></a>ScenEdit_UnitC
-                    ()
+                    ( )
                 </h3>
                 <p>
                     Detected
@@ -5431,34 +5458,39 @@
                     for
                     ScenEdit_UnitC()
                 </p>
+                <h4>Parameters</h4>
+                <ul>
+                    <li>
+                        None
+                    </li>
+                </ul>
                 <h4>Returns</h4>
                 <p>
                     <span class="wrapper"><a href="Wrappers.html#wrapper_Contact">Contact</a></span>A
                     contact
-                    descriptor
+                    object
                     or
                     <code>nil</code>
                 </p>
+
                 <hr>
                 <h3>
                     <a class="anchor" id="ScenEdit_UnitX"></a>ScenEdit_UnitX
-                    ()
+                    ( )
                 </h3>
                 <p>
-                    Activating
+                    This function returns the Activating
                     Unit
-                    ..that
+                    that
                     triggered
                     the
                     current
-                    Event.Otherwise,a
-                    <code>nil</code>is
-                    returned.
+                    Event.
                 </p>
                 <p>
                     Note
                     that
-                    UnitX()can
+                    UnitX() can
                     also
                     be
                     used
@@ -5468,46 +5500,46 @@
                     for
                     ScenEdit_UnitX()
                 </p>
+                <h4>Parameters</h4>
+                <ul>
+                    <li>
+                        None
+                    </li>
+                </ul>
                 <h4>Returns</h4>
                 <p>
                     <span class="wrapper"><a href="Wrappers.html#wrapper_Unit">Unit</a></span>The
                     triggering
-                    unit
+                    unit object
+                    or
+                    <code>nil</code>
                 </p>
                 <h5>Example</h5>
-
-                <div class="example">
-                    <code>ScenEdit_SetUnitDamage({side=UnitX().side, unitname=UnitX().name, fires=<span class="number">1</span>, components={ {<span class="string">'rudder'</span>,<span class="string">'Medium'</span>}, {<span class="string">'type'</span>,<span class="global">type</span>=<span class="string">'sensor'</span>,<span class="number">1</span>} } })</code>
-                </div>
-
                 <div class="example"> <code><span class="local">local</span> unit = ScenEdit_UnitX()</code> </div>
 
                 <hr>
                 <h3>
                     <a class="anchor" id="ScenEdit_UnitY"></a>ScenEdit_UnitY
-                    ()
+                    ( )
                 </h3>
+                This function returns unit detail for a specific case generated from an Event.<br />
                 <p>
-                    (a) Detecting
-                    Unit
-                    ...from
+                    (a) the Detecting Unit from
                     a
                     Unit
                     Detected
                     event
-                    trigger.Otherwise,a
-                    <code>nil</code>is
-                    returned.
+                    trigger, or<br />
+                    (b) the Damaging causing unit from a damage/destroyed event. The unit is the last one to actually cause damage during the event.
                 </p>
                 <p>
-                    (b) Caused by unit .. from a damage/destroyed event.Otherwise,a
+                    A table of details will be returned.
+                    Otherwise, a
                     <code>nil</code>is
-                    returned. The unit is the last one to actually cause damage during the event.
-                </p>
-                <p>
+                    returned.<br />
                     Note
                     that
-                    UnitY()can
+                    UnitY() can
                     also
                     be
                     used
@@ -5515,168 +5547,327 @@
                     a
                     shortcut
                     for
-                    ScenEdit_UnitY()
+                    ScenEdit_UnitY().
+
                 </p>
+                <h4>Parameters</h4>
+                <ul>
+                    <li>
+                        None
+                    </li>
+                </ul>
                 <h4>Returns</h4>
                 <p>
-                    <span class="types">
-                        <span class="type">
-                            { table
-                            }
-                        </span>
-                    </span>
-                </p>
-                <p>
-                    (a) The
-                    detecting
-                    unit
-                    and
-                    sensors
-                    used
-                    as
-                    {unit
-                    ={unit
-                    object},sensor
-                    ={[1]={name,type},[2]={name,type},etc}}  <br>
-                    (b) Or the unit that caused the last damage
+                    <span class="table"> {} of </span>
+                    <ul>
+                        <li>
+                            <span class="parameter">unit </span>
+                            <span class="wrapper"><a href="Wrappers.html#wrapper_Unit">Unit</a></span>
+                            The unit object
+                        </li>
+                        <li>
+                            <span class="parameter">sensor </span>
+                            <span class="table"> {} of multiple</span>
+                            sensors making contact
+                            <ul>
+                                <li>
+                                    <span class="parameter">name </span>
+                                    <span class="types">
+                                        <span class="string">string</span>
+                                    </span>
+                                    Sensor name
+                                </li>
+                                <li>
+                                    <span class="parameter">type </span>
+                                    <span class="types">
+                                        <span class="string">string</span>
+                                    </span>
+                                    Sensor type
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                 </p>
 
                 <h5>Example</h5>
-
-                <div class="example">
-                    <code>ScenEdit_SetUnitDamage({side=UnitY().side, unitname=UnitY().name, fires=<span class="number">1</span>, components={ {<span class="string">'rudder'</span>,<span class="string">'Medium'</span>}, {<span class="string">'type'</span>,<span class="global">type</span>=<span class="string">'sensor'</span>,<span class="number">1</span>} } })</code>
-                </div>
-
                 <div class="example">
                     <code>
-                        <span class="local">local</span> by = ScenEdit_UnitY()
-                        <span class="global">print</span>(<span class="string">'Y:'</span>);<span class="global">print</span>( by)
-                        <span class="global">print</span>(<span class="string">'Detected by: '</span>);<span class="global">print</span>( by.unit.name ..<span class="string">' of type '</span> .. by.unit.<span class="global">type</span> ..<span class="string">' from '</span> .. by.unit.side)
-                        <span class="global">print</span>(<span class="string">'Sensor: '</span>);<span class="global">print</span>( by.sensor[<span class="number">1</span>].name ..<span class="string">' of type '</span> .. by.sensor[<span class="number">1</span>].<span class="global">type</span>);
+                        local by = ScenEdit_UnitY()
+                        print('Y:'); print( by)<br />
+                        print('Detected by: '); print( by.unit.name ..' of type ' .. by.unit.type ..' from ' .. by.unit.side)<br />
+                        print('Sensor: '); print( by.sensor[1].name .. ' of type ' .. by.sensor[1].type);
                     </code>
                 </div>
 
                 <hr>
                 <h3>
                     <a class="anchor" id="ScenEdit_UnloadCargo"></a>ScenEdit_UnloadCargo
-                    (fromUnit,cargoList)
+                    (fromUnit, cargoList)
                 </h3>
                 <p>
-                    Unload
-                    cargo
+                    This function Unloads
+                    cargo from an unit
                 </p>
                 <h4>Parameters</h4>
                 <ul>
                     <li>
-                        <span class="parameter">fromUnit</span> <span class="selector">
-                            <a href="Selectors.html#selector_UnitSelector">UnitSelector</a>
-                        </span> The
-                        unit
+                        <span class="parameter">fromUnit</span>
+                        <span class="types"><span class="string">string</span></span>
+                        The
+                        unit name/guid
                         with
                         cargo
                     </li>
                     <li>
-                        <span class="parameter">cargoList</span> <span class="table">
-                            <a href="Tables.html#table_Cargo">
-                                { Cargo
-                                }
-                            </a>
-                        </span> List
-                        of
-                        cargo
-                        to
-                        unload: table
-                        of
-                        {guids}, or
-                        { { number, DBID}}
+                        <span class="parameter">cargoList </span>
+                        <span class="table"> {} of multiple</span>
+                        cargo to affect
+                        <ul>
+                            <li>
+                                <span class="types"><span class="string">string</span></span>
+                                Cargo GUID - treated as one unit to act on
+                            </li>
+                            or
+                            <li>
+                                <span class="table"> {} of</span>
+                                <span class="types"><span class="number">number</span></span>
+                                Cargo database id (DBID) and is treated as one unit to act on
+                            </li>
+                            or
+                            <li>
+                                <span class="table"> {} of</span>
+                                <ul>
+                                    <li>
+                                        <span class="types"><span class="number">number</span></span>
+                                        Number to act on
+                                    </li>
+                                    <li>
+                                        <span class="types"><span class="number">number</span></span>
+                                        Cargo DBID to affect
+                                    </li>
+                                </ul>
+                                Note the order of 'number to affect' and 'DBID'
+                            </li>
+                        </ul>
                     </li>
                 </ul>
                 <h4>Returns</h4>
-                <p><span class="types"><span class="boolean">boolean</span></span> Successful or not</p>
+                <p>
+                    <span class="types"><span class="boolean">True/False</span></span>
+                    Success/Fail  or <code>nil</code> otherwise
+                </p>
+
+                <h5>Example</h5>
+                <div class="example">
+                    <code>ScenEdit_UnloadCargo( '2cd64757-1b66-4609-ad56-df41bee652e5', { {5,752}, {700 } } )</code>
+                </div>
+
                 <hr>
                 <h3>
                     <a class="anchor" id="ScenEdit_UpdateUnit"></a>ScenEdit_UpdateUnit
-                    (options)
+                    ( table )
                 </h3>
                 <p>
-                    Update
-                    items
-                    on
-                    a
-                    unit.
+                    This function Updates the components
+                    of
+                    an
+                    unit.<br />
+                    As this function also calls <a href="#ScenEdit_SetUnit">ScenEdit_SetUnit()</a>, additional parameters for that function may also be passed to this function.
                 </p>
                 <h4>Parameters</h4>
                 <ul>
                     <li>
-                        <span class="parameter">options</span> <span class="selector">
-                            <a href="Selectors.html#selector_UpdateUnit">UpdateUnit</a>
-                        </span> The
-                        unit
-                        sensor/mount/weapon/comms/magazine
-                        details
-                        to
-                        update
+                        <span class="parameter">table</span><span class="table"> {} </span>
+                        <ul>
+                            <li>
+                                <span class="parameter">guid = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The GUID of the unit
+                            </li>
+                            <li>
+                                <span class="parameter">mode = </span>
+                                <span class="types">
+                                    <span class="tooltip">
+                                        value<span class="tooltiptext">
+                                            'add_sensor', 'remove_sensor', 'update_sensor_arc',<br />
+                                            'add_mount', 'remove_mount', 'update_mount_arc',<br />
+                                            'add_weapon', 'remove_weapon',<br />
+                                            'add_comms', 'remove_comms', <br />
+                                            'add_magazine', 'add_magazine_only', 'remove_magazine',<br />
+                                            'delta'
+                                        </span>
+                                    </span>
+                                </span>
+                                The action mode to perform
+                            </li>
+                            <li>
+                                <span class="parameter">dbid = </span>
+                                <span class="types"><span class="number">number</span></span>
+                                Component DBID to affect
+                            </li>
+                            <li>
+                                <span class="parameter">file = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The filename to upload update from (Applies to 'mode = delta' only)
+                            </li>
+                            <li>
+                                <span class="parameter">arc_detect = </span>
+                                <span class="table"> {} of multiple</span>
+                                detection arcs
+                                <ul>
+                                    <li>
+                                        <span class="types"><a href="DataTypes.html#dataType_Arc">arc</a></span>
+                                        Arc code string  (applies to 'mode = ...sensor...')
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="parameter">arc_track = </span>
+                                <span class="table"> {} of multiple</span>
+                                illumination arcs
+                                <ul>
+                                    <li>
+                                        <span class="types"><a href="DataTypes.html#dataType_Arc">arc</a></span>
+                                        Arc code string  (applies to 'mode = ...sensor...')
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="parameter">arc_mount = </span>
+                                <span class="table"> {} of multiple</span>
+                                mount arcs
+                                <ul>
+                                    <li>
+                                        <span class="types"><a href="DataTypes.html#dataType_Arc">arc</a></span>
+                                        Arc code string (applies to 'mode = ...mount...')
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="parameter">sensorid = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                A specific sensor GUID to operate on (not applicable to adding sensor)
+                            </li>
+                            <li>
+                                <span class="parameter">mountid = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                A specific mount GUID to operate on (not applicable to adding mount)
+                            </li>
+                            <li>
+                                <span class="parameter">weaponid = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                A specific weapon GUID to operate on (not applicable to adding weapon)
+                            </li>
+                            <li>
+                                <span class="parameter">commsid = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                A specific communication GUID to operate on (not applicable to adding weapon)
+                            </li>
+                            <li>
+                                <span class="parameter">magid = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                A specific magazine GUID to operate on (not applicable to adding magazine)
+                            </li>
+                        </ul>
                     </li>
                 </ul>
                 <h4>Returns</h4>
                 <p>
                     <span class="wrapper"><a href="Wrappers.html#wrapper_Unit">Unit</a></span>The
-                    updated
-                    unit
+                    updated unit
+                    object
                 </p>
+
                 <h5>Example</h5>
-
                 <div class="example">
-                    <code>ScenEdit_UpdateUnit({guid=<span class="string">'2cd64757-1b66-4609-ad56-df41bee652e5'</span>,mode=<span class="string">'add_sensor'</span>,dbid=<span class="number">3352</span>})</code>
+                    <code>ScenEdit_UpdateUnit( { guid='2cd64757-1b66-4609-ad56-df41bee652e5',mode='add_sensor',dbid=3352 } )</code>
                 </div>
 
                 <div class="example">
-                    <code>ScenEdit_UpdateUnit({guid=<span class="string">'2cd64757-1b66-4609-ad56-df41bee652e5'</span>,mode=<span class="string">'remove_sensor'</span>,dbid=<span class="number">3352</span>,sensorId=<span class="string">'871aea14-d963-4052-a7fc-ed36e97bb732'</span>})</code>
+                    <code>ScenEdit_UpdateUnit( { guid='2cd64757-1b66-4609-ad56-df41bee652e5',mode='remove_sensor',dbid=3352,sensorId='871aea14-d963-4052-a7fc-ed36e97bb732'} )</code>
                 </div>
 
                 <div class="example">
-                    <code>ScenEdit_UpdateUnit({guid=<span class="string">'2cd64757-1b66-4609-ad56-df41bee652e5'</span>,mode=<span class="string">'delta'</span>,file=<span class="string">'new.ini'</span>})</code>
+                    <code>ScenEdit_UpdateUnit( { guid='2cd64757-1b66-4609-ad56-df41bee652e5',mode='delta',file='new.ini' } )</code>
                 </div>
 
                 <hr>
                 <h3>
                     <a class="anchor" id="ScenEdit_UpdateUnitCargo"></a>ScenEdit_UpdateUnitCargo
-                    (options)
+                    ( table )
                 </h3>
                 <p>
-                    Update
-                    cargo
+                    This function Updates the
+                    cargo space
                     on
                     a
-                    unit.
+                    unit.<br />
+                    As this function also calls <a href="#ScenEdit_SetUnit">ScenEdit_SetUnit()</a>, additional parameters for that function may also be passed to this function.
                 </p>
                 <h4>Parameters</h4>
                 <ul>
                     <li>
-                        <span class="parameter">options</span> <span class="table">
-                            <a href="Tables.html#table_UpdateUnitCargo">UpdateUnitCargo</a>
-                        </span> The
-                        unit
-                        cargo
-                        details
-                        to
-                        update
+                        <span class="parameter">table</span><span class="table"> {} </span>
+                        <ul>
+                            <li>
+                                <span class="parameter">guid = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The GUID of the unit
+                            </li>
+                            <li>
+                                <span class="parameter">mode = </span>
+                                <span class="types"><span class="tooltip">value<span class="tooltiptext">'add_cargo', 'remove_cargo'</span></span></span>
+                                The action mode to perform
+                            </li>
+                            <li>
+                                <span class="parameter">cargo = </span>
+                                <span class="table"> {} of multiple</span>
+                                cargo to affect
+                                <ul>
+                                    <li>
+                                        <span class="types"><span class="string">string</span></span>
+                                        Cargo GUID - treated as one unit to act on
+                                    </li>
+                                    or
+                                    <li>
+                                        <span class="table"> {} of</span>
+                                        <span class="types"><span class="number">number</span></span>
+                                        Cargo database id (DBID) and is treated as one unit to act on
+                                    </li>
+                                    or
+                                    <li>
+                                        <span class="table"> {} of</span>
+                                        <ul>
+                                            <li>
+                                                <span class="types"><span class="number">number</span></span>
+                                                Number to act on
+                                            </li>
+                                            <li>
+                                                <span class="types"><span class="number">number</span></span>
+                                                Cargo DBID to affect
+                                            </li>
+                                        </ul>
+                                        Note the order of 'number to affect' and 'DBID'
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
                 <h4>Returns</h4>
                 <p>
                     <span class="wrapper"><a href="Wrappers.html#wrapper_Unit">Unit</a></span>The
-                    updated
-                    unit
+                    updated unit
+                    object
                 </p>
                 <h5>Example</h5>
 
                 <div class="example">
-                    <code>ScenEdit_UpdateUnitCargo({guid=<span class="string">'2cd64757-1b66-4609-ad56-df41bee652e5'</span>, mode=<span class="string">'add_cargo'</span>, cargo={{<span class="number">5</span>,<span class="number">752</span>},{<span class="number">700</span>}} })</code>
+                    <code>ScenEdit_UpdateUnitCargo( { guid='2cd64757-1b66-4609-ad56-df41bee652e5', mode='add_cargo', cargo={ {5,752}, {700 } } } )</code>
                 </div>
 
                 <div class="example">
-                    <code>ScenEdit_UpdateUnitCargo({guid=<span class="string">'2cd64757-1b66-4609-ad56-df41bee652e5'</span>, mode=<span class="string">'remove_cargo'</span>, cargo={<span class="string">'871aea14-d963-4052-a7fc-ed36e97bb732'</span>,{<span class="number">5</span>,<span class="number">752</span>}} })</code>
+                    <code>ScenEdit_UpdateUnitCargo( { guid='2cd64757-1b66-4609-ad56-df41bee652e5', mode='remove_cargo', cargo={'871aea14-d963-4052-a7fc-ed36e97bb732',{5,752} } } )</code>
                 </div>
 
                 <hr>
@@ -5685,20 +5876,19 @@
                     (attachment)
                 </h3>
                 <p>
-                    Import
+                    This function import
                     an
                     attachment
                     into
                     the
-                    scene.
+                    scenario.
                 </p>
                 <h4>Parameters</h4>
                 <ul>
                     <li>
-                        <span class="parameter">attachment</span> <span class="types"><span class="string">string</span></span>
-                        Either
-                        the
-                        name
+                        <span class="parameter">attachment</span>
+                        <span class="types"><span class="string">string</span></span>
+                        Name
                         of
                         the
                         attachment
@@ -5707,22 +5897,32 @@
                         properties
                         section
                         when
-                        created/added)
-                        or
+                        created/added)<br />
+                        or more accurately
                         the
                         GUID
                         of
                         the
-                        attachment
+                        attachment (as found in AttachmentRepo folders)
                     </li>
                 </ul>
+                <h4>Returns</h4>
+                <p>
+                    <span class="types"><span class="boolean">True/False</span></span>
+                    True if successful, or <code>nil</code> otherwise
+                </p>
+                <h5>Example</h5>
+                <div class="example">
+                    <code>local b = ScenEdit_UseAttachment('8269b881-20ce-4f2e-baa0-6823e46d55a4' )</code>
+                </div>
+
                 <hr>
                 <h3>
                     <a class="anchor" id="ScenEdit_UseAttachmentOnSide"></a>ScenEdit_UseAttachmentOnSide
-                    (attachment,sidename)
+                    (attachment, sidename)
                 </h3>
                 <p>
-                    Use
+                    This function uses
                     an
                     attachment
                     on
@@ -5738,10 +5938,9 @@
                 <h4>Parameters</h4>
                 <ul>
                     <li>
-                        <span class="parameter">attachment</span> <span class="types"><span class="string">string</span></span>
-                        Either
-                        the
-                        name
+                        <span class="parameter">attachment</span>
+                        <span class="types"><span class="string">string</span></span>
+                        Name
                         of
                         the
                         attachment
@@ -5750,16 +5949,17 @@
                         properties
                         section
                         when
-                        created/added)
-                        or
+                        created/added)<br />
+                        or more accurately
                         the
                         GUID
                         of
                         the
-                        attachment
+                        attachment (as found in AttachmentRepo folders)
                     </li>
                     <li>
-                        <span class="parameter">sidename</span> <span class="types"><span class="string">string</span></span> The
+                        <span class="parameter">sidename</span>
+                        <span class="types"><span class="string">string</span></span> The
                         name
                         of
                         the
@@ -5771,20 +5971,27 @@
                         into
                     </li>
                 </ul>
+                <h4>Returns</h4>
+                <p>
+                    <span class="types"><span class="boolean">True/False</span></span>
+                    True if successful, or <code>nil</code> otherwise
+                </p>
+                <h5>Example</h5>
+                <div class="example">
+                    <code>local b = ScenEdit_UseAttachmentOnSide('8269b881-20ce-4f2e-baa0-6823e46d55a4', 'sidea' )</code>
+                </div>
+
                 <hr>
                 <h3>
                     <a class="anchor" id="Tool_Bearing"></a>Tool_Bearing
-                    ()
+                    ( fromHere, toHere)
                 </h3>
                 <p>
-                    Get
+                    This function returns the
                     bearing
                     between
-                    points.
-                </p>
-                <p>
-                    The
-                    points
+                    two points,
+                    which
                     can
                     be
                     a
@@ -5795,96 +6002,123 @@
                     or
                     a
                     latitude/longitude
-                    point.(fromHere,toHere)
+                    point.
                 </p>
+                <h4>Parameters</h4>
+                <ul>
+                    <li>
+                        <span class="parameter">fromHere</span>
+                        <span class="types"><span class="string">string</span></span>
+                        or
+                        <span class="table"> {} of </span>
+                        <span class="parameter">latitude =</span>
+                        <span class="types"><a href="DataTypes.html#dataType_Latitude">latitude</a></span>
+                        <span class="parameter">longitude =</span>
+                        <span class="types"><a href="DataTypes.html#dataType_Longitude">longitude</a></span>
+                        Unit/Contact guid or a location point
+                    </li>
+                    <li>
+                        <span class="parameter">toHere</span>
+                        <span class="types"><span class="string">string</span></span>
+                        or
+                        <span class="table"> {} of </span>
+                        <span class="parameter">latitude =</span>
+                        <span class="types"><a href="DataTypes.html#dataType_Latitude">latitude</a></span>
+                        <span class="parameter">longitude =</span>
+                        <span class="types"><a href="DataTypes.html#dataType_Longitude">longitude</a></span>
+                        Unit/Contact guid or a location point
+                    </li>
+                </ul>
                 <h4>Returns</h4>
                 <p>
-                    <span class="types"><span class="number">number</span></span>The
-                    bearing
+                    <span class="types"><span class="number">number (0-360)</span></span>The
+                    bearing from 'here' to 'there'.
                 </p>
-                </p>
-                <h5>Example</h5>
 
+                <h5>Example</h5>
                 <div class="example">
-                    <code>Tool_Bearing(<span class="string">'8269b881-20ce-4f2e-baa0-6823e46d55a4'</span>,<span class="string">'004aa55d-d553-428d-a727-26853737c8f4'</span> )</code>
+                    <code>local b = Tool_Bearing('8269b881-20ce-4f2e-baa0-6823e46d55a4', '004aa55d-d553-428d-a727-26853737c8f4' )</code>
                 </div>
 
                 <div class="example">
-                    <code>Tool_Bearing( {latitude=<span class="string">'33.1991547589118'</span>, longitude=<span class="string">'138.376876749942'</span>},<span class="string">'8269b881-20ce-4f2e-baa0-6823e46d55a4'</span> )</code>
+                    <code>local b = Tool_Bearing( { latitude='33.1991547589118', longitude='138.376876749942' }, '8269b881-20ce-4f2e-baa0-6823e46d55a4' )</code>
                 </div>
 
                 <hr>
                 <h3>
                     <a class="anchor" id="Tool_DumpEvents"></a>Tool_DumpEvents
-                    ()
+                    ( )
                 </h3>
                 <p>
-                    Dump
+                    This function dumps the
                     scenario
-                    events...useful
-                    for
-                    checking.Also
-                    writes
-                    a
-                    file
-                    to
+                    events to a
+                    file ('scenario filename' events.xml)
+                    in
                     the
                     scenario
-                    folder()
+                    folder, which can be useful
+                    for
+                    checking that the events are correctly set up. <br />
                 </p>
+                <h4>Parameters</h4>
+                <ul>
+                    <li>
+                        None
+                    </li>
+                </ul>
                 <h4>Returns</h4>
                 <p>
                     <span class="types"><span class="type">xml</span></span>Dump
-                    of
+                    of the scenario
                     events
                     with
-                    trigger/condition/action
+                    all trigger/condition/action in XML format
                 </p>
+                <h5>Example</h5>
+                <div class="example">
+                    <code>Tool_DumpEvents( )</code>
+                </div>
+
                 <hr>
                 <h3>
                     <a class="anchor" id="Tool_EmulateNoConsole"></a>Tool_EmulateNoConsole
-                    ()
+                    ( mode )
                 </h3>
                 <p>
-                    Emulates
-                    no
-                    console...useful
-                    running
-                    event
-                    code
-                    in
-                    the
-                    console
-                    and
-                    seeing
-                    how
-                    it
-                    behaves
-                    as
-                    an
-                    'event'(mode)
+                    This function allows other functions to behave as if there is no console attached by executing in the Lua console.<br />
+                    This is useful examining how functions behave when running within Command as in Events by running the script in the console first.<br />
+                    Some functions will 'die' if running in interactive mode.
                 </p>
+                <h4>Parameters</h4>
+                <ul>
+                    <li>
+                        <span class="parameter">mode</span>
+                        <span class="types"><span class="boolean">True/False</span></span>
+                        'True' (which is the default mode if no parameter supplied) turns on the emulation mode, 'False' will turn it off.
+                    </li>
+                </ul>
                 <h4>Returns</h4>
                 <p>
-                    <span class="types"><span class="boolean">boolean</span></span>If
-                    interactive
-
+                    <span class="types"><span class="boolean">True/False</span></span>
+                    Current interactive mode
                 </p>
+                <h5>Example</h5>
+                <div class="example">
+                    <code>local d = Tool_EmulateNoConsole( )</code>
+                </div>
 
                 <hr>
                 <h3>
                     <a class="anchor" id="Tool_Range"></a>Tool_Range
-                    ()
+                    (fromHere, toHere)
                 </h3>
                 <p>
-                    Get
+                    This function returns the
                     range
                     between
-                    points.
-                </p>
-                <p>
-                    The
-                    points
+                    points,
+                    which
                     can
                     be
                     a
@@ -5895,97 +6129,121 @@
                     or
                     a
                     latitude/longitude
-                    point.(fromHere,toHere)
-                </p>
-                <h4>Returns</h4>
-                <p>
-                    <span class="types"><span class="number">number</span></span>The
-                    horizontal
-                    distance
-                    in
-                    NM
-
-                </p>
-                </p>
-                <h5>Example</h5>
-
-                <div class="example">
-                    <code>Tool_Range(<span class="string">'8269b881-20ce-4f2e-baa0-6823e46d55a4'</span>,<span class="string">'004aa55d-d553-428d-a727-26853737c8f4'</span> )</code>
-                </div>
-
-                <div class="example">
-                    <code>Tool_Range( {latitude=<span class="string">'33.1991547589118'</span>, longitude=<span class="string">'138.376876749942'</span>},<span class="string">'8269b881-20ce-4f2e-baa0-6823e46d55a4'</span> )</code>
-                </div>
-
-                <hr>
-                <h3>
-                    <a class="anchor" id="VP_ExportUnits"></a>VP_ExportUnits
-                    (table, filename)
-                </h3>
-                <p>
-                    This function exports the current scenario
-                    unit
-                    details to a file for examination. <br />
-                    The data could be used to create/copy to an import INST file for later including in a scenario.
-                    The export can be optionally filtered similar to the
-                    Event
-                    Target
-                    trigger.
+                    point.
                 </p>
                 <h4>Parameters</h4>
                 <ul>
                     <li>
-                        <span class="parameter">table</span><span class="table"> {} </span>
-                        <ul>
-                            <li>
-                                <span class="parameter">targetSide = </span>
-                                <span class="types"><span class="string">string</span></span>
-                                The side name/GUID
-                            </li>
-                            <li>
-                                <span class="parameter">targetType = </span>
-                                <span class="table"> {} of multiple </span>
-                                <span class="types"><span class="string">string</span></span>
-                                List of unit types like {'aircraft','submarine'}
-                            </li>
-                            <li>
-                                <span class="parameter">targetSubtype = </span>
-                                <span class="table"> {} of multiple </span>
-                                <span class="types"><span class="number">number</span></span>
-                            </li>
-                            <li>
-                                <span class="parameter">specifcUnitClass = </span>
-                                <span class="table"> {} of multiple </span>
-                                <span class="types"><span class="number">number</span></span>
-                            </li>
-                            <li>
-                                <span class="parameter">specificUnit = </span>
-                                <span class="table"> {} of multiple </span>
-                                <span class="types"><span class="string">string</span></span>
-                                Unit GUIDs
-                            </li>
-                        </ul>
+                        <span class="parameter">fromHere</span>
+                        <span class="types"><span class="string">string</span></span>
+                        or
+                        <span class="table"> {} of </span>
+                        <span class="parameter">latitude =</span>
+                        <span class="types"><a href="DataTypes.html#dataType_Latitude">latitude</a></span>
+                        <span class="parameter">longitude =</span>
+                        <span class="types"><a href="DataTypes.html#dataType_Longitude">longitude</a></span>
+                        Unit/Contact guid or a location point
                     </li>
                     <li>
-                        <span class="parameter">filename</span>
+                        <span class="parameter">toHere</span>
                         <span class="types"><span class="string">string</span></span>
-                        Export
-                        file name
+                        or
+                        <span class="table"> {} of </span>
+                        <span class="parameter">latitude =</span>
+                        <span class="types"><a href="DataTypes.html#dataType_Latitude">latitude</a></span>
+                        <span class="parameter">longitude =</span>
+                        <span class="types"><a href="DataTypes.html#dataType_Longitude">longitude</a></span>
+                        Unit/Contact guid or a location point
                     </li>
                 </ul>
                 <h4>Returns</h4>
                 <p>
-                    <span class="types"><span class="boolean">True/False</span></span>Success
-                    or
-                    failure
+                    <span class="types"><span class="number">number</span></span>
+                    The
+                    horizontal
+                    distance
+                    in
+                    NM
                 </p>
+
                 <h5>Example</h5>
                 <div class="example">
-                    <code>
-                        local ok = VP_ExportUnits( { tagetside ="NATO", targettype = {'aircraft','submarine'}  }, core_units )
-                    </code>
+                    <code>local d = Tool_Range('8269b881-20ce-4f2e-baa0-6823e46d55a4', '004aa55d-d553-428d-a727-26853737c8f4' )</code>
                 </div>
 
+                <div class="example">
+                    <code>local d = Tool_Range( { latitude='33.1991547589118', longitude='138.376876749942' }, '8269b881-20ce-4f2e-baa0-6823e46d55a4')</code>
+                </div>
+                <!--
+                    <hr>
+                    <h3>
+                        <a class="anchor" id="VP_ExportUnits"></a>VP_ExportUnits
+                        (table, filename)
+                    </h3>
+                    <p>
+                        This function exports the current scenario
+                        unit
+                        details to a file for examination. <br />
+                        The data could be used to create/copy to an import INST file for later including in a scenario.
+                        The export can be optionally filtered similar to the
+                        Event
+                        Target
+                        trigger.
+                    </p>
+                    <h4>Parameters</h4>
+                    <ul>
+                        <li>
+                            <span class="parameter">table</span><span class="table"> {} </span>
+                            <ul>
+                                <li>
+                                    <span class="parameter">targetSide = </span>
+                                    <span class="types"><span class="string">string</span></span>
+                                    The side name/GUID
+                                </li>
+                                <li>
+                                    <span class="parameter">targetType = </span>
+                                    <span class="table"> {} of multiple </span>
+                                    <span class="types"><span class="string">string</span></span>
+                                    List of unit types like {'aircraft','submarine'}
+                                </li>
+                                <li>
+                                    <span class="parameter">targetSubtype = </span>
+                                    <span class="table"> {} of multiple </span>
+                                    <span class="types"><span class="number">number</span></span>
+                                </li>
+                                <li>
+                                    <span class="parameter">specifcUnitClass = </span>
+                                    <span class="table"> {} of multiple </span>
+                                    <span class="types"><span class="number">number</span></span>
+                                </li>
+                                <li>
+                                    <span class="parameter">specificUnit = </span>
+                                    <span class="table"> {} of multiple </span>
+                                    <span class="types"><span class="string">string</span></span>
+                                    Unit GUIDs
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="parameter">filename</span>
+                            <span class="types"><span class="string">string</span></span>
+                            Export
+                            file name
+                        </li>
+                    </ul>
+                    <h4>Returns</h4>
+                    <p>
+                        <span class="types"><span class="boolean">True/False</span></span>Success
+                        or
+                        failure
+                    </p>
+                    <h5>Example</h5>
+                    <div class="example">
+                        <code>
+                            local ok = VP_ExportUnits( { tagetside ="NATO", targettype = {'aircraft','submarine'}  }, core_units )
+                        </code>
+                    </div>
+    -->
                 <hr>
                 <h3>
                     <a class="anchor" id="VP_GetContact"></a>VP_GetContact
