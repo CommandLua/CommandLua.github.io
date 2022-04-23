@@ -1041,6 +1041,7 @@
                                 </ul>
                             </li>
                         </ul>
+                    </li>
                 </ul>
                 <h4>Returns</h4>
                 <p><span class="wrapper"><a href="Wrappers.html#wrapper_Zone"> Zone</a> </span>The zone as a wrapper</p>
@@ -5075,40 +5076,219 @@
                 <hr>
                 <h3>
                     <a class="anchor" id="ScenEdit_SetUnit"></a>ScenEdit_SetUnit
-                    (unit)
+                    ( table )
                 </h3>
                 <p>
-                    Sets
+                    This function Sets
                     the
                     properties
                     of
-                    a
+                    an existing
                     unit
-                    that
-                    already
-                    exists.
                 </p>
                 <h4>Parameters</h4>
                 <ul>
                     <li>
-                        <span class="parameter">unit</span> <span class="wrapper"><a href="Wrappers.html#wrapper_Unit">Unit</a></span>
-                        The
-                        unit
-                        to
-                        edit. Must
-                        be
-                        at
-                        least
-                        a
-                        selector.
+                        <span class="parameter">table</span><span class="table"> {} </span>
+                        <ul>
+                            <li>
+                                <span class="parameter">side = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The side name/GUID of the unit
+                            </li>
+                            <li>
+                                <span class="parameter">unitname = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The name of unit
+                            </li>
+                            <li>
+                                <span class="parameter">guid = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The GUID of the unit
+                            </li>
+                            <li>
+                                <span class="parameter">newname = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                Rename the unit
+                            </li>
+                            <li>
+                                <span class="parameter">group = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                Assign to a group name/guid
+                            </li>
+                            <li>
+                                <span class="parameter">mission = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                Assign to a mission name/guid
+                            </li>
+                            <li>
+                                <span class="parameter">speed = </span>
+                                <span class="types"><span class="number">number</span></span>
+                                Set unit speed  (mutally exclusive to 'throttle')
+                            </li>
+                            <li>
+                                <span class="parameter">throttle = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                Set unit throttle (mutally exclusive to 'speed')
+                            </li>
+                            <li>
+                                <span class="parameter">forceSpeed = </span>
+                                <span class="types"><span class="boolean">True/False</span></span>
+                                Force speed ???
+                            </li>
+                            <li>
+                                <span class="parameter">launch = </span>
+                                <span class="types"><span class="boolean">True/False</span></span>
+                                Launch unit from base
+                            </li>
+                            <li>
+                                <span class="parameter">rtb = </span>
+                                <span class="types"><span class="boolean">True/False</span></span>
+                                Return unit to base
+                            </li>
+                            <li>
+                                <span class="parameter">jettison = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                Jettison stores (specific values to be included)
+                            </li>
+                            <li>
+                                <span class="parameter">refuel = </span>
+                                <span class="types"><span class="boolean">True/False</span></span>
+                                Unit attempts to refuel as per ROE
+                            </li>
+                            <li>
+                                <span class="parameter">unassign = </span>
+                                <span class="types"><span class="boolean">True/False</span></span>
+                                Unassign unit 
+                            </li>
+                            <li>
+                                <span class="parameter">moveto = </span>
+                                <span class="types"><span class="boolean">True/False</span></span>
+                                Moves to alt/depth rather than jump to it
+                            </li>
+                            <li>
+                                <span class="parameter">altitude = </span>
+                                <span class="types"><span class="number">number</span></span>
+                                Altitude to set
+                            </li>
+                            <li>
+                                <span class="parameter">depth = </span>
+                                <span class="types"><span class="number">number</span></span>
+                                Depth to set
+                            </li>
+                            <li>
+                                <span class="parameter">heading = </span>
+                                <span class="types"><span class="number">number</span></span>
+                                Set to immediate heading
+                            </li>
+                            <li>
+                                <span class="parameter">desiredHeading = </span>
+                                <span class="types"><span class="number">number</span></span>
+                                Set to desired heading so unit turns towards it
+                            </li>
+                            <li>
+                                <span class="parameter">longitude = </span>
+                                <span class="types"><span class="number">number</span></span>
+                                Unit's location - longitude
+                            </li>
+                            <li>
+                                <span class="parameter">latitude = </span>
+                                <span class="types"><span class="number">number</span></span>
+                                Unit's location - latitude
+                            </li>
+                            <li>
+                                <span class="parameter">autoDetectable = </span>
+                                <span class="types"><span class="boolean">True/False</span></span>
+                                Unit is autodetectable
+                            </li>
+                            <li>
+                                <span class="parameter">outOfComms = </span>
+                                <span class="types"><span class="boolean">True/False</span></span>
+                                Unit is out of communications
+                            </li>
+                            <li>
+                                <span class="parameter">holdPosition = </span>
+                                <span class="types"><span class="boolean">True/False</span></span>
+                                Unit holds position
+                            </li>
+                            <li>
+                                <span class="parameter">holdFire = </span>
+                                <span class="types"><span class="boolean">True/False</span></span>
+                                Unit holds fire
+                            </li>
+                            <li>
+                                <span class="parameter">proficiency = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                Unit proficiency
+                            </li>
+                            <li>
+                                <span class="parameter">manualthrottle = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                Manaual setting
+                            </li>
+                            <li>
+                                <span class="parameter">manualspeed = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                Manaual setting
+                            </li>
+                            <li>
+                                <span class="parameter">manualaltitude = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                Manaual setting
+                            </li>
+                            <li>
+                                <span class="parameter">fuel = </span>
+                                <span class="table">{} of multiple</span>
+                                Set the unit fuel type levels { type, quantity}
+                            </li>
+                            <li>
+                                <span class="parameter">base = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                Base name/guid to assign unit to
+                            </li>
+                            <li>
+                                <span class="parameter">sprintDrift = </span>
+                                <span class="types"><span class="boolean">True/False</span></span>
+                                Unit uses sprint and drift  (ship, submarine)
+                            </li>
+                            <li>
+                                <span class="parameter">avoidcavitation = </span>
+                                <span class="types"><span class="boolean">True/False</span></span>
+                                Unit avoids cavitation (ship, submarine)
+                            </li>
+                            <li>
+                                <span class="parameter">csar = </span>
+                                <span class="types"><span class="boolean">True/False</span></span>
+                                The unit can be assigned as a target for SAR
+                            </li>
+                            <li>
+                                <span class="parameter">timetoready_minutes = </span>
+                                <span class="types"><span class="number">number</span></span>
+                                Number of minutes to ready (ship, submarine, aircraft)
+                            </li>
+                            <li>
+                                <span class="parameter">course =</span><span class="table"> {} of multiple </span>
+                                <ul>
+                                    <li>
+                                        <span class="types"><span class="tooltip">value<span class="tooltiptext">'rudder', 'cargo', 'cic', 'pressurehull'</span></span></span>
+                                        Standard component to damage
+                                    </li>
+                                    <li>
+                                        <span class="types"><span class="string">string</span></span>
+                                        Damage level ('none', 'destroyed', or damage_severity_setting)
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
                 <h4>Returns</h4>
                 <p>
-                    <span class="wrapper"><a href="Wrappers.html#wrapper_Unit">Unit</a></span>A complete descriptor for the added unit
+                    <span class="wrapper"><a href="Wrappers.html#wrapper_Unit">Unit</a></span>
+                    Update unit object
                 </p>
-                <h5>Example</h5>
 
+                <h5>Example</h5>
                 <div class="example">
                     <code>ScenEdit_SetUnit({side=<span class="string">"United States"</span>, unitname=<span class="string">"USS Test"</span>, lat =<span class="number">5</span>})</code>
                 </div>
@@ -5132,22 +5312,89 @@
                 <hr>
                 <h3>
                     <a class="anchor" id="ScenEdit_SetUnitDamage"></a>ScenEdit_SetUnitDamage
-                    (options)
+                    ( table )
                 </h3>
                 <p>
-                    Set
+                    This function Sets the 
                     unit
-                    damage....for
+                    damage for
                     components
-                    on
-                    unit.(options)
                 </p>
                 <h4>Parameters</h4>
                 <ul>
                     <li>
-                        <span class="parameter">options</span> <span class="selector">
-                            <a href="Selectors.html#selector_DamageOptions">DamageOptions</a>
-                        </span>
+                        <span class="parameter">table</span><span class="table"> {} </span>
+                        <ul>
+                            <li>
+                                <span class="parameter">side = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The side name/GUID of the unit
+                            </li>
+                            <li>
+                                <span class="parameter">unitname = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The name of unit
+                            </li>
+                            <li>
+                                <span class="parameter">guid = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The GUID of the unit
+                            </li>
+                            <li>
+                                <span class="parameter">fires = </span>
+                                <span class="types"><span class="string">Fire_level?</span></span>
+                                Fire level
+                            </li>
+                            <li>
+                                <span class="parameter">flood = </span>
+                                <span class="types"><span class="string">Flood_level?</span></span>
+                                Flooding level
+                            </li>
+                            <li>
+                                <span class="parameter">dp = </span>
+                                <span class="types"><span class="number">number</span></span>
+                                Damage points left
+                            </li>
+                            <li>
+                                <span class="parameter">components =</span><span class="table"> {} of multiple </span>
+                                <ul>
+                                    <li>
+                                        <span class="types"><span class="tooltip">value<span class="tooltiptext">'rudder', 'cargo', 'cic', 'pressurehull'</span></span></span>
+                                        Standard component to damage
+                                    </li>
+                                    <li>
+                                        <span class="types"><span class="string">string</span></span>
+                                        Damage level ('none', 'destroyed', or damage_severity_setting)
+                                    </li>
+                                </ul>
+                                or
+                                <ul>
+                                    <li>
+                                        <span class="types"><span class="string">string</span></span>
+                                        Specific component GUID to damage
+                                    </li>
+                                    <li>
+                                        <span class="types"><span class="string">string</span></span>
+                                        Damage level ('none', 'destroyed', or damage_severity_setting)
+                                    </li>
+                                </ul>
+                                or
+                                <ul>
+                                    <li>
+                                        <span class="types"><span class="string">'type'</span></span>
+                                        Fixed value to indicate a random component damage
+                                    </li>
+                                    <li>
+                                        <span class="types"><span class="tooltip">type = <span class="tooltiptext">'sensor', etc</span></span></span>
+                                        Random component type to damage
+                                    </li>
+                                    <li>
+                                        <span class="types"><span class="string">string</span></span>
+                                        Damage level ('none', 'destroyed', or damage_severity_setting)
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
                 <h4>Returns</h4>
@@ -5157,65 +5404,76 @@
                     components
                     object
                 </p>
-                <h5>Example</h5>
 
+                <h5>Example</h5>
                 <div class="example">
-                    <code>ScenEdit_SetUnitDamage({side=<span class="string">'SideA'</span>, unitname=<span class="string">'Ship'</span>, fires=<span class="number">1</span>, components={ {<span class="string">'rudder'</span>,<span class="string">'Medium'</span>}, {<span class="string">'type'</span>,<span class="global">type</span>=<span class="string">'sensor'</span>,<span class="number">1</span>} } })</code>
+                    <code>ScenEdit_SetUnitDamage({ side='SideA', unitname='TheShip', fires=1, components={ {'rudder','Medium'}, {'type',type='sensor',1} } })</code>
                 </div>
-                </p>
+
                 <hr>
                 <h3>
                     <a class="anchor" id="ScenEdit_SetUnitSide"></a>ScenEdit_SetUnitSide
-                    (sidedesc)
+                    ( table )
                 </h3>
                 <p>
-                    Changes
+                    This function Changes
                     the
                     side
                     of
                     a
-                    unit
+                    unit.<br />
+                    Passing a group
+                    will
+                    change the 
+                    attached
+                    units too
                 </p>
                 <h4>Parameters</h4>
                 <ul>
                     <li>
-                        <span class="parameter">sidedesc</span> <span class="table">
-                            <a href="Tables.html#table_SideDescription">SideDescription</a>
-                        </span> The
-                        sides
-                        to
-                        change
-                        for
-                        the
-                        unit. Group
-                        will
-                        change
-                        attached
-                        units
+                        <span class="parameter">table</span><span class="table"> {} </span>
+                        <ul>
+                            <li>
+                                <span class="parameter">side = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The side name/GUID of the unit
+                            </li>
+                            <li>
+                                <span class="parameter">unitname = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The name of unit
+                            </li>
+                            <li>
+                                <span class="parameter">guid = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The GUID of the unit
+                            </li>
+                            <li>
+                                <span class="parameter">newSide = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The name/guid to change the 'unit' to
+                            </li>
+                        </ul>
                     </li>
                 </ul>
                 <!-- ScenEdit_SetUnitSide({side=sideName,name=v.guid,newside=newSide.name}) -->
                 <h5>Example</h5>
-
                 <div class="example">
                     <code>ScenEdit_SetUnitSide({side=<span class="string">'Old Side'</span>, name=<span class="string">'Eagle #1'</span>, newside=<span class="string">'New Side'</span>})</code>
                 </div>
-                </p>
+
                 <hr>
                 <h3>
                     <a class="anchor" id="ScenEdit_SetWeather"></a>ScenEdit_SetWeather
-                    (temperature,rainfall,undercloud,seastate)
+                    (temperature, rainfall, undercloud, seastate)
                 </h3>
                 <p>
-                    Set
+                    This function Sets
                     the
                     current
                     weather
-                    conditions.
-                </p>
-                <p>
-                    This
-                    function
+                    conditions.<br />
+                    It
                     takes
                     four
                     numbers
@@ -5233,7 +5491,8 @@
                 <h4>Parameters</h4>
                 <ul>
                     <li>
-                        <span class="parameter">temperature</span> <span class="types"><span class="number">number</span></span> The
+                        <span class="parameter">temperature</span> 
+                        <span class="types"><span class="number">number</span></span> The
                         current
                         baseline
                         temperature
@@ -5244,12 +5503,14 @@
                         latitude.
                     </li>
                     <li>
-                        <span class="parameter">rainfall</span> <span class="types"><span class="number">number</span></span> The
+                        <span class="parameter">rainfall</span> 
+                        <span class="types"><span class="number">number</span></span> The
                         rainfall
                         rate, 0-50.
                     </li>
                     <li>
-                        <span class="parameter">undercloud</span> <span class="types"><span class="number">number</span></span> The
+                        <span class="parameter">undercloud</span>
+                        <span class="types"><span class="number">number</span></span> The
                         amount
                         of
                         sky
@@ -5260,7 +5521,8 @@
                         cloud, 0.0-1.0
                     </li>
                     <li>
-                        <span class="parameter">seastate</span> <span class="types"><span class="number">number</span></span> The
+                        <span class="parameter">seastate</span> 
+                        <span class="types"><span class="number">number</span></span> The
                         current
                         sea
                         state
@@ -5274,81 +5536,195 @@
                     Successful/Failure
                 </p>
                 <h5>Example</h5>
-
                 <div class="example">
-                    <code>ScenEdit_SetWeather(<span class="global">math</span>.random(<span class="number">0</span>,<span class="number">25</span>),<span class="global">math</span>.random(<span class="number">0</span>,<span class="number">50</span>),<span class="global">math</span>.random(<span class="number">0</span>,<span class="number">10</span>)/<span class="number">10.0</span>,<span class="global">math</span>.random(<span class="number">0</span>,<span class="number">9</span>))</code>
+                    <code>ScenEdit_SetWeather(math.random(0,25), math.random(0,50), math.random(0,10)/10.0, math.random(0,9) )</code>
                 </div>
-                </p>
+
                 <hr>
                 <h3>
                     <a class="anchor" id="ScenEdit_SetZone"></a>ScenEdit_SetZone
-                    (sideName,zoneType,table)
+                    (sideName, zoneType, table)
                 </h3>
                 <p>
-                    update
-                    no-nav
+                    This function updates a
+                    non-navigation
                     or
                     exclusion
-                    zone.<br />...Only
-                    need
+                    zone for a side.<br />You only need
                     to
                     pass
                     the
-                    parts
-                    to
-                    update
+                    parameters that need to be updated.
                 </p>
                 <h4>Parameters</h4>
                 <ul>
                     <li>
-                        <span class="parameter">sideName</span> <span class="types"><span class="string">string</span></span> Side
+                        <span class="parameter">sideName</span>
+                        <span class="types"><span class="string">string</span></span>
+                        Side
                         name/GUID
                     </li>
                     <li>
-                        <span class="parameter">zoneType</span> <span class="types"><span class="string">string</span></span> Type
-                        of
-                        zone
-                        to
-                        remove: 0
-                        = no-nav, 1
-                        = exclusion
+                        <span class="parameter">zoneType</span>
+                        <span class="types"><span class="tooltip">string<span class="tooltiptext">0 = non-navigation, 1 = exclusion</span></span></span>
+                        The type of zone
                     </li>
                     <li>
-                        <span class="parameter">table</span> <span class="table">table</span> Description, Isactive, Area
-                        { of
-                        RPs
-                        }, Affects
-                        { of
-                        UnitTypes
-                        }, MarkAs
-                        (exc
-                        only), Locked
-                        (non
-                        only)
+                        <span class="parameter">table</span>
+                        <span class="table"> {} of </span>
+                        <ul>
+                            <li>
+                                <span class="parameter">description = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The Zone name
+                            </li>
+                            <li>
+                                <span class="parameter">isactive = </span>
+                                <span class="types"><span class="boolean">True/False</span></span>
+                                Is the zone active?
+                            </li>
+                            <li>
+                                <span class="parameter">locked = </span>
+                                <span class="types"><span class="boolean">True/False</span></span>
+                                Are Zone RPs locked?
+                            </li>
+                            <li>
+                                <span class="parameter">hidden = </span>
+                                <span class="types"><span class="boolean">True/False</span></span>
+                                Are Zone RPs hidden?
+                            </li>
+                            <li>
+                                <span class="parameter">affects = </span>
+                                <span class="types"><span class="tooltip">table {}<span class="tooltiptext">list of core unit types ('SHIP', 'AIRCRAFT', etc) affected</span></span></span>
+                                Zone applies to these core unit types
+                            </li>
+                            <li>
+                                <span class="parameter">markAs = </span>
+                                <span class="types"><span class="string"><a href="DataTypes.html#dataType_Stance">posture</a></span></span>
+                                Units entering the zone are treated as (posture towards them) [exclusion zone only]
+                            </li>
+                            <li>
+                                <span class="parameter">relativeto = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The unit name/guid that all the RP(s) relate to, if required
+                            </li>
+                            <li>
+                                <span class="parameter">areaColor = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The zone color to show as a HTML color code
+                            </li>
+                            <li>
+                                <span class="parameter">rename = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                Description to change zone to
+                            </li>
+                            <li>
+                                <span class="parameter">area = </span>
+                                <span class="table"> {} of multiple </span>The area defining the zone
+                                <ul>
+                                    <li>
+                                        <span class="parameter">name = </span>
+                                        <span class="types"><span class="string">string</span></span>
+                                        The name of the new reference point
+                                    </li>
+                                    <li>
+                                        <span class="parameter">latitude = </span>
+                                        <span class="types"><a href="DataTypes.html#dataType_Latitude">latitude</a></span>
+                                        The latitude of the new reference point
+                                    </li>
+                                    <li>
+                                        <span class="parameter">longitude = </span>
+                                        <span class="types"><a href="DataTypes.html#dataType_Longitude">longitude</a></span>
+                                        The longitude of the new reference point
+                                    </li>
+                                    <li>
+                                        <span class="parameter">highlighted = </span>
+                                        <span class="types"><span class="boolean">True/False</span></span>
+                                        True if the reference point should be selected
+                                    </li>
+                                    <li>
+                                        <span class="parameter">locked = </span>
+                                        <span class="types"><span class="boolean">True/False</span></span>
+                                        True if the reference point is locked
+                                    </li>
+                                    <li>
+                                        <span class="parameter">distance = </span>
+                                        <span class="types"><span class="number">distance</span></span>
+                                        Distance from the 'relative' unit
+                                    </li>
+                                    <li>
+                                        <span class="parameter">bearing = </span>
+                                        <span class="types"><span class="number">number (0-360)</span></span>
+                                        Bearing from the 'relative' unit
+                                    </li>
+                                    <li>
+                                        <span class="parameter">bearingtype = </span>
+                                        <span class="types"><span class="tooltip">type<span class="tooltiptext">Fixed (0) or Rotating (1)</span></span></span>
+                                        Bearing aspect of the reference point
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
                 <h4>Returns</h4>
-                <p><span class="wrapper"><a href="Wrappers.html#wrapper_Zone">Zone</a></span></p>
+                <p><span class="wrapper"><a href="Wrappers.html#wrapper_Zone">Zone</a></span>The update Zone object</p>
+   
+                <h5>Example</h5>
+                <div class="example">
+                    <code>local zone = ScenEdit_SetZone( 'sideA', 0, { rename = 'new zone', affects = {'ship', 'submarine'} } )</code>
+                </div>
+
                 <hr>
-                <h3><a class="anchor" id="ScenEdit_SpecialMessage"></a>ScenEdit_SpecialMessage(side, message, [location, forceMapRecenter])</h3>
+                <h3>
+                    <a class="anchor" id="ScenEdit_SpecialMessage"></a>ScenEdit_SpecialMessage
+                    (side, message, [location, forceMapRecenter])
+                </h3>
                 <p>
-                    Displays a special message consisting of the HTML text <span class="parameter">message</span> to the side specified by <span class="parameter">side</span>. <br>
-                    Optional parameters <span class="parameter">location</span> allows the player to jump to the specified map position by clicking a button in a pop-up window.<br>
-                    <span class="pro_only">PRO ONLY</span><span class="parameter">forceMapRecenter</span> will center map on location.
+                    This function will Display a special message consisting of the HTML text <span class="parameter">message</span> to the side specified by <span class="parameter">side</span>. <br />
+                    Optional parameters <span class="parameter">location</span> allows the player to jump to the specified map position by clicking a button in a pop-up window.<br />
+                    The optional parameter <span class="parameter">forceMapRecenter</span> will center the map on specified location.
                 </p>
                 <h4>Parameters</h4>
                 <ul>
-                    <li><span class="parameter">side</span> <span class="types"><span class="string">string</span></span> The side name/guid to display the message to, or <code>'playerside'</code> (see Note below)</li>
-                    <li><span class="parameter">message</span> <span class="types"><span class="string">string</span></span> The HTML text to display to the player. Plain text is also accepted.</li>
-                    <li>[Optional] <span class="parameter">location</span><span class="types">Point</span> The position that the 'Jump to Location' button takes the player to if clicked.</li>
-                    <li>[Optional] <span class="parameter">forceMapRecenter</span><span class="boolean">True/False</span> The map will be centered on location if present.</li>
+                    <li>
+                        <span class="parameter">side</span>
+                        <span class="types"><span class="string">string</span></span>
+                        The side name/guid to display the message to, or <code>'playerside'</code> (see Note below)
+                    </li>
+                    <li>
+                        <span class="parameter">message</span>
+                        <span class="types"><span class="string">string</span></span>
+                        The HTML text to display to the player. Plain text is also accepted.
+                    </li>
+                    <li>
+                        <span class="parameter">location [optional]</span>
+                        <span class="table"> {} of </span>
+                        <ul>
+                            <li>
+                                <span class="parameter">latitude =</span>
+                                <span class="types"><a href="DataTypes.html#dataType_Latitude">latitude</a></span>
+                            </li>
+                            <li>
+                                <span class="parameter">longitude =</span>
+                                <span class="types"><a href="DataTypes.html#dataType_Longitude">longitude</a></span>
+                            </li>
+                        </ul>
+                        The position that the 'Jump to Location' button takes the player to if clicked.
+                    </li>
+                    <li>
+                        <span class="parameter">forceMapRecenter [optional] </span>
+                        <span class="types"><span class="boolean">True/False</span></span>
+                        The map will be centered on location if present.
+                    </li>
                 </ul>
 
                 <h4>Returns</h4>
                 <p><span class="types"><span class="number">number</span></span> 1 if successful, raises an error if unsuccessful.</p>
+
                 <h5>Example</h5>
                 <div class="example">
-                    <code>ScenEdit_SpecialMessage(<span class="string">'playerside'</span>,<span class="string">'Here\'s a message!'</span>,{latitude = <span class="number">1.2</span>,longitude = <span class="number">3.4</span>})</code>
+                    <code>ScenEdit_SpecialMessage( 'playerside', 'Here\'s a message!', { latitude = 1.2, longitude = 3.4 } )</code>
                 </div>
                 <div class="note-alert"><p><strong>Note:</strong> The string <code>'playerside'</code> is a special name that refers to whichever side is currently under player control and can be used to ensure that a special message is visible regardless of the player switching sides during the session or choosing a different side at scenario start.</p></div>
                 <div class="note-caution"><p><strong>Caution:</strong> Players can disable pop-ups for special messages in the game options. Ensure that players are aware of the need to turn this feature on if special messages are essential to scenario function.</p></div>
