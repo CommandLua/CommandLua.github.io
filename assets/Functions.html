@@ -188,7 +188,11 @@
                     <li><a href="#World_GetCircleFromPoint">World_GetCircleFromPoint()</a></li>
                     <li><a href="#World_GetElevation">World_GetElevation()</a></li>
                     <li><a href="#World_GetLocation">World_GetLocation()</a></li>
-                    <li><a href="#World_GetPointFromBearing">World_GetPointFromBearing()</a></li>
+                    <li><a href="Function_World_GetPointFromBearing.html">World_GetPointFromBearing()</a></li>
+                    <li><a href="Function_Template.html">Function template()</a> </li>
+                    <!--
+                    Create a file for the function so as to add as much detail as needed without impacting the over all size of this page.    
+                    -->
                 </ul>
                 <br>
                 <h3>Command: Professional Edition</h3>
@@ -6961,11 +6965,9 @@
 
                                     </span >
                                     <ul >
-                                    <!-- li >
                                     <span class="parameter" > side = </span >
                                     <span class="types" > <span class="string" > string</span > </span >
                                     The side name/GUID of the unit
-                                    </li-- >
                                     <li >
                                     <span class="parameter" > unitname = </span >
                                     <span class="types" > <span class="string" > string</span > </span >
@@ -7237,72 +7239,6 @@
                                     </code >
                                     </div >
 
-                                    <hr >
-                                    <h3 >
-                                    <a class="anchor" id="World_GetPointFromBearing" > </a > World_GetPointFromBearing
-                                    ( table )
-                                    </h3 >
-                                    <p > This function returns a location based on bearing from a point.</p >
-                                    <h4 > Parameters</h4 >
-                                    <ul >
-                                    <li >
-                                    <span class="parameter" > table</span >
-                                    <span class="table" > {
-                                    }
-
-                                    </span >
-                                    <ul >
-                                    <li >
-                                    <span class="parameter" > latitude = </span >
-                                    <span class="types" > <a href="DataTypes.html#dataType_Latitude" > latitude</a > </span >
-                                    The latitude of the start point
-                                    </li >
-                                    <li >
-                                    <span class="parameter" > longitude = </span >
-                                    <span class="types" > <a href="DataTypes.html#dataType_Longitude" > longitude</a > </span >
-                                    The longitude of the start point
-                                    </li >
-                                    <li >
-                                    <span class="parameter" > distance =</span >
-                                    <span class="types" > <span class="number" > number</span > </span >
-                                    The distance from the start point (NM)
-                                    </li >
-                                    <li >
-                                    <span class="parameter" > bearing = </span >
-                                    <span class="types" > <span class="number" > number (0-360)</span > </span >
-                                    The Bearing from the start point
-                                    </li >
-                                    </ul >
-                                    </li >
-                                    </ul >
-                                    <h4 > Returns</h4 >
-                                    <span class="table" > {
-                                    }
-
-                                    of </span >
-                                    the
-                                    new
-                                    location point
-                                    <ul >
-                                    <li >
-                                    <span class="parameter" > latitude</span >
-                                    <span class="types" > <a href="DataTypes.html#dataType_Latitude" > latitude</a > </span >
-                                    The latitude of the new point
-                                    </li >
-                                    <li >
-                                    <span class="parameter" > longitude</span >
-                                    <span class="types" > <a href="DataTypes.html#dataType_Longitude" > longitude</a > </span >
-                                    The longitude of the new point
-                                    </li >
-                                    </ul >
-
-                                    <h5 > Example</h5 >
-                                    <div class="example" >
-                                    <code >
-                                    local new_pos = World_GetPointFromBearing( { latitude = '-37.8307390636104', longitude = '144.932549348204',<br />
-                                distance = 12, bearing = 90 } )
-                                    </code >
-                                    </div >
 
                                     <hr / > <hr / >
                                     <div >
