@@ -1,0 +1,159 @@
+<html>
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163808192-1"></script>
+    <script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-163808192-1');
+    </script>
+
+
+    <title>Command Lua Docs</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+
+
+</head>
+
+<body>
+    <div id="header-container">
+        <div id="header">
+            <div id="header-logo">
+                <h1>
+                    <a href="../index2.html"><img src="./images/CommandLuaLogo.svg" height=45px alt="CommandLua"></a>
+                </h1>
+            </div>
+            <div id="header-nav">
+                <a class="selected" href="../index2.html">Reference</a>
+                <!-- <a href="/guides/">Guides</a> -->
+                <a href="https://www.matrixgames.com/forums/tt.asp?forumid=1681">Forum</a>
+            </div>
+        </div>
+    </div>
+    <div id="container">
+
+        <div id="content">
+            <div id="nav">
+                <ul>
+                    <li><a href="../index2.html#News">News</a></li>
+                    <li><a href="../index2.html#Introduction">Introduction</a></li>
+                    <ol>
+                        <li><a href="../index2.html#HowToUse">How to Use These Docs</a></li>
+                        <li><a href="../index2.html#FirstSteps">First Steps</a></li>
+                        <li><a href="../index2.html#ExternalResources">External Resources</a></li>
+                    </ol>
+
+                    <li><a href="../index2.html#Overview">Overview</a></li>
+                    <ol>
+                        <li><a href="../index2.html#CaseSensitivityandConventions">Case Sensitivity and Conventions</a></li>
+                        <li><a href="../index2.html#EventHandling">Event Handling</a></li>
+                        <li><a href="../index2.html#ErrorHandling">Error Handling</a></li>
+                    </ol>
+                    <li><a href="DataTypes.html">Data Types</a></li>
+                    <li><a href="Functions.html">Functions</a></li>
+                    <li><a href="Wrappers.html">Wrappers</a></li>
+                    <li><a href="Selectors.html">Selectors</a></li>
+                    <li><a href="Tables.html">Tables</a></li>
+                </ul>
+            </div>
+
+            <div id="main">
+
+                <h3><a class="anchor" id="ScenEdit_AttackContact"></a>ScenEdit_AttackContact (attackerID, contactId, options)</h3>
+                <p>This function causes an attack on a contact as an auto-target or manual target, with weapon allocation.</p>
+                <p>For a BOL attack, use "BOL" as the contactId.</p>
+                <p>
+                    <strong>Note:</strong> The function will use the <strong>weapon</strong> from the aircraft loadout if applicable when no <strong>mount</strong> is supplied.
+                </p>
+                <h4>Parameters</h4>
+                <ul>
+                    <li>
+                        <span class="parameter">attackerID</span>
+                        <span class="types"><span class="string">string</span></span>
+                        The attacking unit name/guid
+                    </li>
+                    <li>
+                        <span class="parameter">contactId</span>
+                        <span class="types"><span class="string">string</span></span>
+                        The contact being attacked as a name/guid (GUID is better as the name can change as its classification changes)
+                    </li>
+                    <li>
+                        <span class="parameter">options </span>
+                        <span class="table"> {} </span>
+                        <ul>
+                            <li>
+                                <span class="parameter">mode = </span>
+                                <span class="types"><span class="tooltip">TargetingMode<span class="tooltiptext">0 = AutoTargeted, 1 = ManualWeaponAlloc, 2 = ManualTargeted</span></span></span>
+                                The attack behaviour. 'ManualWeaponAlloc' requires supplying the weapon information to fire with.
+                            </li>
+                            <li>
+                                <span class="parameter">mount = </span>
+                                <span class="types"><span class="number">number</span></span>
+                                The mount dbid to fire from [Applies to manual weapon launch ]
+                            </li>
+                            <li>
+                                <span class="parameter">weapon = </span>
+                                <span class="types"><span class="number">number</span></span>
+                                The weapon dbid on the mount to fire [Applies to manual weapon launch ]
+                            </li>
+                            <li>
+                                <span class="parameter">qty = </span>
+                                <span class="types"><span class="number">number</span></span>
+                                The number of weapons to fire in this salvo [Applies to manual weapon launch ]
+                            </li>
+                            If the contactId is 'BOL', then the following apply.
+                            <li>
+                                <span class="parameter">latitude = </span>
+                                <span class="types"><a href="DataTypes.html#dataType_Latitude">latitude</a></span>
+                                The latitude of the aimpoint
+                            </li>
+                            <li>
+                                <span class="parameter">longitude = </span>
+                                <span class="types"><a href="DataTypes.html#dataType_Longitude">longitude</a></span>
+                                The longitude of the aimpoint
+                            </li>
+                            <li>
+                                <span class="parameter">course = </span>
+                                <span class="table"> {} of multiple</span>
+                                The course of the weapon(s) launched to the aimpoint, otherwise direct to aimpoint
+                                <ul>
+                                    <li>
+                                        <span class="parameter">latitude = </span>
+                                        <span class="types"><a href="DataTypes.html#dataType_Latitude">latitude</a></span>
+                                        The latitude of the waypoint
+                                    </li>
+                                    <li>
+                                        <span class="parameter">longitude = </span>
+                                        <span class="types"><a href="DataTypes.html#dataType_Longitude">longitude</a></span>
+                                        The longitude of the waypoint
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <h4>Returns</h4>
+                <p>
+                    <span class="types"><span class="boolean">True/False</span></span>
+                    True if attack successfully assigned
+                </p>
+
+                <h5>Example</h5>
+                <div class="example">
+                    <code>ScenEdit_AttackContact( 'Phantom #1', 'SKUNK #12', { mode='1', mount=438, weapon=1413, qty=10 } )</code>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <p> Copyright &copy; WarfareSims 2020</p>
+    </div>
+</body>
+
+</html>

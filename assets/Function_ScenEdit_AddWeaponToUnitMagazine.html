@@ -1,0 +1,146 @@
+<html>
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163808192-1"></script>
+    <script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-163808192-1');
+    </script>
+
+
+    <title>Command Lua Docs</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+
+
+</head>
+
+<body>
+    <div id="header-container">
+        <div id="header">
+            <div id="header-logo">
+                <h1>
+                    <a href="../index2.html"><img src="./images/CommandLuaLogo.svg" height=45px alt="CommandLua"></a>
+                </h1>
+            </div>
+            <div id="header-nav">
+                <a class="selected" href="../index2.html">Reference</a>
+                <!-- <a href="/guides/">Guides</a> -->
+                <a href="https://www.matrixgames.com/forums/tt.asp?forumid=1681">Forum</a>
+            </div>
+        </div>
+    </div>
+    <div id="container">
+
+        <div id="content">
+            <div id="nav">
+                <ul>
+                    <li><a href="../index2.html#News">News</a></li>
+                    <li><a href="../index2.html#Introduction">Introduction</a></li>
+                    <ol>
+                        <li><a href="../index2.html#HowToUse">How to Use These Docs</a></li>
+                        <li><a href="../index2.html#FirstSteps">First Steps</a></li>
+                        <li><a href="../index2.html#ExternalResources">External Resources</a></li>
+                    </ol>
+
+                    <li><a href="../index2.html#Overview">Overview</a></li>
+                    <ol>
+                        <li><a href="../index2.html#CaseSensitivityandConventions">Case Sensitivity and Conventions</a></li>
+                        <li><a href="../index2.html#EventHandling">Event Handling</a></li>
+                        <li><a href="../index2.html#ErrorHandling">Error Handling</a></li>
+                    </ol>
+                    <li><a href="DataTypes.html">Data Types</a></li>
+                    <li><a href="Functions.html">Functions</a></li>
+                    <li><a href="Wrappers.html">Wrappers</a></li>
+                    <li><a href="Selectors.html">Selectors</a></li>
+                    <li><a href="Tables.html">Tables</a></li>
+                </ul>
+            </div>
+
+            <div id="main">
+
+                <h3><a class="anchor" id="ScenEdit_AddWeaponToUnitMagazine"></a>ScenEdit_AddWeaponToUnitMagazine (table)</h3>
+                <p>
+                    This function adds weapons to a unit magazine.<br>
+                    Unlike <a href="#ScenEdit_AddReloadsToUnit">ScenEdit_AddReloadsToUnit()</a> this is adjusting the unit's magazine rather than the local mount. For example, adding more AIM-120 missiles to the carrier magazine for loadout refreshing.<br />
+                    You can specify a particular `magazine` by the GUID, or omit it and the function will try to apply the request to any `available` magazines with the `weapon`.<br />
+                </p>
+                <h4>Parameters</h4>
+                <ul>
+                    <li>
+                        <span class="parameter">table</span><span class="table"> {} </span>
+                        <ul>
+                            <li>
+                                <span class="parameter">side = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The side name/GUID of the unit
+                            </li>
+                            <li>
+                                <span class="parameter">unitname = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The name of unit
+                            </li>
+                            <li>
+                                <span class="parameter">guid = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The GUID of the unit
+                            </li>
+                            <li>
+                                <span class="parameter">wpn_dbid = </span>
+                                <span class="types"><span class="number">number</span></span>
+                                The weapon database ID to be updated **MANDATORY**
+                            </li>
+                            <li>
+                                <span class="parameter">mag_guid = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The magazine GUID on the unit to be updated
+                            </li>
+                            <li>
+                                <span class="parameter">maxcap = </span>
+                                <span class="types"><span class="number">number</span></span>
+                                Use this as an override for the magazine's current maximum capacity for the weapon
+                            </li>
+                            <li>
+                                <span class="parameter">new = </span>
+                                <span class="types"><span class="boolean">True/False</span></span>
+                                If true, allows the weapon to be treated as a new item in the magazine if it doesn't exist
+                            </li>
+                            <li>
+                                <span class="parameter">number = </span>
+                                <span class="types"><span class="number">number</span></span>
+                                Number to be added or removed
+                            </li>
+                            <li>
+                                <span class="parameter">remove = </span>
+                                <span class="types"><span class="boolean">True/False</span></span>
+                                If true, this will debuct the number of weapons from the unit/mount
+                            </li>
+                            <li>
+                                <span class="parameter">fillout = </span>
+                                <span class="types"><span class="boolean">True/False</span></span>
+                                If true, this will fill out the weapon record to its maximum. The parameters 'number' and 'new' don't apply in this case.
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <h4>Returns</h4>
+                <p><span class="types"><span class="number">number</span></span> Number of items added to the magazine</p>
+                <h5>Example</h5>
+                <div class="example">
+                    <code>ScenEdit_AddWeaponToUnitMagazine( { unitname='Ammo', wpn_dbid=773, number=5, maxcap=10 } )</code>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <p> Copyright &copy; WarfareSims 2020</p>
+    </div>
+</body>
+
+</html>

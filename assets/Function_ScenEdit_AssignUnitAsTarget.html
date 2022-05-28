@@ -1,0 +1,117 @@
+<html>
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163808192-1"></script>
+    <script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-163808192-1');
+    </script>
+
+
+    <title>Command Lua Docs</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+
+
+</head>
+
+<body>
+    <div id="header-container">
+        <div id="header">
+            <div id="header-logo">
+                <h1>
+                    <a href="../index2.html"><img src="./images/CommandLuaLogo.svg" height=45px alt="CommandLua"></a>
+                </h1>
+            </div>
+            <div id="header-nav">
+                <a class="selected" href="../index2.html">Reference</a>
+                <!-- <a href="/guides/">Guides</a> -->
+                <a href="https://www.matrixgames.com/forums/tt.asp?forumid=1681">Forum</a>
+            </div>
+        </div>
+    </div>
+    <div id="container">
+
+        <div id="content">
+            <div id="nav">
+                <ul>
+                    <li><a href="../index2.html#News">News</a></li>
+                    <li><a href="../index2.html#Introduction">Introduction</a></li>
+                    <ol>
+                        <li><a href="../index2.html#HowToUse">How to Use These Docs</a></li>
+                        <li><a href="../index2.html#FirstSteps">First Steps</a></li>
+                        <li><a href="../index2.html#ExternalResources">External Resources</a></li>
+                    </ol>
+
+                    <li><a href="../index2.html#Overview">Overview</a></li>
+                    <ol>
+                        <li><a href="../index2.html#CaseSensitivityandConventions">Case Sensitivity and Conventions</a></li>
+                        <li><a href="../index2.html#EventHandling">Event Handling</a></li>
+                        <li><a href="../index2.html#ErrorHandling">Error Handling</a></li>
+                    </ol>
+                    <li><a href="DataTypes.html">Data Types</a></li>
+                    <li><a href="Functions.html">Functions</a></li>
+                    <li><a href="Wrappers.html">Wrappers</a></li>
+                    <li><a href="Selectors.html">Selectors</a></li>
+                    <li><a href="Tables.html">Tables</a></li>
+                </ul>
+            </div>
+
+            <div id="main">
+
+                <h3>
+                    <a class="anchor" id="ScenEdit_AssignUnitAsTarget"></a>ScenEdit_AssignUnitAsTarget (AUNameOrIDOrTable,
+                    MissionNameOrID)
+                </h3>
+                <p>
+                    This function assigns targets to a Strike mission target list.<br />
+                    The target list can be (a) one single unit/contact name/guid, or (b) a table of unit/contact name/guid
+                </p>
+                <p>
+                    'UnitX' as the triggering unit, can be used as the unit name.<br />
+                    Contacts can also be assigned. Refer to the VP_ functions for details
+                </p>
+                <h4>Parameters</h4>
+                <ul>
+                    <li>
+                        <span class="parameter">AUNameOrIDOrTable</span>
+                        <span class="types"><span class="string">string</span></span>
+                        or
+                        <span class="types"><span class="type">table {}</span></span>
+                        The name/GUID of the unit, or a table of unit/contact name/GUID to add
+                    </li>
+                    <li>
+                        <span class="parameter">MissionNameOrID</span>
+                        <span class="types"><span class="string">string</span></span>
+                        The strike mission name/guid to be updated
+                    </li>
+                </ul>
+                <h4>Returns</h4>
+                <p>
+                    <span class="table">table {} of</span>
+                    <span class="types"><span class="string">string</span></span>
+                    A table of target GUIDs that were added
+                </p>
+
+                <h5>Example</h5>
+                <div class="example">
+                    <code>ScenEdit_AssignUnitAsTarget( {'target1', 'target2' }, 'Land strike' )</code>
+                </div>
+                <div class="example">
+                    <code>ScenEdit_AssignUnitAsTarget('UnitX', 'Land strike' )</code>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <p> Copyright &copy; WarfareSims 2020</p>
+    </div>
+</body>
+
+</html>

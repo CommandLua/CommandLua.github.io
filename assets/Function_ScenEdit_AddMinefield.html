@@ -1,0 +1,135 @@
+<html>
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163808192-1"></script>
+    <script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-163808192-1');
+    </script>
+
+
+    <title>Command Lua Docs</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+
+
+</head>
+
+<body>
+    <div id="header-container">
+        <div id="header">
+            <div id="header-logo">
+                <h1>
+                    <a href="../index2.html"><img src="./images/CommandLuaLogo.svg" height=45px alt="CommandLua"></a>
+                </h1>
+            </div>
+            <div id="header-nav">
+                <a class="selected" href="../index2.html">Reference</a>
+                <!-- <a href="/guides/">Guides</a> -->
+                <a href="https://www.matrixgames.com/forums/tt.asp?forumid=1681">Forum</a>
+            </div>
+        </div>
+    </div>
+    <div id="container">
+
+        <div id="content">
+            <div id="nav">
+                <ul>
+                    <li><a href="../index2.html#News">News</a></li>
+                    <li><a href="../index2.html#Introduction">Introduction</a></li>
+                    <ol>
+                        <li><a href="../index2.html#HowToUse">How to Use These Docs</a></li>
+                        <li><a href="../index2.html#FirstSteps">First Steps</a></li>
+                        <li><a href="../index2.html#ExternalResources">External Resources</a></li>
+                    </ol>
+
+                    <li><a href="../index2.html#Overview">Overview</a></li>
+                    <ol>
+                        <li><a href="../index2.html#CaseSensitivityandConventions">Case Sensitivity and Conventions</a></li>
+                        <li><a href="../index2.html#EventHandling">Event Handling</a></li>
+                        <li><a href="../index2.html#ErrorHandling">Error Handling</a></li>
+                    </ol>
+                    <li><a href="DataTypes.html">Data Types</a></li>
+                    <li><a href="Functions.html">Functions</a></li>
+                    <li><a href="Wrappers.html">Wrappers</a></li>
+                    <li><a href="Selectors.html">Selectors</a></li>
+                    <li><a href="Tables.html">Tables</a></li>
+                </ul>
+            </div>
+
+            <div id="main">
+
+                <h3><a class="anchor" id="ScenEdit_AddMinefield"></a>ScenEdit_AddMinefield( table )</h3>
+                <p>
+                    This function will attempt to lay a minefield for a Side consisting of the mine type, number to attempt to lay, the arming delay and the area of the field to sow them in.<br>
+                    Mines are laid as their depth settings and there are proximity considerations. This is why the full number might not be laid.<br />
+                    Normal RPs are checked first, and then the No-nav/Exclusion zone RPs for the area to lay the mines in.
+                </p>
+                <h4>Parameters</h4>
+                <ul>
+                    <li>
+                        <span class="parameter">table</span>
+                        <span class="table"> {} </span>
+                        <ul>
+                            <li>
+                                <span class="parameter">side = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The Side name/guid that owns the mines
+                            </li>
+                            <li>
+                                <span class="parameter">dbid = </span>
+                                <span class="types"><span class="number">number</span></span>
+                                The database id of the mine to use
+                            </li>
+                            <li>
+                                <span class="parameter">number = </span>
+                                <span class="types"><span class="number">number</span></span>
+                                The number of mines to attempt to lay
+                            </li>
+                            <li>
+                                <span class="parameter">delay = </span>
+                                <span class="types"><span class="number">number</span></span>
+                                The arming delay in seconds
+                            </li>
+                            <li>
+                                <span class="parameter">area = </span>
+                                <span class="table"> {} of multiple</span>
+                                The area to lay the mines in
+                                <ul>
+                                    <li>
+                                        <span class="types"><span class="string"> string </span></span>
+                                        The reference point guid/name
+                                    </li>
+                                </ul>
+                                <!--<span class="types"><span class="tooltip">table<span class="tooltiptext">list of  refernce point guids or names </span></span></span>-->
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <h4>Returns</h4>
+                <p>
+                    <span class="types"><span class="number">number</span></span>
+                    number of mines actually laid
+                </p>
+
+                <h5>Example</h5>
+                <div class="example">
+                    <code>
+                        local a = ScenEdit_AddMinefield( { side='Blue', dbid=2345, number=100, delay=60000, area={'rp-1','rp-2','rp-3','rp-4'} } )
+                    </code>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <p> Copyright &copy; WarfareSims 2020</p>
+    </div>
+</body>
+
+</html>
