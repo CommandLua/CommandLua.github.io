@@ -1,0 +1,138 @@
+<html>
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163808192-1"></script>
+    <script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-163808192-1');
+    </script>
+
+
+    <title>Command Lua Docs</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+
+
+</head>
+
+<body>
+    <div id="header-container">
+        <div id="header">
+            <div id="header-logo">
+                <h1>
+                    <a href="../index2.html"><img src="./images/CommandLuaLogo.svg" height=45px alt="CommandLua"></a>
+                </h1>
+            </div>
+            <div id="header-nav">
+                <a class="selected" href="../index2.html">Reference</a>
+                <!-- <a href="/guides/">Guides</a> -->
+                <a href="https://www.matrixgames.com/forums/tt.asp?forumid=1681">Forum</a>
+            </div>
+        </div>
+    </div>
+    <div id="container">
+
+        <div id="content">
+            <div id="nav">
+                <ul>
+                    <li><a href="../index2.html#News">News</a></li>
+                    <li><a href="../index2.html#Introduction">Introduction</a></li>
+                    <ol>
+                        <li><a href="../index2.html#HowToUse">How to Use These Docs</a></li>
+                        <li><a href="../index2.html#FirstSteps">First Steps</a></li>
+                        <li><a href="../index2.html#ExternalResources">External Resources</a></li>
+                    </ol>
+
+                    <li><a href="../index2.html#Overview">Overview</a></li>
+                    <ol>
+                        <li><a href="../index2.html#CaseSensitivityandConventions">Case Sensitivity and Conventions</a></li>
+                        <li><a href="../index2.html#EventHandling">Event Handling</a></li>
+                        <li><a href="../index2.html#ErrorHandling">Error Handling</a></li>
+                    </ol>
+                    <li><a href="DataTypes.html">Data Types</a></li>
+                    <li><a href="Functions.html">Functions</a></li>
+                    <li><a href="Wrappers.html">Wrappers</a></li>
+                    <li><a href="Selectors.html">Selectors</a></li>
+                    <li><a href="Tables.html">Tables</a></li>
+                </ul>
+            </div>
+
+            <div id="main">
+
+                <h3>
+                    <a class="anchor" id="ScenEdit_HostUnitToParent"></a>ScenEdit_HostUnitToParent
+                    (table)
+                </h3>
+                <p>
+                    This function hosts (bases) a unit on another unit.<br />
+                    <ul>
+                        <li>
+                            If 'SelectedHostNameOrID' is used, then the unit will be moved from any location, including flying, to the location of the 'host' unit.
+                        </li>
+                        <li>
+                            If 'SelectedBaseNameOrID' is used, then the unit's base will be set to this location.
+                        </li>
+                    </ul>The parameters 'SelectedHostNameOrID' and 'SelectedBaseNameOrID' are mutally exclusive, and only one should be used. The do the same 'basing' but one is immeditate the other not.
+                </p>
+                <h4>Parameters</h4>
+                <ul>
+                    <li>
+                        <span class="parameter">table</span>
+                        <span class="table"> {} </span>
+                        <ul>
+                            <li>
+                                <span class="parameter">HostedUnitNameOrID = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The name or GUID of the unit to change.
+                            </li>
+                            <li>
+                                <span class="parameter">SelectedHostNameOrID = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The name or GUID of the host to put the unit into.
+                            </li>
+                            <li>
+                                <span class="parameter">SelectedBaseNameOrID = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The name or GUID of the host to be the unit's base.
+                            </li>
+                        </ul>
+                        "UnitX" can be used as a value in the above parameters when in an event script.
+                </ul>
+                <h4>Returns</h4>
+                <p>
+                    <span class="types"><span class="boolean">True/False</span></span>
+                    True if the side is human controlled
+                </p>
+
+                <h5>Example</h5>
+                This will base a unit 'f4f9e0af-15c2-4582-8e80-b827c2ec2f56' at the base 'San Diego'.
+                <div class="example">
+                    <code>
+                        local a = ScenEdit_HostUnitToParent( {HostedUnitNameOrID='f4f9e0af-15c2-4582-8e80-b827c2ec2f56',
+                        SelectedBaseNameOrID = 'San Diego'
+                        } )
+                    </code>
+                </div>
+                This will host a unit 'f4f9e0af-15c2-4582-8e80-b827c2ec2f56' at the base 'San Diego' immefiately.
+                <div class="example">
+                    <code>
+                        local a = ScenEdit_HostUnitToParent( {HostedUnitNameOrID='f4f9e0af-15c2-4582-8e80-b827c2ec2f56',
+                        SelectedHostNameOrID = 'San Diego'
+                        } )
+                    </code>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <p> Copyright &copy; WarfareSims 2020</p>
+    </div>
+</body>
+
+</html>

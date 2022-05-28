@@ -1,0 +1,184 @@
+<html>
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163808192-1"></script>
+    <script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-163808192-1');
+    </script>
+
+
+    <title>Command Lua Docs</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+
+
+</head>
+
+<body>
+    <div id="header-container">
+        <div id="header">
+            <div id="header-logo">
+                <h1>
+                    <a href="../index2.html"><img src="./images/CommandLuaLogo.svg" height=45px alt="CommandLua"></a>
+                </h1>
+            </div>
+            <div id="header-nav">
+                <a class="selected" href="../index2.html">Reference</a>
+                <!-- <a href="/guides/">Guides</a> -->
+                <a href="https://www.matrixgames.com/forums/tt.asp?forumid=1681">Forum</a>
+            </div>
+        </div>
+    </div>
+    <div id="container">
+
+        <div id="content">
+            <div id="nav">
+                <ul>
+                    <li><a href="../index2.html#News">News</a></li>
+                    <li><a href="../index2.html#Introduction">Introduction</a></li>
+                    <ol>
+                        <li><a href="../index2.html#HowToUse">How to Use These Docs</a></li>
+                        <li><a href="../index2.html#FirstSteps">First Steps</a></li>
+                        <li><a href="../index2.html#ExternalResources">External Resources</a></li>
+                    </ol>
+
+                    <li><a href="../index2.html#Overview">Overview</a></li>
+                    <ol>
+                        <li><a href="../index2.html#CaseSensitivityandConventions">Case Sensitivity and Conventions</a></li>
+                        <li><a href="../index2.html#EventHandling">Event Handling</a></li>
+                        <li><a href="../index2.html#ErrorHandling">Error Handling</a></li>
+                    </ol>
+                    <li><a href="DataTypes.html">Data Types</a></li>
+                    <li><a href="Functions.html">Functions</a></li>
+                    <li><a href="Wrappers.html">Wrappers</a></li>
+                    <li><a href="Selectors.html">Selectors</a></li>
+                    <li><a href="Tables.html">Tables</a></li>
+                </ul>
+            </div>
+
+            <div id="main">
+
+                <h3>
+                    <a class="anchor" id="ScenEdit_SetUnitDamage"> </a> ScenEdit_SetUnitDamage
+                    ( table )
+                </h3>
+                <p>
+                    This function Sets the
+                    unit
+                    damage for
+                    components
+                </p>
+                <h4> Parameters</h4>
+                <ul>
+                    <li>
+                        <span class="parameter"> table</span> <span class="table">
+                            {
+                            }
+
+                        </span>
+                        <ul>
+                            <li>
+                                <span class="parameter"> side = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                The side name/GUID of the unit
+                            </li>
+                            <li>
+                                <span class="parameter"> unitname = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                The name of unit
+                            </li>
+                            <li>
+                                <span class="parameter"> guid = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                The GUID of the unit
+                            </li>
+                            <li>
+                                <span class="parameter"> fires = </span>
+                                <span class="types"> <span class="string"> Fire_level?</span> </span>
+                                Fire level
+                            </li>
+                            <li>
+                                <span class="parameter"> flood = </span>
+                                <span class="types"> <span class="string"> Flood_level?</span> </span>
+                                Flooding level
+                            </li>
+                            <li>
+                                <span class="parameter"> dp = </span>
+                                <span class="types"> <span class="number"> number</span> </span>
+                                Damage points left
+                            </li>
+                            <li>
+                                <span class="parameter"> components =</span> <span class="table">
+                                    {
+                                    }
+
+                                    of multiple
+                                </span>
+                                <ul>
+                                    <li>
+                                        <span class="types"> <span class="tooltip"> value<span class="tooltiptext"> 'rudder', 'cargo', 'cic', 'pressurehull'</span> </span> </span>
+                                        Standard component to damage
+                                    </li>
+                                    <li>
+                                        <span class="types"> <span class="string"> string</span> </span>
+                                        Damage level ('none', 'destroyed', or damage_severity_setting)
+                                    </li>
+                                </ul>
+                                or
+                                <ul>
+                                    <li>
+                                        <span class="types"> <span class="string"> string</span> </span>
+                                        Specific component GUID to damage
+                                    </li>
+                                    <li>
+                                        <span class="types"> <span class="string"> string</span> </span>
+                                        Damage level ('none', 'destroyed', or damage_severity_setting)
+                                    </li>
+                                </ul>
+                                or
+                                <ul>
+                                    <li>
+                                        <span class="types"> <span class="string"> 'type'</span> </span>
+                                        Fixed value to indicate a random component damage
+                                    </li>
+                                    <li>
+                                        <span class="types"> <span class="tooltip"> type = <span class="tooltiptext"> 'sensor', etc</span> </span> </span>
+                                        Random component type to damage
+                                    </li>
+                                    <li>
+                                        <span class="types"> <span class="string"> string</span> </span>
+                                        Damage level ('none', 'destroyed', or damage_severity_setting)
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <h4> Returns</h4>
+                <p>
+                    <span class="table"> <a href="Tables.html#table_Component"> Component</a> </span> The
+                    unit's
+                    components
+                    object
+                </p>
+
+                <h5> Example</h5>
+                <div class="example">
+                    <code> ScenEdit_SetUnitDamage({ side='SideA', unitname='TheShip', fires=1, components={ {'rudder','Medium'}, {'type',type='sensor',1} } })</code>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <p> Copyright &copy; WarfareSims 2020</p>
+    </div>
+</body>
+
+</html>

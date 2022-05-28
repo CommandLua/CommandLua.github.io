@@ -1,0 +1,153 @@
+<html>
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163808192-1"></script>
+    <script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-163808192-1');
+    </script>
+
+
+    <title>Command Lua Docs</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+
+
+</head>
+
+<body>
+    <div id="header-container">
+        <div id="header">
+            <div id="header-logo">
+                <h1>
+                    <a href="../index2.html"><img src="./images/CommandLuaLogo.svg" height=45px alt="CommandLua"></a>
+                </h1>
+            </div>
+            <div id="header-nav">
+                <a class="selected" href="../index2.html">Reference</a>
+                <!-- <a href="/guides/">Guides</a> -->
+                <a href="https://www.matrixgames.com/forums/tt.asp?forumid=1681">Forum</a>
+            </div>
+        </div>
+    </div>
+    <div id="container">
+
+        <div id="content">
+            <div id="nav">
+                <ul>
+                    <li><a href="../index2.html#News">News</a></li>
+                    <li><a href="../index2.html#Introduction">Introduction</a></li>
+                    <ol>
+                        <li><a href="../index2.html#HowToUse">How to Use These Docs</a></li>
+                        <li><a href="../index2.html#FirstSteps">First Steps</a></li>
+                        <li><a href="../index2.html#ExternalResources">External Resources</a></li>
+                    </ol>
+
+                    <li><a href="../index2.html#Overview">Overview</a></li>
+                    <ol>
+                        <li><a href="../index2.html#CaseSensitivityandConventions">Case Sensitivity and Conventions</a></li>
+                        <li><a href="../index2.html#EventHandling">Event Handling</a></li>
+                        <li><a href="../index2.html#ErrorHandling">Error Handling</a></li>
+                    </ol>
+                    <li><a href="DataTypes.html">Data Types</a></li>
+                    <li><a href="Functions.html">Functions</a></li>
+                    <li><a href="Wrappers.html">Wrappers</a></li>
+                    <li><a href="Selectors.html">Selectors</a></li>
+                    <li><a href="Tables.html">Tables</a></li>
+                </ul>
+            </div>
+
+            <div id="main">
+
+                <h3>
+                    <a class="anchor" id="ScenEdit_SetLoadout"></a>ScenEdit_SetLoadout
+                    (table)
+                </h3>
+                <p>
+                    This function Sets
+                    the
+                    loadout
+                    for
+                    a aircraft
+                    unit
+                </p>
+                <h4>Parameters</h4>
+                <ul>
+                    <li>
+                        <span class="parameter">table</span>
+                        <span class="table">{} of </span>
+                        <ul>
+                            <li>
+                                <span class="parameter">unitname =</span>
+                                <span class="types"><span class="string">string</span></span>
+                                Unit description/name or GUID to update. Can use 'UnitX' here if in an Event Action
+                            </li>
+                            <li>
+                                <span class="parameter">LoadoutID =</span>
+                                <span class="types"><span class="number">number</span></span>
+                                The ID of the new loadout; 0 = use the current loadout
+                            </li>
+                            <li>
+                                <span class="parameter">TimeToReady_Minutes =</span>
+                                <span class="types"><span class="number">number</span></span>
+                                How many minutes until the loadout is ready (default = database loadout time) (_optional_)
+                            </li>
+                            <li>
+                                <span class="parameter">IgnoreMagazines =</span>
+                                <span class="types"><span class="boolean">True/False</span></span>
+                                If the new loadout should rely on the magazines having the right weapons ready (default = false) (_optional_)
+                            </li>
+                            <li>
+                                <span class="parameter">ExcludeOptionalWeapons =</span>
+                                <span class="types"><span class="boolean">True/False</span></span>
+                                Exclude optional weapons from loadout (default = false) (_optional_)
+                            </li>
+                            <li>
+                                <span class="parameter">Wpn_DBID =</span>
+                                <span class="types"><span class="number">number</span></span>
+                                Weapon DB number - required if WPN_GUID is not supplied
+                            </li>
+                            <li>
+                                <span class="parameter">Wpn_GUID =</span>
+                                <span class="types"><span class="string">string</span></span>
+                                Actual weapon to update - DBID is not required as this take precedence (_optional_)
+                            </li>
+                            <li>
+                                <span class="parameter">Number =</span>
+                                <span class="types"><span class="number">number</span></span>
+                                Number to change current weapon load by (sign ignored)
+                            </li>
+                            <li>
+                                <span class="parameter">Remove =</span>
+                                <span class="types"><span class="boolean">True/False</span></span>
+                                Deduct 'number' rather than add
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h4>Returns</h4>
+                <p><span class="types"><span class="boolean">boolean</span></span>True</p>
+
+                <h5>Example</h5>
+
+                <div class="example">
+                    <code>
+                        ScenEdit_SetLoadout( {unitname=....} )
+                    </code>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <p> Copyright &copy; WarfareSims 2020</p>
+    </div>
+</body>
+
+</html>

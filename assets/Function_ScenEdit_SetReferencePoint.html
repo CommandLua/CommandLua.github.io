@@ -1,0 +1,266 @@
+<html>
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163808192-1"></script>
+    <script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-163808192-1');
+    </script>
+
+
+    <title>Command Lua Docs</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+
+
+</head>
+
+<body>
+    <div id="header-container">
+        <div id="header">
+            <div id="header-logo">
+                <h1>
+                    <a href="../index2.html"><img src="./images/CommandLuaLogo.svg" height=45px alt="CommandLua"></a>
+                </h1>
+            </div>
+            <div id="header-nav">
+                <a class="selected" href="../index2.html">Reference</a>
+                <!-- <a href="/guides/">Guides</a> -->
+                <a href="https://www.matrixgames.com/forums/tt.asp?forumid=1681">Forum</a>
+            </div>
+        </div>
+    </div>
+    <div id="container">
+
+        <div id="content">
+            <div id="nav">
+                <ul>
+                    <li><a href="../index2.html#News">News</a></li>
+                    <li><a href="../index2.html#Introduction">Introduction</a></li>
+                    <ol>
+                        <li><a href="../index2.html#HowToUse">How to Use These Docs</a></li>
+                        <li><a href="../index2.html#FirstSteps">First Steps</a></li>
+                        <li><a href="../index2.html#ExternalResources">External Resources</a></li>
+                    </ol>
+
+                    <li><a href="../index2.html#Overview">Overview</a></li>
+                    <ol>
+                        <li><a href="../index2.html#CaseSensitivityandConventions">Case Sensitivity and Conventions</a></li>
+                        <li><a href="../index2.html#EventHandling">Event Handling</a></li>
+                        <li><a href="../index2.html#ErrorHandling">Error Handling</a></li>
+                    </ol>
+                    <li><a href="DataTypes.html">Data Types</a></li>
+                    <li><a href="Functions.html">Functions</a></li>
+                    <li><a href="Wrappers.html">Wrappers</a></li>
+                    <li><a href="Selectors.html">Selectors</a></li>
+                    <li><a href="Tables.html">Tables</a></li>
+                </ul>
+            </div>
+
+            <div id="main">
+
+                <h3>
+                    <a class="anchor" id="ScenEdit_SetReferencePoint"></a>ScenEdit_SetReferencePoint
+                    (table)
+                </h3>
+                <p>
+                    This function Updates
+                    the
+                    values
+                    contained
+                    in
+                    the
+                    table. Values
+                    may
+                    be
+                    omitted
+                    if
+                    they
+                    are
+                    intended
+                    to
+                    remain
+                    unmodified.<br />
+                    The
+                    'area' parameter
+                    is
+                    useful
+                    for
+                    changing
+                    some
+                    common
+                    attribute, like
+                    locking
+                    or
+                    highlighting,in
+                    bulk.<br />
+                    Don't include the 'area' parameter if only updating one RP.
+                </p>
+
+                <h4>Parameters</h4>
+                <ul>
+                    <li>
+                        <span class="parameter">table</span>
+                        <span class="table"> {} </span>
+                        <ul>
+                            <li>
+                                <span class="parameter">guid = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The guid for the reference point
+                            </li>
+                            <li>
+                                <span class="parameter">side = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The side the reference point is visible to
+                            </li>
+                            <li>
+                                <span class="parameter">name = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The name of the reference point
+                            </li>
+                            <li>
+                                <span class="parameter">rename = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The new name of the reference point
+                            </li>
+                            <li>
+                                <span class="parameter">latitude = </span>
+                                <span class="types"> <a href="DataTypes.html#dataType_Latitude"> latitude</a> </span>
+                                The latitude of the reference point
+                            </li>
+                            <li>
+                                <span class="parameter">longitude = </span>
+                                <span class="types"> <a href="DataTypes.html#dataType_Longitude"> longitude</a> </span>
+                                The longitude of the reference point
+                            </li>
+                            <li>
+                                <span class="parameter">highlighted = </span>
+                                <span class="types"><span class="boolean">True/False</span></span>
+                                True if the point should be selected
+                            </li>
+                            <li>
+                                <span class="parameter">locked = </span>
+                                <span class="types"><span class="boolean">True/False</span></span>
+                                True if the point is locked
+                            </li>
+                            <li>
+                                <span class="parameter">bearing = </span>
+                                <span class="types"> <span class="number">number (0-360)</span> </span>
+                                Bearing from the 'relative' unit
+                            </li>
+                            <li>
+                                <span class="parameter">bearingtype = </span>
+                                <span class="types"> <span class="tooltip"> type<span class="tooltiptext">Fixed (0) or Rotating (1)</span> </span> </span>
+                                Type of bearing
+                            </li>
+                            <li>
+                                <span class="parameter">relativeto = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The unit name/guid that reference point is realtive to
+                            </li>
+                            <li>
+                                <span class="parameter">clear = </span>
+                                <span class="types"><span class="boolean">True/False</span></span>
+                                Remove the 'relative to' associated with the reference point(s)
+                            </li>
+                            <li>
+                                <span class="parameter"> area = </span>
+                                <span class="table">
+                                    {
+                                    }
+
+                                    of multiple
+                                </span> A set of RPs to perform action on
+                                <ul>
+                                    <li>
+                                        <span class="parameter"> name = </span>
+                                        <span class="types"> <span class="string"> string</span> </span>
+                                        The name of the reference point
+                                    </li>
+                                    <li>
+                                        <span class="parameter"> latitude = </span>
+                                        <span class="types"> <a href="DataTypes.html#dataType_Latitude"> latitude</a> </span>
+                                        The latitude of the reference point
+                                    </li>
+                                    <li>
+                                        <span class="parameter"> longitude = </span>
+                                        <span class="types"> <a href="DataTypes.html#dataType_Longitude"> longitude</a> </span>
+                                        The longitude of the reference point
+                                    </li>
+                                    <li>
+                                        <span class="parameter"> highlighted = </span>
+                                        <span class="types"> <span class="boolean"> True/False</span> </span>
+                                        True if the reference point should be selected
+                                    </li>
+                                    <li>
+                                        <span class="parameter"> locked = </span>
+                                        <span class="types"> <span class="boolean"> True/False</span> </span>
+                                        True if the reference point is locked
+                                    </li>
+                                    <li>
+                                        <span class="parameter"> distance = </span>
+                                        <span class="types"> <span class="number"> distance</span> </span>
+                                        Distance from the 'relative' unit
+                                    </li>
+                                    <li>
+                                        <span class="parameter"> bearing = </span>
+                                        <span class="types"> <span class="number"> number (0-360)</span> </span>
+                                        Bearing from the 'relative' unit
+                                    </li>
+                                    <li>
+                                        <span class="parameter"> bearingtype = </span>
+                                        <span class="types"> <span class="tooltip"> type<span class="tooltiptext"> Fixed (0) or Rotating (1)</span> </span> </span>
+                                        Bearing aspect of the reference point
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h4>Returns</h4>
+                <p>
+                    <span class="wrapper"><a href="Wrappers.html#wrapper_ReferencePoint">ReferencePoint</a></span>The
+                    reference
+                    point
+                    object
+                    for
+                    the
+                    reference
+                    point
+                    or
+                    first
+                    one
+                    from
+                    the
+                    area list.
+                </p>
+
+                <h5>Example</h5>
+
+                <div class="example">
+                    <code>ScenEdit_SetReferencePoint({side=<span class="string">"United States"</span>, name=<span class="string">"Downed Pilot"</span>, lat=<span class="number">0.5</span>})</code>
+                </div>
+
+                <div class="example">
+                    <code>ScenEdit_SetReferencePoint({side=<span class="string">"United States"</span>, name=<span class="string">"Downed Pilot"</span>, lat=<span class="number">0.5</span>, lon=<span class="string">"N50.50.50"</span>, highlighted =<span class="keyword">true</span>})</code>
+                </div>
+
+                <div class="example">
+                    <code>ScenEdit_SetReferencePoint({side=<span class="string">"United States"</span>, area={<span class="string">"rp-100"</span>,<span class="string">"rp-101"</span>,<span class="string">"rp-102"</span>,<span class="string">"rp-103"</span>,<span class="string">"rp-104"</span>}, highlighted =<span class="keyword">true</span>})</code>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <p> Copyright &copy; WarfareSims 2020</p>
+    </div>
+</body>
+
+</html>

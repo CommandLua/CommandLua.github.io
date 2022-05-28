@@ -1,0 +1,337 @@
+<html>
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163808192-1"></script>
+    <script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-163808192-1');
+    </script>
+
+
+    <title>Command Lua Docs</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+
+
+</head>
+
+<body>
+    <div id="header-container">
+        <div id="header">
+            <div id="header-logo">
+                <h1>
+                    <a href="../index2.html"><img src="./images/CommandLuaLogo.svg" height=45px alt="CommandLua"></a>
+                </h1>
+            </div>
+            <div id="header-nav">
+                <a class="selected" href="../index2.html">Reference</a>
+                <!-- <a href="/guides/">Guides</a> -->
+                <a href="https://www.matrixgames.com/forums/tt.asp?forumid=1681">Forum</a>
+            </div>
+        </div>
+    </div>
+    <div id="container">
+
+        <div id="content">
+            <div id="nav">
+                <ul>
+                    <li><a href="../index2.html#News">News</a></li>
+                    <li><a href="../index2.html#Introduction">Introduction</a></li>
+                    <ol>
+                        <li><a href="../index2.html#HowToUse">How to Use These Docs</a></li>
+                        <li><a href="../index2.html#FirstSteps">First Steps</a></li>
+                        <li><a href="../index2.html#ExternalResources">External Resources</a></li>
+                    </ol>
+
+                    <li><a href="../index2.html#Overview">Overview</a></li>
+                    <ol>
+                        <li><a href="../index2.html#CaseSensitivityandConventions">Case Sensitivity and Conventions</a></li>
+                        <li><a href="../index2.html#EventHandling">Event Handling</a></li>
+                        <li><a href="../index2.html#ErrorHandling">Error Handling</a></li>
+                    </ol>
+                    <li><a href="DataTypes.html">Data Types</a></li>
+                    <li><a href="Functions.html">Functions</a></li>
+                    <li><a href="Wrappers.html">Wrappers</a></li>
+                    <li><a href="Selectors.html">Selectors</a></li>
+                    <li><a href="Tables.html">Tables</a></li>
+                </ul>
+            </div>
+
+            <div id="main">
+
+                <h3>
+                    <a class="anchor" id="ScenEdit_SetUnit"> </a> ScenEdit_SetUnit
+                    ( table )
+                </h3>
+                <p>
+                    This function Sets
+                    the
+                    properties
+                    of
+                    an existing
+                    unit
+                </p>
+                <h4> Parameters</h4>
+                <ul>
+                    <li>
+                        <span class="parameter"> table</span> <span class="table">
+                            {
+                            }
+
+                        </span>
+                        <ul>
+                            <li>
+                                <span class="parameter"> side = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                The side name/GUID of the unit
+                            </li>
+                            <li>
+                                <span class="parameter"> unitname = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                The name of unit
+                            </li>
+                            <li>
+                                <span class="parameter"> guid = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                The GUID of the unit
+                            </li>
+                            <li>
+                                <span class="parameter"> newname = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                Rename the unit
+                            </li>
+                            <li>
+                                <span class="parameter"> group = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                Assign to a group name/guid
+                            </li>
+                            <li>
+                                <span class="parameter"> mission = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                Assign to a mission name/guid
+                            </li>
+                            <li>
+                                <span class="parameter"> speed = </span>
+                                <span class="types"> <span class="number"> number</span> </span>
+                                Set unit speed (mutally exclusive to 'throttle')
+                            </li>
+                            <li>
+                                <span class="parameter"> throttle = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                Set unit throttle (mutally exclusive to 'speed')
+                            </li>
+                            <li>
+                                <span class="parameter"> forceSpeed = </span>
+                                <span class="types"> <span class="boolean"> True/False</span> </span>
+                                Force speed (use an external throttle setting???)
+                            </li>
+                            <li>
+                                <span class="parameter"> launch = </span>
+                                <span class="types"> <span class="boolean"> True/False</span> </span>
+                                Launch unit from base
+                            </li>
+                            <li>
+                                <span class="parameter"> rtb = </span>
+                                <span class="types"> <span class="boolean"> True/False</span> </span>
+                                Return unit to base
+                            </li>
+                            <li>
+                                <span class="parameter"> jettison = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                Jettison stores (specific values to be included)
+                            </li>
+                            <li>
+                                <span class="parameter"> refuel = </span>
+                                <span class="types"> <span class="boolean"> True/False</span> </span>
+                                Unit attempts to refuel as per ROE
+                            </li>
+                            <li>
+                                <span class="parameter"> unassign = </span>
+                                <span class="types"> <span class="boolean"> True/False</span> </span>
+                                Unassign unit
+                            </li>
+                            <li>
+                                <span class="parameter"> moveto = </span>
+                                <span class="types"> <span class="boolean"> True/False</span> </span>
+                                Moves to alt/depth rather than jump to it
+                            </li>
+                            <li>
+                                <span class="parameter"> altitude = </span>
+                                <span class="types"> <span class="number"> number</span> </span>
+                                Altitude to set
+                            </li>
+                            <li>
+                                <span class="parameter"> depth = </span>
+                                <span class="types"> <span class="number"> number</span> </span>
+                                Depth to set
+                            </li>
+                            <li>
+                                <span class="parameter"> heading = </span>
+                                <span class="types"> <span class="number"> number</span> </span>
+                                Set to immediate heading
+                            </li>
+                            <li>
+                                <span class="parameter"> desiredHeading = </span>
+                                <span class="types"> <span class="number"> number</span> </span>
+                                Set to desired heading so unit turns towards it
+                            </li>
+                            <li>
+                                <span class="parameter"> longitude = </span>
+                                <span class="types"> <span class="number"> number</span> </span>
+                                Unit's location - longitude
+                            </li>
+                            <li>
+                                <span class="parameter"> latitude = </span>
+                                <span class="types"> <span class="number"> number</span> </span>
+                                Unit's location - latitude
+                            </li>
+                            <li>
+                                <span class="parameter"> autoDetectable = </span>
+                                <span class="types"> <span class="boolean"> True/False</span> </span>
+                                Unit is autodetectable
+                            </li>
+                            <li>
+                                <span class="parameter"> outOfComms = </span>
+                                <span class="types"> <span class="boolean"> True/False</span> </span>
+                                Unit is out of communications
+                            </li>
+                            <li>
+                                <span class="parameter"> holdPosition = </span>
+                                <span class="types"> <span class="boolean"> True/False</span> </span>
+                                Unit holds position
+                            </li>
+                            <li>
+                                <span class="parameter"> holdFire = </span>
+                                <span class="types"> <span class="boolean"> True/False</span> </span>
+                                Unit holds fire
+                            </li>
+                            <li>
+                                <span class="parameter"> proficiency = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                Unit proficiency
+                            </li>
+                            <li>
+                                <span class="parameter"> manualthrottle = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                Manaual setting
+                            </li>
+                            <li>
+                                <span class="parameter"> manualspeed = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                Manaual setting
+                            </li>
+                            <li>
+                                <span class="parameter"> manualaltitude = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                Manaual setting
+                            </li>
+                            <li>
+                                <span class="parameter"> fuel = </span>
+                                <span class="table">
+                                    {
+                                    }
+
+                                    of multiple
+                                </span>
+                                Set the unit fuel type quantity (aircraft are assumed to only have one type when allocating quantity)
+                                <ul>
+                                    <li>
+                                        <span class="types"> <span class="string"> string</span> </span>
+                                        fuel type
+                                    </li>
+                                    <li>
+                                        <span class="types"> <span class="number"> number</span> </span>
+                                        quantity
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="parameter"> base = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                Base name/guid to assign unit to
+                            </li>
+                            <li>
+                                <span class="parameter"> sprintDrift = </span>
+                                <span class="types"> <span class="boolean"> True/False</span> </span>
+                                Unit uses sprint and drift (ship, submarine)
+                            </li>
+                            <li>
+                                <span class="parameter"> avoidcavitation = </span>
+                                <span class="types"> <span class="boolean"> True/False</span> </span>
+                                Unit avoids cavitation (ship, submarine)
+                            </li>
+                            <li>
+                                <span class="parameter"> csar = </span>
+                                <span class="types"> <span class="boolean"> True/False</span> </span>
+                                The unit can be assigned as a target for SAR
+                            </li>
+                            <li>
+                                <span class="parameter"> timetoready_minutes = </span>
+                                <span class="types"> <span class="number"> number</span> </span>
+                                Number of minutes to ready (ship, submarine, aircraft)
+                            </li>
+                            <li>
+                                <span class="parameter"> course =</span> <span class="table">
+                                    {
+                                    }
+
+                                    of multiple
+                                </span>
+                                <ul>
+                                    <li>
+                                        <span class="parameter"> latitude = </span>
+                                        <span class="types"> <a href="DataTypes.html#dataType_Latitude"> latitude</a> </span>
+                                        The latitude of the new reference point
+                                    </li>
+                                    <li>
+                                        <span class="parameter"> longitude = </span>
+                                        <span class="types"> <a href="DataTypes.html#dataType_Longitude"> longitude</a> </span>
+                                        The longitude of the new reference point
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <h4> Returns</h4>
+                <p>
+                    <span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> Unit</a> </span>
+                    Update unit object
+                </p>
+
+                <h5> Example</h5>
+                <div class="example">
+                    <code> ScenEdit_SetUnit({side=<span class="string">"United States"</span>, unitname=<span class="string">"USS Test"</span>, lat =<span class="number">5</span>})</code>
+                </div>
+
+                <div class="example">
+                    <code> ScenEdit_SetUnit({side=<span class="string">"United States"</span>, unitname=<span class="string">"USS Test"</span>, lat =<span class="number">5</span>})</code>
+                </div>
+
+                <div class="example">
+                    <code> ScenEdit_SetUnit({side=<span class="string">"United States"</span>, unitname=<span class="string">"USS Test"</span>, lat =<span class="number">5</span>, lon =<span class="string">"N50.20.10"</span>})</code>
+                </div>
+
+                <div class="example">
+                    <code> ScenEdit_SetUnit({side=<span class="string">"United States"</span>, unitname=<span class="string">"USS Test"</span>, newname=<span class="string">"USS Barack Obama"</span>})</code>
+                </div>
+
+                <div class="example">
+                    <code> ScenEdit_SetUnit({side=<span class="string">"United States"</span>, unitname=<span class="string">"USS Test"</span>, heading=<span class="number">0</span>, HoldPosition=<span class="number">1</span>, HoldFire=<span class="number">1</span>,Proficiency=<span class="string">"Ace"</span>, Autodetectable=<span class="string">"yes"</span>})</code>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <p> Copyright &copy; WarfareSims 2020</p>
+    </div>
+</body>
+
+</html>

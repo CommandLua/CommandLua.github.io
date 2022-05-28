@@ -1,0 +1,238 @@
+<html>
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163808192-1"></script>
+    <script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-163808192-1');
+    </script>
+
+
+    <title>Command Lua Docs</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+
+
+</head>
+
+<body>
+    <div id="header-container">
+        <div id="header">
+            <div id="header-logo">
+                <h1>
+                    <a href="../index2.html"><img src="./images/CommandLuaLogo.svg" height=45px alt="CommandLua"></a>
+                </h1>
+            </div>
+            <div id="header-nav">
+                <a class="selected" href="../index2.html">Reference</a>
+                <!-- <a href="/guides/">Guides</a> -->
+                <a href="https://www.matrixgames.com/forums/tt.asp?forumid=1681">Forum</a>
+            </div>
+        </div>
+    </div>
+    <div id="container">
+
+        <div id="content">
+            <div id="nav">
+                <ul>
+                    <li><a href="../index2.html#News">News</a></li>
+                    <li><a href="../index2.html#Introduction">Introduction</a></li>
+                    <ol>
+                        <li><a href="../index2.html#HowToUse">How to Use These Docs</a></li>
+                        <li><a href="../index2.html#FirstSteps">First Steps</a></li>
+                        <li><a href="../index2.html#ExternalResources">External Resources</a></li>
+                    </ol>
+
+                    <li><a href="../index2.html#Overview">Overview</a></li>
+                    <ol>
+                        <li><a href="../index2.html#CaseSensitivityandConventions">Case Sensitivity and Conventions</a></li>
+                        <li><a href="../index2.html#EventHandling">Event Handling</a></li>
+                        <li><a href="../index2.html#ErrorHandling">Error Handling</a></li>
+                    </ol>
+                    <li><a href="DataTypes.html">Data Types</a></li>
+                    <li><a href="Functions.html">Functions</a></li>
+                    <li><a href="Wrappers.html">Wrappers</a></li>
+                    <li><a href="Selectors.html">Selectors</a></li>
+                    <li><a href="Tables.html">Tables</a></li>
+                </ul>
+            </div>
+
+            <div id="main">
+
+                <h3>
+                    <a class="anchor" id="ScenEdit_SetDoctrineWRA"></a>ScenEdit_SetDoctrineWRA
+                    (table, doctrine)
+                </h3>
+                <p>
+
+                <p>
+                    This function Sets
+                    the
+                    WRA
+                    doctrine.
+                </p>
+                <p>
+                    This function Sets
+                    the
+                    WRA doctrine
+                    of
+                    the
+                    designated
+                    object against a specific weapon and target type.
+                </p><p>
+                    The
+                    values
+                    below
+                    can
+                    be
+                    used
+                    in
+                    the
+                    doctrine
+                    settings<br />
+                    'inherit' = reverts
+                    to
+                    the
+                    parent
+                    level
+                    setting<br />
+                    'system' = reverts
+                    to
+                    the
+                    database
+                    level
+                    setting
+                    (does
+                    not
+                    apply
+                    to
+                    'firing_range') <br />
+                    'max' = use
+                    the
+                    appropriate
+                    maximum
+                    setting<br />
+                    'none' = not
+                    to
+                    be
+                    used
+                </p>
+                <p>
+                    For the firing range doctrine, there are a few specicial values<br />
+                    '25ofmax' = use 25% of the maximum range<br />
+                    '50ofmax' = use 50% of the maximum range<br />
+                    '75ofmax' = use 75% of the maximum range<br />
+                </p>
+
+                <h4>Parameters</h4>
+                <ul>
+                    <li>
+                        <span class="parameter">table</span><span class="table"> {} </span>
+                        <ul>
+                            <li>
+                                <span class="parameter">side = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The side name/GUID of the unit
+                            </li>
+                            <li>
+                                <span class="parameter">unitname = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The name of unit
+                            </li>
+                            <li>
+                                <span class="parameter">guid = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The GUID of the unit
+                            </li>
+                            <li>
+                                <span class="parameter">mission = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The mission guid/name
+                            </li>
+                            <li>
+                                <span class="parameter">escort = </span>
+                                <span class="types"><span class="boolean">True/False</span></span>
+                                If a mission, apply changes to Escort WRA of Strike mission
+                            </li>
+                            <li>
+                                <span class="parameter">weapon_id = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The database id of the desired weapon
+                            </li>
+                            <li>
+                                <span class="parameter">contact_id = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The contact GUID to determine target type (mutually exclusive with target_type)
+                            </li>
+                            <li>
+                                <span class="parameter">target_type = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The target type (mutually exclusive with contact_id)
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="parameter">doctrine</span><span class="table"> {} of </span>
+                        <ul>
+                            <li>
+                                <span class="types"><span class="string">string</span></span>
+                                Number of Weapons per salvo ('Max','None' or a number)
+                            </li>
+                            <li>
+                                <span class="types"><span class="string">string</span></span>
+                                Number of Shooters per salvo ('Max','None' or a number)
+                            </li>
+                            <li>
+                                <span class="types"><span class="string">string</span></span>
+                                Firing range ('Max','None' or a number)
+                            </li>
+                            <li>
+                                <span class="types"><span class="string">string</span></span>
+                                Self-defence range ('Max','None' or a number)
+                            </li>
+                        </ul>
+                        The
+                        order
+                        IS
+                        IMPORTANT
+                        as
+                        no
+                        keys
+                        used.
+                    </li>
+                </ul>
+
+                <h4>Returns</h4>
+                <p>
+                    <span class="wrapper"><a href="Wrappers.html#wrapper_DoctrineWRA">DoctrineWRA</a></span>
+                    Returns the
+                    WRA
+                    doctrine
+                    of
+                    the
+                    selected
+                    object
+                </p>
+
+                <h5>Example</h5>
+                <div class="example">
+                    <code>ScenEdit_SetDoctrineWRA({guid =<span class="string">'a1a52edf-3541-4b55-bea4-58d4e1ab11dc'</span>, target_type=<span class="string">'Surface_Contact_Unknown_Type'</span>, weapon_dbid=<span class="number">1575</span>}, {<span class="string">'inherit'</span>,<span class="string">'inherit'</span>,<span class="string">'system'</span>,<span class="string">'inherit'</span>})</code>
+                </div>
+                <div class="example">
+                    <code>ScenEdit_SetDoctrineWRA({guid =<span class="string">'a1a52edf-3541-4b55-bea4-58d4e1ab11dc'</span>, target_type=<span class="string">'Surface_Contact_Unknown_Type'</span>, weapon_dbid=<span class="number">1575</span>}, {<span class="string">'max'</span>,<span class="string">'inherit'</span>,<span class="number">90</span>,<span class="string">'inherit'</span>})</code>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <p> Copyright &copy; WarfareSims 2020</p>
+    </div>
+</body>
+
+</html>

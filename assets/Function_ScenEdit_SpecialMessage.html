@@ -1,0 +1,133 @@
+<html>
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163808192-1"></script>
+    <script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-163808192-1');
+    </script>
+
+
+    <title>Command Lua Docs</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+
+
+</head>
+
+<body>
+    <div id="header-container">
+        <div id="header">
+            <div id="header-logo">
+                <h1>
+                    <a href="../index2.html"><img src="./images/CommandLuaLogo.svg" height=45px alt="CommandLua"></a>
+                </h1>
+            </div>
+            <div id="header-nav">
+                <a class="selected" href="../index2.html">Reference</a>
+                <!-- <a href="/guides/">Guides</a> -->
+                <a href="https://www.matrixgames.com/forums/tt.asp?forumid=1681">Forum</a>
+            </div>
+        </div>
+    </div>
+    <div id="container">
+
+        <div id="content">
+            <div id="nav">
+                <ul>
+                    <li><a href="../index2.html#News">News</a></li>
+                    <li><a href="../index2.html#Introduction">Introduction</a></li>
+                    <ol>
+                        <li><a href="../index2.html#HowToUse">How to Use These Docs</a></li>
+                        <li><a href="../index2.html#FirstSteps">First Steps</a></li>
+                        <li><a href="../index2.html#ExternalResources">External Resources</a></li>
+                    </ol>
+
+                    <li><a href="../index2.html#Overview">Overview</a></li>
+                    <ol>
+                        <li><a href="../index2.html#CaseSensitivityandConventions">Case Sensitivity and Conventions</a></li>
+                        <li><a href="../index2.html#EventHandling">Event Handling</a></li>
+                        <li><a href="../index2.html#ErrorHandling">Error Handling</a></li>
+                    </ol>
+                    <li><a href="DataTypes.html">Data Types</a></li>
+                    <li><a href="Functions.html">Functions</a></li>
+                    <li><a href="Wrappers.html">Wrappers</a></li>
+                    <li><a href="Selectors.html">Selectors</a></li>
+                    <li><a href="Tables.html">Tables</a></li>
+                </ul>
+            </div>
+
+            <div id="main">
+
+                <h3>
+                    <a class="anchor" id="ScenEdit_SpecialMessage"> </a> ScenEdit_SpecialMessage
+                    (side, message, [location, forceMapRecenter])
+                </h3>
+                <p>
+                    This function will Display a special message consisting of the HTML text <span class="parameter"> message</span> to the side specified by <span class="parameter"> side</span> . <br / >
+                    Optional parameters <span class="parameter"> location</span> allows the player to jump to the specified map position by clicking a button in a pop-up window.<br / >
+                    The optional parameter <span class="parameter"> forceMapRecenter</span> will center the map on specified location.
+                </p>
+                <h4> Parameters</h4>
+                <ul>
+                    <li>
+                        <span class="parameter"> side</span>
+                        <span class="types"> <span class="string"> string</span> </span>
+                        The side name/guid to display the message to, or <code> 'playerside'</code> (see Note below)
+                    </li>
+                    <li>
+                        <span class="parameter"> message</span>
+                        <span class="types"> <span class="string"> string</span> </span>
+                        The HTML text to display to the player. Plain text is also accepted.
+                    </li>
+                    <li>
+                        <span class="parameter"> location [optional]</span>
+                        <span class="table">
+                            {
+                            }
+
+                            of
+                        </span>
+                        <ul>
+                            <li>
+                                <span class="parameter"> latitude =</span>
+                                <span class="types"> <a href="DataTypes.html#dataType_Latitude"> latitude</a> </span>
+                            </li>
+                            <li>
+                                <span class="parameter"> longitude =</span>
+                                <span class="types"> <a href="DataTypes.html#dataType_Longitude"> longitude</a> </span>
+                            </li>
+                        </ul>
+                        The position that the 'Jump to Location' button takes the player to if clicked.
+                    </li>
+                    <li>
+                        <span class="parameter"> forceMapRecenter [optional] </span>
+                        <span class="types"> <span class="boolean"> True/False</span> </span>
+                        The map will be centered on location if present.
+                    </li>
+                </ul>
+
+                <h4> Returns</h4>
+                <p> <span class="types"> <span class="number"> number</span> </span> 1 if successful, raises an error if unsuccessful.</p>
+
+                <h5> Example</h5>
+                <div class="example">
+                    <code> ScenEdit_SpecialMessage( 'playerside', 'Here\'s a message!', { latitude = 1.2, longitude = 3.4 } )</code>
+                </div>
+                <div class="note-alert"> <p> <strong> Note:</strong> The string <code> 'playerside'</code> is a special name that refers to whichever side is currently under player control and can be used to ensure that a special message is visible regardless of the player switching sides during the session or choosing a different side at scenario start.</p> </div>
+                <div class="note-caution"> <p> <strong> Caution:</strong> Players can disable pop-ups for special messages in the game options. Ensure that players are aware of the need to turn this feature on if special messages are essential to scenario function.</p> </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <p> Copyright &copy; WarfareSims 2020</p>
+    </div>
+</body>
+
+</html>

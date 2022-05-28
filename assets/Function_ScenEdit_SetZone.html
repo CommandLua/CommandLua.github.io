@@ -1,0 +1,226 @@
+<html>
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163808192-1"></script>
+    <script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-163808192-1');
+    </script>
+
+
+    <title>Command Lua Docs</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+
+
+</head>
+
+<body>
+    <div id="header-container">
+        <div id="header">
+            <div id="header-logo">
+                <h1>
+                    <a href="../index2.html"><img src="./images/CommandLuaLogo.svg" height=45px alt="CommandLua"></a>
+                </h1>
+            </div>
+            <div id="header-nav">
+                <a class="selected" href="../index2.html">Reference</a>
+                <!-- <a href="/guides/">Guides</a> -->
+                <a href="https://www.matrixgames.com/forums/tt.asp?forumid=1681">Forum</a>
+            </div>
+        </div>
+    </div>
+    <div id="container">
+
+        <div id="content">
+            <div id="nav">
+                <ul>
+                    <li><a href="../index2.html#News">News</a></li>
+                    <li><a href="../index2.html#Introduction">Introduction</a></li>
+                    <ol>
+                        <li><a href="../index2.html#HowToUse">How to Use These Docs</a></li>
+                        <li><a href="../index2.html#FirstSteps">First Steps</a></li>
+                        <li><a href="../index2.html#ExternalResources">External Resources</a></li>
+                    </ol>
+
+                    <li><a href="../index2.html#Overview">Overview</a></li>
+                    <ol>
+                        <li><a href="../index2.html#CaseSensitivityandConventions">Case Sensitivity and Conventions</a></li>
+                        <li><a href="../index2.html#EventHandling">Event Handling</a></li>
+                        <li><a href="../index2.html#ErrorHandling">Error Handling</a></li>
+                    </ol>
+                    <li><a href="DataTypes.html">Data Types</a></li>
+                    <li><a href="Functions.html">Functions</a></li>
+                    <li><a href="Wrappers.html">Wrappers</a></li>
+                    <li><a href="Selectors.html">Selectors</a></li>
+                    <li><a href="Tables.html">Tables</a></li>
+                </ul>
+            </div>
+
+            <div id="main">
+
+                <h3>
+                    <a class="anchor" id="ScenEdit_SetZone"> </a> ScenEdit_SetZone
+                    (sideName, zoneType, table)
+                </h3>
+                <p>
+                    This function updates a
+                    non-navigation
+                    or
+                    exclusion
+                    zone for a side.<br / > You only need
+                    to
+                    pass
+                    the
+                    parameters that need to be updated.
+                </p>
+                <h4> Parameters</h4>
+                <ul>
+                    <li>
+                        <span class="parameter"> sideName</span>
+                        <span class="types"> <span class="string"> string</span> </span>
+                        Side
+                        name/GUID
+                    </li>
+                    <li>
+                        <span class="parameter"> zoneType</span>
+                        <span class="types"> <span class="tooltip"> string<span class="tooltiptext"> 0 = non-navigation, 1 = exclusion</span> </span> </span>
+                        The type of zone
+                    </li>
+                    <li>
+                        <span class="parameter"> table</span>
+                        <span class="table">
+                            {
+                            }
+
+                            of
+                        </span>
+                        <ul>
+                            <li>
+                                <span class="parameter"> description = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                The Zone name
+                            </li>
+                            <li>
+                                <span class="parameter"> isactive = </span>
+                                <span class="types"> <span class="boolean"> True/False</span> </span>
+                                Is the zone active?
+                            </li>
+                            <li>
+                                <span class="parameter"> locked = </span>
+                                <span class="types"> <span class="boolean"> True/False</span> </span>
+                                Are Zone RPs locked?
+                            </li>
+                            <li>
+                                <span class="parameter"> hidden = </span>
+                                <span class="types"> <span class="boolean"> True/False</span> </span>
+                                Are Zone RPs hidden?
+                            </li>
+                            <li>
+                                <span class="parameter"> affects = </span>
+                                <span class="types">
+                                    <span class="tooltip">
+                                        table {
+                                        }
+
+                                        <span class="tooltiptext"> list of core unit types ('SHIP', 'AIRCRAFT', etc) affected</span>
+                                    </span>
+                                </span>
+                                Zone applies to these core unit types
+                            </li>
+                            <li>
+                                <span class="parameter"> markAs = </span>
+                                <span class="types"> <span class="string"> <a href="DataTypes.html#dataType_Stance"> posture</a> </span> </span>
+                                Units entering the zone are treated as (posture towards them) [exclusion zone only]
+                            </li>
+                            <li>
+                                <span class="parameter"> relativeto = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                The unit name/guid that all the RP(s) relate to, if required
+                            </li>
+                            <li>
+                                <span class="parameter"> areaColor = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                The zone color to show as a HTML color code
+                            </li>
+                            <li>
+                                <span class="parameter"> rename = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                Description to change zone to
+                            </li>
+                            <li>
+                                <span class="parameter"> area = </span>
+                                <span class="table">
+                                    {
+                                    }
+
+                                    of multiple
+                                </span> The area defining the zone
+                                <ul>
+                                    <li>
+                                        <span class="parameter"> name = </span>
+                                        <span class="types"> <span class="string"> string</span> </span>
+                                        The name of the new reference point
+                                    </li>
+                                    <li>
+                                        <span class="parameter"> latitude = </span>
+                                        <span class="types"> <a href="DataTypes.html#dataType_Latitude"> latitude</a> </span>
+                                        The latitude of the new reference point
+                                    </li>
+                                    <li>
+                                        <span class="parameter"> longitude = </span>
+                                        <span class="types"> <a href="DataTypes.html#dataType_Longitude"> longitude</a> </span>
+                                        The longitude of the new reference point
+                                    </li>
+                                    <li>
+                                        <span class="parameter"> highlighted = </span>
+                                        <span class="types"> <span class="boolean"> True/False</span> </span>
+                                        True if the reference point should be selected
+                                    </li>
+                                    <li>
+                                        <span class="parameter"> locked = </span>
+                                        <span class="types"> <span class="boolean"> True/False</span> </span>
+                                        True if the reference point is locked
+                                    </li>
+                                    <li>
+                                        <span class="parameter"> distance = </span>
+                                        <span class="types"> <span class="number"> distance</span> </span>
+                                        Distance from the 'relative' unit
+                                    </li>
+                                    <li>
+                                        <span class="parameter"> bearing = </span>
+                                        <span class="types"> <span class="number"> number (0-360)</span> </span>
+                                        Bearing from the 'relative' unit
+                                    </li>
+                                    <li>
+                                        <span class="parameter"> bearingtype = </span>
+                                        <span class="types"> <span class="tooltip"> type<span class="tooltiptext"> Fixed (0) or Rotating (1)</span> </span> </span>
+                                        Bearing aspect of the reference point
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <h4> Returns</h4>
+                <p> <span class="wrapper"> <a href="Wrappers.html#wrapper_Zone"> Zone</a> </span> The update Zone object</p>
+
+                <h5> Example</h5>
+                <div class="example">
+                    <code> local zone = ScenEdit_SetZone( 'sideA', 0, { rename = 'new zone', affects = {'ship', 'submarine'} } )</code>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <p> Copyright &copy; WarfareSims 2020</p>
+    </div>
+</body>
+
+</html>

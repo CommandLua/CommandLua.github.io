@@ -1,0 +1,147 @@
+<html>
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163808192-1"></script>
+    <script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-163808192-1');
+    </script>
+
+
+    <title>Command Lua Docs</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+
+
+</head>
+
+<body>
+    <div id="header-container">
+        <div id="header">
+            <div id="header-logo">
+                <h1>
+                    <a href="../index2.html"><img src="./images/CommandLuaLogo.svg" height=45px alt="CommandLua"></a>
+                </h1>
+            </div>
+            <div id="header-nav">
+                <a class="selected" href="../index2.html">Reference</a>
+                <!-- <a href="/guides/">Guides</a> -->
+                <a href="https://www.matrixgames.com/forums/tt.asp?forumid=1681">Forum</a>
+            </div>
+        </div>
+    </div>
+    <div id="container">
+
+        <div id="content">
+            <div id="nav">
+                <ul>
+                    <li><a href="../index2.html#News">News</a></li>
+                    <li><a href="../index2.html#Introduction">Introduction</a></li>
+                    <ol>
+                        <li><a href="../index2.html#HowToUse">How to Use These Docs</a></li>
+                        <li><a href="../index2.html#FirstSteps">First Steps</a></li>
+                        <li><a href="../index2.html#ExternalResources">External Resources</a></li>
+                    </ol>
+
+                    <li><a href="../index2.html#Overview">Overview</a></li>
+                    <ol>
+                        <li><a href="../index2.html#CaseSensitivityandConventions">Case Sensitivity and Conventions</a></li>
+                        <li><a href="../index2.html#EventHandling">Event Handling</a></li>
+                        <li><a href="../index2.html#ErrorHandling">Error Handling</a></li>
+                    </ol>
+                    <li><a href="DataTypes.html">Data Types</a></li>
+                    <li><a href="Functions.html">Functions</a></li>
+                    <li><a href="Wrappers.html">Wrappers</a></li>
+                    <li><a href="Selectors.html">Selectors</a></li>
+                    <li><a href="Tables.html">Tables</a></li>
+                </ul>
+            </div>
+
+            <div id="main">
+
+                <h3>
+                    <a class="anchor" id="ScenEdit_SetSideOptions"></a>ScenEdit_SetSideOptions
+                    (table)
+                </h3>
+                <p>
+                    This function updates the
+                    side
+                    options -
+                    'awareness'
+                    and
+                    'proficiency'
+                </p>
+                <h4>Parameters</h4>
+                <ul>
+                    <li>
+                        <span class="parameter">table</span>
+                        <span class="table"> {} </span>
+                        <ul>
+                            <li>
+                                <span class="parameter">side = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                The side guid/name
+                            </li>
+                            <li>
+                                <span class="parameter">awareness = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                The side awareness (data type???)
+                            </li>
+                            <li>
+                                <span class="parameter">proficiency = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                The side proficiency (data type???)
+                            </li>
+                            <li>
+                                <span class="parameter">switchto = </span>
+                                <span class="types"> <span class="boolean"> True/False</span> </span>
+                                Switch the current side to the 'side' parameter
+                            </li>
+
+                        </ul>
+                    </li>
+                </ul>
+                <h4>Returns</h4>
+                <span class="table">table {} </span>
+                <ul>
+                    <li>
+                        <span class="parameter">side </span>
+                        <span class="types"><span class="string">string</span></span>
+                        Side name
+                    </li>
+                    <li>
+                        <span class="parameter">guid </span>
+                        <span class="types"><span class="string">string</span></span>
+                        Side guid
+                    </li>
+                    <li>
+                        <span class="parameter">awareness </span>
+                        <span class="types"><span class="string">string</span></span>
+                        Side awareness *** data type ?
+                    </li>
+                    <li>
+                        <span class="parameter">proficiency </span>
+                        <span class="types"><span class="string">string</span></span>
+                        Side proficiency *** data type ?
+                    </li>
+                </ul>
+
+                <h5>Example</h5>
+                <div class="example">
+                    <code>ScenEdit_SetSideOptions(<span class="string">'{side='</span>SideA<span class="string">',awareness='</span>OMNI<span class="string">',PROFICIENCY='</span>ace')</code>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <p> Copyright &copy; WarfareSims 2020</p>
+    </div>
+</body>
+
+</html>
