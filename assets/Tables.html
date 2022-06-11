@@ -60,1756 +60,1779 @@
 			</div>
             <div id="main">
 
-					<a class="anchor" id="Tables"></a>
-					<h2>Tables</h2>
-					<!-- <p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-					</p> -->
-					<ul class="ul-2-columns">
-						<li><span class="table"><a href="#table_AAR">AAR</a></span></li>
-						<li><span class="table"><a href="#table_Cargo">Cargo</a></span></li>
-						<li><span class="table"><a href="#table_CargoMission">CargoMission</a></span></li>
-						<li><span class="table"><a href="#table_Component">Component</a></span></li>
-						<li><span class="table"><a href="#table_EMmatch">EMmatch</a></span></li>
-						<li><span class="table"><a href="#table_Emissions">Emissions</a></span></li>
-						<li><span class="table"><a href="#table_Explosion">Explosion</a></span></li>
-						<li><span class="table"><a href="#table_Facility">Facility</a></span></li>
-						<li><span class="table"><a href="#table_FerryMission">FerryMission</a></span></li>
-						<li><span class="table"><a href="#table_Fuel">Fuel</a></span></li>
-						<li><span class="table"><a href="#table_FuelState">FuelState</a></span></li>
-						<li><span class="table"><a href="#table_HostUnit">HostUnit</a></span></li>
-						<li><span class="table"><a href="#table_LastDetections">LastDetections</a></span></li>
-						<li><span class="table"><a href="#table_LatLon">LatLon</a></span></li>
-						<li><span class="table"><a href="#table_LoadoutInfo">LoadoutInfo</a></span></li>
-						<li><span class="table"><a href="#table_Magazine">Magazine</a></span></li>
-						<li><span class="table"><a href="#table_MineClearMission">MineClearMission</a></span></li>
-						<li><span class="table"><a href="#table_MineMission">MineMission</a></span></li>
-						<li><span class="table"><a href="#table_Mount">Mount</a></span></li>
-						<li><span class="table"><a href="#table_PatrolMission">PatrolMission</a></span></li>
-                        <li><span class="table"><a href="#table_Sensor">Sensor</a></span></li>
-						<li><span class="table"><a href="#table_SideContact">SideContact</a></span></li>
-						<li><span class="table"><a href="#table_SideDescription">SideDescription</a></span></li>
-						<li><span class="table"><a href="#table_SideSelector">SideSelector </a></span></li>
-						<li><span class="table"><a href="#table_SideUnit">SideUnit</a></span></li>
-						<li><span class="table"><a href="#table_StrikeMission">StrikeMission</a></span></li>
-						<li><span class="table"><a href="#table_SupportMission">SupportMission</a></span></li>
-						<li><span class="table"><a href="#table_WRA">WRA</a></span></li>
-						<!-- li><span class="table"><a href="#table_Waypoint">Waypoint</a></span></li-->
-						<li><span class="table"><a href="#table_WeaponLoaded">WeaponLoaded</a></span></li>
-						<li><span class="table"><a href="#table_ZoneMarker">ZoneMarker</a></span></li>
-					</ul>
-					<br>
-					<hr>
-					<a class="anchor" id="table_AAR"></a>
-					<h3>AAR</h3>
-					<p>Air-to-Air Refueling options; these are updated by ScenEdit_SetMission()</p>
-					</ul>
-   					<table class="table_borders" style="width: 100%; margin-left: 0px;">
- 					<tr>
- 					<th>Field</th><th>Description</th><th>Type</th><th>Comments</td>
- 					</tr>
- <tr>
-	<td class="parameter" >use_refuel_unrep</td>
-	<td>Can use refuel/replenishment? </td>
-	<td class="types"><span class="string">string</span></td>
-	<td></td>
-</tr>
-<tr>
-	<td class="parameter">tankerUsage</td>
-	<td>Is tanker reserved for missions?</td>
-	<td class="types"><span class="string">string</span> or <br><span
-									class="number">number</span></td>
-	<td>Automatic(0), Mission(1)</td>
-</tr>
-<tr>
-	<td class="parameter">launchMissionWithoutTankersInPlace</td>
-	<td></td>
-	<td class="types"><span class="boolean">boolean</span></td>
-	<td></td>
-</tr>
-<tr>	
-	<td class="parameter">tankerMissionList</td>
-	<td>Table of missions to use as source of refuellers</td>
-	<td class="types"><span class="string">mission name</span> or <br><span
-									class="string">GUID</span></td>
-	<td></td>
-</tr>
-<tr>	
-	<td class="parameter">tankerMinNumber_total</td>
-	<td></td>
-	<td class="types"><span class="number">number</span></td>
-	<td></td>
-</tr>
-<tr>	
-	<td class="parameter">tankerMinNumber_airborne</td>
-	<td></td>
-	<td class="types"><span class="number">number</span></td>
-	<td></td>
-</tr>
-<tr>	
-	<td class="parameter">tankerMinNumber_station</td>
-	<td></td>
-	<td class="types"><span class="number">number</span></td>
-	<td></td>
-</tr>
-<tr>	
-	<td class="parameter">maxReceiversInQueuePerTanker_airborne</td>
-	<td></td>
-	<td class="types"><span class="number">number</span></td>
-	<td></td>
-</tr>
-<tr>	
-	<td class="parameter">fuelQtyToStartLookingForTanker_airborne</td>
-	<td>Minimum percentage of fuel (0-100) that tanking will be requested</td>
-	<td class="types"><span class="number">number</span></td>
-	<td></td>
-</tr>
-<tr>	
-	<td class="parameter">tankerMaxDistance_airborne</td>
-	<td>A tanker will be selected within this range</td>
-	<td class="types"><span class="string">string</span> or <br><span
-									class="number">number</span></td>
-	<td>Use 'internal' range or set a range. </td>
-</tr>
-	</table>
-					<hr>
-					<a class="anchor" id="table_Cargo"></a>
-					<h3>Cargo</h3>
-					<p>
-						Cargo in ship/air or dock facility
-					</p>
-					<h4>Fields</h4>
-					<ul class="ul-no-bullets">
-						<li>
-							<span class="parameter">GUID</span>
-							<span class="types"><span class="string">string</span></span>
-							GUID
-						</li>
-						<li>
-							<span class="parameter">dbid</span>
-							<span class="types"><span class="number">number</span></span>
-							Database ID
-						</li>
-						<li>
-							<span class="parameter">name</span>
-							<span class="types"><span class="string">string</span></span>
-							Name
-						</li>
-						<li>
-							<span class="parameter">type</span>
-							<span class="types"><span class="number">number</span></span>
-							Type
-						</li>
-						<li>
-							<span class="parameter">status</span>
-							<span class="types"><span class="string">string</span></span>
-							Status
-						</li>
-						<li>
-							<span class="parameter">area</span>
-							<span class="types"><span class="number">number</span></span>
-							Cargo unit area
-						</li>
-						<li>
-							<span class="parameter">crew</span>
-							<span class="types"><span class="number">number</span></span>
-							Cargo unit crew
-						</li>
-						<li>
-							<span class="parameter">mass</span>
-							<span class="types"><span class="number">number</span></span>
-							Cargo unit mass
-						</li>
-						<li>
-							<span class="parameter">quantity</span>
-							<span class="types"><span class="number">number</span></span>
-							Items present
-						</li>
-						<li>
-							<span class="parameter">damage</span>
-							<span class="types"><span class="string">string</span></span>
-							Damage
-						</li>
-						<li>
-							<span class="parameter">statusR</span>
-							<span class="types"><span class="string">string</span></span>
-							Inoperative reason
-						</li>
-					</ul>
-					<hr>
-					<a class="anchor" id="table_CargoMission"></a>
-					<h3>CargoMission</h3>
-					<p>CargoMission options; these are updated by ScenEdit_SetMission()</p>
-					<h4>Fields</h4>
-					<ul class="ul-no-bullets">
-						<li>
-							<span class="parameter">OneThirdRule</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-							True if activated
-						</li>
-						<li>
-							<span class="parameter">TransitThrottleAircraft</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">TransitAltitudeAircraft</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">StationThrottleAircraft</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">StationAltitudeAircraft</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">TransitThrottleSubmarine</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">TransitDepthSubmarine</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">StationThrottleSubmarine</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">StationDepthSubmarine</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">TransitThrottleShip</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">StationThrottleShip</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">UseFlightSize</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-							True if minimum size required
-						</li>
-						<li>
-							<span class="parameter">UseGroupSize</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-							True if minimum size required
-						</li>
-						<li>
-							<span class="parameter">Zone</span>
-							<span class="types"><span class="string">name</span></span> or <span class="types"><span
-									class="string">GUID</span></span>
-							Table of reference point names and/or GUIDs
-						</li>
-					</ul>
-					<hr>
-					<a class="anchor" id="table_Component"></a>
-					<h3>Component</h3>
-					<p>
-						This identifies the component/item(s) that are present in a unit. See<a
-							href="#Unit">Unit</a>:filterOnComponent
-						on how to filter this table
-					</p>
-					<h4>Fields</h4>
-					<ul class="ul-no-bullets">
-						<li>
-							<span class="parameter">comp_GUID</span>
-							<span class="types"><span class="string">string</span></span>
-							GUID
-						</li>
-						<li>
-							<span class="parameter">comp_dbid</span>
-							<span class="types"><span class="string">string</span></span>
-							Database ID
-						</li>
-						<li>
-							<span class="parameter">comp_name</span>
-							<span class="types"><span class="string">string</span></span>
-							Name
-						</li>
-						<li>
-							<span class="parameter">comp_type</span>
-							<span class="types"><span class="string">string</span></span>
-							Type of component (mount, sensor, rudder, etc)
-						</li>
-						<li>
-							<span class="parameter">comp_status</span>
-							<span class="types"><span class="string">string</span></span>
-							Status
-						</li>
-						<li>
-							<span class="parameter">comp_statusR</span>
-							<span class="types"><span class="string">string</span></span>
-							Reason why inoperative [if not operational]
-						</li>
-						<li>
-							<span class="parameter">comp_damage</span>
-							<span class="types"><span class="string">string</span></span>
-							Damage Severity [if not operational]
-						</li>
-					</ul>
-					<hr>
-					<a class="anchor" id="table_EMmatch"></a>
-					<h3>EMmatch</h3>
-					<p>
-						EM matches from database. Note the table items are in uppercase
-					</p>
-					<h4>Fields</h4>
-					<ul class="ul-no-bullets">
-						<li>
-							<span class="parameter">DBID</span>
-							<span class="types"><span class="number">number</span></span>
-							Databse id.
-						</li>
-						<li>
-							<span class="parameter">NAME</span>
-							<span class="types"><span class="string">string</span></span>
-							Matching id name.
-						</li>
-						<li>
-							<span class="parameter">CATEGORY</span>
-							<span class="types"><span class="string">string</span></span>
-							Not applicable to weapons (Missile,Torpedo)
-						</li>
-						<li>
-							<span class="parameter">TYPE</span>
-							<span class="types"><span class="string">string</span></span>
-							Not applicable to Facility
-						</li>
-						<li>
-							<span class="parameter">SUBTYPE</span>
-							<span class="types"><span class="number">number</span></span>
-							Type of item within the contact type ( subtype is "Fighter" within scope of Aircraft)
-						</li>
-						<li>
-							<span class="parameter">MISSILE_DEFENCE</span>
-							<span class="types"><span class="number">number</span></span>
-							Applicable to Facility and Ships
-						</li>
-					</ul>
-					<hr>
-					<a class="anchor" id="table_Emissions"></a>
-					<h3>Emissions</h3>
-					<p>
-						Contact emission details
-					</p>
-					<h4>Fields</h4>
-					<ul class="ul-no-bullets">
-						<li>
-							<span class="parameter">name</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">age</span>
-							<span class="types"><span class="number">number</span></span>
-							Time detection held
-						</li>
-						<li>
-							<span class="parameter">solid</span>
-							<span class="types"><span class="boolen">True/false</span></span>
-							Precise detected
-						</li>
-						<li>
-							<span class="parameter">sensor_dbid</span>
-							<span class="types"><span class="number">number</span></span>
-							Sensor detecting databse id
-						</li>
-						<li>
-							<span class="parameter">sensor_name</span>
-							<span class="types"><span class="string">string</span></span>
-							Sensor name
-						</li>
-						<li>
-							<span class="parameter">sensor_type</span>
-							<span class="types"><span class="string">string</span></span>
-							Sensor type
-						</li>
-						<li>
-							<span class="parameter">sensor_role</span>
-							<span class="types"><span class="string">string</span></span>
-							Sensor role
-						</li>
-						<li>
-							<span class="parameter">sensor_maxrange</span>
-							<span class="types"><span class="number">number</span></span>
-							Sensor maximum range (nm)
-						</li>
-					</ul>
-					<hr>
-					<a class="anchor" id="table_Explosion"></a>
-					<h3>Explosion</h3>
-					<p>
-						Defines the warhead to detonate.
-					</p>
-					<h4>Fields</h4>
-					<ul class="ul-no-bullets">
-						<li>
-							<span class="parameter">warheadid</span>
-							<span class="types"><span class="number">number</span></span>
-							The ID of the warhead to detonate
-						</li>
-						<li>
-							<span class="parameter">lat</span>
-							<span class="types"><a href="#Latitude">Latitude</a></span>
-							The latitude of the detonation
-						</li>
-						<li>
-							<span class="parameter">lon</span>
-							<span class="types"><a href="#Longitude">Longitude</a></span>
-							The longitude of the detonation
-						</li>
-						<li>
-							<span class="parameter">altitude</span>
-							<span class="types"><a href="#Altitude">Altitude</a></span>
-							The altitude of the detonation
-						</li>
-					</ul>
-					<h5>Example</h5>
-					<ul class="ul-no-bullets">
-						<div class="example">
-							<code>
-						{warheadid=<span class="number">253</span>
-						, lat=unit.latitude, lon=unit.longitude, altitude=unit.altitude}
-					</code>
-						</div>
-					</ul>
-					<hr>
-					<a class="anchor" id="table_Facility"></a>
-					<h3>Facility</h3>
-					<p>
-						Facility air or dock facility
-					</p>
-					<h4>Fields</h4>
-					<ul class="ul-no-bullets">
-						<li>
-							<span class="parameter">GUID</span>
-							<span class="types"><span class="string">string</span></span>
-							GUID
-						</li>
-						<li>
-							<span class="parameter">dbid</span>
-							<span class="types"><span class="number">number</span></span>
-							Database ID
-						</li>
-						<li>
-							<span class="parameter">name</span>
-							<span class="types"><span class="string">string</span></span>
-							Name
-						</li>
-						<li>
-							<span class="parameter">type</span>
-							<span class="types"><span class="number">number</span></span>
-							Type
-						</li>
-						<li>
-							<span class="parameter">status</span>
-							<span class="types"><span class="string">string</span></span>
-							Status
-						</li>
-						<li>
-							<span class="parameter">capacity</span>
-							<span class="types"><span class="number">number</span></span>
-							Units present
-						</li>
-					</ul>
-					<hr>
-					<a class="anchor" id="table_FerryMission"></a>
-					<h3>FerryMission</h3>
-					<p>
-						FerryMission options; these are updated by ScenEdit_SetMission()
-					</p>
-					<h4>Fields</h4>
-					<ul class="ul-no-bullets">
-						<li>
-							<span class="parameter">FerryBehavior </span>
-							<span class="types"><span class="string">string</span></span>
-							Values OneWay(0), Cycle(1), Random(2)
-						</li>
-						<li>
-							<span class="parameter">FerryThrottleAircraft</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">FerryAltitudeAircraft</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">FerryTerrainFollowingAircraft</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-						</li>
-						<li>
-							<span class="parameter">FlightSize</span>
-							<span class="types"><a href="#Size">Size</a></span>
-						</li>
-						<li>
-							<span class="parameter">MinAircraftReq</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">UseFlightSize</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-						</li>
-					</ul>
-					<hr>
-					<a class="anchor" id="table_Fuel"></a>
-					<h3>Fuel</h3>
-					<p>
-						The various types of fuel(s), and their state, carried by the unit. Use ScenEdit_SetUnit() to
-						set
-						the fuel
-						rather
-						than the unit.fuel. ScenEdit_SetUnit({...,fuel={{'GasFuel',1500},{2001,8000}}..})/. It is easier
-						and
-						less prone
-						to
-						error; you can use the fuel name or the fuel number code.
-					</p>
-					<details>
-						<p>
-							<summary>
-								Fuel Types
-						</p>
-						</summary>
-						<ul class="ul-no-bullets">
-							<li><b>Description = Code</b></li>
-							<li>NoFuel          = 1001 </li>   
-							<li>AviationFuel	= 2001 </li>   
-							<li>DieselFuel		= 3001 </li>   
-							<li>OilFuel			= 3002 </li>   
-							<li>GasFuel			= 3003 </li>   
-							<li>Battery			= 4001 </li>   
-							<li>AirIndepedent	= 4002 </li>   
-							<li>RocketFuel		= 5001 </li>   
-							<li>TorpedoFuel		= 5002 </li>   
-							<li>WeaponCoast		= 5003 </li>
-						</ul>
-					</details>
-					<h4>Fields</h4>
-					<ul class="ul-no-bullets">
-						<li>
-							<span class="parameter">fueltype</span>
-							<span class="types"><a href="#FuelState">{FuelState}</a></span>
-							The state of the type(s) of fuel in the unit.
-						</li>
-					</ul>
-					<div class="note-alert">
-						<p>
-							<strong>Note:</strong> The type is normally 4 digits. Use <code>.fuels</code> to get any
-							breakdown of
-							multiple tanks if present.
-						</p>
-					</div>
-					<h5>Example</h5>
-					<div class="example">
-						<code>
-							<span class="local">local</span> u = ScenEdit_GetUnit(...) <br>
-							<span class="local">local</span> fuel = u.fuel <br>
-							fuel[<span class="number">3001</span>].current =<span class="number">400 <br>
-							</span>u.fuel = fuel
-						</code>
-					</div>
-					<hr>
-					<a class="anchor" id="table_FuelState"></a>
-					<h3>FuelState</h3>
-					<p>
-						Status of a fuel<code>type</code>.
-					</p>
-					<h4>Fields</h4>
-					<ul class="ul-no-bullets">
-						<li>
-							<span class="parameter">current</span>
-							<span class="types"><span class="number">number</span></span>
-							The current fuel level of the type
-						</li>
-						<li>
-							<span class="parameter">max</span>
-							<span class="types"><span class="number">number</span></span>
-							How much can be stored for the type
-						</li>
-						<li>
-							<span class="parameter">name</span>
-							<span class="types"><span class="string">string</span></span>
-							Name of the fuel
-						</li>
-					</ul>
-					<h5>Example</h5>
-					<div class="example">
-						<code>
-						<span class="local">local</span> fuel = u.fuel <br>
-						fuel[<span class="number">3001</span>].current = <span class="number">400</span> <br>
-						u.fuel = fuel
-					</code>
-					</div>
-					<hr>
-					<a class="anchor" id="table_HostUnit"></a>
-					<h3>HostUnit</h3>
-					<p>
-						Requests that a unit be hosted/based to another
-					</p>
-					<h4>Fields</h4>
-					<ul class="ul-no-bullets">
-						<li>
-							<span class="parameter">HostedUnitNameOrID</span>
-							<span class="types"><span class="string">string</span></span>
-							The name or GUID of the unit to put into the host
-						</li>
-						<li>
-							<span class="parameter">SelectedHostNameOrID</span>
-							<span class="types"><span class="string">string</span></span>
-							The name or GUID of the host to put the unit into
-							use SetUnit() with 'base=xxx' to assign the unit to a 'base'
-						</li>
-					</ul>
-					<hr>
-					<a class="anchor" id="table_LastDetections"></a>
-					<h3>LastDetection</h3>
-					<p>
-						Contact detection details
-					</p>
-					<h4>Fields</h4>
-					<ul class="ul-no-bullets">
-						<li>
-							<span class="parameter">detector_guid</span>
-							<span class="types"><span class="string">string</span></span>
-							The GUID of the detecting unit
-						</li>
-						<li>
-							<span class="parameter">detect_sensor_guid</span>
-							<span class="types"><span class="string">string</span></span>
-							The GUID of the sensor on the detecting unit
-						</li>
-						<li>
-							<span class="parameter">age</span>
-							<span class="types"><span class="number">number</span></span>
-							Seconds since detection made
-						</li>
-						<li>
-							<span class="parameter">range</span>
-							<span class="types"><span class="number">number</span></span>
-							Estimated range at detect time
-						</li>
-					</ul>
-					<hr>
-					<a class="anchor" id="table_LatLon"></a>
-					<h3>LatLon</h3>
-					<p>
-						A Position on the map, referred to with latitude (north/south) and longitude (east/west)
-						coordinates. These can
-						be represented in two forms, degrees minutes seconds, and decimal degrees. The Command Lua API
-						supports both forms.
-					</p>
-					<p>
-						A set of latitude and longitude to define a point. Within the simulation, the values are
-						recorded in	decimal	degrees.
-					</p>
-					<h4>Fields</h4>
-					<ul class="ul-no-bullets">
-						<li>
-							<span class="parameter">latitude</span>
-							<span class="types"><span class="number">number</span></span>
-						</li>
-						<li>
-							<span class="parameter">longitude</span>
-							<span class="types"><span class="number">number</span></span>
-						</li>
-					</ul>
-					<h5>Example</h5>
-					<div class="example">
-						<code>
-au = ScenEdit_GetUnit({name='B-1B Lancer', guid='0SOLWP-0HMB9OFB9A66F'}) <br>
-print(au.course) <br>
-{ [1] = { latitude = 38.477990037757, longitude = -130.951197534651 }, <br>
-[2] = { latitude = 36.3838438349146, longitude = -133.491860024409} }
-						</code>
-					</div>
-					<hr>
-					<a class="anchor" id="table_LoadoutInfo"></a>
-					<h3>LoadoutInfo</h3>
-					<p>
-						Information on a loadout to add/alter
-					</p>
-					<h4>Fields</h4>
-					<ul class="ul-no-bullets">
-						<li>
-							<span class="parameter">UnitName</span>
-							<span class="types"><span class="string">string</span></span>
-							The name/GUID of the unit to change the loadout on
-						</li>
-						<li>
-							<span class="parameter">LoadoutID</span>
-							<span class="types"><span class="number">number</span></span>
-							The ID of the new loadout; 0 = use the current loadout
-						</li>
-						<li>
-							<span class="parameter">TimeToReady_Minutes</span>
-							<span class="types"><span class="number">number</span></span>
-							How many minutes until the loadout is ready (default = database loadout time)
-							(_optional_)
-						</li>
-						<li>
-							<span class="parameter">IgnoreMagazines</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-							If the new loadout should rely on the magazines having the right weapons ready (default =
-							false)
-							(_optional_)
-						</li>
-						<li>
-							<span class="parameter">ExcludeOptionalWeapons</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-							Exclude optional weapons from loadout (default = false)
-							(_optional_)
-						</li>
-						<li>
-							<span class="parameter">Wpn_DBID</span>
-							<span class="types"><span class="number">number</span></span>
-							Weapon DB number - required if WPN_GUID is not supplied
-						</li>
-						<li>
-							<span class="parameter">Wpn_GUID</span>
-							<span class="types"><span class="string">string</span></span>
-							Actual weapon to update - DBID is not required as this take precedence
-							(_optional_)
-						</li>
-						<li>
-							<span class="parameter">Number</span>
-							<span class="types"><span class="number">number</span></span>
-							Number to change current weapon load by (sign ignored)
-						</li>
-						<li>
-							<span class="parameter">Remove</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-							Deduct 'number' rather than add
-						</li>
-					</ul>
-					<hr>
-					<a class="anchor" id="table_Magazine"></a>
-					<h3>Magazine</h3>
-					<p>
-						Magazine.
-					</p>
-					<div class="note-alert">
-						<p>
-							<strong>Note:</strong> When dealing with a magazine in a unit, it may constist of one or
-							more
-							actual
-							magazine 'blocks'. This is what is being referred to here, rather than the ONE magazine
-							group
-							for the
-							unit/group.
-						</p>
-					</div>
-					<h4>Fields</h4>
-					<ul class="ul-no-bullets">
-						<li>
-							<span class="parameter">mag_capacity</span>
-							<span class="types"><span class="string">string</span></span>
-							Capacity|Storage
-						</li>
-						<li>
-							<span class="parameter">mag_dbid</span>
-							<span class="types"><span class="string">string</span></span>
-							Database ID
-						</li>
-						<li>
-							<span class="parameter">mag_GUID</span>
-							<span class="types"><span class="string">string</span></span>
-							GUID
-						</li>
-						<li>
-							<span class="parameter">mag_name</span>
-							<span class="types"><span class="string">string</span></span>
-							Name
-						</li>
-						<li>
-							<span class="parameter">mag_weapons</span>
-							<span class="table"><a href="#table_WeaponLoaded">WeaponLoaded</a></span>
-							Table of weapon loads in magazine
-						</li>
-					</ul>
-					<hr>
-					<a class="anchor" id="table_MineClearMission"></a>
-					<h3>MineClearMission</h3>
-					<p>
-						MineClearMission options; these are updated by ScenEdit_SetMission()
-					</p>
-					<h4>Fields</h4>
-					<ul class="ul-no-bullets">
-						<li>
-							<span class="parameter">OneThirdRule</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-						</li>
-						<li>
-							<span class="parameter">TransitThrottleAircraft</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">TransitAltitudeAircraft</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">TransitTerrainFollowingAircraft</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-						</li>
-						<li>
-							<span class="parameter">StationThrottleAircraft</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">StationAltitudeAircraft</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">StationTerrainFollowingAircraft</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-						</li>
-						<li>
-							<span class="parameter">TransitThrottleSubmarine</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">TransitDepthSubmarine</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">StationThrottleSubmarine</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">StationDepthSubmarine</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">TransitThrottleShip</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">StationThrottleShip</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">FlightSize</span>
-							<span class="types"><a href="#Size">Size</a></span>
-						</li>
-						<li>
-							<span class="parameter">MinAircraftReq</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">UseFlightSize</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-						</li>
-						<li>
-							<span class="parameter">GroupSize</span>
-							<span class="types"><a href="#Size">Size</a></span>
-						</li>
-						<li>
-							<span class="parameter">UseGroupSize</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-						</li>
-						<li>
-							<span class="parameter">Zone</span>
-							<span class="types"><span class="string">name</span></span> or <span class="types"><span
-									class="string">GUID</span></span>
-							Table of reference point names and/or GUIDs
-						</li>
-					</ul>
+                <a class="anchor" id="Tables"></a>
+                <h2>Tables</h2>
+                <p>
+                    Tables are sections that have related data attached to them. <br />
+                    Like wrappers, the content of these may be modified either directly (<strong>object.field</strong>) or by some ScenEdit_Setxxx( {..<strong>field=</strong>....} ) function.<br>
+                </p>
+                <ul class="ul-2-columns">
+                    <li><span class="table"><a href="#table_AAR">AAR</a></span></li>
+                    <li><span class="table"><a href="#table_Cargo">Cargo</a></span></li>
+                    <li><span class="table"><a href="#table_Component">Component</a></span></li>
+                    <li><span class="table"><a href="#table_EMmatch">EMmatch</a></span></li>
+                    <li><span class="table"><a href="#table_Emissions">Emissions</a></span></li>
+                    <!--<li><span class="table"><a href="#table_Explosion">Explosion</a></span></li>-->
+                    <li><span class="table"><a href="#table_Facility">Facility</a></span></li>
+                    <li><span class="table"><a href="#table_Formation">Formation</a></span></li>
+                    <li><span class="table"><a href="#table_LastDetections">LastDetections</a></span></li>
+                    <li><span class="table"><a href="#table_LatLon">LatLon</a></span></li>
+                    <li><span class="table"><a href="#table_LoadoutInfo">LoadoutInfo</a></span></li>
+                    <li><span class="table"><a href="#table_Magazine">Magazine</a></span></li>
+                    <li><span class="table"><a href="#table_CargoMission">MissionCargo</a></span></li>
+                    <li><span class="table"><a href="#table_FerryMission">MissionFerry</a></span></li>
+                    <li><span class="table"><a href="#table_MineMission">MissionMine</a></span></li>
+                    <li><span class="table"><a href="#table_MineClearMission">MissionMineClear</a></span></li>
+                    <li><span class="table"><a href="#table_PatrolMission">MissionPatrol</a></span></li>
+                    <li><span class="table"><a href="#table_StrikeMission">MissionStrike</a></span></li>
+                    <li><span class="table"><a href="#table_SupportMission">MissionSupport</a></span></li>
+                    <li><span class="table"><a href="#table_Mount">Mount</a></span></li>
+                    <li><span class="table"><a href="#table_Sensor">Sensor</a></span></li>
+                    <!--<li><span class="table"><a href="#table_SideContact">SideContact</a></span></li>
+    <li><span class="table"><a href="#table_SideDescription">SideDescription</a></span></li>
+    <li><span class="table"><a href="#table_SideSelector">SideSelector </a></span></li>
+    <li><span class="table"><a href="#table_SideUnit">SideUnit</a></span></li>-->
+                    <li><span class="table"><a href="#table_WRA">WRA</a></span></li>
+                    <!-- li><span class="table"><a href="#table_Waypoint">Waypoint</a></span></li-->
+                    <li><span class="table"><a href="#table_WeaponLoaded">WeaponLoaded</a></span></li>
+                    <li><span class="table"><a href="#table_ZoneMarker">ZoneMarker</a></span></li>
+                </ul>
+                <br>
+                <hr>
+                <a class="anchor" id="table_AAR"></a>
+                <h3>AAR</h3>
+                <p>Air-to-Air Refueling options; these are updated by <a href="Function_ScenEdit_SetMission.html">ScenEdit_SetMission()</a>.</p>
+                </ul>
+                <table class="table_borders" style="width: 100%; margin-left: 0px;">
+                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <td><span class="parameter">use_refuel_unrep</span></td>
+                        <td><span class="types"><span class="string">string</span></span></td>
+                        <td>Can use refuel/replenishment? </td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">tankerUsage</span></td>
+                        <td>
+                            <span class="types">
+                                <span class="string">string</span> or <br><span class="number">number</span>
+                            </span>
+                        </td>
+                        <td>Is tanker reserved for missions?</td>
+                        <td>Automatic(0), Mission(1)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">launchMissionWithoutTankersInPlace</span></td>
+                        <td><span class="types"><span class="boolean">boolean</span></span></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">tankerMissionList</span></td>
+                        <td>
+                            <span class="types">
+                                <span class="string">mission name</span> or <br><span class="string">GUID</span>
+                            </span>
+                        </td>
+                        <td>Table of missions to use as source of refuellers</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">tankerMinNumber_total</span></td>
+                        <td><span class="types"><span class="number">number</span></span></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">tankerMinNumber_airborne</span></td>
+                        <td><span class="types"><span class="number">number</span></span></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">tankerMinNumber_station</span></td>
+                        <td><span class="types"><span class="number">number</span></span></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">maxReceiversInQueuePerTanker_airborne</span></td>
+                        <td><span class="types"><span class="number">number</span></span></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">fuelQtyToStartLookingForTanker_airborne</span></td>
+                        <td><span class="types"><span class="number">number</span></span></td>
+                        <td>Minimum percentage of fuel (0-100) that tanking will be requested</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">tankerMaxDistance_airborne</span></td>
+                        <td>
+                            <span class="types">
+                                <span class="string">string</span> or <br><span class="number">number</span>
+                            </span>
+                        </td>
+                        <td>A tanker will be selected within this range</td>
+                        <td>Use 'internal' range or set a range. </td>
+                    </tr>
+                </table>
 
+                <hr>
+                <a class="anchor" id="table_Cargo"></a>
+                <h3>Cargo</h3>
+                <p>
+                    Cargo stored in a ship/aircraft or dock facility usually referenced from a 'unit' wrapper.<br>
+                    To add/modify/remove cargo, use the function <a href="Function_ScenEdit_UpdateUnitCargo.html">UpdateUnitCargo()</a>.
+                </p>
+                <table class="table_borders" style="width: 100%; margin-left: 0px;">
+                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <td><span class="parameter">GUID</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>GUID
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">dbid</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Database ID
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">name</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Name
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">type</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Type
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">status</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Status
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">area</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Cargo unit area
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">crew</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Cargo unit crew
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">mass</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Cargo unit mass
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">quantity</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Items present
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">damage</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Damage
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">statusR</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Inoperative reason
+                    </tr>
+                </table>
 
-					<hr>
-					<a class="anchor" id="table_MineMission"></a>
-					<h3>MineMission</h3>
+                <hr>
+                <a class="anchor" id="table_CargoMission"></a>
+                <h3>CargoMission</h3>
+                <p>CargoMission options; these are updated by ScenEdit_SetMission()</p>
+                <table class="table_borders" style="width: 100%; margin-left: 0px;">
+                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <td><span class="parameter">OneThirdRule</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                        <td>True if activated
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">TransitThrottleAircraft</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">TransitAltitudeAircraft</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StationThrottleAircraft</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StationAltitudeAircraft</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">TransitThrottleSubmarine</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">TransitDepthSubmarine</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StationThrottleSubmarine</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StationDepthSubmarine</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">TransitThrottleShip</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StationThrottleShip</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">UseFlightSize</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                        <td>True if minimum size required
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">UseGroupSize</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                        <td>True if minimum size required
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">Zone</span>
+                        <td>
+                            <span class="types"><span class="string">name</span></span> or <span class="types">
+                                <span class="string">GUID</span>
+                            </span>
+                        <td>Table of reference point names and/or GUIDs
+                    </tr>
+                </table>
 
+                <hr>
+                <a class="anchor" id="table_Component"></a>
+                <h3>Component</h3>
+                <p>
+                    This identifies the component/item(s) that are present in a unit. See <a href="Wrappers.html#wrapper_Unit">Unit</a>:filterOnComponent on how to filter this table
+                </p>
+                <table class="table_borders" style="width: 100%; margin-left: 0px;">
+                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <td><span class="parameter">comp_GUID</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>GUID
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">comp_dbid</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Database ID
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">comp_name</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Name
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">comp_type</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Type of component (mount, sensor, rudder, etc)
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">comp_status</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Status
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">comp_statusR</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Reason why inoperative [if not operational]
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">comp_damage</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Damage Severity [if not operational]
+                    </tr>
+                </table>
 
-					MineMission.
-					.. options; these are updated by ScenEdit_SetMission()
-					</ul>
-					<h4>Fields</h4>
-					<ul class="ul-no-bullets">
-						<li>
-							<span class="parameter">OneThirdRule</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-						</li>
-						<li>
-							<span class="parameter">TransitThrottleAircraft</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">TransitAltitudeAircraft</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">TransitTerrainFollowingAircraft</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-						</li>
-						<li>
-							<span class="parameter">StationThrottleAircraft</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">StationAltitudeAircraft</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">StationTerrainFollowingAircraft</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-						</li>
-						<li>
-							<span class="parameter">TransitThrottleSubmarine</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">TransitDepthSubmarine</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">StationThrottleSubmarine</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">StationDepthSubmarine</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">TransitThrottleShip</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">StationThrottleShip</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">FlightSize</span>
-							<span class="types"><a href="#Size">Size</a></span>
-						</li>
-						<li>
-							<span class="parameter">Minaircraftreq</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">UseFlightSize</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-						</li>
-						<li>
-							<span class="parameter">GroupSize</span>
-							<span class="types"><a href="#Size">Size</a></span>
-						</li>
-						<li>
-							<span class="parameter">UseGroupSize</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-						</li>
-						<li>
-							<span class="parameter">Zone</span>
-							<span class="table">table</span>
-							Table of reference point names and/or GUIDs
-						</li>
-						<li>
-							<span class="parameter">Armingdelay</span>
-							<span class="types"><span class="type">time</span></span>
-							In format of 'days:hours:minutes:seconds' e.g. 1 day, 4 hours, 30 minutes would be
-							'1:4:30:0'
-						</li>
-					</ul>
-					<hr>
-					<a class="anchor" id="table_Mount"></a>
-					<h3>Mount</h3>
-					<p>
-						A mount is similar to a magazine, but it refers to the actual <code>loads</code> on the
-						<code>weapon</code>, rather than a storage area.
-					</p>
-					<h4>Fields</h4>
-					<ul class="ul-no-bullets">
-						<li>
-							<span class="parameter">mount_dbid</span>
-							<span class="types"><span class="string">string</span></span>
-							Database ID
-						</li>
-						<li>
-							<span class="parameter">mount_GUID</span>
-							<span class="types"><span class="string">string</span></span>
-							GUID
-						</li>
-						<li>
-							<span class="parameter">mount_name</span>
-							<span class="types"><span class="string">string</span></span>
-							Name
-						</li>
-						<li>
-							<span class="parameter">mount_status</span>
-							<span class="types"><span class="string">string</span></span>
-							Status
-						</li>
-						<li>
-							<span class="parameter">mount_statusR</span>
-							<span class="types"><span class="string">string</span></span>
-							Reason why inoperative [if not operational]
-						</li>
-						<li>
-							<span class="parameter">mount_damage</span>
-							<span class="types"><span class="string">string</span></span>
-							Damage Severity [if not operational]
-						</li>
-						<li>
-							<span class="parameter">mount_weapons</span>
-							<span class="table"><a href="#table_WeaponLoaded">WeaponLoaded</a></span>
-							Table of weapon loads on mount
-						</li>
-					</ul>
-					<hr>
-					<a class="anchor" id="table_PatrolMission"></a>
-					<h3>PatrolMission</h3>
-					<p>
-						PatrolMission options; these are updated by ScenEdit_SetMission()
-					</p>
-					</ul>
-					<h4>Fields</h4>
-					<ul class="ul-no-bullets">
-						<li>
-							<span class="parameter">type</span>
-							<span class="types"><span class="string">string</span></span>
-							Subtype of mission (ASW = 'asw', ASuW_Naval = 'naval', AAW = 'aaw', ASuW_Land = 'land',
-							ASuW_Mixed =
-							'mixed', SEAD = 'sead', SeaControl = 'sea')
-						</li>
-						<li>
-							<span class="parameter">OneThirdRule</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-							True if activated
-						</li>
-						<li>
-							<span class="parameter">CheckOPA</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-							True if can investigate outside zones
-						</li>
-						<li>
-							<span class="parameter">CheckWWR</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-							True if can investigate within weapon range
-						</li>
-						<li>
-							<span class="parameter">ActiveEMCON</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-							True if active EMCON in patrol zone
-						</li>
-						<li>
-							<span class="parameter">TransitThrottleAircraft</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">TransitAltitudeAircraft</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">TransitTerrainFollowingAircraft</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-							True if terrain following
-						</li>
-						<li>
-							<span class="parameter">StationThrottleAircraft</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">StationAltitudeAircraft</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">StationTerrainFollowingAircraft</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-							True if terrain following
-						</li>
-						<li>
-							<span class="parameter">AttackThrottleAircraft</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">AttackAltitudeAircraft</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">AttackTerrainFollowingAircraft</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-							True if terrain following
-						</li>
-						<li>
-							<span class="parameter">AttackDistanceAircraft</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">TransitThrottleSubmarine</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">TransitDepthSubmarine</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">StationThrottleSubmarine</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">StationDepthSubmarine</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">AttackThrottleSubmarine</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">AttackDepthSubmarine</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">AttackDistanceSubmarine</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">TransitThrottleShip</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">StationThrottleShip</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">AttackThrottleShip</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">AttackDistanceShip</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">FlightSize</span>
-							<span class="types"><a href="#Size">Size</a></span>
-						</li>
-						<li>
-							<span class="parameter">MinAircraftReq</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">UseFlightSize</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-							True if min size required
-						</li>
-						<li>
-							<span class="parameter">GroupSize</span>
-							<span class="types"><a href="#Size">Size</a></span>
-						</li>
-						<li>
-							<span class="parameter">UseGroupSize</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-							True if min size required
-						</li>
-						<li>
-							<span class="parameter">ProsecutionZone</span>
-							<span class="types"><span class="string">name</span></span> or <span class="types"><span
-									class="string">GUID</span></span>
-							Table of reference point names and/or GUIDs
-						</li>
-						<li>
-							<span class="parameter">PatrolZone</span>
-							<span class="types"><span class="string">name</span></span> or <span class="types"><span
-									class="string">GUID</span></span>
-							Table of reference point names and/or GUIDs
-						</li>
-						<li>
-							<span class="parameter">FlightsToInvestigate</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">FlightsToEngage</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">WingmanEngageDistance</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">BoatsToInvestigate</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">BoatsToEngage</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">GroupMemberEngageDistance</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-					</ul>
+                <hr>
+                <a class="anchor" id="table_EMmatch"></a>
+                <h3>EMmatch</h3>
+                <p>
+                    EM matches from database. Note the table items are in uppercase
+                </p>
+                <h4>Fields</h4>
+                <table class="table_borders" style="width: 100%; margin-left: 0px;">
+                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <td><span class="parameter">DBID</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Databse id.
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">NAME</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Matching id name.
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">CATEGORY</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Not applicable to weapons (Missile,Torpedo)
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">TYPE</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Not applicable to Facility
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">SUBTYPE</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Type of item within the contact type ( subtype is "Fighter" within scope of Aircraft)
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">MISSILE_DEFENCE</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Applicable to Facility and Ships
+                    </tr>
+                </table>
 
-                    <hr>
-                    <a class="anchor" id="table_Sensor"></a>
-                    <h3>Sensor</h3>
+                <hr>
+                <a class="anchor" id="table_Emissions"></a>
+                <h3>Emissions</h3>
+                <p>
+                    Contact emission details
+                </p>
+                <h4>Fields</h4>
+                <table class="table_borders" style="width: 100%; margin-left: 0px;">
+                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <td><span class="parameter">name</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">age</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Time detection held
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">solid</span>
+                        <td><span class="types"><span class="boolen">True/false</span></span>
+                        <td>Precise detected
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">sensor_dbid</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Sensor detecting databse id
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">sensor_name</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Sensor name
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">sensor_type</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Sensor type
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">sensor_role</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Sensor role
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">sensor_maxrange</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Sensor maximum range (nm)
+                    </tr>
+                </table>
+                <!--
+    <hr>
+    <a class="anchor" id="table_Explosion"></a>
+    <h3>Explosion</h3>
+    <p>
+        Defines the warhead to detonate.
+    </p>
+    <h4>Fields</h4>
+    <ul class="ul-no-bullets">
+        <li>
+            <span class="parameter">warheadid</span>
+            <span class="types"><span class="number">number</span></span>
+            The ID of the warhead to detonate
+        </li>
+        <li>
+            <span class="parameter">lat</span>
+            <span class="types"><a href="#Latitude">Latitude</a></span>
+            The latitude of the detonation
+        </li>
+        <li>
+            <span class="parameter">lon</span>
+            <span class="types"><a href="#Longitude">Longitude</a></span>
+            The longitude of the detonation
+        </li>
+        <li>
+            <span class="parameter">altitude</span>
+            <span class="types"><a href="#Altitude">Altitude</a></span>
+            The altitude of the detonation
+        </li>
+    </ul>
+    <h5>Example</h5>
+    <ul class="ul-no-bullets">
+        <div class="example">
+            <code>
+        {warheadid=<span class="number">253</span>
+        , lat=unit.latitude, lon=unit.longitude, altitude=unit.altitude}
+    </code>
+        </div>
+    </ul>
+    -->
+
+                <hr>
+                <a class="anchor" id="table_Facility"></a>
+                <h3>Facility</h3>
+                <p>
+                    Facility air or dock facility
+                </p>
+                <h4>Fields</h4>
+                <table class="table_borders" style="width: 100%; margin-left: 0px;">
+                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <td><span class="parameter">GUID</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>GUID
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">dbid</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Database ID
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">name</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Name
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">type</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Type
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">status</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Status
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">capacity</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Units present
+                    </tr>
+                </table>
+
+                <hr>
+                <a class="anchor" id="table_FerryMission"></a>
+                <h3>FerryMission</h3>
+                <p>
+                    FerryMission options; these are updated by ScenEdit_SetMission()
+                </p>
+                <h4>Fields</h4>
+                <table class="table_borders" style="width: 100%; margin-left: 0px;">
+                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <td><span class="parameter">FerryBehavior </span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Values OneWay(0), Cycle(1), Random(2)
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">FerryThrottleAircraft</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">FerryAltitudeAircraft</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">FerryTerrainFollowingAircraft</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">FlightSize</span>
+                        <td><span class="types"><a href="DataTypes.html#dataType_Size">Size</a></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">MinAircraftReq</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">UseFlightSize</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                    </tr>
+                </table>
+
+                <hr>
+                <a class="anchor" id="table_Formation"></a>
+                <h3>Formation</h3>
+                <p>
+                    Information related to keeping formation in a group<br />
+                    The field values for a selected unit are "bearing", "type", "distance", "sprint"<br />
+                    The field values for a selected group are "name", "spacing", "spacing_unit", "bearing", "transpose" <br />
+                </p>
+                <h4>Fields</h4>
+                <p>For setting a unit's station in the current formation</p>
+                <table class="table_borders" style="width: 100%; margin-left: 0px;">
+                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</th></tr>
+                    <tr>
+                        <td><span class="parameter">type</span>
+                        <td><span class="types"><span class="tooltip">value<span class="tooltiptext">fixed = 0 <br> rotating = 1 </span></span></span>
+                        <td>Type of bearing</td>
+                        <td>Fixed or Rotating. <br />When fixed, a bearing 0 is towards the top of charted area<br /> regardless of movemnt of formation lead</td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">bearing</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Bearing from formation lead (0-360)
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">distance</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Distance (NM) from formation lead
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">sprint</span>
+                        <td><span class="types"><span class="boolean">True/False</span></span>
+                        <td>Use 'sprint and drift' mode while on formation station
+                    </tr>
+                </table>
+                <p></p>
+                <h4>Fields</h4>
+                <p>For setting a group's formation and underlying unit stations</p>
+                <table class="table_borders" style="width: 100%; margin-left: 0px;">
+                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</th></tr>
+                    <tr>
+                        <td><span class="parameter">name</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Formation name</td>
+                        <td>Use 'name' from the default settings file (Resources\Formation\StandardFormations.txt)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">spacing</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Base distance (m) from formation lead</td>
+                        <td>Used to determine stations of group units</td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">spacing_unit</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Multipler to the spacing if required.</td>
+                        <td>
+                            Used to determine stations of group units<br />
+                            Optional
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">bearing</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Desired bearing of formation lead (0-360)</td>
+                        <td>
+                            Use the group lead's current heading
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">transpose</span>
+                        <td><span class="types"><span class="boolean">True/False</span></span>
+                        <td>Units jump to new stations in formation immediately</td>
+                        <td></td>
+                    </tr>
+                </table>
+
+                <hr>
+                <a class="anchor" id="table_LastDetections"></a>
+                <h3>LastDetection</h3>
+                <p>
+                    Contact detection details
+                </p>
+                <h4>Fields</h4>
+                <table class="table_borders" style="width: 100%; margin-left: 0px;">
+                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <td><span class="parameter">detector_guid</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>The GUID of the detecting unit
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">detect_sensor_guid</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>The GUID of the sensor on the detecting unit
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">age</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Seconds since detection made
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">range</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Estimated range at detect time
+                    </tr>
+                </table>
+
+                <hr>
+                <a class="anchor" id="table_LatLon"></a>
+                <h3>LatLon</h3>
+                <p>
+                    A Position on the map, referred to with latitude (north/south) and longitude (east/west)
+                    coordinates. These can
+                    be represented in two forms, degrees minutes seconds, and decimal degrees. The Command Lua API
+                    supports both forms.
+                </p>
+                <p>
+                    A set of latitude and longitude to define a point. Within the simulation, the values are
+                    recorded in	decimal	degrees.
+                </p>
+                <h4>Fields</h4>
+                <ul class="ul-no-bullets">
+                    <li>
+                        <span class="parameter">latitude</span>
+                        <span class="types"><span class="number">number</span></span>
+                    </li>
+                    <li>
+                        <span class="parameter">longitude</span>
+                        <span class="types"><span class="number">number</span></span>
+                    </li>
+                </ul>
+                <h5>Example</h5>
+                <div class="example">
+                    <code>
+                        au = ScenEdit_GetUnit({name='B-1B Lancer', guid='0SOLWP-0HMB9OFB9A66F'}) <br>
+                        print(au.course) <br>
+                        { [1] = { latitude = 38.477990037757, longitude = -130.951197534651 }, <br>
+                        [2] = { latitude = 36.3838438349146, longitude = -133.491860024409} }
+                    </code>
+                </div>
+
+                <hr>
+                <a class="anchor" id="table_LoadoutInfo"></a>
+                <h3>LoadoutInfo</h3>
+                <p>
+                    Information on a loadout to add/alter
+                </p>
+                <h4>Fields</h4>
+                <table class="table_borders" style="width: 100%; margin-left: 0px;">
+                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <td><span class="parameter">UnitName</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>The name/GUID of the unit to change the loadout on
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">LoadoutID</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>The ID of the new loadout; 0 = use the current loadout
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">TimeToReady_Minutes</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>How many minutes until the loadout is ready (default = database loadout time)
+                        <td>(_optional_)
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">IgnoreMagazines</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                        <td>
+                            If the new loadout should rely on the magazines having the right weapons ready (default =
+                            false)
+                        <td>(_optional_)
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">ExcludeOptionalWeapons</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                        <td>Exclude optional weapons from loadout (default = false)
+                        <td>(_optional_)
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">Wpn_DBID</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Weapon DB number - required if WPN_GUID is not supplied
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">Wpn_GUID</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Actual weapon to update - DBID is not required as this take precedence
+                        <td>(_optional_)
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">Number</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Number to change current weapon load by (sign ignored)
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">Remove</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                        <td>Deduct 'number' rather than add
+                    </tr>
+                </table>
+
+                <hr>
+                <a class="anchor" id="table_Magazine"></a>
+                <h3>Magazine</h3>
+                <p>
+                    Magazine.
+                </p>
+                <div class="note-alert">
                     <p>
-                        A list of sensors associated with a <span class="wrapper"><a href="Wrappers.html#wrapper_Unit">Unit</a></span> wrapper
+                        <strong>Note:</strong> When dealing with a magazine in a unit, it may constist of one or
+                        more
+                        actual
+                        magazine 'blocks'. This is what is being referred to here, rather than the ONE magazine
+                        group
+                        for the
+                        unit/group.
                     </p>
-                    <h4>Fields</h4>
-                    <ul class="ul-no-bullets">
-                        <li>
-                            <span class="parameter">sensor_dbid</span>
-                            <span class="types"><span class="string">string</span></span>
-                            The DBID of the sensor.
-                        </li>
-                        <li>
-                            <span class="parameter">sensor_guid</span>
-                            <span class="types"><span class="string">string</span></span>
-                            The GUID of the sensor.
-                        </li>
-                        <li>
-                            <span class="parameter">sensor_name</span>
-                            <span class="types"><span class="string">string</span></span>
-                            The name of the sensor.
-                        </li>
-                        <li>
-                            <span class="parameter">sensor_type</span>
-                            <span class="types"><span class="string">string</span></span>
-                            The high-level type of sensor.
-                        </li>
-                        <li>
-                            <span class="parameter">sensor_role</span>
-                            <span class="types"><span class="string">string</span></span>
-                            The role of the sensor (e.g. 3D Air Search - Medium Range).
-                        </li>
-                        <li>
-                            <span class="parameter">sensor_maxrange</span>
-                            <span class="types"><span class="number">number</span></span>
-                            The maximum range of the sensor.
-                        </li>
-                        <li>
-                            <span class="parameter">sensor_status</span>
-                            <span class="types"><span class="string">string</span></span>
-                            The operational status of the sensor.
-                        </li>
-                        </li>
-                            <span class="parameter">sensor_isactive</span>
-                            <span class="types"><span class="boolean">boolean</span></span>
-                            Whether the sensor is active or not.
-                        </li>
-                    </ul>
-                    <div class="note-alert">
-                        <p>
-                            <strong>Note:</strong> To set sensor on or off, use a table of <code>{sensor_guid,sensor_isactive}</code>
-                        </p>
-                    </div>
-                    <div class="note-caution">
-                        <p>
-                            <strong>Caution:</strong> The GUID returned here is the GUID of the individual sensor component, not the GUID of the parent unit.
-                        </p>
-                    </div>
-					<hr>
-					<a class="anchor" id="table_SideContact"></a>
-					<h3>SideContact</h3>
-					<p>
-						Side's contact.
-					</p>
-					<h4>Fields</h4>
-					<ul class="ul-no-bullets">
-						<li>
-							<span class="parameter">GUID</span>
-							<span class="types"><span class="string">string</span></span>
-							The GUID of the contact. Note that this is not the GUID of the unit, you must use VP_GetUnit
-							to
-							resolve
-							it.
-						</li>
-						<li>
-							<span class="parameter">name</span>
-							<span class="types"><span class="string">string</span></span>
-							The name of the contact.
-						</li>
-					</ul>
-					<hr>
-					<a class="anchor" id="table_SideDescription"></a>
-					<h3>SideDescription</h3>
-					<p>
-						Information on how to change a unit's side.
-					</p>
+                </div>
+                <h4>Fields</h4>
+                <table class="table_borders" style="width: 100%; margin-left: 0px;">
+                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <td><span class="parameter">mag_capacity</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Capacity|Storage
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">mag_dbid</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Database ID
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">mag_GUID</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>GUID
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">mag_name</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Name
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">mag_weapons</span>
+                        <td><span class="table"><a href="#table_WeaponLoaded">WeaponLoaded</a></span>
+                        <td>Table of weapon loads in magazine
+                    </tr>
+                </table>
 
-					<h4>Fields</h4>
-					<ul class="ul-no-bullets">
-						<li>
-							<span class="parameter">side</span>
-							<span class="types"><span class="string">string</span></span>
-							The original side
-						</li>
-						<li>
-							<span class="parameter">name</span>
-							<span class="types"><span class="string">string</span></span>
-							The name/GUID of the unit
-						</li>
-						<li>
-							<span class="parameter">newside</span>
-							<span class="types"><span class="string">string</span></span>
-							The new side
-						</li>
-					</ul>
-                    <div class="note-caution">
-                        <p>
-                            <strong>Caution:</strong> The order in which these paramaters are passed is important!
-                        </p>
-                    </div>
-					<hr>
-					<a class="anchor" id="table_SideSelector"></a>
-					<h3>SideSelector </h3>
-					<p>
-						Information to select a particular side.
-					</p>
-					<h4>Fields</h4>
-					<ul class="ul-no-bullets">
-						<li>
-							<span class="parameter">GUID</span>
-							<span class="types"><span class="string">string</span></span>
-							The GUID of the side to select. Preferred.
-						</li>
-						<li>
-							<span class="parameter">Name</span>
-							<span class="types"><span class="string">string</span></span>
-							The name of the side to select.
-						</li>
-					</ul>
-					<hr>
-					<a class="anchor" id="table_SideUnit"></a>
-					<h3>SideUnit</h3>
-					<p>
-						Side's unit.
-					</p>
-					<h4>Fields</h4>
-					<ul class="ul-no-bullets">
-						<li>
-							<span class="parameter">GUID</span>
-							<span class="types"><span class="string">string</span></span>
-							The GUID of the unit. This is the actual GUID.
-						</li>
-						<li>
-							<span class="parameter">name</span>
-							<span class="types"><span class="string">string</span></span>
-							The name of the unit.
-						</li>
-					</ul>
-					<hr>
-					<a class="anchor" id="table_StrikeMission"></a>
-					<h3>StrikeMission</h3>
-					<p>
-						StrikeMission options; these are updated by ScenEdit_SetMission(). Note that these are split
-						between
-						the escorts and strikers
-					</p>
-					<h4>Fields</h4>
-					<ul class="ul-no-bullets">
-						<li>
-							<span class="parameter">type</span>
-							<span class="types"><span class="string">string</span></span>
-							Subtype of mission (Air_Intercept = 'air', Land_Strike = 'land', Maritime_Strike = 'sea',
-							Sub_Strike =
-							'sub')
-						</li>
-						<li>
-							<span class="parameter">EscortFlightSizeShooter</span>
-							<span class="types"><a href="#Size">Size</a></span>
-						</li>
-						<li>
-							<span class="parameter">EscortMinShooter</span>
-							<span class="types"><span class="number">number</span></span>
-						</li>
-						<li>
-							<span class="parameter">EscortMaxShooter</span>
-							<span class="types"><span class="number">number</span></span>
-						</li>
-						<li>
-							<span class="parameter">EscortResponseRadius</span>
-							<span class="types"><span class="number">number</span></span>
-						</li>
-						<li>
-							<span class="parameter">EscortUseFlightSize</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-							True if minimum size required
-						</li>
-						<li>
-							<span class="parameter">EscortFlightSizeNonshooter</span>
-							<span class="types"><a href="#Size">Size</a></span>
-						</li>
-						<li>
-							<span class="parameter">EscortMinNonshooter</span>
-							<span class="types"><span class="number">number</span></span>
-						</li>
-						<li>
-							<span class="parameter">EscortMaxNonshooter</span>
-							<span class="types"><span class="number">number</span></span>
-						</li>
-						<li>
-							<span class="parameter">EscortGroupSize</span>
-							<span class="types"><a href="#Size">Size</a></span>
-						</li>
-						<li>
-							<span class="parameter">EscortUseGroupSize</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-							True if minimum size required
-						</li>
-						<li>
-							<span class="parameter">StrikeOneTimeOnly</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-							True if activated
-						</li>
-						<li>
-							<span class="parameter">StrikeMinimumTrigger</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">StrikeMax</span>
-							<span class="types"><span class="number">number</span></span>
-						</li>
-						<li>
-							<span class="parameter">StrikeFlightSize</span>
-							<span class="types"><a href="#Size">Size</a></span>
-						</li>
-						<li>
-							<span class="parameter">StrikeMinAircraftReq</span>
-							<span class="types"><span class="number">number</span></span>
-						</li>
-						<li>
-							<span class="parameter">StrikeUseFlightSize</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-							True if minimum size required
-						</li>
-						<li>
-							<span class="parameter">StrikeGroupSize</span>
-							<span class="types"><a href="#Size">Size</a></span>
-						</li>
-						<li>
-							<span class="parameter">StrikeUseGroupSize</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-							True if minimum size required
-						</li>
-						<li>
-							<span class="parameter">StrikeAutoPlanner</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-							True if activated
-						</li>
-						<li>
-							<span class="parameter">StrikePreplan</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-							True if pre-planned target list only
-						</li>
-						<li>
-							<span class="parameter">StrikeRadarUasge</span>
-							<span class="types"><span class="number">number</span></span>
-							Radar usage
-						</li>
-						<li>
-							<span class="parameter">StrikeMinDistAircraft</span>
-							<span class="types"><span class="number">number</span></span>
-							Strike minimum distance
-						</li>
-						<li>
-							<span class="parameter">StrikeMaxDistAircraft</span>
-							<span class="types"><span class="number">number</span></span>
-							Strike maximum distance
-						</li>
-						<li>
-							<span class="parameter">StrikeMinDistShip</span>
-							<span class="types"><span class="number">number</span></span>
-							Strike minimum distance
-						</li>
-						<li>
-							<span class="parameter">StrikeMaxDistShip</span>
-							<span class="types"><span class="number">number</span></span>
-							Strike maximum distance
-						</li>
-						<li>
-							<span class="parameter">FlightsToInvestigate</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">FlightsToEngage</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">WingmanEngageDistance</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">BoatsToInvestigate</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">BoatsToEngage</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">GroupMemberEngageDistance</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-					</ul>
-					<hr>
-					<a class="anchor" id="table_SupportMission"></a>
-					<h3>SupportMission</h3>
-					<p>
-						SupportMission options; these are updated by ScenEdit_SetMission()
-					</p>
-					<h4>Fields</h4>
-					<ul class="ul-no-bullets">
-						<li>
-							<span class="parameter">OneThirdRule</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-						</li>
-						<li>
-							<span class="parameter">TransitThrottleAircraft</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">TransitAltitudeAircraft</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">TransitTerrainFollowingAircraft</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-						</li>
-						<li>
-							<span class="parameter">StationThrottleAircraft</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">StationAltitudeAircraft</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">StationTerrainFollowingAircraft</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-						</li>
-						<li>
-							<span class="parameter">TransitThrottleSubmarine</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">TransitDepthSubmarine</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">StationThrottleSubmarine</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">StationDepthSubmarine</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">TransitThrottleShip</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">StationThrottleShip</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">FlightSize</span>
-							<span class="types"><a href="#Size">Size</a></span>
-						</li>
-						<li>
-							<span class="parameter">MinAircraftReq</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">UseFlightSize</span>
-							<span class="types"><span class="type">boo</span></span>
-						</li>
-						<li>
-							<span class="parameter">GroupSize</span>
-							<span class="types"><a href="#Size">Size</a></span>
-						</li>
-						<li>
-							<span class="parameter">UseGroupSize</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-						</li>
-						<li>
-							<span class="parameter">Zone</span>
-							<span class="types"><span class="string">name</span></span> or <span class="types"><span
-									class="string">GUID</span></span>
-							Table of reference point names and/or GUIDs
-						</li>
-						<li>
-							<span class="parameter">LoopType</span>
-							<span class="types"><span class="string">string</span></span>
-							Values of ContinousLoop(0) or SingleLoop(1)
-						</li>
-						<li>
-							<span class="parameter">OnStation</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">OneTimeOnly</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-						</li>
-						<li>
-							<span class="parameter">ActiveEMCON</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-						</li>
-						<li>
-							<span class="parameter">TankerOneTime</span>
-							<span class="types"><span class="boolean">boolean</span></span>
-						</li>
-						<li>
-							<span class="parameter">TankerMaxReceivers</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-<!-- 						<li>
-							<span class="parameter">ccenable</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">ccallowqra</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">ccflightgenmethod</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">ccstationtime</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">ccoverlap</span>
-							<span class="types"><span class="string">string</span></span>
-						</li> -->
-					</ul>
-					<hr>
-					<a class="anchor" id="table_WRA"></a>
-					<h3>WRA</h3>
-					<p>WRA settings</p>
-					<h4>Fields</h4>
-					<ul class="ul-no-bullets">
-						<li>
-							<span class="parameter">qty_salvo</span>
-							<span class="types"><span class="string">string</span></span>
-							Weapons per salvo ('Max','None' or a number)
-						</li>
-						<li>
-							<span class="parameter">shooter_salvo</span>
-							<span class="types"><span class="string">string</span></span>
-							Shooters per salvo ('Max','None' or a number)
-						</li>
-						<li>
-							<span class="parameter">firing_range</span>
-							<span class="types"><span class="string">string</span></span>
-							Firing range ('Max','None' or a number)
-						</li>
-						<li>
-							<span class="parameter">self_defence</span>
-							<span class="types"><span class="string">string</span></span>
-							Self-defence range ('Max','None' or a number)
-						</li>
-					</ul>
-                    <div class="note-alert">
-                        <p>
-                            <strong>Note:</strong> The absence of a field implies that it is <strong>not</strong> used.
-                        </p>
-                    </div>
-					<hr>
-					<!--
-					<a class="anchor" id="table_Waypoint"></a>
-					<h3>Waypoint</h3>
-					<p>
-						Waypoint describing the long/lat points as in a plotted course
-					</p>
-					<h4>Fields</h4>
-					<ul class="ul-no-bullets">
-						<li>
-							<span class="parameter">longitude</span>
-							<span class="types"><span class="number">number</span></span>
-						</li>
-						<li>
-							<span class="parameter">latitude</span>
-							<span class="types"><span class="number">number</span></span>
-						</li>
-						<li>
-							<span class="parameter">description</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">presetAltitude</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">presetDepth</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">presetThrottle</span>
-							<span class="types"><span class="string">string</span></span>
-						</li>
-						<li>
-							<span class="parameter">desiredAltitude</span>
-							<span class="types"><span class="number">number</span></span>
-						</li>
-						<li>
-							<span class="parameter">desiredSpeed</span>
-							<span class="types"><span class="number">number</span></span>
-						</li>
-						<li>
-							<span class="parameter">desiredAltitudeTF</span>
-							<span class="types"><span class="number">number</span></span>
-							Enter desired altitude AGL to set altitude as terrain-following
-						</li>
-					</ul>
-					<hr>
-					-->
-					<a class="anchor" id="table_WeaponLoaded"></a>
-					<h3>WeaponLoaded</h3>
-					<p>
-						Weapon loads on mount or in magazine.
-					</p>
-					<h4>Fields</h4>
-					<ul class="ul-no-bullets">
-						<li>
-							<span class="parameter">wpn_GUID</span>
-							<span class="types"><span class="string">string</span></span>
-							GUID
-						</li>
-						<li>
-							<span class="parameter">wpn_current</span>
-							<span class="types"><span class="string">string</span></span>
-							Current loads available
-						</li>
-						<li>
-							<span class="parameter">wpn_maxcap</span>
-							<span class="types"><span class="string">string</span></span>
-							Maximum loads
-						</li>
-						<li>
-							<span class="parameter">wpn_default</span>
-							<span class="types"><span class="string">string</span></span>
-							Default loads (to fill out)
-						</li>
-						<li>
-							<span class="parameter">wpn_name</span>
-							<span class="types"><span class="string">string</span></span>
-							Name
-						</li>
-						<li>
-							<span class="parameter">wpn_dbid</span>
-							<span class="types"><span class="string">string</span></span>
-							Database ID of weapon
-						</li>
-						<li>
-							<span class="parameter">wpn_type</span>
-							<span class="types"><span class="string">string</span></span>
-							Type of weapon
-						</li>
-					</ul>
-					<hr>
-					<a class="anchor" id="table_ZoneMarker"></a>
-					<h3>ZoneMarker</h3>
-					<p>
-						Zone marker fields are the same as a ReferencePoint marker.
-					</p>
-			</div>			
+                <hr>
+                <a class="anchor" id="table_MineClearMission"></a>
+                <h3>MineClearMission</h3>
+                <p>
+                    MineClearMission options; these are updated by ScenEdit_SetMission()
+                </p>
+                <h4>Fields</h4>
+                <table class="table_borders" style="width: 100%; margin-left: 0px;">
+                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <td><span class="parameter">OneThirdRule</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">TransitThrottleAircraft</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">TransitAltitudeAircraft</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">TransitTerrainFollowingAircraft</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StationThrottleAircraft</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StationAltitudeAircraft</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StationTerrainFollowingAircraft</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">TransitThrottleSubmarine</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">TransitDepthSubmarine</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StationThrottleSubmarine</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StationDepthSubmarine</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">TransitThrottleShip</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StationThrottleShip</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">FlightSize</span>
+                        <td><span class="types"><a href="#Size">Size</a></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">MinAircraftReq</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">UseFlightSize</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">GroupSize</span>
+                        <td><span class="types"><a href="#Size">Size</a></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">UseGroupSize</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">Zone</span>
+                        <td>
+                            <span class="types"><span class="string">name</span></span> or <span class="types">
+                                <span class="string">GUID</span>
+                            </span>
+                            Table of reference point names and/or GUIDs
+                    </tr>
+                </table>
+
+
+                <hr>
+                <a class="anchor" id="table_MineMission"></a>
+                <h3>MineMission</h3>
+
+
+                MineMission.
+                .. options; these are updated by ScenEdit_SetMission()
+                </ul>
+                <h4>Fields</h4>
+                <table class="table_borders" style="width: 100%; margin-left: 0px;">
+                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <td><span class="parameter">OneThirdRule</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">TransitThrottleAircraft</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">TransitAltitudeAircraft</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">TransitTerrainFollowingAircraft</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StationThrottleAircraft</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StationAltitudeAircraft</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StationTerrainFollowingAircraft</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">TransitThrottleSubmarine</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">TransitDepthSubmarine</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StationThrottleSubmarine</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StationDepthSubmarine</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">TransitThrottleShip</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StationThrottleShip</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">FlightSize</span>
+                        <td><span class="types"><a href="#Size">Size</a></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">Minaircraftreq</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">UseFlightSize</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">GroupSize</span>
+                        <td><span class="types"><a href="#Size">Size</a></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">UseGroupSize</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">Zone</span>
+                        <td><span class="table">table</span>
+                        <td>Table of reference point names and/or GUIDs
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">Armingdelay</span>
+                        <td><span class="types"><span class="type">time</span></span>
+                        <td>
+                            In format of 'days:hours:minutes:seconds' e.g. 1 day, 4 hours, 30 minutes would be
+                            '1:4:30:0'
+                    </tr>
+                </table>
+
+                <hr>
+                <a class="anchor" id="table_Mount"></a>
+                <h3>Mount</h3>
+                <p>
+                    A mount is similar to a magazine, but it refers to the actual <code>loads</code> on the
+                    <code>weapon</code>, rather than a storage area.
+                </p>
+                <h4>Fields</h4>
+                <table class="table_borders" style="width: 100%; margin-left: 0px;">
+                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <td><span class="parameter">mount_dbid</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Database ID
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">mount_GUID</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>GUID
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">mount_name</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Name
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">mount_status</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Status
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">mount_statusR</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Reason why inoperative [if not operational]
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">mount_damage</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Damage Severity [if not operational]
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">mount_weapons</span>
+                        <td><span class="table"><a href="#table_WeaponLoaded">WeaponLoaded</a></span>
+                        <td>Table of weapon loads on mount
+                    </tr>
+                </table>
+
+                <hr>
+                <a class="anchor" id="table_PatrolMission"></a>
+                <h3>PatrolMission</h3>
+                <p>
+                    PatrolMission options; these are updated by ScenEdit_SetMission()
+                </p>
+                </ul>
+                <h4>Fields</h4>
+                <table class="table_borders" style="width: 100%; margin-left: 0px;">
+                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <td><span class="parameter">type</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>
+                            Subtype of mission (ASW = 'asw', ASuW_Naval = 'naval', AAW = 'aaw', ASuW_Land = 'land',
+                            ASuW_Mixed =
+                            'mixed', SEAD = 'sead', SeaControl = 'sea')
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">OneThirdRule</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                        <td>True if activated
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">CheckOPA</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                        <td>True if can investigate outside zones
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">CheckWWR</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                        <td>True if can investigate within weapon range
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">ActiveEMCON</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                        <td>True if active EMCON in patrol zone
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">TransitThrottleAircraft</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">TransitAltitudeAircraft</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">TransitTerrainFollowingAircraft</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                        <td>True if terrain following
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StationThrottleAircraft</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StationAltitudeAircraft</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StationTerrainFollowingAircraft</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                        <td>True if terrain following
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">AttackThrottleAircraft</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">AttackAltitudeAircraft</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">AttackTerrainFollowingAircraft</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                        <td>True if terrain following
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">AttackDistanceAircraft</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">TransitThrottleSubmarine</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">TransitDepthSubmarine</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StationThrottleSubmarine</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StationDepthSubmarine</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">AttackThrottleSubmarine</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">AttackDepthSubmarine</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">AttackDistanceSubmarine</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">TransitThrottleShip</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StationThrottleShip</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">AttackThrottleShip</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">AttackDistanceShip</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">FlightSize</span>
+                        <td><span class="types"><a href="#Size">Size</a></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">MinAircraftReq</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">UseFlightSize</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                        <td>True if min size required
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">GroupSize</span>
+                        <td><span class="types"><a href="#Size">Size</a></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">UseGroupSize</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                        <td>True if min size required
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">ProsecutionZone</span>
+                        <td>
+                            <span class="types"><span class="string">name</span></span> or <span class="types">
+                                <span class="string">GUID</span>
+                            </span>
+                        <td>Table of reference point names and/or GUIDs
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">PatrolZone</span>
+                        <td>
+                            <span class="types"><span class="string">name</span></span> or <span class="types">
+                                <span class="string">GUID</span>
+                            </span>
+                        <td>Table of reference point names and/or GUIDs
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">FlightsToInvestigate</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">FlightsToEngage</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">WingmanEngageDistance</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">BoatsToInvestigate</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">BoatsToEngage</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">GroupMemberEngageDistance</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                </table>
+
+                <hr>
+                <a class="anchor" id="table_Sensor"></a>
+                <h3>Sensor</h3>
+                <p>
+                    A list of sensors associated with a <span class="wrapper"><a href="Wrappers.html#wrapper_Unit">Unit</a></span> wrapper
+                </p>
+                <h4>Fields</h4>
+                <table class="table_borders" style="width: 100%; margin-left: 0px;">
+                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <td><span class="parameter">sensor_dbid</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>The DBID of the sensor.
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">sensor_guid</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>The GUID of the sensor.
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">sensor_name</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>The name of the sensor.
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">sensor_type</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>The high-level type of sensor.
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">sensor_role</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>The role of the sensor (e.g. 3D Air Search - Medium Range).
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">sensor_maxrange</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>The maximum range of the sensor.
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">sensor_status</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>The operational status of the sensor.
+                    </tr>
+                    <tr>
+                    <td><span class="parameter">sensor_isactive</span>
+                    <td><span class="types"><span class="boolean">boolean</span></span>
+                    <td>
+                        Whether the sensor is active or not.
+                    </tr>
+                </table>
+                <div class="note-alert">
+                    <p>
+                        <strong>Note:</strong> To set sensor on or off, use a table of <code>{sensor_guid,sensor_isactive}</code>
+                    </p>
+                </div>
+                <div class="note-caution">
+                    <p>
+                        <strong>Caution:</strong> The GUID returned here is the GUID of the individual sensor component, not the GUID of the parent unit.
+                    </p>
+                </div>
+
+                <!--
+                <hr>
+                <a class="anchor" id="table_SideContact"></a>
+                <h3>SideContact</h3>
+                <p>
+                    Side's contact.
+                </p>
+                <h4>Fields</h4>
+                <ul class="ul-no-bullets">
+                    <li>
+                        <span class="parameter">GUID</span>
+                        <span class="types"><span class="string">string</span></span>
+                        The GUID of the contact. Note that this is not the GUID of the unit, you must use VP_GetUnit
+                        to
+                        resolve
+                        it.
+                    </li>
+                    <li>
+                        <span class="parameter">name</span>
+                        <span class="types"><span class="string">string</span></span>
+                        The name of the contact.
+                    </li>
+                </ul>
+                <hr>
+                <a class="anchor" id="table_SideDescription"></a>
+                <h3>SideDescription</h3>
+                <p>
+                    Information on how to change a unit's side.
+                </p>
+
+                <h4>Fields</h4>
+                <ul class="ul-no-bullets">
+                    <li>
+                        <span class="parameter">side</span>
+                        <span class="types"><span class="string">string</span></span>
+                        The original side
+                    </li>
+                    <li>
+                        <span class="parameter">name</span>
+                        <span class="types"><span class="string">string</span></span>
+                        The name/GUID of the unit
+                    </li>
+                    <li>
+                        <span class="parameter">newside</span>
+                        <span class="types"><span class="string">string</span></span>
+                        The new side
+                    </li>
+                </ul>
+                <div class="note-caution">
+                    <p>
+                        <strong>Caution:</strong> The order in which these paramaters are passed is important!
+                    </p>
+                </div>
+                <hr>
+                <a class="anchor" id="table_SideSelector"></a>
+                <h3>SideSelector </h3>
+                <p>
+                    Information to select a particular side.
+                </p>
+                <h4>Fields</h4>
+                <ul class="ul-no-bullets">
+                    <li>
+                        <span class="parameter">GUID</span>
+                        <span class="types"><span class="string">string</span></span>
+                        The GUID of the side to select. Preferred.
+                    </li>
+                    <li>
+                        <span class="parameter">Name</span>
+                        <span class="types"><span class="string">string</span></span>
+                        The name of the side to select.
+                    </li>
+                </ul>
+                <hr>
+                <a class="anchor" id="table_SideUnit"></a>
+                <h3>SideUnit</h3>
+                <p>
+                    Side's unit.
+                </p>
+                <h4>Fields</h4>
+                <ul class="ul-no-bullets">
+                    <li>
+                        <span class="parameter">GUID</span>
+                        <span class="types"><span class="string">string</span></span>
+                        The GUID of the unit. This is the actual GUID.
+                    </li>
+                    <li>
+                        <span class="parameter">name</span>
+                        <span class="types"><span class="string">string</span></span>
+                        The name of the unit.
+                    </li>
+                </ul>
+                    -->
+
+                <hr>
+                <a class="anchor" id="table_StrikeMission"></a>
+                <h3>StrikeMission</h3>
+                <p>
+                    StrikeMission options; these are updated by ScenEdit_SetMission(). Note that these are split
+                    between
+                    the escorts and strikers
+                </p>
+                <h4>Fields</h4>
+                <table class="table_borders" style="width: 100%; margin-left: 0px;">
+                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <td><span class="parameter">type</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>
+                            Subtype of mission (Air_Intercept = 'air', Land_Strike = 'land', Maritime_Strike = 'sea',
+                            Sub_Strike =
+                            'sub')
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">EscortFlightSizeShooter</span>
+                        <td><span class="types"><a href="#Size">Size</a></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">EscortMinShooter</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">EscortMaxShooter</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">EscortResponseRadius</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">EscortUseFlightSize</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                        <td>True if minimum size required
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">EscortFlightSizeNonshooter</span>
+                        <td><span class="types"><a href="#Size">Size</a></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">EscortMinNonshooter</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">EscortMaxNonshooter</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">EscortGroupSize</span>
+                        <td><span class="types"><a href="#Size">Size</a></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">EscortUseGroupSize</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                        <td>True if minimum size required
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StrikeOneTimeOnly</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                        <td>True if activated
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StrikeMinimumTrigger</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StrikeMax</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StrikeFlightSize</span>
+                        <td><span class="types"><a href="#Size">Size</a></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StrikeMinAircraftReq</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StrikeUseFlightSize</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                        <td>True if minimum size required
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StrikeGroupSize</span>
+                        <td><span class="types"><a href="#Size">Size</a></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StrikeUseGroupSize</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                        <td>True if minimum size required
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StrikeAutoPlanner</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                        <td>True if activated
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StrikePreplan</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                        <td>True if pre-planned target list only
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StrikeRadarUasge</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Radar usage
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StrikeMinDistAircraft</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Strike minimum distance
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StrikeMaxDistAircraft</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Strike maximum distance
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StrikeMinDistShip</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Strike minimum distance
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StrikeMaxDistShip</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Strike maximum distance
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">FlightsToInvestigate</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">FlightsToEngage</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">WingmanEngageDistance</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">BoatsToInvestigate</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">BoatsToEngage</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">GroupMemberEngageDistance</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                </table>
+
+                <hr>
+                <a class="anchor" id="table_SupportMission"></a>
+                <h3>SupportMission</h3>
+                <p>
+                    SupportMission options; these are updated by ScenEdit_SetMission()
+                </p>
+                <h4>Fields</h4>
+                <table class="table_borders" style="width: 100%; margin-left: 0px;">
+                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <td><span class="parameter">OneThirdRule</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">TransitThrottleAircraft</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">TransitAltitudeAircraft</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">TransitTerrainFollowingAircraft</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StationThrottleAircraft</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StationAltitudeAircraft</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StationTerrainFollowingAircraft</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">TransitThrottleSubmarine</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">TransitDepthSubmarine</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StationThrottleSubmarine</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StationDepthSubmarine</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">TransitThrottleShip</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">StationThrottleShip</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">FlightSize</span>
+                        <td><span class="types"><a href="#Size">Size</a></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">MinAircraftReq</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">UseFlightSize</span>
+                        <td><span class="types"><span class="type">boo</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">GroupSize</span>
+                        <td><span class="types"><a href="#Size">Size</a></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">UseGroupSize</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">Zone</span>
+                        <td>
+                            <span class="types"><span class="string">name</span></span> or <span class="types">
+                                <span class="string">GUID</span>
+                            </span>
+                        <td>Table of reference point names and/or GUIDs
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">LoopType</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Values of ContinousLoop(0) or SingleLoop(1)
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">OnStation</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">OneTimeOnly</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">ActiveEMCON</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">TankerOneTime</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">TankerMaxReceivers</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                    </tr>
+                    <!-- 						<li>
+            <span class="parameter">ccenable</span>
+            <span class="types"><span class="string">string</span></span>
+        </li>
+        <li>
+            <span class="parameter">ccallowqra</span>
+            <span class="types"><span class="string">string</span></span>
+        </li>
+        <li>
+            <span class="parameter">ccflightgenmethod</span>
+            <span class="types"><span class="string">string</span></span>
+        </li>
+        <li>
+            <span class="parameter">ccstationtime</span>
+            <span class="types"><span class="string">string</span></span>
+        </li>
+        <li>
+            <span class="parameter">ccoverlap</span>
+            <span class="types"><span class="string">string</span></span>
+        </li> -->
+                </table>
+
+                <hr>
+                <a class="anchor" id="table_WRA"></a>
+                <h3>WRA</h3>
+                <p>WRA settings</p>
+                <h4>Fields</h4>
+                <table class="table_borders" style="width: 100%; margin-left: 0px;">
+                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <td><span class="parameter">qty_salvo</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Weapons per salvo ('Max','None' or a number)
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">shooter_salvo</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Shooters per salvo ('Max','None' or a number)
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">firing_range</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Firing range ('Max','None' or a number)
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">self_defence</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Self-defence range ('Max','None' or a number)
+                    </tr>
+                </table>
+                <div class="note-alert">
+                    <p>
+                        <strong>Note:</strong> The absence of a field implies that it is <strong>not</strong> used.
+                    </p>
+                </div>
+
+                <hr>
+                <!--
+    <a class="anchor" id="table_Waypoint"></a>
+    <h3>Waypoint</h3>
+    <p>
+        Waypoint describing the long/lat points as in a plotted course
+    </p>
+    <h4>Fields</h4>
+    <ul class="ul-no-bullets">
+        <li>
+            <span class="parameter">longitude</span>
+            <span class="types"><span class="number">number</span></span>
+        </li>
+        <li>
+            <span class="parameter">latitude</span>
+            <span class="types"><span class="number">number</span></span>
+        </li>
+        <li>
+            <span class="parameter">description</span>
+            <span class="types"><span class="string">string</span></span>
+        </li>
+        <li>
+            <span class="parameter">presetAltitude</span>
+            <span class="types"><span class="string">string</span></span>
+        </li>
+        <li>
+            <span class="parameter">presetDepth</span>
+            <span class="types"><span class="string">string</span></span>
+        </li>
+        <li>
+            <span class="parameter">presetThrottle</span>
+            <span class="types"><span class="string">string</span></span>
+        </li>
+        <li>
+            <span class="parameter">desiredAltitude</span>
+            <span class="types"><span class="number">number</span></span>
+        </li>
+        <li>
+            <span class="parameter">desiredSpeed</span>
+            <span class="types"><span class="number">number</span></span>
+        </li>
+        <li>
+            <span class="parameter">desiredAltitudeTF</span>
+            <span class="types"><span class="number">number</span></span>
+            Enter desired altitude AGL to set altitude as terrain-following
+        </li>
+    </ul>
+    <hr>
+    -->
+
+                <a class="anchor" id="table_WeaponLoaded"></a>
+                <h3>WeaponLoaded</h3>
+                <p>
+                    Weapon loads on mount or in magazine.
+                </p>
+                <h4>Fields</h4>
+                <table class="table_borders" style="width: 100%; margin-left: 0px;">
+                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <td><span class="parameter">wpn_GUID</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>GUID
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">wpn_current</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Current loads available
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">wpn_maxcap</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Maximum loads
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">wpn_default</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Default loads (to fill out)
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">wpn_name</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Name
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">wpn_dbid</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Database ID of weapon
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">wpn_type</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Type of weapon
+                    </tr>
+                </table>
+
+                <hr>
+                <a class="anchor" id="table_ZoneMarker"></a>
+                <h3>ZoneMarker</h3>
+                <p>
+                    Zone marker fields are the same as a ReferencePoint marker.
+                </p>
+            </div>			
 			<div id="footer">
 				<p>Copyright &copy; WarfareSims 2020</p>
 			</div>
