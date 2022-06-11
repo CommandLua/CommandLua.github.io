@@ -63,22 +63,90 @@
 
             <div id="main">
 
-                <h2><a class="anchor" id="FunctioName"></a>Function Syntax ( ... )</h2>
+                <h2><a class="anchor" id="ScenEdit_AddUnit"></a>ScenEdit_AddUnit (table)</h2>
                 <p>
-                    The function purpose
+                    This function adds a new unit to a side based on the supplied table.<br>
+                    As the function <a href="Function_ScenEdit_SetUnit.html">ScenEdit_SetUnit()</a> is called at the end of this function, any options not listed below will be passed into the next function.<br />
+                    There should be no need to call <a href="Function_ScenEdit_SetUnit.html">ScenEdit_SetUnit()</a> seperately.
                 </p>
-
                 <h3>Parameters</h3>
                 <ul>
-                    <li>List the parameters as in the Syntax line</li>
-                </ul>
-
-                <h3>Returns</h3>
-                <ul>
                     <li>
-                        Show the return value(s)
+                        <span class="parameter">table </span>
+                        <span class="table"> {} </span>
+                        The unit details to add. <br>Note that some settings will depend on the type of unit specified, eg aircraft generally need loadouts and altitude whereas neither is needed by a ship.
+                        <ul>
+                            <li>
+                                <span class="parameter">type = </span>
+                                <!--<span class="types"><span class="tooltip">string<span class="tooltiptext">Aircraft, Ship, Submarine, Facility, Weapon, Satellite</span></span></span>-->
+                                <span class="types"><span class="type"><a href="DataTypes.html#dataType_Unit__Types">UnitType</a></span></span>
+                                The description of the type of unit to add ( eg Ship, Sub, ...)
+                            </li>
+                            <li>
+                                <span class="parameter">unitname = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The name of the unit
+                            </li>
+                            <li>
+                                <span class="parameter">side = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The side name/GUID to add the unit to
+                            </li>
+                            <li>
+                                <span class="parameter">dbid = </span>
+                                <span class="types"><span class="number">number</span></span>
+                                The database id of the unit
+                            </li>
+                            <li>
+                                <span class="parameter">base = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                Unit base name/GUID where the unit will be 'hosted' (applies to types AIR, SHIP, SUB)
+                            </li>
+                            <li>
+                                <span class="parameter">latitude = </span>
+                                <span class="types"><a class="type" href="DataTypes.html#dataType_Latitude">Latitude</a></span>
+                                Not required if a <code>base</code> is defined as unit adopts that location
+                            </li>
+                            <li>
+                                <span class="parameter">longitude = </span>
+                                <span class="types"><a class="type" href="DataTypes.html#dataType_Longitude">Longitude</a></span>
+                                Not required if a <code>base</code> is defined as adopts that location
+                            </li>
+                            <li>
+                                <span class="parameter">altitude = </span>
+                                <span class="types"><a class="type" href="DataTypes.html#dataType_Altitude">Altitude</a></span>
+                                The Unit altitude (applies to AIR). If a <code>base</code> is defined, it will adopt it's altitude
+                            </li>
+                            <li>
+                                <span class="parameter">loadoutid = </span>
+                                <span class="types"><span class="number">number</span></span>
+                                Aircraft database loadout id (applies to type AIR)
+                            </li>
+                            <!-- not used in AddUnit but is in SetUnit>
+                    <li>
+                    <span class="parameter">depth = </span>
+                    <span class="types"><a class="type" href="DataTypes.html#Altitude">Depth</a></span>
+                    Unit depth (applicable to SUBMARINE - note there is no sign)
+                    </li>
+                <-->
+                            <li>
+                                <span class="parameter">orbit = </span>
+                                <span class="types"><span class="number">number</span></span>
+                                Orbit index (applies to type SATELLITE)
+                            </li>
+                            <li>
+                                <span class="parameter">guid = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                Optional custom GUID to override the auto generated one
+                            </li>
+                        </ul>
                     </li>
                 </ul>
+  
+              <h4>Returns</h4>
+                <p>
+                    <span class="wrapper"><a href="Wrappers.html#wrapper_Unit">Unit</a></span> A wrapper defining the added unit. This will be nil if the function failed to add the unit.
+                </p>
 
                 <h4>Example</h4>
                 <div class="example">
