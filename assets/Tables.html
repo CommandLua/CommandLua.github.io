@@ -64,6 +64,7 @@
                 <h2>Tables</h2>
                 <p>
                     Tables are sections that have related data attached to them. <br />
+					In general, they are referenced as Lua tables. <br />
                     Like wrappers, the content of these may be modified either directly (<strong>object.field</strong>) or by some ScenEdit_Setxxx( {..<strong>field=</strong>....} ) function.<br>
                 </p>
                 <ul class="ul-2-columns">
@@ -614,9 +615,14 @@
                 <a class="anchor" id="table_Formation"></a>
                 <h3>Formation</h3>
                 <p>
-                    Information related to keeping formation in a group<br />
+                    This contains the information related to keep units of a group in formation.<br />
+					There are several predefined formation settings located in 'Resources\Formation\StandardFormations.txt'.
+					These can be used to set a group's base formation stations.<br />
+					Indivdual units in the formation can have their station changed.</br />
+					<p>
                     The field values for a selected unit are "bearing", "type", "distance", "sprint"<br />
                     The field values for a selected group are "name", "spacing", "spacing_unit", "bearing", "transpose" <br />
+					</p>
                 </p>
                 <h4>Fields</h4>
                 <p>For setting a unit's station in the current formation</p>
@@ -653,7 +659,7 @@
                         <td><span class="parameter">name</span>
                         <td><span class="types"><span class="string">string</span></span>
                         <td>Formation name</td>
-                        <td>Use 'name' from the default settings file (Resources\Formation\StandardFormations.txt)</td>
+                        <td>The name from the formation setting file</td>
                     </tr>
                     <tr>
                         <td><span class="parameter">spacing</span>
@@ -675,16 +681,40 @@
                         <td><span class="types"><span class="number">number</span></span>
                         <td>Desired bearing of formation lead (0-360)</td>
                         <td>
-                            Use the group lead's current heading
+                            Uses the group lead's current heading if not used
                         </td>
                     </tr>
                     <tr>
                         <td><span class="parameter">transpose</span>
                         <td><span class="types"><span class="boolean">True/False</span></span>
-                        <td>Units jump to new stations in formation immediately</td>
+                        <td>Units jump to the new stations immediately</td>
                         <td></td>
                     </tr>
                 </table>
+				<h5>Example</h5>
+				<div class="example">
+					<code>
+local g = ScenEdit_GetUnit( {name='CVN BG', guid='9506a165-6e44-40dd-b721-f9c07e056bdb'})<br />
+print (g.group.unitlist )  -- list of units in the group<br />
+local u_gid = g.group.unitlist[6]  -- changing station of 6th unit in the group<br />
+local u = ScenEdit_GetUnit( {guid=u_gid})<br />
+print(u.formation) -- before update<br />
+u.formation = {type='fixed', sprint=false, bearing=45, distance=5} -- station = fixed bearing 45 deg at 5 NM from lead<br />
+print(u.formation) -- after update<br />
+					<br />
+					<output>
+					-- list of units in the group<br />
+{ [1] = 'ee495732-1637-463a-b6c9-e2564150c8bf', [2] = '34c6939a-8aef-452b-9186-31763fe82e14',<br />
+ [3] = 'b75cf3ed-c2f9-4a70-b8a2-f9506d2c2678', [4] = 'a113ca86-ce8f-4dae-8351-7b89ff3a3e81',<br />
+ [5] = '7d149655-bfca-4364-a06a-3652a9b701ed', [6] = 'e65feada-4529-4223-82df-522be44c7af9',<br />
+ [7] = '3edf9d1d-9439-49cf-a28f-0ea99e551ca0', [8] = 'e0ad9db3-730b-45e5-8c45-2daa8f08a419' }<br />
+					-- before update<br />
+{ sprint = 'False', longitude = 138.234750179072, bearing = 48.5445709228516, latitude = 34.2548706829701, guid = 'e65feada-4529-4223-82df-522be44c7af9', type = 'Rotating', distance = 0.663772463798523 }<br />
+					-- after update<br />
+{ sprint = 'False', longitude = 138.295780804378, bearing = 44.8684692382813, latitude = 34.3064951630114, guid = 'e65feada-4529-4223-82df-522be44c7af9', type = 'Fixed', distance = 4.99721479415894 }<br />
+					</output>
+					</code>
+				</div>
 
                 <hr>
                 <a class="anchor" id="table_LastDetections"></a>
