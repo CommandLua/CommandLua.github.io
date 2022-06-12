@@ -95,6 +95,7 @@
                     <li><span class="table"><a href="#table_WRA">WRA</a></span></li>
                     <!-- li><span class="table"><a href="#table_Waypoint">Waypoint</a></span></li-->
                     <li><span class="table"><a href="#table_WeaponLoaded">WeaponLoaded</a></span></li>
+                    <li><span class="table"><a href="#table_Weather">Weather</a></span></li>
                     <li><span class="table"><a href="#table_ZoneMarker">ZoneMarker</a></span></li>
                 </ul>
                 <br>
@@ -360,8 +361,8 @@
                         <td>Damage Severity [if not operational]
                     </tr>
                 </table>
-
                 <hr>
+
                 <a class="anchor" id="table_EMmatch"></a>
                 <h3>EMmatch</h3>
                 <p>
@@ -401,6 +402,19 @@
                         <td>Applicable to Facility and Ships
                     </tr>
                 </table>
+				<h5>Example</h5>
+				<div class="example">
+					<code>
+						local u = ScenEdit_GetContact( { side='united states', guid='Y5QK8V-0HM1KMFEQFV13'} )<br />
+						print(u.potentialmatches)<br />
+					<br />
+					<output>
+{<br />
+ [1] = { DBID = 2835, CATEGORY = SurfaceCombatant, SUBTYPE = 3303, TYPE = FFG, MISSILE_DEFENCE = 16, NAME = 'F 495 Gediz [Perry, Gabya Class]' } <br />
+}
+					</output>
+					</code>
+				</div>
 
                 <hr>
                 <a class="anchor" id="table_Emissions"></a>
@@ -452,7 +466,29 @@
                         <td>Sensor maximum range (nm)
                     </tr>
                 </table>
-                <!--
+
+				<h5>Example</h5>
+				<div class="example">
+					<code>
+						local u = ScenEdit_GetContact({side='united states',guid='Y5QK8V-0HM1KMFEQFV13'})<br />
+						print(u.emissions)
+					<br />
+					<output>
+{ <br>
+ [1] = { sensor_role = 2143, sensor_dbid = 1484, sensor_type = 2001, sensor_maxrange = 48, Name = 'AN/SPG-60 STIR [Mk86 FCS, Radar] (Radar, FCR, Surface-to-Air & Surface-to-Surface, Short-Range)', Age = 0.300000011920929, name = 'AN/SPG-60 STIR [Mk86 FCS, Radar] (Radar, FCR, Surface-to-Air & Surface-to-Surface, Short-Range)', Solid = 'Yes', solid = 'Yes', sensor_name = 'AN/SPG-60 STIR [Mk86 FCS, Radar]', age = 0.300000011920929 },<br />
+ [2] = { sensor_role = 2028, sensor_dbid = 1642, sensor_type = 2001, sensor_maxrange = 35, Name = 'AN/SPS-55 (Radar, Surface Search & Navigation)', Age = 0.300000011920929, name = 'AN/SPS-55 (Radar, Surface Search & Navigation)', Solid = 'Yes', solid = 'Yes', sensor_name = 'AN/SPS-55', age = 0.300000011920929 },<br />
+ [3] = { sensor_role = 2028, sensor_dbid = 1501, sensor_type = 2001, sensor_maxrange = 20, Name = 'Furuno (Radar, Surface Search & Navigation)', Age = 0.300000011920929, name = 'Furuno (Radar, Surface Search & Navigation)', Solid = 'Yes', solid = 'Yes', sensor_name = 'Furuno', age = 0.300000011920929 },<br />
+ [4] = { sensor_role = 2201, sensor_dbid = 3115, sensor_type = 2001, sensor_maxrange = 128, Name = 'Mk92 Mod 12 CAS (Radar Illuminator, Long-Range)', Age = 0.300000011920929, name = 'Mk92 Mod 12 CAS (Radar Illuminator, Long-Range)', Solid = 'Yes', solid = 'Yes', sensor_name = 'Mk92 Mod 12 CAS', age = 0.300000011920929 },<br />
+ [5] = { sensor_role = 2014, sensor_dbid = 2238, sensor_type = 2001, sensor_maxrange = 135, Name = 'SMART-S Mk2 (Radar, Air & Surface Search, 3D Medium-Range)', Age = 0.300000011920929, name = 'SMART-S Mk2 (Radar, Air & Surface Search, 3D Medium-Range)', Solid = 'Yes', solid = 'Yes', sensor_name = 'SMART-S Mk2', age = 0.300000011920929 },<br />
+ [6] = { sensor_role = 2133, sensor_dbid = 4226, sensor_type = 2001, sensor_maxrange = 2.70000004768372, Name = 'AN/VPS-2 Search/Track [Mk16 CWIS] (Radar, FCR, Surface-to-Air, Short-Range)', Age = 0.300000011920929, name = 'AN/VPS-2 Search/Track [Mk16 CWIS] (Radar, FCR, Surface-to-Air, Short-Range)', Solid = 'Yes', solid = 'Yes', sensor_name = 'AN/VPS-2 Search/Track [Mk16 CWIS]', age = 0.300000011920929 } <br />
+}
+					</output>
+					</code>
+				</div>
+ 
+
+
+ <!--
     <hr>
     <a class="anchor" id="table_Explosion"></a>
     <h3>Explosion</h3>
@@ -679,7 +715,31 @@
                         <td><span class="types"><span class="number">number</span></span>
                         <td>Estimated range at detect time
                     </tr>
+                    <tr>
+                        <td><span class="parameter">special_mode</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Special detect mode
+                    </tr>
                 </table>
+				<h5>Example</h5>
+				<div class="example">
+					<code>
+						local u = ScenEdit_GetContact( { side='united states', guid='Y5QK8V-0HM1KMFEQFV13'} )<br />
+						print(u.lastDetections)<br />
+					<br />
+					<output>
+{<br />
+ [1] = { detect_sensor_guid = 'Y5QK8V-0HM1KMFEOGK6H', special_mode = None, detector_guid = 'Y5QK8V-0HM1KMFEOGK6C', age = 0, range = 81.1426696777344 },<br>
+ [2] = { detect_sensor_guid = 'Y5QK8V-0HM1KMFEOGK6H', special_mode = None, detector_guid = 'Y5QK8V-0HM1KMFEOGK6C', age = 0, range = 81.1426696777344 },<br>
+ [3] = { detect_sensor_guid = 'Y5QK8V-0HM1KMFEOGJVP', special_mode = None, detector_guid = 'Y5QK8V-0HM1KMFEOGJVK', age = 0, range = 60.0935401916504 },<br>
+..<br>
+ [48] = { detect_sensor_guid = 'Y5QK8V-0HM1KMFEOGLD1', special_mode = None, detector_guid = 'Y5QK8V-0HM1KMFEOGLCU', age = 1, range = 58.4287376403809 },<br>
+ [49] = { detect_sensor_guid = 'Y5QK8V-0HM1KMFEOGLH6', special_mode = None, detector_guid = 'Y5QK8V-0HM1KMFEOGLH2', age = 1, range = 64.2896118164063 },<br>
+ [50] = { detect_sensor_guid = 'Y5QK8V-0HM1KMFEOGLH6', special_mode = None, detector_guid = 'Y5QK8V-0HM1KMFEOGLH2', age = 1, range = 64.2896118164063 }<br>
+ }
+					</output>
+					</code>
+				</div>
 
                 <hr>
                 <a class="anchor" id="table_LatLon"></a>
@@ -1731,8 +1791,8 @@
                     </p>
                 </div>
 
-                <hr>
                 <!--
+                <hr>
     <a class="anchor" id="table_Waypoint"></a>
     <h3>Waypoint</h3>
     <p>
@@ -1780,7 +1840,7 @@
     </ul>
     <hr>
     -->
-
+                <hr>
                 <a class="anchor" id="table_WeaponLoaded"></a>
                 <h3>WeaponLoaded</h3>
                 <p>
@@ -1823,6 +1883,35 @@
                         <td><span class="parameter">wpn_type</span>
                         <td><span class="types"><span class="string">string</span></span>
                         <td>Type of weapon
+                    </tr>
+                </table>
+
+                <hr>
+                <a class="anchor" id="table_Weather"></a>
+                <h3>Weather</h3>
+                <p>Weather conditions.</p>
+                <h4>Fields</h4>
+                <table class="table_borders" style="width: 100%; margin-left: 0px;">
+                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <td><span class="parameter">temp</span>
+						<td><span class="types"><span class="number">number</span></span>
+						<td> Temperature (average for GetWeather(), or time-of-day for unit/contact)
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">rainfall</span>
+						<td><span class="types"><span class="number">number</span></span> 
+						<td>Rainfall rate
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">undercloud</span>
+						<td><span class="types"><span class="number">number</span></span> 
+						<td>Fraction under cloud
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">seastate</span>
+						<td><span class="types"><span class="number">number</span></span>
+						<td>Sea state
                     </tr>
                 </table>
 

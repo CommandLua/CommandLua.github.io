@@ -110,6 +110,12 @@ code::before {
  content:" "
 }
 
+.example output {
+	color: darkblue;
+	background-color: #fae0f0;
+}
+
+
 strong {
 	font-weight: 600;
 }

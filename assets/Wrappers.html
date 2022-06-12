@@ -104,25 +104,26 @@ end<br>
 					<li><span class="wrapper"><a href="#wrapper_WayPoint">Waypoint</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_Zone">Zone</a></span></li>
 				</ul>
+
 				<hr>
 				<a class="anchor" id="wrapper_Contact"></a>
 				<h3>Contact</h3>
 				<p> This is from the perspective of the side being looked at. What is a contact for one side, may not be the
-					same contact on another side.
+					same contact on another side.<br>
 					Note also the GUID of the contact is not the same as the actual unit. So depending on what functions you
 					call, you may need to
-					'convert' the contact 'GUID' into the actual 'GUID' and call ScenEdit_GetUnit() to process the actual GUID.
+					'convert' the contact 'GUID' into the actual 'GUID' and call <a href="Function_ScenEdit_GetUnit.html">ScenEdit_GetUnit()</a> to process the actual GUID.
 				</p>
-	<table class="table_borders" style="width: 100%; margin-left: 0px;">
-   	<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+				<table class="table_borders" style="width: 100%; margin-left: 0px;">
+				<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
 					<tr><td><span class="parameter">guid</span></td>
 					<td><span class="types"><span class="string">string</span></span></td>
-					<td>The contact GUID <span class="readonly">READ ONLY</span></td></td>
-					<td></tr>
+					<td>The contact GUID <span class="readonly">READ ONLY</span></td>
+					<td></td></tr>
 					<tr><td> <span class="parameter">name</span></td>
 					<td><span class="types"><span class="string">string</span></span></td>
 					<td>The contact name </td>
-					</td></tr>
+					<td></td></tr>
 					<tr><td><span class="parameter">actualunitid</span></td>
 					<td><span class="types"><span class="string">string</span></span></td>
 					<td>The contact actual unit GUID <span class="readonly">READ ONLY</span></td>
@@ -137,125 +138,125 @@ end<br>
 					<td></td></tr>
 					<tr><td><span class="parameter">speed</span></td>
 					<td><span class="types"><span class="number">number</span></span></td>
-					<td>Speed if known, else nil <span class="readonly">READ ONLY</span>
+					<td>Speed if known, else nil <span class="readonly">READ ONLY</span></td>
 					<td></td></tr>
 					<tr><td><span class="parameter">heading</span></td>
 					<td><span class="types"><span class="number">number</span></span></td>
-					<td>Heading if known, else nil<span class="readonly">READ ONLY</span>
+					<td>Heading if known, else nil<span class="readonly">READ ONLY</span></td>
 					<td></td></tr>
 					<tr><td><span class="parameter">altitude</span></td>
 					<td><span class="types"><span class="number">number</span></span></td>
-					<td>Altitude if known, else nil<span class="readonly">READ ONLY</span>
+					<td>Altitude if known, else nil<span class="readonly">READ ONLY</span></td>
 					<td></td></tr>
 					<tr><td><span class="parameter">posture</span></td>
 					<td><span class="types"><a href="DataTypes.html#dataType_Stance">Stance(letter)</a></span></td>
-					<td>Posture from the perspective of the owner of the contact
-					</td></tr>
+					<td>Posture from the perspective of the owner of the contact</td>
+					<td></td></tr>
 					<tr><td><span class="parameter">observer</span></td>
 					<td><span class="wrapper"><a href="#wrapper_Side">Side</a></span></td>
-					<td>The contact original detecting side or nil if same as requesting side <span class="readonly">READ ONLY</span>
+					<td>The contact original detecting side or nil if same as requesting side <span class="readonly">READ ONLY</span></td>
 					<td></td></tr>
 					<tr><td><span class="parameter">observer_posture</span></td>
 					<td><span class="types"><a href="DataTypes.html#dataType_Stance">Stance(letter)</a></span></td>
-					<td>Posture from the perspective of the original detector of the contact
-					</td></tr>
+					<td>Posture from the perspective of the original detector of the contact</td>
+					<td></td></tr>
 					<tr><td><span class="parameter">areaofuncertainty</span></td>
 					<td><span class="table"><a href="Tables.html#table_LatLon">LatLon</a></span></td>
-					<td>Table of points defining the area of contact<span class="readonly">READ ONLY</span>
+					<td>Table of points defining the area of contact<span class="readonly">READ ONLY</span></td>
 					<td></td></tr>
 					<tr><td><span class="parameter">type</span></td>
 					<td><span class="types"><a href="DataTypes.html#dataType_ContactType">ContactType</a></span></span></td>
-					<td>Type of contact <span class="readonly">READ ONLY</span>
-					</td></tr>
+					<td>Type of contact <span class="readonly">READ ONLY</span></td>
+					<td></td></tr>
 					<tr><td><span class="parameter">typed</span></td>
 					<td><span class="types"><span class="number">number</span></span></td>
-					<td>Type of contact as a number<span class="readonly">READ ONLY</span>
-					</td></tr>
+					<td>Type of contact as a number<span class="readonly">READ ONLY</span></td>
+					<td></td></tr>
 					<tr><td><span class="parameter">type_description</span></td>
 					<td><span class="types"><span class="string">string</span></span></td>
-					<td>Contact description based on detection classification <span class="readonly">READ ONLY</span>
-					</td></tr>
+					<td>Contact description based on detection classification <span class="readonly">READ ONLY</span></td>
+					<td></td></tr>
 					<tr><td><span class="parameter">actualunitdbid</span></td>
 					<td><span class="types"><span class="number">number</span></span></td>
-					<td>Actual unit DB id based on detection classification, else 0<span class="readonly">READ ONLY</span>
-					</td></tr>
+					<td>Actual unit DB id based on detection classification, else 0<span class="readonly">READ ONLY</span></td>
+					<td></td></tr>
 					<tr><td><span class="parameter">classificationlevel</span></td>
-					<td><span class="types"><a href="DataTypes.html#dataType_ContactIdStatus">IdStatus</a></span></span></td>
-					<td>Level of contact classification <span class="readonly">READ ONLY</span>
-					</td></tr>
+					<td><span class="types"><a href="DataTypes.html#dataType_ContactIdStatus">ContactIdStatus</a></span></span></td>
+					<td>Level of contact classification <span class="readonly">READ ONLY</span></td>
+					<td></td></tr>
 					<tr><td><span class="parameter">potentialmatches</span></td>
 					<td><span class="table"><a href="Tables.html#table_EMmatch">EMmatch</a></span></td>
-					<td>Table {EMmatch} of potential EMCON emission matches <span class="readonly">READ ONLY</span>
-					</td></tr>
+					<td>Table {EMmatch} of potential EMCON emission matches <span class="readonly">READ ONLY</span></td>
+					<td></td></tr>
 					<tr><td><span class="parameter">side</span></td>
 					<td><span class="wrapper"><a href="#wrapper_Side">Side</a></span></td>
-					<td>Contact actual side  if known, else nil <span class="readonly">READ ONLY</span>
-					</td></tr>
+					<td>Contact actual side  if known, else nil <span class="readonly">READ ONLY</span></td>
+					<td></td></tr>
 					<tr><td><span class="parameter">fromside</span></td>
 					<td><span class="wrapper"><a href="#wrapper_Side">Side</a></span></td>
-					<td>The side who owns this contact, else nil <span class="readonly">READ ONLY</span>
-					</td></tr>
+					<td>The side who owns this contact, else nil <span class="readonly">READ ONLY</span></td>
+					<td></td></tr>
 					<tr><td><span class="parameter">detectedBySide</span></td>
 					<td><span class="wrapper"><a href="#wrapper_Side">Side</a></span></td>
-					<td>Which side actually detected this contact (instead of having it shared by someone else)<span class="readonly">READ ONLY</span>
-					</td></tr>
+					<td>Which side actually detected this contact (instead of having it shared by someone else)<span class="readonly">READ ONLY</span></td>
+					<td></td></tr>
 					<tr><td><span class="parameter">missile_defence</span></td>
 					<td><span class="types"><span class="number">number</span></span></td>
-					<td>Applicable to Facility and Ships. If id is 'know class' or higher, else -1 for unknown contact <span class="readonly">READ ONLY</span>
-					</td></tr>
+					<td>Applicable to Facility and Ships. If id is 'know class' or higher, else -1 for unknown contact <span class="readonly">READ ONLY</span></td>
+					<td></td></tr>
 					<tr><td><span class="parameter">age</span></td>
 					<td><span class="types"><span class="number">number</span></span></td>
-					<td>How long has contact been detected for (in seconds) <span class="readonly">READ ONLY</span>
-					</td></tr>
+					<td>How long has contact been detected for (in seconds) <span class="readonly">READ ONLY</span></td>
+					<td></td></tr>
 					<tr><td><span class="parameter">BDA</span></td>
 					<td><span class="table">table</span></td>
-					<td>Table of battle damage assessment (FIRES, FLOOD, STRUCTURAL), else nil<span class="readonly">READ ONLY</span>
-					</td></tr>
+					<td>Table <span class="table">{ FIRES, FLOOD, STRUCTURAL }</span> of battle damage assessment, else nil<span class="readonly">READ ONLY</span></td>
+					<td></td></tr>
 					<tr><td><span class="parameter">emissions</span></td>
 					<td><span class="table"><a href="Tables.html#table_Emissions">Emissions</a></span></td>
-					<td>Table of detected emmissions from contact, else nil if no detected emissions<span class="readonly">READ ONLY</span>
-					</td></tr>
+					<td>Table of detected emmissions from contact, else nil if no detected emissions<span class="readonly">READ ONLY</span></td>
+					<td></td></tr>
 					<tr><td><span class="parameter">detectionBy</span></td>
 					<td><span class="table">table</span></td>
-					<td>Table of how long ago was detected by a sensor type (Radar, ESM, Visual, Infrared, SonarActive,
-						SonarPassive)<span class="readonly">READ ONLY</span>
+					<td>Table <span class="table">{ Visual, Infrared, Radar, ESM, SonarActive, SonarPassive }</span> of how long ago was detected by a sensor type. <span class="readonly">READ ONLY</span></td>
+					<td>Not all sensor types need to be present 
 					</td></tr>
 					<tr><td><span class="parameter">targetedBy</span></td>
 					<td><span class="table">table</span></td>
-					<td>Table of unit guids that have this contact as a target <br>
-						(Note that the starting idex of this table is '0' rather than '1' as normal Lua tables)<span class="readonly">READ ONLY</span>
+					<td>Table <span class="table">{ <span class="types"><span class="string">string</span></span>,<span class="types"><span class="string">string</span></span>, .... }</span> of unit guids that have this contact as a target	<span class="readonly">READ ONLY</span></td>
+					<td>(Note that the starting idex of this table is '0' rather than '1' as normal Lua tables)
 					</td></tr>
 					<tr><td><span class="parameter">firingAt</span></td>
 					<td><span class="table">table</span></td>
-					<td>Table of contact guids that this contact is firing at<br>
-						(Note that the starting idex of this table is '0' rather than '1' as normal Lua tables)<span class="readonly">READ ONLY</span>
+					<td>Table <span class="table">{ <span class="types"><span class="string">string</span></span>,<span class="types"><span class="string">string</span></span>, .... }</span> of contact guids that this contact is firing at<span class="readonly">READ ONLY</span></td>
+					<td>(Note that the starting idex of this table is '0' rather than '1' as normal Lua tables)
 					</td></tr>
 					<tr><td><span class="parameter">firedOn</span></td>
 					<td><span class="table">table</span></td>
-					<td>Table of guids that are firing on this contact<br>
-						(Note that the starting idex of this table is '0' rather than '1' as normal Lua tables)<span class="readonly">READ ONLY</span>
+					<td>Table <span class="table">{ <span class="types"><span class="string">string</span></span>,<span class="types"><span class="string">string</span></span>, .... }</span> of unit guids that are firing on this contact<span class="readonly">READ ONLY</span></td>
+					<td>(Note that the starting idex of this table is '0' rather than '1' as normal Lua tables)
 					</td></tr>
 					<tr><td><span class="parameter">DropContact</span></td>
 					<td><span class="types"><span class="method">method</span>()</span></td>
-					<td>Drops contact from the perspective side (who is looking at this contact)
-					</td></tr>
+					<td>Drops contact from the perspective side (who is looking at this contact)</td>
+					<td></td></tr>
 					<tr><td><span class="parameter">FilterOut</span></td>
 					<td><span class="types"><span class="boolean">True/False</span></span></td>
-					<td>Filtered out status on this contact
-					</td></tr>
+					<td>Filtered out status on this contact</td>
+					<td></td></tr>
 					<tr><td><span class="parameter">weather</span></td>
-					<td><span class="types"><a href="DataTypes.html#dataType_Weather">Weather</a></span></td>
-					<td>Table of weather parameters (temp, rainfall, underrain, seastate)
-					</td></tr>
+					<td><span class="types"><a href="Tables.html#table_Weather">Weather</a></span></td>
+					<td>Table of weather parameters</td>
+					<td></td></tr>
 					<tr><td><span class="parameter">inArea</span></td>
 					<td><span class="types"><span class="method">method</span>({area})</span></td>
-						<td> Is unit in the 'area' defined by table of RPs - returns <span class="types"><span class="boolean">True/False</span></span>
-					</td></tr>
+						<td> Is unit in the 'area' defined by table of RPs - returns <span class="types"><span class="boolean">True/False</span></span></td>
+					<td></td></tr>
 					<tr><td><span class="parameter">lastDetections</span></td>
 					<td><span class="table"><a href="Tables.html#table_LastDetections">LastDetections</a></span></td>
-					<td>Table of detects on the contact
-					</td></tr>
-	</table>
+					<td>Table of recent detections on the contact</td>
+					<td></td></tr>
+				</table>
 		
 				<hr>
 				<a class="anchor" id="wrapper_Doctrine"></a>
@@ -270,255 +271,221 @@ end<br>
 		
 				<p> When there is a string(number) option, the indicated string or it's number can be used.</p><br>
 		
-	<table class="table_borders" style="width: 100%; margin-left: 0px;">
-   	<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
-						<tr><td><span class="parameter">use_nuclear_weapons</span>
-						<td><span class="types"><span class="boolean">True/False</span></span>
-						<td>True if the unit should be able to employ nuclear weapons
-						</td></tr>
-						<tr><td><span class="parameter">engage_non_hostile_targets</span>
-						<td><span class="types"><span class="boolean">True/False</span></span>
-						<td>True if the unit should attempt hostile action against units that are not hostile
-						</td></tr>
-						<tr><td><span class="parameter">rtb_when_winchester</span>
-						<td><span class="types"><span class="boolean">True/False</span></span>
-						<td>True if the unit should return to base when out of							weapons
-						<td>Obsolete, see the new doctrine options 
-						</td></tr>
-						<tr><td><span class="parameter">ignore_plotted_course</span>
-						<td><span class="types"><span class="boolean">True/False</span></span>
-						<td>True if the unit should ignore plotted course
-						</td></tr>
-						<tr><td><span class="parameter">engaging_ambiguous_targets</span>
-						<td><span class="types"><a href="DataTypes.html#dataType_ROE#BTAT">AmbiguousTtargets</a></span>
-						<td>How is the ambiguosity of the target treated
-						<td>
-						</td></tr>
-						<tr><td><span class="parameter">automatic_evasion</span>
-						<td><span class="types"><span class="boolean">True/False</span></span>
-						<td>True if the unit should automatically evade
-						</td></tr>
-						<tr><td><span class="parameter">maintain_standoff</span>
-						<td><span class="types"><span class="boolean">True/False</span></span>
-						<td>True if the unit should try to avoid approaching its target, only valid for ships
-						</td></tr>
-						<tr><td><span class="parameter">use_refuel_unrep</span>
-						<td><span class="types"><a href="DataTypes.html#dataType_ROE#UNREP">UNREP</a></span></span>
-						<td>How is underway replenishment used
-						<td>
-						</td></tr>
-						<tr><td><span class="parameter">refuel_unrep_allied</span>
-						<td><span class="types"><a href="DataTypes.html#dataType_ROE#UNREP">UNREP Allies</a></span>
-						<td>Can Allied uniits be replenished</td>
-						<td>
-						</td></tr>
-						<tr><td><span class="parameter">engage_opportunity_targets</span>
-						<td><span class="types"><span class="boolean">True/False</span></span>
-						<td>True if the unit should take opportunistic shots
-						</td></tr>
-						<tr><td><span class="parameter">use_sams_in_anti_surface_mode</span>
-						<td><span class="types"><span class="boolean">True/False</span></span>
-						<td>True if SAMs should be used to engage surface targets
-						</td></tr>
-						<tr><td><span class="parameter">ignore_emcon_while_under_attack</span>
-						<td><span class="types"><span class="boolean">True/False</span></span>
-						<td>True if EMCON should be ignored and all systems should go active when engaged
-						</td></tr>
-						<tr><td><span class="parameter">quick_turnaround_for_aircraft</span>
-						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Yes = 0 <br> FightersAndASW = 1 <br>No = 2 </span></span></span>
-						<td>  
-						<td>
-						</td></tr>
-						<tr><td><span class="parameter">air_operations_tempo</span>
-						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Surge = 0 <br> Sustained = 1 </span></span></span>
-						<td>
-						<td>
-						</td></tr>
-						<tr><td><span class="parameter">kinematic_range_for_torpedoes</span>
-						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">AutomaticAndManualFire = 0 <br> ManualFireOnly = 1 <br> No = 2 </span></span></span>
-						<td>
-						<td>
-						</td></tr>
-						<tr><td><span class="parameter">weapon_control_status_air</span>
-						<td><span class="types"><a href="DataTypes.html#dataType_ROE#WCS">WCS</a></span>
-						<td>Weapon control for engaging air units</td>
-						<td>
-						</td></tr>
-						<tr><td><span class="parameter">weapon_control_status_surface</span>
-						<td><span class="types"><a href="DataTypes.html#dataType_ROE#WCS">WCS</a></span>
-						<td>Weapon control for engaging surface units</td>
-						<td>
-						</td></tr>
-						<tr><td><span class="parameter">weapon_control_status_subsurface</span>
-						<td><span class="types"><a href="DataTypes.html#dataType_ROE#WCS">WCS</a></span>
-						<td>Weapon control for engaging subsurface units</td>
-						<td>
-						</td></tr>
-						<tr><td><span class="parameter">weapon_control_status_land</span>
-						<td><span class="types"><a href="DataTypes.html#dataType_ROE#WCS">WCS</a></span>
-						<td>Weapon control for engaging land units</td>
-						<td>
-						</td></tr>
-						<tr><td><span class="parameter">fuel_state_planned</span>
-						<td><span class="types"><a href="DataTypes.html#dataType_ROE#FuelLevel">JokerFuelLevel</a></span>
-						<td></td>
-						<td>
-						</td></tr>
-						<tr><td><span class="parameter">fuel_state_rtb</span>
-						<td><span class="types"><a href="DataTypes.html#dataType_ROE#RTB_Behaviour">OnFuelRTB</a></span>
-						<td></td>
-						<td>
-						</td></tr>
-						<tr><td><span class="parameter">weapon_state_planned</span>
-						<td><span class="types"><a href="DataTypes.html#dataType_WeaponDoctrine"></a>WeaponDoctrine</a></span>
-						<td>See Weapon Doctrine table below
-						</td></tr>
-						<tr><td><span class="parameter">weapon_state_rtb</span>
-						<td><span class="types"><a href="DataTypes.html#dataType_ROE#RTB_Behaviour">OnWeaponRTB</a></span>
-						<td></td>
-						<td>
-						</td></tr>
-						<tr><td><span class="parameter">gun_strafing</span>
-						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">No = 0 <br> Yes = 1<span></span></span>
-						<td></td>
-						<td>
-						</td></tr>
-						<tr><td><span class="parameter">jettison_ordnance</span>
-						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">No = 0 <br> Yes = 1<span></span></span>
-						<td></td>
-						<td>
-						</td></tr>
-						<tr><td><span class="parameter">avoid_contact</span>
-						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">No = 0 <br> Yes_ExceptSelfDefence = 1 <br>Yes_Always = 2 <span></span></span>
-						<td></td>
-						<td>
-						</td></tr>
-						<tr><td><span class="parameter">dive_on_threat</span>
-						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Yes = 0 <br> Yes_ESM_Only = 1 <br> Yes_Ships20nm_Aircraft30nm = 2 <br> No = 3 <span></span></span>
-						<td></td>
-						<td>
-						</td></tr>
-						<tr><td><span class="parameter">recharge_on_patrol</span>
-						<td><span class="types"><a href="DataTypes.html#dataType_ROE#BatteryRecharge">BatteryRecharge</a></span>
-						<td></td>
-						<td>
-						</td></tr>
-						<tr><td><span class="parameter">recharge_on_attack</span>
-						<td><span class="types"><a href="DataTypes.html#dataType_ROE#BatteryRecharge">BatteryRecharge</a></span>
-						<td></td>
-						<td>
-						</td></tr>
-						<tr><td><span class="parameter">use_aip</span>
-						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">No = 0 <br> Yes_AttackOnly = 1 <br>Yes_Always = 2 <span></span></span>
-						<td></td>
-						<td>
-						</td></tr>
-						<tr><td><span class="parameter">dipping_sonar</span>
-						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Automatically_HoverAnd150ft = 0 <br> ManualAndMissionOnly = 1 <span></span></span>
-						<td></td>
-						<td>
-						</td></tr>
-						<tr><td><span class="parameter">bvr_logic</span>
-						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">StraightIn = 0 <br> Crank = 1 <br> Drag = 2 <span></span></span>
-						<td></td>
-						<td>
-						</td></tr>
-						<tr><td><span class="parameter">withdraw_on_damage</span>
-						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Ignore = 0 <br> Percent5 = 1 <br> Percent25 = 2 <br> Percent50 = 3 <br> Percent75 = 4 <span></span></span>
-						<td></td>
-						<td>
-						</td></tr>
-						<tr><td><span class="parameter">withdraw_on_fuel</span>
-						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Ignore = 0 <br> Bingo = 1 <br> Percent25 = 2 <br> Percent50 = 3 <br> Percent75 = 4 <br> Percent100 = 5 <span></span></span>
-						<td></td>
-						<td>
-						</td></tr>
-						<tr><td><span class="parameter">withdraw_on_attack</span>
-						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Ignore = 0 <br> Exhausted = 1 <br> Percent25 = 2 <br> Percent50 = 3 <br> Percent75 = 4 <br> Percent100 = 5 <span></span></span>
-						<td></td>
-						<td>
-						</td></tr>
-						<tr><td><span class="parameter">withdraw_on_defence</span>
-						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Ignore = 0 <br> Exhausted = 1 <br> Percent25 = 2 <br> Percent50 = 3 <br> Percent75 = 4 <br> Percent100 = 5 <span></span></span>
-						<td></td>
-						<td>
-						</td></tr>
-						<tr><td><span class="parameter">deploy_on_damage</span>
-						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Ignore = 0 <br> Percent5 = 1 <br> Percent25 = 2 <br> Percent50 = 3 <br> Percent75 = 4 <span></span></span>
-						<td></td>
-						<td>
-						</td></tr>
-						<tr><td><span class="parameter">deploy_on_fuel</span>
-						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Ignore = 0 <br> Bingo = 1 <br> Percent25 = 2 <br> Percent50 = 3 <br> Percent75 = 4 <br> Percent100 = 5 <span></span></span>
-						<td></td>
-						<td>
-						</td></tr>
-						<tr><td><span class="parameter">deploy_on_attack</span>
-						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Ignore = 0 <br> Exhausted = 1 <br> Percent25 = 2 <br> Percent50 = 3 <br> Percent75 = 4 <br> Percent100 = 5 <br> LoadFullWeapons = 6 <span></span></span>
-						<td></td>
-						<td>
-						</td></tr>
-						<tr><td><span class="parameter">deploy_on_defence</span>
-						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Ignore = 0 <br> Exhausted = 1 <br> Percent25 = 2 <br> Percent50 = 3 <br> Percent75 = 4 <br> Percent100 = 5 <br> LoadFullWeapons = 6 <span></span></span>
-						<td></td>
-						<td>
-						</td></tr>
-	</table>		
+				<table class="table_borders" style="width: 100%; margin-left: 0px;">
+				<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+					<tr><td><span class="parameter">use_nuclear_weapons</span>
+					<td><span class="types"><span class="boolean">True/False</span></span>
+					<td>True if the unit should be able to employ nuclear weapons
+					<td></tr>
+					<tr><td><span class="parameter">engage_non_hostile_targets</span>
+					<td><span class="types"><span class="boolean">True/False</span></span>
+					<td>True if the unit should attempt hostile action against units that are not hostile
+					<td></tr>
+					<tr><td><span class="parameter">rtb_when_winchester</span>
+					<td><span class="types"><span class="boolean">True/False</span></span>
+					<td>True if the unit should return to base when out of							weapons
+					<td>Obsolete, see the new doctrine options 
+					<td></tr>
+					<tr><td><span class="parameter">ignore_plotted_course</span>
+					<td><span class="types"><span class="boolean">True/False</span></span>
+					<td>True if the unit should ignore plotted course
+					<td></tr>
+					<tr><td><span class="parameter">engaging_ambiguous_targets</span>
+					<td><span class="types"><a href="DataTypes.html#dataType_ROE#BTAT">AmbiguousTtargets</a></span>
+					<td>How is the ambiguosity of the target treated
+					<td></td></tr>
+					<tr><td><span class="parameter">automatic_evasion</span>
+					<td><span class="types"><span class="boolean">True/False</span></span>
+					<td>True if the unit should automatically evade
+					<td></td></tr>
+					<tr><td><span class="parameter">maintain_standoff</span>
+					<td><span class="types"><span class="boolean">True/False</span></span>
+					<td>True if the unit should try to avoid approaching its target, only valid for ships
+					<td></td></tr>
+					<tr><td><span class="parameter">use_refuel_unrep</span>
+					<td><span class="types"><a href="DataTypes.html#dataType_ROE#UNREP">UNREP</a></span></span>
+					<td>How is underway replenishment used
+					<td></td></tr>
+					<tr><td><span class="parameter">refuel_unrep_allied</span>
+					<td><span class="types"><a href="DataTypes.html#dataType_ROE#UNREP">UNREP Allies</a></span>
+					<td>Can Allied uniits be replenished</td>
+					<td></td></tr>
+					<tr><td><span class="parameter">engage_opportunity_targets</span>
+					<td><span class="types"><span class="boolean">True/False</span></span>
+					<td>True if the unit should take opportunistic shots
+					<td></td></tr>
+					<tr><td><span class="parameter">use_sams_in_anti_surface_mode</span>
+					<td><span class="types"><span class="boolean">True/False</span></span>
+					<td>True if SAMs should be used to engage surface targets
+					<td></td></tr>
+					<tr><td><span class="parameter">ignore_emcon_while_under_attack</span>
+					<td><span class="types"><span class="boolean">True/False</span></span>
+					<td>True if EMCON should be ignored and all systems should go active when engaged
+					<td></td></tr>
+					<tr><td><span class="parameter">quick_turnaround_for_aircraft</span>
+					<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Yes = 0 <br> FightersAndASW = 1 <br>No = 2 </span></span></span>
+					<td>  
+					<td></td></tr>
+					<tr><td><span class="parameter">air_operations_tempo</span>
+					<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Surge = 0 <br> Sustained = 1 </span></span></span>
+					<td>
+					<td></td></tr>
+					<tr><td><span class="parameter">kinematic_range_for_torpedoes</span>
+					<td><span class="types"><span class="tooltip">value<span class="tooltiptext">AutomaticAndManualFire = 0 <br> ManualFireOnly = 1 <br> No = 2 </span></span></span>
+					<td>
+					<td></td></tr>
+					<tr><td><span class="parameter">weapon_control_status_air</span>
+					<td><span class="types"><a href="DataTypes.html#dataType_ROE#WCS">WCS</a></span>
+					<td>Weapon control for engaging air units</td>
+					<td></td></tr>
+					<tr><td><span class="parameter">weapon_control_status_surface</span>
+					<td><span class="types"><a href="DataTypes.html#dataType_ROE#WCS">WCS</a></span>
+					<td>Weapon control for engaging surface units</td>
+					<td></td></tr>
+					<tr><td><span class="parameter">weapon_control_status_subsurface</span>
+					<td><span class="types"><a href="DataTypes.html#dataType_ROE#WCS">WCS</a></span>
+					<td>Weapon control for engaging subsurface units</td>
+					<td></td></tr>
+					<tr><td><span class="parameter">weapon_control_status_land</span>
+					<td><span class="types"><a href="DataTypes.html#dataType_ROE#WCS">WCS</a></span>
+					<td>Weapon control for engaging land units</td>
+					<td></td></tr>
+					<tr><td><span class="parameter">fuel_state_planned</span>
+					<td><span class="types"><a href="DataTypes.html#dataType_ROE#FuelLevel">JokerFuelLevel</a></span>
+					<td></td>
+					<td></td></tr>
+					<tr><td><span class="parameter">fuel_state_rtb</span>
+					<td><span class="types"><a href="DataTypes.html#dataType_ROE#RTB_Behaviour">OnFuelRTB</a></span>
+					<td></td>
+					<td></td></tr>
+					<tr><td><span class="parameter">weapon_state_planned</span>
+					<td><span class="types"><a href="DataTypes.html#dataType_WeaponDoctrine">WeaponDoctrine</a></span>
+					<td>
+					<td></td></tr>
+					<tr><td><span class="parameter">weapon_state_rtb</span>
+					<td><span class="types"><a href="DataTypes.html#dataType_ROE#RTB_Behaviour">OnWeaponRTB</a></span>
+					<td></td>
+					<td></td></tr>
+					<tr><td><span class="parameter">gun_strafing</span>
+					<td><span class="types"><span class="tooltip">value<span class="tooltiptext">No = 0 <br> Yes = 1<span></span></span>
+					<td></td>
+					<td></td></tr>
+					<tr><td><span class="parameter">jettison_ordnance</span>
+					<td><span class="types"><span class="tooltip">value<span class="tooltiptext">No = 0 <br> Yes = 1<span></span></span>
+					<td></td>
+					<td></td></tr>
+					<tr><td><span class="parameter">avoid_contact</span>
+					<td><span class="types"><span class="tooltip">value<span class="tooltiptext">No = 0 <br> Yes_ExceptSelfDefence = 1 <br>Yes_Always = 2 <span></span></span>
+					<td></td>
+					<td></td></tr>
+					<tr><td><span class="parameter">dive_on_threat</span>
+					<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Yes = 0 <br> Yes_ESM_Only = 1 <br> Yes_Ships20nm_Aircraft30nm = 2 <br> No = 3 <span></span></span>
+					<td></td>
+					<td></td></tr>
+					<tr><td><span class="parameter">recharge_on_patrol</span>
+					<td><span class="types"><a href="DataTypes.html#dataType_ROE#BatteryRecharge">BatteryRecharge</a></span>
+					<td></td>
+					<td></td></tr>
+					<tr><td><span class="parameter">recharge_on_attack</span>
+					<td><span class="types"><a href="DataTypes.html#dataType_ROE#BatteryRecharge">BatteryRecharge</a></span>
+					<td></td>
+					<td></td></tr>
+					<tr><td><span class="parameter">use_aip</span>
+					<td><span class="types"><span class="tooltip">value<span class="tooltiptext">No = 0 <br> Yes_AttackOnly = 1 <br>Yes_Always = 2 <span></span></span>
+					<td></td>
+					<td></td></tr>
+					<tr><td><span class="parameter">dipping_sonar</span>
+					<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Automatically_HoverAnd150ft = 0 <br> ManualAndMissionOnly = 1 <span></span></span>
+					<td></td>
+					<td></td></tr>
+					<tr><td><span class="parameter">bvr_logic</span>
+					<td><span class="types"><span class="tooltip">value<span class="tooltiptext">StraightIn = 0 <br> Crank = 1 <br> Drag = 2 <span></span></span>
+					<td></td>
+					<td></td></tr>
+					<tr><td><span class="parameter">withdraw_on_damage</span>
+					<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Ignore = 0 <br> Percent5 = 1 <br> Percent25 = 2 <br> Percent50 = 3 <br> Percent75 = 4 <span></span></span>
+					<td></td>
+					<td></td></tr>
+					<tr><td><span class="parameter">withdraw_on_fuel</span>
+					<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Ignore = 0 <br> Bingo = 1 <br> Percent25 = 2 <br> Percent50 = 3 <br> Percent75 = 4 <br> Percent100 = 5 <span></span></span>
+					<td></td>
+					<td></td></tr>
+					<tr><td><span class="parameter">withdraw_on_attack</span>
+					<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Ignore = 0 <br> Exhausted = 1 <br> Percent25 = 2 <br> Percent50 = 3 <br> Percent75 = 4 <br> Percent100 = 5 <span></span></span>
+					<td></td>
+					<td></td></tr>
+					<tr><td><span class="parameter">withdraw_on_defence</span>
+					<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Ignore = 0 <br> Exhausted = 1 <br> Percent25 = 2 <br> Percent50 = 3 <br> Percent75 = 4 <br> Percent100 = 5 <span></span></span>
+					<td></td>
+					<td></td></tr>
+					<tr><td><span class="parameter">deploy_on_damage</span>
+					<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Ignore = 0 <br> Percent5 = 1 <br> Percent25 = 2 <br> Percent50 = 3 <br> Percent75 = 4 <span></span></span>
+					<td></td>
+					<td></td></tr>
+					<tr><td><span class="parameter">deploy_on_fuel</span>
+					<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Ignore = 0 <br> Bingo = 1 <br> Percent25 = 2 <br> Percent50 = 3 <br> Percent75 = 4 <br> Percent100 = 5 <span></span></span>
+					<td></td>
+					<td></td></tr>
+					<tr><td><span class="parameter">deploy_on_attack</span>
+					<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Ignore = 0 <br> Exhausted = 1 <br> Percent25 = 2 <br> Percent50 = 3 <br> Percent75 = 4 <br> Percent100 = 5 <br> LoadFullWeapons = 6 <span></span></span>
+					<td></td>
+					<td></td></tr>
+					<tr><td><span class="parameter">deploy_on_defence</span>
+					<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Ignore = 0 <br> Exhausted = 1 <br> Percent25 = 2 <br> Percent50 = 3 <br> Percent75 = 4 <br> Percent100 = 5 <br> LoadFullWeapons = 6 <span></span></span>
+					<td></td>
+					<td></td></tr>
+				</table>		
 		
-		
-		
-		
-		
-		
-					<hr>
-					<a class="anchor" id="wrapper_DoctrineWRA"></a>
-					<h3>DoctrineWRA</h3>
-		
-		
-					Weapon Release Authority Doctrine options. <br>
-					Options can not be changed thru the wrapper.
-		
-					</ul>
-		
-	<table class="table_borders" style="width: 100%; margin-left: 0px;">
-   	<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
-						<td><span class="parameter">level</span>
+				<hr>
+				<a class="anchor" id="wrapper_DoctrineWRA"></a>
+				<h3>DoctrineWRA</h3>
+	
+	
+				Weapon Release Authority Doctrine options as defined by the combination of target type and weapon. <br>
+				Options can not be changed thru the wrapper.
+	
+
+				<table class="table_borders" style="width: 100%; margin-left: 0px;">
+				<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+						<tr><td><span class="parameter">level</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>The doctrine selected (at unit/mission/side) - useful Is just using GUIDs [info]
 						</td></tr>
-						<td><span class="parameter">target_type</span>
+						<tr><td><span class="parameter">target_type</span>
 						<td><span class="types"><a href="DataTypes.html#dataType_TargetTypeWRA">TargetTypeWRA</a></span>
 						<td>Type of applicable target 
 						</td></tr>
-						<td><span class="parameter">weapon_dbid</span>
+						<tr><td><span class="parameter">weapon_dbid</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>Weapon DB number 
 						</td></tr>
-						<td><span class="parameter">weapon_name</span>
+						<tr><td><span class="parameter">weapon_name</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>Weapon name 
 						</td></tr>
-						<td><span class="parameter">wra</span>
+						<tr><td><span class="parameter">wra</span>
 						<td><span class="table"><a href="Tables.html#table_WRA">WRA</a></span>
-						<td>The WRA doctrine for a single weapon, or wra_# for each weapon against a specific target_type
+						<td>The WRA weapon settings
 						</td></tr>
-	</tr></table>
+				</table>
 		
-		
-	    <div class="example">
-         <code>
-local a =  local a = ScenEdit_GetDoctrineWRA({guid='a1a52edf-3541-4b55-bea4-58d4e1ab11dc',target_type=2000})<br>
-print(a) <br>
--- output of the WRA wrapper
-{ LEVEL = 'UNIT', <br>
-  WRA_2 = { WEAPON_DBID = 858, QTY_SALVO = 'Max', WEAPON_NAME = '76mm/62 Compact HE Burst [4 rnds]', SHOOTER_SALVO = 'Max', FIRING_RANGE = 'Max', SELF_DEFENCE = 'Max' }, <br>
-  WRA_1 = { WEAPON_DBID = 1630, QTY_SALVO = 'Max', WEAPON_NAME = '20mm/85 Mk15 Phalanx Blk 1 Burst [300 rnds]', SHOOTER_SALVO = 'Max', FIRING_RANGE = 'Max', SELF_DEFENCE = 'Max' }, <br>
-  WRA_3 = { WEAPON_DBID = 926, QTY_SALVO = 1, WEAPON_NAME = 'RIM-162C ESSM', SHOOTER_SALVO = 1, FIRING_RANGE = 'Max', SELF_DEFENCE = 5 }, <br>
-  TARGET_TYPE = Aircraft_Unspecified }<br>
-   		 </code>
+				<h5>Example</h5>
+				<div class="example">
+					<code>
+					local a =  local a = ScenEdit_GetDoctrineWRA({guid='a1a52edf-3541-4b55-bea4-58d4e1ab11dc',target_type=2000})<br>
+					print(a) <br>
+						<output>
+						{ <br>
+						LEVEL = 'UNIT', <br>
+						  WRA_2 = { WEAPON_DBID = 858, QTY_SALVO = 'Max', WEAPON_NAME = '76mm/62 Compact HE Burst [4 rnds]', SHOOTER_SALVO = 'Max', FIRING_RANGE = 'Max', SELF_DEFENCE = 'Max' }, <br>
+						  WRA_1 = { WEAPON_DBID = 1630, QTY_SALVO = 'Max', WEAPON_NAME = '20mm/85 Mk15 Phalanx Blk 1 Burst [300 rnds]', SHOOTER_SALVO = 'Max', FIRING_RANGE = 'Max', SELF_DEFENCE = 'Max' }, <br>
+						  WRA_3 = { WEAPON_DBID = 926, QTY_SALVO = 1, WEAPON_NAME = 'RIM-162C ESSM', SHOOTER_SALVO = 1, FIRING_RANGE = 'Max', SELF_DEFENCE = 5 }, <br>
+						  TARGET_TYPE = Aircraft_Unspecified<br> }
+						</output>
+					</code>
 <p>There is a WRA_??? item for each weapon system in the LEVEL selected, in this case a unit, and for the type of target selected ( 2000 = 'Aircraft_Unspecified'). <br>
 It can be filtered more by using the weapon DBID in which case the WEAPON_DBID and WEAPON_NAME will shown on the parent side with LEVEL and TARGET_TYPE. </p>
-    </div>
+				</div>
 	
 		
 		
@@ -529,70 +496,85 @@ It can be filtered more by using the weapon DBID in which case the WEAPON_DBID a
 		
 		
 					Event details
-					.
 		
-					</ul>
-		
-	<table class="table_borders" style="width: 100%; margin-left: 0px;">
-   	<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
-						<td><span class="parameter">name</span>
+	
+					<table class="table_borders" style="width: 100%; margin-left: 0px;">
+					<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+						<tr><td><span class="parameter">name</span>
 						<td><span class="types"><span class="string">string</span></span>
-						<td>The event name.
+						<td>The event name (currently not used).
 						</td></tr>
-						<td><span class="parameter">guid</span>
+						<tr><td><span class="parameter">guid</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>The event GUID. <span class="readonly">READ ONLY</span>
 						</td></tr>
-						<td><span class="parameter">description</span>
+						<tr><td><span class="parameter">description</span>
 						<td><span class="types"><span class="string">string</span></span>
-						<td>The event GUID.
+						<td>The event description/name.
 						</td></tr>
-						<td><span class="parameter">details</span>
-						<td><span class="table">table</span>
-						<td>The details of the event with tables for triggers/conditions/actions. <span class="readonly">READ
-								ONLY</span>
-						</td></tr>
-						<td><span class="parameter">isActive</span>
-						<td><span class="types"><span class="boolean">True/False</span></span>
+						<tr><td><span class="parameter">isActive</span>
+						<td><span class="types"><span class="boolean">Yes/No</span></span>
 						<td>The event is active
 						</td></tr>
-						<td><span class="parameter">isRepeatable</span>
+						<tr><td><span class="parameter">isRepeatable</span>
 						<td><span class="types"><span class="boolean">True/False</span></span>
 						<td>The event repeats
 						</td></tr>
-						<td><span class="parameter">isShown</span>
+						<tr><td><span class="parameter">isShown</span>
 						<td><span class="types"><span class="boolean">True/False</span></span>
-						<td>The event shows in log
+						<td>The event shows on log
 						</td></tr>
-						<td><span class="parameter">probability</span>
+						<tr><td><span class="parameter">probability</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>The event chance to occur (0-100)
 						</td></tr>
-						<td><span class="parameter">actions</span>
+						<tr><td><span class="parameter">actions</span>
 						<td><span class="table">table</span>
 						<td>The details of the actions in event <span class="readonly">READ ONLY</span>
 						</td></tr>
-						<td><span class="parameter">conditions</span>
+						<tr><td><span class="parameter">conditions</span>
 						<td><span class="table">table</span>
 						<td>The details of the conditions in event <span class="readonly">READ ONLY</span>
 						</td></tr>
-						<td><span class="parameter">triggers</span>
+						<tr><td><span class="parameter">triggers</span>
 						<td><span class="table">table</span>
 						<td>The details of the triggers in event <span class="readonly">READ ONLY</span>
 						</td></tr>
-	</tr></table>
+						<tr><td><span class="parameter">details</span>
+						<td><span class="table">table</span>
+						<td>The complete details of the event in one table. The triggers/conditions/actions tables are repeated within this. <span class="readonly">READ ONLY</span>
+						</td></tr>
+					</table>
 		
 					<h5>Example</h5>
 					<div class="example">
 						<code>
-							<span class="comment">-- first trigger; as a 'Unit Detected'; what was the target
-							filter values<br>
-							</span><span class="local">local</span> Event = ScenEdit_EventX() <br>
-							<span class="comment">-- current
-							active event<br>
-							</span><span class="global">print</span>(event.details.triggers[<span
-							class="number">1</span>].UnitDetected.TargetFilter)
-						</code>
+local f = ScenEdit_EventX()  -- the event that has triggered<br />
+print("EventID: " .. string.format('%s (\'%s\')',f.description, f.guid)) <br />
+print("Active: " .. string.format('%s',f.isActive)) <br />
+print("Shown: " .. string.format('%s',f.isShown)) <br />
+print("Repeats: " .. string.format('%s',f.isRepeatable)) <br />
+print("Trigger(s):") <br />
+print(f.triggers) <br />
+print("Conditions(s):") <br />
+print(f.conditions) <br />
+print("Action(s):") <br />
+print(f.actions) <br />
+<p>
+The active event has one trigger (UnitDestroyed) and one action (update points).</p>
+							<output>
+EventID: Turkish FFG destroyed ('cf4eb993-25bd-4626-a944-b2b3cf6ae3b6') <br />
+Active: true <br />
+Shown: False <br />
+Repeats: True <br />
+Trigger(s) <br />
+{ [1] = { UnitDestroyed = { TargetFilter = { TargetType = '2', TargetSubType = '3303', ID = '88b4407d-f90f-4161-abea-357a69a66f13', TargetSide = '257e0c83-c955-4ab8-841b-49a46544b54f' }, ID = '4e5f16f3-8e65-40fe-b7e0-f95e99910eb1', Description = 'Turkish FFG destroyed' } } } <br />
+Conditions(s) <br />
+{ } <br />
+Action(s) <br />
+{ [1] = { Points = { Description = 'United States plus 01000 points', SideID = '2b7905cd-e798-494b-95fb-a01f5d9f4eec', ID = 'b1a3e26e-5c88-48a5-a866-88a7f7d737df', PointChange = '1000' }, type = 'Points' } }	 <br />
+						</output>
+					</code>
 					</div>
 		
 		
@@ -604,63 +586,59 @@ It can be filtered more by using the weapon DBID in which case the WEAPON_DBID a
 		
 					Group details.
 		
-					</ul>
 		
-	<table class="table_borders" style="width: 100%; margin-left: 0px;">
-   	<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
-						<td><span class="parameter">type</span>
+					<table class="table_borders" style="width: 100%; margin-left: 0px;">
+					<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+						<tr><td><span class="parameter">type</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>Type of group. <span class="readonly">READ ONLY</span>
 						</td></tr>
-						<td><span class="parameter">guid</span>
+						<tr><td><span class="parameter">guid</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td><span class="readonly">READ ONLY</span>
 						</td></tr>
-						<td><span class="parameter">name</span>
+						<tr><td><span class="parameter">name</span>
 						<td><span class="types"><span class="string">string</span></span>
-		
-		
-		
 						</td></tr>
-						<td><span class="parameter">side</span>
+						<tr><td><span class="parameter">side</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td><span class="readonly">READ ONLY</span>
 						</td></tr>
-						<td><span class="parameter">lead</span>
+						<tr><td><span class="parameter">lead</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>Group leader guid
 						</td></tr>
-						<td><span class="parameter">unitlist</span>
+						<tr><td><span class="parameter">unitlist</span>
 						<td><span class="table">table</span>
 						<td>Table of unit GUIDs in the group. <span class="readonly">READ ONLY</span>
 						</td></tr>
-	</tr></table>
+					</table>
 		
 					<hr>
 					<a class="anchor" id="wrapper_Loadout"></a>
 					<h3>Loadout</h3>
 					Loadout.
-	<table class="table_borders" style="width: 100%; margin-left: 0px;">
-   	<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
-						<td><span class="parameter">dbid</span>
+					<table class="table_borders" style="width: 100%; margin-left: 0px;">
+					<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+						<tr><td><span class="parameter">dbid</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>ID from database
 						</td></tr>
-						<td><span class="parameter">name</span>
+						<tr><td><span class="parameter">name</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>Name of loadout
 						</td></tr>
-						<td><span class="parameter">roles</span>
+						<tr><td><span class="parameter">roles</span>
 						<td><span class="table">table</span>
 						<td>Table of loadout usage {<a href="DataTypes.html#dataType_LoadoutRole">LoadoutRole</a>, <a
 								href="DataTypes.html#dataType_LoadoutTimeOfDay">LoadoutTimeOfDay</a>, <a
 								href="DataTypes.html#dataType_LoadoutWeather">LoadoutWeather</a>}
 						</td></tr>
-						<td><span class="parameter">weapons</span>
+						<tr><td><span class="parameter">weapons</span>
 						<td><span class="table"><a href="Tables.html#table_WeaponLoaded">WeaponLoaded</a></span>
 						<td>Table of weapons in loadout
 						</td></tr>
-	</tr></table>
+					</table>
 		
 		
 		
@@ -675,87 +653,86 @@ It can be filtered more by using the weapon DBID in which case the WEAPON_DBID a
 		
 					Mission.
 		
-					</ul>
 		
-	<table class="table_borders" style="width: 100%; margin-left: 0px;">
-   	<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
-						<td><span class="parameter">guid</span>
+					<table class="table_borders" style="width: 100%; margin-left: 0px;">
+					<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+						<tr><td><span class="parameter">guid</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>The GUID of the mission. <span class="readonly">READ ONLY</span>
 						</td></tr>
-						<td><span class="parameter">name</span>
+						<tr><td><span class="parameter">name</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>Name of mission
 						</td></tr>
-						<td><span class="parameter">isactive</span>
+						<tr><td><span class="parameter">isactive</span>
 						<td><span class="types"><span class="boolean">True/False</span></span>
 						<td>True if mission is currently active
 						</td></tr>
-						<td><span class="parameter">side</span>
+						<tr><td><span class="parameter">side</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>Mission belongs to side
 						</td></tr>
-						<td><span class="parameter">starttime</span>
+						<tr><td><span class="parameter">starttime</span>
 						<td><span class="types"><a href="DataTypes.html#dataType_DateTime">DateTime</a></span>
 						<td>Time mission starts
 						</td></tr>
-						<td><span class="parameter">endtime</span>
+						<tr><td><span class="parameter">endtime</span>
 						<td><span class="types"><a href="DataTypes.html#dataType_DateTime">DateTime</a></span>
 						<td>Time mission ends
 						</td></tr>
-						<td><span class="parameter">type</span>
+						<tr><td><span class="parameter">type</span>
 						<td><span class="types"><span class="type">MissionClass</span></span>
 						<td>Mission class(patrol,strike,etc). <span class="readonly">READ ONLY</span>
 						</td></tr>
-						<td><span class="parameter">subtype</span>
+						<tr><td><span class="parameter">subtype</span>
 						<td><span class="types"><span class="type">MissionSubClass</span></span>
 						<td>Mission class(asw,land,etc). <span class="readonly">READ ONLY</span>
 						</td></tr>
-						<td><span class="parameter">SISH</span>
+						<tr><td><span class="parameter">SISH</span>
 						<td><span class="types"><span class="boolean">True/False</span></span>
 						<td>'Scrub if side human' tick box
 						</td></tr>
-						<td><span class="parameter">unitlist</span>
+						<tr><td><span class="parameter">unitlist</span>
 						<td><span class="types"><span class="type">GUID</span></span>
 						<td>A table of units assigned to mission. <span class="readonly">READ ONLY</span>
 						</td></tr>
-						<td><span class="parameter">targetlist</span>
+						<tr><td><span class="parameter">targetlist</span>
 						<td><span class="types"><span class="type">GUID</span></span>
 						<td>A table of targets assigned to mission. <span class="readonly">READ ONLY</span>
 						</td></tr>
-						<td><span class="parameter">aar</span>
+						<tr><td><span class="parameter">aar</span>
 						<td><span class="table"><a href="Tables.html#table_AAR">AAR</a></span>
 						<td>A table of the mission air-to-air refueling options. <span class="readonly">READ ONLY</span>
 						</td></tr>
-						<td><span class="parameter">ferrymission</span>
+						<tr><td><span class="parameter">ferrymission</span>
 						<td><span class="table"><a href="Tables.html#table_FerryMission">FerryMission</a></span>
 						<td>A table of the mission specific options. <span class="readonly">READ ONLY</span>
 						</td></tr>
-						<td><span class="parameter">mineclearmission</span>
+						<tr><td><span class="parameter">mineclearmission</span>
 						<td><span class="table"><a href="Tables.html#table_MineClearMission">MineClearMission</a></span>
 						<td>A table of the mission specific options. <span class="readonly">READ ONLY</span>
 						</td></tr>
-						<td><span class="parameter">minemission</span>
+						<tr><td><span class="parameter">minemission</span>
 						<td><span class="table"><a href="Tables.html#table_MineMission">MineMission</a></span>
 						<td>A table of the mission specific options. <span class="readonly">READ ONLY</span>
 						</td></tr>
-						<td><span class="parameter">supportmission</span>
+						<tr><td><span class="parameter">supportmission</span>
 						<td><span class="table"><a href="Tables.html#table_SupportMission">SupportMission</a></span>
 						<td>A table of the mission specific options. <span class="readonly">READ ONLY</span>
 						</td></tr>
-						<td><span class="parameter">patrolmission</span>
+						<tr><td><span class="parameter">patrolmission</span>
 						<td><span class="table"><a href="Tables.html#table_PatrolMission">PatrolMission</a></span>
 						<td>A table of the mission specific options. <span class="readonly">READ ONLY</span>
 						</td></tr>
-						<td><span class="parameter">strikemission</span>
+						<tr><td><span class="parameter">strikemission</span>
 						<td><span class="table"><a href="Tables.html#table_StrikeMission">StrikeMission</a></span>
 						<td>A table of the mission specific options. <span class="readonly">READ ONLY</span>
 						</td></tr>
-						<td><span class="parameter">cargomission</span>
+						<tr><td><span class="parameter">cargomission</span>
 						<td><span class="table"><a href="Tables.html#table_CargoMission">CargoMission</a></span>
 						<td>A table of the mission specific options. <span class="readonly">READ ONLY</span>
 						</td></tr>
-	</tr></table>
+					</table>
 		
 		
 		
@@ -770,47 +747,46 @@ It can be filtered more by using the weapon DBID in which case the WEAPON_DBID a
 		
 					Reference point information.
 		
-					</ul>
-		
-	<table class="table_borders" style="width: 100%; margin-left: 0px;">
-   	<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
-						<td><span class="parameter">guid</span>
+	
+					<table class="table_borders" style="width: 100%; margin-left: 0px;">
+					<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+						<tr><td><span class="parameter">guid</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>The unique identifier for the reference point
 						</td></tr>
-						<td><span class="parameter">side</span>
+						<tr><td><span class="parameter">side</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>The side the reference point is visible to
 						</td></tr>
-						<td><span class="parameter">name</span>
+						<tr><td><span class="parameter">name</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>The name of the reference point
 						</td></tr>
-						<td><span class="parameter">latitude</span>
+						<tr><td><span class="parameter">latitude</span>
 						<td><span class="types"><a href="DataTypes.html#dataType_Latitude">Latitude</a></span>
 						<td>The latitude of the reference point
 						</td></tr>
-						<td><span class="parameter">longitude</span>
+						<tr><td><span class="parameter">longitude</span>
 						<td><span class="types"><a href="DataTypes.html#dataType_Longitude">Longitude</a></span>
 						<td>The longitude of the reference point
 						</td></tr>
-						<td><span class="parameter">highlighted</span>
+						<tr><td><span class="parameter">highlighted</span>
 						<td><span class="types"><span class="boolean">True/False</span></span>
 						<td>True if the point should be selected
 						</td></tr>
-						<td><span class="parameter">locked</span>
+						<tr><td><span class="parameter">locked</span>
 						<td><span class="types"><span class="boolean">True/False</span></span>
 						<td>True if the point is locked
 						</td></tr>
-						<td><span class="parameter">bearingtype</span>
+						<tr><td><span class="parameter">bearingtype</span>
 						<td><span class="types"><span class="type">bearing</span></span>
 						<td>Type of bearing Fixed (0) or Rotating (1)
 						</td></tr>
-						<td><span class="parameter">relativeto</span>
+						<tr><td><span class="parameter">relativeto</span>
 						<td><span class="wrapper"><a href="#wrapper_Unit">Unit</a></span>
 						<td>The unit that reference point is realtive to
 						</td></tr>
-	</tr></table>
+					</table>
 		
 		
 		
@@ -825,23 +801,22 @@ It can be filtered more by using the weapon DBID in which case the WEAPON_DBID a
 		
 					Unit refueling options.
 		
-					</ul>
-		
-	<table class="table_borders" style="width: 100%; margin-left: 0px;">
-   	<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
-						<td><span class="parameter">unitSelector</span>
+	
+					<table class="table_borders" style="width: 100%; margin-left: 0px;">
+					<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+						<tr><td><span class="parameter">unitSelector</span>
 						<td><span class="selector"><a href="#selector_UnitSelector">UnitSelector</a></span>
 						<td>A normal unit selector defining the unit.
 						</td></tr>
-						<td><span class="parameter">tanker</span>
+						<tr><td><span class="parameter">tanker</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>A specific tanker defined by its name (side is assumed to be the same as unit) or GUID.
 						</td></tr>
-						<td><span class="parameter">missions</span>
+						<tr><td><span class="parameter">missions</span>
 						<td><span class="types"><span class="type">mission </span></span>
 						<td>A table of mission names or mission GUIDs.
 						</td></tr>
-	</tr></table>
+					</table>
 		
 		
 		
@@ -859,109 +834,109 @@ It can be filtered more by using the weapon DBID in which case the WEAPON_DBID a
 					<a class="anchor" id="wrapper_Scenario"></a>
 					<h3>Scenario</h3>
 					<p>Details of the current scenario. Note the mixed case of the field names.</p>
-	<table class="table_borders" style="width: 100%; margin-left: 0px;">
-   	<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
-						<td><span class="parameter">FileName</span>
+					<table class="table_borders" style="width: 100%; margin-left: 0px;">
+					<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+						<tr><td><span class="parameter">FileName</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>Name of the scenario file (.scen/.save)
 						</td></tr>
-						<td><span class="parameter">Title</span>
+						<tr><td><span class="parameter">Title</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>Title of the scenario
 						</td></tr>
-						<td><span class="parameter">ScenSetting</span>
+						<tr><td><span class="parameter">ScenSetting</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>The setting of the scenario
 						</td></tr>
-						<td><span class="parameter">ScenDate</span>
+						<tr><td><span class="parameter">ScenDate</span>
 						<td><span class="types"><span class="number">number</span></span>
 						<td>Year of settings
 						</td></tr>
-						<td><span class="parameter">Difficulty</span>
+						<tr><td><span class="parameter">Difficulty</span>
 						<td><span class="types"><span class="number">number</span></span>
 						<td>Difficulty rating
 						</td></tr>
-						<td><span class="parameter">Complexity</span>
+						<tr><td><span class="parameter">Complexity</span>
 						<td><span class="types"><span class="number">number</span></span>
 						<td>Complexity rating
 						</td></tr>
-						<td><span class="parameter">StartTime</span>
+						<tr><td><span class="parameter">StartTime</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>Starting time
 						</td></tr>
-						<td><span class="parameter">Duration</span>
+						<tr><td><span class="parameter">Duration</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>Length of scenario as days:hours:minutes:seconds
 						</td></tr>
-						<td><span class="parameter">CurrentTime</span>
+						<tr><td><span class="parameter">CurrentTime</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>Current scenario time
 						</td></tr>
-						<td><span class="parameter">DBUsed</span>
+						<tr><td><span class="parameter">DBUsed</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>Name of database being used
 						</td></tr>
-						<td><span class="parameter">SaveVersion</span>
+						<tr><td><span class="parameter">SaveVersion</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>Game version last saved under
 						</td></tr>
-						<td><span class="parameter">CampaignScore</span>
+						<tr><td><span class="parameter">CampaignScore</span>
 						<td><span class="types"><span class="number">number</span></span>
 						<td>Current campaign score
 						</td></tr>
-						<td><span class="parameter">CampaignSessionID</span>
+						<tr><td><span class="parameter">CampaignSessionID</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>Current campaign session id
 						</td></tr>
-						<td><span class="parameter">CampaignID</span>
+						<tr><td><span class="parameter">CampaignID</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>Campaign guid
 						</td></tr>
-						<td><span class="parameter">InCampaignMode</span>
+						<tr><td><span class="parameter">InCampaignMode</span>
 						<td><span class="types"><span class="boolean">True/False</span></span>
 						<td>Currently in campaign mode
 						</td></tr>
-						<td><span class="parameter">StartTimeNum</span>
+						<tr><td><span class="parameter">StartTimeNum</span>
 						<td><span class="types"><span class="number">number</span></span>
 						<td>Starting time as a number (of seconds) equivalent
 						</td></tr>
-						<td><span class="parameter">DurationNum</span>
+						<tr><td><span class="parameter">DurationNum</span>
 						<td><span class="types"><span class="number">number</span></span>
 						<td>Length of scenario as a number (of seconds) equivalent
 						</td></tr>
-						<td><span class="parameter">CurrentTime</span>
+						<tr><td><span class="parameter">CurrentTime</span>
 						<td><span class="types"><span class="number">number</span></span>
 						<td>Current scenario time as a number (of seconds) equivalent
 						</td></tr>
-						<td><span class="parameter">guid</span>
+						<tr><td><span class="parameter">guid</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>Current scenario GUID
 						</td></tr>
-						<td><span class="parameter">PlayerSide</span>
+						<tr><td><span class="parameter">PlayerSide</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>Current player side GUID
 						</td></tr>
-						<td><span class="parameter">HasStarted</span>
+						<tr><td><span class="parameter">HasStarted</span>
 						<td><span class="types"><span class="boolean">True/False</span></span>
 						<td>Scenario in play
 						</td></tr>
-						<td><span class="parameter">TimeCompression</span>
+						<tr><td><span class="parameter">TimeCompression</span>
 						<td><span class="types"><span class="number">number</span></span>
 						<td>Compression mode
 						</td></tr>
-						<td><span class="parameter">Sides</span>
+						<tr><td><span class="parameter">Sides</span>
 						<td><span class="types"><span class="number">number</span></span>
 						<td>Number of sides in scenario
 						</td></tr>
-						<td><span class="parameter">ResetLossExp</span>
+						<tr><td><span class="parameter">ResetLossExp</span>
 						<td><span class="types"><span class="method">method</span>()</span>
 						<td>Clears the loss and expenditure logs in scenario
 						</td></tr>
-						<td><span class="parameter">ResetScore</span>
+						<tr><td><span class="parameter">ResetScore</span>
 						<td><span class="types"><span class="method">method</span>()</span>
 						<td>Clears the score and log in scenario
 						</td></tr>
-	</tr></table>
+					</table>
 		
 					<hr>
 					<a class="anchor" id="wrapper_Side"></a>
@@ -971,73 +946,73 @@ It can be filtered more by using the weapon DBID in which case the WEAPON_DBID a
 					<p>Side perspective</p>
 	
 		
-	<table class="table_borders" style="width: 100%; margin-left: 0px;">
-   	<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
-						<td><span class="parameter">guid</span>
+					<table class="table_borders" style="width: 100%; margin-left: 0px;">
+					<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+						<tr><td><span class="parameter">guid</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>The GUID of the side.
 						</td></tr>
-						<td><span class="parameter">name</span>
+						<tr><td><span class="parameter">name</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>The name of the side.
 						</td></tr>
-						<td><span class="parameter">units</span>
+						<tr><td><span class="parameter">units</span>
 						<td><span class="table"><a href="Tables.html#table_SideUnit">SideUnit</a></span>
 						<td>Table of units for the designated side. <span class="readonly">READ ONLY</span>
 						</td></tr>
-						<td><span class="parameter">contacts</span>
+						<tr><td><span class="parameter">contacts</span>
 						<td><span class="table"><a href="Tables.html#table_SideContact">SideContact</a></span>
 						<td>Table of current contacts for the designated side. <span class="readonly">READ ONLY</span>
 						</td></tr>
-						<td><span class="parameter">exclusionzones</span>
+						<tr><td><span class="parameter">exclusionzones</span>
 						<td><span class="wrapper"><a href="#wrapper_Zone">Zone</a></span>
 						<td>Zones for the designated side <span class="readonly">READ ONLY</span>
 						</td></tr>
-						<td><span class="parameter">nonavzones</span>
+						<tr><td><span class="parameter">nonavzones</span>
 						<td><span class="wrapper"><a href="#wrapper_Zone">Zone</a></span>
 						<td>Zones for the designated side <span class="readonly">READ ONLY</span>
 						</td></tr>
-						<td><span class="parameter">rps</span>
+						<tr><td><span class="parameter">rps</span>
 						<td><span class="wrapper"><a href="#wrapper_Zone">Zone</a></span>
 						<td>RPs for the designated side <span class="readonly">READ ONLY</span>
 						</td></tr>
-						<td><span class="parameter">awareness</span>
+						<tr><td><span class="parameter">awareness</span>
 						<td><span class="types"><span class="type">Awareness</span></span>
 						<td><span class="readonly">READ ONLY</span>
 						</td></tr>
-						<td><span class="parameter">proficiency</span>
+						<tr><td><span class="parameter">proficiency</span>
 						<td><span class="types"><span class="type">Proficiency</span></span>
 						<td><span class="readonly">READ ONLY</span>
 						</td></tr>
-						<td><span class="parameter">hasmines</span>
+						<tr><td><span class="parameter">hasmines</span>
 						<td><span class="types"><span class="boolean">True/False</span></span>
 						<td><span class="readonly">READ ONLY</span>
 						</td></tr>
-	                    <td><span class="parameter">losses</span>
+	                    <tr><td><span class="parameter">losses</span>
                         <td><span class="table">Table</span> 
 						<td>of losses to date - {type, dbid, name, number} 
                         </td></tr>
-                        <td><span class="parameter">expenditures</span>
+                        <tr><td><span class="parameter">expenditures</span>
                         <td><span class="table">Table</span> 
 						<td>of expenditure to date - {type, dbid, name, number}
                         </td></tr>
-                        <td><span class="parameter">missions</span>
+                        <tr><td><span class="parameter">missions</span>
                         <td><span class="table">Table</span> 
 						<td>of <span class="wrapper"><a href="#wrapper_Mission">Mission</a></span> wrappers for missions on the side
                         </td></tr>
 						<br>
 						
-						<td><span class="parameter">getexclusionzone</span>
+						<tr><td><span class="parameter">getexclusionzone</span>
 						<td><span class="types"><span class="method">method</span>(ZoneGUID|ZoneName|ZoneDescription)</span>
 						<td> Returns matching <span class="wrapper"><a href="#wrapper_Zone">Zone</a></span>
 							or nil
 						</td></tr>
-						<td><span class="parameter">getnonavzone</span>
+						<tr><td><span class="parameter">getnonavzone</span>
 						<td><span class="types"><span class="method">method</span>(ZoneGUID|ZoneName|ZoneDescription)</span>
 						<td> Returns matching <span class="wrapper"><a href="#wrapper_Zone">Zone</a></span>
 							or nil
 						</td></tr>
-						<td><span class="parameter">unitsBy</span>
+						<tr><td><span class="parameter">unitsBy</span>
 						<td><span class="types"><span class="method">method</span>(UnitType[[,Category],Subtype])</span>
 						<td> Returns table of units filtered by type of unit or nil.
 						<!--div class="example">
@@ -1047,11 +1022,11 @@ It can be filtered more by using the weapon DBID in which case the WEAPON_DBID a
 						</div-->						
 
 						</td></tr>
-						<td><span class="parameter">contactsBy</span>
+						<tr><td><span class="parameter">contactsBy</span>
 						<td><span class="types"><span class="method">method</span>(UnitType)</span>
 						<td> Returns table of current contacts filtered by type of unit or nil.
 						</td></tr>
-                        <td><span class="parameter">unitsInArea</span>
+                        <tr><td><span class="parameter">unitsInArea</span>
                         <td><span class="types"><span class="method">method</span>(<span class="table">{Area[,TargetFilter]}</span>)</span>
 						<td> Returns table of units {name,guid} filtered by type of unit
 						<!--h5>Example</h5>
@@ -1060,24 +1035,24 @@ It can be filtered more by using the weapon DBID in which case the WEAPON_DBID a
 						</code>
 						</div-->
 	                    </td></tr>
-	</tr></table>
+					</table>
 		
- 						<br>
-						<div class="example">
-						<h5>Examples</h5>
-						<p>Find units in an area</p>
-						<code>local u = side:unitsInArea({Area = { 'RP-3137', 'RP-3139', 'RP-3136', 'RP-3138'},<br> TargetFilter = { TargetType = 'Ship' } })
-						</code>
-						<div class="example">
-						<p>Find units on side by a filter</p>
-						<code>local u = side:side:unitsBy('Ship')  -- all ships <br>
-						u = side:unitsBy('Ship', 2002, 3003) -- ships fitered for 'Surface combatant' and 'BBC'
-						</code>
-						</div>
+					<br>
+					<h5>Examples</h5>
+					<div class="example">
+					<p>Find units in an area</p>
+					<code>local u = side:unitsInArea({Area = { 'RP-3137', 'RP-3139', 'RP-3136', 'RP-3138'},<br> TargetFilter = { TargetType = 'Ship' } })
+					</code>
+					<div class="example">
+					<p>Find units on side by a filter</p>
+					<code>local u = side:side:unitsBy('Ship')  -- all ships <br>
+					u = side:unitsBy('Ship', 2002, 3003) -- ships fitered for 'Surface combatant' and 'BBC'
+					</code>
+					</div>
                   </div>
 		
 		
-						<hr>
+					<hr>
 					<a class="anchor" id="wrapper_SpecialAction"></a>
 					<h3>Special action</h3>
 		
@@ -1085,38 +1060,38 @@ It can be filtered more by using the weapon DBID in which case the WEAPON_DBID a
 							
 					</ul>
 		
-	<table class="table_borders" style="width: 100%; margin-left: 0px;">
-   	<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
-						<td><span class="parameter">name</span>
+					<table class="table_borders" style="width: 100%; margin-left: 0px;">
+					<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+						<tr><td><span class="parameter">name</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>The event name.
 						</td></tr>
-						<td><span class="parameter">guid</span>
+						<tr><td><span class="parameter">guid</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>The event GUID. <span class="readonly">READ ONLY</span>
 						</td></tr>
-						<td><span class="parameter">description</span>
+						<tr><td><span class="parameter">description</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>The event GUID.
 						</td></tr>
-						<td><span class="parameter">isActive</span>
+						<tr><td><span class="parameter">isActive</span>
 						<td><span class="types"><span class="boolean">True/False</span></span>
 						<td>The event is active
 						</td></tr>
-						<td><span class="parameter">isRepeatable</span>
+						<tr><td><span class="parameter">isRepeatable</span>
 						<td><span class="types"><span class="boolean">True/False</span></span>
 						<td>The event repeats
 						</td></tr>
-						<td><span class="parameter">side</span>
+						<tr><td><span class="parameter">side</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>The side GUID
 						</td></tr>
-						<td><span class="parameter">ScriptText</span>
+						<tr><td><span class="parameter">ScriptText</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>The Lua script
 						</td></tr>
 
-	</tr></table>
+					</table>
 	
 		
 		
@@ -1129,123 +1104,123 @@ It can be filtered more by using the weapon DBID in which case the WEAPON_DBID a
 					<p>Represents an active unit.</p>
                     <table class="table_borders" style="width: 100%; margin-left: 0px;">
                         <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
-                        <td><span class="parameter">type</span>
+                        <tr><td><span class="parameter">type</span>
                         <td><span class="types"><span class="string">string</span></span>
                         <td>
                             The type of object, may be 'Facility', 'Ship', 'Submarine', or 'Aircraft'.<span class="readonly">READ ONLY</span>
                         </td></tr>
-                        <td><span class="parameter">name</span>
+                        <tr><td><span class="parameter">name</span>
                         <td><span class="types"><span class="string">string</span></span>
                         <td>
                             The unit's name.
                         </td></tr>
-                        <td><span class="parameter">side</span>
+                        <tr><td><span class="parameter">side</span>
                         <td><span class="types"><span class="string">string</span></span>
                         <td>
                             The unit's side. <span class="readonly">READ ONLY</span>
                         </td></tr>
-                        <td><span class="parameter">guid</span>
+                        <tr><td><span class="parameter">guid</span>
                         <td><span class="types"><span class="string">string</span></span>
                         <td>
                             The unit's unique ID. <span class="readonly">READ ONLY</span>
                         </td></tr>
-                        <td><span class="parameter">subtype</span>
+                        <tr><td><span class="parameter">subtype</span>
                         <td><span class="types"><span class="string">string</span></span>
                         <td>
                             The unit's subtype (if applicable). <span class="readonly">READ ONLY</span>
                         </td></tr>
-                        <td><span class="parameter">base</span>
+                        <tr><td><span class="parameter">base</span>
                         <td><span class="wrapper"><a href="#wrapper_Unit">Unit</a></span>
                         <td>
                             The unit's assigned base.
                         </td></tr>
-                        <td><span class="parameter">latitude</span>
+                        <tr><td><span class="parameter">latitude</span>
                         <td><span class="types"><a href="DataTypes.html#dataType_Latitude">Latitude</a></span>
                         <td>
                             The latitude of the unit.
                         </td></tr>
-                        <td><span class="parameter">longitude</span>
+                        <tr><td><span class="parameter">longitude</span>
                         <td><span class="types"><a href="DataTypes.html#dataType_Longitude">Longitude</a></span>
                         <td>
                             The longitude of the unit .
                         </td></tr>
-                        <td><span class="parameter">DBID</span>
+                        <tr><td><span class="parameter">DBID</span>
                         <td><span class="types"><span class="number">number</span></span>
                         <td>
                             The database ID of the unit <span class="readonly">READ ONLY</span>
                         </td></tr>
-                        <td><span class="parameter">altitude</span>
+                        <tr><td><span class="parameter">altitude</span>
                         <td><span class="types"><span class="number">number</span></span>
                         <td>
                             The altitude of the unit in meters.
                         </td></tr>
-                        <td><span class="parameter">speed</span>
+                        <tr><td><span class="parameter">speed</span>
                         <td><span class="types"><span class="number">number</span></span>
                         <td>
                             The unit's current speed.
                         </td></tr>
-                        <td><span class="parameter">throttle</span>
+                        <tr><td><span class="parameter">throttle</span>
                         <td><span class="types"><span class="type">Throttle</span></span>
                         <td>
                             The unit's current throttle setting.
                         </td></tr>
-                        <td><span class="parameter">autodetectable</span>
+                        <tr><td><span class="parameter">autodetectable</span>
                         <td><span class="types"><span class="boolean">True/False</span></span>
                         <td>
                             True if the unit is automatically detected.
                         </td></tr>
-                        <td><span class="parameter">holdposition</span>
+                        <tr><td><span class="parameter">holdposition</span>
                         <td><span class="types"><span class="boolean">True/False</span></span>
                         <td>
                             True if the unit should hold.
                         </td></tr>
-                        <td><span class="parameter">holdfire</span>
+                        <tr><td><span class="parameter">holdfire</span>
                         <td><span class="table">table</span>
                         <td>
                             Doctrine WCS setting for {air,surface,subsurface,land}. <span class="readonly">READ ONLY</span>
                         </td></tr>
-                        <td><span class="parameter">heading</span>
+                        <tr><td><span class="parameter">heading</span>
                         <td><span class="types"><span class="number">number</span></span>
                         <td>
                             The unit's heading .
                         </td></tr>
-                        <td><span class="parameter">proficiency</span>
+                        <tr><td><span class="parameter">proficiency</span>
                         <td><span class="types"><span class="string">string</span></span>
                         <td>
                             The unit proficiency, "Novice"|0, "Cadet"|1,"Regular"|2, "Veteran"|3, "Ace"|4.
                         </td></tr>
-                        <td><span class="parameter">newname</span>
+                        <tr><td><span class="parameter">newname</span>
                         <td><span class="types"><span class="string">string</span></span>
                         <td>
                             If changing existing unit, the unit's new name .
                         </td></tr>
-                        <td><span class="parameter">course</span>
+                        <tr><td><span class="parameter">course</span>
                         <td><span class="types"><a href="#wrapper_WayPoint">WayPoint</a></span></span>
                         <td>
                             The unit's course, as a table of waypoints (latitude,longitude)
                         </td></tr>
-                        <td><span class="parameter">fuel</span>
+                        <tr><td><span class="parameter">fuel</span>
                         <td><span class="table"><a href="DataTypes.html#dataType_Fuel">Fuel</a></span>
                         <td>
                             A table of fuel types used by unit.
                         </td></tr>
-                        <td><span class="parameter">fuels</span>
+                        <tr><td><span class="parameter">fuels</span>
                         <td><span class="table"><a href="DataTypes.html#dataType_Fuel">Fuel</a></span>
                         <td>
                             A table of fuel types in tanks used by unit.
                         </td></tr>
-                        <td><span class="parameter">mission</span>
+                        <tr><td><span class="parameter">mission</span>
                         <td><span class="wrapper"><a href="#wrapper_Mission">Mission</a></span>
                         <td>
                             The unit's assigned mission. <br>Can be changed by setting to the Mission name<br> or guid (calls ScenEdit_AssignUnitToMission)
                         </td></tr>
-                        <td><span class="parameter">group</span>
+                        <tr><td><span class="parameter">group</span>
                         <td><span class="wrapper"><a href="#wrapper_Group">Group</a></span>
                         <td>
                             The unit's group. <br>
                             If setting the group, use a text name of an existing group<br> or a new name to create a group.<br> To remove unit from a group, use "none" as the name.
                         </td></tr>
-                        <td><span class="parameter">readytime</span>
+                        <tr><td><span class="parameter">readytime</span>
                         <td><span class="types"><span class="string">string [READ]</span> or <span class="number">number [SET]</span></span>
                         <td>
                             how long aircraft/ship takes to be ready as "days:hours:minutes:seconds". <br>
@@ -1253,325 +1228,322 @@ It can be filtered more by using the weapon DBID in which case the WEAPON_DBID a
                             Can use 'TimeToReady_Minutes=' in SetUnit() to set the ready time in minutes for aircraft and ship/sub.
                         <td />
                         </td></tr>
-                        <td><span class="parameter">readytime_v</span>
+                        <tr><td><span class="parameter">readytime_v</span>
                         <td><span class="types"><span class="number">number</span></span>
                         <td>
                             how long aircraft/ship takes to be ready in seconds. <span class="readonly">READ ONLY</span>
                         </td></tr>
-                        <td><span class="parameter">airbornetime</span>
+                        <tr><td><span class="parameter">airbornetime</span>
                         <td><span class="types"><span class="string">datetime</span></span>
                         <td>
                             how long aircraft has been flying as "days:hours:minutes:seconds". <span class="readonly">READ ONLY</span>
                         </td></tr>
-                        <td><span class="parameter">airbornetime_v</span>
+                        <tr><td><span class="parameter">airbornetime_v</span>
                         <td><span class="types"><span class="number">number</span></span>
                         <td>
                             how long aircraft has been flying in seconds. <span class="readonly">READ ONLY</span>
                         </td></tr>
-                        <td><span class="parameter">loadoutdbid</span>
+                        <tr><td><span class="parameter">loadoutdbid</span>
                         <td><span class="types"><span class="number">number</span></span>
                         <td>
                             current aircraft loadout DBID. <span class="readonly">READ ONLY</span>
                         </td></tr>
-                        <td><span class="parameter">unitstate</span>
+                        <tr><td><span class="parameter">unitstate</span>
                         <td><span class="types"><span class="string">string</span></span>
                         <td>
                             Message on unit status. <span class="readonly">READ ONLY</span>
                         </td></tr>
-                        <td><span class="parameter">fuelstate</span>
+                        <tr><td><span class="parameter">fuelstate</span>
                         <td><span class="types"><span class="string">string</span></span>
                         <td>
                             Message on unit fuel status. <span class="readonly">READ ONLY</span>
                         </td></tr>
-                        <td><span class="parameter">weaponstate</span>
+                        <tr><td><span class="parameter">weaponstate</span>
                         <td><span class="types"><span class="string">string</span></span>
                         <td>
                             Message on unit weapon status. <span class="readonly">READ ONLY</span>
                         </td></tr>
-                        <td><span class="parameter">condition_v</span>
+                        <tr><td><span class="parameter">condition_v</span>
                         <td><span class="types"><span class="string">string</span></span>
                         <td>
                             Docking/Air Ops condition value. <span class="readonly">READ ONLY</span>
                         </td></tr>
-                        <td><span class="parameter">condition</span>
+                        <tr><td><span class="parameter">condition</span>
                         <td><span class="types"><span class="string">string</span></span>
                         <td>
                             Message on unit dock/air ops status. <span class="readonly">READ ONLY</span>
                         </td></tr>
-                        <td><span class="parameter">classname</span>
+                        <tr><td><span class="parameter">classname</span>
                         <td><span class="types"><span class="string">string</span></span>
                         <td>
                             Unit class name <span class="readonly">READ ONLY</span>
                         </td></tr>
-                        <td><span class="parameter">manualSpeed</span>
+                        <tr><td><span class="parameter">manualSpeed</span>
                         <td><span class="types"><span class="string">string</span> or <span class="number">number</span></span>
                         <td>
                             Desired speed or 'OFF' to turn off manual mode
                         </td></tr>
-                        <td><span class="parameter">manualAltitude</span>
+                        <tr><td><span class="parameter">manualAltitude</span>
                         <td><span class="types"><span class="string">string</span> or <span class="number">number</span></span>
                         <td>
                             Desired altitude/depth or 'OFF' to turn off manual mode
                         </td></tr>
-                        <td><span class="parameter">damage</span>
+                        <tr><td><span class="parameter">damage</span>
                         <td><span class="table">table</span>
                         <td>
                             Table {dp,flood,fires,startDp} of start and current DP, flood and fire level. <span class="readonly">READ ONLY</span>
                         </td></tr>
-                        <td><span class="parameter">magazines</span>
+                        <tr><td><span class="parameter">magazines</span>
                         <td><span class="table"><a href="Tables.html#table_Magazine">Magazine</a></span>
                         <td>
                             A table of magazines (with weapon loads) in the unit or group.<br> Can be updated by <a href="Tables.html#table_ScenEdit_AddWeaponToUnitMagazine">ScenEdit_AddWeaponToUnitMagazine</a>
                             <span class="readonly">READ ONLY</span>
                         </td></tr>
-                        <td><span class="parameter">mounts</span>
+                        <tr><td><span class="parameter">mounts</span>
                         <td><span class="table"><a href="Tables.html#table_Mount">Mount</a></span>
                         <td>
                             A table of mounts (with weapon loads) in the unit or group.<br> Can be updated by <a href="Tables.html#table_ScenEdit_AddReloadsToUnit">ScenEdit_AddReloadsToUnit</a> <span class="readonly">READ ONLY</span>
                         </td></tr>
-                        <td><span class="parameter">components</span>
+                        <tr><td><span class="parameter">components</span>
                         <td><span class="table"><a href="Tables.html#table_Component">Component</a></span>
                         <td>
                             A table of components on the unit. <span class="readonly">READ ONLY</span>
                         </td></tr>
-                        <td><span class="parameter">ascontact</span>
+                        <tr><td><span class="parameter">ascontact</span>
                         <td><span class="table">table</span>
                         <td>
                             A table {side,guid,name} of this unit seen from the other sides (as contacts). <span class="readonly">READ ONLY</span>
                         </td></tr>
-                        <td><span class="parameter">weather</span>
+                        <tr><td><span class="parameter">weather</span>
                         <td><span class="types"><a href="DataTypes.html#dataType_Weather">Weather</a></span>
                         <td>
                             Table of weather parameters (temp, rainfall, underrain, seastate)
                         </td></tr>
-                        <td><span class="parameter">areaTriggersFired</span>
+                        <tr><td><span class="parameter">areaTriggersFired</span>
                         <td><span class="table">table</span>
                         <td>
                             Table of active 'in area' triggers that have fired for unit
                         </td></tr>
-                        <td><span class="parameter">OODA</span>
+                        <tr><td><span class="parameter">OODA</span>
                         <td><span class="table">table</span>
                         <td>
                             Table contain unit's "observe, orient, decide, act" values {evasion, targeting, detection}
                         </td></tr>
-                        <td><span class="parameter">embarkedUnits</span>
+                        <tr><td><span class="parameter">embarkedUnits</span>
                         <td><span class="table">table</span>
                         <td>
                             Table of boats and aircraft docked/embarked on the unit
                         </td></tr>
-                        <td><span class="parameter">assignedUnits</span>
+                        <tr><td><span class="parameter">assignedUnits</span>
                         <td><span class="table">table</span>
                         <td>
                             Table of boats and aircraft assigned to the unit (base)
                         </td></tr>
-                        <td><span class="parameter">weapon</span>
+                        <tr><td><span class="parameter">weapon</span>
                         <td><span class="table">table</span>
                         <td>
                             Table of shooter unit, at contact unit and detonated (when destroyed) if a weapon <span class="readonly">READ ONLY</span>
                         </td></tr>
-                        <td><span class="parameter">targetedBy</span>
+                        <tr><td><span class="parameter">targetedBy</span>
                         <td><span class="table">table</span>
                         <td>
                             Table of unit guids that have this unit as a target<br>
                             (Note that the starting idex of this table is '0' rather than '1' as normal Lua tables)
                         </td></tr>
-                        <td><span class="parameter">firingAt</span>
+                        <tr><td><span class="parameter">firingAt</span>
                         <td><span class="table">table</span>
                         <td>
                             Table of contact guids that this unit is firing at<br>
                             (Note that the starting idex of this table is '0' rather than '1' as normal Lua tables)
                         </td></tr>
-                        <td><span class="parameter">firedOn</span>
+                        <tr><td><span class="parameter">firedOn</span>
                         <td><span class="table">table</span>
                         <td>
                             Table of guids that are firing on this unit<br>
                             (Note that the starting idex of this table is '0' rather than '1' as normal Lua tables)
                         </td></tr>
-                        <td><span class="parameter">formation</span>
+                        <tr><td><span class="parameter">formation</span>
                         <td><span class="table">table</span>
                         <td>
                             Table of unit's formation info {bearing, type (of bearing), distance, sprint (and drift)
                         </td></tr>
-                        <td><span class="parameter">sprintDrift</span>
+                        <tr><td><span class="parameter">sprintDrift</span>
                         <td><span class="types"><span class="boolean">True/False</span></span>
                         <td>
                             Sprint and drift 'True/False'
                         </td></tr>
-                        <td><span class="parameter">avoidCavitation</span>
+                        <tr><td><span class="parameter">avoidCavitation</span>
                         <td><span class="types"><span class="boolean">True/False</span></span>
                         <td>
                             Avoid cavitation 'True/False'
                         </td></tr>
-                        <td><span class="parameter">hostFacility</span>
+                        <tr><td><span class="parameter">hostFacility</span>
                         <td><span class="table"><a href="Tables.html#table_Facility">Facility</a></span>
                         <td>
                             Where unit is hosted
                         </td></tr>
-                        <td><span class="parameter">cargo</span>
+                        <tr><td><span class="parameter">cargo</span>
                         <td><span class="table"><a href="Tables.html#table_Cargo">Cargo</a></span>
                         <td>
                             Unit cargo information
                         </td></tr>
-                        <td><span class="parameter">RTB</span>
+                        <tr><td><span class="parameter">RTB</span>
                         <td><span class="types"><span class="method">method</span>()</span>
                         <td>
                             Trigger the unit to return to base, or cancel an RTB.
                         </td></tr>
-                        <td><span class="parameter">outOfComms</span>
+                        <tr><td><span class="parameter">outOfComms</span>
                         <td><span class="types"><span class="boolean">True/False</span></span>
                         <td>
                             is unit connected to side comms network (false = connected) <span class="readonly">READ ONLY</span>
                         </td></tr>
-                        <td><span class="parameter">AI_EvaluateTargets_enabled</span>
+                        <tr><td><span class="parameter">AI_EvaluateTargets_enabled</span>
                         <td><span class="types"><span class="boolean">True/False</span></span>
                         <td>
                             AI evaluates targets
                         </td></tr>
-                        <td><span class="parameter">AI_DeterminePrimaryTarget_enabled</span>
+                        <tr><td><span class="parameter">AI_DeterminePrimaryTarget_enabled</span>
                         <td><span class="types"><span class="boolean">True/False</span></span>
                         <td>
                             AI determines primary target
                         </td></tr>
-                        <td><span class="parameter">obeyEMCON</span>
+                        <tr><td><span class="parameter">obeyEMCON</span>
                         <td><span class="types"><span class="boolean">True/False</span></span>
                         <td>
                             Unit obeys EMCON. Turn off to manually set sensors
                         </td></tr>
-                        <td><span class="parameter">category</span>
+                        <tr><td><span class="parameter">category</span>
                         <td><span class="types"><span class="number">Number</span></span>
                         <td>
                             The unit category code for the <a href="DataTypes.html#dataType_Unit_Aircraft">Aircraft</a>, <a href="DataTypes.html#dataType_Unit_Facility">Facility</a>, <a href="DataTypes.html#dataType_Unit_Ship">Ship</a>, <a href="DataTypes.html#dataType_Unit_Submarine">Submarine</a> or <a href="DataTypes.html#dataType_Unit_Satellite">Satellite</a>.
                         </td></tr>
-                        <td><span class="parameter">sensors</span>
+                        <tr><td><span class="parameter">sensors</span>
                         <td><span class="table"><a href="Tables.html#table_Sensor">Sensor</a></span>
                         <td>
                             Unit sensor information
                         </td></tr>
 
-                        <td><span class="parameter">inArea</span>
+                        <tr><td><span class="parameter">inArea</span>
                         <td><span class="types"><span class="method">method</span>({area})</span>
                         <td>
                             Is unit in the 'area' defined by table of RPs - returns <span class="types"><span class="boolean">True/False</span></span>
                         </td></tr>
-                        <td><span class="parameter">delete</span>
+                        <tr><td><span class="parameter">delete</span>
                         <td><span class="types"><span class="method">method</span>()</span>
                         <td>
                             Immediately removes unit object
                         </td></tr>
-                        <td><span class="parameter">filterOnComponent</span>
+                        <tr><td><span class="parameter">filterOnComponent</span>
                         <td><span class="types"><span class="method">method</span>(type)</span>
                         <td>
                             Filters unit on <code>type</code> of component and returns a <span class="table">
                                 <a href="Tables.html#table_Component">Component</a>
                             </span> table.
                         </td></tr>
-                        <td><span class="parameter">rangetotarget</span>
+                        <tr><td><span class="parameter">rangetotarget</span>
                         <td><span class="types"><span class="method">method</span>('contactid')</span>
                         <td>
                             Calculate flat distance to a contact location
                         </td></tr>
-                        <td><span class="parameter">Launch</span>
+                        <tr><td><span class="parameter">Launch</span>
                         <td><span class="types"><span class="method">method</span><span class="boolean">(True/False)</span></span>
                         <td>
                             Trigger the unit to launch from base (true) or abort launch (false)
                         </td></tr>
-                        <td><span class="parameter">unassign</span>
+                        <tr><td><span class="parameter">unassign</span>
                         <td><span class="types"><span class="boolean">True/False</span></span>
                         <td>
                             unassign unit (performs basic actions of hotkey 'u')
                         </td></tr>
-                        <td><span class="parameter">oldDamagePercent</span>
+                        <tr><td><span class="parameter">oldDamagePercent</span>
                         <td><span class="types"><span class="single">single</span></span>
                         <td>
                             changes the last damage percent used by damage trigger
                         </td></tr>
-                        <td><span class="parameter">isEscort</span>
+                        <tr><td><span class="parameter">isEscort</span>
                         <td><span class="types"><span class="boolean">True/False</span></span>
                         <td>
                             is unit asssigned to escort in mission <span class="readonly">READ ONLY</span>
                         </td></tr>
-                        <td><span class="parameter">isOperating</span>
+                        <tr><td><span class="parameter">isOperating</span>
                         <td><span class="types"><span class="boolean">True/False</span></span>
                         <td>
                             is unit is operational, not landed or docked <span class="readonly">READ ONLY</span>
                         </td></tr>
-                        <td><span class="parameter">updateorbit</span>
+                        <tr><td><span class="parameter">updateorbit</span>
                         <td><span class="types"><span class="method">method</span>({TLE=...})</span>
                         <td>
                             Update the orbit for a satellite by specifying a TLE. See below for a complete usage example.
                         </td></tr>
-                        <td><span class="parameter">IsMine</span>
+                        <tr><td><span class="parameter">IsMine</span>
                         <td><span class="types"><span class="boolean">True/False</span></span>
                         <td>
                             is weapon a mine <span class="readonly">READ ONLY</span>
                         </td></tr>
-                        <td><span class="parameter">IsUnguidedBallisticWeapon</span>
+                        <tr><td><span class="parameter">IsUnguidedBallisticWeapon</span>
                         <td><span class="types"><span class="boolean">True/False</span></span>
                         <td>
                             is weapon a Unguided Ballistic Weapon <span class="readonly">READ ONLY</span>
                         </td></tr>
-                        <td><span class="parameter">IsBallisticMissile</span>
+                        <tr><td><span class="parameter">IsBallisticMissile</span>
                         <td><span class="types"><span class="boolean">True/False</span></span>
                         <td>
                             is weapon a Ballistic Weapon <span class="readonly">READ ONLY</span>
                         </td></tr>
-                        <td><span class="parameter">IsDecoy</span>
+                        <tr><td><span class="parameter">IsDecoy</span>
                         <td><span class="types"><span class="boolean">True/False</span></span>
                         <td>
                             is weapon a decoy <span class="readonly">READ ONLY</span>
                         </td></tr>
-                        <td><span class="parameter">IsNuke</span>
+                        <tr><td><span class="parameter">IsNuke</span>
                         <td><span class="types"><span class="boolean">True/False</span></span>
                         <td>
                             is weapon a nuke <span class="readonly">READ ONLY</span>
                         </td></tr>
-                        <td><span class="parameter">jammer</span>
+                        <tr><td><span class="parameter">jammer</span>
                         <td><span class="types"><span class="boolean">True/False</span></span>
                         <td>
                             unit is acting as a jammer <span class="readonly">READ ONLY</span>
                         </td></tr>
-                        <td><span class="parameter">jammed</span>
+                        <tr><td><span class="parameter">jammed</span>
                         <td><span class="types"><span class="boolean">True/False</span></span>
                         <td>
                             unit is being jammed <span class="readonly">READ ONLY</span>
                         </td></tr>
-                        <td><span class="parameter">pitch</span>
+                        <tr><td><span class="parameter">pitch</span>
                         <td><span class="types"><span class="number">number</span></span>
                         <td>
                             aircraft or missile pitch <span class="readonly">READ ONLY</span>
                         </td></tr>
-                        <td><span class="parameter">groundSpeed</span>
+                        <tr><td><span class="parameter">groundSpeed</span>
                         <td><span class="types"><span class="number">number</span></span>
                         <td>
                             aircraft or missile speed <span class="readonly">READ ONLY</span>
                         </td></tr>
-                        <td><span class="parameter">crew</span>
+                        <tr><td><span class="parameter">crew</span>
                         <td><span class="types"><span class="number">number</span></span>
                         <td>
                             crew size (nil if not defined) <span class="readonly">READ ONLY</span>
                         </td></tr>
+						<tr><td><span class="parameter">getwaypoint</span>
+						<td><span class="types"><span class="method">method</span>(guid=<span class="string">string</span>)</span>
+						<td> Returns a <span class="wrapper"><a
+								href="#wrapper_WayPoint">Waypoint</a></span> based on the GUID of the waypoint passed.
+						</td></tr>
 
-                        </tr>
                     </table>
- 						<br>
-					    <h5>Examples</h5>
-						<div class="example">
-						<p>Update the orbit for a satellite by specifying a TLE</p>
+					<br>
+					<h5>Examples</h5>
+					<div class="example">
+					<p>Update the orbit for a satellite by specifying a TLE</p>
                     	<code>
 theSat = ScenEdit_GetUnit({guid=<span class="string">'56f830c1-d0e2-430a-985e-0e301cc01eff'</span>})<br>
 theTLE = <span class="string">'Resurs P1\n1 39186U 13030A   17013.12537468  .00000446  00000-0  16942-4 0  9992\n2 39186  97.3847  79.3911 0015157 247.7411 195.8488 15.31966970198820'</span><br>
 theSat:updateorbit({TLE=theTLE})
                     	</code>
                     </div>
-                   <hr>
-				    <h5>In development</h5>
-	<table class="table_borders" style="width: 100%; margin-left: 0px;">
-   	<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
-						<td><span class="parameter">getwaypoint</span>
-						<td><span class="types"><span class="method">method</span>(guid=<span class="string">string</span>)</span>
-						<td> Returns a <span class="wrapper"><a
-								href="#wrapper_WayPoint">Waypoint</a></span> based on the GUID of the waypoint passed.
-							<div class="example">
+ 					<div class="example">
+					<p>Change the type of waypoint</p>
                     	<code>
  au = ScenEdit_GetUnit({name='AGM-158A JASSM [Penetrator] #967', guid='46skox-0hmf72m6q6bdj'})<br>
  print(au.course)<br>
@@ -1579,42 +1551,41 @@ theSat:updateorbit({TLE=theTLE})
  wp.type = 0   -- This changes the waypoint type, in this case to manual plotted-course waypoint<br>
  print(wp.type)<br>
                     	</code>
-						</td></tr>
-	</tr></table>
-					<hr>
+                    </div>
 
 		              <!-- What do we mean by ScenEdit only? The console and Lua script event actions are only available/editable in ScenEdit???-->
 				    <h5>Modifiable through ScenEdit_ functions only</h5>
-	<table class="table_borders" style="width: 100%; margin-left: 0px;">
-   	<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
-    					<td><span class="parameter">refuel</span>
+					<table class="table_borders" style="width: 100%; margin-left: 0px;">
+					<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+    					<tr><td><span class="parameter">refuel</span>
     					<td><span class="types"><span class="boolean">True/False</span></span>
     					<td>Trigger the unit to attempt an UNREP
 						</td></tr>
-    					<td><span class="parameter">RTB</span>
+    					<tr><td><span class="parameter">RTB</span>
     					<td><span class="types"><span class="boolean">True/False</span></span>
     					<td>Trigger the unit to return to base
 						</td></tr>
-    					<td><span class="parameter">moveto</span>
+    					<tr><td><span class="parameter">moveto</span>
     					<td><span class="types"><span class="boolean">True/False</span></span>
     					<td>Set a desired alt/depth instead of jumping to actual
 						</td></tr>
-    					<td><span class="parameter">manualSpeed</span>
+    					<tr><td><span class="parameter">manualSpeed</span>
     					<td><span class="types"><span class="string">string</span> or <span class="number">number</span></span>
     					<td>Desired speed or 'OFF' to turn off manual mode
 						</td></tr>
-    					<td><span class="parameter">manualThrottle</span>
+    					<tr><td><span class="parameter">manualThrottle</span>
     					<td><span class="types"><span class="string">string</span> or <span class="number">number</span></span>
     					<td>Desired throttle or 'OFF' to turn off manual mode
 						</td></tr>
-    					<td><span class="parameter">manualAltitude</span>
+    					<tr><td><span class="parameter">manualAltitude</span>
     					<td><span class="types"><span class="string">string</span> or <span class="number">number</span></span>
     					<td>Desired altitude/depth or 'OFF' to turn off manual mode
 						</td></tr>
-    					<td><span class="parameter">sensors</span>
-                        <td><span class="table"><a href="Tables.html#table_Sensor">Sensor</a></span> Sensors set to active or inactive in table format (sensor_guid,sensor_isactive)
+    					<tr><td><span class="parameter">sensors</span>
+                        <td><span class="table"><a href="Tables.html#table_Sensor">Sensor</a></span> 
+						<td>Sensors set to active or inactive in table format (sensor_guid,sensor_isactive)
 						</td></tr>
-	</tr></table>
+					</table>
 		
 					<hr>
 					<a class="anchor" id="wrapper_Zone"></a>
@@ -1625,38 +1596,38 @@ theSat:updateorbit({TLE=theTLE})
 		
 					</ul>
 		
-	<table class="table_borders" style="width: 100%; margin-left: 0px;">
-   	<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
-						<td><span class="parameter">guid</span>
+					<table class="table_borders" style="width: 100%; margin-left: 0px;">
+					<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+						<tr><td><span class="parameter">guid</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>The GUID of the zone. <span class="readonly">READ ONLY</span>
 						</td></tr>
-						<td><span class="parameter">description</span>
+						<tr><td><span class="parameter">description</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>The description of the zone.
 						</td></tr>
-						<td><span class="parameter">isactive</span>
+						<tr><td><span class="parameter">isactive</span>
 						<td><span class="types"><span class="boolean">True/False</span></span>
 						<td>Zone is currently active.
 						</td></tr>
-						<td><span class="parameter">area</span>
+						<tr><td><span class="parameter">area</span>
 						<td><span class="wrapper"><a href="#wrapper_ZoneMarker">ZoneMarker</a></span>
 						<td>A set of reference points marking the zone. Can be updated by a list of RPs, or a table of new RP
 							values.
 						</td></tr>
-						<td><span class="parameter">affects</span>
+						<tr><td><span class="parameter">affects</span>
 						<td><span class="types"><span class="type">unitTypes </span></span>
 						<td>List of unit types (ship, submarine, aircraft, facility)
 						</td></tr>
-						<td><span class="parameter">locked</span>
+						<tr><td><span class="parameter">locked</span>
 						<td><span class="types"><span class="boolean">True/False</span></span>
 						<td>Zone is locked.
 						</td></tr>
-						<td><span class="parameter">markas</span>
+						<tr><td><span class="parameter">markas</span>
 						<td><span class="types"><span class="type">Posture</span></span>
 						<td>Posture of violator of exclusion zone.
 						</td></tr>
-	</tr></table>
+	</table>
 		
 					<!-- <h5>Example</h5>
 		
@@ -1679,7 +1650,8 @@ theSat:updateorbit({TLE=theTLE})
 				name=<span class="string">'area test rp1'</span>,  latitude=<span class="string">'35.5480335331354'</span>, longitude=<span class="string">'16.8184476823186'</span>, highlighted=<span class="keyword">true</span>,,
 				name=<span class="string">'area test rp2'</span>,  latitude=<span class="string">'38.5480335331354'</span>, longitude=<span class="string">'18.8184476823186'</span>, highlighted=<span class="keyword">false</span>,  <span class="comment">-- replace with a new set of RPs that might not be visible to the side
 				</span> End</code></div> -->
-
+				
+				<hr>
 				<a class="anchor" id="wrapper_WayPoint"></a>
 				<h3>WayPoint</h3>
 				<p>
@@ -1687,24 +1659,24 @@ theSat:updateorbit({TLE=theTLE})
 					The extended fields can be used in when setting a course for a unit.<br>
 					For retrieval of a waypoint, the minimum content is latitude and longitude currently with the extended information in development.
 				</p>
-	<table class="table_borders" style="width: 100%; margin-left: 0px;">
-   	<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
-	<tr><td><span class="parameter">objectid </td><td class="types"><span class="string">string</span></td><td>GUID defining waypoint </td><td></td></tr>
-	<tr><td><span class="parameter">name </td><td class="types"><span class="string">string</span></td><td>Name</td></td></tr>
-	<tr><td><span class="parameter">description </td><td class="types"><span class="string">string</span></td><td>Description</td></td></tr>
-	<tr><td><span class="parameter">type </td><td class="types"><span class="number">number</span></td><td>Type of waypoint</td></td></tr>
-	<tr><td><span class="parameter">latitude </td><td class="types"><span class="latitude">latitude</span></td><td>Location latitude</td></td></tr>
-	<tr><td><span class="parameter">longitude </td><td class="types"><span class="longitude">longitude</span></td><td>Location longitude</td></td></tr>
-	<tr><td><span class="parameter">altitude </td><td class="types"><span class="number">number</span></td><td>Location altitude/depth in meters</td></td></tr>
-	<tr><td><span class="parameter">desiredAltitude </td><td class="types"><span class="number">number</span></td><td>Desired altitude/depth in meters</td><td>for setting a course thru the unit wrapper, <br>desiredAltitudeTF is used if 'terrain following' </td></tr>
-	<tr><td><span class="parameter">TF </td><td class="types"><span class="boolean">True/False</span></td><td>Altitude using terrain following</td></td></tr>
-	<tr><td><span class="parameter">desiredSpeed </td><td class="types"><span class="number">number</span></td><td>Desired speed</td></td></tr>
-	<!-- <tr><td class="parameter">desiredAltitudeTF </td><td>Desired altitude AGL to set altitude as terrain-following in meters</td><td class="types"><span class="number">number</span></td></td></tr> -->
-	<tr><td><span class="parameter">presetAltitude </td><td class="types"><span class="string">string</span></td><td></td></td></tr>
-	<tr><td><span class="parameter">presetDepth </td><td class="types"><span class="string">string</span></td><td></td></td></tr>
-	<tr><td><span class="parameter">presetThrottle </td><td class="types"><span class="string">string</span></td></td></tr>
+				<table class="table_borders" style="width: 100%; margin-left: 0px;">
+				<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+				<tr><td><span class="parameter">objectid </td><td class="types"><span class="string">string</span></td><td>GUID defining waypoint </td><td></td></tr>
+				<tr><td><span class="parameter">name </td><td class="types"><span class="string">string</span></td><td>Name</td></td></tr>
+				<tr><td><span class="parameter">description </td><td class="types"><span class="string">string</span></td><td>Description</td></td></tr>
+				<tr><td><span class="parameter">type </td><td class="types"><span class="number">number</span></td><td>Type of waypoint</td></td></tr>
+				<tr><td><span class="parameter">latitude </td><td class="types"><span class="latitude">latitude</span></td><td>Location latitude</td></td></tr>
+				<tr><td><span class="parameter">longitude </td><td class="types"><span class="longitude">longitude</span></td><td>Location longitude</td></td></tr>
+				<tr><td><span class="parameter">altitude </td><td class="types"><span class="number">number</span></td><td>Location altitude/depth in meters</td></td></tr>
+				<tr><td><span class="parameter">desiredAltitude </td><td class="types"><span class="number">number</span></td><td>Desired altitude/depth in meters</td><td>for setting a course thru the unit wrapper, <br>desiredAltitudeTF is used if 'terrain following' </td></tr>
+				<tr><td><span class="parameter">TF </td><td class="types"><span class="boolean">True/False</span></td><td>Altitude using terrain following</td></td></tr>
+				<tr><td><span class="parameter">desiredSpeed </td><td class="types"><span class="number">number</span></td><td>Desired speed</td></td></tr>
+				<!-- <tr><td class="parameter">desiredAltitudeTF </td><td>Desired altitude AGL to set altitude as terrain-following in meters</td><td class="types"><span class="number">number</span></td></td></tr> -->
+				<tr><td><span class="parameter">presetAltitude </td><td class="types"><span class="string">string</span></td><td></td></td></tr>
+				<tr><td><span class="parameter">presetDepth </td><td class="types"><span class="string">string</span></td><td></td></td></tr>
+				<tr><td><span class="parameter">presetThrottle </td><td class="types"><span class="string">string</span></td></td></tr>
 
-	</table>
+				</table>
 
 			
 			<div id="footer">
