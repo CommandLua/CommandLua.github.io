@@ -69,6 +69,7 @@
                 </p>
                 <ul class="ul-2-columns">
                     <li><span class="table"><a href="#table_AAR">AAR</a></span></li>
+                    <li><span class="table"><a href="#table_Area">Area</a></span></li>
                     <li><span class="table"><a href="#table_Cargo">Cargo</a></span></li>
                     <li><span class="table"><a href="#table_Component">Component</a></span></li>
                     <li><span class="table"><a href="#table_EMmatch">EMmatch</a></span></li>
@@ -180,6 +181,19 @@
                         <td>Use 'internal' range or set a range. </td>
                     </tr>
                 </table>
+
+
+                <hr>
+                <a class="anchor" id="table_Area"></a>
+                <h3>Area</h3>
+				<p>
+				This defines an area bounded by Reference Points or LatLon points<br>
+				<ol>
+<li>Using Reference Point Names or GUIDs<br>
+{ 'RP-3137', 'RP-3139', 'RP-3136', 'RP-3138' }<br>
+<br>
+</ol>
+				</p>
 
                 <hr>
                 <a class="anchor" id="table_Cargo"></a>
@@ -615,7 +629,7 @@
                 <a class="anchor" id="table_Formation"></a>
                 <h3>Formation</h3>
                 <p>
-                    This contains the information related to keep units of a group in formation.<br />
+                    This contains the information related to keeping units of a group in formation.<br />
 					There are several predefined formation settings located in 'Resources\Formation\StandardFormations.txt'.
 					These can be used to set a group's base formation stations.<br />
 					Indivdual units in the formation can have their station changed.</br />
@@ -632,26 +646,28 @@
                         <td><span class="parameter">type</span>
                         <td><span class="types"><span class="tooltip">value<span class="tooltiptext">fixed = 0 <br> rotating = 1 </span></span></span>
                         <td>Type of bearing</td>
-                        <td>Fixed or Rotating. <br />When fixed, a bearing 0 is towards the top of charted area<br /> regardless of movemnt of formation lead</td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td><span class="parameter">bearing</span>
                         <td><span class="types"><span class="number">number</span></span>
                         <td>Bearing from formation lead (0-360)
+                        <td></td>
                     </tr>
                     <tr>
                         <td><span class="parameter">distance</span>
                         <td><span class="types"><span class="number">number</span></span>
                         <td>Distance (NM) from formation lead
+                        <td></td>
                     </tr>
                     <tr>
                         <td><span class="parameter">sprint</span>
                         <td><span class="types"><span class="boolean">True/False</span></span>
                         <td>Use 'sprint and drift' mode while on formation station
+                        <td></td>
                     </tr>
                 </table>
                 <p></p>
-                <h4>Fields</h4>
                 <p>For setting a group's formation and underlying unit stations</p>
                 <table class="table_borders" style="width: 100%; margin-left: 0px;">
                     <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</th></tr>
@@ -729,27 +745,39 @@ print(u.formation) -- after update<br />
                         <td><span class="parameter">detector_guid</span>
                         <td><span class="types"><span class="string">string</span></span>
                         <td>The GUID of the detecting unit
+						<td></td>
                     </tr>
                     <tr>
                         <td><span class="parameter">detect_sensor_guid</span>
                         <td><span class="types"><span class="string">string</span></span>
                         <td>The GUID of the sensor on the detecting unit
+						<td></td>
                     </tr>
                     <tr>
                         <td><span class="parameter">age</span>
                         <td><span class="types"><span class="number">number</span></span>
                         <td>Seconds since detection made
+						<td></td>
                     </tr>
                     <tr>
                         <td><span class="parameter">range</span>
                         <td><span class="types"><span class="number">number</span></span>
                         <td>Estimated range at detect time
+						<td></td>
                     </tr>
                     <tr>
                         <td><span class="parameter">special_mode</span>
                         <td><span class="types"><span class="string">string</span></span>
-                        <td>Special detect mode
-                    </tr>
+                        <td>Special detect mode. This identifies detection as special.</td>
+						<td>The values, which should be self-explaining, are: <br>
+        None, 
+        SubAssumedFromTorpedoDetection, 
+        SubAssumedFromMissileDetection, 
+        FlamingDatum, 
+        AutoDetection, 
+        MissileAssumedFromSemiActiveIllumination 
+						</td>
+                   </tr>
                 </table>
 				<h5>Example</h5>
 				<div class="example">
@@ -785,16 +813,19 @@ print(u.formation) -- after update<br />
                     recorded in	decimal	degrees.
                 </p>
                 <h4>Fields</h4>
-                <ul class="ul-no-bullets">
-                    <li>
-                        <span class="parameter">latitude</span>
-                        <span class="types"><span class="number">number</span></span>
-                    </li>
-                    <li>
-                        <span class="parameter">longitude</span>
-                        <span class="types"><span class="number">number</span></span>
-                    </li>
-                </ul>
+                <table class="table_borders" style="width: 100%; margin-left: 0px;">
+                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <td><span class="parameter">latitude</span>
+                        <td class="types"><a href="DataTypes.html#dataType_Latitude">latitude</a></td>
+						<td /><td />
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">longitude</span>
+                        <td class="types"><a href="DataTypes.html#dataType_Longitude">longitude</a></td>
+						<td /><td />
+                    </tr>
+                </table>
                 <h5>Example</h5>
                 <div class="example">
                     <code>
@@ -898,7 +929,7 @@ print(u.formation) -- after update<br />
                         <td>Database ID
                     </tr>
                     <tr>
-                        <td><span class="parameter">mag_GUID</span>
+                        <td><span class="parameter">mag_guid</span>
                         <td><span class="types"><span class="string">string</span></span>
                         <td>GUID
                     </tr>
@@ -913,6 +944,50 @@ print(u.formation) -- after update<br />
                         <td>Table of weapon loads in magazine
                     </tr>
                 </table>
+
+					<h5>Example</h5>
+					<div class="example">
+						<code>
+local u = ScenEdit_GetUnit({name='LST 4001 Osumi', guid='8269b881-20ce-4f2e-baa0-6823e46d55a4'})<br />
+print( "Unit Magazines " .. "\r\n")<br />
+for k,v in pairs(u.magazines) do<br />
+ local s = '' <br />
+ s = s .. k .. " - " .. v.mag_name .. "with capacity of " .. v.mag_capacity .. ' units\r\n'<br />
+ s = s .. "\t[ containing " .. #v.mag_weapons .. " weapon(s)]\r\n"<br />
+ for k,v in pairs(v.mag_weapons) do<br />
+    s = s .. "\t\t" .. v.wpn_name .. " with load " .. v.wpn_current .. " of " .. v.wpn_default .. '\r\n'<br />
+ end<br />
+print(s)<br />
+end<br />
+<br />
+							<output>
+Unit Magazines <br />
+<br />
+1 - 12.7mm/50 MGwith capacity of 200 units<br />
+	[ containing 1 weapon(s)]<br />
+		12.7mm/50 MG Burst [10 rnds] with load 180 of 200<br />
+<br />
+2 - 20mm/85 Mk15 Phalanx Blk 1with capacity of 20 units<br />
+	[ containing 1 weapon(s)]<br />
+		20mm/85 Mk15 Phalanx Blk 1 Burst [300 rnds] with load 20 of 20<br />
+<br />
+3 - Helicopter Magazinewith capacity of 10000 units<br />
+	[ containing 2 weapon(s)]<br />
+		AGM-114M Hellfire II with load 24 of 24<br />
+		Mk46 NEARTIP Mod 5 with load 40 of 40<br />
+<br />
+4 - Mk36 SRBOCwith capacity of 80 units<br />
+	[ containing 2 weapon(s)]<br />
+		Mk182 SRBOC Chaff [Seduction] with load 2 of 64<br />
+		Mk186 TORCH Flare [Seduction] with load 2 of 16<br />
+							</output>
+						</code>
+					</div>
+                <div class="note-alert">
+                    <p>
+                        Compare the above example to the example in thw wrapper <a href="Wrappers.html#wrapper_Magazine">Magazine</a>.<br />
+                    </p>
+                </div>
 
                 <hr>
                 <a class="anchor" id="table_MineClearMission"></a>
@@ -1150,7 +1225,68 @@ print(u.formation) -- after update<br />
                     </tr>
                 </table>
 
-                <hr>
+					<h5>Example</h5>
+					<div class="example">
+						<code>		 
+local u = ScenEdit_GetUnit({name='LST 4001 Osumi', guid='8269b881-20ce-4f2e-baa0-6823e46d55a4'})<br />
+print( "Unit Mounts " )<br />
+for k,v in pairs(u.mounts) do<br />
+local s = ''<br />
+s = s .. k .. " - " .. v.mount_name .. " [ " .. v.mount_status .. ' ]\r\n'<br />
+s = s .. "\t[ containing " .. #v.mount_weapons .. " weapon(s) ]\r\n"<br />
+for k,v in pairs(v.mount_weapons) do<br />
+s = s .. "\t\t" .. v.wpn_name .. " with load " .. v.wpn_current .. " of " .. v.wpn_default .. '\r\n'<br />
+end<br />
+print(s)<br />
+end<br />
+<br />
+<output>
+Unit Mounts <br />
+1 - 12.7mm/50 MG [ Operational ]<br />
+	[ containing 1 weapon(s) ]<br />
+		12.7mm/50 MG Burst [10 rnds] with load 10 of 10<br />
+<br />
+2 - 12.7mm/50 MG [ Operational ]<br />
+	[ containing 1 weapon(s) ]<br />
+		12.7mm/50 MG Burst [10 rnds] with load 10 of 10<br />
+<br />
+3 - 20mm/85 Mk15 Phalanx Blk 1 CIWS [ Operational ]<br />
+	[ containing 1 weapon(s) ]<br />
+		20mm/85 Mk15 Phalanx Blk 1 Burst [300 rnds] with load 5 of 5<br />
+																	<br />
+4 - 20mm/85 Mk15 Phalanx Blk 1 CIWS [ Operational ]                 <br />
+	[ containing 1 weapon(s) ]                                      <br />
+		20mm/85 Mk15 Phalanx Blk 1 Burst [300 rnds] with load 5 of 5<br />
+																	<br />
+5 - Mk36 SRBOC [ Operational ]                                      <br />
+	[ containing 2 weapon(s) ]                                      <br />
+		Mk182 SRBOC Chaff [Seduction] with load 4 of 4              <br />
+		Mk186 TORCH Flare [Seduction] with load 2 of 2              <br />
+																	<br />
+6 - Mk36 SRBOC [ Operational ]                                      <br />
+	[ containing 2 weapon(s) ]                                      <br />
+		Mk182 SRBOC Chaff [Seduction] with load 4 of 4              <br />
+		Mk186 TORCH Flare [Seduction] with load 2 of 2              <br />
+																	<br />
+7 - Mk36 SRBOC [ Operational ]                                      <br />
+	[ containing 2 weapon(s) ]                                      <br />
+		Mk182 SRBOC Chaff [Seduction] with load 4 of 4              <br />
+		Mk186 TORCH Flare [Seduction] with load 2 of 2              <br />
+																	<br />
+8 - Mk36 SRBOC [ Operational ]                                      <br />
+	[ containing 2 weapon(s) ]                                      <br />
+		Mk182 SRBOC Chaff [Seduction] with load 4 of 4              <br />
+		Mk186 TORCH Flare [Seduction] with load 2 of 2              <br />
+							</output>
+						</code>
+					</div>
+                <div class="note-alert">
+                    <p>
+                        Compare the above example to the example in thw wrapper <a href="Wrappers.html#wrapper_Mount">Mount</a>.<br />
+                    </p>
+                </div>
+
+				<hr>
                 <a class="anchor" id="table_PatrolMission"></a>
                 <h3>PatrolMission</h3>
                 <p>
@@ -1339,69 +1475,97 @@ print(u.formation) -- after update<br />
                     </tr>
                 </table>
 
-                <hr>
+
+                 <hr>
                 <a class="anchor" id="table_Sensor"></a>
                 <h3>Sensor</h3>
                 <p>
-                    A list of sensors associated with a <span class="wrapper"><a href="Wrappers.html#wrapper_Unit">Unit</a></span> wrapper
+                    Sensor.
                 </p>
+
                 <h4>Fields</h4>
                 <table class="table_borders" style="width: 100%; margin-left: 0px;">
                     <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
                     <tr>
                         <td><span class="parameter">sensor_dbid</span>
-                        <td><span class="types"><span class="string">string</span></span>
-                        <td>The DBID of the sensor.
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Database ID
                     </tr>
                     <tr>
                         <td><span class="parameter">sensor_guid</span>
                         <td><span class="types"><span class="string">string</span></span>
-                        <td>The GUID of the sensor.
+                        <td>GUID
                     </tr>
                     <tr>
                         <td><span class="parameter">sensor_name</span>
                         <td><span class="types"><span class="string">string</span></span>
-                        <td>The name of the sensor.
-                    </tr>
-                    <tr>
-                        <td><span class="parameter">sensor_type</span>
-                        <td><span class="types"><span class="string">string</span></span>
-                        <td>The high-level type of sensor.
-                    </tr>
-                    <tr>
-                        <td><span class="parameter">sensor_role</span>
-                        <td><span class="types"><span class="string">string</span></span>
-                        <td>The role of the sensor (e.g. 3D Air Search - Medium Range).
+                        <td>Name
                     </tr>
                     <tr>
                         <td><span class="parameter">sensor_maxrange</span>
                         <td><span class="types"><span class="number">number</span></span>
-                        <td>The maximum range of the sensor.
+                        <td>Maximum range
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">sensor_isactive</span>
+                        <td><span class="types"><span class="boolean">True/False</span></span>
+                        <td>Maximum range
                     </tr>
                     <tr>
                         <td><span class="parameter">sensor_status</span>
                         <td><span class="types"><span class="string">string</span></span>
-                        <td>The operational status of the sensor.
+                        <td>Status
                     </tr>
                     <tr>
-                    <td><span class="parameter">sensor_isactive</span>
-                    <td><span class="types"><span class="boolean">boolean</span></span>
-                    <td>
-                        Whether the sensor is active or not.
+                        <td><span class="parameter">sensor_role</span>
+                        <td><span class="types"><a href="DataTypes.html#dataType_Sensor">SensorRole</a></span>
+                        <td>Sensor role
                     </tr>
-                </table>
-                <div class="note-alert">
-                    <p>
-                        <strong>Note:</strong> To set sensor on or off, use a table of <code>{sensor_guid,sensor_isactive}</code>
-                    </p>
-                </div>
-                <div class="note-caution">
-                    <p>
-                        <strong>Caution:</strong> The GUID returned here is the GUID of the individual sensor component, not the GUID of the parent unit.
-                    </p>
-                </div>
-
-                <!--
+                    <tr>
+                        <td><span class="parameter">sensor_type</span>
+                        <td><span class="types"><a href="DataTypes.html#dataType_Sensor">SensorType</a></span>
+                        <td>Sensor type
+                    </tr>
+				</table>
+				<h5>Example</h5>
+				<div class="example">
+					<code>		   
+local u = ScenEdit_GetUnit({name='LST 4001 Osumi', guid='8269b881-20ce-4f2e-baa0-6823e46d55a4'})<br />
+print( "Unit Sensor " )<br />
+for k,v in pairs(u.sensors) do<br />
+local s = ''<br />
+s = s .. k .. " - " .. v.sensor_name .. " [ " .. v.sensor_status .. ' ] Max Range: ' .. v.sensor_maxrange  .. '\r\n'<br />
+s = s .. "\t[ Active: " .. string.format('%s',v.sensor_isactive)  .. " , type: " .. v.sensor_type .. " role: " .. v.sensor_role .. "]\r\n"<br />
+print(s)<br />
+end<br />
+<br />
+							<output>
+Unit Sensor                                                                     <br />
+1 - J/OPS-14C [ Operational ] Max Range: 120.0                                  <br />
+	[ Active: false , type: 2001 role: 2003]                                    <br />
+																				<br />
+2 - J/OPS-18A [ Operational ] Max Range: 40.0                                   <br />
+	[ Active: false , type: 2001 role: 2023]                                    <br />
+																				<br />
+3 - J/OPS-20 [ Operational ] Max Range: 25.0                                    <br />
+	[ Active: false , type: 2001 role: 2028]                                    <br />
+																				<br />
+4 - J/OPS-28C [ Operational ] Max Range: 110.0                                  <br />
+	[ Active: false , type: 2001 role: 2103]                                    <br />
+																				<br />
+5 - Mk1 Eyeball [ Operational ] Max Range: 50.0                                 <br />
+	[ Active: false , type: 2003 role: 2016]                                    <br />
+																				<br />
+6 - AN/VPS-2 Search/Track [Mk16 CWIS] [ Operational ] Max Range: 2.7000000476837<br />
+	[ Active: false , type: 2001 role: 2133]                                    <br />
+																				<br />
+7 - AN/VPS-2 Search/Track [Mk16 CWIS] [ Operational ] Max Range: 2.7000000476837<br />
+	[ Active: false , type: 2001 role: 2133]
+						</output>
+					</code>
+				</div>
+	
+  <!--
                 <hr>
                 <a class="anchor" id="table_SideContact"></a>
                 <h3>SideContact</h3>
@@ -1788,13 +1952,47 @@ print(u.formation) -- after update<br />
                 </table>
 
                 <hr>
-                <a class="anchor" id="table_WRA"></a>
-                <h3>WRA</h3>
-                <p>WRA settings</p>
+                <a class="anchor" id="table_UnitList"></a>
+                <h3>UnitList</h3>
+                <p>
+                    List of unit or contact guids.
+                </p>
                 <h4>Fields</h4>
                 <table class="table_borders" style="width: 100%; margin-left: 0px;">
                     <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
                     <tr>
+                        <td><span class="parameter">guid</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>The GUID of the unit.
+						<td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">name</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>The name of the unit.
+						<td>
+                    </tr>
+                </table>
+
+                <hr>
+                <a class="anchor" id="table_WRA"></a>
+                <h3>WRA</h3>
+                <p>WRA (Weapon Release Authority) settings</p>
+                <h4>Fields</h4>
+                <table class="table_borders" style="width: 100%; margin-left: 0px;">
+                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+					
+					<tr><td><span class="parameter">weapon_dbid</span>
+					<td><span class="types"><span class="string">string</span></span>
+					<td>Weapon DB number 
+					</td></tr>
+					
+					<tr><td><span class="parameter">weapon_name</span>
+					<td><span class="types"><span class="string">string</span></span>
+					<td>Weapon name 
+					</td></tr>
+                    
+					<tr>
                         <td><span class="parameter">qty_salvo</span>
                         <td><span class="types"><span class="string">string</span></span>
                         <td>Weapons per salvo ('Max','None' or a number)
@@ -1817,7 +2015,7 @@ print(u.formation) -- after update<br />
                 </table>
                 <div class="note-alert">
                     <p>
-                        <strong>Note:</strong> The absence of a field implies that it is <strong>not</strong> used.
+                        <strong>Note:</strong> The absence of a field implies that it is <strong>not</strong> used or being changed.
                     </p>
                 </div>
 
@@ -1874,44 +2072,44 @@ print(u.formation) -- after update<br />
                 <a class="anchor" id="table_WeaponLoaded"></a>
                 <h3>WeaponLoaded</h3>
                 <p>
-                    Weapon loads on mount or in magazine.
+                    Weapon loads on mount, in magazine or in loadout.
                 </p>
                 <h4>Fields</h4>
                 <table class="table_borders" style="width: 100%; margin-left: 0px;">
                     <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
                     <tr>
-                        <td><span class="parameter">wpn_GUID</span>
+                        <td><span class="parameter">wpn_guid</span>
                         <td><span class="types"><span class="string">string</span></span>
                         <td>GUID
                     </tr>
                     <tr>
                         <td><span class="parameter">wpn_current</span>
-                        <td><span class="types"><span class="string">string</span></span>
+                        <td><span class="types"><span class="number">number</span></span>
                         <td>Current loads available
                     </tr>
                     <tr>
                         <td><span class="parameter">wpn_maxcap</span>
-                        <td><span class="types"><span class="string">string</span></span>
+                        <td><span class="types"><span class="number">number</span></span>
                         <td>Maximum loads
                     </tr>
                     <tr>
                         <td><span class="parameter">wpn_default</span>
-                        <td><span class="types"><span class="string">string</span></span>
+                        <td><span class="types"><span class="number">number</span></span>
                         <td>Default loads (to fill out)
                     </tr>
                     <tr>
                         <td><span class="parameter">wpn_name</span>
                         <td><span class="types"><span class="string">string</span></span>
-                        <td>Name
+                        <td>Weapon name
                     </tr>
                     <tr>
                         <td><span class="parameter">wpn_dbid</span>
-                        <td><span class="types"><span class="string">string</span></span>
+                        <td><span class="types"><span class="number">number</span></span>
                         <td>Database ID of weapon
                     </tr>
                     <tr>
                         <td><span class="parameter">wpn_type</span>
-                        <td><span class="types"><span class="string">string</span></span>
+                        <td><span class="types"><a href="DataTypes.html#dataType_WeaponType">WeaponType</a></span>
                         <td>Type of weapon
                     </tr>
                 </table>

@@ -67,6 +67,7 @@
                 <ul class="ul-2-columns">
                     <li><span class="datatype"><a href="#dataType_Altitude">Altitde</a></span></li>
                     <li><span class="datatype"><a href="#dataType_Arc">Arc</a></span></li>
+                    <li><span class="datatype"><a href="#dataType_Armor">Armor</a></span></li>
                     <li><span class="datatype"><a href="#dataType_ContactIdStatus">ContactIdStatus</a></span></li>
                     <li><span class="datatype"><a href="#dataType_ContactType">ContactType</a></span></li>
                     <li><span class="datatype"><a href="#dataType_DateTime">DateTime</a></span></li>
@@ -80,6 +81,7 @@
                     <li><span class="datatype"><a href="#dataType_LoadoutWeather">LoadoutWeather</a></span></li>
                     <li><span class="datatype"><a href="#dataType_Longitude">Longitude</a></span></li>
                     <li><span class="datatype"><a href="#dataType_Longitude">Longitude</a></span></li>
+                    <li><span class="datatype"><a href="#dataType_Sensor">Sensor</a></span></li>
                     <li><span class="datatype"><a href="#dataType_Stance">Stance</a></span></li>
 
                     <li><span class="datatype"><a href="#dataType_TargetingMode">TargetingMode</a></span></li>
@@ -96,6 +98,7 @@
                     <li><span class="datatype"><a href="#dataType_WeaponType">WeaponType</a></span></li>
                     <li><span class="datatype"><a href="#dataType_Weather">Weather</a></span></li>
                 </ul>
+
                 <hr>
                 <h3><a class="anchor" id="dataType_Altitude"></a>Altitude</h3>
                 <p>
@@ -115,6 +118,7 @@
                         </code>
                     </div>
                 </p>
+
                 <hr>
                 <h3><a class="anchor" id="dataType_Arc"></a>Arc</h3>
                 <p>
@@ -124,8 +128,33 @@
                 <p>
                     <img src=".\images\datatypes_1_arc_codes.jpg" width="200">
                 </p>
-                <hr>
 
+
+                <hr>
+                <a class="anchor" id="dataType_Armor"></a>
+                <h3>Armor rating</h3>
+                <details>
+                    <summary>
+                        The level of armor on device
+                    </summary>
+                    <p><b>Code = Description </b></p>
+                    <ul class="ul-no-bullets">
+						<li>1001 = None 		</li>
+						<li>1005 = Armor_Handgun</li>
+						<li>1010 = Armor_Rifle 	</li>
+						<li>1015 = Armor_HMG 	</li>
+						<li>1020 = RHA_20mm		</li>
+						<li>1025 = RHA_25mm 	</li>
+						<li>1030 = RHA_30mm 	</li>
+						<li>1035 = RHA_35mm 	</li>
+						<li>2001 = Light		</li>
+						<li>2002 = Medium 		</li>
+						<li>2003 = Heavy   		</li>
+						<li>2004 = Special		</li>
+                   </ul>
+                </details>
+
+                <hr>
                 <a class="anchor" id="dataType_ContactIdStatus"></a>
                 <h3>ContactIdStatus</h3>
                 <details>
@@ -152,15 +181,15 @@
                     </summary>
                     <p><b>Code = Description </b></p>
                     <ul class="ul-no-bullets">
-                        <li> 0 = Air              </li>
-                        <li> 1 = Missile          </li>
-                        <li> 2 = Surface          </li>
-                        <li> 3 = Submarine        </li>
-                        <li> 5 = Aimpoint         </li>
-                        <li> 6 = Orbital          </li>
-                        <li> 7 = Facility_Fixed   </li>
-                        <li> 8 = Facility_Mobile  </li>
-                        <li> 9 = Torpedo          </li>
+                        <li>00 = Air              </li>
+                        <li>01 = Missile          </li>
+                        <li>02 = Surface          </li>
+                        <li>03 = Submarine        </li>
+                        <li>05 = Aimpoint         </li>
+                        <li>06 = Orbital          </li>
+                        <li>07 = Facility_Fixed   </li>
+                        <li>08 = Facility_Mobile  </li>
+                        <li>09 = Torpedo          </li>
                         <li>10 = Mine             </li>
                         <li>11 = Explosion        </li>
                         <li>13 = Decoy_Air        </li>
@@ -182,8 +211,25 @@
                     DateTime is displayed and changed as per LOCALE e.g. US would be 'MM/DD/YYYY HH:MM:SS AM/PM' eg
                     '8/13/2002 12:14 PM'
                 </p>
-                <hr>
 
+                <hr>
+                <h3><a class="anchor" id="dataType_Proficiency"></a>Proficiency</h3>
+                <details>
+                    <summary>
+                        Proficiency
+                    </summary>
+                    <p><b>Code = Description </b></p>
+                    <ul class="ul-no-bullets">
+                        <li>0 = Novice     </li>
+                        <li>1 = Cadet </li>
+                        <li>2 = Regular</li>
+                        <li>3 = Veteran</li>
+                        <li>4 = Ace</li>
+                    </ul>
+                </details>
+                <br />
+
+                <hr>
                 <h3><a class="anchor" id="dataType_ROE"></a>Doctrine/ROE</h3>
                 <a class="anchor" id="dataType_ROE#BTAT"></a>
                 <details>
@@ -234,16 +280,16 @@
                     </summary>
                     <p><b>Code = Description </b></p>
                     <ul class="ul-no-bullets">
-                        <li> 0 = Bingo         </li>
-                        <li> 1 = Joker10Percent</li>
-                        <li> 2 = Joker20Percent</li>
-                        <li> 3 = Joker25Percent</li>
-                        <li> 4 = Joker30Percent</li>
-                        <li> 5 = Joker40Percent</li>
-                        <li> 6 = Joker50Percent</li>
-                        <li> 7 = Joker60Percent</li>
-                        <li> 8 = Joker70Percent</li>
-                        <li> 9 = Joker75Percent</li>
+                        <li>00 = Bingo         </li>
+                        <li>01 = Joker10Percent</li>
+                        <li>02 = Joker20Percent</li>
+                        <li>03 = Joker25Percent</li>
+                        <li>04 = Joker30Percent</li>
+                        <li>05 = Joker40Percent</li>
+                        <li>06 = Joker50Percent</li>
+                        <li>07 = Joker60Percent</li>
+                        <li>08 = Joker70Percent</li>
+                        <li>09 = Joker75Percent</li>
                         <li>10 = Joker80Percent</li>
                         <li>11 = Joker90Percent</li>
                     </ul>
@@ -286,7 +332,7 @@
                     </summary>
                     <p><b>Code = Description </b></p>
                     <ul class="ul-no-bullets">
-                        <li>0 = Recharge_Empty</li>
+                        <li>00 = Recharge_Empty</li>
                         <li>10 = Recharge_10_Percent</li>
                         <li>20 = Recharge_20_Percent</li>
                         <li>30 = Recharge_30_Percent</li>
@@ -582,7 +628,6 @@
                         {longitude = <span class="number">-60.336</span>}
                     </code>
                 </div>
-                <hr>
 
                 <!--a class="anchor" id="dataType_MissionType"></a>
         <h3>Type of mission</h3>
@@ -595,11 +640,282 @@
         </details>
     <hr-->
 
-                <a class="anchor" id="dataType_TrueFalse"></a>
-                <h3>True/False</h3>
-                <p> True/Yes = 1 <br> False/No = 0 </p>
-                <hr>
+				<hr>
+                <a class="anchor" id="dataType_Preset"></a>
+				<h3>Presets</h3>
+				<details>
+					<summary>Throttle Codes
+					</summary>
+					<p></p>
+                    <b>Code = Description </b>
+					<ul class="ul-no-bullets">
+						<li>0 = FullStop 
+						<li>1 = Loiter 
+						<li>2 = Cruise 
+						<li>3 = Full 
+						<li>4 = Flank 
+						<li>5 = None 
+					</ul>
+				</details>
+				<details>
+					<summary>Depth Codes
+					</summary>
+					<p></p>
+                    <b>Code = Description </b>
+					<ul class="ul-no-bullets">
+						<li>0 = None 
+						<li>1 = Periscope 
+						<li>2 = Shallow 
+						<li>3 = OverLayer 
+						<li>4 = UnderLayer 
+						<li>5 = MaxDepth 
+						<li>6 = Surface 
+					</ul>
+				</details>
+				<details>
+					<summary>Altitude Codes
+					</summary>
+					<p></p>
+                    <b>Code = Description </b>
+					<ul class="ul-no-bullets">
+						<li>0 = None 
+						<li>1 = MinAltitude 
+						<li>2 = Low1000 
+						<li>3 = Low2000 
+						<li>4 = Medium12000 
+						<li>5 = High25000 
+						<li>6 = High36000 
+						<li>7 = MaxAltitude 
+					</ul>
+				</details>
 
+				<hr>
+                <a class="anchor" id="dataType_Sensor"></a>
+                <h3>Sensor type and role</h3>
+                <p></p>
+                <details>
+                    <summary>
+                        Sensor Type
+                    </summary>
+					<p></p>
+                    <b>Code = Description </b>
+                    <ul class="ul-2-columns">
+<li>1001 = None 
+<li>2001 = Radar 
+<li>2002 = SemiActive 
+<li>2003 = Visual 
+<li>2004 = Infrared 
+<li>2005 = TVM 
+<li>3001 = ESM 
+<li>3002 = ECM 
+<li>3003 = EMP_Projector 
+<li>3004 = PCLS 
+<li>4001 = LaserDesignator 
+<li>4002 = LaserSpotTracker 
+<li>4003 = LaserRangefinder 
+<li>5001 = HullSonar_PassiveOnly 
+<li>5002 = HullSonar_ActivePassive 
+<li>5003 = HullSonar_ActiveOnly 
+<li>5011 = TowedArray_PassiveOnly 
+<li>5012 = TowedArray_ActivePassive 
+<li>5013 = TowedArray_ActiveOnly 
+<li>5021 = VDS_PassiveOnly 
+<li>5022 = VDS_ActivePassive 
+<li>5023 = VDS_ActiveOnly 
+<li>5031 = DippingSonar_PassiveOnly 
+<li>5032 = DippingSonar_ActivePassive 
+<li>5033 = DippingSonar_ActiveOnly 
+<li>5041 = BottomFixedSonar_PassiveOnly 
+<li>5101 = MAD 
+<li>5901 = PingIntercept 
+<li>6001 = MineSweep_MechanicalCableCutter 
+<li>6002 = MineSweep_MagneticInfluence 
+<li>6003 = MineSweep_AcousticInfluence 
+<li>6004 = MineSweep_MultiInfluence 
+<li>6011 = MineSweep_TwoShipMagneticInfluence 
+<li>6021 = MineNeutralization_MooredMineCableCutter 
+<li>6022 = MineNeutralization_ExplosiveChargeMineDisposal 
+<li>6031 = MineNeutralization_DiverExplosiveCharge 
+<li>8001 = NonDetectingEmitter 
+<li>9001 = SensorGroup 
+                    </ul>
+					</details>
+                
+					<details>
+						<summary>
+							Sensor Role
+						</summary>
+						<p></p>
+						<b>Code = Description </b>
+						<ul class="ul-2-columns">
+<li>1001 = None 
+<li>2001 = AirSearch_2D_LR 
+<li>2002 = AirSeach_3D_LR 
+<li>2003 = AirSeach_2D_MR 
+<li>2004 = AirSeach_3D_MR 
+<li>2005 = AirSeach_2D_SR 
+<li>2006 = AirSeach_3D_SR 
+<li>2011 = AirSurfaceSearch_2D_LR 
+<li>2012 = AirSurfaceSearch_3D_LR 
+<li>2013 = AirSurfaceSearch_2D_MR 
+<li>2014 = AirSurfaceSearch_3D_MR 
+<li>2015 = AirSurfaceSearch_2D_SR 
+<li>2016 = AirSurfaceSearch_3D_SR 
+<li>2017 = HeightFinder_LR 
+<li>2018 = HeightFinder_MR 
+<li>2019 = HeightFinder_SR 
+<li>2021 = SurfaceSearch_LR 
+<li>2022 = SurfaceSearch_MR 
+<li>2023 = SurfaceSearch_SR 
+<li>2027 = SurfaceSearch_OTH 
+<li>2028 = SurfaceSearch_Navigation 
+<li>2031 = NavigationOnly 
+<li>2032 = GroundMappingOnly 
+<li>2033 = TerrainAvoidanceFollowingOnly 
+<li>2034 = WeatherOnly 
+<li>2035 = WeatherNavigationOnly 
+<li>2101 = TargetIndicator_SurfToAir_2D 
+<li>2102 = TargetIndicator_SurfToAir_3D 
+<li>2103 = TargetIndicator_SurfToAirSurfToSurf_2D 
+<li>2104 = TargetIndicator_SurfToAirSurfToSurf_3D 
+<li>2105 = TargetIndicator_SurfToSurf 
+<li>2109 = CounterBattery 
+<li>2111 = FCR_AirToAir_LR 
+<li>2112 = FCR_AirToAir_MR 
+<li>2113 = FCR_AirToAir_SR 
+<li>2121 = FCR_AirToAir_AirToSurf_LR 
+<li>2122 = FCR_AirToAir_AirToSurf_MR 
+<li>2123 = FCR_AirToAir_AirToSurf_SR 
+<li>2124 = FCR_AirToSurf_LR 
+<li>2125 = FCR_AirToSurf_MR 
+<li>2126 = FCR_AirToSurf_SR 
+<li>2131 = FCR_SurfToAir_LR 
+<li>2132 = FCR_SurfToAir_MR 
+<li>2133 = FCR_SurfToAir_SR 
+<li>2141 = FCR_SurfToAir_SurfToSurf_LR 
+<li>2142 = FCR_SurfToAir_SurfToSurf_MR 
+<li>2143 = FCR_SurfToAir_SurfToSurf_SR 
+<li>2151 = FCR_SurfToSurf 
+<li>2152 = FCR_SurfToSurf_OTH 
+<li>2161 = FCR_SurfToSurf_Torpedo 
+<li>2191 = FCR_GunOnly 
+<li>2201 = Illuminator_SAM_LR 
+<li>2202 = Illuminator_SAM_MR 
+<li>2203 = Illuminator_SAM_SR 
+<li>2211 = ActiveMissileSeeker 
+<li>2301 = RangeOnly 
+<li>2311 = Land_ATC 
+<li>2312 = Shipboard_ATC 
+<li>2401 = BMEWS 
+<li>2402 = Radar_BallisticMissileBattleManagement 
+<li>2403 = Radar_BallisticMissileTracker 
+<li>2404 = Radar_BallisticMissileEngagement 
+<li>2791 = LLTV_MineRecon 
+<li>2891 = IR_MAWS 
+<li>3001 = ESM_RWR 
+<li>3002 = ESM_LWR 
+<li>3011 = ESM_ELINT 
+<li>3012 = ESM_ELINT_OTHT 
+<li>3021 = ESM_COMINT 
+<li>3031 = ESM_SIGINT 
+<li>3032 = ESM_SIGINT_OTHT 
+<li>3041 = ESM_MASINT 
+<li>3101 = ESM_HFDF 
+<li>3102 = ESM_HFDF_OTHT 
+<li>3201 = ESM_ELS 
+<li>3211 = ESM_PassiveMissileSeeker 
+<li>4001 = ECM_OECM 
+<li>4011 = ECM_DECM 
+<li>4021 = ECM_OECM_DECM 
+<li>4031 = ECM_Repeater 
+<li>4041 = IRCM 
+<li>4091 = ECM_COMINT_Jammer 
+<li>4901 = ECM_AcousticJammer 
+<li>4902 = ECM_AcousticRepeater 
+<li>5001 = HullSonarPassiveOnlySearch 
+<li>5002 = HullSonarPassiveOnlySearchTrack 
+<li>5011 = HullSonarPassiveOnlyRangingFlankArraySearchTrack 
+<li>5021 = HullSonarPassiveOnlyTorpedoWarning 
+<li>5031 = HullSonarActivePassiveSearch 
+<li>5032 = HullSonarActivePassiveSearchTrack 
+<li>5033 = HullSonarActivePassiveSearchAttack 
+<li>5034 = HullSonarActivePassiveSearchMortarFireControl 
+<li>5041 = HullSonarActivePassiveAttack 
+<li>5061 = HullSonarActiveOnlySearch 
+<li>5062 = HullSonarActiveOnlySearchTrack 
+<li>5063 = HullSonarActiveOnlySearchAttack 
+<li>5064 = HullSonarActiveOnlySearchMortarFireControl 
+<li>5071 = HullSonarActiveOnlyAttack 
+<li>5072 = HullSonarActiveOnlyMortarFireControl 
+<li>5081 = HullSonarActiveOnlyBottomProfiler 
+<li>5082 = HullSonarActiveOnlyShortRangeSidescanMapping 
+<li>5083 = HullSonarActiveOnlyShortRangeSidescanMappingHighDefinitionLPI 
+<li>5091 = HullSonarActiveOnlyMineAvoidance 
+<li>5092 = HullSonarActiveOnlyMineObstacleAvoidance 
+<li>5093 = HullSonarActiveOnlyShallowWaterMineObstacleAvoidance 
+<li>5094 = HullSonarActiveOnlyShallowWaterHighDefinitionMineObstacleAvoidance 
+<li>5095 = HullSonarActiveOnlyUnderIceNavigationandMineObstacleAvoidance 
+<li>5096 = HullSonarActiveOnlyAntiCollisionNavigation 
+<li>5097 = HullSonarActiveOnlyMineReconnaissance 
+<li>5098 = HullSonarActiveOnlyMineHunting 
+<li>5099 = HullSonarActiveOnlyMineHuntingASWMortarFireControl 
+<li>5101 = TASSPassiveOnlyTowedArraySonarSystem 
+<li>5102 = TASSPassiveOnlyFatLineTowedArraySonarSystem 
+<li>5103 = TASSPassiveOnlyThinLineTowedArraySonarSystem 
+<li>5104 = TASSPassiveOnlyAreaSurveillanceTowedArraySonarSystem 
+<li>5111 = TASSPassiveTorpedoWarningTowedArraySonarSystem 
+<li>5131 = TASSActivePassiveTowedArraySonarSystem 
+<li>5132 = TASSActivePassiveAreaSurveillanceTowedArraySonarSystem 
+<li>5161 = TASSActiveOnlyTowedArraySonarSystem 
+<li>5191 = SURTASSPassiveOnlySurveillanceTowedArraySonarSystem 
+<li>5192 = SURTASSActivePassiveSurveillanceTowedArraySonarSystem 
+<li>5193 = SURTASSActiveOnlySurveillanceTowedArraySonarSystem 
+<li>5201 = VDSPassiveOnlyVariableDepthSonar 
+<li>5231 = VDSActivePassiveVariableDepthSonar 
+<li>5261 = VDSActiveOnlyVariableDepthSonar 
+<li>5271 = VDSActiveOnlyMineReconnaissanceVariableDepthSonar 
+<li>5272 = VDSActiveOnlyMineHuntingVariableDepthSonar 
+<li>5273 = VDSActiveOnlySidescanMineHuntingVariableDepthSonar 
+<li>5274 = VDSPropelledActiveOnlyMineHuntingVariableDepthSonar 
+<li>5301 = DippingSonarPassiveOnlySearchTrack 
+<li>5331 = DippingSonarActivePassiveSearchTrack 
+<li>5332 = DippingSonarActivePassiveShallowWaterSearchTrack 
+<li>5361 = DippingSonarActiveOnlySearchTrack 
+<li>5391 = HelicopterTowedActiveOnlyMineReconnaissanceSonar 
+<li>5401 = SOSUSPassiveSoundSurveillanceSystems 
+<li>5402 = MooredSonobuoyPassiveSearch 
+<li>5501 = SonobuoyPassiveOnlyNonDirectional 
+<li>5502 = SonobuoyPassiveOnlyDirectional 
+<li>5507 = SonobuoyPassiveOnlyDirectionalFrequencyAnalysisandRecording_DIFAR 
+<li>5508 = SonobuoyPassiveOnlyDirectionalLowFrequencyAnalysisandRanging_LOFAR 
+<li>5509 = SonobuoyPassiveOnlyDirectionalVerticalLineArrayDIFAR_VLAD 
+<li>5511 = SonobuoyActivePassiveRangeOnlyOmniDirectional 
+<li>5512 = SonobuoyActivePassiveRangeDirectional 
+<li>5521 = SonobuoyActiveOnlyRangeOnlyNonDirectional 
+<li>5522 = SonobuoyActiveOnlyRangeOnlyNonDirectionalContinousPing 
+<li>5523 = SonobuoyActiveOnlyRangeOnlyNonDirectionalCommandActivatedSonobuoySystem_CASS 
+<li>5527 = SonobuoyActiveOnlyRangeDirectional 
+<li>5528 = SonobuoyActiveOnlyRangeDirectionalCommandActivatedSonobuoySystem_DICASS 
+<li>5529 = SonobuoyActiveOnlyRangeDirectionalExtendedEchoRanging_EER 
+<li>5701 = TorpedoSeekerPassiveOnly 
+<li>5702 = TorpedoSeekerPassiveOnlyShallowWater 
+<li>5711 = TorpedoSeekerActivePassive 
+<li>5712 = TorpedoSeekerActivePassiveShallowWater 
+<li>5713 = TorpedoSeekerActivePassiveWakeHomer_WH 
+<li>5714 = TorpedoSeekerActivePassiveShallowWaterWakeHomer_WH 
+<li>5721 = TorpedoSeekerActiveOnly 
+<li>5722 = TorpedoSeekerActiveOnlyShallowWater 
+<li>5791 = TorpedoSeekerWakeHomer 
+<li>5801 = MAD 
+<li>5901 = AcousticIntercept 
+<li>5902 = AcousticInterceptPassiveRanging 
+<li>5903 = AcousticInterceptSurveillance 
+<li>5911 = AcousticInterceptTorpedoWarning 
+                    </ul>
+                </details>
+                <br />
+
+                <hr>
                 <a class="anchor" id="dataType_Size"></a>
                 <h3>Size</h3>
                 <p>Size various size attributes (eg flightsize in mission).</p>
@@ -805,6 +1121,12 @@
                 <p>
                     TimeStamp is a representation of time defined as the number of seconds that have elapsed since 00:00:00 Coordinated Universal Time (UTC), Thursday, 1 January 1970
                 </p>
+
+
+                <hr>
+                <a class="anchor" id="dataType_TrueFalse"></a>
+                <h3>True/False</h3>
+                <p> True/Yes = 1 <br> False/No = 0 </p>
 
                 <hr>
                 <h3><a class="anchor" id="dataType_Unit__Types"></a>Unit type</h3>
@@ -1216,6 +1538,49 @@
                         <li>4003 = Unmanned Underwater Glider</li>
                         <li>9001 = Biologics</li>
                         <li>9002 = False Target</li>
+                    </ul>
+                </details>
+                <br />
+
+
+                 <hr>
+                <a class="anchor" id="dataType_Waypoint"></a>
+                <h3>Waypoint </h3>
+                <p>The type of waypoints (not all codes are used)</p>
+                <details>
+                    <summary>
+                        Waypoint type
+                    </summary>
+                    <p><b>Code = Description </b></p>
+                    <ul class="ul-2-columns">
+<li>00 = ManualPlottedCourseWaypoint 
+<li>01 = PatrolStation 
+<li>02 = TerminalPoint 
+<li>03 = LocalizationRun 
+<li>04 = PathfindingPoint 
+<li>05 = Assemble 
+<li>06 = TurningPoint 
+<li>07 = InitialPoint 
+<li>10 = Target 
+<li>11 = LandingMarshal 
+<li>12 = StrikeIngress 
+<li>13 = StrikeEgress 
+<li>14 = Refuel 
+<li>15 = TakeOff 
+<li>17 = WeaponLaunch 
+<li>18 = Land 
+<li>19 = WeaponTarget 
+<li>20 = StationStart_Racetrack 
+<li>21 = StationStart_FigureEight 
+<li>22 = StationStart_Area 
+<li>23 = StationStart_RaceTrackRandom 
+<li>24 = StationEnd 
+<li>25 = PickupPoint 
+<li>26 = HoldStart 
+<li>27 = HoldEnd 
+<li>28 = Launch 
+<li>29 = Activation 
+<li>30 = Termination 
                     </ul>
                 </details>
                 <br />

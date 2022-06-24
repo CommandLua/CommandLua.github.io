@@ -1,0 +1,158 @@
+<html>
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163808192-1"></script>
+    <script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-163808192-1');
+    </script>
+
+
+    <title>Command Lua Docs</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+
+
+</head>
+
+<body>
+    <div id="header-container">
+        <div id="header">
+            <div id="header-logo">
+                <h1>
+                    <a href="../index2.html"><img src="./images/CommandLuaLogo.svg" height=45px alt="CommandLua"></a>
+                </h1>
+            </div>
+            <div id="header-nav">
+                <a class="selected" href="../index2.html">Reference</a>
+                <!-- <a href="/guides/">Guides</a> -->
+                <a href="https://www.matrixgames.com/forums/tt.asp?forumid=1681">Forum</a>
+            </div>
+        </div>
+    </div>
+    <div id="container">
+
+        <div id="content">
+            <div id="nav">
+                <ul>
+                    <li><a href="../index2.html#News">News</a></li>
+                    <li><a href="../index2.html#Introduction">Introduction</a></li>
+                    <ol>
+                        <li><a href="../index2.html#HowToUse">How to Use These Docs</a></li>
+                        <li><a href="../index2.html#FirstSteps">First Steps</a></li>
+                        <li><a href="../index2.html#ExternalResources">External Resources</a></li>
+                    </ol>
+
+                    <li><a href="../index2.html#Overview">Overview</a></li>
+                    <ol>
+                        <li><a href="../index2.html#CaseSensitivityandConventions">Case Sensitivity and Conventions</a></li>
+                        <li><a href="../index2.html#EventHandling">Event Handling</a></li>
+                        <li><a href="../index2.html#ErrorHandling">Error Handling</a></li>
+                    </ol>
+                    <li><a href="DataTypes.html">Data Types</a></li>
+                    <li><a href="Functions.html">Functions</a></li>
+                    <li><a href="Wrappers.html">Wrappers</a></li>
+                    <li><a href="Selectors.html">Selectors</a></li>
+                    <li><a href="Tables.html">Tables</a></li>
+                </ul>
+            </div>
+
+            <div id="main">
+
+                <h1><a class="anchor" id="Example_Wrapper_Doctrine"></a>Wrapper Doctrine</h1>
+
+
+				<h2>Retreiving the mission doctrine object</h2>
+				<div class="example">
+					<code>
+local d = ScenEdit_GetDoctrine( { side='united states', mission='AEW East' } )<br>
+print(d)<br>
+<br>
+						<output>
+{ unrep_selection = '2' }<br>
+						</output>
+					</code>
+				</div>
+				<div class="example">
+					<code>
+local d = ScenEdit_GetDoctrine({side='united states',mission='AEW East',actual='yes'})<br>
+print(d)<br>
+<br>
+						<output >
+{ <br>
+weapon_control_status_land = '2', weapon_state_planned = '0', navigation_land = '0', engage_opportunity_targets = '0', <br>dive_on_threat = '0', weapon_control_status_air = '2', bvr_logic = '1', gun_strafing = '0', recharge_on_attack = '10', <br> automatic_evasion = '1', bingo_threshold = '3', fuel_state_rtb = '2', unrep_selection = '2', quick_turnaround_for_aircraft = '1', <br> maintain_standoff = '1', avoid_contact = '0', use_nuclear_weapons = '0', recharge_on_patrol = '60', <br> kinematic_range_for_torpedoes = '1', ignore_emcon_while_under_attack = '1', weapon_state_rtb = '0', dipping_sonar = '0', <br> deploy_on_damage = '1', ignore_plotted_course = '0', jettison_ordnance = '0', weapon_control_status_subsurface = '2', <br> navigation_surface = '0', withdraw_on_attack = '0', deploy_on_defence = '5', rtb_when_winchester = '0', deploy_on_fuel = '5', <br> withdraw_on_defence = '0', withdraw_on_fuel = '1', use_aip = '1', use_refuel_unrep = '1', use_sams_in_anti_surface_mode = '1', <br> air_operations_tempo = '0', engaging_ambiguous_targets = '2', fuel_state_planned = '0', refuel_unrep_allied = '0', <br> weapon_control_status_surface = '2', deploy_on_attack = '5', withdraw_on_damage = '0'<br>
+}
+						</output>
+					</code>
+				</div>
+
+
+                <hr>
+				<h1><a class="anchor" id="Example_Wrapper_DoctrineWRA"></a>Wrapper DoctrineWRA</h1>
+				<h2>Retreiving a Doctrine WRA </h2>
+<p>There is a WRA_??? item for each weapon system in the LEVEL selected, in this case a unit, and for the type of target selected ( 2000 = 'Aircraft_Unspecified'). <br>
+It can be filtered by using the weapon DBID in which case the WEAPON_DBID and WEAPON_NAME (from WRA) will be shown on the parent side with LEVEL and TARGET_TYPE. </p>
+				<div class="example">
+					<code>
+					local a =  local a = ScenEdit_GetDoctrineWRA({guid='a1a52edf-3541-4b55-bea4-58d4e1ab11dc',target_type=2000})<br>
+					print(a) <br>
+						<output>
+						{ <br>
+						LEVEL = 'UNIT', <br>
+						  WRA_2 = { WEAPON_DBID = 858, QTY_SALVO = 'Max', WEAPON_NAME = '76mm/62 Compact HE Burst [4 rnds]', SHOOTER_SALVO = 'Max', FIRING_RANGE = 'Max', SELF_DEFENCE = 'Max' }, <br>
+						  WRA_1 = { WEAPON_DBID = 1630, QTY_SALVO = 'Max', WEAPON_NAME = '20mm/85 Mk15 Phalanx Blk 1 Burst [300 rnds]', SHOOTER_SALVO = 'Max', FIRING_RANGE = 'Max', SELF_DEFENCE = 'Max' }, <br>
+						  WRA_3 = { WEAPON_DBID = 926, QTY_SALVO = 1, WEAPON_NAME = 'RIM-162C ESSM', SHOOTER_SALVO = 1, FIRING_RANGE = 'Max', SELF_DEFENCE = 5 }, <br>
+						  TARGET_TYPE = Aircraft_Unspecified<br> }
+						</output>
+					</code>
+				</div>
+				
+				<hr>
+				<h1><a class="anchor" id="Example_Wrapper_Event"></a>Wrapper Event</h1>
+				<h2>Retreiving the Event</h2>
+				<div class="example">
+					<code>
+local f = ScenEdit_EventX()  -- the event that has triggered<br />
+print("EventID: " .. string.format('%s (\'%s\')',f.description, f.guid)) <br />
+print("Active: " .. string.format('%s',f.isActive)) <br />
+print("Shown: " .. string.format('%s',f.isShown)) <br />
+print("Repeats: " .. string.format('%s',f.isRepeatable)) <br />
+print("Trigger(s):") <br />
+print(f.triggers) <br />
+print("Conditions(s):") <br />
+print(f.conditions) <br />
+print("Action(s):") <br />
+print(f.actions) <br />
+<p>
+The active event has one trigger (UnitDestroyed) and one action (update points).</p>
+					<output>
+EventID: Turkish FFG destroyed ('cf4eb993-25bd-4626-a944-b2b3cf6ae3b6') <br />
+Active: true <br />
+Shown: False <br />
+Repeats: True <br />
+Trigger(s) <br />
+{ [1] = { UnitDestroyed = { TargetFilter = { TargetType = '2', TargetSubType = '3303', ID = '88b4407d-f90f-4161-abea-357a69a66f13', TargetSide = '257e0c83-c955-4ab8-841b-49a46544b54f' }, ID = '4e5f16f3-8e65-40fe-b7e0-f95e99910eb1', Description = 'Turkish FFG destroyed' } } } <br />
+Conditions(s) <br />
+{ } <br />
+Action(s) <br />
+{ [1] = { Points = { Description = 'United States plus 01000 points', SideID = '2b7905cd-e798-494b-95fb-a01f5d9f4eec', ID = 'b1a3e26e-5c88-48a5-a866-88a7f7d737df', PointChange = '1000' }, type = 'Points' } }	 <br />
+					</output>
+				</code>
+			</div>
+
+
+<!-- end of example section  -->
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <p> Copyright &copy; WarfareSims 2020</p>
+    </div>
+</body>
+
+</html>
