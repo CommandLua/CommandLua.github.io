@@ -70,17 +70,32 @@
 					within the bounds of the field being updated.<br>
 					
 					A list of the property names of a wrapper can be obtained by a query on the 'object.fields'. This is handy sometimes to see what is available in case the WIKI is not up to date.<br>
-					For each property or method, the first 2 items are the field name and data type respectively. 
+					For each property or method, the first 2 items are the field name and data type respectively.<br>
+					There are 2 additional items indicating if the field can be set or read respectively.<br>
+					The script below dumps out the property and method details; the property detail shows the values held in the wrapper as a reference to assist with building scripts.
+					
     <div class="example">
          <code>
-local a = ScenEdit_GetUnit({guid='8269b881-20ce-4f2e-baa0-6823e46d55a4'})<br>
+local a = ScenEdit_GetUnit({name='DD 101 Murasame', guid='a1a52edf-3541-4b55-bea4-58d4e1ab11dc'})<br>
 print(a.fields) -- shows dump of all the property and method names associated with this wrapper<br>
 -- show the values of each of the properties in the 'unit' wrapper<br>
 for k,v in pairs(a.fields) do<br>
 &nbsp;if string.find(k,'property_') ~= nil then -- is a property<br>
-&nbsp;&nbsp;local t = string.find(v," , ") -- location of first<br>
-&nbsp;&nbsp;print("\r\n[object] = " .. string.sub(v,2,t-1) ) -- property name<br>
-&nbsp;&nbsp;print( a[string.sub(v,2,t-1)] ) -- value of property<br>
+&nbsp;&nbsp;  --print("\r\n" .. v)<br>
+&nbsp;&nbsp;  local vt = {}<br>
+&nbsp;&nbsp;  local i = 0<br>
+&nbsp;&nbsp;  for w in string.gmatch(v,'%g+[^, ]') do<br>
+&nbsp;&nbsp;&nbsp;    vt[i] = w<br>
+&nbsp;&nbsp;&nbsp;    --print(vt[i])<br>
+&nbsp;&nbsp;&nbsp;   i=i+1<br>
+&nbsp;&nbsp;  end<br>
+<br>
+&nbsp;&nbsp;print("\r\n[object] = " .. string.sub(vt[0],2) ) -- property name<br>
+&nbsp;&nbsp;if vt[3] == 'True' then   -- can the property be read<br>
+&nbsp;&nbsp;&nbsp;print( a[ string.sub(vt[0],2) ] ) -- value of property<br>
+&nbsp;&nbsp;else<br>
+&nbsp;&nbsp;&nbsp;print( 'no get function' ) -- value of property<br>
+&nbsp;&nbsp;end<br>
 &nbsp;end<br>
 end<br>
    		 </code>
@@ -88,7 +103,7 @@ end<br>
                 <div class="note-caution">
                     <p>
 				<strong>Note on the 'Type' column below.<br></strong>
-				When the type refers to a table <span class="table">{ item }</span> and there can be more than one item in the table, the table entry will appear as <span class="table">{ item, ... }</span> to indicate that one or more items can be present. Else only one item is expected.<br>
+				When the type refers to a table <span class="table">{ item }</span> and there can be more than one item in the table, the table entry will appear as <span class="table">{ item, ... }</span> to indicate that one or more 'items' can be present. Else only one 'item' is expected unless the table is empty.<br>
                     </p>
                 </div>
 
@@ -302,6 +317,9 @@ end<br>
 					<td> Is this contact in the 'area' defined by a table of RPs </td>
 					<td>Returns <span class="types"><span class="boolean">True</span></span> if in the area</td></tr>
 				</table>
+<br/>		
+		
+				<h4><a href="Examples.html#Example_Wrapper_Contact" target="wrapper_contact" >Examples</a></h4>
 		
 				<hr>
 				<a class="anchor" id="wrapper_Doctrine"></a>
@@ -511,7 +529,7 @@ end<br>
 						<td>Type of applicable target 
 						</td></tr>
 						<tr><td><span class="parameter">wra_?</span>
-						<td><span class="table"><a href="Tables.html#table_WRA">WRA</a></span>
+						<td><span class="table">{ <a href="Tables.html#table_WRA">WRA</a> }</span>
 						<td>The WRA weapon settings for the various weapon systems
 						</td></tr>
 				</table>
@@ -579,71 +597,44 @@ end<br>
 <br/>		
 				<h4><a href="Examples.html#Example_Wrapper_Event" target="wrapper_event" >Examples</a></h4>
 	
-					<hr>
-					<a class="anchor" id="wrapper_Group"></a>
-					<h3>Group</h3>
+				<hr>
+				<a class="anchor" id="wrapper_Group"></a>
+				<h3>Group</h3>
+	
+	
+				Group details.
+	
+	
+				<table class="table_borders" style="width: 100%; margin-left: 0px;">
+				<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+					<tr><td><span class="parameter">guid</span>
+					<td><span class="types"><span class="string">string</span></span>
+					<td><span class="readonly">READ ONLY</span></td>
+					<td></td></tr>
+					<tr><td><span class="parameter">lead</span>
+					<td><span class="types"><span class="string">string</span></span>
+					<td>Group leader guid
+					<td></td></tr>
+					<tr><td><span class="parameter">name</span>
+					<td><span class="types"><span class="string">string</span></span>
+					<td>Group/unit name
+					<td></td></tr>
+					<tr><td><span class="parameter">side</span>
+					<td><span class="types"><span class="string">string</span></span>
+					<td>Name of the group side<span class="readonly">READ ONLY</span>
+					<td></td></tr>
+					<tr><td><span class="parameter">type</span>
+					<td><span class="types"><span class="string">string</span></span>
+					<td>Type of group <span class="readonly">READ ONLY</span></td>
+					<td></td></tr>
+					<tr><td><span class="parameter">unitlist</span>
+					<td><span class="table">{ <span class="types"><span class="string">string</span></span>, ... }</span>
+					<td>A table  of unit GUIDs assigned to group. <span class="readonly">READ ONLY</span>
+					<td></td></tr>
+				</table>
+<br/>		
 		
-		
-					Group details.
-		
-		
-					<table class="table_borders" style="width: 100%; margin-left: 0px;">
-					<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
-						<tr><td><span class="parameter">guid</span>
-						<td><span class="types"><span class="string">string</span></span>
-						<td><span class="readonly">READ ONLY</span></td>
-						<td></td></tr>
-						<tr><td><span class="parameter">lead</span>
-						<td><span class="types"><span class="string">string</span></span>
-						<td>Group leader guid
-						<td></td></tr>
-						<tr><td><span class="parameter">name</span>
-						<td><span class="types"><span class="string">string</span></span>
-						<td>Group/unit name
-						<td></td></tr>
-						<tr><td><span class="parameter">side</span>
-						<td><span class="types"><span class="string">string</span></span>
-						<td>Name of the group side<span class="readonly">READ ONLY</span>
-						<td></td></tr>
-						<tr><td><span class="parameter">type</span>
-						<td><span class="types"><span class="string">string</span></span>
-						<td>Type of group <span class="readonly">READ ONLY</span></td>
-						<td></td></tr>
-						<tr><td><span class="parameter">unitlist</span>
-						<td><span class="table">table</span>
-						<td>A table <span class="table">{ <span class="types"><span class="string">string</span></span>,<span class="types"><span class="string">string</span></span>, .... }</span> of unit GUIDs assigned to group. <span class="readonly">READ ONLY</span>
-						<td></td></tr>
-					</table>
-		
-					<h5>Example</h5>
-					<div class="example">
-						<code>
-local u = ScenEdit_GetUnit({name='CVN BG', guid='9506a165-6e44-40dd-b721-f9c07e056bdb'}) <br />
-print("Group [" .. u.group.name .. "] \r\n" .. " Lead ship is " .. ScenEdit_GetUnit({ guid= u.group.lead}).name)<br />
--- group contains units<br />
-local s = "Group units:" .. "\r\n"<br />
-for k,v in pairs(u.group.unitlist) do<br />
- if v ~= u.group.lead then<br />
-   s = s .. k .. " - " .. ScenEdit_GetUnit({ guid= v}).name .. "\r\n"<br />
- end<br />
-end<br />
-print(s)<br />
-<p></p>
-							<output>
-Group [CVN BG] <br />
- Lead ship is CVN 70 Carl Vinson [Nimitz Class]<br />
-Group units:<br />
-1 - USS Rentz<br />
-2 - USS McClusky<br />
-3 - USS Stockdale<br />
-4 - USS Gridley<br />
-5 - USS Higgins<br />
-6 - USS Lake Champlain<br />
-7 - USS Bunker Hill<br />
-							</output>
-						</code>
-					</div>
-
+				<h4><a href="Examples.html#Example_Wrapper_Group" target="wrapper_group" >Examples</a></h4>
 
 					<hr>
 					<a class="anchor" id="wrapper_Loadout"></a>
@@ -660,13 +651,13 @@ Group units:<br />
 						<td>Name of loadout
 					<td></td></tr>
 						<tr><td><span class="parameter">roles</span>
-						<td><span class="table">table</span>
-						<td>Table of loadout usage {<a href="DataTypes.html#dataType_LoadoutRole">LoadoutRole</a>, <a
-								href="DataTypes.html#dataType_LoadoutTimeOfDay">LoadoutTimeOfDay</a>, <a
-								href="DataTypes.html#dataType_LoadoutWeather">LoadoutWeather</a>}
+						<td><span class="table">{ <a href="DataTypes.html#dataType_LoadoutRole">role</a>, <a
+								href="DataTypes.html#dataType_LoadoutTimeOfDay">TOD</a>, <a
+								href="DataTypes.html#dataType_LoadoutWeather">weather</a> }</span>
+						<td>Table of the loadout usage 
 					<td></td></tr>
 						<tr><td><span class="parameter">weapons</span>
-						<td><span class="table"><a href="Tables.html#table_WeaponLoaded">WeaponLoaded</a></span>
+						<td><span class="table">{ <a href="Tables.html#table_WeaponLoaded">WeaponLoaded, ...</a> }</span>
 						<td>Table of weapons in loadout
 					<td></td></tr>
 					<tr><td><span class="parameter">setExactWeaponQuantity</span></td>
@@ -674,47 +665,9 @@ Group units:<br />
 					<td>Sets the current load of the weapon defined by 'guid' to the value 'quantity'</td>
 					<td></td></tr>
 					</table>
+<br/>		
 		
-					<h5>Example</h5>
-					<div class="example">
-						<code>
-local u = ScenEdit_GetLoadout({name='MiG-31BM Foxhound', unitname='NZZYVJ-0HM0G1F7MPTLQ'}<br />
-print("Loadout [" .. u.name .. "] \r\n" )<br />
---print(u.weapons)<br />
-local s = "Weapon load:" .. "\r\n"<br />
-for k,v in pairs(u.weapons) do<br />
-print( v)<br />
-s = s .. k .. " - " .. v.wpn_name <br />
-s = s .. "\t(Carrying " .. v.wpn_current .. " of " .. v.wpn_maxcap .. ")\r\n"<br />
-u:setExactWeaponQuantity(v.wpn_guid, v.wpn_maxcap)  -- set the current load back to full if any have been expended<br />
-end<br />
-print(s)<br />
-<br />
-<output>
-Loadout [AA-13 Arrow [R-37M], AA-12 Adder B [R-77-1], Long-Range] <br />
-Weapon load:<br />
-1 - AA-12 Adder B [R-77-1, RVV-SD]	(Carrying 2 of 2)<br />
-2 - AA-13 Arrow [R-37M, RVV-BD]	(Carrying 4 of 4)<br />
-3 - 2500 liter Drop Tank	(Carrying 2 of 2)<br />
-</output>
-						</code>
-					</div>
-<!--
-<p>Note that using the method to change the current load won't have immediate effect on this table; you would need to refresh the table first. For example, to remove one from the current load, and then show the new load numbers. </p>
-					<div class="example">
-<code>
-for k,v in pairs(u.weapons) do<br />
-print( v)<br />
-u:setExactWeaponQuantity(v.wpn_guid, v.wpn_current-1)<br />
-end<br />
-for k,v in pairs(u.weapons) do<br />
-print( v)<br />
-s = s .. k .. " - " .. v.wpn_name <br />
-s = s .. "\t(Carrying " .. v.wpn_current .. " of " .. v.wpn_maxcap .. ")\r\n"<br />
-end<br />
-</code>
-</div>
--->		
+				<h4><a href="Examples.html#Example_Wrapper_Loadout" target="wrapper_loadout" >Examples</a></h4>
 		
                 <hr>
                 <a class="anchor" id="wrapper_Magazine"></a>
@@ -776,7 +729,7 @@ end<br />
                     </tr>
 					<tr>
                         <td><span class="parameter">weapons</span>
-                        <td><span class="table"><a href="Tables.html#table_WeaponLoaded">WeaponLoaded</a></span>
+                        <td><span class="table">{ <a href="Tables.html#table_WeaponLoaded">WeaponLoaded, ...</a> }</span>
                         <td>Table of weapon loads in magazine
 						<td></td>
                     </tr>
@@ -787,47 +740,9 @@ end<br />
 						<td></td>
 					</tr>
                </table>
+<br/>		
 		
-					<h5>Example</h5>
-					<div class="example">
-						<code>
-local u = ScenEdit_GetUnit({name='LST 4001 Osumi', guid='8269b881-20ce-4f2e-baa0-6823e46d55a4'})<br />
-print( "Unit Magazines " .. "\r\n")<br />
-for k,v in pairs(u.magazines) do<br />
- local s = '' <br />
- local m = u:getUnitMagazine(v.mag_guid) -- details on magazine<br />
- s = s .. k .. " - " .. m.name .. "with capacity of " .. m.capacity .. ' units\r\n'<br />
- s = s .. "\t[Armor rating = " .. m.armor .. ", ROF = " .. m.rof .. ", containing " .. #m.weapons .. " weapon(s)]\r\n"<br />
- for k,v in pairs(m.weapons) do<br />
-    s = s .. "\t\t" .. v.wpn_name .. " with load " .. v.wpn_current .. " of " .. v.wpn_default .. '\r\n'<br />
-    m:setExactWeaponQuantity(v.wpn_guid, v.wpn_default)  -- set the current load back to full if any have been expended <br />
- end<br />
-print(s)<br />
-end<br />
-<br />
-							<output>
-Unit Magazines <br />
-<br />
-1 - 12.7mm/50 MGwith capacity of 200 units<br />
-	[Armor rating = 1001, ROF = 15, containing 1 weapon(s)]<br />
-		12.7mm/50 MG Burst [10 rnds] with load 180 of 200<br />
-<br />
-2 - 20mm/85 Mk15 Phalanx Blk 1with capacity of 20 units<br />
-	[Armor rating = 2001, ROF = 300, containing 1 weapon(s)]<br />
-		20mm/85 Mk15 Phalanx Blk 1 Burst [300 rnds] with load 20 of 20<br />
-<br />
-3 - Helicopter Magazinewith capacity of 10000 units<br />
-	[Armor rating = 1001, ROF = 60, containing 2 weapon(s)]<br />
-		AGM-114M Hellfire II with load 24 of 24<br />
-		Mk46 NEARTIP Mod 5 with load 40 of 40<br />
-<br />
-4 - Mk36 SRBOCwith capacity of 80 units<br />
-	[Armor rating = 1001, ROF = 300, containing 2 weapon(s)]<br />
-		Mk182 SRBOC Chaff [Seduction] with load 2 of 64<br />
-		Mk186 TORCH Flare [Seduction] with load 2 of 16<br />
-							</output>
-						</code>
-					</div>
+				<h4><a href="Examples.html#Example_Wrapper_Magazine" target="wrapper_magazine" >Examples</a></h4>
 		
 		
 		
@@ -842,7 +757,7 @@ Unit Magazines <br />
 					<table class="table_borders" style="width: 100%; margin-left: 0px;">
 					<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
 						<tr><td><span class="parameter">aar</span>
-						<td><span class="table"><a href="Tables.html#table_AAR">AAR</a></span>
+						<td><span class="table">{ <a href="Tables.html#table_AAR">AAR</a> }</span>
 						<td>A table of the air-to-air refueling options. <span class="readonly">READ ONLY</span>
 						</td></tr>
 						<tr><td><span class="parameter">endtime</span>
@@ -874,8 +789,8 @@ Unit Magazines <br />
 						<td>'Scrub if side human' tick box
 						</td></tr>
 						<tr><td><span class="parameter">targetlist</span>
-						<td><span class="table">table</span>
-						<td>A table <span class="table">{ <span class="types"><span class="string">string</span></span>,<span class="types"><span class="string">string</span></span>, .... }</span> of target GUIDs assigned to mission. <span class="readonly">READ ONLY</span>
+						<td><span class="table">{ <span class="types"><span class="string">string</span></span>, ... }</span>
+						<td>A table  of target GUIDs assigned to mission. <span class="readonly">READ ONLY</span>
 						</td></tr>
 						<tr><td><span class="parameter">type</span>
 						<td><span class="types"><span class="tooltip">MissionClass<span class="tooltiptext">None = 0<br>
@@ -894,37 +809,40 @@ Unit Magazines <br />
 						<td>Mission class(asw,land,etc). <span class="readonly">READ ONLY</span>
 						</td></tr>-->
 						<tr><td><span class="parameter">unitlist</span>
-						<td><span class="table">table</span>
-						<td>A table <span class="table">{ <span class="types"><span class="string">string</span></span>,<span class="types"><span class="string">string</span></span>, .... }</span> of unit GUIDs assigned to mission. <span class="readonly">READ ONLY</span>
+						<td><span class="table">{ <span class="types"><span class="string">string</span></span>, ... }</span>
+						<td>A table  of unit GUIDs assigned to mission. <span class="readonly">READ ONLY</span>
 						<tr><td><span class="parameter">cargomission</span>
-						<td><span class="table"><a href="Tables.html#table_CargoMission">CargoMission</a></span>
+						<td><span class="table">{ <a href="Tables.html#table_CargoMission">CargoMission</a> }</span>
 						<td>A table of the mission specific options. <span class="readonly">READ ONLY</span>
 						</td></tr>
 						<tr><td><span class="parameter">ferrymission</span>
-						<td><span class="table"><a href="Tables.html#table_FerryMission">FerryMission</a></span>
+						<td><span class="table">{ <a href="Tables.html#table_FerryMission">FerryMission</a> }</span>
 						<td>A table of the mission specific options. <span class="readonly">READ ONLY</span>
 						</td></tr>
 						<tr><td><span class="parameter">mineclearmission</span>
-						<td><span class="table"><a href="Tables.html#table_MineClearMission">MineClearMission</a></span>
+						<td><span class="table">{ <a href="Tables.html#table_MineClearMission">MineClearMission</a> }</span>
 						<td>A table of the mission specific options. <span class="readonly">READ ONLY</span>
 						</td></tr>
 						<tr><td><span class="parameter">minemission</span>
-						<td><span class="table"><a href="Tables.html#table_MineMission">MineMission</a></span>
+						<td><span class="table">{ <a href="Tables.html#table_MineMission">MineMission</a> }</span>
 						<td>A table of the mission specific options. <span class="readonly">READ ONLY</span>
 						</td></tr>
 						<tr><td><span class="parameter">strikemission</span>
-						<td><span class="table"><a href="Tables.html#table_StrikeMission">StrikeMission</a></span>
+						<td><span class="table">{ <a href="Tables.html#table_StrikeMission">StrikeMission</a> }</span>
 						<td>A table of the mission specific options. <span class="readonly">READ ONLY</span>
 						</td></tr>
 						<tr><td><span class="parameter">supportmission</span>
-						<td><span class="table"><a href="Tables.html#table_SupportMission">SupportMission</a></span>
+						<td><span class="table">{ <a href="Tables.html#table_SupportMission">SupportMission</a> }</span>
 						<td>A table of the mission specific options. <span class="readonly">READ ONLY</span>
 						</td></tr>
 						<tr><td><span class="parameter">patrolmission</span>
-						<td><span class="table"><a href="Tables.html#table_PatrolMission">PatrolMission</a></span>
+						<td><span class="table">{ <a href="Tables.html#table_PatrolMission">PatrolMission</a> }</span>
 						<td>A table of the mission specific options. <span class="readonly">READ ONLY</span>
 						</td></tr>
 					</table>
+<br/>		
+		
+				<h4><a href="Examples.html#Example_Wrapper_Mission" target="wrapper_mission" >Examples</a></h4>
 		
 		
 		
@@ -970,7 +888,7 @@ Unit Magazines <br />
                     </tr>
 					<tr>
                         <td><span class="parameter">weapons</span>
-                        <td><span class="table"><a href="Tables.html#table_WeaponLoaded">WeaponLoaded</a></span>
+                        <td><span class="table">{ <a href="Tables.html#table_WeaponLoaded">WeaponLoaded, ...</a> }</span>
                         <td>Table of weapon loads on mount
 						<td></td>
                     </tr>
@@ -981,64 +899,10 @@ Unit Magazines <br />
 						<td></td>
 					</tr>
                 </table>
+<br/>		
 		
-					<h5>Example</h5>
-					<div class="example">
-						<code>		
-local u = ScenEdit_GetUnit({name='LST 4001 Osumi', guid='8269b881-20ce-4f2e-baa0-6823e46d55a4'})<br />
-print( "Unit Mounts " )<br />
-for k,v in pairs(u.mounts) do<br />
- local s = '' <br />
- local m = u:getUnitMount(v.mount_guid) -- details on mount<br />
- s = s .. k .. " - " .. m.name .. " [ " .. v.mount_status .. ' ]\r\n'<br />
- s = s .. "\t[ containing " .. #m.weapons .. " weapon(s) ]\r\n"<br />
- for k,v in pairs(m.weapons) do<br />
-    s = s .. "\t\t" .. v.wpn_name .. " with load " .. v.wpn_current .. " of " .. v.wpn_default .. '\r\n'<br />
-   --m:setExactWeaponQuantity(v.wpn_guid, v.wpn_default)  -- set the current load back to full if any have been expended <br />
- end<br />
-print(s)<br />
-end<br />
-<br />
-<output>
-Unit Mounts <br />
-1 - 12.7mm/50 MG [ Operational ]<br />
-	[ containing 1 weapon(s) ]<br />
-		12.7mm/50 MG Burst [10 rnds] with load 10 of 10<br />
-<br />
-2 - 12.7mm/50 MG [ Operational ]<br />
-	[ containing 1 weapon(s) ]<br />
-		12.7mm/50 MG Burst [10 rnds] with load 10 of 10<br />
-<br />
-3 - 20mm/85 Mk15 Phalanx Blk 1 CIWS [ Operational ]<br />
-	[ containing 1 weapon(s) ]<br />
-		20mm/85 Mk15 Phalanx Blk 1 Burst [300 rnds] with load 5 of 5<br />
-<br />
-4 - 20mm/85 Mk15 Phalanx Blk 1 CIWS [ Operational ]<br />
-	[ containing 1 weapon(s) ]<br />
-		20mm/85 Mk15 Phalanx Blk 1 Burst [300 rnds] with load 5 of 5<br />
-<br />
-5 - Mk36 SRBOC [ Operational ]<br />
-	[ containing 2 weapon(s) ]<br />
-		Mk182 SRBOC Chaff [Seduction] with load 4 of 4<br />
-		Mk186 TORCH Flare [Seduction] with load 2 of 2<br />
-<br />
-6 - Mk36 SRBOC [ Operational ]<br />
-	[ containing 2 weapon(s) ]<br />
-		Mk182 SRBOC Chaff [Seduction] with load 4 of 4<br />
-		Mk186 TORCH Flare [Seduction] with load 2 of 2<br />
-<br />
-7 - Mk36 SRBOC [ Operational ]<br />
-	[ containing 2 weapon(s) ]<br />
-		Mk182 SRBOC Chaff [Seduction] with load 4 of 4<br />
-		Mk186 TORCH Flare [Seduction] with load 2 of 2<br />
-<br />
-8 - Mk36 SRBOC [ Operational ]<br />
-	[ containing 2 weapon(s) ]<br />
-		Mk182 SRBOC Chaff [Seduction] with load 4 of 4<br />
-		Mk186 TORCH Flare [Seduction] with load 2 of 2<br />
-							</output>
-						</code>
-					</div>
+				<h4><a href="Examples.html#Example_Wrapper_Mount" target="wrapper_mount" >Examples</a></h4>
+		
 		
 		<!--
 					<hr>
@@ -1145,6 +1009,9 @@ Unit Mounts <br />
 						</td></tr>
 					</table>
 		
+<br/>		
+		
+				<h4><a href="Examples.html#Example_Wrapper_RP" target="wrapper_rp" >Examples</a></h4>
 		
 		
 		
@@ -1294,6 +1161,9 @@ Unit Mounts <br />
 						<td>Clears the score and log in scenario
 						</td></tr>
 					</table>
+<br/>		
+		
+				<h4><a href="Examples.html#Example_Wrapper_Scenario" target="wrapper_scenario" >Examples</a></h4>
 		
 <!-- not really used as a wrapper currently. Need to expand wrapper to include more details like mout/magazine to be useful
                 <hr>
@@ -1377,16 +1247,16 @@ Unit Mounts <br />
 						<td><span class="readonly">READ ONLY</span>
 						</td></tr>
 						<tr><td><span class="parameter">contacts</span>
-						<td><span class="table"><a href="Tables.html#table_UnitList">UnitList</a></span>
+						<td><span class="table">{ <a href="Tables.html#table_UnitList">UnitList</a> }</span>
 						<td>Table of current contacts for the designated side. The 'guid' in table are contact references <span class="readonly">READ ONLY</span>
 						</td></tr>
 						<tr><td><span class="parameter">exclusionzones</span>
-						<td><span class="wrapper"><a href="#wrapper_Zone">Zone</a></span>
-						<td>Zones for the designated side <span class="readonly">READ ONLY</span>
-						</td></tr>
+						<td><span class="table">{ { giud, description, name }, ... }</span>
+						<td>Table of Zone identifiers for the designated side <span class="readonly">READ ONLY</span>
+						<td>Use the method 'getexclusionzone' to get specific details of the zone</td></tr>						
                         <tr><td><span class="parameter">expenditures</span>
-                        <td><span class="table">Table</span> 
-						<td>A table <span class="table">{ <span class="types"><span class="string">type</span></span>,<span class="types"><span class="number">dbid</span></span>,<span class="types"><span class="string">name</span></span>,<span class="types"><span class="number">number</span></span> }</span> of expenditure to date 
+                        <td><span class="table">{ {<span class="types"><span class="string">type</span></span>,<span class="types"><span class="number">dbid</span></span>,<span class="types"><span class="string">name</span></span>,<span class="types"><span class="number">number</span></span>}, ... }</span> 
+						<td>A table of expenditure to date 
                         </td></tr>
 						<tr><td><span class="parameter">guid</span>
 						<td><span class="types"><span class="string">string</span></span>
@@ -1397,31 +1267,31 @@ Unit Mounts <br />
 						<td><span class="readonly">READ ONLY</span>
 						</td></tr>
 	                    <tr><td><span class="parameter">losses</span>
-                        <td><span class="table">Table</span> 
-						<td>A table <span class="table">{ <span class="types"><span class="string">type</span></span>,<span class="types"><span class="number">dbid</span></span>,<span class="types"><span class="string">name</span></span>,<span class="types"><span class="number">number</span></span> }</span> of losses to date 
+                        <td><span class="table">{ {<span class="types"><span class="string">type</span></span>,<span class="types"><span class="number">dbid</span></span>,<span class="types"><span class="string">name</span></span>,<span class="types"><span class="number">number</span></span>}, ... }</span> 
+						<td>A table of losses to date 
                         </td></tr>
                         <tr><td><span class="parameter">missions</span>
-                        <td><span class="table">Table</span> 
-						<td>A table <span class="table">{ <span class="wrapper"><a href="#wrapper_Mission">Mission</a></span> }</span> on the side
+                        <td><span class="table">{ <a href="#wrapper_Mission">Mission, ...</a> }</span> 
+						<td>A table of missions on the side
                         </td></tr>
 						<tr><td><span class="parameter">name</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>The name of the side.
 						</td></tr>
 						<tr><td><span class="parameter">nonavzones</span>
-						<td><span class="wrapper"><a href="#wrapper_Zone">Zone</a></span>
-						<td>Zones for the designated side <span class="readonly">READ ONLY</span>
-						</td></tr>
+						<td><span class="table">{ { giud, description, name }, ... }</span>
+						<td>Table of Zone identifiers for the designated side <span class="readonly">READ ONLY</span>
+						<td>Use the method 'getnonavzone' to get specific details of the zone</td></tr>						
 						<tr><td><span class="parameter">proficiency</span>
 						<td><span class="types"><a href="DataTypes.html#dataType_Proficiency">Proficiency</a></span>
 						<td><span class="readonly">READ ONLY</span>
 						</td></tr>
 						<tr><td><span class="parameter">rps</span>
-						<td><span class="wrapper"><a href="#wrapper_Zone">Zone</a></span>
+						<td><span class="table">{ <a href="Tables.html#table_ReferencePoint">RP, ...</a> }</span>
 						<td>RPs for the designated side <span class="readonly">READ ONLY</span>
 						</td></tr>
 						<tr><td><span class="parameter">units</span>
-						<td><span class="table"><a href="Tables.html#table_UnitList">UnitList</a></span>
+						<td><span class="table">{ <a href="Tables.html#table_UnitList">UnitList</a> }</span>
 						<td>Table of units for the designated side. <span class="readonly">READ ONLY</span>
 						</td></tr>
 						<tr><td><span class="parameter">contactsBy</span>
@@ -1459,19 +1329,9 @@ Unit Mounts <br />
 	                    </td></tr>
 					</table>
 		
-					<br>
-					<h5>Examples</h5>
-					<div class="example">
-					<p>Find units in an area</p>
-					<code>local u = side:unitsInArea({Area = { 'RP-3137', 'RP-3139', 'RP-3136', 'RP-3138'},<br> TargetFilter = { TargetType = 'Ship' } })
-					</code>
-					<div class="example">
-					<p>Find units on side by a filter</p>
-					<code>local u = side:side:unitsBy('Ship')  -- all ships <br>
-					u = side:unitsBy('Ship', 2002, 3003) -- ships fitered for 'Surface combatant' and 'BBC'
-					</code>
-					</div>
-                  </div>
+<br/>		
+		
+				<h4><a href="Examples.html#Example_Wrapper_Side" target="wrapper_side" >Examples</a></h4>
 		
 		
 					<hr>
@@ -1515,6 +1375,9 @@ Unit Mounts <br />
 
 					</table>
 	
+<br/>		
+		
+				<h4><a href="Examples.html#Example_Wrapper_SA" target="wrapper_sa" >Examples</a></h4>
 		
 		
 		
@@ -1553,19 +1416,19 @@ Unit Mounts <br />
                             The altitude of the unit in meters.
                         </td></tr>
                         <tr><td><span class="parameter">areaTriggersFired</span>
-                        <td><span class="table">table</span>
+						<td><span class="table">{ <span class="types"><span class="string">string</span></span>, ... }</span>
                         <td>
-                            Table of active 'in area' triggers that have fired for unit
+                            Table of active 'in area' triggers (GUID) that have fired for unit
                         </td></tr>
                         <tr><td><span class="parameter">ascontact</span>
-                        <td><span class="table">table</span>
+                        <td><span class="table">{ {side, guid, name}, ... } </span>
                         <td>
-                            A table {side,guid,name} of this unit seen from the other sides (as contacts). <span class="readonly">READ ONLY</span>
+                            A table of how this unit is seen from the other sides (as contacts). <span class="readonly">READ ONLY</span>
                         </td></tr>
                         <tr><td><span class="parameter">assignedUnits</span>
-                        <td><span class="table">table</span>
+                        <td><span class="table">{ Boats, Aircraft } </span>
                         <td>
-                            Table of boats and aircraft assigned to the unit (base)
+                            Table of boats and aircraft GUID assigned to the unit (base). 
                         </td></tr>
                         <tr><td><span class="parameter">autodetectable</span>
                         <td><span class="types"><span class="boolean">True/False</span></span>
@@ -1583,9 +1446,9 @@ Unit Mounts <br />
                             The unit's assigned base.
                         </td></tr>
                         <tr><td><span class="parameter">cargo</span>
-                        <td><span class="table"><a href="Tables.html#table_Cargo">Cargo</a></span>
+                        <td><span class="table">{ <a href="Tables.html#table_Cargo">Cargo</a>, ... }</span>
                         <td>
-                            Unit cargo information
+                            Unit's current cargo 
                         </td></tr>
                         <tr><td><span class="parameter">category</span>
                         <td><span class="types"><span class="number">Number</span></span>
@@ -1598,7 +1461,7 @@ Unit Mounts <br />
                             Unit class name <span class="readonly">READ ONLY</span>
                         </td></tr>
                         <tr><td><span class="parameter">components</span>
-                        <td><span class="table"><a href="Tables.html#table_Component">Component</a></span>
+                        <td><span class="table">{ <a href="Tables.html#table_Component">Component, ...</a> }</span>
                         <td>
                             A table of components on the unit. <span class="readonly">READ ONLY</span>
                         </td></tr>
@@ -1623,9 +1486,9 @@ Unit Mounts <br />
                             crew size (nil if not defined) <span class="readonly">READ ONLY</span>
                         </td></tr>
                         <tr><td><span class="parameter">damage</span>
-                        <td><span class="table">table</span>
+                        <td><span class="table">{ DP, FLOOD, FIRES, STARTDP,<br> DP_PERCENT, DP_PERCENT_NOW }</span>
                         <td>
-                            Table {dp,flood,fires,startDp} of start and current DP, flood and fire level. <span class="readonly">READ ONLY</span>
+                            Table of start and current DP, flood and fire level, and the damage percentage of unit. <span class="readonly">READ ONLY</span>
                         </td></tr>
                         <tr><td><span class="parameter">DBID</span>
                         <td><span class="types"><span class="number">number</span></span>
@@ -1633,34 +1496,34 @@ Unit Mounts <br />
                             The database ID of the unit <span class="readonly">READ ONLY</span>
                         </td></tr>
                         <tr><td><span class="parameter">embarkedUnits</span>
-                        <td><span class="table">table</span>
+                        <td><span class="table">{ Boats, Aircraft } </span>
                         <td>
-                            Table of boats and aircraft docked/embarked on the unit
+                            Table of boats and aircraft GUID docked/embarked on the unit
                         </td></tr>
                         <tr><td><span class="parameter">firedOn</span>
-                        <td><span class="table">table</span>
+                        <td><span class="table">{ <span class="types"><span class="string">string</span></span>, ... }</span>
                         <td>
                             Table of guids that are firing on this unit<br>
                             (Note that the starting idex of this table is '0' rather than '1' as normal Lua tables)
                         </td></tr>
                         <tr><td><span class="parameter">firingAt</span>
-                        <td><span class="table">table</span>
+                        <td><span class="table">{ <span class="types"><span class="string">string</span></span>, ... }</span>
                         <td>
                             Table of contact guids that this unit is firing at<br>
                             (Note that the starting idex of this table is '0' rather than '1' as normal Lua tables)
                         </td></tr>
                         <tr><td><span class="parameter">formation</span>
-                        <td><span class="types"><a href="Tables.html#table_Formation">Formation</a></span>
+                        <td><span class="table">{ <a href="Tables.html#table_Formation">Formation, ...</a> }</span>
                         <td>
                             Table of unit's formation info {bearing, type (of bearing), distance, sprint (and drift)
                         </td></tr>
                         <tr><td><span class="parameter">fuel</span>
-                        <td><span class="table"><a href="DataTypes.html#dataType_Fuel">Fuel</a></span>
+                        <td><span class="table">{ <a href="DataTypes.html#dataType_Fuel">Fuel, ...</a> }</span>
                         <td>
                             A table of fuel types used by unit.
                         </td></tr>
                         <tr><td><span class="parameter">fuels</span>
-                        <td><span class="table"><a href="DataTypes.html#dataType_Fuel">Fuel</a></span>
+                        <td><span class="table">{ <a href="DataTypes.html#dataType_Fuel">Fuel, ...</a> }</span>
                         <td>
                             A table of fuel types in tanks used by unit.
                         </td></tr>
@@ -1691,9 +1554,9 @@ Unit Mounts <br />
                             The unit's heading .
                         </td></tr>
                         <tr><td><span class="parameter">holdfire</span>
-                        <td><span class="table">table</span>
+                        <td><span class="table">{air, surface, subsurface, land}</span>
                         <td>
-                            Doctrine WCS setting for {air,surface,subsurface,land}. <span class="readonly">READ ONLY</span>
+                            Doctrine WCS setting <span class="readonly">READ ONLY</span>
                         </td></tr>
                         <tr><td><span class="parameter">holdposition</span>
                         <td><span class="types"><span class="boolean">True/False</span></span>
@@ -1766,7 +1629,7 @@ Unit Mounts <br />
                             The longitude of the unit .
                         </td></tr>
                         <tr><td><span class="parameter">magazines</span>
-                        <td><span class="table"><a href="Tables.html#table_Magazine">Magazine</a></span>
+                        <td><span class="table">{ <a href="Tables.html#table_Magazine">Magazine, ...</a> }</span>
                         <td>
                             A table of magazines (with weapon loads) in the unit or group.<br> Can be updated by <a href="Tables.html#table_ScenEdit_AddWeaponToUnitMagazine">ScenEdit_AddWeaponToUnitMagazine</a>
                             <span class="readonly">READ ONLY</span>
@@ -1787,7 +1650,7 @@ Unit Mounts <br />
                             The unit's assigned mission. <br>Can be changed by setting to the Mission name<br> or guid (calls ScenEdit_AssignUnitToMission)
                         </td></tr>
                         <tr><td><span class="parameter">mounts</span>
-                        <td><span class="table"><a href="Tables.html#table_Mount">Mount</a></span>
+                        <td><span class="table">{ <a href="Tables.html#table_Mount">Mount, ...</a> }</span>
                         <td>
                             A table of mounts (with weapon loads) in the unit or group.<br> Can be updated by <a href="Tables.html#table_ScenEdit_AddReloadsToUnit">ScenEdit_AddReloadsToUnit</a> <span class="readonly">READ ONLY</span>
                         </td></tr>
@@ -1812,9 +1675,9 @@ Unit Mounts <br />
                             changes the last damage percent used by damage trigger
                         </td></tr>
                         <tr><td><span class="parameter">OODA</span>
-                        <td><span class="table">table</span>
+                        <td><span class="table">{ evasion, targeting, detection }</span>
                         <td>
-                            Table contain unit's "observe, orient, decide, act" values {evasion, targeting, detection}
+                            Table contain unit's "observe, orient, decide, act" values 
                         </td></tr>
                         <tr><td><span class="parameter">outOfComms</span>
                         <td><span class="types"><span class="boolean">True/False</span></span>
@@ -1845,7 +1708,7 @@ Unit Mounts <br />
                             how long aircraft/ship takes to be ready in seconds. <span class="readonly">READ ONLY</span>
                         </td></tr>
                         <tr><td><span class="parameter">sensors</span>
-                        <td><span class="table"><a href="Tables.html#table_Sensor">Sensor</a></span>
+                        <td><span class="table">{ <a href="Tables.html#table_Sensor">Sensor, ...</a> }</span>
                         <td>
                             Unit sensor information
                         </td></tr>
@@ -1870,7 +1733,7 @@ Unit Mounts <br />
                             The unit's subtype (if applicable). <span class="readonly">READ ONLY</span>
                         </td></tr>
 						<tr><td><span class="parameter">targetedBy</span>
-                        <td><span class="table">table</span>
+                        <td><span class="table">{ <span class="types"><span class="string">string</span></span>, ... }</span>
                         <td>
                             Table of unit guids that have this unit as a target<br>
                             (Note that the starting idex of this table is '0' rather than '1' as normal Lua tables)
@@ -1896,7 +1759,7 @@ Unit Mounts <br />
                             Message on unit status. <span class="readonly">READ ONLY</span>
                         </td></tr>
                         <tr><td><span class="parameter">weapon</span>
-                        <td><span class="table">table</span>
+                        <td><span class="table">{ <a href="wrapper_Unit">shooter</a>, <a href="wrapper_Contact">contact</a>, detonated }</span>
                         <td>
                             Table of shooter unit, at contact unit and detonated (when destroyed) if a weapon <span class="readonly">READ ONLY</span>
                         </td></tr>
@@ -1906,7 +1769,7 @@ Unit Mounts <br />
                             Message on unit weapon status. <span class="readonly">READ ONLY</span>
                         </td></tr>
                         <tr><td><span class="parameter">weather</span>
-                        <td><span class="types"><a href="Tables.html#table_Weather">Weather</a></span>
+                        <td><span class="table">{ <a href="Tables.html#table_Weather">Weather</a> }</span>
                         <td>
                             Table of weather parameters (temp, rainfall, underrain, seastate)
                         </td></tr>
@@ -1956,29 +1819,15 @@ Unit Mounts <br />
 
 
                     </table>
-					<br>
-					<h5>Examples</h5>
-					<div class="example">
-					<p>Update the orbit for a satellite by specifying a TLE</p>
-                    	<code>
-theSat = ScenEdit_GetUnit({guid=<span class="string">'56f830c1-d0e2-430a-985e-0e301cc01eff'</span>})<br>
-theTLE = <span class="string">'Resurs P1\n1 39186U 13030A   17013.12537468  .00000446  00000-0  16942-4 0  9992\n2 39186  97.3847  79.3911 0015157 247.7411 195.8488 15.31966970198820'</span><br>
-theSat:updateorbit({TLE=theTLE})
-                    	</code>
-                    </div>
- 					<div class="example">
-					<p>Change the type of waypoint</p>
-                    	<code>
- au = ScenEdit_GetUnit({name='AGM-158A JASSM [Penetrator] #967', guid='46skox-0hmf72m6q6bdj'})<br>
- print(au.course)<br>
- wp = au:getwaypoint({GUID='46SKOX-0HMF72M6Q6L64'})<br>
- wp.type = 0   -- This changes the waypoint type, in this case to manual plotted-course waypoint<br>
- print(wp.type)<br>
-                    	</code>
-                    </div>
+
+<br/>		
+		
+				<h4><a href="Examples.html#Example_Wrapper_Unit" target="wrapper_unit" >Examples</a></h4>
+<br/>		
+
 
 		              <!-- What do we mean by ScenEdit only? The console and Lua script event actions are only available/editable in ScenEdit???-->
-				    <h5>Modifiable through ScenEdit_ functions only</h5>
+				    <h5>Modifiable through ScenEdit_SetUnit function only</h5>
 					<table class="table_borders" style="width: 100%; margin-left: 0px;">
 					<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
     					<tr><td><span class="parameter">refuel</span>
@@ -2027,9 +1876,8 @@ theSat:updateorbit({TLE=theTLE})
 						<td>List of unit types (ship, submarine, aircraft, facility)
 						</td></tr>
 						<tr><td><span class="parameter">area</span>
-						<td><span class="wrapper"><a href="#wrapper_ZoneMarker">ZoneMarker</a></span>
-						<td>A set of reference points marking the zone. Can be updated by a list of RPs, or a table of new RP
-							values.
+						<td><span class="table">{ <a href="tables.html#table_ReferencePoint">ZoneMarker, ...</a> }</span>
+						<td>A set of reference points marking the zone. 
 						</td></tr>
 						<tr><td><span class="parameter">description</span>
 						<td><span class="types"><span class="string">string</span></span>
@@ -2053,6 +1901,10 @@ theSat:updateorbit({TLE=theTLE})
 						</td></tr>
 	</table>
 		
+<br/>		
+		
+				<h4><a href="Examples.html#Example_Wrapper_Zone" target="wrapper_zone" >Examples</a></h4>
+
 					<!-- <h5>Example</h5>
 		
 					<div class="example">
@@ -2116,6 +1968,9 @@ theSat:updateorbit({TLE=theTLE})
 				<!-- <tr><td class="parameter">desiredAltitudeTF </td><td>Desired altitude AGL to set altitude as terrain-following in meters</td><td class="types"><span class="number">number</span></td></td></tr> -->
 
 				</table>
+<br/>		
+		
+				<h4><a href="Examples.html#Example_Wrapper_WP" target="wrapper_wp" >Examples</a></h4>
 
                 <hr>
                 <a class="anchor" id="wrapper_Weapon"></a>
@@ -2226,7 +2081,9 @@ theSat:updateorbit({TLE=theTLE})
 						<td></td>
                     </tr>
                 </table>
-<p></P>
+<br/>		
+		
+				<h4><a href="Examples.html#Example_Wrapper_Weapon" target="wrapper_weapon" >Examples</a></h4>
 			
 			<div id="footer">
 				<p>Copyright &copy; WarfareSims 2020</p>

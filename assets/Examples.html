@@ -63,9 +63,17 @@
 
             <div id="main">
 
+				<h1><a class="anchor" id="Example_Wrapper_Contact"></a>Wrapper Contact</h1>
+				<h2>Retreiving the Contact details</h2>
+					<div class="example">
+						<code>
+							<output>
+							</output>
+						</code>
+					</div>
+
+				<hr>
                 <h1><a class="anchor" id="Example_Wrapper_Doctrine"></a>Wrapper Doctrine</h1>
-
-
 				<h2>Retreiving the mission doctrine object</h2>
 				<div class="example">
 					<code>
@@ -129,7 +137,7 @@ print("Action(s):") <br />
 print(f.actions) <br />
 <p>
 The active event has one trigger (UnitDestroyed) and one action (update points).</p>
-					<output>
+						<output>
 EventID: Turkish FFG destroyed ('cf4eb993-25bd-4626-a944-b2b3cf6ae3b6') <br />
 Active: true <br />
 Shown: False <br />
@@ -140,9 +148,314 @@ Conditions(s) <br />
 { } <br />
 Action(s) <br />
 { [1] = { Points = { Description = 'United States plus 01000 points', SideID = '2b7905cd-e798-494b-95fb-a01f5d9f4eec', ID = 'b1a3e26e-5c88-48a5-a866-88a7f7d737df', PointChange = '1000' }, type = 'Points' } }	 <br />
-					</output>
+						</output>
+					</code>
+				</div>
+
+				<hr>
+				<h1><a class="anchor" id="Example_Wrapper_Group"></a>Wrapper Group</h1>
+				<h2>Retreiving the Group details</h2>
+				<div class="example">
+					<code>
+local u = ScenEdit_GetUnit({name='CVN BG', guid='9506a165-6e44-40dd-b721-f9c07e056bdb'}) <br />
+print("Group [" .. u.group.name .. "] \r\n" .. " Lead ship is " .. ScenEdit_GetUnit({ guid= u.group.lead}).name)<br />
+-- group contains units<br />
+local s = "Group units:" .. "\r\n"<br />
+for k,v in pairs(u.group.unitlist) do<br />
+if v ~= u.group.lead then<br />
+s = s .. k .. " - " .. ScenEdit_GetUnit({ guid= v}).name .. "\r\n"<br />
+end<br />
+end<br />
+print(s)<br />
+<p></p>
+						<output>
+Group [CVN BG] <br />
+Lead ship is CVN 70 Carl Vinson [Nimitz Class]<br />
+Group units:<br />
+1 - USS Rentz<br />
+2 - USS McClusky<br />
+3 - USS Stockdale<br />
+4 - USS Gridley<br />
+5 - USS Higgins<br />
+6 - USS Lake Champlain<br />
+7 - USS Bunker Hill<br />
+						</output>
+					</code>
+				</div>
+
+	
+				<hr>
+				<h1><a class="anchor" id="Example_Wrapper_Loadout"></a>Wrapper LoadOut</h1>
+				<h2>Retreiving the Group details</h2>
+					<div class="example">
+						<code>
+local u = ScenEdit_GetLoadout({name='MiG-31BM Foxhound', unitname='NZZYVJ-0HM0G1F7MPTLQ'}<br />
+print("Loadout [" .. u.name .. "] \r\n" )<br />
+--print(u.weapons)<br />
+local s = "Weapon load:" .. "\r\n"<br />
+for k,v in pairs(u.weapons) do<br />
+print( v)<br />
+s = s .. k .. " - " .. v.wpn_name <br />
+s = s .. "\t(Carrying " .. v.wpn_current .. " of " .. v.wpn_maxcap .. ")\r\n"<br />
+u:setExactWeaponQuantity(v.wpn_guid, v.wpn_maxcap)  -- set the current load back to full if any have been expended<br />
+end<br />
+print(s)<br />
+<br />
+<output>
+Loadout [AA-13 Arrow [R-37M], AA-12 Adder B [R-77-1], Long-Range] <br />
+Weapon load:<br />
+1 - AA-12 Adder B [R-77-1, RVV-SD]	(Carrying 2 of 2)<br />
+2 - AA-13 Arrow [R-37M, RVV-BD]	(Carrying 4 of 4)<br />
+3 - 2500 liter Drop Tank	(Carrying 2 of 2)<br />
+</output>
+						</code>
+					</div>
+<!--
+<p>Note that using the method to change the current load won't have immediate effect on this table; you would need to refresh the table first. For example, to remove one from the current load, and then show the new load numbers. </p>
+					<div class="example">
+<code>
+for k,v in pairs(u.weapons) do<br />
+print( v)<br />
+u:setExactWeaponQuantity(v.wpn_guid, v.wpn_current-1)<br />
+end<br />
+for k,v in pairs(u.weapons) do<br />
+print( v)<br />
+s = s .. k .. " - " .. v.wpn_name <br />
+s = s .. "\t(Carrying " .. v.wpn_current .. " of " .. v.wpn_maxcap .. ")\r\n"<br />
+end<br />
+</code>
+</div>
+-->		
+
+				<hr>
+				<h1><a class="anchor" id="Example_Wrapper_Magazine"></a>Wrapper Magazine</h1>
+				<h2>Retreiving the Magazine details</h2>
+					<div class="example">
+						<code>
+local u = ScenEdit_GetUnit({name='LST 4001 Osumi', guid='8269b881-20ce-4f2e-baa0-6823e46d55a4'})<br />
+print( "Unit Magazines " .. "\r\n")<br />
+for k,v in pairs(u.magazines) do<br />
+ local s = '' <br />
+ local m = u:getUnitMagazine(v.mag_guid) -- details on magazine<br />
+ s = s .. k .. " - " .. m.name .. "with capacity of " .. m.capacity .. ' units\r\n'<br />
+ s = s .. "\t[Armor rating = " .. m.armor .. ", ROF = " .. m.rof .. ", containing " .. #m.weapons .. " weapon(s)]\r\n"<br />
+ for k,v in pairs(m.weapons) do<br />
+    s = s .. "\t\t" .. v.wpn_name .. " with load " .. v.wpn_current .. " of " .. v.wpn_default .. '\r\n'<br />
+    m:setExactWeaponQuantity(v.wpn_guid, v.wpn_default)  -- set the current load back to full if any have been expended <br />
+ end<br />
+print(s)<br />
+end<br />
+<br />
+							<output>
+Unit Magazines <br />
+<br />
+1 - 12.7mm/50 MGwith capacity of 200 units<br />
+	[Armor rating = 1001, ROF = 15, containing 1 weapon(s)]<br />
+		12.7mm/50 MG Burst [10 rnds] with load 180 of 200<br />
+<br />
+2 - 20mm/85 Mk15 Phalanx Blk 1with capacity of 20 units<br />
+	[Armor rating = 2001, ROF = 300, containing 1 weapon(s)]<br />
+		20mm/85 Mk15 Phalanx Blk 1 Burst [300 rnds] with load 20 of 20<br />
+<br />
+3 - Helicopter Magazinewith capacity of 10000 units<br />
+	[Armor rating = 1001, ROF = 60, containing 2 weapon(s)]<br />
+		AGM-114M Hellfire II with load 24 of 24<br />
+		Mk46 NEARTIP Mod 5 with load 40 of 40<br />
+<br />
+4 - Mk36 SRBOCwith capacity of 80 units<br />
+	[Armor rating = 1001, ROF = 300, containing 2 weapon(s)]<br />
+		Mk182 SRBOC Chaff [Seduction] with load 2 of 64<br />
+		Mk186 TORCH Flare [Seduction] with load 2 of 16<br />
+							</output>
+						</code>
+					</div>
+
+				<hr>
+				<h1><a class="anchor" id="Example_Wrapper_Mission"></a>Wrapper Mission</h1>
+				<h2>Retreiving the Mission details</h2>
+					<div class="example">
+						<code>
+							<output>
+							</output>
+						</code>
+					</div>
+		
+
+		
+				<hr>
+				<h1><a class="anchor" id="Example_Wrapper_Mount"></a>Wrapper Mount</h1>
+				<h2>Retreiving the Mount details</h2>
+					<div class="example">
+						<code>		
+local u = ScenEdit_GetUnit({name='LST 4001 Osumi', guid='8269b881-20ce-4f2e-baa0-6823e46d55a4'})<br />
+print( "Unit Mounts " )<br />
+for k,v in pairs(u.mounts) do<br />
+ local s = '' <br />
+ local m = u:getUnitMount(v.mount_guid) -- details on mount<br />
+ s = s .. k .. " - " .. m.name .. " [ " .. v.mount_status .. ' ]\r\n'<br />
+ s = s .. "\t[ containing " .. #m.weapons .. " weapon(s) ]\r\n"<br />
+ for k,v in pairs(m.weapons) do<br />
+    s = s .. "\t\t" .. v.wpn_name .. " with load " .. v.wpn_current .. " of " .. v.wpn_default .. '\r\n'<br />
+   --m:setExactWeaponQuantity(v.wpn_guid, v.wpn_default)  -- set the current load back to full if any have been expended <br />
+ end<br />
+print(s)<br />
+end<br />
+<br />
+<output>
+Unit Mounts <br />
+1 - 12.7mm/50 MG [ Operational ]<br />
+	[ containing 1 weapon(s) ]<br />
+		12.7mm/50 MG Burst [10 rnds] with load 10 of 10<br />
+<br />
+2 - 12.7mm/50 MG [ Operational ]<br />
+	[ containing 1 weapon(s) ]<br />
+		12.7mm/50 MG Burst [10 rnds] with load 10 of 10<br />
+<br />
+3 - 20mm/85 Mk15 Phalanx Blk 1 CIWS [ Operational ]<br />
+	[ containing 1 weapon(s) ]<br />
+		20mm/85 Mk15 Phalanx Blk 1 Burst [300 rnds] with load 5 of 5<br />
+<br />
+4 - 20mm/85 Mk15 Phalanx Blk 1 CIWS [ Operational ]<br />
+	[ containing 1 weapon(s) ]<br />
+		20mm/85 Mk15 Phalanx Blk 1 Burst [300 rnds] with load 5 of 5<br />
+<br />
+5 - Mk36 SRBOC [ Operational ]<br />
+	[ containing 2 weapon(s) ]<br />
+		Mk182 SRBOC Chaff [Seduction] with load 4 of 4<br />
+		Mk186 TORCH Flare [Seduction] with load 2 of 2<br />
+<br />
+6 - Mk36 SRBOC [ Operational ]<br />
+	[ containing 2 weapon(s) ]<br />
+		Mk182 SRBOC Chaff [Seduction] with load 4 of 4<br />
+		Mk186 TORCH Flare [Seduction] with load 2 of 2<br />
+<br />
+7 - Mk36 SRBOC [ Operational ]<br />
+	[ containing 2 weapon(s) ]<br />
+		Mk182 SRBOC Chaff [Seduction] with load 4 of 4<br />
+		Mk186 TORCH Flare [Seduction] with load 2 of 2<br />
+<br />
+8 - Mk36 SRBOC [ Operational ]<br />
+	[ containing 2 weapon(s) ]<br />
+		Mk182 SRBOC Chaff [Seduction] with load 4 of 4<br />
+		Mk186 TORCH Flare [Seduction] with load 2 of 2<br />
+							</output>
+						</code>
+					</div>
+
+				<hr>
+				<h1><a class="anchor" id="Example_Wrapper_RP"></a>Wrapper Reference Point</h1>
+				<h2>Retreiving the RP details</h2>
+					<div class="example">
+						<code>
+							<output>
+							</output>
+						</code>
+					</div>
+
+				<hr>
+				<h1><a class="anchor" id="Example_Wrapper_Scenario"></a>Wrapper Scenario</h1>
+				<h2>Retreiving the Scenario details</h2>
+					<div class="example">
+						<code>
+							<output>
+							</output>
+						</code>
+					</div>
+
+
+				<hr>
+				<h1><a class="anchor" id="Example_Wrapper_Side"></a>Wrapper Side</h1>
+				<h2>Retreiving the Side details</h2>
+					<div class="example">
+					<p>Find units in an area</p>
+					<code>local u = side:unitsInArea({Area = { 'RP-3137', 'RP-3139', 'RP-3136', 'RP-3138'},<br> TargetFilter = { TargetType = 'Ship' } })
+					</code>
+					<div class="example">
+					<p>Find units on side by a filter</p>
+					<code>local u = side:side:unitsBy('Ship')  -- all ships <br>
+					u = side:unitsBy('Ship', 2002, 3003) -- ships fitered for 'Surface combatant' and 'BBC'
+					</code>
+					</div>
+                  </div>
+
+				<hr>
+				<h1><a class="anchor" id="Example_Wrapper_SA"></a>Wrapper Special Action</h1>
+				<h2>Retreiving the SA details</h2>
+					<div class="example">
+						<code>
+							<output>
+							</output>
+						</code>
+					</div>
+
+				<hr>
+				<h1><a class="anchor" id="Example_Wrapper_Unit"></a>Wrapper Unit</h1>
+				<h2>Retreiving the Unit details</h2>
+					<div class="example">
+					<p>Update the orbit for a satellite by specifying a TLE</p>
+                    	<code>
+theSat = ScenEdit_GetUnit({guid=<span class="string">'56f830c1-d0e2-430a-985e-0e301cc01eff'</span>})<br>
+theTLE = <span class="string">'Resurs P1\n1 39186U 13030A   17013.12537468  .00000446  00000-0  16942-4 0  9992\n2 39186  97.3847  79.3911 0015157 247.7411 195.8488 15.31966970198820'</span><br>
+theSat:updateorbit({TLE=theTLE})
+                    	</code>
+                    </div>
+ 					<div class="example">
+					<p>Change the type of waypoint</p>
+                    	<code>
+ au = ScenEdit_GetUnit({name='AGM-158A JASSM [Penetrator] #967', guid='46skox-0hmf72m6q6bdj'})<br>
+ print(au.course)<br>
+ wp = au:getwaypoint({GUID='46SKOX-0HMF72M6Q6L64'})<br>
+ wp.type = 0   -- This changes the waypoint type, in this case to manual plotted-course waypoint<br>
+ print(wp.type)<br>
+                    	</code>
+                    </div>
+
+
+				<hr>
+				<h1><a class="anchor" id="Example_Wrapper_Zone"></a>Wrapper Zone (non-navigation and exclusion)</h1>
+				<h2>Retreiving the Zone details</h2>
+					<div class="example">
+						<code>
+							<span class="local">local</span> a = VP_GetSide({Side =<span class="string">'side1'</span>}) <br>
+							<span class="comment">-- a side object
+				</span> <br>
+				<span class="local">local</span> z = a.nonavzones <br>
+				--List Of no-nav zones For the side If you need To find it<br>
+		
+				For i, zone <span class="keyword">in</span> <span class="global">ipairs</span>(z) <span class="keyword">do</span>
+				<span class="global">print</span>(<span class="string">"Zone #"</span> .. i)
+				<span class="global">print</span>(zone)
+				<span class="local">local</span> n = a :  getnonavzone(z[i].guid) <span class="comment">-- zone object
+				</span>     <span class="global">print</span>(<span class="string">'Details: '</span> .. n.description .. <span class="string">' Active: '</span> .. <span class="global">tostring</span>(n.isactive) )
+				n.area = {<span class="string">'rp-9'</span>,<span class="string">'rp-10'</span>, <span class="string">'rp-8'</span> <span class="comment">-- replace with a list of visible RPs for the side
+				</span> n.area = {
+				name=<span class="string">'area test rp0'</span>,  latitude=<span class="string">'35.5480335331354'</span>, longitude=<span class="string">'15.8184476823186'</span>, highlighted=<span class="keyword">true</span>, bearingtype=<span class="number">1</span>, relativeto=<span class="string">'Tracking #1'</span>, hidden = <span class="keyword">false</span>,
+				name=<span class="string">'area test rp1'</span>,  latitude=<span class="string">'35.5480335331354'</span>, longitude=<span class="string">'16.8184476823186'</span>, highlighted=<span class="keyword">true</span>,,
+				name=<span class="string">'area test rp2'</span>,  latitude=<span class="string">'38.5480335331354'</span>, longitude=<span class="string">'18.8184476823186'</span>, highlighted=<span class="keyword">false</span>,  <span class="comment">-- replace with a new set of RPs that might not be visible to the side
+				</span> End
 				</code>
-			</div>
+				</div> 
+
+				<hr>
+				<h1><a class="anchor" id="Example_Wrapper_WP"></a>Wrapper WayPoint</h1>
+				<h2>Retreiving the WP details</h2>
+					<div class="example">
+						<code>
+							<output>
+							</output>
+						</code>
+					</div>
+
+				<hr>
+				<h1><a class="anchor" id="Example_Wrapper_Weapon"></a>Wrapper Weapon</h1>
+				<h2>Retreiving the Weapon details</h2>
+					<div class="example">
+						<code>
+							<output>
+							</output>
+						</code>
+					</div>
+
 
 
 <!-- end of example section  -->
