@@ -121,7 +121,166 @@ It can be filtered by using the weapon DBID in which case the WEAPON_DBID and WE
 				
 				<hr>
 				<h1><a class="anchor" id="Example_Wrapper_Event"></a>Wrapper Event</h1>
-				<h2>Retreiving the Event</h2>
+				<p>
+				<h2>1. Showing the full attributes of the event</h2>
+					<div class="example">
+						<code>
+local a = ScenEdit_GetEvent( "Aircraft entering ship's exclusion zone" )<br />
+for k,v in pairs(a.fields) do<br />
+&nbsp;if string.find(k,'property_') ~= nil then -- is a property<br />
+&nbsp;&nbsp;local vt = {}<br />
+&nbsp;&nbsp;local i = 0<br />
+&nbsp;&nbsp;for w in string.gmatch(v,'%g+[^, ]') do<br />
+&nbsp;&nbsp;&nbsp;vt[i] = w<br />
+&nbsp;&nbsp;&nbsp;i=i+1<br />
+&nbsp;&nbsp;end<br />
+&nbsp;&nbsp;print("\r\n[object] = " .. string.sub(vt[0],2) ) -- property name<br />
+&nbsp;&nbsp;if vt[3] == 'True' then<br />
+&nbsp;&nbsp;&nbsp;print( a[ string.sub(vt[0],2) ] ) -- value of property<br />
+&nbsp;&nbsp;else<br />
+&nbsp;&nbsp;&nbsp;print( 'no get function' ) -- value of property<br />
+&nbsp;&nbsp;end<br />
+&nbsp;end<br />
+end
+<br />
+<br />
+
+							<output>
+[object] = description<br />
+Aircraft entering ship's exclusion zone
+<br />
+<br />
+[object] = isActive<br />
+'Yes'
+<br />
+<br />
+[object] = guid<br />
+dc7a2fe6-4786-4e8f-ba04-f7d152c39265
+<br />
+<br />
+[object] = probability<br />
+100
+<br />
+<br />
+[object] = details<br />
+{ conditions = { [1] = { LuaScript = { ID = '8635d4bd-5642-4b9b-af0f-877953f25459', Description = 'Detected by SideB', ScriptText = 'local answer = false<br />
+local unit = ScenEdit_UnitX();<br />
+print(unit)<br />
+--local unit = ScenEdit_GetUnit({name='Happy #1', guid='3d9e9a78-091f-4745-b48d-0fbaba6fe8ce'})<br />
+local contacts = unit.ascontact  -- what other sides see me as<br />
+print(contacts)<br />
+local base = ScenEdit_GetUnit({name='DDG 138 Taizhou [Pr.956ME Sovremenny]', guid='4761b40d-01e0-416c-a3e9-43880de92c3c'}) -- unit doing the detecting<br />
+local side = VP_GetSide({side=base.side}).guid; print(side)<br />
+  for x = 1, #contacts do<br />
+    if contacts[x].side == side then<br />
+      -- contact on my side<br />
+      local mycontact = contacts[x].guid<br />
+      local con = ScenEdit_GetContact({side = contacts[x].side, guid = contacts[x].guid}); print(con);print(con.posture)<br />
+      answer=true<br />
+    end<br />
+  end<br />
+return answer' } } }, actions = { [1] = { type = 'LuaScript', LuaScript = { ID = '4594c3bf-421d-43cd-a077-7f0d40294ae6', Description = 'Change posture', ScriptText = 'local unit = ScenEdit_UnitX();<br />
+print(unit)<br />
+--local unit = ScenEdit_GetUnit({name='Happy #1', guid='3d9e9a78-091f-4745-b48d-0fbaba6fe8ce'})<br />
+local contacts = unit.ascontact  -- what other sides see me as<br />
+print(contacts)<br />
+local base = ScenEdit_GetUnit({name='DDG 138 Taizhou [Pr.956ME Sovremenny]', guid='4761b40d-01e0-416c-a3e9-43880de92c3c'}) -- unit doing the detecting<br />
+local side = VP_GetSide({side=base.side}).guid; print(side)<br />
+local answer = false<br />
+  for x = 1, #contacts do<br />
+    if contacts[x].side == side then<br />
+      -- contact on my side<br />
+      local mycontact = contacts[x].guid<br />
+      local con = ScenEdit_GetContact({side = contacts[x].side, guid = contacts[x].guid}); print(con);print(con.posture)<br />
+      -- distance between my unit and the contact<br />
+      local dist = base:rangetotarget( mycontact)<br />
+      if dist ~= nil and dist &lt; 10 then<br />
+        print('target in range (' .. dist ..'NM)')<br />
+        if con.side == nil then<br />
+        con.posture = 'H'<br />
+        else<br />
+        con.posture = 'U'<br />
+        end<br />
+        answer=true<br />
+      else<br />
+        print('target not in range (' .. dist ..'NM)')<br />
+      end<br />
+    end<br />
+  end<br />
+' } } }, triggers = { [1] = { UnitEntersArea = { ID = '580d7284-cb24-474b-a137-3e5f4aa2338f', LTOA = '636299676000000000', TargetFilter = { ID = '44117c69-a74e-4697-ac60-31e534546001', TargetSubType = '0', TargetSide = '2c728e58-fc85-4c9d-952c-b62a195b2051', TargetType = '1' }, Area = { RPoint2 = { RD = '21.79107', ColorR = '255', ColorB = '255', ID = '073a5227-9cde-4b4d-9020-f78aa12297f4', IH = 'True', Lat = '33.879419548290649', Lon = '139.09893527841047', Name = 'RP-3006', ColorG = '255', IRT = '4761b40d-01e0-416c-a3e9-43880de92c3c', RB = '126.9126' }, RPoint1 = { RD = '23.86684', ColorR = '255', ColorB = '255', ID = '18bb5404-de45-4c9e-bec3-33a4fd904c9f', IH = 'True', Lat = '34.368804155042334', Lon = '139.10100045240316', Name = 'RP-3005', ColorG = '255', IRT = '4761b40d-01e0-416c-a3e9-43880de92c3c', RB = '46.89403' }, RPoint = { RD = '23.26058', ColorR = '255', ColorB = '255', ID = '3f563b7f-9236-4b14-a1d4-7299dfe395da', IH = 'True', Lat = '34.36889226716081', Lon = '138.41511917002865', Name = 'RP-3004', ColorG = '255', IRT = '4761b40d-01e0-416c-a3e9-43880de92c3c', RB = '314.5287' }, RPoint3 = { RD = '21.12538', ColorR = '255', ColorB = '255', ID = 'db940f3e-1112-4e55-ae89-59772b27c526', IH = 'True', Lat = '33.879523369216351', Lon = '138.41698363796547', Name = 'RP-3007', ColorG = '255', IRT = '4761b40d-01e0-416c-a3e9-43880de92c3c', RB = '231.7307' } }, Description = 'Aircraft enters  exclusion zone', ETOA = '635984136000000000' } }, [2] = { UnitRemainsInArea = { ID = '9aa99e0c-9f67-4d3c-ae24-29a327b548d3', TargetFilter = { ID = '3fd45ed7-fc36-4807-923f-7299631a29c0', TargetSubType = '0', TargetSide = '2c728e58-fc85-4c9d-952c-b62a195b2051', TargetType = '1' }, Area = { RPoint = '<ID>db940f3e-1112-4e55-ae89-59772b27c526</ID>' }, TD = '120', Description = 'Aircraft remains in exclsuion zone', TA = '0' } } }, isShown = 'Yes', guid = 'dc7a2fe6-4786-4e8f-ba04-f7d152c39265', isRepeatable = 'Yes', isActive = 'Yes', description = 'Aircraft entering ship's exclusion zone', probability = 100 }
+<br />
+<br />
+[object] = isShown<br />
+True
+<br />
+<br />
+[object] = conditions<br />
+{ [1] = { LuaScript = { ID = '8635d4bd-5642-4b9b-af0f-877953f25459', Description = 'Detected by SideB', ScriptText = 'local answer = false<br />
+local unit = ScenEdit_UnitX();<br />
+print(unit)<br />
+--local unit = ScenEdit_GetUnit({name='Happy #1', guid='3d9e9a78-091f-4745-b48d-0fbaba6fe8ce'})<br />
+local contacts = unit.ascontact  -- what other sides see me as<br />
+print(contacts)<br />
+local base = ScenEdit_GetUnit({name='DDG 138 Taizhou [Pr.956ME Sovremenny]', guid='4761b40d-01e0-416c-a3e9-43880de92c3c'}) -- unit doing the detecting<br />
+local side = VP_GetSide({side=base.side}).guid; print(side)<br />
+  for x = 1, #contacts do<br />
+    if contacts[x].side == side then<br />
+      -- contact on my side<br />
+      local mycontact = contacts[x].guid<br />
+      local con = ScenEdit_GetContact({side = contacts[x].side, guid = contacts[x].guid}); print(con);print(con.posture)<br />
+      answer=true<br />
+    end<br />
+  end<br />
+return answer' } } }
+<br />
+<br />
+[object] = triggers<br />
+{ [1] = { UnitEntersArea = { ID = '580d7284-cb24-474b-a137-3e5f4aa2338f', LTOA = '636299676000000000', TargetFilter = { ID = '44117c69-a74e-4697-ac60-31e534546001', TargetSubType = '0', TargetSide = '2c728e58-fc85-4c9d-952c-b62a195b2051', TargetType = '1' }, Area = { RPoint2 = { RD = '21.79107', ColorR = '255', ColorB = '255', ID = '073a5227-9cde-4b4d-9020-f78aa12297f4', IH = 'True', Lat = '33.879419548290649', Lon = '139.09893527841047', Name = 'RP-3006', ColorG = '255', IRT = '4761b40d-01e0-416c-a3e9-43880de92c3c', RB = '126.9126' }, RPoint1 = { RD = '23.86684', ColorR = '255', ColorB = '255', ID = '18bb5404-de45-4c9e-bec3-33a4fd904c9f', IH = 'True', Lat = '34.368804155042334', Lon = '139.10100045240316', Name = 'RP-3005', ColorG = '255', IRT = '4761b40d-01e0-416c-a3e9-43880de92c3c', RB = '46.89403' }, RPoint = { RD = '23.26058', ColorR = '255', ColorB = '255', ID = '3f563b7f-9236-4b14-a1d4-7299dfe395da', IH = 'True', Lat = '34.36889226716081', Lon = '138.41511917002865', Name = 'RP-3004', ColorG = '255', IRT = '4761b40d-01e0-416c-a3e9-43880de92c3c', RB = '314.5287' }, RPoint3 = { RD = '21.12538', ColorR = '255', ColorB = '255', ID = 'db940f3e-1112-4e55-ae89-59772b27c526', IH = 'True', Lat = '33.879523369216351', Lon = '138.41698363796547', Name = 'RP-3007', ColorG = '255', IRT = '4761b40d-01e0-416c-a3e9-43880de92c3c', RB = '231.7307' } }, Description = 'Aircraft enters  exclusion zone', ETOA = '635984136000000000' } }, [2] = { UnitRemainsInArea = { ID = '9aa99e0c-9f67-4d3c-ae24-29a327b548d3', TargetFilter = { ID = '3fd45ed7-fc36-4807-923f-7299631a29c0', TargetSubType = '0', TargetSide = '2c728e58-fc85-4c9d-952c-b62a195b2051', TargetType = '1' }, Area = { RPoint = '<ID>db940f3e-1112-4e55-ae89-59772b27c526</ID>' }, TD = '120', Description = 'Aircraft remains in exclsuion zone', TA = '0' } } }
+<br />
+<br />
+[object] = isRepeatable<br />
+True
+<br />
+<br />
+[object] = actions<br />
+{ [1] = { type = 'LuaScript', LuaScript = { ID = '4594c3bf-421d-43cd-a077-7f0d40294ae6', Description = 'Change posture', ScriptText = 'local unit = ScenEdit_UnitX();<br />
+print(unit)<br />
+--local unit = ScenEdit_GetUnit({name='Happy #1', guid='3d9e9a78-091f-4745-b48d-0fbaba6fe8ce'})<br />
+local contacts = unit.ascontact  -- what other sides see me as<br />
+print(contacts)<br />
+local base = ScenEdit_GetUnit({name='DDG 138 Taizhou [Pr.956ME Sovremenny]', guid='4761b40d-01e0-416c-a3e9-43880de92c3c'}) -- unit doing the detecting<br />
+local side = VP_GetSide({side=base.side}).guid; print(side)<br />
+local answer = false<br />
+  for x = 1, #contacts do<br />
+    if contacts[x].side == side then<br />
+      -- contact on my side<br />
+      local mycontact = contacts[x].guid<br />
+      local con = ScenEdit_GetContact({side = contacts[x].side, guid = contacts[x].guid}); print(con);print(con.posture)<br />
+      -- distance between my unit and the contact<br />
+      local dist = base:rangetotarget( mycontact)<br />
+      if dist ~= nil and dist &lt; 10 then<br />
+        print('target in range (' .. dist ..'NM)')<br />
+        if con.side == nil then<br />
+        con.posture = 'H'<br />
+        else<br />
+        con.posture = 'U'<br />
+        end<br />
+        answer=true<br />
+      else<br />
+        print('target not in range (' .. dist ..'NM)')<br />
+      end<br />
+    end<br />
+  end<br />
+' } } }
+<br />
+<br />
+[object] = name<br />
+nil<br />
+							<output>
+						</code>
+					</div>
+				</p>
+				<h2>2. Retreiving some details from the Event</h2>
 				<div class="example">
 					<code>
 local f = ScenEdit_EventX()  -- the event that has triggered<br />
@@ -135,8 +294,7 @@ print("Conditions(s):") <br />
 print(f.conditions) <br />
 print("Action(s):") <br />
 print(f.actions) <br />
-<p>
-The active event has one trigger (UnitDestroyed) and one action (update points).</p>
+<br />
 						<output>
 EventID: Turkish FFG destroyed ('cf4eb993-25bd-4626-a944-b2b3cf6ae3b6') <br />
 Active: true <br />
@@ -149,6 +307,9 @@ Conditions(s) <br />
 Action(s) <br />
 { [1] = { Points = { Description = 'United States plus 01000 points', SideID = '2b7905cd-e798-494b-95fb-a01f5d9f4eec', ID = 'b1a3e26e-5c88-48a5-a866-88a7f7d737df', PointChange = '1000' }, type = 'Points' } }	 <br />
 						</output>
+						<p><br />
+						The active event has one trigger (UnitDestroyed) and one action (update points).
+						</p>
 					</code>
 				</div>
 
@@ -167,7 +328,7 @@ s = s .. k .. " - " .. ScenEdit_GetUnit({ guid= v}).name .. "\r\n"<br />
 end<br />
 end<br />
 print(s)<br />
-<p></p>
+</p>
 						<output>
 Group [CVN BG] <br />
 Lead ship is CVN 70 Carl Vinson [Nimitz Class]<br />

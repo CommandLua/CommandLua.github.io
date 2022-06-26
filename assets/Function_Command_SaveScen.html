@@ -63,27 +63,30 @@
 
             <div id="main">
 
-                <h2><a class="anchor" id="FunctioName"></a>Command_SaveScen( )</h2>
+                <h2><a class="anchor" id="FunctioName"></a>Command_SaveScen( saveFile )</h2>
                 <p>
-                    The function purpose
+                    This function forces an instant save file at the location passed.
                 </p>
                 
                 <h3>Parameters</h3>
                 <ul>
-                    <li>List the parameters as in the Syntax line</li>
+                    <li>                        
+						<span class="parameter">saveFile</span>
+                        <span class="types"><span class="string"> string </span></span> The <strong>full path</strong> to the location to create a save file
+					</li>
                 </ul>
 
                 <h3>Returns</h3>
                 <ul>
                     <li>
-                        Show the return value(s)
+                        None
                     </li>
                 </ul>
 
                 <h4>Example</h4>
                 <div class="example">
                     <code>
-                        Show an example of how to use the function. Explain it or add multiple examples to expand it
+                        Command_SaveScen("C:/temp/mysave.save")
                     </code>
                 </div>
 

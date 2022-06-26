@@ -87,6 +87,9 @@
                     <li><span class="datatype"><a href="#dataType_TargetingMode">TargetingMode</a></span></li>
                     <li><span class="datatype"><a href="#dataType_TargetTypeWRA">TargetTypeWRA</a></span></li>
                     <li><span class="datatype"><a href="#dataType_TimeStamp">TimeStamp</a></span></li>
+
+                    <li><span class="datatype"><a href="#dataType_TrueFalse">True/False</a></span></li>
+
                     <li><span class="datatype"><a href="#dataType_Unit__Types">Unit Types</a></span></li>
                     <li><span class="datatype"><a href="#dataType_Unit_Aircraft">Aircraft</a></span></li>
                     <li><span class="datatype"><a href="#dataType_Unit_Facility">Facility</a></span></li>
@@ -96,7 +99,7 @@
                     <li><span class="datatype"><a href="#dataType_WCS">WeaponControl</a></span></li>
                     <li><span class="datatype"><a href="#dataType_WeaponDoctrine">WeaponDoctrine</a></span></li>
                     <li><span class="datatype"><a href="#dataType_WeaponType">WeaponType</a></span></li>
-                    <li><span class="datatype"><a href="#dataType_Weather">Weather</a></span></li>
+                    <!--<li><span class="datatype"><a href="#dataType_Weather">Weather</a></span></li>-->
                 </ul>
 
                 <hr>
@@ -350,11 +353,11 @@
                 <a class="anchor" id="dataType_Fuel"></a>
                 <h3>Fuel</h3>
                 <p>
-                    The various types of fuel(s), and their state, carried by the unit. Use ScenEdit_SetUnit() to
+                    The various types of fuel(s), and their state, carried by the unit. Use <a href="Function_ScenEdit_SetUnit.html">ScenEdit_SetUnit()</a> to
                     set
                     the fuel
                     rather
-                    than the unit.fuel. <br />
+                    than through the wrapper <a href="Wrappers.html#wrapper_Unit">unit.fuel</a>. <br />
                     Using ScenEdit_SetUnit({...,fuel={{'GasFuel',1500},{2001,8000}}..}) is easier
                     and
                     less prone
@@ -378,7 +381,12 @@
                         <li>
                             <span class="parameter">name</span>
                             <span class="types"><span class="string">string</span></span>
-                            Name of the fuel type
+                            Name of the fuel type (which will relect the fuel type index)
+                        </li>
+                        <li>
+                            <span class="parameter">type</span>
+                            <span class="types"><span class="string">number</span></span>
+                            Type of fuel
                         </li>
                     </ul>
                 </p>

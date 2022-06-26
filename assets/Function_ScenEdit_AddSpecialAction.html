@@ -99,20 +99,21 @@
                             <li>
                                 <span class="parameter">ScriptText = </span>
                                 <span class="types"><span class="string">string</span></span>
-                                The Lua script for the SA. Note as the script is a multi line string, it requires a '\r\n' to be appended after each line so it is formated in the Editor.
+                                The Lua script for the SA. <br />
+								Note as the script is a multi line string, it requires a '\r\n' to be appended after each line so it is interpreted/formated in the Editor.
                             </li>
                         </ul>
                     </li>
                 </ul>
                 <h4>Returns</h4>
-                <p><span class="wrapper"><a href="Wrappers.html#wrapper_SpecialAction">SpecialAction</a></span> A wrapper for the new Special Action event</p>
+                <p><span class="types"><span class="boolean">True/False</span></span> Returns True if successful</p>
 
                 <h5>Example</h5>
                 <div class="example">
                     <code>
                         local LfCR = '\r\n'<br>
-                        local n = '-- comment 1' .. LfCR .. '-- comment 2' .. LfCR ..'local a = GetBuildNumber()' .. LfCR .. "ScenEdit_MsgBox( 'My build is ' .. a,0)" .. LfCR<br>
-                        local s = ScenEdit_AddSpecialAction({Side ='usa', ActionNameOrID='sp1', description='test for special actions', ScriptText=n})
+                        local myScript = '-- comment 1' .. LfCR .. '-- comment 2' .. LfCR ..'local a = GetBuildNumber()' .. LfCR .. "ScenEdit_MsgBox( 'My build is ' .. a, 0)" .. LfCR<br>
+                        local s = ScenEdit_AddSpecialAction({ Side = 'usa', ActionNameOrID = 'sp1', description = 'test for special actions', ScriptText = myScript})<br />
                     </code>
                 </div>
 
