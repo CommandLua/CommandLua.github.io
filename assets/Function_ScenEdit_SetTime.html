@@ -71,7 +71,9 @@
                     This function Sets
                     the current
                     scenario
-                    date/time, but allows the scenario start data to be updated as well.
+                    date/time, but allows the scenario start data to be updated as well.<br />
+                    Note the default format ('MM.DD.YYYY') for the public release, differs from the default mode ('DD.MM.YYYY') in the professional release.<br />
+					If a scenario wants to be used between both releases, the new DATEFORMAT parameter should used to define the date passed.
                 </p>
                 <h4> Parameters</h4>
                 <ul>
@@ -85,11 +87,18 @@
                         </span>
                         <ul>
                             <li>
+                                <span class="parameter"> dateformat =</span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                Formats are: 'DDMMYYYY' or 'MMDDYYYY' or 'YYYYMMDD' Note that they need to be <strong>uppercase</strong>. <br / >
+								The default format for Public versions is 'MMDDYYYY', while the Professional versions use 'DDMMYYYY' if this parameter is not supplied. 
+                            </li>
+                            <li>
                                 <span class="parameter"> date =</span>
                                 <span class="types"> <span class="string"> string</span> </span>
-                                Scenario current date as 'DD:MM:YYYY' or 'DD.MM.YYYY'. <br / >
-                                Note the change of format ('MM.DD.YYYY') from old public release.
-                            <li>
+                                Scenario current date as per the date format<br />
+								'DD.MM.YYYY' or 'MM.DD.YYYY' or 'YYYY.MM.DD' The delimiter '.' can also be a ':'<br / >
+                            </li>
+							<li>
                                 <span class="parameter"> time =</span>
                                 <span class="types"> <span class="string"> string</span> </span>
                                 Scenario current time as 'HH:MM:SS' or 'HH.MM.SS'
@@ -119,8 +128,13 @@
                 </p>
 
                 <h5> Example</h5>
+				Depending on release, the date would be 2 December or 12 February for pro and public respectively.
                 <div class="example">
-                    <code> ScenEdit_SetTime({Date=<span class="string">"2.12.2007"</span>, Time=<span class="string">"22.46.23"</span>})</code>
+                    <code> ScenEdit_SetTime({Date= <span class="string">"2.12.2007"</span>, Time= <span class="string">"22.46.23"</span>})</code>
+				</div>
+				This example explicitly says the date is 2 December regardless of the build.
+                <div class="example">
+                    <code> ScenEdit_SetTime({DateFormat= "DDMMYYYY", Date= <span class="string">"2.12.2007"</span>, Time= <span class="string">"22.46.23"</span>})</code>
                 </div>
 
             </div>
