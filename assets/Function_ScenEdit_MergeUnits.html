@@ -1,0 +1,125 @@
+<html>
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163808192-1"></script>
+    <script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-163808192-1');
+    </script>
+
+
+    <title>Command Lua Docs</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+
+
+</head>
+
+<body>
+    <div id="header-container">
+        <div id="header">
+            <div id="header-logo">
+                <h1>
+                    <a href="../index2.html"><img src="./images/CommandLuaLogo.svg" height=45px alt="CommandLua"></a>
+                </h1>
+            </div>
+            <div id="header-nav">
+                <a class="selected" href="../index2.html">Reference</a>
+                <!-- <a href="/guides/">Guides</a> -->
+                <a href="https://www.matrixgames.com/forums/tt.asp?forumid=1681">Forum</a>
+            </div>
+        </div>
+    </div>
+    <div id="container">
+
+        <div id="content">
+            <div id="nav">
+                <ul>
+                    <li><a href="../index2.html#News">News</a></li>
+                    <li><a href="../index2.html#Introduction">Introduction</a></li>
+                    <ol>
+                        <li><a href="../index2.html#HowToUse">How to Use These Docs</a></li>
+                        <li><a href="../index2.html#FirstSteps">First Steps</a></li>
+                        <li><a href="../index2.html#ExternalResources">External Resources</a></li>
+                    </ol>
+
+                    <li><a href="../index2.html#Overview">Overview</a></li>
+                    <ol>
+                        <li><a href="../index2.html#CaseSensitivityandConventions">Case Sensitivity and Conventions</a></li>
+                        <li><a href="../index2.html#EventHandling">Event Handling</a></li>
+                        <li><a href="../index2.html#ErrorHandling">Error Handling</a></li>
+                    </ol>
+                    <li><a href="DataTypes.html">Data Types</a></li>
+                    <li><a href="Functions.html">Functions</a></li>
+                    <li><a href="Wrappers.html">Wrappers</a></li>
+                    <li><a href="Selectors.html">Selectors</a></li>
+                    <li><a href="Tables.html">Tables</a></li>
+                </ul>
+            </div>
+
+            <div id="main">
+
+                <h2><a class="anchor" id="FunctioName"></a>Function ScenEdit_MergeUnits( )</h2>
+                <p>
+                    Merge the selected units in to the first one on the list
+                </p>
+                
+                <h3>Parameters</h3>
+                <ul>
+                    <li>List the parameters as in the Syntax line</li>
+                </ul>
+
+                <h3>Returns</h3>
+                <ul>
+                    <li>
+                        Unit wrapper of the merged unit
+                    </li>
+                </ul>
+
+                <h4>Example</h4>
+                <div class="example">
+                    <code>
+local a = ScenEdit_MergeUnits()<br />
+print(a)<br />
+						<output>
+unit {
+ type = 'Facility', 
+ subtype = '5001', 
+ name = 'Mech Inf', 
+ side = 'SideA', 
+ guid = 'ff0ef686-bf03-4228-af7c-a726f8c178cf', 
+ class = 'Mech Inf Plt (Type 96 APC x 4)', 
+ proficiency = 'Regular', 
+ latitude = '34.7079918909088', 
+ longitude = '136.197564336924', 
+ altitude = '243', 
+ heading = '0', 
+ speed = '0', 
+ throttle = 'FullStop', 
+ autodetectable = 'False', 
+ mounts = '4', 
+ magazines = '4', 
+ unitstate = 'Unassigned', 
+ fuelstate = 'None', 
+ weaponstate = 'None', 
+ AllowMultiMission = 'False', 
+ AssignedMissionsQueue = 'table', 
+}
+						</output>
+                    </code>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <p> Copyright &copy; WarfareSims 2020</p>
+    </div>
+</body>
+
+</html>
