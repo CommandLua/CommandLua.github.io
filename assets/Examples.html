@@ -571,6 +571,20 @@ theSat:updateorbit({TLE=theTLE})
                     	</code>
                     </div>
 
+ 					<div class="example">
+					<p>Change group's formation - reposition individual units - via teleport (transpose = true)</p>
+<p>1. to 'line abreast' (one of the pre-defined formations)</p>
+                    	<code>
+local a = ScenEdit_GetUnit( { guid='9506a165-6e44-40dd-b721-f9c07e056bdb' } )<br>
+a.formation = {name='line', spacing_unit = 1, transpose='true'}<br>
+                    	</code>
+<p>2. to a customised formation</p>
+                    	<code>
+local a = ScenEdit_GetUnit( { guid='9506a165-6e44-40dd-b721-f9c07e056bdb' } )<br>
+a.formation = {name='Custom:\t0\t2\t1\t135\t1\t1\t225\t1', spacing_unit = 1, transpose='true'}<br>
+                    	</code>
+                    </div>
+
 
 				<hr>
 				<h1><a class="anchor" id="Example_Wrapper_Zone"></a>Wrapper Zone (non-navigation and exclusion)</h1>
