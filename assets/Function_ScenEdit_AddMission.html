@@ -67,7 +67,7 @@
                 <p>
                     This function adds a new mission to the side based on the supplied options<br />
                     It is suggested to make the mission name unique across the scenario to ensure there are no conflicts as to the side it is applicable to<br />
-                    Once the core mission is added, the mission can be adjusted through a wrapper or <a href="#ScenEdit_SetMission">ScenEdit_SetMission</a>
+                    Once the core mission is added, the mission can be adjusted through a wrapper or <a href="Function_ScenEdit_SetMission.html">ScenEdit_SetMission</a>
                 </p>
                 <h4>Parameters</h4>
                 <ul>
@@ -82,9 +82,7 @@
                     <li>
                         <span class="parameter">MissionType</span>
                         <span class="types">
-                            <span class="string">
-                                <span class="tooltip">value<span class="tooltiptext">'Strike', 'Patrol', 'Support', 'Ferry', 'Mining', 'Mineclearing', 'Cargo' </span></span>
-                            </span>
+                        <span class="types"><a href="DataTypes.html#dataType_MissionType">MissionType</a></span>
                         </span>
                         The type of mission which will control what is valid for the following options
                     </li>
@@ -94,15 +92,15 @@
                         The mission specific options
                         <ul>
                             <li>
-                                <span class="parameter">type = </span>
-                                <span class="types"><a href="DataTypes.html#dataType_MissionSubType">MissionSubType</a></span>
-                                Mission sub-type (This only applies to mission types 'Patrol' and 'Strike')
-                                <br />***** data type MissionSubType to be added *****
-                            </li>
-                            <li>
                                 <span class="parameter">destination = </span>
                                 <span class="types"><span class="string">string</span></span>
                                 A mission destination location name/guid (This only applies to a 'Ferry' mission)
+                            </li>
+                            <li>
+                                <span class="parameter">type = </span>
+                                <span class="types"><a href="DataTypes.html#dataType_MissionType">MissionSubType</a></span>
+                                Mission sub-type (This only applies to mission types 'Patrol' and 'Strike')
+                                <br />
                             </li>
                             <li>
                                 <span class="parameter">zone = </span>
@@ -123,7 +121,10 @@
 
                 <h5>Example</h5>
                 <div class="example">
-                    <code><span class="local">local</span> mission = ScenEdit_AddMission(<span class="string">'USA'</span>,<span class="string">'Marker strike'</span>,<span class="string">'strike'</span>,{<span class="global">type</span>=<span class="string">'land'</span>})</code>
+                    <code>local mission = ScenEdit_AddMission( 'USA', 'Marker strike', 'strike',{ type = 'land'} )</code>
+                    <code>local missionReferencePoints={'rp-1','rp-2','rp-3'}<br>
+					local mission = ScenEdit_AddMission (OPFORsideName, 'OPFOR Mission', 'Patrol', {type= 'AAW',zone= missionReferencePoints} )
+</code>
                 </div>
 
             </div>

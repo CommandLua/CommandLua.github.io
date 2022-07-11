@@ -81,6 +81,7 @@
                     <li><span class="datatype"><a href="#dataType_LoadoutWeather">LoadoutWeather</a></span></li>
                     <li><span class="datatype"><a href="#dataType_Longitude">Longitude</a></span></li>
                     <li><span class="datatype"><a href="#dataType_Longitude">Longitude</a></span></li>
+					<li><span class="datatype"><a href="#dataType_MissionType">MissionType/Subtype</a></span></li>
                     <li><span class="datatype"><a href="#dataType_Sensor">Sensor</a></span></li>
                     <li><span class="datatype"><a href="#dataType_Stance">Stance</a></span></li>
 
@@ -637,16 +638,40 @@
                     </code>
                 </div>
 
-                <!--a class="anchor" id="dataType_MissionType"></a>
-        <h3>Type of mission</h3>
-        <p><details><summary>Size Codes</p>
-        </summary>
-        <ul class="ul-no-bullets">
-        <li><b>Description = Code</b></li>
-            <li>None*          = 0 </li>
-        </ul>
-        </details>
-    <hr-->
+				<hr>
+                <a class="anchor" id="dataType_MissionType"></a>
+				<h3>Type of mission</h3>
+				<p><details><summary>Mission Type</p>
+				</summary>
+				<ul class="ul-no-bullets">
+					<li>Strike
+						<ul class="ul-no-bullets">
+							<li><b>Mission Subtype</b></li>
+							<li>AIR  [, AAW, Air_Intercept ]</li>
+                            <li>LAND [, SUR_LAND, Land_Strike ]</li>
+                            <li>SEA  [, NAVAL, SUR_SEA, Maritime_Strike ]</li>
+                            <li>SUB  [, ASW, Sub_Strike ]</li>
+						</ul>
+					</lI>
+					<li>Patrol
+						<ul class="ul-no-bullets">
+							<li><b>Mission Subtype</b></li>
+                            <li>ASW   [, SUB ]</li>
+                            <li>NAVAL [, SUR_SEA, ASuW_Naval ] </li>
+                            <li>AAW   [, AIR ]</li>
+                            <li>LAND  [, SUR_LAND, ASuW_Land ]</li>
+                            <li>MIXED [, SUR_MIXED, ASuW_Mixed ]</li>
+                            <li>SEAD</li>
+                            <li>SEA   [, SeaControl ]</li>
+						</ul>
+					</lI>
+					<li>Support</lI>
+					<li>Ferry</lI>
+					<li>Mining</lI>
+					<li>Mineclearing</lI>
+					<li>Cargo</lI>
+				</ul>
+				</details>
 
 				<hr>
                 <a class="anchor" id="dataType_Preset"></a>

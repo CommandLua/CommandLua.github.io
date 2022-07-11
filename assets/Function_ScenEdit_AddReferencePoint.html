@@ -67,7 +67,7 @@
                 <p>This function creates one or more reference point(s) as defined by the table.</p>
                 <p>
                     It can take a single new referrnce point, or a table of new reference points. The table <b>must</b> contain at least a side, and one set of latitude and longitude, or the side and an area defined by one or more latitude and longitude values.<br>
-                    This is mainly because Reference Points are recorded by side; the same named RP might exist on more than one side which can lead to confusion.
+                    This is mainly because Reference Points are recorded by side; the same named RP might exist on more than one side which can lead to confusion.<br>
                     Points can also be relative to a specified unit based on bearing and distance. This applies to ALL the rp(s) in the function call, and the unit name/GUID that the RP(s) are relative to has to be on the same side.<br>
                 </p>
                 <h4>Parameters</h4>
@@ -76,10 +76,98 @@
                         <span class="parameter">table</span> <span class="table"> {} </span>
                         The reference point details to be created.
                         <ul>
+                            *** Note that the area is only required if you are adding more than one RP in one go.
+                            <br />
                             <li>
-                                <span class="parameter">side = </span>
-                                <span class="types"><span class="string">string</span></span>
-                                The side the reference point is visible to
+                                <span class="parameter">area = </span>
+                                <span class="table"> {} of multiple </span>
+                                <ul>
+                                    <li>
+                                        <span class="parameter">bearing = </span>
+                                        <span class="types"><span class="number">number (0-360)</span></span>
+                                        Bearing from the 'relative' unit
+                                    </li>
+                                    <li>
+                                        <span class="parameter">bearingtype = </span>
+                                        <span class="types"><span class="tooltip">bearing<span class="tooltiptext">Fixed (0) or Rotating (1)</span></span></span>
+                                        Bearing aspect of the reference point
+                                    </li>
+                                    <li>
+                                        <span class="parameter">color = </span>
+                                        <span class="types"><span class="string">string</span></span>
+                                        The color name or HTML code to mark the new reference point
+                                    </li>
+                                    <li>
+                                        <span class="parameter">distance = </span>
+                                        <span class="types"><span class="number">distance</span></span>
+                                        Distance from the 'relative' unit
+                                    </li>
+                                    <li>
+                                        <span class="parameter">highlighted = </span>
+                                        <span class="types"><span class="boolean">True/False</span></span>
+                                        True if the reference point should be selected
+                                    </li>
+                                    <li>
+                                        <span class="parameter">latitude = </span>
+                                        <span class="types"><a href="DataTypes.html#dataType_Latitude">latitude</a></span>
+                                        The latitude of the new reference point
+                                    </li>
+                                    <li>
+                                        <span class="parameter">locked = </span>
+                                        <span class="types"><span class="boolean">True/False</span></span>
+                                        True if the reference point is locked
+                                    </li>
+                                    <li>
+                                        <span class="parameter">longitude = </span>
+                                        <span class="types"><a href="DataTypes.html#dataType_Longitude">longitude</a></span>
+                                        The longitude of the new reference point
+                                    </li>
+                                    <li>
+                                        <span class="parameter">name = </span>
+                                        <span class="types"><span class="string">string</span></span>
+                                        The name of the new reference point
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="parameter">bearing = </span>
+                                <span class="types"><span class="number">number (0-360)</span></span>
+                                Bearing from the 'relative' unit
+                            </li>
+                            <li>
+                                <span class="parameter">bearingtype = </span>
+                                <span class="types"><span class="tooltip">bearing<span class="tooltiptext">Fixed (0) or Rotating (1)</span></span></span>
+                                Bearing aspect of the reference point
+                            </li>
+							<li>
+								<span class="parameter">color = </span>
+								<span class="types"><span class="string">string</span></span>
+								The color name or HTML code to mark the new reference point
+							</li>
+                            <li>
+                                <span class="parameter">distance = </span>
+                                <span class="types"><span class="number">distance</span></span>
+                                Distance from the 'relative' unit
+                            </li>
+                            <li>
+                                <span class="parameter">highlighted = </span>
+                                <span class="types"><span class="boolean">True/False</span></span>
+                                True if the reference point should be selected
+                            </li>
+                            <li>
+                                <span class="parameter">latitude = </span>
+                                <span class="types"><a href="DataTypes.html#dataType_Latitude">latitude</a></span>
+                                The latitude of the new reference point
+                            </li>
+                            <li>
+                                <span class="parameter">locked = </span>
+                                <span class="types"><span class="boolean">True/False</span></span>
+                                True if the reference point is locked
+                            </li>
+                            <li>
+                                <span class="parameter">longitude = </span>
+                                <span class="types"><a href="DataTypes.html#dataType_Longitude">longitude</a></span>
+                                The longitude of the new reference point
                             </li>
                             <li>
                                 <span class="parameter">name = </span>
@@ -92,89 +180,11 @@
                                 The unit name/guid that all the RP(s) relate to, if required
                             </li>
                             <li>
-                                <span class="parameter">latitude = </span>
-                                <span class="types"><a href="DataTypes.html#dataType_Latitude">latitude</a></span>
-                                The latitude of the new reference point
+                                <span class="parameter">side = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The side the reference point is visible to
                             </li>
-                            <li>
-                                <span class="parameter">longitude = </span>
-                                <span class="types"><a href="DataTypes.html#dataType_Longitude">longitude</a></span>
-                                The longitude of the new reference point
-                            </li>
-                            <li>
-                                <span class="parameter">highlighted = </span>
-                                <span class="types"><span class="boolean">True/False</span></span>
-                                True if the reference point should be selected
-                            </li>
-                            <li>
-                                <span class="parameter">locked = </span>
-                                <span class="types"><span class="boolean">True/False</span></span>
-                                True if the reference point is locked
-                            </li>
-                            <li>
-                                <span class="parameter">distance = </span>
-                                <span class="types"><span class="number">distance</span></span>
-                                Distance from the 'relative' unit
-                            </li>
-                            <li>
-                                <span class="parameter">bearing = </span>
-                                <span class="types"><span class="number">number (0-360)</span></span>
-                                Bearing from the 'relative' unit
-                            </li>
-                            <li>
-                                <span class="parameter">bearingtype = </span>
-                                <span class="types"><span class="tooltip">bearing<span class="tooltiptext">Fixed (0) or Rotating (1)</span></span></span>
-                                Bearing aspect of the reference point
-                            </li>
-                            *** Note that the area is only required if you are adding more than one RP in one go.
-                            <br />
-                            <li>
-                                <span class="parameter">area = </span>
-                                <span class="table"> {} of multiple </span>
-                                <ul>
-                                    <li>
-                                        <span class="parameter">name = </span>
-                                        <span class="types"><span class="string">string</span></span>
-                                        The name of the new reference point
-                                    </li>
-                                    <li>
-                                        <span class="parameter">latitude = </span>
-                                        <span class="types"><a href="DataTypes.html#dataType_Latitude">latitude</a></span>
-                                        The latitude of the new reference point
-                                    </li>
-                                    <li>
-                                        <span class="parameter">longitude = </span>
-                                        <span class="types"><a href="DataTypes.html#dataType_Longitude">longitude</a></span>
-                                        The longitude of the new reference point
-                                    </li>
-                                    <li>
-                                        <span class="parameter">highlighted = </span>
-                                        <span class="types"><span class="boolean">True/False</span></span>
-                                        True if the reference point should be selected
-                                    </li>
-                                    <li>
-                                        <span class="parameter">locked = </span>
-                                        <span class="types"><span class="boolean">True/False</span></span>
-                                        True if the reference point is locked
-                                    </li>
-                                    <li>
-                                        <span class="parameter">distance = </span>
-                                        <span class="types"><span class="number">distance</span></span>
-                                        Distance from the 'relative' unit
-                                    </li>
-                                    <li>
-                                        <span class="parameter">bearing = </span>
-                                        <span class="types"><span class="number">number (0-360)</span></span>
-                                        Bearing from the 'relative' unit
-                                    </li>
-                                    <li>
-                                        <span class="parameter">bearingtype = </span>
-                                        <span class="types"><span class="tooltip">bearing<span class="tooltiptext">Fixed (0) or Rotating (1)</span></span></span>
-                                        Bearing aspect of the reference point
-                                    </li>
 
-                                </ul>
-                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -183,7 +193,7 @@
 
                 <h5>Example</h5>
                 <div class="example">
-                    <code>ScenEdit_AddReferencePoint( {side="United States", name="Downed Pilot", latitude=0.1, longitude=4, highlighted=true } )</code>
+                    <code>ScenEdit_AddReferencePoint( {side="United States", name="Downed Pilot", latitude=0.1, longitude=4, highlighted=true, color='red' } )</code>
                 </div>
 
                 <div class="example">

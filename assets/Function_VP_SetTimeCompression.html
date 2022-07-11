@@ -63,27 +63,37 @@
 
             <div id="main">
 
-                <h2><a class="anchor" id="FunctioName"></a>VP_SetTimeCompression ( ... )</h2>
+                <h2><a class="anchor" id="FunctioName"></a>VP_SetTimeCompression ( number )</h2>
                 <p>
-                    The function purpose
+                    The function changes the current time compression ( the 'x#' on the UI).
                 </p>
                 
                 <h3>Parameters</h3>
                 <ul>
-                    <li>List the parameters as in the Syntax line</li>
+					<li>
+						<span class="parameter"> number </span>
+                        <span class="types"><span class="number"><span class="tooltip">value<span class="tooltiptext">
+		0 = One Second<br/>
+        1 = Two Seconds<br/>
+        2 = Five Seconds<br/>
+        3 = Fifteen Seconds<br/>
+        4 = Coarse One Sec Slice<br/>
+        5 = Coarse Five Sec Slice
+</span></span></span></span>
+					</li>
                 </ul>
 
                 <h3>Returns</h3>
                 <ul>
                     <li>
-                        Show the return value(s)
+                        None
                     </li>
                 </ul>
 
                 <h4>Example</h4>
                 <div class="example">
                     <code>
-                        Show an example of how to use the function. Explain it or add multiple examples to expand it
+                        VP_SetTimeCompression( 2 )  -- change to 5 seconds
                     </code>
                 </div>
 

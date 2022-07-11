@@ -957,6 +957,11 @@ end<br>
 						<td>Type of bearing to 'relativeto' unit
 						</td><td>no value if no 'relativeto' unit
 						</td></tr>
+						<tr><td><span class="parameter">color</span>
+						<td><span class="types"><span class="string">string</span></span>
+						<td>The HTML color code expressed as a number - convert to hex to check against a HTML color chart
+						</td><td>
+						</td></tr>
 						<tr><td><span class="parameter">guid</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>The unique identifier for the reference point
@@ -1294,6 +1299,10 @@ end<br>
 						<td><span class="table">{ <a href="Tables.html#table_UnitList">UnitList</a> }</span>
 						<td>Table of units for the designated side. <span class="readonly">READ ONLY</span>
 						</td></tr>
+						<tr><td><span class="parameter">standardzones</span>
+						<td><span class="table">{ { giud, description, name }, ... }</span>
+						<td>Table of Zone identifiers for the designated side <span class="readonly">READ ONLY</span>
+						<td>Use the method 'getstandardzone' to get specific details of the zone</td></tr>						
 						<tr><td><span class="parameter">contactsBy</span>
 						<td><span class="types"><span class="method">method</span>(UnitType)</span>
 						<td> Returns table <span class="table"><a href="Tables.html#table_UnitList">UnitList</a></span> of current contacts filtered by type of unit or nil.
@@ -1304,6 +1313,11 @@ end<br>
 							or nil
 						</td></tr>
 						<tr><td><span class="parameter">getnonavzone</span>
+						<td><span class="types"><span class="method">method</span>(ZoneGUID|ZoneName|ZoneDescription)</span>
+						<td> Returns matching <span class="wrapper"><a href="#wrapper_Zone">Zone</a></span>
+							or nil
+						</td></tr>
+						<tr><td><span class="parameter">getstandardzone</span>
 						<td><span class="types"><span class="method">method</span>(ZoneGUID|ZoneName|ZoneDescription)</span>
 						<td> Returns matching <span class="wrapper"><a href="#wrapper_Zone">Zone</a></span>
 							or nil
@@ -1865,7 +1879,7 @@ end<br>
 					<h3>Zone</h3>
 		
 		
-					Exclusion/No navigatation zone.
+					Exclusion/No navigatation/Standard zone.
 		
 					</ul>
 		
@@ -1878,6 +1892,11 @@ end<br>
 						<tr><td><span class="parameter">area</span>
 						<td><span class="table">{ <a href="tables.html#table_ReferencePoint">ZoneMarker, ...</a> }</span>
 						<td>A set of reference points marking the zone. 
+						</td></tr>
+						<tr><td><span class="parameter">areacolor</span>
+						<td><span class="types"><span class="string">string</span></span>
+						<td>The HTML color code expressed as a number - convert to hex to check against a HTML color chart
+						</td><td>
 						</td></tr>
 						<tr><td><span class="parameter">description</span>
 						<td><span class="types"><span class="string">string</span></span>

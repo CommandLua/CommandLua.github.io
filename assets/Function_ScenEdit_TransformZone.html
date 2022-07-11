@@ -63,28 +63,74 @@
 
             <div id="main">
 
-                <h2><a class="anchor" id="FunctioName"></a>ScenEdit_TransformZone ( ... )</h2>
+                <h2><a class="anchor" id="FunctioName"></a>ScenEdit_TransformZone ( SideNameOrID, ZoneNameOrID, TargetType )</h2>
                 <p>
-                    The function purpose
+                    The function purpose is to convert a 'zone' from one type to another.<br>
+					The types of 'zone' as non-navigation, exclusion and standard.<br>
+					Once converted, some update may be required for any specifics related to the converted zone<br/>
                 </p>
                 
                 <h3>Parameters</h3>
                 <ul>
-                    <li>List the parameters as in the Syntax line</li>
+                            <li>
+                                <span class="parameter"> SideNameOrID </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                The side name/GUID containg the zone
+                            </li>
+                            <li>
+                                <span class="parameter"> ZoneNameOrID </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                The name/GUID of the zone
+                            </li>
+                            <li>
+                                <span class="parameter"> TargetType </span>
+                                <span class="types"><span class="tooltip">value<span class="tooltiptext">
+exclusion<br>
+nonav<br>
+standard
+</span></span></span>
+                                The type of zone to convert it to
+                            </li>
                 </ul>
 
                 <h3>Returns</h3>
                 <ul>
                     <li>
-                        Show the return value(s)
+                        An empty string "" on success else an error message.
                     </li>
                 </ul>
 
                 <h4>Example</h4>
+				<p>Convert a non-navigation zone to an exclusion zone.<br/>
+				Note the zone under 'nonavzones' has been removed and a <strong>new</strong> one created under 'exclusionzones'.</p>
                 <div class="example">
                     <code>
-                        Show an example of how to use the function. Explain it or add multiple examples to expand it
-                    </code>
+local a = VP_GetSide({side='sidea'})<br/>
+print(a.nonavzones)<br/>
+<output>
+{ [1] = { description = 'no-go zone', guid = '3d339174-1264-4e29-8b5f-c11a3f6edee9' } }<br/>
+</output>
+print(a.exclusionzones)<br/>
+<output>
+{ }<br/>
+</output>
+print(a.standardzones)<br/>
+<output>
+{ }<br/>
+</output>
+ScenEdit_TransformZone ( 'sidea', 'no-go zone', 'exclusion' )<br/>
+print(a.nonavzones)<br/>
+<output>
+{ }<br/>
+</output>
+print(a.exclusionzones)<br/>
+<output>
+{ [1] = { description = 'no-go zone', guid = 'GNRIJH-0HMJ351GVC5AI' } }<br/>
+</output>
+print(a.standardzones)<br/>
+<output>
+{ } <br/>
+                   </code>
                 </div>
 
             </div>

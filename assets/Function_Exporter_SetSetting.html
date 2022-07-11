@@ -63,27 +63,44 @@
 
             <div id="main">
 
-                <h2><a class="anchor" id="FunctioName"></a>Function Syntax ( ... )</h2>
+                <h2><a class="anchor" id="FunctioName"></a>Exporter_SetSetting(Category, Setting, Value)</h2>
                 <p>
-                    The function purpose
+                    The function updates some of the settings used by the 'exporting' functions within Command.<br>
+					ThIs is mainly used by the Professional versions, with the 'Tacview' category being available in the Public version.<br>
+					<p>
+					The settings are stored in the configuration file 'Config\EventExport.ini'. <br>
+					These settings should not be changed unless you have some knowledge of what they do. <br>
+					</p>
+					Note that the parameters are <strong>case sensitive</strong> for accuracy in setting them.<br>
                 </p>
                 
                 <h3>Parameters</h3>
                 <ul>
-                    <li>List the parameters as in the Syntax line</li>
-                </ul>
+					<li>
+                        <span class="parameter">Category</span> <span class="types"><span class="string">string</span></span>
+                        The type of the 'exporter'
+					</li>
+					<li>
+                        <span class="parameter">Setting</span> <span class="types"><span class="string">string</span></span>
+                        The parameter that can be changed
+					</li>
+					<li>
+                        <span class="parameter">Value</span> <span class="types"><span class="string">string</span></span>
+                        The value of the parameter
+					</li>
+				</ul>
 
                 <h3>Returns</h3>
                 <ul>
                     <li>
-                        Show the return value(s)
+                        None
                     </li>
                 </ul>
 
                 <h4>Example</h4>
                 <div class="example">
                     <code>
-                        Show an example of how to use the function. Explain it or add multiple examples to expand it
+                        Exporter_SetSetting('Tacview Settings', 'UseCustomUnitExportFrequency', 'False')
                     </code>
                 </div>
 

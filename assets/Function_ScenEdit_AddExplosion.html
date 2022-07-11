@@ -70,16 +70,15 @@
                     *** Does not currently support under surface explosions ****
                 </p>
                 <h4>Parameters</h4>
-                The 'Explosion' table describes the warhead DBID, longitude/latitude and altitude of the explosion.
                 <ul>
                     <li>
                         <span class="parameter">table</span>
                         <span class="table"> {} </span>
                         <ul>
                             <li>
-                                <span class="parameter">warheadid = </span>
-                                <span class="types"><span class="number">number</span></span>
-                                The ID of the warhead to detonate
+                                <span class="parameter">altitude = </span>
+                                <span class="types"><a href="DataTypes.html#dataType_Altitude">altitude</a></span>
+                                The altitude of the detonation. If no 'altitude' is passed, or the value of the parameter is 'surface', the explosion will occur at 'ground zero' at that location.
                             </li>
                             <li>
                                 <span class="parameter">latitude = </span>
@@ -92,9 +91,9 @@
                                 The longitude of the detonation
                             </li>
                             <li>
-                                <span class="parameter">altitude = </span>
-                                <span class="types"><a href="DataTypes.html#dataType_Altitude">altitude</a></span>
-                                The altitude of the detonation. If no 'altitude' is passed, or the value of the parameter is 'surface', the explosion will occur at 'ground zero' at that location.
+                                <span class="parameter">warheadid = </span>
+                                <span class="types"><span class="number">number</span></span>
+                                The database ID of the warhead to detonate
                             </li>
                         </ul>
                     </li>
@@ -108,7 +107,8 @@
                 </ul>
                 <h5>Example</h5>
                 <div class="example">
-                    <code>ScenEdit_AddExplosion({warheadid=<span class="number">253</span>, latitude=unit.latitude, longitude=unit.longitude, altitude=unit.altitude})</code>
+				<p>Simulating an explosion of device '1.4kg HE' at the unit 'myUnit' location</p>
+                    <code>ScenEdit_AddExplosion({warheadid = 253, latitude = myUnit.latitude, longitude = myUnit.longitude, altitude = myUnit.altitude})</code>
                 </div>
 
             </div>

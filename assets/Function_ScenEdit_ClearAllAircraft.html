@@ -63,27 +63,48 @@
 
             <div id="main">
 
-                <h2><a class="anchor" id="FunctioName"></a>ScenEdit_ClearAllAircraft ( ... )</h2>
+                <h2><a class="anchor" id="FunctioName"></a>ScenEdit_ClearAllAircraft ( table )</h2>
                 <p>
-                    The function purpose
+                    The function removes ALL embarked aircraft from the unit. If the unit is a group, then all units in the group are also affected.
                 </p>
                 
                 <h3>Parameters</h3>
                 <ul>
-                    <li>List the parameters as in the Syntax line</li>
+                         <span class="parameter"> table</span> <span class="table">
+                            {
+                            }
+
+                        </span>
+                        <ul>
+                           <li>
+                                <span class="parameter"> side = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                The side name/GUID of the unit
+                            </li>
+                            <li>
+                                <span class="parameter"> unitname = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                The name of unit
+                            </li>
+                            <li>
+                                <span class="parameter"> guid = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                The GUID of the unit
+                            </li>
+						</ul>
                 </ul>
 
                 <h3>Returns</h3>
                 <ul>
                     <li>
-                        Show the return value(s)
+                        None
                     </li>
                 </ul>
 
                 <h4>Example</h4>
                 <div class="example">
                     <code>
-                        Show an example of how to use the function. Explain it or add multiple examples to expand it
+                        ScenEdit_ClearAllAircraft ( {guid='8269b881-20ce-4f2e-baa0-6823e46d55a4'} )
                     </code>
                 </div>
 

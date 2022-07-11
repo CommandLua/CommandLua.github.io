@@ -65,8 +65,10 @@
 
                 <h3><a class="anchor" id="ScenEdit_AddCustomLoss"></a>ScenEdit_AddCustomLoss ( SideNameOrId, table )</h3>
                 <p>
-                    This function adds entries to the loss list so they can be reported. This allows adding non-play items (such as casualties) to the Loss & Expenditure view.
-                    It wil also show up in the wrapper for Side losses.<br>
+                    This function adds entries to the loss list so they can be reported. <br>
+					This allows adding non-play items (such as casualties) to the Loss & Expenditure view to enhance the experience.<br>
+                    It will also show up in the wrapper for Side losses.<br>
+					<br>
                     Updating the entries replaces what was there before hand, so to remove an entry, just use a number of 0.
                 </p>
                 <h4>Parameters</h4>
@@ -93,8 +95,20 @@
                 </ul>
                 <h5>Example</h5>
                 <div class="example">
-                    <code>ScenEdit_AddCustomLoss( 'sidea', { {'removethis',0},{'Casualties', 10000} } ) </code>
-                </div>
+                    <code>
+local s = VP_GetSide( {side='sidea'} )  -- get the side object <br>
+print(s.losses) -- show the current losses <br>
+<output>
+{ [1] = { dbid = 0, name = 'Casualties', type = 'Custom', count = '5000' }, [2] = { dbid = 0, name = 'removethis', type = 'Custom', count = '1' } <br>
+}<br>
+</output>
+ScenEdit_AddCustomLoss( 'sidea', { {'removethis',0},{'Casualties', 10000} } ) -- update losses<br>
+print(s.losses)<br>
+<output>
+{ [1] = { dbid = 0, name = 'Casualties', type = 'Custom', count = '10000' } }<br>
+</output>
+					</code>                
+				</div>
 
             </div>
         </div>

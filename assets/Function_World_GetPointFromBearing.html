@@ -67,7 +67,7 @@
                     <a class="anchor" id="World_GetPointFromBearing"> </a> World_GetPointFromBearing
                     ( table )
                 </h2>
-                <p> This function returns a location based on bearing from a point.</p>
+                <p> This function returns a location (as a set of longitude/latitude) based on bearing and distance from a point.</p>
                 
                 <h4> Parameters</h4>
                 <ul>
@@ -130,7 +130,12 @@
                 <div class="example">
                     <code>
                         local new_pos = World_GetPointFromBearing( { latitude = '-37.8307390636104', longitude = '144.932549348204',<br />
-                        distance = 12, bearing = 90 } )
+                        distance = 12, bearing = 90 } )<br/>
+						<output>
+						{ Latitude = -37.8304685191991, longitude = 145.184996787893, Longitude = 145.184996787893, latitude = -37.8304685191991 }<br/>
+						</output>
+						-- Note the double entry. The mixed case was an error but not picked up for a few builds<br/>
+						-- lowercase names is the norm, except under specific circumstances<br/>
                     </code>
                 </div>
 

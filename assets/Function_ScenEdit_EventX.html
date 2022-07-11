@@ -65,7 +65,7 @@
 
                 <h3><a class="anchor" id="ScenEdit_EventX"></a>ScenEdit_EventX ()</h3>
                 <p>
-                    This function indicates the current event that has been triggered.
+                    This function shows the current event that has been triggered.
                 </p>
                 <p> Note that EventX() can also be used as a shortcut for ScenEdit_EventX()</p>
                 <h4>Parameters</h4>
@@ -76,10 +76,10 @@
                     The triggering event as a wrapper, else a <code>nil</code> is returned.
                 </p>
 				<p>
-				Within a condition or action script of some event, include the commsnd 'variable = ScenEdit_EventX()' to be able to interpret the full event. <br>
+				Within a condition or action script of some event, include 'local myVar = ScenEdit_EventX()' to be able to interpret the triggering event. <br>
 				Say you want to see the actions that this triggered event performs, in case you want to stop it from running again.<br>
-				You would look at the table "variable.actions".<br>
-				If you wanted to turn off the event, then add "variable.isActive = false" to your script.
+				You would look at the table 'myVar.actions'.<br>
+				If you wanted to turn off the event, then add 'myVar.isActive = false' to your script.
 				</p>
 
 
@@ -98,10 +98,8 @@ end<br>
 ...
 </p>
 
-
+						</code>
             </div>
-        </div>
-    </div>
 
     <div id="footer">
         <p> Copyright &copy; WarfareSims 2020</p>
