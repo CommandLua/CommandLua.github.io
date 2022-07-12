@@ -63,27 +63,30 @@
 
             <div id="main">
 
-                <h2><a class="anchor" id="FunctioName"></a>ScenEdit_ExportScenarioToXML ( ... )</h2>
+                <h2><a class="anchor" id="FunctioName"></a>ScenEdit_ExportScenarioToXML ( )</h2>
+				<span class="pro_only">PRO ONLY</span>
                 <p>
-                    The function purpose
+                    The function purpose is to export the scenario as a raw XML string for saving or exporting.<br/>
+					This could be used to later import the scenario or process into an external system.
                 </p>
                 
                 <h3>Parameters</h3>
                 <ul>
-                    <li>List the parameters as in the Syntax line</li>
+                    <li>None</li>
                 </ul>
 
                 <h3>Returns</h3>
                 <ul>
                     <li>
-                        Show the return value(s)
+                        <span class="types"> <span class="string"> XML </span> </span>
+						The raw XML string that can be saved or exported to other systems
                     </li>
                 </ul>
 
                 <h4>Example</h4>
                 <div class="example">
                     <code>
-                        Show an example of how to use the function. Explain it or add multiple examples to expand it
+                        local a = ScenEdit_ExportScenarioToXML ( )
                     </code>
                 </div>
 

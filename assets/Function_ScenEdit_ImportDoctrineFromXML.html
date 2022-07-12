@@ -64,26 +64,62 @@
             <div id="main">
 
                 <h2><a class="anchor" id="FunctioName"></a>ScenEdit_ImportDoctrineFromXML ( ... )</h2>
+				<span class="pro_only">PRO ONLY</span>
                 <p>
-                    The function purpose
+                    The function purpose is to import the Doctrine and WRA from a file. <br/>
+					The Doctrine can be imported at Side, Unit or Mission level, dependent on the parameters passed.<br/>
+					This functionality is mirrored by the Template button on the Doctrine UI.
                 </p>
                 
                 <h3>Parameters</h3>
                 <ul>
-                    <li>List the parameters as in the Syntax line</li>
+                    <li>
+                        <span class="parameter"> table</span> <span class="table">
+                            {
+                            }
+                        </span>
+                        <ul>
+                            <li>
+                                <span class="parameter"> side = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                The side name/GUID
+                            </li>
+                            <li>
+                                <span class="parameter"> unitname = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                The name of unit if doing UNIT level doctrine
+                            </li>
+                            <li>
+                                <span class="parameter"> guid = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                The GUID of the unit
+                            </li>
+                            <li>
+                                <span class="parameter"> mission = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                The mission name or GUID
+                            </li>
+                            <li>
+                                <span class="parameter"> filename = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                The name of the file to load doctrine XML from. Note that the default path of the writable Command path\Defaults is prepended to, and '.xml' appended to the file name<br/>
+                            </li>
+						</ul>
+					</li>
                 </ul>
 
                 <h3>Returns</h3>
                 <ul>
                     <li>
-                        Show the return value(s)
+                             <span class="types"> <span class="string"> XML </span> </span>
+							 The original doctrine as a XML string
                     </li>
                 </ul>
 
                 <h4>Example</h4>
                 <div class="example">
                     <code>
-                        Show an example of how to use the function. Explain it or add multiple examples to expand it
+                        ScenEdit_ImprtDoctrineToXML ( { side = 'USA', filename = 'mySideDoctrine' } )
                     </code>
                 </div>
 

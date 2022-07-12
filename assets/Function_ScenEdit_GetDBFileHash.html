@@ -63,27 +63,46 @@
 
             <div id="main">
 
-                <h2><a class="anchor" id="FunctioName"></a>ScenEdit_GetDBFileHash ( ... )</h2>
+                <h2><a class="anchor" id="FunctioName"></a>ScenEdit_GetDBFileHash(table)</h2>
+				<span class="pro_only">PRO ONLY</span> 
                 <p>
-                    The function purpose
+                    The function purpose is to calculate the hash on the database full file name.<br/>
+					This is used for determining the database being used and registering it for customised databases.
                 </p>
                 
                 <h3>Parameters</h3>
                 <ul>
-                    <li>List the parameters as in the Syntax line</li>
+					<li>
+                        <span class="parameter"> table</span> <span class="table">
+                            {
+                            }
+                        </span>
+							<ul>
+								<li>
+									<span class="parameter"> filename = </span>
+									<span class="types"> <span class="string"> string</span> </span>
+									The full path and name of the database file 
+								</li>
+							</ul>
+					</li>
                 </ul>
 
                 <h3>Returns</h3>
                 <ul>
                     <li>
-                        Show the return value(s)
+                        <span class="types"> <span class="string"> hash_value</span> </span>
+						The hash string used to represent the database.
                     </li>
                 </ul>
 
                 <h4>Example</h4>
                 <div class="example">
                     <code>
-                        Show an example of how to use the function. Explain it or add multiple examples to expand it
+local  a = ScenEdit_GetDBFileHash( { filename = 'D:/Matrix Games/Command Modern Operations/DB/CWDB_439.db3'} )<br/>
+print(a)<br/>
+<output>
+a1e5a97c029a670dd73fdfdf930f2d1c17d4d63e
+</outpit>
                     </code>
                 </div>
 

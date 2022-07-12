@@ -63,27 +63,50 @@
 
             <div id="main">
 
-                <h2><a class="anchor" id="FunctioName"></a>ScenEdit_ImportScenarioFromXML ( ... )</h2>
+                <h2><a class="anchor" id="FunctioName"></a>ScenEdit_ImportScenarioFromXML ( table )</h2>
+				<span class="pro_only">PRO ONLY</span>
                 <p>
-                    The function purpose
+                    The function purpose is to import a XML string or the XML content of a file, as if loading a scenario.<br />
+					Lua I/O methods are enabled for reading the file.<br/>
+					The structure of the XML is known to users of the Professional version.
                 </p>
                 
                 <h3>Parameters</h3>
                 <ul>
-                    <li>List the parameters as in the Syntax line</li>
+                    <li>
+                        <span class="parameter"> table</span> <span class="table">
+                            {
+                            }
+
+                        </span>
+                        <ul>
+                            <li>
+                                <span class="parameter"> XML = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                The raw XML string to load as a scenario
+                            </li>
+                            <li>
+                                <span class="parameter"> filename = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                The name of the file containing the raw XML to load as a scenario. Note that the writable Command path is prepended to the file name.<br/>
+                            </li>
+						</ul>
+							These two parameters are mutally exclusive, either load a file or a XML string.<br/>
+					</li>
                 </ul>
 
                 <h3>Returns</h3>
                 <ul>
                     <li>
-                        Show the return value(s)
+                          <span class="types"> <span class="boolean"> True/False</span> </span>
+						  True if successful
                     </li>
                 </ul>
 
                 <h4>Example</h4>
                 <div class="example">
                     <code>
-                        Show an example of how to use the function. Explain it or add multiple examples to expand it
+                        local a = ScenEdit_ImportScenarioFromXML ( {XML = 'a big XML string' } )
                     </code>
                 </div>
 
