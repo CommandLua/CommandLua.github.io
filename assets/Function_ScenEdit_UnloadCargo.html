@@ -65,12 +65,15 @@
 
                 <h3>
                     <a class="anchor" id="ScenEdit_UnloadCargo"> </a> ScenEdit_UnloadCargo
-                    (fromUnit, cargoList)
+                    (fromUnit)
                 </h3>
                 <p>
-                    This function Unloads
-                    cargo from an unit
+                    This function Unloads all
+                    cargo from a unit. This is equivalent to the 'Unload cargo' unit order.
                 </p>
+                <p>
+		    The previous 'cargoList' parameter to this function was not used and has been deprecated. If a cargoList is passed it will be ignored.
+		</p>
                 <h4> Parameters</h4>
                 <ul>
                     <li>
@@ -81,53 +84,6 @@
                         with
                         cargo
                     </li>
-                    <li>
-                        <span class="parameter"> cargoList </span>
-                        <span class="table">
-                            {
-                            }
-
-                            of multiple
-                        </span>
-                        cargo to affect
-                        <ul>
-                            <li>
-                                <span class="types"> <span class="string"> string</span> </span>
-                                Cargo GUID - treated as one unit to act on
-                            </li>
-                            or
-                            <li>
-                                <span class="table">
-                                    {
-                                    }
-
-                                    of
-                                </span>
-                                <span class="types"> <span class="number"> number</span> </span>
-                                Cargo database id (DBID) and is treated as one unit to act on
-                            </li>
-                            or
-                            <li>
-                                <span class="table">
-                                    {
-                                    }
-
-                                    of
-                                </span>
-                                <ul>
-                                    <li>
-                                        <span class="types"> <span class="number"> number</span> </span>
-                                        Number to act on
-                                    </li>
-                                    <li>
-                                        <span class="types"> <span class="number"> number</span> </span>
-                                        Cargo DBID to affect
-                                    </li>
-                                </ul>
-                                Note the order of 'number to affect' and 'DBID'
-                            </li>
-                        </ul>
-                    </li>
                 </ul>
                 <h4> Returns</h4>
                 <p>
@@ -137,7 +93,7 @@
 
                 <h5> Example</h5>
                 <div class="example">
-                    <code> ScenEdit_UnloadCargo( '2cd64757-1b66-4609-ad56-df41bee652e5', { {5,752}, {700 } } )</code>
+                    <code> ScenEdit_UnloadCargo( '2cd64757-1b66-4609-ad56-df41bee652e5' )</code>
                 </div>
 
             </div>
