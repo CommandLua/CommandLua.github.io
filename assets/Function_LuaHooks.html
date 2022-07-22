@@ -87,9 +87,9 @@
 					</p>
 					<h4>Lua script</h4>
 					function SensorCheckBefore( <span class="wrapper"> <a href="Wrappers.html#wrapper_Device_Sensor"> theSensor </a></span>, <span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theSensorParent</a></span>, <span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theTarget</a></span> )<br/>
-					return nil<br/>
-					return object1, object2, ... where each of the object(s) are ?????<br/>
-
+					<li>return nil  [no results; just contine with normal checks] or<br/></li>
+					<li>retun true, nil [precise detection; exit the checks] or<br/></li>
+					<li>return true, points [imprecise detection with table of points marking AOU; exit the checks]<br/></li>
                 <h5>Example</h5>
                 <div class="example">
                     <code>
