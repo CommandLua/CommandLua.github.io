@@ -79,35 +79,157 @@
                 
                 <h3>Lua code for the hooks</h3>
                 <ul>
-                    <li>SensorCheckBefore( theSensor, theParent, theTarget)</li>
+                    <li>SensorCheckBefore( theSensor, theParent, theTarget )</li>
 					<p>
-					This is executed as part of the check to see if the sensor [theSensor] being used on the unit [theParent] can detect the target [theTarget].<br/><br/>
+					This is executed as part of the check to see if the sensor [theSensor] being used on the unit [theParent] can detect the target [theTarget].<br/>
+					</p><p>
 					If the check is being handled, then some obect(s) will be returned by the function bypassing the normal sensor checks.<br/>
 					If the normal checks are to be applied, then return <span class="nil" />. <br/>
 					</p>
 					<h4>Lua script</h4>
 					function SensorCheckBefore( <span class="wrapper"> <a href="Wrappers.html#wrapper_Device_Sensor"> theSensor </a></span>, <span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theSensorParent</a></span>, <span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theTarget</a></span> )<br/>
+					<ul>
 					<li>return nil  [no results; just contine with normal checks] or<br/></li>
 					<li>retun true, nil [precise detection; exit the checks] or<br/></li>
 					<li>return true, points [imprecise detection with table of points marking AOU; exit the checks]<br/></li>
-                <h5>Example</h5>
-                <div class="example">
-                    <code>
-                function SensorCheckBefore(theSensor, theSensorParent, theTarget)<br/>
-                   print('Executing ....')<br/>
-                   print(theSensor)<br/>
-                   print(theSensorParent)<br/>
-                   print(theTarget)<br/>
-                   local Message = "Sensor: " ..theSensor.name.. " about to attempt detection on: " ..theTarget <br/>
-                   ScenEdit_MsgBox(Message, 1)<br/>
-                   return nil  -- to stop sensor check do something like return {true,"okay"} <br/>
-                end<br/>
-                    </code>
-                </div>
- 					<li>WeaponFired</li>
-					<li>WeaponImpacts</li>
-					<li>WeaponImpactsBefore</li>
-					<li>WeaponImpactsAfter</li>
+					</ul>
+					<h5>Example</h5>
+					<div class="example">
+						<code>
+					function SensorCheckBefore(theSensor, theSensorParent, theTarget)<br/>
+					   print('Executing ....')<br/>
+					   print(theSensor)<br/>
+					   print(theSensorParent)<br/>
+					   print(theTarget)<br/>
+					   local Message = "Sensor: " ..theSensor.name.. " about to attempt detection on: " ..theTarget <br/>
+					   ScenEdit_MsgBox(Message, 1)<br/>
+					   return nil  -- to stop normal sensor check, return {true,nil} <br/>
+					end<br/>
+						</code>
+					</div>
+					
+ 					<li>WeaponFired( theTarget, theWeapon )</li>
+					<p>
+					This is executed when a weapon (theWeapon) is fired at a target contact (theTarget) as part of the ExportWeaponFireEvent().<br/>
+					There is no action taken on any returned result.
+					</p>
+					<h4>Lua script</h4>
+					function WeaponFired( <span class="wrapper"> <a href="Wrappers.html#wrapper_Contact"> theTarget</a></span>, <span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theWeapon</a></span> )<br/>
+					<ul>
+					<li>return nil  [no results needed as no action is taken on them]<br/></li>
+					</ul>
+					<h5>Example</h5>
+					<div class="example">
+						<code>
+					function WeaponFired(target, weapon)<br/>
+						print('Executing ....')<br/>
+						print(target)<br/>
+						print(Weapon)<br/>
+						local Message = "Missile "..weapon.name.. " fired at " .. target.name<br/>
+						ScenEdit_MsgBox(Message, 1)<br/>
+						return nil<br/>
+					end
+						</code>
+					</div>
+
+					<li>WeaponImpacts( theWeapon, theTarget )</li>
+					<p>
+					This is executed when the weapon (theWeapon) impacts the target (theTarget) after any resolutions, basically when the weapon is 'destroyed' by the impact.<br/>
+					</p><p>
+					Note that if the target is destroyed, 'theTarget' may be nothing which needs to be catered for in the Lua script so as not to cause it to fail.<br/>
+					This is more a 'recording' of the impact rather than performing actions on it.<br/>
+					As a result, nothing needs to be returned. <br/>
+					</p><p>
+					Compare this the other 'hooks' which take action before and after the impact is resolved.
+					</p>
+					<h4>Lua script</h4>
+					function WeaponImpacts( <span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theWeapon</a></span>, <span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theTarget</a></span> )<br/>
+					<ul>
+					<li>return nil  [no results needed as no action is taken on them]<br/></li>
+					</ul>
+					<h5>Example</h5>
+					<div class="example">
+						<code>
+					function WeaponImpacts(weapon, target)<br/>
+						print('Executing ....')<br/>
+						print(target)<br/>
+						print(Weapon)<br/>
+						local Message = "Missile "..weapon.name.. " impacted " .. target.name<br/>
+						ScenEdit_MsgBox(Message, 1)<br/>
+						return nil<br/>
+					end
+						</code>
+					</div>
+
+					<li>WeaponImpactsBefore( theWeapon, theTarget )</li>
+					<p>
+					This is excuted before the weapon (theWeapon) impacts the target (theTarget).<br>
+					</p><p>
+					The purpose is allow a different set of conditions to determine if the target will be hit, and if so  apply damage within the script.<br/>
+					</p><p>
+					The return will indicate if the impact has been handled externally rather than let it use the normal impact resolution code.<br/>
+					</p>
+					<h4>Lua script</h4>
+					function WeaponImpactsBefore( <span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theWeapon</a></span>, <span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theTarget</a></span> )<br/>
+					<ul>
+					<li>return nil  [no results; just contine with normal checks] or<br/></li>
+					<li>retun true, true/false [impacts?; exit the checks]<br/></li>
+					</ul>
+					<h5>Example</h5>
+					<div class="example">
+						<code>
+						function WeaponImpactsBefore(weapon, target)<br/>
+						   local hit = false<br/>
+						   if math.random(1,10) &gt; 5 then<br/>
+						       hit = true<br/>
+						   end<br/>
+						   print('Executing ....')<br/>
+						   print(target)<br/>
+						   print(Weapon)<br/>
+						   local Message = "Missile "..weapon.name.. " about to hit "<br/>
+						   if target ~= nil then Message = Message .. target.name else Message = Message .. 'nothing' end<br/>
+						   ScenEdit_MsgBox(Message, 1)<br/>
+						   if hit == false then<br/>
+						       return true, false  'skip normal impact reolution/damage<br/>
+						   end<br/>
+						   return nil 'normal impact resolution applies<br/> 
+						end<br/>
+						</code>
+					</div>
+
+					<li>WeaponImpactsAfter( theWeapon, theTarget, impacted )</li>
+					<p>
+					This is excuted after the weapon (theWeapon) impacts the target (theTarget). The parameter (impacted) indicates if it impacted or not.<br>
+					</p><p>
+					The purpose is allow a different set of conditions to determine if the target was actually hit.<br/>
+					</p><p>
+					This will not have changed any damage resolution or exported events that may have been applied previously. Though within the script, the damage on the target could be modified.<br/>
+					Currently no action is taken from the returned results, it is used just to set the 'impacted' flag.<br/>
+					</p>
+					<h4>Lua script</h4>
+					function WeaponImpactsAfter( <span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theWeapon</a></span>, <span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theTarget</a></span>, <span class="types"> <span class="boolean"> impacted</span></span> )<br/>
+					<ul>
+					<li>return nil  [no results; just contine with normal checks]<br/></li>
+					</ul>
+					<h5>Example</h5>
+					<div class="example">
+						<code>
+						function WeaponImpactAfter(weapon, target, result)<br>
+							print('Executing ....')<br>
+							print(target)<br>
+							print(Weapon)<br>
+							local Message = "Missile "..weapon.name<br>
+							if result == nil then Message = Message .. " impacts "<br>
+							elseif result == true then Message = Message .. " hits "<br>
+							else  Message = Message .. " misses "<br>
+							end<br>
+							if target ~= nil then Message = Message .. target.name else Message = Message .. 'nothing' end<br>
+							ScenEdit_MsgBox(Message, 1)<br>
+							return nil<br>
+						end<br>
+						</code>
+					</div>
+					
               </ul>
 
 
