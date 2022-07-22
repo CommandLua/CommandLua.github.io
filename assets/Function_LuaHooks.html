@@ -1,0 +1,123 @@
+<html>
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163808192-1"></script>
+    <script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-163808192-1');
+    </script>
+
+
+    <title>Command Lua Docs</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+
+
+</head>
+
+<body>
+    <div id="header-container">
+        <div id="header">
+            <div id="header-logo">
+                <h1>
+                    <a href="../index2.html"><img src="./images/CommandLuaLogo.svg" height=45px alt="CommandLua"></a>
+                </h1>
+            </div>
+            <div id="header-nav">
+                <a class="selected" href="../index2.html">Reference</a>
+                <!-- <a href="/guides/">Guides</a> -->
+                <a href="https://www.matrixgames.com/forums/tt.asp?forumid=1681">Forum</a>
+            </div>
+        </div>
+    </div>
+    <div id="container">
+
+        <div id="content">
+            <div id="nav">
+                <ul>
+                    <li><a href="../index2.html#News">News</a></li>
+                    <li><a href="../index2.html#Introduction">Introduction</a></li>
+                    <ol>
+                        <li><a href="../index2.html#HowToUse">How to Use These Docs</a></li>
+                        <li><a href="../index2.html#FirstSteps">First Steps</a></li>
+                        <li><a href="../index2.html#ExternalResources">External Resources</a></li>
+                    </ol>
+
+                    <li><a href="../index2.html#Overview">Overview</a></li>
+                    <ol>
+                        <li><a href="../index2.html#CaseSensitivityandConventions">Case Sensitivity and Conventions</a></li>
+                        <li><a href="../index2.html#EventHandling">Event Handling</a></li>
+                        <li><a href="../index2.html#ErrorHandling">Error Handling</a></li>
+                    </ol>
+                    <li><a href="DataTypes.html">Data Types</a></li>
+                    <li><a href="Functions.html">Functions</a></li>
+                    <li><a href="Wrappers.html">Wrappers</a></li>
+                    <li><a href="Selectors.html">Selectors</a></li>
+                    <li><a href="Tables.html">Tables</a></li>
+                </ul>
+            </div>
+
+            <div id="main">
+
+                <h2><a class="anchor" id="FunctioName"></a>Lua Hooks <span class="pro_only">PRO ONLY</span></h2>
+				
+                <p>
+                    The purpose of the Lua Hooks is to allow some Lua scripting via a Lua function() to be executed at certain points during the execution of the code.<br/>
+					The current set of hooks as of 21 July 2021 are:
+					<ul>
+					<li>SensorCheckBefore</li>
+					<li>WeaponFired</li>
+					<li>WeaponImpacts</li>
+					<li>WeaponImpactsBefore</li>
+					<li>WeaponImpactsAfter</li>
+					</ul>
+                </p>
+                
+                <h3>Lua code for the hooks</h3>
+                <ul>
+                    <li>SensorCheckBefore( theSensor, theParent, theTarget)</li>
+					<p>
+					This is executed as part of the check to see if the sensor [theSensor] being used on the unit [theParent] can detect the target [theTarget].<br/><br/>
+					If the check is being handled, then some obect(s) will be returned by the function bypassing the normal sensor checks.<br/>
+					If the normal checks are to be applied, then return <span class="nil" />. <br/>
+					</p>
+					<h4>Lua script</h4>
+					function SensorCheckBefore( <span class="wrapper"> <a href="Wrappers.html#wrapper_Device_Sensor"> theSensor </a></span>, <span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theSensorParent</a></span>, <span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theTarget</a></span> )<br/>
+					return nil<br/>
+					return object1, object2, ... where each of the object(s) are ?????<br/>
+
+                <h5>Example</h5>
+                <div class="example">
+                    <code>
+                function SensorCheckBefore(theSensor, theSensorParent, theTarget)<br/>
+                   print('Executing ....')<br/>
+                   print(theSensor)<br/>
+                   print(theSensorParent)<br/>
+                   print(theTarget)<br/>
+                   local Message = "Sensor: " ..theSensor.name.. " about to attempt detection on: " ..theTarget <br/>
+                   ScenEdit_MsgBox(Message, 1)<br/>
+                   return nil  -- to stop sensor check do something like return {true,"okay"} <br/>
+                end<br/>
+                    </code>
+                </div>
+ 					<li>WeaponFired</li>
+					<li>WeaponImpacts</li>
+					<li>WeaponImpactsBefore</li>
+					<li>WeaponImpactsAfter</li>
+              </ul>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <p> Copyright &copy; WarfareSims 2020</p>
+    </div>
+</body>
+
+</html>
