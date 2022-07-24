@@ -63,54 +63,28 @@
 
             <div id="main">
 
-                <h2><a class="anchor" id="FunctioName"></a>ScenEdit_SetExportOutputRate ( type, rate )</h2>
+                <h2><a class="anchor" id="FunctioName"></a>VP_PauseSimulation ( )</h2>
 				<span class="pro_only">PRO ONLY</span>
                 <p>
-                    The function's purpose is to control the frequency of events being exported.<br>
-					The Export type is limited to 'UnitPositions' at present.<br>
+                    The function's purpose is to pause the simulation as if the 'pause' button was pressed.
                 </p>
                 
                 <h3>Parameters</h3>
                 <ul>
-					<li>
-						<span class="parameter">type </span>
-						<span class="types"> <span class="string"> 'UnitPositions'</span> </span>
-						The only value being used currently
-					</li>
-                            <li>
-                                <span class="parameter">rate </span>
-                                <span class="types"><span class="tooltip">value<span class="tooltiptext">Values are:<br>
-"CONTINUOUS"<br />
-"1SECOND"<br />
-"2SECONDS", "2SECOND"<br />
-"5SECONDS", "5SECOND"<br />
-"15SECONDS", "15SECOND"<br />
-"30SECONDS", "30SECOND"<br />
-"1MINUTE"<br />
-"5MINUTES", "5MINUTE"<br />
-"15MINUTES", "15MINUTE"<br />
-"30MINUTES", "30MINUTE"<br />
-"1HOUR"<br />
-"6HOURS", "6HOUR"<br />
-"12HOURS", "12HOUR"<br />
-"24HOURS", "24HOUR"<br />
-"MATCHSIMSPEED"<br />
-</span></span></span>
-                            </li>
+                    <li>None</li>
                 </ul>
 
                 <h3>Returns</h3>
                 <ul>
                     <li>
-                          <span class="types"> <span class="boolean"> True/False</span> </span>
-						  True if successful
+                        None
                     </li>
                 </ul>
 
                 <h4>Example</h4>
                 <div class="example">
                     <code>
-                        local ok = ScenEdit_SetExportOutputRate('UnitPositions', '30Seconds')
+                        VP_PauseSimulation( )
                     </code>
                 </div>
 

@@ -69,7 +69,7 @@
                 <p>
                     This function retrieves the current time of day at a location<br />
                     The location can be an unit (guid or side/name) or a position (latitude,longitude). <br />
-                    Only one pair is required to identify the location for the TimeOfDay.
+                    Only one pair is required to identify the location for the TimeOfDay. <br />
                 </p>
                 <h4>Parameters</h4>
                 <ul>
@@ -102,7 +102,27 @@
                                 <span class="types"><span class="string">string</span></span>
                                 Unit guid
                             </li>
-                        </ul>
+							<!--
+							<li>
+								<span class="parameter"> date = </span>
+								<span class="types"> <span class="string"> string</span> </span>
+								The desired date in MM:DD:YYYY format. The format can be overriden by using 'dateformat' to select a different format.
+							</li>
+							<li>
+								<span class="parameter"> time = </span>
+								<span class="types"> <span class="string"> string</span> </span>
+								The desired time-span in HH:MM:SS format
+							</li>
+							<li>
+								<span class="parameter"> dateformat = </span>
+								<span class="types"><span class="tooltip">value<span class="tooltiptext">
+		"DDMMYYYY" <br>
+		"MMDDYYYY" <br>
+		"YYYYMMDD" 
+		</span></span></span>
+							</li>
+							-->
+                       </ul>
                     </li>
                 </ul>
                 <h4>Returns</h4>
@@ -132,12 +152,6 @@
 
                 <h5>Example</h5>
                 <div class="example"><code>local u = ScenEdit_GetTimeOfDay( {side='NATO', unitname='FFG Dispair'} )</code></div>
-
-                <hr>
-                <h3><a class="anchor" id="ScenEdit_GetUnit"></a>ScenEdit_GetUnit()</h3>
-                <p>
-                    This function returns a <span class="wrapper"><a href="Wrappers.html#wrapper_Unit">Unit</a></span> wrapper for the selected unit.
-                </p>
 
             </div>
         </div>

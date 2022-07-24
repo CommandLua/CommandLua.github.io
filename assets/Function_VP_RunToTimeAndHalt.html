@@ -63,54 +63,46 @@
 
             <div id="main">
 
-                <h2><a class="anchor" id="FunctioName"></a>ScenEdit_SetExportOutputRate ( type, rate )</h2>
+                <h2><a class="anchor" id="FunctioName"></a>VP_RunToTimeAndHalt ( table )</h2>
 				<span class="pro_only">PRO ONLY</span>
                 <p>
-                    The function's purpose is to control the frequency of events being exported.<br>
-					The Export type is limited to 'UnitPositions' at present.<br>
-                </p>
-                
+                    The function's purpose is to run the simulation to a specific date/time and then stop.<br/>
+					The time is in UTC.
+               </p>
                 <h3>Parameters</h3>
                 <ul>
 					<li>
-						<span class="parameter">type </span>
-						<span class="types"> <span class="string"> 'UnitPositions'</span> </span>
-						The only value being used currently
+						<span class="parameter"> date = </span>
+						<span class="types"> <span class="string"> string</span> </span>
+						The desired date in DD:MM:YYYY format. The format can be overriden by using 'dateformat' to select a different format.
 					</li>
-                            <li>
-                                <span class="parameter">rate </span>
-                                <span class="types"><span class="tooltip">value<span class="tooltiptext">Values are:<br>
-"CONTINUOUS"<br />
-"1SECOND"<br />
-"2SECONDS", "2SECOND"<br />
-"5SECONDS", "5SECOND"<br />
-"15SECONDS", "15SECOND"<br />
-"30SECONDS", "30SECOND"<br />
-"1MINUTE"<br />
-"5MINUTES", "5MINUTE"<br />
-"15MINUTES", "15MINUTE"<br />
-"30MINUTES", "30MINUTE"<br />
-"1HOUR"<br />
-"6HOURS", "6HOUR"<br />
-"12HOURS", "12HOUR"<br />
-"24HOURS", "24HOUR"<br />
-"MATCHSIMSPEED"<br />
+					<li>
+						<span class="parameter"> time = </span>
+						<span class="types"> <span class="string"> string</span> </span>
+						The desired time-span in HH:MM:SS format
+					</li>
+					<li>
+						<span class="parameter"> dateformat = </span>
+                        <span class="types"><span class="tooltip">value<span class="tooltiptext">
+"DDMMYYYY" <br>
+"MMDDYYYY" <br>
+"YYYYMMDD" 
 </span></span></span>
-                            </li>
+					</li>
                 </ul>
 
                 <h3>Returns</h3>
                 <ul>
                     <li>
-                          <span class="types"> <span class="boolean"> True/False</span> </span>
-						  True if successful
-                    </li>
+						<span class="types"><span class="string">result</span></span> 
+						A result message else <span class="nil"><span> if an error
+					</li>
                 </ul>
 
                 <h4>Example</h4>
                 <div class="example">
                     <code>
-                        local ok = ScenEdit_SetExportOutputRate('UnitPositions', '30Seconds')
+                        local message = ScenEdit_RunToTimeAndHalt({Date="2.12.2007", Time="22.46.23"})
                     </code>
                 </div>
 

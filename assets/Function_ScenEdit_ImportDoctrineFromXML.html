@@ -63,10 +63,10 @@
 
             <div id="main">
 
-                <h2><a class="anchor" id="FunctioName"></a>ScenEdit_ImportDoctrineFromXML ( ... )</h2>
+                <h2><a class="anchor" id="FunctioName"></a>ScenEdit_ImportDoctrineFromXML ( table )</h2>
 				<span class="pro_only">PRO ONLY</span>
                 <p>
-                    The function purpose is to import the Doctrine and WRA from a file. <br/>
+                    The function's purpose is to override the current Doctrine/WRA by importing it from a file. <br/>
 					The Doctrine can be imported at Side, Unit or Mission level, dependent on the parameters passed.<br/>
 					This functionality is mirrored by the Template button on the Doctrine UI.
                 </p>
@@ -85,19 +85,15 @@
                                 The side name/GUID
                             </li>
                             <li>
-                                <span class="parameter"> unitname = </span>
-                                <span class="types"> <span class="string"> string</span> </span>
-                                The name of unit if doing UNIT level doctrine
-                            </li>
-                            <li>
+                                <span class="parameter"> unitname = </span> or 
                                 <span class="parameter"> guid = </span>
                                 <span class="types"> <span class="string"> string</span> </span>
-                                The GUID of the unit
+                                The name or guid of unit if doing UNIT level doctrine
                             </li>
                             <li>
                                 <span class="parameter"> mission = </span>
                                 <span class="types"> <span class="string"> string</span> </span>
-                                The mission name or GUID
+                                The mission name or GUID if doing MISSION level doctrine
                             </li>
                             <li>
                                 <span class="parameter"> filename = </span>
@@ -119,7 +115,7 @@
                 <h4>Example</h4>
                 <div class="example">
                     <code>
-                        ScenEdit_ImprtDoctrineToXML ( { side = 'USA', filename = 'mySideDoctrine' } )
+                        ScenEdit_ImportDoctrineFromXML ( { side = 'USA', filename = 'mySideDoctrine' } )
                     </code>
                 </div>
 
