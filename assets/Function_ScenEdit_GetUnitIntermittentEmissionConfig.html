@@ -63,27 +63,124 @@
 
             <div id="main">
 
-                <h2><a class="anchor" id="FunctioName"></a>ScenEdit_GetUnitIntermittentEmissionConfig ( ... )</h2>
+                <h2><a class="anchor" id="FunctioName"></a>ScenEdit_GetUnitIntermittentEmissionConfig ( AUNameOrID,PresetAlertID )</h2>
                 <p>
-                    The function purpose
+                    The function's purpose is to recall the configuation of the unit at the specified Alert.
                 </p>
                 
                 <h3>Parameters</h3>
                 <ul>
-                    <li>List the parameters as in the Syntax line</li>
+					<li>
+						<span class="parameter">AUNameOrID </span>
+						<span class="types"><span class="string">string</span></span>
+						The name or GUID of the unit. As no Side is supplied, the unit name would need to be unique across the scenario.
+					</li>
+					<li>
+						<span class="parameter">PresetAlertID </span>
+						<span class="types"><span class="tooltip">value<span class="tooltiptext">
+"GREEN"<br/>
+"BLUE"<br/>
+"YELLOW"<br/>
+"ORANGE"<br/>
+"RED"<br/>
+"CUSTOM"<br/>
+"ALL"
+						</span></span></span>
+						The Alert level
+					</li>
                 </ul>
 
                 <h3>Returns</h3>
                 <ul>
-                    <li>
-                        Show the return value(s)
-                    </li>
+                     <li>
+                        <span class="parameter"> ConfigurationTable</span> <span class="table">
+                            {
+                            }
+
+                        </span>
+                        <ul>
+                            <li>
+                                <span class="parameter"> UseEmissionInterval </span>
+                                <span class="types"> <span class="boolean"> True/False</span> </span>
+                            </li>
+                            <li>
+                                <span class="parameter"> EmissionDuration </span>
+                                <span class="types"> <span class="number"> number</span> </span>
+                                Emission duration in seconds
+                            </li>
+                            <li>
+                                <span class="parameter"> EmissionInterval </span>
+                                <span class="types"> <span class="number"> number</span> </span>
+                                Emission interval in seconds
+                            </li>
+                            <li>
+                                <span class="parameter"> EmissionIntervalVariation </span>
+                                <span class="types"> <span class="number"> number</span> </span>
+                                Emission variation in seconds
+                            </li>
+                            <li>
+                                <span class="parameter"> SleepModeDelay </span>
+                                <span class="types"> <span class="number"> number</span> </span>
+                                Time to sleep in seconds
+                            </li>
+                            <li>
+                                <span class="parameter"> FollowWRAforWakeBehavior </span>
+                                <span class="types"> <span class="boolean"> True/False</span> </span>
+                            </li>
+                            <li>
+                                <span class="parameter"> WakeWhenDetectingThreat </span>
+                                <span class="types"> <span class="boolean"> True/False</span> </span>
+                            </li>
+                             <li>
+                                <span class="parameter"> WakeID_UNKNOWN </span>
+                                <span class="types"> <span class="boolean"> True/False</span> </span>
+                            </li>
+                           <li>
+                                <span class="parameter"> WwkeID_PRECISEID </span>
+                                <span class="types"> <span class="boolean"> True/False</span> </span>
+                            </li>
+                            <li>
+                                <span class="parameter"> WakeID_KNWONTYPE </span>
+                                <span class="types"> <span class="boolean"> True/False</span> </span>
+                            </li>
+                            <li>
+                                <span class="parameter"> WakeIDKNOWNDOMAIN </span>
+                                <span class="types"> <span class="boolean"> True/False</span> </span>
+                           </li>
+                            <li>
+                                <span class="parameter"> WakeIDKNOWNCLASS </span>
+                                <span class="types"> <span class="boolean"> True/False</span> </span>
+                            </li>
+                            <li>
+                                <span class="parameter"> WakeStance_FRIENDLY </span>
+                                <span class="types"> <span class="boolean"> True/False</span> </span>
+                            </li>
+                            <li>
+                                <span class="parameter"> WakeStance_HOSTILE </span>
+                                <span class="types"> <span class="boolean"> True/False</span> </span>
+                            </li>
+                            <li>
+                                <span class="parameter"> WakeStance_NEUTRAL </span>
+                                <span class="types"> <span class="boolean"> True/False</span> </span>
+                            </li>
+                            <li>
+                                <span class="parameter"> WakeStance_UNFRIENDLY </span>
+                                <span class="types"> <span class="boolean"> True/False</span> </span>
+                            </li>
+                            <li>
+                                <span class="parameter"> WakeStance_UNKNOWN </span>
+                                <span class="types"> <span class="boolean"> True/False</span> </span>
+                            </li>
+						</ul>
+					</li>
                 </ul>
 
                 <h4>Example</h4>
                 <div class="example">
                     <code>
-                        Show an example of how to use the function. Explain it or add multiple examples to expand it
+                        local conf = {};<br/>
+						conf = ScenEdit_GetUnitIntermittentEmissionConfig ( 'USS Ulysess', 'Green')
+
                     </code>
                 </div>
 

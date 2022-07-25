@@ -63,27 +63,32 @@
 
             <div id="main">
 
-                <h2><a class="anchor" id="FunctioName"></a>ScenEdit_ClearAllSideUnitsEmconConfigs ( ... )</h2>
+                <h2><a class="anchor" id="FunctioName"></a>ScenEdit_ClearAllSideUnitsEmconConfigs ( SideNameOrID )</h2>
                 <p>
-                    The function purpose
+                    The function's purpose is clear all the unit Intermittent Emission configurations on a Side
                 </p>
                 
                 <h3>Parameters</h3>
                 <ul>
-                    <li>List the parameters as in the Syntax line</li>
+					<li>
+						<span class="parameter">SideNameOrID </span>
+						<span class="types"><span class="string">string</span></span>
+						The name or GUID of the side to clear.
+					</li>
                 </ul>
 
                 <h3>Returns</h3>
                 <ul>
                     <li>
-                        Show the return value(s)
+						<span class="types"> <span class="boolean"> True/False</span> </span>
+						True if successful
                     </li>
                 </ul>
 
                 <h4>Example</h4>
                 <div class="example">
                     <code>
-                        Show an example of how to use the function. Explain it or add multiple examples to expand it
+                        ScenEdit_ClearAllSideUnitsEmconConfigs ( 'canada' )
                     </code>
                 </div>
 

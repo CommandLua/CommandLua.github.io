@@ -63,27 +63,42 @@
 
             <div id="main">
 
-                <h2><a class="anchor" id="FunctioName"></a>ScenEdit_SetSideEmconAlertness ( ... )</h2>
+                <h2><a class="anchor" id="FunctioName"></a>ScenEdit_SetSideEmconAlertness ( SideNameOrID, PresetAlertID )</h2>
                 <p>
-                    The function purpose
+                    The function's purpose is to set the Alert level for the side. This is used to determine which Alert level a unit will use with Intermittent Emissions.
                 </p>
                 
                 <h3>Parameters</h3>
-                <ul>
-                    <li>List the parameters as in the Syntax line</li>
-                </ul>
+					<li>
+						<span class="parameter">SideNameOrID </span>
+						<span class="types"><span class="string">string</span></span>
+						The name or GUID of the side.
+					<li>
+						<span class="parameter">PresetAlertID </span>
+						<span class="types"><span class="tooltip">value<span class="tooltiptext">
+"GREEN"<br/>
+"BLUE"<br/>
+"YELLOW"<br/>
+"ORANGE"<br/>
+"RED"<br/>
+"CUSTOM"<br/>
+"ALL"
+						</span></span></span>
+						The Alert level
+					</li>
 
                 <h3>Returns</h3>
                 <ul>
                     <li>
-                        Show the return value(s)
+						<span class="types"> <span class="boolean"> True/False</span> </span>
+						True if successful
                     </li>
                 </ul>
 
                 <h4>Example</h4>
                 <div class="example">
                     <code>
-                        Show an example of how to use the function. Explain it or add multiple examples to expand it
+                        ScenEdit_SetSideEmconAlertness(“Canada”,”red”)
                     </code>
                 </div>
 

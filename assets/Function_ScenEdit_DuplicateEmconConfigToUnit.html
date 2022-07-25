@@ -63,27 +63,50 @@
 
             <div id="main">
 
-                <h2><a class="anchor" id="FunctioName"></a>ScenEdit_DuplicateEmconConfigToUnit ( ... )</h2>
+                <h2><a class="anchor" id="FunctioName"></a>ScenEdit_DuplicateEmconConfigToUnit ( PresetAlertID, SourceAUNameOrID, TargetAUNameOrID )</h2>
                 <p>
                     The function purpose
                 </p>
                 
                 <h3>Parameters</h3>
                 <ul>
-                    <li>List the parameters as in the Syntax line</li>
+					<li>
+						<span class="parameter">SourceAUNameOrID </span>
+						<span class="types"><span class="string">string</span></span>
+						The name or GUID of the unit to copy Alert configuration from. As no Side is supplied, the unit name would need to be unique across the scenario.
+					</li>
+					<li>
+						<span class="parameter">TargetAUNameOrID </span>
+						<span class="types"><span class="string">string</span></span>
+						The name or GUID of the unit to copy Alert configuration to. As no Side is supplied, the unit name would need to be unique across the scenario.
+					</li>
+					<li>
+						<span class="parameter">PresetAlertID </span>
+						<span class="types"><span class="tooltip">value<span class="tooltiptext">
+"GREEN"<br/>
+"BLUE"<br/>
+"YELLOW"<br/>
+"ORANGE"<br/>
+"RED"<br/>
+"CUSTOM"<br/>
+"ALL"
+						</span></span></span>
+						The Alert level
+					</li>
                 </ul>
 
                 <h3>Returns</h3>
                 <ul>
                     <li>
-                        Show the return value(s)
+						<span class="types"> <span class="boolean"> True/False</span> </span>
+						True if successful
                     </li>
                 </ul>
 
                 <h4>Example</h4>
                 <div class="example">
                     <code>
-                        Show an example of how to use the function. Explain it or add multiple examples to expand it
+                        ScenEdit_DuplicateEmconConfigToUnit('green', 'USS Ulysess', 'USS Troy')
                     </code>
                 </div>
 
