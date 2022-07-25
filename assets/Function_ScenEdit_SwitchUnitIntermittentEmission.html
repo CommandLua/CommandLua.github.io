@@ -63,27 +63,49 @@
 
             <div id="main">
 
-                <h2><a class="anchor" id="FunctioName"></a>ScenEdit_SwitchUnitIntermittentEmission ( ... )</h2>
+                <h2><a class="anchor" id="FunctioName"></a>ScenEdit_SwitchUnitIntermittentEmission( AUNameOrID,PresetAlertID,Switch )</h2>
                 <p>
-                    The function purpose
+                    The function's purpose is to turn off/on the Intermittent Emission for the specified Alert Level
                 </p>
                 
                 <h3>Parameters</h3>
                 <ul>
-                    <li>List the parameters as in the Syntax line</li>
+					<li>
+						<span class="parameter">AUNameOrID </span>
+						<span class="types"><span class="string">string</span></span>
+						The name or GUID of the unit. As no Side is supplied, the unit name would need to be unique across the scenario.
+					<li>
+						<span class="parameter">PresetAlertID </span>
+						<span class="types"><span class="tooltip">value<span class="tooltiptext">
+"GREEN"<br/>
+"BLUE"<br/>
+"YELLOW"<br/>
+"ORANGE"<br/>
+"RED"<br/>
+"CUSTOM"<br/>
+"ALL"
+						</span></span></span>
+						The Alert level
+					</li>
+					<li>
+						<span class="parameter">Switch </span>
+						<span class="types"><span class="number">number</span></span>
+						Use 0 to turn off the Emission interval, 1 to turn on the Emission interval (USEEMISSIONINTERVAL)
+					</li>
+					</li>
                 </ul>
 
                 <h3>Returns</h3>
                 <ul>
-                    <li>
-                        Show the return value(s)
-                    </li>
+					<li>
+						<span class="types"><span class="boolean">True/False</span></span> True if successful
+					</li>
                 </ul>
 
                 <h4>Example</h4>
                 <div class="example">
                     <code>
-                        Show an example of how to use the function. Explain it or add multiple examples to expand it
+                        ScenEdit_SwitchUnitIntermittentEmission ( 'USS Ulysess', 'Green', 1 )  -- turn on interval for Alert level Green for the unit
                     </code>
                 </div>
 

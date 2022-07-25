@@ -63,27 +63,31 @@
 
             <div id="main">
 
-                <h2><a class="anchor" id="FunctioName"></a>ScenEdit_ClearUnitEmconConfigs ( ... )</h2>
+                <h2><a class="anchor" id="FunctioName"></a>ScenEdit_ClearUnitEmconConfigs( AUNameOrID )</h2>
                 <p>
-                    The function purpose
+                    The function's purpose is to clear any Intermittent Emission configuration for the unit.
                 </p>
                 
                 <h3>Parameters</h3>
                 <ul>
-                    <li>List the parameters as in the Syntax line</li>
+					<li>
+						<span class="parameter">AUNameOrID </span>
+						<span class="types"><span class="string">string</span></span>
+						The name or GUID of the unit. As no Side is supplied, the unit name would need to be unique across the scenario.
+					</li>
                 </ul>
 
                 <h3>Returns</h3>
-                <ul>
-                    <li>
-                        Show the return value(s)
-                    </li>
-                </ul>
+				<ul>
+					<li>
+						<span class="types"><span class="boolean">True/False</span></span> True if successful
+					</li>
+				</ul>
 
                 <h4>Example</h4>
                 <div class="example">
                     <code>
-                        Show an example of how to use the function. Explain it or add multiple examples to expand it
+                        ScenEdit_ClearUnitEmconConfigs ( 'USS Ulysess' )
                     </code>
                 </div>
 

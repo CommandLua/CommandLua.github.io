@@ -63,27 +63,139 @@
 
             <div id="main">
 
-                <h2><a class="anchor" id="FunctioName"></a>ScenEdit_SetUnitIntermittentEmissionConfig ( ... )</h2>
+                <h2><a class="anchor" id="FunctioName"></a>ScenEdit_SetUnitIntermittentEmissionConfig ( AUNameOrID,PresetAlertID,ConfigurationTable )</h2>
                 <p>
-                    The function purpose
+                    The function's purpose is to configure the specified Alert Level for Intermittent Emissions.<br/>
+					There are several Alert levels availbale under the Intermittent Emissions view, and each one can have a different configuration.
                 </p>
                 
                 <h3>Parameters</h3>
                 <ul>
-                    <li>List the parameters as in the Syntax line</li>
-                </ul>
+					<li>
+						<span class="parameter">AUNameOrID </span>
+						<span class="types"><span class="string">string</span></span>
+						The name or GUID of the unit. As no Side is supplied, the unit name would need to be unique across the scenario.
+					<li>
+						<span class="parameter">PresetAlertID </span>
+						<span class="types"><span class="tooltip">value<span class="tooltiptext">
+"GREEN"<br/>
+"BLUE"<br/>
+"YELLOW"<br/>
+"ORANGE"<br/>
+"RED"<br/>
+"CUSTOM"<br/>
+"ALL"
+						</span></span></span>
+						The Alert level
+					</li>
+                     <li>
+                        <span class="parameter"> ConfigurationTable</span> <span class="table">
+                            {
+                            }
+
+                        </span>
+                        <ul>
+                            <li>
+                                <span class="parameter"> UseEmissionInterval = </span>
+                                <span class="types"> <span class="number"> number</span> </span>
+                                Use 0 to turn off or 1 to turn on the Intermittent Emission
+                            </li>
+                            <li>
+                                <span class="parameter"> EmissionDuration = </span>
+                                <span class="types"> <span class="number"> number</span> </span>
+                                Emission duration in seconds
+                            </li>
+                            <li>
+                                <span class="parameter"> EmissionInterval = </span>
+                                <span class="types"> <span class="number"> number</span> </span>
+                                Emission interval in seconds
+                            </li>
+                            <li>
+                                <span class="parameter"> EmissionIntervalVariation = </span>
+                                <span class="types"> <span class="number"> number</span> </span>
+                                Emission variation in seconds
+                            </li>
+                            <li>
+                                <span class="parameter"> SleepModeDelay = </span>
+                                <span class="types"> <span class="number"> number</span> </span>
+                                Time to sleep in seconds
+                            </li>
+                            <li>
+                                <span class="parameter"> FollowWRAforWakeBehavior = </span>
+                                <span class="types"> <span class="number"> number</span> </span>
+                                Use 0 to turn off or 1 to turn on to follow WRA behavior (UI ???)
+                            </li>
+                            <li>
+                                <span class="parameter"> WakeWhenDetectingThreat = </span>
+                                <span class="types"> <span class="number"> number</span> </span>
+                                Use 0 to turn off or 1 to turn on wake up on detecting threat
+                            </li>
+                             <li>
+                                <span class="parameter"> WakeID_UNKNOWN = </span>
+                                <span class="types"> <span class="number"> number</span> </span>
+                                Use 0 to turn off or 1 to turn on wake if unknown on detection
+                            </li>
+                           <li>
+                                <span class="parameter"> WwkeID_PRECISEID = </span>
+                                <span class="types"> <span class="number"> number</span> </span>
+                                Use 0 to turn off or 1 to turn on if precice ID
+                            </li>
+                            <li>
+                                <span class="parameter"> WakeID_KNWONTYPE = </span>
+                                <span class="types"> <span class="number"> number</span> </span>
+                                Use 0 to turn off or 1 to turn on if known type
+                            </li>
+                            <li>
+                                <span class="parameter"> WakeIDKNOWNDOMAIN = </span>
+                                <span class="types"> <span class="number"> number</span> </span>
+                                Use 0 to turn off or 1 to turn on if known domain
+                            </li>
+                            <li>
+                                <span class="parameter"> WakeIDKNOWNCLASS = </span>
+                                <span class="types"> <span class="number"> number</span> </span>
+                                Use 0 to turn off or 1 to turn on if known class
+                            </li>
+                            <li>
+                                <span class="parameter"> WakeStance_FRIENDLY = </span>
+                                <span class="types"> <span class="number"> number</span> </span>
+                                Use 0 to turn off or 1 to turn on if friendly
+                            </li>
+                            <li>
+                                <span class="parameter"> WakeStance_HOSTILE = </span>
+                                <span class="types"> <span class="number"> number</span> </span>
+                                Use 0 to turn off or 1 to turn on if hostile
+                            </li>
+                            <li>
+                                <span class="parameter"> WakeStance_NEUTRAL = </span>
+                                <span class="types"> <span class="number"> number</span> </span>
+                                Use 0 to turn off or 1 to turn on if neutral
+                            </li>
+                            <li>
+                                <span class="parameter"> WakeStance_UNFRIENDLY = </span>
+                                <span class="types"> <span class="number"> number</span> </span>
+                                Use 0 to turn off or 1 to turn on if unfriendly
+                            </li>
+                            <li>
+                                <span class="parameter"> WakeStance_UNKNOWN = </span>
+                                <span class="types"> <span class="number"> number</span> </span>
+                                Use 0 to turn off or 1 to turn on if unknown stance
+                            </li>
+						</ul>
+					</li>
+               </ul>
 
                 <h3>Returns</h3>
                 <ul>
                     <li>
-                        Show the return value(s)
+						<span class="types"> <span class="boolean"> True/False</span> </span>
+						True if successful
                     </li>
                 </ul>
 
                 <h4>Example</h4>
                 <div class="example">
                     <code>
-                        Show an example of how to use the function. Explain it or add multiple examples to expand it
+                        ScenEdit_SetUnitIntermittentEmissionConfig ( 'USS Ulysess', 'Green', { UseEmissionInterval=1,  EmissionDuration=60, EmissionInterval=120 } )
                     </code>
                 </div>
 
