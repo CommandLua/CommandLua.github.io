@@ -63,27 +63,56 @@
 
             <div id="main">
 
-                <h2><a class="anchor" id="FunctioName"></a>ScenEdit_DistributeWeaponAtAirbase ( ... )</h2>
+                <h2><a class="anchor" id="FunctioName"></a>ScenEdit_DistributeWeaponAtAirbase ( table )</h2>
                 <p>
-                    The function purpose
+                    The function's purpose is to distribute a number of weapons across the magazine(s) in a group (typically an airbase)
                 </p>
                 
                 <h3>Parameters</h3>
                 <ul>
-                    <li>List the parameters as in the Syntax line</li>
+                    <li>
+                        <span class="parameter">table</span><span class="table"> {} </span>
+                        <ul>
+                            <li>
+                                <span class="parameter">side = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The side name/GUID of the unit
+                            </li>
+                            <li>
+                                <span class="parameter">unitname = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The name of unit
+                            </li>
+                            <li>
+                                <span class="parameter">guid = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The GUID of the unit
+                            </li>
+                             <li>
+                                <span class="parameter">wpn_dbid = </span>
+                                <span class="types"><span class="number">number</span></span>
+                                The weapon database ID
+                            </li>
+                            <li>
+                                <span class="parameter">number = </span>
+                                <span class="types"><span class="number">number</span></span>
+                                Number to be added 
+                            </li>
+                       </ul>
+                    </li>
                 </ul>
 
                 <h3>Returns</h3>
                 <ul>
                     <li>
-                        Show the return value(s)
+                        None
                     </li>
                 </ul>
 
                 <h4>Example</h4>
                 <div class="example">
                     <code>
-                        Show an example of how to use the function. Explain it or add multiple examples to expand it
+                        ScenEdit_DistributeWeaponAtAirbase ( { side='NATO', unitname='Hamburg AF', wpn_dbid=773,  number=50} )
                     </code>
                 </div>
 

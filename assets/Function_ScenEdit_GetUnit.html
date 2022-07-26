@@ -63,16 +63,9 @@
 
             <div id="main">
 
-                <h4>Syntax</h4>
+                <h3><a class="anchor" id="ScenEdit_GetUnit"></a>ScenEdit_GetUnit (table)</h3>
                 <p>
-                    <code class="syntax-example">ScenEdit_GetUnit(<span class="parameter"><a href="Selectors.html#selector_UnitSelector">UnitSelector</a></span>)</code>
-                </p>
-                <h5>Example</h5>
-                <p><code>ScenEdit_GetUnit({name='Eagle #1',side='Blue'})</code></p>
-                <p>
-                    This function returns the properties of a specified unit. If no unit is found the function
-                    returns <code>nil</code> if run non-interactively, and raises an exception if run from the
-                    console (see note below for a technique to bypass this behaviour if desired).
+				This function gets the properties of the Unit.
                 </p>
                 <h4>Parameters</h4>
                 <ul>
@@ -108,54 +101,38 @@
                     </p>
                 </div>
 
-                <!--h4>Use<h4>
-    <p>
-        The <span class="selector"><a href="Selectors.html#selector_UnitSelector">UnitSelector</a></span> accepts either a
-        <code>name</code> and <code>side</code>, or a
-        <code>guid</code> to return a <code>unit</code>
-    </p-->
-
                 <h5>Example 1</h5>
                 <div class="example">
                     <p>
                         <code>
-                            <span class="local">local</span>
-                            myUnit
-                            <span class="operator">=</span>
-                            ScenEdit_GetUnit<span class="operator">({</span>
-                            guid=
-                            <span class="string">'f4f9e0af-15c2-4582-8e80-b827c2ec2f56'</span>
-                            <span class="operator">})</span>
-                            <br>
-                            <span class="print"></span>
-                            <span class="operator">(</span>
-                            myUnit
-                            <span class="operator">)</span>
-                            <br><br>
-                            <span class="output">
-                                >> unit {
-                                type = 'Ship',
-                                subtype = '3106',
-                                name = 'CG 56 San Jacinto',
-                                side = 'United States',
-                                guid = 'f4f9e0af-15c2-4582-8e80-b827c2ec2f56',
-                                class = 'CG 56 San Jacinto [Ticonderoga Baseline 3, VLS]',
-                                proficiency = 'Regular',
-                                latitude = '22.3252605703301',
-                                longitude = '62.1828983227462',
-                                altitude = '0',
-                                heading = '0',
-                                speed = '10',
-                                throttle = 'FullStop',
-                                autodetectable = 'False',
-                                group = 'Bush CSG',
-                                mounts = '25',
-                                magazines = '32',
-                                unitstate = 'Unassigned',
-                                fuelstate = 'None',
-                                weaponstate = 'None',
-                                }
-                            </span>
+                            local myUnit = 
+                            ScenEdit_GetUnit( { guid=
+                            'f4f9e0af-15c2-4582-8e80-b827c2ec2f56'} ) <br/>
+							print( myUnit) <br/>
+							<output>
+                                unit {<br/>
+                                type = 'Ship',<br/>
+                                subtype = '3106',<br/>
+                                name = 'CG 56 San Jacinto',<br/>
+                                side = 'United States',<br/>
+                                guid = 'f4f9e0af-15c2-4582-8e80-b827c2ec2f56',<br/>
+                                class = 'CG 56 San Jacinto [Ticonderoga Baseline 3, VLS]',<br/>
+                                proficiency = 'Regular',<br/>
+                                latitude = '22.3252605703301',<br/>
+                                longitude = '62.1828983227462',<br/>
+                                altitude = '0',<br/>
+                                heading = '0',<br/>
+                                speed = '10',<br/>
+                                throttle = 'FullStop',<br/>
+                                autodetectable = 'False',<br/>
+                                group = 'Bush CSG',<br/>
+                                mounts = '25',<br/>
+                                magazines = '32',<br/>
+                                unitstate = 'Unassigned',<br/>
+                                fuelstate = 'None',<br/>
+                                weaponstate = 'None',<br/>
+                                }<br/>
+                            </output>
                         </code>
                     </p>
                 </div>
@@ -163,47 +140,33 @@
                 <div class="example">
                     <p>
                         <code>
-                            <span class="local">local</span>
-                            myUnit
-                            <span class="operator">=</span>
-                            ScenEdit_GetUnit<span class="operator">({</span>
-                            side
-                            <span class="operator">=</span>
-                            <span class="string">'United States'</span>
-                            , name
-                            <span class="operator">=</span>
-                            <span class="string">'CG 56 San Jacinto'</span>
-                            <span class="operator">})</span>
-                            <br>
-                            <span class="print"></span>
-                            <span class="operator">(</span>
-                            myUnit
-                            <span class="operator">)</span>
-                            <br><br>
-                            <span class="output">
-                                >> unit {
-                                type = 'Ship',
-                                subtype = '3106',
-                                name = 'CG 56 San Jacinto',
-                                side = 'United States',
-                                guid = 'f4f9e0af-15c2-4582-8e80-b827c2ec2f56',
-                                class = 'CG 56 San Jacinto [Ticonderoga Baseline 3, VLS]',
-                                proficiency = 'Regular',
-                                latitude = '22.3252605703301',
-                                longitude = '62.1828983227462',
-                                altitude = '0',
-                                heading = '0',
-                                speed = '10',
-                                throttle = 'FullStop',
-                                autodetectable = 'False',
-                                group = 'Bush CSG',
-                                mounts = '25',
-                                magazines = '32',
-                                unitstate = 'Unassigned',
-                                fuelstate = 'None',
-                                weaponstate = 'None',
-                                }
-                            </span>
+                            local myUnit = 
+                            ScenEdit_GetUnit( { side='United States', unitname='CG 56 San Jacinto'} ) <br/>
+							print( myUnit) <br/>
+							<output>
+                                unit {<br/>
+                                type = 'Ship',<br/>
+                                subtype = '3106',<br/>
+                                name = 'CG 56 San Jacinto',<br/>
+                                side = 'United States',<br/>
+                                guid = 'f4f9e0af-15c2-4582-8e80-b827c2ec2f56',<br/>
+                                class = 'CG 56 San Jacinto [Ticonderoga Baseline 3, VLS]',<br/>
+                                proficiency = 'Regular',<br/>
+                                latitude = '22.3252605703301',<br/>
+                                longitude = '62.1828983227462',<br/>
+                                altitude = '0',<br/>
+                                heading = '0',<br/>
+                                speed = '10',<br/>
+                                throttle = 'FullStop',<br/>
+                                autodetectable = 'False',<br/>
+                                group = 'Bush CSG',<br/>
+                                mounts = '25',<br/>
+                                magazines = '32',<br/>
+                                unitstate = 'Unassigned',<br/>
+                                fuelstate = 'None',<br/>
+                                weaponstate = 'None',<br/>
+                                }<br/>
+                            </output>
                         </code>
                     </p>
                 </div>
