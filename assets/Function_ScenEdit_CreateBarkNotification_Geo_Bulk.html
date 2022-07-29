@@ -63,27 +63,84 @@
 
             <div id="main">
 
-                <h2><a class="anchor" id="ScenEdit_CreateBarkNotification_Geo_Bulk"></a>ScenEdit_CreateBarkNotification_Geo_Bulk ( ... )</h2>
+                <h2><a class="anchor" id="ScenEdit_CreateBarkNotification_Geo_Bulk"></a>ScenEdit_CreateBarkNotification_Geo_Bulk (longitude, latitude, text, R, G, B [, moveUpward, fade, lifeTime, fontSize ] )</h2>
                 <p>
-                    The function's purpose TBC
+                    The function's purpose is to show a 'bark' at a specific location. <br/>
+					The notifications are shown in sequence, one after another.<br/>
+					Barks are short text notifications that can be set to appear, briefly, anywhere on the map.
                 </p>
                 
                 <h3>Parameters</h3>
                 <ul>
-                    <li>List the parameters as in the Syntax line</li>
+					<li>
+						<span class="parameter"> longitude </span>
+						<span class="types"><a href="DataTypes.html#dataType_Longitude">longitude</a></span>
+					</li>
+					<li>
+						<span class="parameter"> latitude </span>
+						<span class="types"><a href="DataTypes.html#dataType_Latitude">latitude</a></span>
+					</li>
+					<li>
+                        <span class="parameter"> text</span>
+                        <span class="table">
+                            {
+                            } of multiple
+                        </span>
+						<ul>
+							<li>
+							<span class="types"> <span class="string"> string</span> </span>
+							Text to show
+							</li>
+						</ul>
+					</li>
+					 <li>
+						<span class="parameter"> R </span>
+						<span class="types"> <span class="number"> number</span> </span>
+						The 'Red' component of the color (0-255) to show the text in
+					</li>
+					<li>
+						<span class="parameter"> G </span>
+						<span class="types"> <span class="number"> number</span> </span>
+						The 'Green' component of the color (0-255)
+					</li>
+					<li>
+						<span class="parameter"> B </span>
+						<span class="types"> <span class="number"> number</span> </span>
+						The 'Blue' component of the color (0-255)
+					</li>
+					<li>
+						<span class="parameter"> moveUpward </span>
+						<span class="types"> <span class="boolean"> True/False</span> </span>
+						[Optional] Default is True. This will move the text upwards
+					</li>
+					<li>
+						<span class="parameter"> fade </span>
+						<span class="types"> <span class="boolean"> True/False</span> </span>
+						[Optional] Default is True. This controls the fading out of the text
+					</li>
+					<li>
+						<span class="parameter"> lifeTime </span>
+						<span class="types"> <span class="number"> number</span> </span>
+						[Optional] Default is 1 second. This controls how long the text stays visible
+					</li>
+					<li>
+						<span class="parameter"> fontSize </span>
+						<span class="types"> <span class="number"> number</span> </span>
+						[Optional] Default is 18. This controls the fonst size of the text
+					</li>
                 </ul>
 
                 <h3>Returns</h3>
                 <ul>
                     <li>
-                        Show the return value(s)
+                     <span class="types"> <span class="boolean"> True/False</span> </span>
                     </li>
                 </ul>
 
                 <h4>Example</h4>
                 <div class="example">
                     <code>
-                        Show an example of how to use the function. Explain it or add multiple examples to expand it
+                       ScenEdit_CreateBarkNotification_Geo_Bulk (-119.1778, 46.62715, {'Prepare to be amazed','Really!!!'}, 255, 0, 0 )
                     </code>
                 </div>
 
