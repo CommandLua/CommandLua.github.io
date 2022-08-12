@@ -36,7 +36,7 @@
 
 		<div id="content">
 			<div id="page-title">
-				<h2 id="page-title">Command Lua API Documentation, v1266</h2>
+				<h2 id="page-title">Command Lua API Documentation, v1268</h2>
 				<hr>
 			</div>
 			<div id="nav">
@@ -71,6 +71,43 @@
                 </div>
 				<p>
 					<ul>
+						<li> Updated Cargo functions - the base Lua cargo wrapper was added in 1268 </li>
+							<ul>
+								<li>LuaWrapper_ActiveUnit<br/>
+									:getUnitCargo(string guid) returns LuaWrapper_Cargo or nil.<br/>
+									:createUnitCargo(type int, dbid int, optional customname string) returns LuaWrapper_Cargo or nil if failed.<br/>
+									:deleteUnitCargo(guid string) returns true/false</li>
+
+								<li>LuaWrapper_Cargo<br/>
+.type int 1=mount, 2=ground unit, 3=mobile facility unit, 4=container, 5=container contents<br/>
+.storageType int 0=internal, 1=external (reserved for future use), 2=towed<br/>
+.dbid int<br/>
+.name string<br/>
+.requiredSize int<br/>
+.requiredMass single (metric tons)<br/>
+.requiredArea single (square meters)<br/>
+.requiredPax int<br/>
+.requiredAreaAsStored (square meters -- zero for towed cargo)<br/>
+.requiredPaxAsStored (zero for towed cargo)<br/>
+.isParadropCapable bool<br/>
+.unit returns LuaWrapper_ActiveUnit if this cargo is an active unit<br/>
+.containerCargo returns a table of cargo stored in this container, if cargo is container.<br/>
+:createContainerContentCustom(name str, size int, mass single, area single, volume single) returns LuaWrapper_Cargo / nil<br/>
+:createContainerContentFuel(type int, quantityLiters single) returns LuaWrapper_Cargo / nil (fuel type value = the same as fuelRecs)<br/>
+:createContainerContentAmmunition(weaponDBID int, quantity int) returns LuaWrapper_Cargo / nil<br/>
+:deleteContainerContents(string guid) true/false</li>				
+							</ul>
+						</ul>
+					</ul>
+				</p>
+
+                <h4>Command: Modern Operations v1268</h4>
+               <div class="byline">
+                </div>
+				<p>
+					<ul>
+						<li>Added function Tool_LOS() for radar/LOS checks</li>
+						<li>Added DATEFORMAT to ScenEdit_SetStartTime() for consistency</li>
 					</ul>
 				</p>
 
