@@ -1923,11 +1923,25 @@ end<br>
                         <tr><td><span class="parameter">updateorbit</span>
                         <td><span class="types"><span class="method">method</span>({TLE=...})</span>
                         <td>
-                            Update the orbit for a satellite by specifying a TLE. See below for a complete usage example.
+                            Update the orbit for a satellite by specifying a TLE
                         </td></tr>
 
-
-                    </table>
+                        <tr><td><span class="parameter">createUnitCargo</span>
+                        <td><span class="types"><span class="method">method</span>(type, dbid [,customname])</span>
+                        <td>
+                            Create an item in cargo area. Returns <span class="wrapper"><a href="#wrapper_Cargo">cargo</a></span>
+                        </td></tr>
+                        <tr><td><span class="parameter">deleteUnitCargo</span>
+                        <td><span class="types"><span class="method">method</span>(guid)</span>
+                        <td>
+                            Delete cargo item by it's guid. Returns <span class="types"><span class="boolean">True/False</span></span>
+                        </td></tr>
+                        <tr><td><span class="parameter">getUnitCargo</span>
+                        <td><span class="types"><span class="method">method</span>(guid)</span>
+                        <td>
+                            Get an item in cargo area. Returns <span class="wrapper"><a href="#wrapper_Cargo">cargo</a> or nil</span>
+                        </td></tr>
+					</table>
 
 <br/>		
 		
