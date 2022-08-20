@@ -110,6 +110,7 @@ end<br>
 
 				</p>
 				<ul class="ul-2-columns">
+					<li><span class="wrapper"><a href="#wrapper_Cargo">Cargo</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_Contact">Contact</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_Doctrine">Doctrine</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_DoctrineWRA">DoctrineWRA</a></span></li>
@@ -131,6 +132,92 @@ end<br>
 					<li><span class="wrapper"><a href="#wrapper_Weapon">Weapon Device</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_Zone">Zone</a></span></li>
 				</ul>
+
+				<hr>
+				<a class="anchor" id="wrapper_Cargo"></a>
+				<h3>Cargo</h3>
+				<p> The cargo information being held in a unit.
+				</p>
+				<table class="table_borders" style="width: 100%; margin-left: 0px;">
+					<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+					
+					<tr><td><span class="parameter">guid</span></td>
+					<td><span class="types"><span class="string">string</span></span></td>
+					<td></td>
+					<td><span class="readonly">READ ONLY</span></td></tr>
+					<tr><td><span class="parameter">type</span></td>
+					<td><span class="types"><a href="DataTypes.html#dataType_CargoObjectType">CargoObjectType</a></span></span></td>
+					<td>The type of cargo object</td>
+					<td><span class="readonly">READ ONLY</span></td></tr>
+					<tr><td><span class="parameter">storageType</span></td>
+					<td><span class="types"><a href="DataTypes.html#dataType_CargoStorageType">CargoStorageType</a></span></span></td>
+					<td>The type of cargo storage</td>
+					<td><span class="readonly">READ ONLY</span></td></tr>
+					<tr><td><span class="parameter">dbid</span></td>
+					<td><span class="types"><span class="number">number</span></span></td>
+					<td>The DBID of the cargo</td>
+					<td><span class="readonly">READ ONLY</span></td></tr>
+					<tr><td><span class="parameter">name</span></td>
+					<td><span class="types"><span class="number">number</span></span></td>
+					<td>The name of the cargo</td>
+					<td><span class="readonly">READ ONLY</span></td></tr>
+					<tr><td><span class="parameter">requiredSize</span></td>
+					<td><span class="types"><a href="DataTypes.html#dataType_CargoType">CargoType</a></span></span></td>
+					<td>The size </td>
+					<td><span class="readonly">READ ONLY</span></td></tr>
+					<tr><td><span class="parameter">requiredMass</span></td>
+					<td><span class="types"><span class="number">number</span></span></td>
+					<td>The mass metric tons</td>
+					<td><span class="readonly">READ ONLY</span></td></tr>
+					<tr><td><span class="parameter">requiredArea</span></td>
+					<td><span class="types"><span class="number">number</span></span></td>
+					<td>The area sq m</td>
+					<td><span class="readonly">READ ONLY</span></td></tr>
+					<tr><td><span class="parameter">requiredPAX</span></td>
+					<td><span class="types"><span class="number">number</span></span></td>
+					<td>The PAX (Crew Space)</td>
+					<td><span class="readonly">READ ONLY</span></td></tr>
+					<tr><td><span class="parameter">requiredAreaAsStored</span></td>
+					<td><span class="types"><span class="number">number</span></span></td>
+					<td>The area</td>
+					<td><span class="readonly">READ ONLY</span></td></tr>
+					<tr><td><span class="parameter">requiredPAXAsStored</span></td>
+					<td><span class="types"><span class="number">number</span></span></td>
+					<td>The PAX</td>
+					<td><span class="readonly">READ ONLY</span></td></tr>
+					<tr><td><span class="parameter">isParadropCapable</span></td>
+					<td><span class="types"><span class="boolean">True/False</span></span></td>
+					<td>Can be dropped by parachute</td>
+					<td><span class="readonly">READ ONLY</span></td></tr>
+					<tr><td><span class="parameter">unit</span></td>
+					<td><span class="wrapper"><a href="#wrapper_Unit">Unit</a></span></td>
+					<td>The unit holding cargo</td>
+					<td><span class="readonly">READ ONLY</span></td></tr>
+					<tr><td><span class="parameter">containerCargo</span></td>
+					<td><span class="table">{ name, Type, dbid, guid, area,pax,mass,<br/> 
+					&nbsp;[contentType,<br/> 
+					&nbsp;&nbsp;[fuelType, fuelQuantity,]<br/> 
+					&nbsp;&nbsp;[weaponDBID, weaponQuantity]]  }</span></td>
+					<td>Table of items held as cargo inside container</td>
+					<td><span class="readonly">READ ONLY</span></td></tr>
+					<tr><td><span class="parameter">createContainerContentCustom</span></td>
+					<td><span class="types"><span class="method">method</span>(name, size, mass, area, volume)</span></td>
+					<td></td>
+					<td>Returns <span class="types"><span class="boolean"><a href="#wrapper_Cargo">{ cargo }</a></span></span></td></tr>
+					<tr><td><span class="parameter">createContainerContentFuel</span></td>
+					<td><span class="types"><span class="method">method</span>(fuelType, fuelLiters)</span></td>
+					<td></td>
+					<td>Returns <span class="types"><span class="boolean"><a href="#wrapper_Cargo">{ cargo }</a></span></span></td></tr>
+					<tr><td><span class="parameter">createContainerContentAmmunition</span></td>
+					<td><span class="types"><span class="method">method</span>(weaponDBID, quantity)</span></td>
+					<td></td>
+					<td>Returns <span class="types"><span class="boolean"><a href="#wrapper_Cargo">{ cargo }</a></span></span></td></tr>
+					<tr><td><span class="parameter">deleteContainerContents</span></td>
+					<td><span class="types"><span class="method">method</span>(contentGuid)</span></td>
+					<td></td>
+					<td>Returns <span class="types"><span class="boolean">True</span></span> if successful</td></tr>
+				</table>
+<br/>		
 
 				<hr>
 				<a class="anchor" id="wrapper_Contact"></a>

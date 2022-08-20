@@ -68,6 +68,9 @@
                     <li><span class="datatype"><a href="#dataType_Altitude">Altitde</a></span></li>
                     <li><span class="datatype"><a href="#dataType_Arc">Arc</a></span></li>
                     <li><span class="datatype"><a href="#dataType_Armor">Armor</a></span></li>
+                    <li><span class="datatype"><a href="#dataType_CargoObjectType">CargoObjectType</a></span></li>
+                    <li><span class="datatype"><a href="#dataType_CargoStorageType">CargoStorageType</a></span></li>
+                    <li><span class="datatype"><a href="#dataType_CargoType">CargoType</a></span></li>
                     <li><span class="datatype"><a href="#dataType_ContactIdStatus">ContactIdStatus</a></span></li>
                     <li><span class="datatype"><a href="#dataType_ContactType">ContactType</a></span></li>
                     <li><span class="datatype"><a href="#dataType_DateTime">DateTime</a></span></li>
@@ -159,6 +162,57 @@
                 </details>
 
                 <hr>
+                <a class="anchor" id="dataType_CargoObjectType"></a>
+                <h3>CargoObjectType</h3>
+                <details>
+                    <summary>
+                        Type of cargo object
+                    </summary>
+                    <p><b>Code = Description </b></p>
+                    <ul class="ul-no-bullets">
+                        <li>0 = None    </li>
+                        <li>1 = Mount    </li>
+                        <li>2 = Vehicle</li>
+                        <li>3 = Facility  </li>
+                        <li>4 = CargoContainer </li>
+                        <li>5 = CargoContainerContent  </li>
+                    </ul>
+                </details>
+
+                <hr>
+                <a class="anchor" id="dataType_CargoStorageType"></a>
+                <h3>CargoStorageType</h3>
+                <details>
+                    <summary>
+                        Type of cargo storage
+                    </summary>
+                    <p><b>Code = Description </b></p>
+                    <ul class="ul-no-bullets">
+                        <li>0 = StoredInternal    </li>
+                        <li>1 = StoredExternal    </li>
+                        <li>2 = TowedExternal</li>
+                    </ul>
+                </details>
+
+                <hr>
+                <a class="anchor" id="dataType_CargoType"></a>
+                <h3>CargoType</h3>
+                <details>
+                    <summary>
+                        Type of cargo 
+                    </summary>
+                    <p><b>Code = Description </b></p>
+                    <ul class="ul-no-bullets">
+                        <li>0 = NoCargo    </li>
+                        <li>1000 = Personnel    </li>
+                        <li>2000 = SmallCargo</li>
+                        <li>3000 = MediumCargo</li>
+                        <li>4000 = LargeCargo</li>
+                        <li>5000 = VLargeCargo</li>
+                    </ul>
+                </details>
+
+               <hr>
                 <a class="anchor" id="dataType_ContactIdStatus"></a>
                 <h3>ContactIdStatus</h3>
                 <details>
@@ -175,6 +229,7 @@
                         <li>4 = PreciseID  </li>
                     </ul>
                 </details>
+
                 <hr>
 
                 <a class="anchor" id="dataType_ContactType"></a>
