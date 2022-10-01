@@ -88,18 +88,18 @@
                             </li>
                             <li>
                                 <span class="parameter">awareness = </span>
-                                <span class="types"> <span class="string"> string</span> </span>
-                                The side awareness (data type???)
+								<span class="types"><a href="DataTypes.html#dataType_Awareness">Awareness</a></span>
+                                The side awareness
                             </li>
                             <li>
                                 <span class="parameter">proficiency = </span>
-                                <span class="types"> <span class="string"> string</span> </span>
-                                The side proficiency (data type???)
+								<span class="types"><a href="DataTypes.html#dataType_Proficiency">Proficiency</a></span>
+                                The side proficiency 
                             </li>
                             <li>
                                 <span class="parameter">switchto = </span>
                                 <span class="types"> <span class="boolean"> True/False</span> </span>
-                                Switch the current side to the 'side' parameter
+                                [optional] Switch the current side to the 'side' parameter. 
                             </li>
 
                         </ul>
@@ -121,18 +121,29 @@
                     <li>
                         <span class="parameter">awareness </span>
                         <span class="types"><span class="string">string</span></span>
-                        Side awareness *** data type ?
+                        Side awareness
                     </li>
                     <li>
                         <span class="parameter">proficiency </span>
                         <span class="types"><span class="string">string</span></span>
-                        Side proficiency *** data type ?
+                        Side proficiency 
                     </li>
                 </ul>
 
                 <h5>Example</h5>
+				Set the side to 'blind' awareness and 'normal' proficiency. Note the use of the description or code number.
                 <div class="example">
-                    <code>ScenEdit_SetSideOptions(<span class="string">{side=</span>'SideA'<span class="string">,awareness=</span>'OMNI'<span class="string">,PROFICIENCY=</span>'ace')</code>
+                    <code>
+local a = ScenEdit_SetSideOptions({side='sidea', awareness = 'blind', PROFICIENCY= 2})<br/>
+print(a)<br/>
+if a.awareness == 'Normal' then print('awareness is normal') end<br/>
+if a.proficiency == 'Regular' then print('proficiency is regular') end		<br/>			
+<br/>
+Output<br/>
+<output>
+{ awareness = 'Blind', side = 'SideA', guid = '387dfb31-e553-412a-8258-9b959aa00aed', proficiency = 'Regular' }<br/>
+proficiency is regular</output>
+</code>
                 </div>
 
             </div>

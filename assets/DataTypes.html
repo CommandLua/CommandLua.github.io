@@ -68,6 +68,7 @@
                     <li><span class="datatype"><a href="#dataType_Altitude">Altitde</a></span></li>
                     <li><span class="datatype"><a href="#dataType_Arc">Arc</a></span></li>
                     <li><span class="datatype"><a href="#dataType_Armor">Armor</a></span></li>
+                    <li><span class="datatype"><a href="#dataType_Awareness">Awareness</a></span></li>
                     <li><span class="datatype"><a href="#dataType_CargoObjectType">CargoObjectType</a></span></li>
                     <li><span class="datatype"><a href="#dataType_CargoStorageType">CargoStorageType</a></span></li>
                     <li><span class="datatype"><a href="#dataType_CargoType">CargoType</a></span></li>
@@ -85,6 +86,10 @@
                     <li><span class="datatype"><a href="#dataType_Longitude">Longitude</a></span></li>
                     <li><span class="datatype"><a href="#dataType_Longitude">Longitude</a></span></li>
 					<li><span class="datatype"><a href="#dataType_MissionType">MissionType/Subtype</a></span></li>
+					<li><span class="datatype"><a href="#dataType_Preset">Presets (Speed/altitude/depth)</a></span></li>
+
+					<li><span class="datatype"><a href="#dataType_Proficiency">Proficiency</a></span></li>
+					
                     <li><span class="datatype"><a href="#dataType_Sensor">Sensor</a></span></li>
                     <li><span class="datatype"><a href="#dataType_Stance">Stance</a></span></li>
 
@@ -160,6 +165,23 @@
 						<li>2004 = Special		</li>
                    </ul>
                 </details>
+
+                <hr>
+                <h3><a class="anchor" id="dataType_Awareness"></a>Awareness</h3>
+                <details>
+                    <summary>
+                        Awareness
+                    </summary>
+                    <p><b>Code = Description </b></p>
+                    <ul class="ul-no-bullets">
+					<li>-1 = Blind             </li>
+					<li> 0 = Normal            </li>
+					<li> 1 = AutoSideID        </li>
+					<li> 2 = AutoSideAndUnitID </li>
+					<li> 3 = Omniscient        </li>
+                    </ul>
+                </details>
+                <br />
 
                 <hr>
                 <a class="anchor" id="dataType_CargoObjectType"></a>
@@ -270,23 +292,6 @@
                     DateTime is displayed and changed as per LOCALE e.g. US would be 'MM/DD/YYYY HH:MM:SS AM/PM' eg
                     '8/13/2002 12:14 PM'
                 </p>
-
-                <hr>
-                <h3><a class="anchor" id="dataType_Proficiency"></a>Proficiency</h3>
-                <details>
-                    <summary>
-                        Proficiency
-                    </summary>
-                    <p><b>Code = Description </b></p>
-                    <ul class="ul-no-bullets">
-                        <li>0 = Novice     </li>
-                        <li>1 = Cadet </li>
-                        <li>2 = Regular</li>
-                        <li>3 = Veteran</li>
-                        <li>4 = Ace</li>
-                    </ul>
-                </details>
-                <br />
 
                 <hr>
                 <h3><a class="anchor" id="dataType_ROE"></a>Doctrine/ROE</h3>
@@ -776,6 +781,23 @@
 						<li>7 = MaxAltitude 
 					</ul>
 				</details>
+
+                <hr>
+                <h3><a class="anchor" id="dataType_Proficiency"></a>Proficiency</h3>
+                <details>
+                    <summary>
+                        Proficiency
+                    </summary>
+                    <p><b>Code = Description </b></p>
+                    <ul class="ul-no-bullets">
+                        <li>0 = Novice     </li>
+                        <li>1 = Cadet </li>
+                        <li>2 = Regular</li>
+                        <li>3 = Veteran</li>
+                        <li>4 = Ace</li>
+                    </ul>
+                </details>
+                <br />
 
 				<hr>
                 <a class="anchor" id="dataType_Sensor"></a>

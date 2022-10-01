@@ -99,19 +99,30 @@
                     <li>
                         <span class="parameter">awareness </span>
                         <span class="types"><span class="string">string</span></span>
-                        Side awareness *** data type ?
+                        Side awareness 
                     </li>
                     <li>
                         <span class="parameter">proficiency </span>
                         <span class="types"><span class="string">string</span></span>
-                        Side proficiency *** data type ?
+                        Side proficiency 
                     </li>
                 </ul>
 
                 <h5>Example</h5>
                 <div class="example">
-                    <code>ScenEdit_GetSideOptions( { side='SideA' } )</code>
-                </div>
+                    <code>
+					local a = ScenEdit_GetSideOptions( { side='SideA' } )<br>
+print(a)<br/>
+if a.awareness == 'Normal' then print('awareness is normal') end<br/>
+if a.proficiency == 'Regular' then print('proficiency is regular') end		<br/>			
+<br/>
+Output<br/>
+<output>
+{ awareness = 'Normal', side = 'SideA', guid = '387dfb31-e553-412a-8258-9b959aa00aed', proficiency = 'Regular' }<br/>
+awareness is normal<br/>
+proficiency is regular</output>
+</code>
+				</div>
 
             </div>
         </div>
