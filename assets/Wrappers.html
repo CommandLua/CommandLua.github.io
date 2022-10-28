@@ -1776,6 +1776,11 @@ end<br>
                         <td>
                             If changing existing unit, the unit's new name .
                         </td></tr>
+                        <tr><td><span class="parameter">noiseLevel</span>
+                        <td><span class="table">{ front, side, rear }</span>
+                        <td>
+                            Table containing the unit current decibel values if applicable, else nil
+                        </td></tr>
                         <tr><td><span class="parameter">obeyEMCON</span>
                         <td><span class="types"><span class="boolean">True/False</span></span>
                         <td>
@@ -1828,6 +1833,11 @@ end<br>
                         <td><span class="types"><span class="string">string</span></span>
                         <td>
                             The unit's side. <span class="readonly">READ ONLY</span>
+                        </td></tr>
+                        <tr><td><span class="parameter">signature</span>
+                        <td><span class="table">{ <a href="Tables.html#table_Signature">Signature</a> }</span>
+                        <td>
+                            Table containing the unit signature profile (for the current loadout if an aircraft) if applicable, else nil 
                         </td></tr>
                         <tr><td><span class="parameter">speed</span>
                         <td><span class="types"><span class="number">number</span></span>

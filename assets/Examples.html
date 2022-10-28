@@ -592,6 +592,128 @@ local a = ScenEdit_GetUnit( { guid='9506a165-6e44-40dd-b721-f9c07e056bdb' } )<br
 a.formation = {type='fixed', sprint=false, bearing=45, distance=5}<br>
                     	</code>
                     </div>
+					<div class="example">
+					<p>Retrieve the noise level of ship (as appears on map)</p>
+                    	<code>
+local u = ScenEdit_GetUnit({name='SS 583 Harushio', guid='3a5f2a57-36e2-48f6-9352-00b819789a18'})<br>
+--print(u.noiseLevel)<br>
+print '----Noise Level----------'<br>
+print("Front: " .. tostring(u.noiseLevel.front))<br>
+print("Side: " .. tostring(u.noiseLevel.side))<br>
+print("Rear: " .. tostring(u.noiseLevel.rear))<br>
+<output>
+----Noise Level----------<br>
+Front: 19.0<br>
+Side: 19.2<br>
+Rear: 19.4<br>
+</output>
+                    	</code>
+                    </div>
+					<div class="example">
+					<p>Retrieve the signature profile of aircraft with loadout</p>
+                    	<code>
+local u = ScenEdit_GetUnit({name='MiG-31BM Foxhound', guid='NZZYVJ-0HM0G1F7MPTLQ'})<br />
+print(u.signature)<br />
+local sigs = u.signature<br />
+if sigs.loadout ~= nil then <br />
+    print("A/c Loadout id = " .. sigs.loadout)<br />
+end<br />
+print '----Signatures----------'<br />
+for k,v in pairs(sigs) do<br />
+    if k ~= 'loadout' then <br />
+        print("Type: " .. tostring(v.type) .. " / "  .. v.typeN) -- type of device related to signature. Both text and number are supplied<br />
+		-- the text string similar to DB viewer<br />
+        print("Front: " .. tostring(v.text.front))<br />
+        print("Side: " .. tostring(v.text.side))<br />
+        print("Rear: " .. tostring(v.text.rear))<br />
+        --print(v.text)<br />
+		-- the RCS values<br />
+        print("RCS: " )<br />
+        print("Front: " .. tostring(v.rcs.front))<br />
+        print("Side: " .. tostring(v.rcs.side))<br />
+        print("Rear: " .. tostring(v.rcs.rear))<br />
+        --print(v.rcs)<br />
+        if v.sqm ~= nil then<br />
+		-- the square metre values<br />
+        print("SQM: " )<br />
+        print("Front: " .. tostring(v.sqm.front))<br />
+        print("Side: " .. tostring(v.sqm.side))<br />
+        print("Rear: " .. tostring(v.sqm.rear))<br />
+        --print(v.rcs)<br />
+        end<br />
+print '---------------'<br />
+    end<br />
+end<br />
+<output>
+{ [2] = { text = { rear = '3.56 nm', front = '3.56 nm', side = '7.94 nm' }, rcs = { rear = 3.56, front = 3.56, side = 7.94 }, typeN = 3001, type = 'Visual_Detect' }, [3] = { text = { rear = '3.26 nm', front = '1.90 nm', side = '4.30 nm' }, rcs = { rear = 3.26, front = 1.9, side = 4.3 }, typeN = 3002, type = 'Visual_ID' }, [4] = { text = { rear = '11.94 nm', front = '3.56 nm', side = '8.00 nm' }, rcs = { rear = 11.9425, front = 3.56, side = 7.9985 }, typeN = 4001, type = 'IR_Detect' }, [5] = { text = { rear = '1.90 nm', front = '1.90 nm', side = '4.30 nm' }, rcs = { rear = 1.9, front = 1.9, side = 4.3 }, typeN = 4002, type = 'IR_ID' }, [6] = { text = { rear = '9.04 dBsm, 8.0 sq.m.', front = '9.04 dBsm, 8.0 sq.m.', side = '11.15 dBsm, 13.0 sq.m.' }, typeN = 5001, rcs = { rear = 9.03988, front = 9.03988, side = 11.14721 }, sqm = { rear = 8.016566, front = 8.016566, side = 13.023313 }, type = 'Radar_A_D' }, [7] = { text = { rear = '9.04 dBsm, 8.0 sq.m.', front = '9.04 dBsm, 8.0 sq.m.', side = '11.15 dBsm, 13.0 sq.m.' }, typeN = 5002, rcs = { rear = 9.03988, front = 9.03988, side = 11.14721 }, sqm = { rear = 8.016566, front = 8.016566, side = 13.023313 }, type = 'Radar_E_M' }, loadout = 19867 }<br />
+A/c Loadout id = 19867<br />
+----Signatures----------<br />
+Type: Visual_Detect / 3001<br />
+Front: 3.56 nm<br />
+Side: 7.94 nm<br />
+Rear: 3.56 nm<br />
+RCS: <br />
+Front: 3.56<br />
+Side: 7.94<br />
+Rear: 3.56<br />
+---------------<br />
+Type: Visual_ID / 3002<br />
+Front: 1.90 nm<br />
+Side: 4.30 nm<br />
+Rear: 3.26 nm<br />
+RCS: <br />
+Front: 1.9<br />
+Side: 4.3<br />
+Rear: 3.26<br />
+---------------<br />
+Type: IR_Detect / 4001<br />
+Front: 3.56 nm<br />
+Side: 8.00 nm<br />
+Rear: 11.94 nm<br />
+RCS: <br />
+Front: 3.56<br />
+Side: 7.9985<br />
+Rear: 11.9425<br />
+---------------<br />
+Type: IR_ID / 4002<br />
+Front: 1.90 nm<br />
+Side: 4.30 nm<br />
+Rear: 1.90 nm<br />
+RCS: <br />
+Front: 1.9<br />
+Side: 4.3<br />
+Rear: 1.9<br />
+---------------<br />
+Type: Radar_A_D / 5001<br />
+Front: 9.04 dBsm, 8.0 sq.m.<br />
+Side: 11.15 dBsm, 13.0 sq.m.<br />
+Rear: 9.04 dBsm, 8.0 sq.m.<br />
+RCS: <br />
+Front: 9.03988<br />
+Side: 11.14721<br />
+Rear: 9.03988<br />
+SQM: <br />
+Front: 8.016566<br />
+Side: 13.023313<br />
+Rear: 8.016566<br />
+---------------<br />
+Type: Radar_E_M / 5002<br />
+Front: 9.04 dBsm, 8.0 sq.m.<br />
+Side: 11.15 dBsm, 13.0 sq.m.<br />
+Rear: 9.04 dBsm, 8.0 sq.m.<br />
+RCS: <br />
+Front: 9.03988<br />
+Side: 11.14721<br />
+Rear: 9.03988<br />
+SQM: <br />
+Front: 8.016566<br />
+Side: 13.023313<br />
+Rear: 8.016566<br />
+---------------<br />
+</output>
+                    	</code>
+                    </div>
+
 
 				<hr>
 				<h1><a class="anchor" id="Example_Wrapper_Zone"></a>Wrapper Zone (non-navigation and exclusion)</h1>

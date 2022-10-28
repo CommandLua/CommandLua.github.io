@@ -90,7 +90,9 @@
                     <li><span class="table"><a href="#table_SupportMission">MissionSupport</a></span></li>
                     <li><span class="table"><a href="#table_Mount">Mount</a></span></li>
                     <li><span class="table"><a href="#table_ReferencePoint">ReferencePoint</a></span></li>
-                   <li><span class="table"><a href="#table_Sensor">Sensor</a></span></li>
+                    <li><span class="table"><a href="#table_Sensor">Sensor</a></span></li>
+                    <li><span class="table"><a href="#table_Signature">Signature</a></span></li>
+				   
                     <!--<li><span class="table"><a href="#table_SideContact">SideContact</a></span></li>
     <li><span class="table"><a href="#table_SideDescription">SideDescription</a></span></li>
     <li><span class="table"><a href="#table_SideSelector">SideSelector </a></span></li>
@@ -1858,6 +1860,74 @@ Unit Sensor                                                                     
                     -->
 
                 <hr>
+                <a class="anchor" id="table_Signature"></a>
+                <h3>Signature</h3>
+                <p>
+                    Signature profile by various detection methods
+                </p>
+
+                <h4>Fields</h4>
+                <table class="table_borders" style="width: 100%; margin-left: 0px;">
+                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <td><span class="parameter">loadout</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Loadout ID from database. Only applicable if unit is aircraft
+                    </tr>
+                   <tr>
+                        <td><span class="parameter">...</span>
+                        <td><span class="table">{ type, typeN, text, rcs, sqm }</span>
+                        <td>Profile for each sonsor category
+                    </tr>
+				</table>
+				<p>
+				Sonsor category profile
+				</p>
+                <table class="table_borders" style="width: 100%; margin-left: 0px;">
+					<tr>
+						<td><span class="parameter">type </span>
+						<td><span class="types"><span class="string">string</span></span>
+						<td>Sensor category as text
+					</tr>
+					<tr>
+						<td><span class="parameter">typeN </span>
+						<td><span class="types"><span class="number">number</span></span>
+						<td>Sensor category as number
+					</tr>
+					<tr>
+						<td><span class="parameter">text </span>
+						<td><span class="types"><span class="tsble">{ front, side, rear }</span></span>
+						<td>Profile as text similar to the internal DB viewer
+					</tr>
+					<tr>
+						<td><span class="parameter">rcs </span>
+						<td><span class="types"><span class="tsble">{ front, side, rear }</span></span>
+						<td>The raw profile values
+					</tr>
+					<tr>
+						<td><span class="parameter">sqm </span>
+						<td><span class="types"><span class="tsble">{ front, side, rear }</span></span>
+						<td>Square metre values
+					</tr>
+				</table>
+				<h5>Example</h5>
+				<div class="example">
+					<code>		   
+							<output>
+{ <br />
+loadout = 19867 <br />
+[2] = { text = { rear = '3.56 nm', front = '3.56 nm', side = '7.94 nm' }, rcs = { rear = 3.56, front = 3.56, side = 7.94 }, typeN = 3001, type = 'Visual_Detect' }, <br />
+[3] = { text = { rear = '3.26 nm', front = '1.90 nm', side = '4.30 nm' }, rcs = { rear = 3.26, front = 1.9, side = 4.3 }, typeN = 3002, type = 'Visual_ID' }, <br />
+[4] = { text = { rear = '11.94 nm', front = '3.56 nm', side = '8.00 nm' }, rcs = { rear = 11.9425, front = 3.56, side = 7.9985 }, typeN = 4001, type = 'IR_Detect' }, <br />
+[5] = { text = { rear = '1.90 nm', front = '1.90 nm', side = '4.30 nm' }, rcs = { rear = 1.9, front = 1.9, side = 4.3 }, typeN = 4002, type = 'IR_ID' }, <br />
+[6] = { text = { rear = '9.04 dBsm, 8.0 sq.m.', front = '9.04 dBsm, 8.0 sq.m.', side = '11.15 dBsm, 13.0 sq.m.' }, typeN = 5001, rcs = { rear = 9.03988, front = 9.03988, side = 11.14721 }, sqm = { rear = 8.016566, front = 8.016566, side = 13.023313 }, type = 'Radar_A_D' }, <br />
+[7] = { text = { rear = '9.04 dBsm, 8.0 sq.m.', front = '9.04 dBsm, 8.0 sq.m.', side = '11.15 dBsm, 13.0 sq.m.' }, typeN = 5002, rcs = { rear = 9.03988, front = 9.03988, side = 11.14721 }, sqm = { rear = 8.016566, front = 8.016566, side = 13.023313 }, type = 'Radar_E_M' }, <br />
+}<br />
+						</output>
+					</code>
+				</div>
+
+               <hr>
                 <a class="anchor" id="table_StrikeMission"></a>
                 <h3>StrikeMission</h3>
                 <p>
