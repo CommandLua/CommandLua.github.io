@@ -1557,7 +1557,12 @@ end<br>
                         <td>
                             The unit's assigned base.
                         </td></tr>
-                        <tr><td><span class="parameter">cargo</span>
+                         <tr><td><span class="parameter">beingPickedUp</span>
+                        <td><span class="types"><span class="boolean">True/False</span></span>
+                        <td>
+                            unit is marked to be pickedup 
+                        </td></tr>
+                       <tr><td><span class="parameter">cargo</span>
                         <td><span class="table">{ <a href="Tables.html#table_Cargo">Cargo</a>, ... }</span>
                         <td>
                             Unit's current cargo 
@@ -1806,6 +1811,11 @@ end<br>
                         <td>
                             is unit connected to side comms network (false = connected) <span class="readonly">READ ONLY</span>
                         </td></tr>
+                        <tr><td><span class="parameter">pickUpTarget</span>
+                        <td><span class="wrapper"><a href="#wrapper_Unit">Unit</a></span>
+                        <td>
+                            The unit being picked up.
+                        </td></tr>
                         <tr><td><span class="parameter">pitch</span>
                         <td><span class="types"><span class="number">number</span></span>
                         <td>
@@ -1828,6 +1838,11 @@ end<br>
                         <td><span class="types"><span class="number">number</span></span>
                         <td>
                             how long aircraft/ship takes to be ready in seconds. <span class="readonly">READ ONLY</span>
+                        </td></tr>
+                        <tr><td><span class="parameter">SAR_enabled</span>
+                        <td><span class="types"><span class="boolean">True/False</span></span>
+                        <td>
+                            unit can conduct SAR 
                         </td></tr>
                         <tr><td><span class="parameter">sensors</span>
                         <td><span class="table">{ <a href="Tables.html#table_Sensor">Sensor, ...</a> }</span>
