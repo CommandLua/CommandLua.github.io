@@ -1910,6 +1910,11 @@ end<br>
                         <td>
                             Message on unit status. <span class="readonly">READ ONLY</span>
                         </td></tr>
+                        <tr><td><span class="parameter">WasPickedUp</span>
+                        <td><span class="types"><span class="boolean">True/False</span></span>
+                        <td>
+                            Unit was picked up? Useful when unit is destroyed after a pickup
+                        </td></tr>
                         <tr><td><span class="parameter">weapon</span>
                         <td><span class="table">{ <a href="wrapper_Unit">shooter</a>, <a href="wrapper_Contact">contact</a>, detonated }</span>
                         <td>
@@ -1979,10 +1984,20 @@ end<br>
                         <td>
                             Delete cargo item by it's guid. Returns <span class="types"><span class="boolean">True/False</span></span>
                         </td></tr>
-                        <tr><td><span class="parameter">getUnitCargo</span>
+						<tr><td><span class="parameter">getUnitCargo</span>
                         <td><span class="types"><span class="method">method</span>(guid)</span>
                         <td>
                             Get an item in cargo area. Returns <span class="wrapper"><a href="#wrapper_Cargo">cargo</a> or nil</span>
+                        </td></tr>
+						<tr><td><span class="parameter">getUnitMagazine</span>
+                        <td><span class="types"><span class="method">method</span>(mag_guid)</span>
+                        <td>
+                            Get specific magazine GUID details. Returns <span class="wrapper"><a href="#wrapper_Magazine">magazine</a> or nil</span>
+                        </td></tr>
+						<tr><td><span class="parameter">getUnitMountMagazine</span>
+                        <td><span class="types"><span class="method">method</span>(mount_guid)</span>
+                        <td>
+                            Get magazine details of the specific mount GUID. Returns <span class="wrapper"><a href="#wrapper_Magazine">magazine</a> or nil</span>
                         </td></tr>
 					</table>
 
