@@ -67,7 +67,8 @@
                 <p>This function causes an attack on a contact as an auto-target or manual target, with weapon allocation.</p>
                 <p>For a BOL attack, use "BOL" as the contactId.</p>
                 <p>
-                    <strong>Note:</strong> The function will use the <strong>weapon</strong> from the aircraft loadout if applicable when no <strong>mount</strong> is supplied.
+                    <strong>Note:</strong> The function will use the <strong>weapon</strong> from the aircraft loadout if applicable when no <strong>mount</strong> is supplied.<br/>
+					If no 'mount' is supplied, the first available one with the 'weapon' will be used.
                 </p>
                 <h4>Parameters</h4>
                 <ul>
@@ -105,7 +106,7 @@
                                 <span class="types"><span class="number">number</span></span>
                                 The number of weapons to fire in this salvo [Applies to manual weapon launch ]
                             </li>
-                            If the contactId is 'BOL', then the following apply.
+                            If the contactId is 'BOL', then the following applies.
                             <li>
                                 <span class="parameter">latitude = </span>
                                 <span class="types"><a href="DataTypes.html#dataType_Latitude">latitude</a></span>
@@ -116,10 +117,11 @@
                                 <span class="types"><a href="DataTypes.html#dataType_Longitude">longitude</a></span>
                                 The longitude of the aimpoint
                             </li>
+                            If the mode is '1' (ManualWeaponAlloc), then the following apply.
                             <li>
                                 <span class="parameter">course = </span>
                                 <span class="table"> {} of multiple</span>
-                                The course of the weapon(s) launched to the aimpoint, otherwise direct to aimpoint
+                                The course of the weapon(s) launched to the aimpoint/contact, otherwise direct to aimpoint. There is no check that the weapon can still hit the target after applying the 'course'. 
                                 <ul>
                                     <li>
                                         <span class="parameter">latitude = </span>
