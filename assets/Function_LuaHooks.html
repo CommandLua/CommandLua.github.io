@@ -153,7 +153,7 @@
 					function WeaponImpacts(weapon, target)<br/>
 						print('Executing ....')<br/>
 						print(target)<br/>
-						print(Weapon)<br/>
+						print(weapon)<br/>
 						local Message = "Missile "..weapon.name.. " impacted " .. target.name<br/>
 						ScenEdit_MsgBox(Message, 1)<br/>
 						return nil<br/>
@@ -185,11 +185,12 @@
 						   end<br/>
 						   print('Executing ....')<br/>
 						   print(target)<br/>
-						   print(Weapon)<br/>
+						   print(weapon)<br/>
 						   local Message = "Missile "..weapon.name.. " about to hit "<br/>
 						   if target ~= nil then Message = Message .. target.name else Message = Message .. 'nothing' end<br/>
 						   ScenEdit_MsgBox(Message, 1)<br/>
 						   if hit == false then<br/>
+								ScenEdit_DeleteUnit({ guid=weapon.guid } , true)  -- to to remove weapon, probably should be in code<br/>
 						       return true, false  --skip normal impact reolution/damage<br/>
 						   end<br/>
 						   return nil --normal impact resolution applies<br/> 
@@ -217,7 +218,7 @@
 						function WeaponImpactAfter(weapon, target, result)<br>
 							print('Executing ....')<br>
 							print(target)<br>
-							print(Weapon)<br>
+							print(weapon)<br>
 							local Message = "Missile "..weapon.name<br>
 							if result == nil then Message = Message .. " impacts "<br>
 							elseif result == true then Message = Message .. " hits "<br>
