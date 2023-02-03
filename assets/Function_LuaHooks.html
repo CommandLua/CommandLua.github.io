@@ -190,9 +190,9 @@
 						   if target ~= nil then Message = Message .. target.name else Message = Message .. 'nothing' end<br/>
 						   ScenEdit_MsgBox(Message, 1)<br/>
 						   if hit == false then<br/>
-						       return true, false  'skip normal impact reolution/damage<br/>
+						       return true, false  --skip normal impact reolution/damage<br/>
 						   end<br/>
-						   return nil 'normal impact resolution applies<br/> 
+						   return nil --normal impact resolution applies<br/> 
 						end<br/>
 						</code>
 					</div>
