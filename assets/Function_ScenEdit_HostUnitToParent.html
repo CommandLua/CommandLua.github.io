@@ -74,9 +74,10 @@
                             If 'SelectedHostNameOrID' is used, then the unit will be moved from any location, including flying, to the location of the 'host' unit.
                         </li>
                         <li>
-                            If 'SelectedBaseNameOrID' is used, then the unit's base will be set to this location.
+                            If 'SelectedBaseNameOrID' is used, then the unit's base will be set to this location only.
                         </li>
-                    </ul>The parameters 'SelectedHostNameOrID' and 'SelectedBaseNameOrID' are mutally exclusive, and only one should be used. The do the same 'basing' but one is immeditate the other not.
+                    </ul>The parameters 'SelectedHostNameOrID' and 'SelectedBaseNameOrID' are usually mutally exclusive, and only one would normally be used at a time. They do the same 'basing' but one is immeditate the other not.<br/>
+					You can use both if you want to home port a unit but have it return to a different base.
                 </p>
                 <h4>Parameters</h4>
                 <ul>
@@ -87,17 +88,17 @@
                             <li>
                                 <span class="parameter">HostedUnitNameOrID = </span>
                                 <span class="types"><span class="string">string</span></span>
-                                The name or GUID of the unit to change.
+                                The name or GUID of the unit to update.<br/> The alternate parameter <span class="parameter">HostedUnitNameOrID </span> can be used instead.
                             </li>
                             <li>
                                 <span class="parameter">SelectedHostNameOrID = </span>
                                 <span class="types"><span class="string">string</span></span>
-                                The name or GUID of the host to put the unit into.
+                                The name or GUID of the host to move the unit into.<br/> The alternate parameter <span class="parameter">HostBaseNameOrID </span> can be used instead.
                             </li>
                             <li>
                                 <span class="parameter">SelectedBaseNameOrID = </span>
                                 <span class="types"><span class="string">string</span></span>
-                                The name or GUID of the host to be the unit's base.
+                                The name or GUID of the host to be the unit's assigned base.<br/> The alternate parameter <span class="parameter">AssignedBaseNameOrID </span> can be used instead.
                             </li>
                         </ul>
                         "UnitX" can be used as a value in the above parameters when in an event script.
@@ -105,7 +106,10 @@
                 <h4>Returns</h4>
                 <p>
                     <span class="types"><span class="boolean">True/False</span></span>
-                    True if the side is human controlled
+                    True if successful.<br/>
+                    OR if supplying both base parameters in same method.
+					<span class="types"><span class="list">[0] = host base T/F, [1] = assigned base T/F</span></span>
+                    True if successful.
                 </p>
 
                 <h5>Example</h5>
@@ -125,7 +129,22 @@
                         } )
                     </code>
                 </div>
-
+                Using the new alias names
+                <div class="example">
+                    <code>
+local unit_ship1 = ScenEdit_GetUnit({side = "Side A", name = "Ship 1"}) <br/>
+<br/>
+local base_portA = ScenEdit_GetUnit({side = "Side A", name = "Port A"}) <br/>
+local base_portB = ScenEdit_GetUnit({side = "Side A", name = "Port B"}) <br/>
+<br/>
+local rebase_Ship1 = ScenEdit_HostUnitToParent({UnitName = unit_ship1.guid,  AssignedBaseNameOrID = base_portA.guid})<br/>
+if type(rebase_Ship1) == 'boolean' then<br/>
+   print(tostring(rebase_Ship1))<br/>
+else<br/>
+   print(tostring(rebase_Ship1[0]) .. ' ' .. tostring(rebase_Ship1[1]))<br/>
+end<br/>
+                    </code>
+                </div>
             </div>
         </div>
     </div>
