@@ -67,32 +67,62 @@
 				
                 <p>
                     The purpose of the Lua Hooks is to allow some Lua scripting via a Lua function() to be executed at certain points during the execution of the code.<br/>
-					The current set of hooks as of 21 July 2021 are:
+					The current set of hooks as of 1 May 2023 are:
 					<ul>
-					<li>SensorCheckBefore</li>
-					<li>WeaponFired</li>
-					<li>WeaponImpacts</li>
-					<li>WeaponImpactsBefore</li>
-					<li>WeaponImpactsAfter</li>
+     				  <li><a href="#hook_OnStatusChange">OnStatusChange</a></span></li>
+                      <li><a href="#hook_SensorCheckBefore">SensorCheckBefore</a></span></li>
+                      <li><a href="#hook_SensorCheckAfter">SensorCheckAfter</a></span></li>
+                      <li><a href="#hook_WeaponFired">WeaponFired</a></span></li>
+                      <li><a href="#hook_WeaponImpacts">WeaponImpacts</a></span></li>
+                      <li><a href="#hook_WeaponImpactsBefore">WeaponImpactsBefore</a></span></li>
+                      <li><a href="#hook_WeaponImpactsAfter">WeaponImpactsAfter</a></span></li>
+                      <li><a href="#hook_ContactUpdateAfter">ContactUpdateAfter</a></span></li>
+                      <li><a href="#hook_ContactUpdateFromOffGridAfter">ContactUpdateFromOffGridAfter</a></span></li>
+                      <li><a href="#hook_UnitMovesBefore">UnitMovesBefore</a></span></li>
+                      <li><a href="#hook_UnitMovesAfter">UnitMovesAfter</a></span></li>
+
 					</ul>
+					To disable an existing hook, run the command in the Lua console or in a Lua script.<br/>
+					CMANO:SetHookStatus(hookName, False)<br/>
+					To enable an existing hook, run the command in the Lua console or in a Lua script. <br/>
+					CMANO:SetHookStatus(hookName, True)<br/>
                 </p>
                 
                 <h3>Lua code for the hooks</h3>
-                <ul>
+				<ul>
+					<a class="anchor" id="hook_OnStatusChange"></a>
+					<li>OnStatusCheck( ...) </li>
+					<p>
+					This hook can be used to take action on change of the Ops status of aircraft and submarine/ships.</br>
+					Using the normal Event trigger (UnitBaseStatus) does basically the same function, although the event uses a limited set of Air/Dock Operation consitions related to action with a base (e.g. landing, docking, etc).
+					</p>
+
+					<a class="anchor" id="hook_SensorCheckBefore"></a>
                     <li>SensorCheckBefore( theSensor, theParent, theTarget )</li>
 					<p>
-					This is executed as part of the check to see if the sensor [theSensor] being used on the unit [theParent] can detect the target [theTarget].<br/>
-					</p><p>
-					If the check is being handled, then some obect(s) will be returned by the function bypassing the normal sensor checks.<br/>
+					This hook is executed as part of the sensor check to see if the sensor [theSensor] being used 
+					on the unit [theParent] can detect the target [theTarget].<br/>
+					</p>
+					<p>
+					If the check is being handled externally, then some obect(s) will be returned by the function bypassing the normal sensor checks.<br/>
 					If the normal checks are to be applied, then return <span class="nil" />. <br/>
 					</p>
+
+					<p>
 					<h4>Lua script</h4>
-					function SensorCheckBefore( <span class="wrapper"> <a href="Wrappers.html#wrapper_Device_Sensor"> theSensor </a></span>, <span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theSensorParent</a></span>, <span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theTarget</a></span> )<br/>
+					function SensorCheckBefore( <span class="wrapper"> <a href="Wrappers.html#wrapper_Device_Sensor"> theSensor </a></span>, <br/>
+					<span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theSensorParent</a></span>, <br/>
+					<span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theTarget</a></span> )<br/>
 					<ul>
-					<li>return nil  [no results; just contine with normal checks] or<br/></li>
-					<li>retun true, nil [precise detection; exit the checks] or<br/></li>
+					<li>return nil  [no results; just contine with normal code checks] or<br/></li>
+					<li>retun nil, true [perform normal code check but ignore terrain effects on sensor] or<br/></li>
+					<li>retun false [no detection made; exit the checks] or<br/></li>
+					<li>retun true  [precise detection; exit the checks] or<br/></li>
 					<li>return true, points [imprecise detection with table of points marking AOU; exit the checks]<br/></li>
 					</ul>
+					</p>
+					
+					<p>
 					<h5>Example</h5>
 					<div class="example">
 						<code>
@@ -101,13 +131,64 @@
 					   print(theSensor)<br/>
 					   print(theSensorParent)<br/>
 					   print(theTarget)<br/>
-					   local Message = "Sensor: " ..theSensor.name.. " about to attempt detection on: " ..theTarget <br/>
+					   local Message = "Sensor: " ..theSensor.name.. " about to attempt detection on " ..theTarget.name <br/>
 					   ScenEdit_MsgBox(Message, 1)<br/>
-					   return nil  -- to stop normal sensor check, return {true,nil} <br/>
-					end<br/>
+					   <br/>
+					   --CMANO:SetHookStatus("SensorCheckBefore",false) -- turn off check after first run for testing<br/>
+                       -- Options for return<br/>
+					    --1. return nil  -- perform normal code check<br/>
+                        --2. return nil, true  -- perform normal code check but ignore terrain effects on sensors
+                        --handle sensor check externally<br/>
+                        --3. return false -- no detection<br/>
+                        --4. return true  -- precise detection<br/>
+                        --5. return true, { {long=38.0,lat=16},{long=37.5,lat=17.5},{long=36.9,lat=17.7},{long=36.8,lat=15.9} }  -- detection with AOU<br/>
+						<br/>
+						return true, { {long=38.0,lat=16},{long=37.5,lat=17.5},{long=36.9,lat=17.7},{long=36.8,lat=15.9} }<br/>
+						end<br/>
 						</code>
 					</div>
+					</p>
 					
+					<a class="anchor" id="hook_SensorCheckAfter"></a>
+                    <li>SensorCheckAfter( theSensor, theParent, theTarget, theDetectionFeedback )</li>
+					<p>
+					<font color="#FF0000">***** Is this actually availble to users ****</font><br/>
+					This hook returns the detection results table [theDetectionFeedback] of the sensor check of sensor [theSensor] being used
+					by the unit [theParent] on the target [theTarget].<br/>
+					</p>
+
+					<p>
+					<h4>Lua script</h4>
+					function SensorCheckAfter( <span class="wrapper"> <a href="Wrappers.html#wrapper_Device_Sensor"> theSensor </a></span>, <br/>
+					<span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theSensorParent</a></span>, <br/>
+					<span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theTarget</a></span>, <br/>
+					<span class="types"><span class="table"> theDetectionFeedback</span></span> )<br/>
+					<ul>
+					<li>return nil</li>
+					</ul>
+					</p>
+
+					<p>
+					<h5>Example</h5>
+					<div class="example">
+						<code>
+					function SensorCheckAfter(theSensor, theSensorParent, theTarget, theFeedback)<br/>
+					   print('Executing ....')<br/>
+					   print(theSensor)<br/>
+					   print(theSensorParent)<br/>
+					   print(theTarget)<br/>
+					   local Message = "Sensor: " ..theSensor.name.. " detection results on " .. theTarget ..'\n' <br/>
+                        for k,v in ipairs (theFeedback) do<br/>
+                        Message = Message .. tostring(v) .. '\n'<br/>
+                        end<br/>
+					   ScenEdit_MsgBox(Message, 1)<br/>
+					   return nil  <br/>
+					   end<br/>
+						</code>
+					</div>
+					</p>
+
+					<a class="anchor" id="hook_WeaponFired"></a>
  					<li>WeaponFired( theTarget, theWeapon )</li>
 					<p>
 					This is executed when a weapon (theWeapon) is fired at a target contact (theTarget) as part of the ExportWeaponFireEvent().<br/>
@@ -132,6 +213,7 @@
 						</code>
 					</div>
 
+					<a class="anchor" id="hook_WeaponImpacts"></a>
 					<li>WeaponImpacts( theWeapon, theTarget )</li>
 					<p>
 					This is executed when the weapon (theWeapon) impacts the target (theTarget) after any resolutions, basically when the weapon is 'destroyed' by the impact.<br/>
@@ -161,6 +243,7 @@
 						</code>
 					</div>
 
+					<a class="anchor" id="hook_WeaponImpactsBefore"></a>
 					<li>WeaponImpactsBefore( theWeapon, theTarget )</li>
 					<p>
 					This is excuted before the weapon (theWeapon) impacts the target (theTarget).<br>
@@ -198,6 +281,7 @@
 						</code>
 					</div>
 
+					<a class="anchor" id="hook_WeaponImpactsAfter"></a>
 					<li>WeaponImpactsAfter( theWeapon, theTarget, impacted )</li>
 					<p>
 					This is excuted after the weapon (theWeapon) impacts the target (theTarget). The parameter (impacted) indicates if it impacted or not.<br>
@@ -231,6 +315,127 @@
 						</code>
 					</div>
 					
+					<a class="anchor" id="hook_ContactUpdateAfter"></a>
+                    <li>ContactUpdateAfter( theReason, theDetectingUnit, 
+			theOldContact, theNewContact, theMergedContact, theDetectedUnit, SensorsThatMadeDetection )</li>
+					<p>
+					The contact information is being update.<br/>
+					For a new contact, the [theOldConact] will be <span class="nil"></span>.<br/>
+					The [theNewContact] and [theMergedConact] are the same contact. <br/> 
+					No action is taken on return<br/>
+					</p>
+
+					<p>
+					<h4>Lua script</h4>
+					function ContactUpdateAfter( <span class="types"><span class="string"> theReason</span></span>, <br/>
+					<span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theDetectingUnit </a></span>, <br/>
+					<span class="wrapper"> <a href="Wrappers.html#wrapper_Contact"> theOldContact</a></span>, <br/>
+					<span class="wrapper"> <a href="Wrappers.html#wrapper_Contact"> theNewContact</a></span>, <br/>
+					<span class="wrapper"> <a href="Wrappers.html#wrapper_Contact"> theMergedContact</a></span>, <br/>
+					<span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theDetectedUnit </a></span>, <br/>
+					<span class="wrapper"> <a href="Wrappers.html#wrapper_Device_Sensor"> SensorsThatMadeDetection</a></span> )<br/>
+					<ul>
+					<li>return nil</li>
+					</ul>
+					</p>
+					
+					<p>
+					<h5>Example</h5>
+					<div class="example">
+						<code>
+function ContactUpdateAfter( theReason, theDetectingUnit, 
+			theOldContact, theNewContact, theMergedContact, theDetectedUnit, SensorsThatMadeDetection )<br/>
+print('Executing ....')<br/>
+print(theDetectingUnit)<br/>
+print(theOldContact)<br/>
+print(theNewContact)<br/>
+print(theMergedContact)<br/>
+print(theDetectedUnit)<br/>
+print(SensorsThatMadeDetection)<br/>
+local Message = "Conact change " .. theReason<br/>
+ScenEdit_MsgBox(Message, 1)<br/>
+--CMANO:SetHookStatus("ContactUpdateAfter",false) -- turn off check after first run for testing<br/>
+return nil<br/>
+end<br/>
+						</code>
+					</div>
+					</p>
+
+					
+					<a class="anchor" id="hook_ContactUpdateFromOffGridAfter"></a>
+                    <li>ContactUpdateFromOffGridAfter( theReason, theDetectingUnit, 
+			theOldContact, theNewContact, theMergedContact, theDetectedUnit )</li>
+					<p>
+					The contact information is being update after rejoining the communication grid.<br/>
+					No action is taken on return<br/>
+					</p>
+
+					<p>
+					<h4>Lua script</h4>
+					function ContactUpdateFromOffGridAfter( <span class="types"><span class="string"> theReason</span></span>, <br/>
+					<span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theDetectingUnit </a></span>, <br/>
+					<span class="wrapper"> <a href="Wrappers.html#wrapper_Contact"> theOldContact</a></span>, <br/>
+					<span class="wrapper"> <a href="Wrappers.html#wrapper_Contact"> theNewContact</a></span>, <br/>
+					<span class="wrapper"> <a href="Wrappers.html#wrapper_Contact"> theMergedContact</a></span>, <br/>
+					<span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theDetectedUnit </a></span> )<br/>
+					<ul>
+					<li>return nil</li>
+					</ul>
+					</p>
+					
+					<p>
+					<h5>Example</h5>
+					<div class="example">
+						<code>
+function ContactUpdateFromOffGridAfter( theReason, theDetectingUnit, 
+			theOldContact, theNewContact, theMergedContact, theDetectedUnit )<br/>
+print('Executing ....')<br/>
+print(theDetectingUnit)<br/>
+print(theOldContact)<br/>
+print(theNewContact)<br/>
+print(theMergedContact)<br/>
+print(theDetectedUnit)<br/>
+local Message = "Conact change " .. theReason<br/>
+ScenEdit_MsgBox(Message, 1)<br/>
+--CMANO:SetHookStatus("ContactUpdateFromOffGridAfter",false) -- turn off check after first run for testing<br/>
+return nil<br/>
+end<br/>
+						</code>
+					</div>
+					</p>
+
+					<!--
+					<a class="anchor" id="hook_Template"></a>
+                   <li>Template: Lua hook function definition</li>
+					<p>
+					Brief description<br/>
+					</p>
+
+					<p>
+					<h4>Lua script</h4>
+					Show parameters and return values as below
+					function SensorCheckBefore( <span class="wrapper"> <a href="Wrappers.html#wrapper_Device_Sensor"> theSensor </a></span>, <br/>
+					<span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theSensorParent</a></span>, <br/>
+					<span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theTarget</a></span> )<br/>
+					<ul>
+					<li>return nil  [no results; just contine with normal code checks] or<br/></li>
+					<li>retun nil, true [perform normal code check but ignore terrain effects on sensor] or<br/></li>
+					<li>retun false [no detection made; exit the checks] or<br/></li>
+					<li>retun true  [precise detection; exit the checks] or<br/></li>
+					<li>return true, points [imprecise detection with table of points marking AOU; exit the checks]<br/></li>
+					</ul>
+					</p>
+					
+					<p>
+					<h5>Example</h5>
+					<div class="example">
+						<code>
+						Sample code<br/>
+						</code>
+					</div>
+					</p>
+					-->
+
               </ul>
 
 
