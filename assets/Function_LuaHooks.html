@@ -91,11 +91,36 @@
                 <h3>Lua code for the hooks</h3>
 				<ul>
 					<a class="anchor" id="hook_OnStatusChange"></a>
-					<li>OnStatusCheck( ...) </li>
+					<li>OnStatusCheck( theUnit, oldCondition ) </li>
 					<p>
-					This hook can be used to take action on change of the Ops status of aircraft and submarine/ships.</br>
+					This hook can be used to take action on the change of the Ops status of a aircraft or submarine/ship.</br>
 					Using the normal Event trigger (UnitBaseStatus) does basically the same function, although the event uses a limited set of Air/Dock Operation consitions related to action with a base (e.g. landing, docking, etc).
+					The hook allows checking any condition change in the Ops space.<br/>
+					Note that the hook is executed after any 'UnitBaseStatus' Event is executed.</p>
 					</p>
+
+					<p>
+					<h4>Lua script</h4>
+					function OnStatusCheck( <span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theUnit</a></span>, <br/>
+					<span class="types"><span class="string"> oldCondition</span></span> )<br/>
+					<ul>
+					<li>return nil</li>
+					</ul>
+					</p>
+
+					<p>
+					<h5>Example</h5>
+					<div class="example">
+						<code>
+function OnStatusChange( unit, condition)<br/>
+-- condition should be same as unit.old_condition <br/>
+local msg = unit.name .. " moved from " .. unit.old_condition .. " ---> " .. unit.condition<br/>
+ScenEdit_MsgBox(msg,1)<br/>
+end<br/>
+						</code>
+					</div>
+					</p>
+
 
 					<a class="anchor" id="hook_SensorCheckBefore"></a>
                     <li>SensorCheckBefore( theSensor, theParent, theTarget )</li>
