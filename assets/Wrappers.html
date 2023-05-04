@@ -1608,7 +1608,22 @@ end<br>
                         <td>
                             The database ID of the unit <span class="readonly">READ ONLY</span>
                         </td></tr>
-                        <tr><td><span class="parameter">embarkedUnits</span>
+                         <tr><td><span class="parameter">desiredHeading</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>
+                            unit desired heading to go to
+                        </td></tr>
+                         <tr><td><span class="parameter">desiredPitch</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>
+                            unit desired pitch to go to if is controlable else nil
+                        </td></tr>
+                        <tr><td><span class="parameter">desiredRoll</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>
+                            unit desired roll to go to
+                        </td></tr>
+                       <tr><td><span class="parameter">embarkedUnits</span>
                         <td><span class="table">{ Boats, Aircraft } </span>
                         <td>
                             Table of boats and aircraft GUID docked/embarked on the unit
@@ -1839,7 +1854,7 @@ end<br>
                         <tr><td><span class="parameter">pitch</span>
                         <td><span class="types"><span class="number">number</span></span>
                         <td>
-                            aircraft or missile pitch <span class="readonly">READ ONLY</span>
+                            unit pitch if is controlable else nil<span class="readonly">READ ONLY</span>
                         </td></tr>
                         <tr><td><span class="parameter">proficiency</span>
                         <td><span class="types"><span class="string">string</span></span>
@@ -1859,7 +1874,12 @@ end<br>
                         <td>
                             how long aircraft/ship takes to be ready in seconds. <span class="readonly">READ ONLY</span>
                         </td></tr>
-                        <tr><td><span class="parameter">SAR_enabled</span>
+                         <tr><td><span class="parameter">roll</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>
+                            unit roll <span class="readonly">READ ONLY</span>
+                        </td></tr>
+                       <tr><td><span class="parameter">SAR_enabled</span>
                         <td><span class="types"><span class="boolean">True/False</span></span>
                         <td>
                             unit can conduct SAR 
