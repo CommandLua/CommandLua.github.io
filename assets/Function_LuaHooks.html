@@ -115,7 +115,10 @@
 function OnStatusChange( unit, condition)<br/>
 -- condition should be same as unit.old_condition <br/>
 local msg = unit.name .. " moved from " .. unit.old_condition .. " ---> " .. unit.condition<br/>
-ScenEdit_MsgBox(msg,1)<br/>
+local button = ScenEdit_MsgBox(msg,1)<br/>
+if button == "Cancel" then<br/>
+    CMANO:SetHookStatus("OnStatusChange",false) -- stop the execution of hook<br/>
+end<br/>
 end<br/>
 						</code>
 					</div>
@@ -157,7 +160,10 @@ end<br/>
 					   print(theSensorParent)<br/>
 					   print(theTarget)<br/>
 					   local Message = "Sensor: " ..theSensor.name.. " about to attempt detection on " ..theTarget.name <br/>
-					   ScenEdit_MsgBox(Message, 1)<br/>
+local button = ScenEdit_MsgBox(msg,1)<br/>
+if button == "Cancel" then<br/>
+    CMANO:SetHookStatus("SensorCheckBefore",false) -- stop the execution of hook<br/>
+end<br/>
 					   <br/>
 					   --CMANO:SetHookStatus("SensorCheckBefore",false) -- turn off check after first run for testing<br/>
                        -- Options for return<br/>
@@ -206,7 +212,10 @@ end<br/>
                         for k,v in ipairs (theFeedback) do<br/>
                         Message = Message .. tostring(v) .. '\n'<br/>
                         end<br/>
-					   ScenEdit_MsgBox(Message, 1)<br/>
+local button = ScenEdit_MsgBox(msg,1)<br/>
+if button == "Cancel" then<br/>
+    CMANO:SetHookStatus("SensorCheckAfter",false) -- stop the execution of hook<br/>
+end<br/>
 					   return nil  <br/>
 					   end<br/>
 						</code>
@@ -232,7 +241,10 @@ end<br/>
 						print(target)<br/>
 						print(Weapon)<br/>
 						local Message = "Missile "..weapon.name.. " fired at " .. target.name<br/>
-						ScenEdit_MsgBox(Message, 1)<br/>
+local button = ScenEdit_MsgBox(msg,1)<br/>
+if button == "Cancel" then<br/>
+    CMANO:SetHookStatus("WeaponFired",false) -- stop the execution of hook<br/>
+end<br/>
 						return nil<br/>
 					end
 						</code>
@@ -262,7 +274,10 @@ end<br/>
 						print(target)<br/>
 						print(weapon)<br/>
 						local Message = "Missile "..weapon.name.. " impacted " .. target.name<br/>
-						ScenEdit_MsgBox(Message, 1)<br/>
+local button = ScenEdit_MsgBox(msg,1)<br/>
+if button == "Cancel" then<br/>
+    CMANO:SetHookStatus("WeaponImpacts",false) -- stop the execution of hook<br/>
+end<br/>
 						return nil<br/>
 					end
 						</code>
@@ -281,7 +296,7 @@ end<br/>
 					function WeaponImpactsBefore( <span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theWeapon</a></span>, <span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theTarget</a></span> )<br/>
 					<ul>
 					<li>return nil  [no results; just contine with normal checks] or<br/></li>
-					<li>retun true, true/false [impacts?; exit the checks]<br/></li>
+					<li>return true, true/false [impacts?; exit the checks]<br/></li>
 					</ul>
 					<h5>Example</h5>
 					<div class="example">
@@ -334,7 +349,10 @@ end<br/>
 							else  Message = Message .. " misses "<br>
 							end<br>
 							if target ~= nil then Message = Message .. target.name else Message = Message .. 'nothing' end<br>
-							ScenEdit_MsgBox(Message, 1)<br>
+local button = ScenEdit_MsgBox(msg,1)<br/>
+if button == "Cancel" then<br/>
+    CMANO:SetHookStatus("WeaponImpactAfter",false) -- stop the execution of hook<br/>
+end<br/>
 							return nil<br>
 						end<br>
 						</code>
@@ -378,14 +396,15 @@ print(theMergedContact)<br/>
 print(theDetectedUnit)<br/>
 print(SensorsThatMadeDetection)<br/>
 local Message = "Conact change " .. theReason<br/>
-ScenEdit_MsgBox(Message, 1)<br/>
---CMANO:SetHookStatus("ContactUpdateAfter",false) -- turn off check after first run for testing<br/>
+local button = ScenEdit_MsgBox(msg,1)<br/>
+if button == "Cancel" then<br/>
+    CMANO:SetHookStatus("ContactUpdateAfter",false) -- stop the execution of hook<br/>
+end<br/>
 return nil<br/>
 end<br/>
 						</code>
 					</div>
 					</p>
-
 					
 					<a class="anchor" id="hook_ContactUpdateFromOffGridAfter"></a>
                     <li>ContactUpdateFromOffGridAfter( theReason, theDetectingUnit, 
@@ -421,13 +440,75 @@ print(theNewContact)<br/>
 print(theMergedContact)<br/>
 print(theDetectedUnit)<br/>
 local Message = "Conact change " .. theReason<br/>
-ScenEdit_MsgBox(Message, 1)<br/>
---CMANO:SetHookStatus("ContactUpdateFromOffGridAfter",false) -- turn off check after first run for testing<br/>
+local button = ScenEdit_MsgBox(msg,1)<br/>
+if button == "Cancel" then<br/>
+    CMANO:SetHookStatus("ContactUpdateFromOffGridAfter",false) -- stop the execution of hook<br/>
+end<br/>
 return nil<br/>
 end<br/>
 						</code>
 					</div>
 					</p>
+
+
+					<a class="anchor" id="hook_UnitMovesBefore"></a>
+					<li>UnitMovesBefore( theUnit, theScen, increment )</li>
+					<p>
+					This is excuted before the unit (theUnit) moves. The time increment is indicate by (increment) and will vary by the speed of the simulation.<br>
+					</p><p>
+					The purpose is allow for overriding the movement of the unit as in giving it a new location to move to.<br/>
+					</p><p>
+					The return will indicate if the move has been handled externally rather than let it use the normal move resolution code.<br/>
+					</p>
+					<h4>Lua script</h4>
+					function UnitMovesBefore( <span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theUnit</a></span>, <span class="wrapper"> <a href="Wrappers.html#wrapper_Scenario"> theScen</a></span> , <span class="number"> increment</span> )<br/>
+					<ul>
+					<li>return nil  [not handled; just contine with normal move] or<br/></li>
+					<li>return true [movement handled externally; exit the move]<br/></li>
+					</ul>
+					<h5>Example</h5>
+					<div class="example">
+						<code>
+function UnitMovesBefore( unit, scen, interval)<br/>
+local msg = unit.name .. " about to move " <br/>
+local button = ScenEdit_MsgBox(msg,1)<br/>
+if button == "Cancel" then<br/>
+    CMANO:SetHookStatus("UnitMovesBefore",false) -- stop the execution of hook<br/>
+end<br/>
+--return nil -- continue with normal Move() code<br/>
+return true, "work out and set new location of unit"  -- skip the Move() code<br/>
+end<br/>
+						</code>
+					</div>
+
+
+					<a class="anchor" id="hook_UnitMovesAfter"></a>
+					<li>UnitMovesAfter( theUnit, theScen, increment )</li>
+					<p>
+					This is excuted after the unit (theUnit) moves. The time increment is indicate by (increment) and will vary by the speed of the simulation.<br>
+					</p><p>
+					The purpose is allow for making changes after the unit has moved.<br/>
+					</p><p>
+					No action is taken upon return<br/>
+					</p>
+					<h4>Lua script</h4>
+					function UnitMovesBefore( <span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theUnit</a></span>, <span class="wrapper"> <a href="Wrappers.html#wrapper_Scenario"> theScen</a></span> , <span class="number"> increment</span> )<br/>
+					<ul>
+					<li>return nil  [just contine with normal move]<br/></li>
+					</ul>
+					<h5>Example</h5>
+					<div class="example">
+						<code>
+function UnitMovesAfter( unit, scen, interval)<br/>
+local msg = unit.name .. " has moved " <br/>
+local button = ScenEdit_MsgBox(msg,1)<br/>
+if button == "Cancel" then<br/>
+    CMANO:SetHookStatus("UnitMovesAfter",false) -- stop the execution of hook<br/>
+end<br/>
+return nil -- continue with normal Move() code<br/>
+end<br/>
+						</code>
+					</div>
 
 					<!--
 					<a class="anchor" id="hook_Template"></a>
