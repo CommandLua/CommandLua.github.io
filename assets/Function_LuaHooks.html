@@ -82,12 +82,57 @@
                       <li><a href="#hook_UnitMovesAfter">UnitMovesAfter</a></span></li>
 
 					</ul>
-					To disable an existing hook, run the command in the Lua console or in a Lua script.<br/>
-					CMANO:SetHookStatus(hookName, False)<br/>
-					To enable an existing hook, run the command in the Lua console or in a Lua script. <br/>
-					CMANO:SetHookStatus(hookName, True)<br/>
+					<p>To disable an existing hook, run the command in the Lua console or in a Lua script.<br/>
+					CMANO:SetHookStatus(hookName, False)<br/></p>
+					<p>To enable an existing hook, run the command in the Lua console or in a Lua script. <br/>
+					CMANO:SetHookStatus(hookName, True)<br/></p>
                 </p>
                 
+				<h2>Hook Filters</h3>
+				<p>
+				Some hooks have been set up to support 'filters' which can be used to narrrow down the units that are passed
+				to the Lua script for the hook.<br/>
+				The filter is a Lua table where the name of the table is <function_name>Filter as in "UnitMovesBeforeFilter={...}".
+				The items in the filter will be defined in the explanation of the specific hook.</p>
+<p>To use a filter, which is optional, you just need to add the filter after the Lua hook code.<br/> 
+As the filter is linked to the hook script, if you need to change or remove the filter, the Lua function script must be executed again to update the attached filter.
+</p>
+ 					<a class="anchor" id="hook_UnitFilter"></a>
+<p>
+					<table class="table_borders">
+                        <tr>
+                            <th>TargetFilter</th>
+                            <th>Keyword</th>
+                            <th>Comment</th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>TargetSide</td>
+                            <td>Side to fillter on. <br/> 'Any' and 'PlayerSide' can be also used</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>TargetType</td>
+                            <td>Type of unit (ship, submarine, etc)</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>TargetSubType</td>
+                            <td>Subtype of the above unit type</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>SpecificUnitClass</td>
+                            <td>Unit class (DBID)</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>SpecificUnitID</td>
+                            <td>Actual unit</td>
+                        </tr>
+                    </table>
+</p>
+ 
                 <h3>Lua code for the hooks</h3>
 				<ul>
 					<a class="anchor" id="hook_OnStatusChange"></a>
@@ -96,7 +141,25 @@
 					This hook can be used to take action on the change of the Ops status of a aircraft or submarine/ship.</br>
 					Using the normal Event trigger (UnitBaseStatus) does basically the same function, although the event uses a limited set of Air/Dock Operation conditions related to an action with the base (e.g. landing, docking, etc).
 					The hook allows checking any condition change in the Ops space.<br/>
-					Note that the hook is executed after any 'UnitBaseStatus' Event is executed.</p>
+					Note that the hook is executed after any 'UnitBaseStatus' Event is executed.
+					</p>
+
+					<h4>Filter table</h4>
+					<p>
+					This hook supports a standard <a href="#hook_UnitFilter">unit filter</a>.<br/> 
+					Multiple 'TargetFilter' items can be added. What this does is for each TargetFilter, the hook sees if the unit satisfies the conditions. <br/>
+					If not, it is skipped and the next TargetFilter tried. Once a match is found, the hook executes and no more TargetFilters are tested.
+
+					<h5>Example</h5>
+					<div class="example">
+					<p>
+					Here there are two target filters; any submarine unit on the player side, and any ship on the player side will be handled by the 'OnStatusCheck' hook.
+					</p>
+						<code>
+					OnStatusCheckFilter={ {targetFilter = {targetside='playerside', targettype='submarine'}},<br/>
+					 {targetFilter = {targetside='playerside', targettype='ship'}} }
+						</code>
+					</div>
 					</p>
 
 					<p>
@@ -228,11 +291,13 @@ end<br/>
 					This is executed when a weapon (theWeapon) is fired at a target contact (theTarget) as part of the ExportWeaponFireEvent().<br/>
 					There is no action taken on any returned result.
 					</p>
+
 					<h4>Lua script</h4>
 					function WeaponFired( <span class="wrapper"> <a href="Wrappers.html#wrapper_Contact"> theTarget</a></span>, <span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theWeapon</a></span> )<br/>
 					<ul>
 					<li>return nil  [no results needed as no action is taken on them]<br/></li>
 					</ul>
+
 					<h5>Example</h5>
 					<div class="example">
 						<code>
@@ -261,11 +326,13 @@ end<br/>
 					</p><p>
 					Compare this the other 'hooks' which take action before and after the impact is resolved.
 					</p>
+
 					<h4>Lua script</h4>
 					function WeaponImpacts( <span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theWeapon</a></span>, <span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theTarget</a></span> )<br/>
 					<ul>
 					<li>return nil  [no results needed as no action is taken on them]<br/></li>
 					</ul>
+
 					<h5>Example</h5>
 					<div class="example">
 						<code>
@@ -292,12 +359,14 @@ end<br/>
 					</p><p>
 					The return will indicate if the impact has been handled externally rather than let it use the normal impact resolution code.<br/>
 					</p>
+
 					<h4>Lua script</h4>
 					function WeaponImpactsBefore( <span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theWeapon</a></span>, <span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theTarget</a></span> )<br/>
 					<ul>
 					<li>return nil  [no results; just contine with normal checks] or<br/></li>
 					<li>return true, true/false [impacts?; exit the checks]<br/></li>
 					</ul>
+
 					<h5>Example</h5>
 					<div class="example">
 						<code>
@@ -331,6 +400,7 @@ end<br/>
 					This will not have changed any damage resolution or exported events that may have been applied previously. Though within the script, the damage on the target could be modified.<br/>
 					Currently no action is taken from the returned results, it is used just to set the 'impacted' flag.<br/>
 					</p>
+
 					<h4>Lua script</h4>
 					function WeaponImpactsAfter( <span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theWeapon</a></span>, <span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theTarget</a></span>, <span class="types"> <span class="boolean"> impacted</span></span> )<br/>
 					<ul>
@@ -460,6 +530,14 @@ end<br/>
 					</p><p>
 					The return will indicate if the move has been handled externally rather than let it use the normal move resolution code.<br/>
 					</p>
+
+					<h4>Filter table</h4>
+					<p>
+					This hook supports a standard <a href="#hook_UnitFilter">unit filter</a>.<br/> 
+					Multiple 'TargetFilter' items can be added. What this does is for each TargetFilter, the hook sees if the unit satisfies the conditions. <br/>
+					If not, it is skipped and the next TargetFilter tried. Once a match is found, the hook executes and no more TargetFilters are tested.
+					</p>
+
 					<h4>Lua script</h4>
 					function UnitMovesBefore( <span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theUnit</a></span>, <span class="wrapper"> <a href="Wrappers.html#wrapper_Scenario"> theScen</a></span> , <span class="number"> increment</span> )<br/>
 					<ul>
@@ -491,6 +569,14 @@ end<br/>
 					</p><p>
 					No action is taken upon return<br/>
 					</p>
+
+					<h4>Filter table</h4>
+					<p>
+					This hook supports a standard <a href="#hook_UnitFilter">unit filter</a>.<br/> 
+					Multiple 'TargetFilter' items can be added. What this does is for each TargetFilter, the hook sees if the unit satisfies the conditions. <br/>
+					If not, it is skipped and the next TargetFilter tried. Once a match is found, the hook executes and no more TargetFilters are tested.
+					</p>
+
 					<h4>Lua script</h4>
 					function UnitMovesBefore( <span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theUnit</a></span>, <span class="wrapper"> <a href="Wrappers.html#wrapper_Scenario"> theScen</a></span> , <span class="number"> increment</span> )<br/>
 					<ul>
@@ -541,6 +627,8 @@ end<br/>
 					</div>
 					</p>
 					-->
+
+                	
 
               </ul>
 
