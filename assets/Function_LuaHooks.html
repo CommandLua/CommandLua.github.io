@@ -101,7 +101,7 @@ As the filter is linked to the hook script, if you need to change or remove the 
 <p>
 					<table class="table_borders">
                         <tr>
-                            <th>TargetFilter</th>
+                            <th>UnitFilter</th>
                             <th>Keyword</th>
                             <th>Comment</th>
                         </tr>
@@ -132,6 +132,17 @@ As the filter is linked to the hook script, if you need to change or remove the 
                         </tr>
                     </table>
 </p>
+<p> In general, each instance of a filter will be enclosed in '{..}'. <br/>
+So multiple instances are treated as 'try this' or 'this' or 'this' etc. Once an instance is satisfied, the hook is run. <br/>
+In some cases, you may want an instance to have multiple conditions as in 'try this' and 'this' etc.<br/>
+For example, the following filters...<br/>
+<code>WeaponImpactsBeforeFilter={ {targetFilter={targetside='any',targettype='ship'}, weaponFilter={targetside='playerside'}} } </code>
+The filter says  run the hook when 'the target side is 'any' and the target type is a ship' AND 'the weapon side is the player side regardless of type'. <br/>
+Compare that to this filter, the same but for the '{}' group.
+<code>WeaponImpactsBeforeFilter={ {targetFilter={targetside='any',targettype='ship'}}, {weaponFilter={targetside='playerside'}} } </code>
+This filter says  run the hook when 'the target side is 'any' and the target type is a ship' OR 'the weapon side is the player side regardless of type'. <br/>
+
+</p>
  
                 <h3>Lua code for the hooks</h3>
 				<ul>
@@ -147,7 +158,7 @@ As the filter is linked to the hook script, if you need to change or remove the 
 					<h4>Filter table</h4>
 					<p>
 					This hook supports a standard <a href="#hook_UnitFilter">unit filter</a>.<br/> 
-					Multiple 'TargetFilter' items can be added. What this does is for each TargetFilter, the hook sees if the unit satisfies the conditions. <br/>
+					Multiple 'UnitFilter' items can be added. What this does is for each UnitFilter, the hook sees if the unit satisfies the conditions. <br/>
 					If not, it is skipped and the next TargetFilter tried. Once a match is found, the hook executes and no more TargetFilters are tested.
 
 					<h5>Example</h5>
@@ -156,8 +167,8 @@ As the filter is linked to the hook script, if you need to change or remove the 
 					Here there are two target filters; any submarine unit on the player side, and any ship on the player side will be handled by the 'OnStatusCheck' hook.
 					</p>
 						<code>
-					OnStatusCheckFilter={ {targetFilter = {targetside='playerside', targettype='submarine'}},<br/>
-					 {targetFilter = {targetside='playerside', targettype='ship'}} }
+					OnStatusCheckFilter={ {UnitFilter = {targetside='playerside', targettype='submarine'}},<br/>
+					 {UnitFilter = {targetside='playerside', targettype='ship'}} }
 						</code>
 					</div>
 					</p>
@@ -534,7 +545,7 @@ end<br/>
 					<h4>Filter table</h4>
 					<p>
 					This hook supports a standard <a href="#hook_UnitFilter">unit filter</a>.<br/> 
-					Multiple 'TargetFilter' items can be added. What this does is for each TargetFilter, the hook sees if the unit satisfies the conditions. <br/>
+					Multiple 'UnitFilter' items can be added. What this does is for each TUnitFilter, the hook sees if the unit satisfies the conditions. <br/>
 					If not, it is skipped and the next TargetFilter tried. Once a match is found, the hook executes and no more TargetFilters are tested.
 					</p>
 
@@ -573,7 +584,7 @@ end<br/>
 					<h4>Filter table</h4>
 					<p>
 					This hook supports a standard <a href="#hook_UnitFilter">unit filter</a>.<br/> 
-					Multiple 'TargetFilter' items can be added. What this does is for each TargetFilter, the hook sees if the unit satisfies the conditions. <br/>
+					Multiple 'UnitFilter' items can be added. What this does is for each UnitFilter, the hook sees if the unit satisfies the conditions. <br/>
 					If not, it is skipped and the next TargetFilter tried. Once a match is found, the hook executes and no more TargetFilters are tested.
 					</p>
 
