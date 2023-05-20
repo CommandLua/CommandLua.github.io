@@ -65,7 +65,7 @@
 
                 <h3>
                     <a class="anchor" id="Tool_Range"> </a> Tool_Range
-                    (fromHere, toHere)
+                    (fromHere, toHere [,useSlant])
                 </h3>
                 <p>
                     This function returns the
@@ -82,7 +82,7 @@
                     unit/contact
                     or
                     a
-                    latitude/longitude
+                    latitude/longitude (with optional altitude)
                     point.
                 </p>
                 <h4> Parameters</h4>
@@ -101,6 +101,8 @@
                         <span class="types"> <a href="DataTypes.html#dataType_Latitude"> latitude</a> </span>
                         <span class="parameter"> longitude =</span>
                         <span class="types"> <a href="DataTypes.html#dataType_Longitude"> longitude</a> </span>
+                        <span class="parameter"> altitude =</span>
+                        <span class="types"> <a href="DataTypes.html#dataType_Altitude"> altitude</a> </span>
                         Unit/Contact guid or a location point
                     </li>
                     <li>
@@ -117,14 +119,21 @@
                         <span class="types"> <a href="DataTypes.html#dataType_Latitude"> latitude</a> </span>
                         <span class="parameter"> longitude =</span>
                         <span class="types"> <a href="DataTypes.html#dataType_Longitude"> longitude</a> </span>
+                        <span class="parameter"> altitude =</span>
+                        <span class="types"> <a href="DataTypes.html#dataType_Altitude"> altitude</a> </span>
                         Unit/Contact guid or a location point
+                    </li>
+                    <li>
+                        <span class="parameter"> useSlant</span>
+                        <span class="types"> <span class="boolean"> true</span> </span>
+                        Optional - calculate the slant distance accounting for altitde instead of the default horizontal distance
                     </li>
                 </ul>
                 <h4> Returns</h4>
                 <p>
                     <span class="types"> <span class="number"> number</span> </span>
                     The
-                    horizontal
+                    horizontal/slant
                     distance
                     in
                     NM
@@ -137,6 +146,28 @@
 
                 <div class="example">
                     <code> local d = Tool_Range( { latitude='33.1991547589118', longitude='138.376876749942' }, '8269b881-20ce-4f2e-baa0-6823e46d55a4')</code>
+                </div>
+
+                <div class="example">
+				<code>
+-- variable f and t are two units to measure distance from <br/>
+local fromHereT = {lat = f.latitude, lon = f.longitude, alt = f.altitude} <br/>
+local toHereT = {lat = t.latitude, lon = t.longitude, alt = t.altitude}  <br/>
+
+print(fromHereT); print(toHereT); <br/>
+local r = Tool_Range(fromHereT, toHereT ) <br/>
+print('Horizontal = ' .. r .. ' NM') <br/>
+local s = Tool_Range(fromHereT, toHereT, true) <br/>
+print('Slant = ' .. s .. ' NM') <br/>
+<br/>
+<output>
+{ alt = 10972.7998046875, lat = 34.5290743576973, lon = 137.785119524452 }<br/>
+{ lon = 137.513824433095, lat = 34.446853815832, alt = 9144 }<br/>
+Horizontal = 14.311404540966 NM<br/>
+Slant = 14.34543132782 NM<br/>
+</output>
+</code>
+
                 </div>
 
             </div>
