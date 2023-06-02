@@ -2304,19 +2304,19 @@ loadout = 19867 <br />
 			<tr>
 			<td><span class="parameter">unit_type</span>
 			<td><span class="types"><a href="DataTypes.html#dataType_Unit__Types">Unit Type</a></span>
-			<td>The general unit type</td>
+			<td>The general unit type. Only the default priority entry may have unit type 0 (any unit type.)</td>
 			</tr>
 
 			<tr><td><span class="parameter">unit_subtype</span>
 			<td><span class="types"><span class="number">number</span></span>
-			<td>The unit subtype, based off unit type. 
+			<td>The unit subtype, based off unit type. 0 = any sub-type.
 			<span class="types"><span class="number"><a href="DataTypes.html#dataType_Unit_Aircraft">Aircraft subtype</a></span></span>
 			<span class="types"><span class="number"><a href="DataTypes.html#dataType_Unit_Ship">Ship subtype</a></span></span>
 			<span class="types"><span class="number"><a href="DataTypes.html#dataType_Unit_Submarine">Submarine subtype</a></span></span>			
 			<span class="types"><span class="number"><a href="DataTypes.html#dataType_Unit_Facility">Fixed facility category</a></span></span>
 			<span class="types"><span class="number"><a href="DataTypes.html#dataType_Unit_Facility">Ground/Mobile facility category</a></span></span>
 			<span class="types"><span class="number"><a href="DataTypes.html#dataType_WeaponType">Weapon type</a></span></span>		
-			</td></tr>
+		        </td></tr>
 
 			<tr>
                         <td><span class="parameter">isfixedfacilitysubtype</span>
@@ -2327,7 +2327,7 @@ loadout = 19867 <br />
                     	<tr>
                         <td><span class="parameter">dbid</span>
                         <td><span class="types"><span class="number">number</span></span>
-                        <td>The database ID of the specific unit class. 0 = no specific class.
+                        <td>The database ID of the specific unit class. 0 = any class.
                     	</tr>
 
                     	<tr>
