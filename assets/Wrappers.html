@@ -2082,7 +2082,7 @@ end<br>
 					<h3>Zone</h3>
 		
 		
-					Exclusion/No navigatation/Standard zone.
+					Exclusion/No navigatation/Standard zone/Custom Environment zone.
 		
 					</ul>
 		
@@ -2090,7 +2090,7 @@ end<br>
 					<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
 						<tr><td><span class="parameter">affects</span>
 						<td><span class="types"><span class="type">unitTypes </span></span>
-						<td>List of unit types (ship, submarine, aircraft, facility)
+						<td>List of unit types (ship, submarine, aircraft, facility) affected by a No-nav or exclusion zone.
 						</td></tr>
 						<tr><td><span class="parameter">area</span>
 						<td><span class="table">{ <a href="Tables.html#table_ReferencePoint">ZoneMarker, ...</a> }</span>
@@ -2113,6 +2113,18 @@ end<br>
 						<td><span class="types"><span class="boolean">True/False</span></span>
 						<td>Zone is currently active.
 						</td></tr>
+						<tr><td><span class="parameter">hascustomlandcoverheight</span>
+						<td><span class="types"><span class="boolean">True/False</span></span>
+						<td>Custom environment zone has a custom land cover height set.
+						</td></tr>
+						<tr><td><span class="parameter">landcoverheight</span>
+						<td><span class="types"><span class="integer">integer</span></span>
+						<td>The height of the land cover within a custom environment zone.
+						</td></tr>
+						<tr><td><span class="parameter">landcovertype</span>
+						<td><span class="types"><span class="integer">integer</span></span>
+						<td>The land cover type override (if any) within a custom environment zone.
+						</td></tr>
 						<tr><td><span class="parameter">locked</span>
 						<td><span class="types"><span class="boolean">True/False</span></span>
 						<td>Zone is locked.
@@ -2121,6 +2133,35 @@ end<br>
 						<td><span class="types"><span class="type">Posture</span></span>
 						<td>Posture of violator of exclusion zone.
 						</td></tr>
+						<tr><td><span class="parameter">name</span>
+						<td><span class="types"><span class="type">string</span></span>
+						<td>The name of the zone.
+						</td></tr>
+						<tr><td><span class="parameter">type</span>
+						<td><span class="types"><span class="string">string</span></span>
+						<td>The type of the zone. <span class="readonly">READ ONLY</span>
+						</td></tr>
+						<tr><td><span class="parameter">thermallayerceiling</span>
+						<td><span class="types"><span class="integer">integer</span></span>
+						<td>The depth of the thermal layer ceiling within a custom environment zone.
+						</td></tr>
+						<tr><td><span class="parameter">thermallayerfloor</span>
+						<td><span class="types"><span class="integer">integer</span></span>
+						<td>The depth of the thermal layer floor within a custom environment zone.
+						</td></tr>
+						<tr><td><span class="parameter">thermallayerstrength</span>
+						<td><span class="types"><span class="single">single</span></span>
+						<td>The strength of the thermal layer within a custom environment zone.
+						</td></tr>
+						<tr><td><span class="parameter">convergencezoneinterval</span>
+						<td><span class="types"><span class="single">single</span></span>
+						<td>The interval (in nm) between convergence zones within a custom environment zone.
+						</td></tr>
+						<tr><td><span class="parameter">weatherprofile</span>
+						<td><span class="types"><span class="table">table</span></span>
+						<td>The weather profile within a custom environment zone.
+						</td></tr>
+
 	</table>
 		
 <br/>		
