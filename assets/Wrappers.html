@@ -1349,6 +1349,14 @@ end<br>
 						<td><span class="table">{ <a href="Tables.html#table_UnitList">UnitList</a> }</span>
 						<td>Table of current contacts for the designated side. The 'guid' in table are contact references <span class="readonly">READ ONLY</span>
 						</td></tr>
+						<tr><td><span class="parameter">doctrine</span>
+						<td><span class="types"><a href="Wrappers.html#Wrapper_doctrine">Doctrine</a></span>
+						<td><span class="readonly">READ ONLY</span>
+						</td></tr>
+						<tr><td><span class="parameter">customenvironmentzones</span>
+						<td><span class="table">{ { giud, description, name }, ... }</span>
+						<td>Table of Zone identifiers for the designated side <span class="readonly">READ ONLY</span>
+						<td>Use the method 'getcustomenvironmentzone' to get specific details of the zone</td></tr>						
 						<tr><td><span class="parameter">exclusionzones</span>
 						<td><span class="table">{ { giud, description, name }, ... }</span>
 						<td>Table of Zone identifiers for the designated side <span class="readonly">READ ONLY</span>
@@ -1400,6 +1408,11 @@ end<br>
 						<tr><td><span class="parameter">contactsBy</span>
 						<td><span class="types"><span class="method">method</span>(UnitType)</span>
 						<td> Returns table <span class="table"><a href="Tables.html#table_UnitList">UnitList</a></span> of current contacts filtered by type of unit or nil.
+						</td></tr>
+						<tr><td><span class="parameter">getcustomenvironmentzone</span>
+						<td><span class="types"><span class="method">method</span>(ZoneGUID|ZoneName|ZoneDescription)</span>
+						<td> Returns matching <span class="wrapper"><a href="#wrapper_Zone">Zone</a></span>
+							or nil
 						</td></tr>
 						<tr><td><span class="parameter">getexclusionzone</span>
 						<td><span class="types"><span class="method">method</span>(ZoneGUID|ZoneName|ZoneDescription)</span>
