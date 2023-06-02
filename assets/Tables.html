@@ -97,6 +97,8 @@
     <li><span class="table"><a href="#table_SideDescription">SideDescription</a></span></li>
     <li><span class="table"><a href="#table_SideSelector">SideSelector </a></span></li>
     <li><span class="table"><a href="#table_SideUnit">SideUnit</a></span></li>-->
+			
+                    <li><span class="table"><a href="#table_TargetPriority">TargetPriority</a></span></li>		
                     <li><span class="table"><a href="#table_WRA">WRA</a></span></li>
                     <!-- li><span class="table"><a href="#table_Waypoint">Waypoint</a></span></li-->
                     <li><span class="table"><a href="#table_WeaponLoaded">WeaponLoaded</a></span></li>
@@ -2290,6 +2292,49 @@ loadout = 19867 <br />
                         <td>The name of the unit.
 						<td>
                     </tr>
+                </table>
+
+                <hr>
+                <a class="anchor" id="table_TargetPriority"></a>
+                <h3>Doctrine Target Priority</h3>
+                <p>Target priority list format for the Doctrine wrapper.</p>
+                <h4>Fields</h4>
+                <table class="table_borders" style="width: 100%; margin-left: 0px;">
+                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>				
+			<tr>
+			<td><span class="parameter">unit_type</span>
+			<td><span class="types"><a href="DataTypes.html#dataType_Unit__Types">Unit Type</a></span>
+			<td>The general unit type</td>
+			</tr>
+
+			<tr><td><span class="parameter">unit_subtype</span>
+			<td><span class="types"><span class="string">number</span></span>
+			<td>The unit subtype, based off unit type. 
+<a href="DataTypes.html#dataType_Unit_Aircraft">Aircraft subtype</a>
+<a href="DataTypes.html#dataType_Unit_Ship">Ship subtype</a>
+<a href="DataTypes.html#dataType_Unit_Submarine">Submarine subtype</a>
+<a href="DataTypes.html#dataType_Unit_Facility">Fixed facility category</a>
+<a href="DataTypes.html#dataType_Unit_Facility">Ground/Mobile facility category</a>
+<a href="DataTypes.html#dataType_WeaponType">Weapon type</a>			
+			</td></tr>
+
+			<tr>
+                        <td><span class="parameter">isfixedfacilitysubtype</span>
+                        <td><span class="types"><span class="boolean">True/False</span></span>
+                        <td>For facility unit_type only, TRUE indicates that unit_subtype is a fixed facility category. Otherwise unit_subtype is a Mobile unit category.
+                    	</tr>
+
+                    	<tr>
+                        <td><span class="parameter">dbid</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>The database ID of the specific unit class. 0 = no specific class.
+                    	</tr>
+
+                    	<tr>
+                        <td><span class="parameter">priority</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>0 = delayed, 1 = default, 2 = immediate
+                    	</tr>
                 </table>
 
                 <hr>
