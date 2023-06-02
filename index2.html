@@ -53,6 +53,7 @@
 					<ol>
 						<li><a href="#CaseSensitivityandConventions">Case Sensitivity and Conventions</a></li>
                         <li><a href="#EventHandling">Event Handling</a></li>
+						<li><a href="#Globals">Global Keywords</a></li>
 						<li><a href="#ErrorHandling">Error Handling</a></li>
 					</ol>
                     <li><a href="assets/DataTypes.html">Data Types</a></li>
@@ -1366,6 +1367,24 @@
                         </ul>
                     </p>
                     <hr>
+
+                <a class="anchor" id="Globals"></a>
+                <h3>Global Keywords</h3>
+                <p>
+			Command Lua provides several global keywords that can be useful for file handling and/or reading and writing output from your scripts.
+                </p>
+                <ul>
+                    <li>
+                        <code>_scriptfolder_</code>: the full path to the folder location of the executing lua script file, or an empty string if the script was not loaded from a lua script file (i.e. run from console, as part of an event action, etc.)
+                    </li>
+                    <li>
+                        <code>_scenariofolder_</code>: the full path to the folder from which the current scenario file was loaded. An empty string is returned if current scenario was not loaded from a scen or save file (i.e. it is a new scenario that has never been saved.)
+                    </li>
+                    <li>
+                        <code>_outputfolder_</code>: the full path to the root folder under which any event exporter (Pro-only) output will be written. It returns an empty string if no output folder is set.
+                    </li>
+                </ul>
+		<hr>
                 <a class="anchor" id="ErrorHandling"></a>
                 <h3>Error Handling</h3>
                 <p>
