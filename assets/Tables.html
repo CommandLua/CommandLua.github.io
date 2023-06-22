@@ -71,6 +71,7 @@
                     <li><span class="table"><a href="#table_AAR">AAR</a></span></li>
                     <li><span class="table"><a href="#table_Area">Area</a></span></li>
                     <li><span class="table"><a href="#table_Cargo">Cargo</a></span></li>
+                    <li><span class="table"><a href="#table_CargoItem">CargoItem</a></span></li>		
                     <li><span class="table"><a href="#table_Component">Component</a></span></li>
                     <li><span class="table"><a href="#table_EMmatch">EMmatch</a></span></li>
                     <li><span class="table"><a href="#table_Emissions">Emissions</a></span></li>
@@ -264,7 +265,36 @@
                         <td>Inoperative reason
                     </tr>
                 </table>
-
+                <hr>
+                <a class="anchor" id="table_CargoItem"></a>
+                <h3>CargoItem</h3>
+                <p>
+                    Cargo item is used to identify the cargo assigned to be moved via a cargo mission.<br>
+                </p>
+                <table class="table_borders" style="width: 100%; margin-left: 0px;">
+                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <td><span class="parameter">type</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>CargoObjectType
+                    </tr>
+                   <tr>
+                        <td><span class="parameter">dbid</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Database ID of the CargoObjectType
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">GUID</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>GUID of the specific item to move, or an empty string
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">quantity</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Number of items to be moved (for Mount type cargo.)
+                    </tr>
+                </table>
+	
                 <hr>
                 <a class="anchor" id="table_CargoMission"></a>
                 <h3>CargoMission</h3>
