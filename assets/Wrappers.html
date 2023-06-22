@@ -955,6 +955,24 @@ end<br>
 						<td><span class="table">{ <a href="Tables.html#table_PatrolMission">PatrolMission</a> }</span>
 						<td>A table of the mission specific options. <span class="readonly">READ ONLY</span>
 						</td></tr>
+
+						<tr><td><span class="parameter">addAssignedCargo</span></td>
+						<td><span class="types"><span class="method">method</span>(CargoObjectType, dbid, guid)</span></td>
+						<td>Add a non-mount cargo item to assigned cargo</td>
+						<td>Returns <span class="types"><span class="boolean"><a href="Tables.html#table_CargoItem">{ CargoItem }</a></span></span></td></tr>
+						<tr><td><span class="parameter">removeAssignedCargo</span></td>
+						<td><span class="types"><span class="method">method</span>(CargoObjectType, dbid, guid)</span></td>
+						<td>Remove a non-mount cargo item from assigned cargo</td>
+						<td>Returns <span class="types"><span class="boolean"><a href="Tables.html#table_CargoItem">{ CargoItem }</a></span></span></td></tr>
+						<tr><td><span class="parameter">addAssignedCargoMount</span></td>
+						<td><span class="types"><span class="method">method</span>(dbid, quantity)</span></td>
+						<td>Add a mount cargo item to assigned cargo</td>
+						<td>Returns <span class="types"><span class="boolean"><a href="Tables.html#table_CargoItem">{ CargoItem }</a></span></span></td></tr>
+						<tr><td><span class="parameter">removeAssignedCargoMount</span></td>
+						<td><span class="types"><span class="method">method</span>(dbid, quantity)</span></td>
+						<td>Remove a mount cargo item from assigned cargo</td>
+						<td>Returns <span class="types"><span class="boolean"><a href="Tables.html#table_CargoItem">{ CargoItem }</a></span></span></td></tr>
+							
 					</table>
 <br/>		
 		
