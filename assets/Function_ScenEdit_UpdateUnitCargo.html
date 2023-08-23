@@ -73,6 +73,7 @@
                     on
                     a
                     unit.<br / >
+					By default, this treats the cargo type as 'mount' as per the original cargo V1 specifications.<br/>
                     As this function also calls <a href="#ScenEdit_SetUnit"> ScenEdit_SetUnit()</a>, additional parameters for that function may also be passed to this function.
                 </p>
                 <h4> Parameters</h4>
@@ -139,6 +140,29 @@
                                         </ul>
                                         Note the order of 'number to affect' and 'DBID'
                                     </li>
+                                    or
+                                    <li>
+                                        <span class="table">
+                                            {
+                                            }
+
+                                            of
+                                        </span>
+                                        <ul>
+                                            <li>
+                                                <span class="types"> <span class="number"> number</span> </span>
+                                                Number to act on
+                                            </li>
+                                            <li>
+                                                <span class="types"> <span class="number"> number</span> </span>
+                                                Cargo DBID to affect
+                                            </li>
+                                            <li>
+												<span class="types"> <span class="tooltip"> value<span class="tooltiptext"> '1 = Mount', '2 = Ground', '3 = Facility', '4 = Container'</span> </span> </span>
+                                                Type of cargo
+                                            </li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             </li>
                         </ul>
@@ -160,7 +184,13 @@
                     <code> ScenEdit_UpdateUnitCargo( { guid='2cd64757-1b66-4609-ad56-df41bee652e5', mode='remove_cargo', cargo={'871aea14-d963-4052-a7fc-ed36e97bb732',{5,752} } } )</code>
                 </div>
 
-            </div>
+                <div class="example">
+                    <code>   local u = ScenEdit_GetUnit({name='Yokosuka Building 14 (Large)', guid='29541903-93d0-436b-9f08-a4696f12a4fc'})<br/>
+local a = ScenEdit_UpdateUnitCargo({guid='29541903-93d0-436b-9f08-a4696f12a4fc',mode='add_cargo',cargo={ {1,2541}, {3,361,3}, {4,7,4}, {2,246,2} } })<br/>
+print(a.cargo)</code>
+                </div>
+
+         </div>
         </div>
     </div>
 

@@ -97,6 +97,7 @@
                                             'add_mount', 'remove_mount', 'update_mount_arc', <br / >
                                             'add_weapon', 'remove_weapon', <br / >
                                             'add_comms', 'remove_comms', <br / >
+                                            'add_fuel', 'remove_fuel', <br / >
                                             'add_magazine', 'add_magazine_only', 'remove_magazine', <br / >
                                             'delta'
                                         </span>
@@ -186,6 +187,26 @@
                                 <span class="parameter"> magid = </span>
                                 <span class="types"> <span class="string"> string</span> </span>
                                 A specific magazine GUID to operate on (not applicable to adding magazine)
+                            </li>
+                            <li>
+                                <span class="parameter"> fuel = </span>
+                                <span class="table">
+                                    {
+                                    }
+
+                                    of multiple
+                                </span>
+                                Fuel to perform action on
+                                <ul>
+                                    <li>
+                                        <span class="types"> <span class="string"> string</span> </span>
+                                        fuel type
+                                    </li>
+                                    <li>
+                                        <span class="types"> <span class="number"> number</span> </span>
+                                        quantity
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                     </li>
