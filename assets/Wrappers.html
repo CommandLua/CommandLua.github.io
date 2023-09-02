@@ -120,6 +120,7 @@ end<br>
 					<li><span class="wrapper"><a href="#wrapper_Magazine">Magazine</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_Mission">Mission</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_Mount">Mount Device</a></span></li>
+					<li><span class="wrapper"><a href="#wrapper_Operation">Operation</a></span></li>
 					<!--<li><span class="wrapper"><a href="#wrapper_Point">Point</a></span></li>-->
 					<li><span class="wrapper"><a href="#wrapper_ReferencePoint">ReferencePoint</a></span></li>
 					<!--<li><span class="wrapper"><a href="#wrapper_RefuelOptions">RefuelOptions</a></span></li>-->
@@ -858,9 +859,9 @@ end<br>
 					<a class="anchor" id="wrapper_Mission"></a>
 					<h3>Mission</h3>
 		
-		
-					Mission.
-		
+<p> 
+<font size="+1">Standard Mission Options</font>
+</p>	
 		
 					<table class="table_borders" style="width: 100%; margin-left: 0px;">
 					<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
@@ -974,9 +975,135 @@ end<br>
 						<td>Returns <span class="types"><span class="boolean"><a href="Tables.html#table_CargoItem">{ CargoItem }</a></span></span></td></tr>
 							
 					</table>
-<br/>		
-		
+							
 				<h4><a href="Examples.html#Example_Wrapper_Mission" target="wrapper_mission" >Examples</a></h4>
+
+<p> 
+<font size="+1">Amphibious & Operation Planner Related Options</font>
+</p>
+					<table class="table_borders" style="width: 100%; margin-left: 0px;">
+					<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+						<tr><td><span class="parameter">PriorityWeight</span>
+						<td><span class="types"><span class="number">integer</span></span>
+						<td>How important this mission is (0 = most important); affects multi-mission units assignment dynamic.
+						</td></tr>
+						<tr><td><span class="parameter">OperationName</span>
+						<td><span class="types"><span class="string">string</span></span>
+						<td>Used to organize mission into groups, it is an informational element shown on the operation planner UI
+						</td></tr>
+						<tr><td><span class="parameter">Completion</span>
+						<td><span class="types"><span class="number">number</span></span>
+						<td>From 0.0 to 1.0, it designates how complete this mission is. This value is mostly unused in most cases at the moment and should be ignored. 
+						</td></tr>
+						<tr><td><span class="parameter">Phase</span>
+						<td><span class="types"><span class="tooltip">phase<span class="tooltiptext">None = 9999<br>
+        Auto = 0<br>
+        Completed = 10<br>
+        Active = 20<br>
+        OnHold = 30<br></span></span></span>
+						<td>The phase as interpreted by the operation planner, this rules the whole dynamic in the operation planner and the assignment of multi-mission units. 
+						</td></tr>
+
+						<tr><td><span class="parameter">MissionStartTrigger_Time</span>
+						<td><span class="types"><span class="number">integer</span></span>
+						<td>The H +/- time condition (in seconds) for the start trigger. 
+						</td></tr>
+						<tr><td><span class="parameter">MissionStartTrigger_Time_Enabled</span>
+						<td><span class="types"><span class="boolean">True/False</span></span>
+						<td>Is this trigger used or not ? 
+						</td></tr>
+						<tr><td><span class="parameter">MissionStartTrigger_Time_LastResult</span>
+						<td><span class="types"><span class="boolean">True/False</span></span>
+						<td>What was the result of the trigger when it last ran ? 
+						</td></tr>
+						<tr><td><span class="parameter">MissionStartTrigger_Time_Operator</span>
+						<td><span class="types"><span class="boolean">True/False</span></span>
+						<td>The trigger's operator. True = 'AND', False = 'OR'  
+						</td></tr>
+
+						<tr><td><span class="parameter">MissionStartTrigger_MissionCompleted</span>
+						<td><span class="table">{ <span class="types"><span class="string">string</span></span>, ... }</span>
+						<td>The condition for the trigger, defined as all the missions (GUID) that need to be completed (phase as "satisfied") for the trigger to check. 
+						</td></tr>
+						<tr><td><span class="parameter">MissionStartTrigger_MissionCompleted_Enabled</span>
+						<td><span class="types"><span class="boolean">True/False</span></span>
+						<td>Is this trigger used or not ? 
+						</td></tr>
+						<tr><td><span class="parameter">MissionStartTrigger_MissionCompleted_LastResult</span>
+						<td><span class="types"><span class="boolean">True/False</span></span>
+						<td>What was the result of the trigger when it last ran ? 
+						</td></tr>
+						<tr><td><span class="parameter">MissionStartTrigger_MissionCompleted_Operator</span>
+						<td><span class="types"><span class="boolean">True/False</span></span>
+						<td>The trigger's operator. True = 'AND', False = 'OR'  
+						</td></tr>
+
+						<tr><td><span class="parameter">MissionStartTrigger_LUADescription</span>
+						<td><span class="types"><span class="string">string</span></span>
+						<td>The label of the lua script as an indicator of its purpose
+						</td></tr>
+						<tr><td><span class="parameter">MissionStartTrigger_LUA</span>
+						<td><span class="types"><span class="string">string</span></span>
+						<td>The lua script to be executed for this trigger conditions, must return a boolean as a condition result.
+						</td></tr>
+						<tr><td><span class="parameter">MissionStartTrigger_LUA_Enabled</span>
+						<td><span class="types"><span class="boolean">True/False</span></span>
+						<td>Is this trigger used or not ? 
+						</td></tr>
+						<tr><td><span class="parameter">MissionStartTrigger_LUA_LastResult</span>
+						<td><span class="types"><span class="boolean">True/False</span></span>
+						<td>What was the result of the trigger when it last ran ? 
+						</td></tr>
+						<tr><td><span class="parameter">MissionStartTrigger_LUA_Operator</span>
+						<td><span class="types"><span class="boolean">True/False</span></span>
+						<td>The trigger's operator. True = 'AND', False = 'OR'  
+						</td></tr>
+
+						<tr><td><span class="parameter">MissionCompletedTrigger_ElapsedTime</span>
+						<td><span class="types"><span class="number">integer</span></span>
+						<td>The elapsed time (in seconds) since mission execution for the trigger's condition to return true.  
+						</td></tr>
+						<tr><td><span class="parameter">MissionCompletedTrigger_ElapsedTime_Current</span>
+						<td><span class="types"><span class="number">integer</span></span>
+						<td>The current elapsed time (in seconds). 
+						</td></tr>
+						<tr><td><span class="parameter">MissionCompletedTrigger_ElapsedTime_Enabled</span>
+						<td><span class="types"><span class="boolean">True/False</span></span>
+						<td>Is this trigger used or not ? 
+						</td></tr>
+						<tr><td><span class="parameter">MissionCompletedTrigger_ElapsedTime_LastResult</span>
+						<td><span class="types"><span class="boolean">True/False</span></span>
+						<td>What was the result of the trigger when it last ran ? 
+						</td></tr>
+						<tr><td><span class="parameter">MissionCompletedTrigger_ElapsedTime_Operator</span>
+						<td><span class="types"><span class="boolean">True/False</span></span>
+						<td>The trigger's operator. True = 'AND', False = 'OR'  
+						</td></tr>
+						
+						<tr><td><span class="parameter">MissionCompletedTrigger_LUADescription</span>
+						<td><span class="types"><span class="string">string</span></span>
+						<td>The label of the lua script as an indicator of its purpose
+						</td></tr>
+						<tr><td><span class="parameter">MissionCompletedTrigger_LUA</span>
+						<td><span class="types"><span class="string">string</span></span>
+						<td>The lua script to be executed for this trigger conditions, must return a boolean as a condition result.
+						</td></tr>
+						<tr><td><span class="parameter">MissionCompletedTrigger_LUA_Enabled</span>
+						<td><span class="types"><span class="boolean">True/False</span></span>
+						<td>Is this trigger used or not ? 
+						</td></tr>
+						<tr><td><span class="parameter">MissionCompletedTrigger_LUA_LastResult</span>
+						<td><span class="types"><span class="boolean">True/False</span></span>
+						<td>What was the result of the trigger when it last ran ? 
+						</td></tr>
+						<tr><td><span class="parameter">MissionCompletedTrigger_LUA_Operator</span>
+						<td><span class="types"><span class="boolean">True/False</span></span>
+						<td>The trigger's operator. True = 'AND', False = 'OR'  
+						</td></tr>
+			</table>
+		
+
+<br/>		
 		
 		
 		
@@ -1037,7 +1164,58 @@ end<br>
 		
 				<h4><a href="Examples.html#Example_Wrapper_Mount" target="wrapper_mount" >Examples</a></h4>
 		
+
+					<hr>
+					<a class="anchor" id="wrapper_Operation"></a>
+					<h3>Operation</h3>
 		
+					<p>
+					The ‘Operation’ object can be fetched from the side object. There is only one operation object per side. 
+					</p>
+		
+	
+					<table class="table_borders" style="width: 100%; margin-left: 0px;">
+					<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+						<tr><td><span class="parameter">LHourMission</span></td>
+						<td><span class="types"><a href="#wrapper_Mission">Mission</a></span></td>
+						<td>The mission designated to start at L-Hour. As soon as the L-Hour is reached, the mission will change phase to “Running”. 
+						</td><td>
+						</td></tr>
+						<tr><td><span class="parameter">HHourMission</span></td>
+						<td><span class="types"><a href="#wrapper_Mission">Mission</a></span></td>
+						<td>The mission designated to start at H-Hour. As soon as the H-Hour is reached, the mission will change phase to “Running”. 
+						</td><td>
+						<tr><td><span class="parameter">HHour</span></td>
+						<td><span class="types"><span class="string">string</span></span></td>
+						<td>The time set as H-Hour. 
+						</td><td>
+						</td></tr>
+						<tr><td><span class="parameter">LHour</span></td>
+						<td><span class="types"><span class="string">string</span></span></td>
+						<td>The time set as L-Hour. 
+						</td><td>
+						<tr><td><span class="parameter">HHourEffectiveStartTime</span></td>
+						<td><span class="types"><span class="string">string</span></span></td>
+						<td>The effective time at which the H-Hour started counting. Sometimes the actual H-Hour can be different from the one planned initially, or in the past. 
+						<span class="readonly">READ ONLY</span></td><td>
+						</td></tr>
+						<tr><td><span class="parameter">LHourEffectiveStartTime</span></td>
+						<td><span class="types"><span class="string">string</span></span></td>
+						<td>The effective time at which the L-Hour started counting. Sometimes the actual L-Hour can be different from the one planned initially, or in the past. 
+						<span class="readonly">READ ONLY</span></td><td>
+						</td></tr>
+						<tr><td><span class="parameter">H_LHourAreRelative</span></td>
+						<td><span class="types"><span class="boolean">True/False</span></span></td>
+						<td>Whether or not the H-Hour and the L-Hour have a static time delta. <br/>
+						With this option on TRUE, the H-hour and L-hour will always have the same time difference and will adjust automatically when changing either the H-Hour or the L-Hour
+						</td><td>
+						</td></tr>
+					</table>
+		
+		<!--
+					<h4><a href="Examples.html#Example_Wrapper_Operation" target="wrapper_operation" >Examples</a></h4>
+		-->
+
 		<!--
 					<hr>
 					<a class="anchor" id="wrapper_Point"></a>
@@ -1574,6 +1752,11 @@ end<br>
                         <td>
                             how long aircraft has been flying in seconds. <span class="readonly">READ ONLY</span>
                         </td></tr>
+                        <tr><td><span class="parameter">AllowMultiMission</span>
+                        <td><span class="types"><span class="boolean">True/False</span></span>
+                        <td>
+                            Is the mission allowed to have multiple missions assigned to it and will it be considered by the operation planner logic ?
+                        </td></tr>
                         <tr><td><span class="parameter">altitude</span>
                         <td><span class="types"><span class="number">number</span></span>
                         <td>
@@ -1588,6 +1771,11 @@ end<br>
                         <td><span class="table">{ {side, guid, name}, ... } </span>
                         <td>
                             A table of how this unit is seen from the other sides (as contacts). <span class="readonly">READ ONLY</span>
+                        </td></tr>
+                        <tr><td><span class="parameter">AssignedMissionsQueue</span>
+                        <td><span class="table">{ mission_guid, ... } </span>
+                        <td>
+                            The list of missions assigned to this unit. This is the missions the operation planner evaluate every tick. 
                         </td></tr>
                         <tr><td><span class="parameter">assignedUnits</span>
                         <td><span class="table">{ Boats, Aircraft } </span>
