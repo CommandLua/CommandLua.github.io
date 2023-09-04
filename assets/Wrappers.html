@@ -126,6 +126,7 @@ end<br>
 					<!--<li><span class="wrapper"><a href="#wrapper_RefuelOptions">RefuelOptions</a></span></li>-->
 					<li><span class="wrapper"><a href="#wrapper_Scenario">Scenario</a></span></li>
 					<!--<li><span class="wrapper"><a href="#wrapper_Sensor">Sensor Device</a></span></li>-->
+					<li><span class="wrapper"><a href="#wrapper_Serial">Serial</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_Side">Side</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_SpecialAction">SpecialAction</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_Unit">Unit</a></span></li>
@@ -1552,6 +1553,52 @@ end<br>
                     </p>
                 </div>
 -->
+	
+
+					<hr>
+					<a class="anchor" id="wrapper_Serial"></a>
+					<h3>Serial</h3>
+		
+		
+					<p>Serials/Chalks can be fetched from the side object the name of the collection is “Chalks”.</p>
+	
+		
+					<table class="table_borders" style="width: 100%; margin-left: 0px;">
+					<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+						<tr><td><span class="parameter">ID</span>
+						<td><span class="types"><span class="number">ID</span></span>
+						<td>The serial’s visible ID.
+						</td></tr>
+						<tr><td><span class="parameter">AssociatedMothership</span>
+						<td><span class="types"><span class="string">string</span></span>
+						<td>The GUID of the mothership this chalk is associated to.<span class="readonly">READ ONLY</span>
+						</td></tr>
+						<tr><td><span class="parameter">LargestCargoType</span>
+						<td><span class="types"><span class="tooltip">LargestCargoType<span class="tooltiptext">NoCargo = 0<br>
+Personnel = 1000 <br>
+SmallCargo = 2000 <br>
+MediumCargo = 3000 <br>
+LargeCargo = 4000 <br>
+VLargeCargo = 5000 <br></span></span></span>
+						<td>Get the largest cargo this serial currently contains. <span class="readonly">READ ONLY</span> 
+						</td></tr>
+						<tr><td><span class="parameter">Mass</span>
+						<td><span class="types"><span class="number">number</span></span>
+						<td>The total mass of the serial.<span class="readonly">READ ONLY</span>
+						</td></tr>
+						<tr><td><span class="parameter">Area</span>
+						<td><span class="types"><span class="number">number</span></span>
+						<td>The total area taken by the serial.<span class="readonly">READ ONLY</span>
+						</td></tr>
+						<tr><td><span class="parameter">PAX</span>
+						<td><span class="types"><span class="number">number</span></span>
+						<td>The total personnel this serial contains.<span class="readonly">READ ONLY</span>
+						</td></tr>
+
+					</table>
+		
+<br/>		
+
 					<hr>
 					<a class="anchor" id="wrapper_Side"></a>
 					<h3>Side</h3>
@@ -1565,6 +1612,10 @@ end<br>
 						<tr><td><span class="parameter">awareness</span>
 						<td><span class="types"><a href="DataTypes.html#dataType_Awareness">Awareness</a></span>
 						<td><span class="readonly">READ ONLY</span>
+						</td></tr>
+						<tr><td><span class="parameter">Chalks</span>
+						<td><span class="table">{ <a href="#wrapper_Serial">Serial, ...</a> }</span>
+						<td>Table of serials within the Chalk.<span class="readonly">READ ONLY</span>
 						</td></tr>
 						<tr><td><span class="parameter">contacts</span>
 						<td><span class="table">{ <a href="Tables.html#table_UnitList">UnitList</a> }</span>
@@ -1610,6 +1661,10 @@ end<br>
 						<td><span class="table">{ { giud, description, name }, ... }</span>
 						<td>Table of Zone identifiers for the designated side <span class="readonly">READ ONLY</span>
 						<td>Use the method 'getnonavzone' to get specific details of the zone</td></tr>						
+						<tr><td><span class="parameter">Operation</span>
+						<td><span class="types"><a href="#wrapper_Operation">Operation</a></span>
+						<td><span class="readonly">READ ONLY</span>
+						</td></tr>
 						<tr><td><span class="parameter">proficiency</span>
 						<td><span class="types"><a href="DataTypes.html#dataType_Proficiency">Proficiency</a></span>
 						<td><span class="readonly">READ ONLY</span>
