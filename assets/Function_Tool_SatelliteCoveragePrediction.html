@@ -1,0 +1,183 @@
+<html>
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163808192-1"></script>
+    <script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-163808192-1');
+    </script>
+
+
+    <title>Command Lua Docs</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+
+
+</head>
+
+<body>
+    <div id="header-container">
+        <div id="header">
+            <div id="header-logo">
+                <h1>
+                    <a href="../index2.html"><img src="./images/CommandLuaLogo.svg" height=45px alt="CommandLua"></a>
+                </h1>
+            </div>
+            <div id="header-nav">
+                <a class="selected" href="../index2.html">Reference</a>
+                <!-- <a href="/guides/">Guides</a> -->
+                <a href="https://www.matrixgames.com/forums/tt.asp?forumid=1681">Forum</a>
+            </div>
+        </div>
+    </div>
+    <div id="container">
+
+        <div id="content">
+            <div id="nav">
+                <ul>
+                    <li><a href="../index2.html#News">News</a></li>
+                    <li><a href="../index2.html#Introduction">Introduction</a></li>
+                    <ol>
+                        <li><a href="../index2.html#HowToUse">How to Use These Docs</a></li>
+                        <li><a href="../index2.html#FirstSteps">First Steps</a></li>
+                        <li><a href="../index2.html#ExternalResources">External Resources</a></li>
+                    </ol>
+
+                    <li><a href="../index2.html#Overview">Overview</a></li>
+                    <ol>
+                        <li><a href="../index2.html#CaseSensitivityandConventions">Case Sensitivity and Conventions</a></li>
+                        <li><a href="../index2.html#EventHandling">Event Handling</a></li>
+                        <li><a href="../index2.html#ErrorHandling">Error Handling</a></li>
+                    </ol>
+                    <li><a href="DataTypes.html">Data Types</a></li>
+                    <li><a href="Functions.html">Functions</a></li>
+                    <li><a href="Wrappers.html">Wrappers</a></li>
+                    <li><a href="Selectors.html">Selectors</a></li>
+                    <li><a href="Tables.html">Tables</a></li>
+                </ul>
+            </div>
+
+            <div id="main">
+
+                <h2><a class="anchor" id="Tool_SatelliteCoveragePrediction"></a>Tool_SatelliteCoveragePrediction (theSatellite, locationTable, timeTable, maxRange, minGrazingAngle)</h2>
+                <p>
+                    The function purpose is to predict when the satellite will be able to cover the indicated area.
+                </p>
+                
+                <h3>Parameters</h3>
+                <ul>
+                    <li>
+                        <span class="parameter"> theSatellite</span>
+                        <span class="types"> <span class="string"> string</span></span> GUID of the satellite
+					</li>
+					<li>
+                        <span class="parameter"> locationTable</span>
+                        <span class="table">
+                            {
+                            }
+                        </span>
+                            of the location point
+						<ul>
+                        <li><span class="parameter"> latitude =</span>
+                        <span class="types"> <a href="DataTypes.html#dataType_Latitude"> latitude</a> </span>
+                        <li><span class="parameter"> longitude =</span>
+                        <span class="types"> <a href="DataTypes.html#dataType_Longitude"> longitude</a> </span>
+                        <li><span class="parameter"> altitude =</span>
+                        <span class="types"> <a href="DataTypes.html#dataType_Latitude"> altitude</a> </span>
+                        
+						</ul>
+                    </li>
+					<li>
+                        <span class="parameter"> timeTable</span>
+                        <span class="table">
+                            {
+                            }
+                        </span>
+                            of the time frame (start and duration) to check for coverage
+						<ul>
+						<li>
+							<span class="parameter"> dateformat =</span>
+							<span class="types"><span class="tooltip">value<span class="tooltiptext">
+"DDMMYYYY" <br>
+"MMDDYYYY" <br>
+"YYYYMMDD" 
+							</span></span></span>
+							Overriding format of the date (optional) Default format is "DDMMYYYY"
+						</li>
+                        <li><span class="parameter"> startDate =</span>
+                        <span class="types"> <span class="string"> StartDate </span></span> Start date as 'DD:MM:YYYY' unless overriding dateFormat supplied.
+                        <li><span class="parameter"> startTime =</span>
+                        <span class="types"> <span class="string"> StartTime </span></span> Start time as 'HH:MM:SS' 
+                        <li><span class="parameter"> duration =</span>
+                        <span class="types"> <span class="string"> Duration  </span></span> Duration as 'day:hours:minutes:seconds'
+                        
+						</ul>
+                     <li>
+                        <span class="parameter"> maxRange</span>
+                        <span class="types"> <span class="number"> number</span></span> range from the location point to cover
+					</li>
+                    <li>
+                        <span class="parameter"> minGrazingAngle</span>
+                        <span class="types"> <span class="number"> number</span></span> 
+					</li>
+                   </li>
+                </ul>
+
+                <h3>Returns</h3>
+                <ul>
+                    <li>
+                        <span class="table">
+                            {
+                            }
+                        </span>
+                            of the periods when the location point is covered by satellite. This could be empty or multiple entries
+						<ul>
+							<ul>
+								<li><span class="parameter"> start </span>
+								<span class="types"> <span class="string"> StartDateTime </span></span> 'DD:MM:YYYY HH:MM:SS' If overriding dateFormat supplied, then date will be in that format.
+								<li><span class="parameter"> duration </span>
+								<span class="types"> <span class="number"> Duration  </span></span> Duration in 'seconds'
+							</ul>
+						</ul>
+                    </li>
+                </ul>
+
+                <h4>Example</h4>
+                <div class="example">
+                    <code>
+local l = Tool_SatelliteCoveragePrediction("ZY-1 02D", {latitude=33.352, longitude=-162.795, altitude=0},<br/> {startdate='11:09:2023', dateformat='DDMMYYYY', starttime='18:13:07', duration='2:00:00'}, 450, 95)<br/>
+print(l)<br/>
+<output>
+{ [1] = { duration = 50, start = '11:09:2023 19:22:37' }, [2] = { duration = 60, start = '12:09:2023 06:34:47' } }
+</output>
+                    </code>
+<p>With custom elevation angles:</p>
+                   <code>
+local u = ScenEdit_GetUnit({name="ZY-1 02D", side="Red"})<br/>
+local sensorTable = u.sensors<br/>
+local firstSensor = u:GetSensor(sensorTable[1]['sensor_guid'])<br/>
+firstSensor.MaxElevationAngle = -71<br/>
+local OffZenithAngle = 90 + firstSensor.MaxElevationAngle<br/>
+<br/>
+local coverage = Tool_SatelliteCoveragePrediction("ZY-1 02D", {latitude=33.064, longitude=-162.804, altitude=0}, <br/>{startdate='11:09:2023', dateformat='DDMMYYYY', starttime='18:13:07', duration='2:00:00'}, 450, OffZenithAngle)<br/>
+print(coverage)<br/>
+<output>
+{ [1] = { start = '11:09:2023 19:22:57', duration = 20 }, [2] = { start = '12:09:2023 06:34:47', duration = 50 } }
+</output>               
+                    </code>
+				</div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <p> Copyright &copy; WarfareSims 2020</p>
+    </div>
+</body>
+
+</html>

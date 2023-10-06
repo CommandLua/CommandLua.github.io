@@ -125,7 +125,7 @@ end<br>
 					<li><span class="wrapper"><a href="#wrapper_ReferencePoint">ReferencePoint</a></span></li>
 					<!--<li><span class="wrapper"><a href="#wrapper_RefuelOptions">RefuelOptions</a></span></li>-->
 					<li><span class="wrapper"><a href="#wrapper_Scenario">Scenario</a></span></li>
-					<!--<li><span class="wrapper"><a href="#wrapper_Sensor">Sensor Device</a></span></li>-->
+					<li><span class="wrapper"><a href="#wrapper_Sensor">Sensor Device</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_Serial">Serial</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_Side">Side</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_SpecialAction">SpecialAction</a></span></li>
@@ -1112,8 +1112,8 @@ end<br>
                 <a class="anchor" id="wrapper_Mount"></a>
                 <h3>Mount</h3>
                 <p>
-                    A mount is similar to a magazine, but it refers to the actual <code>loads</code> on the
-                    <code>weapon</code>, rather than a storage area.
+                    A mount consistes of <code>weapon(s)</code> and the actual <code>loads</code> on them
+                    , rather than in a storage area.
                 </p>
                 <h4>Fields</h4>
 					<table class="table_borders" style="width: 100%; margin-left: 0px;">
@@ -1483,56 +1483,55 @@ end<br>
 		
 				<h4><a href="Examples.html#Example_Wrapper_Scenario" target="wrapper_scenario" >Examples</a></h4>
 		
-<!-- not really used as a wrapper currently. Need to expand wrapper to include more details like mout/magazine to be useful
+<!-- not really used as a wrapper currently. Need to expand wrapper to include more details like mout/magazine to be useful -->
                 <hr>
                 <a class="anchor" id="wrapper_Sensor"></a>
                 <h3>Sensor</h3>
                 <p>
-                    A list of sensors associated with a <span class="wrapper"><a href="Wrappers.html#wrapper_Unit">Unit</a></span> wrapper
+                    Some details of a sensor device
                 </p>
                 <h4>Fields</h4>
                 <table class="table_borders" style="width: 100%; margin-left: 0px;">
                     <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
                     <tr>
-                        <td><span class="parameter">sensor_dbid</span>
+                        <td><span class="parameter">altitudes</span>
+                        <td><span class="types"><span class="table"> { min, max } </span></span>
+                        <td>Returns a table of  altitudes
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">dbid</span>
                         <td><span class="types"><span class="string">string</span></span>
                         <td>The DBID of the sensor.
                     </tr>
                     <tr>
-                        <td><span class="parameter">sensor_guid</span>
+                        <td><span class="parameter">guid</span>
                         <td><span class="types"><span class="string">string</span></span>
                         <td>The GUID of the sensor.
                     </tr>
                     <tr>
-                        <td><span class="parameter">sensor_name</span>
+                        <td><span class="parameter">MaxElevationAngle</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>The maximum elevation of the sensor (applicable to Satellite)<span class="pro_only">PRO ONLY</span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">MinElevationAngle</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>The minimum elevation of the sensor (applicable to Satellite)<span class="pro_only">PRO ONLY</span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">name</span>
                         <td><span class="types"><span class="string">string</span></span>
                         <td>The name of the sensor.
                     </tr>
-                    <tr>
-                        <td><span class="parameter">sensor_type</span>
-                        <td><span class="types"><span class="string">string</span></span>
-                        <td>The high-level type of sensor.
-                    </tr>
-                    <tr>
-                        <td><span class="parameter">sensor_role</span>
+                   <tr>
+                        <td><span class="parameter">role</span>
                         <td><span class="types"><span class="string">string</span></span>
                         <td>The role of the sensor (e.g. 3D Air Search - Medium Range).
                     </tr>
                     <tr>
-                        <td><span class="parameter">sensor_maxrange</span>
-                        <td><span class="types"><span class="number">number</span></span>
-                        <td>The maximum range of the sensor.
-                    </tr>
-                    <tr>
-                        <td><span class="parameter">sensor_status</span>
-                        <td><span class="types"><span class="string">string</span></span>
-                        <td>The operational status of the sensor.
-                    </tr>
-                    <tr>
-                    <td><span class="parameter">sensor_isactive</span>
-                    <td><span class="types"><span class="boolean">boolean</span></span>
-                    <td>
-                        Whether the sensor is active or not.
+                        <td><span class="parameter">ranges</span>
+                        <td><span class="types"><span class="table"> { min, max } </span></span>
+                        <td>Returns a table of  ranges
                     </tr>
                     <tr>
                         <td><span class="parameter">scaninterval</span>
@@ -1540,19 +1539,30 @@ end<br>
                         <td>The scanning interval of the sensor.
 						<span class="readonly">READ ONLY</span> unless <span class="pro_only">PRO ONLY</span>
                     </tr>
+                    <tr>
+                        <td><span class="parameter">type</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>The high-level type of sensor.
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">IsPreciseCheck</span>
+						<td><span class="types"><span class="method">method</span>( detector, detected)</span></td>
+                        <td>Returns <span class="types"><span class="boolean">True/False</span></span>
+						
+                    </tr>
+                   <tr>
+                        <td><span class="parameter">RangeAgainstTarget</span>
+						<td><span class="types"><span class="method">method</span>( detector, detected)</span></td>
+                        <td>Returns a table of <span class="table"> { maxIR, MaxVisual } </span> as max range between units for IR and Visual
+						
+                    </tr>
 					
                 </table>
-                <div class="note-alert">
-                    <p>
-                        <strong>Note:</strong> To set sensor on or off, use a table of <code>{sensor_guid,sensor_isactive}</code>
-                    </p>
-                </div>
                 <div class="note-caution">
                     <p>
                         <strong>Caution:</strong> The GUID returned here is the GUID of the individual sensor component, not the GUID of the parent unit.
                     </p>
                 </div>
--->
 	
 
 					<hr>
@@ -2322,6 +2332,11 @@ VLargeCargo = 5000 <br></span></span></span>
                         <td><span class="types"><span class="method">method</span>(guid)</span>
                         <td>
                             Delete cargo item by it's guid. Returns <span class="types"><span class="boolean">True/False</span></span>
+                        </td></tr>
+						<tr><td><span class="parameter">GetSensor</span>
+                        <td><span class="types"><span class="method">method</span>(guid)</span>
+                        <td>
+                            Get the sensor GUID details. Returns <span class="wrapper"><a href="#wrapper_Sensor">sensor</a> or nil</span>
                         </td></tr>
 						<tr><td><span class="parameter">getUnitCargo</span>
                         <td><span class="types"><span class="method">method</span>(guid)</span>
