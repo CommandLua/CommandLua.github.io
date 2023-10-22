@@ -1,0 +1,192 @@
+<html>
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163808192-1"></script>
+    <script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-163808192-1');
+    </script>
+
+
+    <title>Command Lua Docs</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+
+
+</head>
+
+<body>
+    <div id="header-container">
+        <div id="header">
+            <div id="header-logo">
+                <h1>
+                    <a href="../index2.html"><img src="./images/CommandLuaLogo.svg" height=45px alt="CommandLua"></a>
+                </h1>
+            </div>
+            <div id="header-nav">
+                <a class="selected" href="../index2.html">Reference</a>
+                <!-- <a href="/guides/">Guides</a> -->
+                <a href="https://www.matrixgames.com/forums/tt.asp?forumid=1681">Forum</a>
+            </div>
+        </div>
+    </div>
+    <div id="container">
+
+        <div id="content">
+            <div id="nav">
+                <ul>
+                    <li><a href="../index2.html#News">News</a></li>
+                    <li><a href="../index2.html#Introduction">Introduction</a></li>
+                    <ol>
+                        <li><a href="../index2.html#HowToUse">How to Use These Docs</a></li>
+                        <li><a href="../index2.html#FirstSteps">First Steps</a></li>
+                        <li><a href="../index2.html#ExternalResources">External Resources</a></li>
+                    </ol>
+
+                    <li><a href="../index2.html#Overview">Overview</a></li>
+                    <ol>
+                        <li><a href="../index2.html#CaseSensitivityandConventions">Case Sensitivity and Conventions</a></li>
+                        <li><a href="../index2.html#EventHandling">Event Handling</a></li>
+                        <li><a href="../index2.html#ErrorHandling">Error Handling</a></li>
+                    </ol>
+                    <li><a href="DataTypes.html">Data Types</a></li>
+                    <li><a href="Functions.html">Functions</a></li>
+                    <li><a href="Wrappers.html">Wrappers</a></li>
+                    <li><a href="Selectors.html">Selectors</a></li>
+                    <li><a href="Tables.html">Tables</a></li>
+                </ul>
+            </div>
+
+            <div id="main">
+
+                <h3><a class="anchor" id="UI_CallAdvancedHTMLDialog"></a>UI_CallAdvancedHTMLDialog 
+				( title, form, interactions )</h3>
+                <p>
+                    The function allows you to show a HTML form, from which variables will be returned to the Lua script.
+                </p>
+                
+                <h4>Parameters</h4>
+                <ul>
+                    <li>
+                        <span class="parameter"> title</span>
+                        <span class="types"> <span class="string"> string</span> </span>
+                        The title that shows on the top of the dialog box
+                    </li>
+                    <li>
+                        <span class="parameter"> form</span>
+                        <span class="types"> <span class="string"> string</span> </span>
+                        A HTML form from which data can be entered, The current input supported modes are text, select, and radio.
+                    </li>
+                     <li>
+                        <span class="parameter"> interactions</span>
+                        <span class="table">
+                            { 
+                            }
+
+                            of
+                        </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+								One of more Button names
+              </ul>
+
+                <h4>Returns</h4>
+                <p>
+                    <span class="table">Table {} of</span>
+                    <span class="types"><span class="string">Form_name</span></span> =  <span class="types"><span class="string">value</span></span>
+                    The variable name from the form and its value. The button pressed is returned in the table under ['pressed'].
+                </p>
+
+                <h5>Example</h5>
+                <div class="example">
+                    <code>
+local msg = [[<br/>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Example</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<h1>Logistics Table</h1><p>Introduce the quantity you need for each missile type</p>
+    <table>
+        <tr>
+            <th>Missile</th>
+            <th>Qty</th>
+        </tr>
+        <tr>
+            <td>AIM-120A:</td>
+            <td> <select name="AIM-120D">
+                    <option value="16">16x</option>
+                    <option value="24">24x</option>
+                    <option value="32">32x</option>
+                </select>
+
+</td>
+        </tr>
+        <tr>
+            <td>HARM-88C</td>
+            <td><input type="text" name="HARM"></td>
+        </tr>
+        <tr>
+            <td>GBU-10</td>
+            <td>    
+    <input type="radio" name="opcion" value="16" id="16">
+    <label for="16">16x</label><br>
+
+    <input type="radio" name="opcion" value="24" id="24">
+    <label for="24">24x</label><br>
+
+    <input type="radio" name="opcion" value="32" id="32">
+    <label for="32">32x</label><br>
+        </tr>
+    </table>
+
+</body>
+</html>
+]]
+<br/> 
+local button = UI_CallAdvancedHTMLDialog("Logistics", msg, {"Submit","Cancel"})<br/> 
+for k,v in pairs(button) do<br/> 
+    print(k .. ' = ' .. v)<br/> 
+end<br/> 
+if button['pressed'] == 'Cancel' then<br/> 
+    print("Cancel logic")<br/> 
+else<br/> 
+    print("Process logic")<br/> 
+end<br/> 
+<br/> 
+<output>
+HARM = ''<br/> 
+pressed = Cancel<br/> 
+AIM-120D = 16<br/> 
+Cancel logic<br/>
+</output> 
+                    </code>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <p> Copyright &copy; WarfareSims 2020</p>
+    </div>
+</body>
+
+</html>
