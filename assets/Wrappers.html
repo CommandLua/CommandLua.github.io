@@ -2227,6 +2227,15 @@ VLargeCargo = 5000 <br></span></span></span>
                         <td>
                             The unit's subtype (if applicable). <span class="readonly">READ ONLY</span>
                         </td></tr>
+						<tr><td><span class="parameter">target</span>
+                        <td><span class="types"><span class="string">object</span></span>
+                        <td>
+                            The primary taget of the unit.<br/>
+							On reading, it will return the targeted contact <span class="wrapper"><a href="#wrapper_Contact">Contact</a></span><br/>
+							On setting, supply a table of the contact/actual unit GUID or 'BOL' and the activation point (see ScenEdit_AttackContact)<br/>
+							<span class="table">{ <span class="parameter">guid = <span class="types"><span class="string">value</span></span> }</span></span> <br/>
+							
+                        </td></tr>
 						<tr><td><span class="parameter">targetedBy</span>
                         <td><span class="table">{ <span class="types"><span class="string">string</span></span>, ... }</span>
                         <td>
