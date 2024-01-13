@@ -112,7 +112,45 @@
                     <li><span class="datatype"><a href="#dataType_WeaponType">WeaponType</a></span></li>
                     <!--<li><span class="datatype"><a href="#dataType_Weather">Weather</a></span></li>-->
                 </ul>
-
+                <div class="note-caution">
+<p>
+The various code=value references on this page may not be fully up to date. <br/>
+However, you can pull out the current Command listing from Lua by running a couple of commands in the Lua console. <br/>
+To see the current list of 'code types' that are recorded, run the following.
+</p>
+</div>
+<div>
+<code>function pairsByKeyNumeric(t)<br>
+&nbsp;local a = {}<br>
+&nbsp;for n in pairs(t) do a[#a+1] = tonumber(n) end  -- convert to numeric so sequence is in order<br>
+&nbsp;table.sort(a)<br>
+&nbsp;local i = 0<br>
+&nbsp;return function()<br>
+&nbsp;&nbsp;i = i +1<br>
+&nbsp;&nbsp;return a[i], t[tostring(a[i])]<br>
+&nbsp;end<br>
+end<br>
+<br>
+for k,v in pairs(_enumTable_.fields) do<br>
+&nbsp;if string.find(k,'property_') ~= nil then -- is a property<br>
+&nbsp;&nbsp;local vt = {}<br>
+&nbsp;&nbsp;local i = 0<br>
+&nbsp;&nbsp;for w in string.gmatch(v,'%g+[^, ]') do<br>
+&nbsp;&nbsp;&nbsp;vt[i] = w<br>
+&nbsp;&nbsp;&nbsp;i=i+1<br>
+&nbsp;&nbsp;end<br>
+&nbsp;&nbsp;print("\r\n[object] = " .. string.sub(vt[0],2) ) -- property name<br>
+&nbsp;&nbsp;--local values = "_enumTable_." .. string.sub(vt[0],2) -- values of the property<br>
+&nbsp;&nbsp;print("\r\n[values] = "); <br>
+&nbsp;&nbsp;for key, value in pairsByKeyNumeric(_enumTable_[string.sub(vt[0],2)]) do<br>
+&nbsp;&nbsp;&nbsp;print(key .. ' = ' .. value) -- step through each sorted value<br>
+&nbsp;&nbsp;end<br>
+&nbsp;end<br>
+end<br>
+                        </code>
+						<p>
+						</p>
+						</div>
                 <hr>
                 <h3><a class="anchor" id="dataType_Altitude"></a>Altitude</h3>
                 <p>
