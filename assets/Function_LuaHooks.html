@@ -101,32 +101,26 @@ As the filter is linked to the hook script, if you need to change or remove the 
 <p>
 					<table class="table_borders">
                         <tr>
-                            <th>UnitFilter</th>
                             <th>Keyword</th>
                             <th>Comment</th>
                         </tr>
                         <tr>
-                            <td></td>
                             <td>TargetSide</td>
                             <td>Side to fillter on. <br/> 'Any' and 'PlayerSide' can be also used</td>
                         </tr>
                         <tr>
-                            <td></td>
                             <td>TargetType</td>
                             <td>Type of unit (ship, submarine, etc)</td>
                         </tr>
                         <tr>
-                            <td></td>
                             <td>TargetSubType</td>
                             <td>Subtype of the above unit type</td>
                         </tr>
                         <tr>
-                            <td></td>
                             <td>SpecificUnitClass</td>
                             <td>Unit class (DBID)</td>
                         </tr>
                         <tr>
-                            <td></td>
                             <td>SpecificUnitID</td>
                             <td>Actual unit</td>
                         </tr>
@@ -136,18 +130,20 @@ As the filter is linked to the hook script, if you need to change or remove the 
 So multiple instances are treated as 'try this' or 'this' or 'this' etc. Once an instance is satisfied, the hook is run. <br/>
 In some cases, you may want an instance to have multiple conditions as in 'try this' and 'this' etc.<br/>
 For example, the following filters...<br/>
-<code>WeaponImpactsBeforeFilter={ {targetFilter={targetside='any',targettype='ship'}, weaponFilter={targetside='playerside'}} } </code>
-The filter says  run the hook when 'the target side is 'any' and the target type is a ship' AND 'the weapon side is the player side regardless of type'. <br/>
-Compare that to this filter, the same but for the '{}' group.
-<code>WeaponImpactsBeforeFilter={ {targetFilter={targetside='any',targettype='ship'}}, {weaponFilter={targetside='playerside'}} } </code>
-This filter says  run the hook when 'the target side is 'any' and the target type is a ship' OR 'the weapon side is the player side regardless of type'. <br/>
+<div><code>WeaponImpactsBeforeFilter={ {targetFilter={targetside='any',targettype='ship'}, weaponFilter={targetside='playerside'}} } </code>
+<p>The filter says  run the hook when 'the target side is 'any' and the target type is a ship' AND 'the weapon side is the player side regardless of type'. <br/></p></div>
+
+Compare that to this filter, it is the same except for the positioning of the table '{}' delimiters.<br/>
+
+<div><code>WeaponImpactsBeforeFilter={ {targetFilter={targetside='any',targettype='ship'}}, {weaponFilter={targetside='playerside'}} } </code>
+<p>This filter says  run the hook when 'the target side is 'any' and the target type is a ship' OR 'the weapon side is the player side regardless of type'. <br/></p>
 
 </p>
  
                 <h3>Lua code for the hooks</h3>
 				<ul>
 					<a class="anchor" id="hook_OnStatusChange"></a>
-					<li>OnStatusCheck( theUnit, oldCondition ) </li>
+					<li><b>OnStatusCheck</b>( theUnit, oldCondition ) </li>
 					<p>
 					This hook can be used to take action on the change of the Ops status of a aircraft or submarine/ship.</br>
 					Using the normal Event trigger (UnitBaseStatus) does basically the same function, although the event uses a limited set of Air/Dock Operation conditions related to an action with the base (e.g. landing, docking, etc).
@@ -157,7 +153,7 @@ This filter says  run the hook when 'the target side is 'any' and the target typ
 
 					<h4>Filter table</h4>
 					<p>
-					This hook supports a standard <a href="#hook_UnitFilter">unit filter</a>.<br/> 
+					This hook supports a standard filter as <a href="#hook_UnitFilter">UnitFilter={...}</a>.<br/> 
 					Multiple 'UnitFilter' items can be added. What this does is for each UnitFilter, the hook sees if the unit satisfies the conditions. <br/>
 					If not, it is skipped and the next TargetFilter tried. Once a match is found, the hook executes and no more TargetFilters are tested.
 
@@ -200,7 +196,7 @@ end<br/>
 
 
 					<a class="anchor" id="hook_SensorCheckBefore"></a>
-                    <li>SensorCheckBefore( theSensor, theParent, theTarget )</li>
+                    <li><b>SensorCheckBefore</b>( theSensor, theParent, theTarget )</li>
 					<p>
 					This hook is executed as part of the sensor check to see if the sensor [theSensor] being used 
 					on the unit [theParent] can detect the target [theTarget].<br/>
@@ -255,7 +251,7 @@ end<br/>
 					</p>
 					
 					<a class="anchor" id="hook_SensorCheckAfter"></a>
-                    <li>SensorCheckAfter( theSensor, theParent, theTarget, theDetectionFeedback )</li>
+                    <li><b>SensorCheckAfter</b>( theSensor, theParent, theTarget, theDetectionFeedback )</li>
 					<p>
 					<font color="#FF0000">***** Is this actually availble to users ****</font><br/>
 					This hook returns the detection results table [theDetectionFeedback] of the sensor check of sensor [theSensor] being used
@@ -297,7 +293,7 @@ end<br/>
 					</p>
 
 					<a class="anchor" id="hook_WeaponFired"></a>
- 					<li>WeaponFired( theTarget, theWeapon )</li>
+ 					<li><b>WeaponFired</b>( theTarget, theWeapon )</li>
 					<p>
 					This is executed when a weapon (theWeapon) is fired at a target contact (theTarget) as part of the ExportWeaponFireEvent().<br/>
 					There is no action taken on any returned result.
@@ -327,15 +323,49 @@ end<br/>
 					</div>
 
 					<a class="anchor" id="hook_WeaponImpacts"></a>
-					<li>WeaponImpacts( theWeapon, theTarget )</li>
+					<li><b>WeaponImpacts</b>( theWeapon, theTarget )</li>
 					<p>
 					This is executed when the weapon (theWeapon) impacts the target (theTarget) after any resolutions, basically when the weapon is 'destroyed' by the impact.<br/>
 					</p><p>
 					Note that if the target is destroyed, 'theTarget' may be nothing which needs to be catered for in the Lua script so as not to cause it to fail.<br/>
 					This is more a 'recording' of the impact rather than performing actions on it.<br/>
 					As a result, nothing needs to be returned. <br/>
-					</p><p>
-					Compare this the other 'hooks' which take action before and after the impact is resolved.
+					</p>
+
+					<a class="anchor" id="hook_WeaponImpactsFilter"></a>
+					<h4>Filter table</h4>
+					<p>
+					This hook supports filters, one for the target and one for the weapon; both filters are based on the standard <a href="#hook_UnitFilter">Filter={...}</a>.<br/> 
+					The 'theTarget' filter is defined by TargetFilter={...}, while the 'theWeapon' filter is defined by WeaponFilter={...}. <br/>
+					
+					<h5>Example</h5>
+					<div class="example">
+					<p>This sets the filter to match on a 'facility' on 'any' side, AND the weapon is on 'player side' and is a 'weapon' of type '2004' [Gun]<br/></p>
+						<code>
+					WeaponImpactsBeforeFilter={ <b>{</b>targetFilter={targetside='any',targettype='facility'}, <br/>
+												weaponFilter={targetside='playerside',targettype='weapon',targetsubtype=2004} <b>}</b> }
+						</code>
+					<p>This sets the filter to match on a 'ship' on 'any' side, OR the weapon is on 'player side' and is a 'weapon' of type '2004' [Gun]<br/>
+					Note the subtle difference. In this case, there 2 internal tables whereas above there was just the one. The table delimiters have been marked <b>{..}</b>.<br/></p>
+						<code>
+					WeaponImpactsBeforeFilter={ <b>{</b>targetFilter={targetside='any',targettype='ship'} <b>}</b>, <br/>
+												<b>{</b>weaponFilter={targetside='playerside',targettype='weapon',targetsubtype=2004} <b>}</b> }
+						</code>
+					<p>This sets the filter to match on a 'ship' or 'facility' on 'any' side, OR the weapon is on 'player side' and is a 'weapon' of type '2004' [Gun]<br/>
+						<code>
+					WeaponImpactsBeforeFilter={ <b>{</b>targetFilter={targetside='any',targettype='ship'} <b>}</b>, <br/>
+												<b>{</b>targetFilter={targetside='any',targettype='facility'} <b>}</b>,<br/>
+												<b>{</b>weaponFilter={targetside='playerside',targettype='weapon',targetsubtype=2004} <b>}</b>}
+						</code>
+					<p>This sets the filter to match on a 'ship' on 'any' side, AND the weapon is on 'player side' and is a 'weapon' of type '2004' [Gun], OR<br/>
+							on a 'facility' on 'any' side, AND the weapon is on 'player side' and is a 'weapon' of type '2004' [Gun].</p>
+<code>
+	WeaponImpactsBeforeFilter={ <b>{</b>targetFilter={targetside='any',targettype='ship'}, <br/>
+								weaponFilter={targetside='playerside',targettype='weapon',targetsubtype=2004} <b>}</b>,<br/>
+							<b>{</b>targetFilter={targetside='any',targettype='facility'}, <br/>
+								weaponFilter={targetside='playerside',targettype='weapon',targetsubtype=2004} <b>}</b> }
+</code>
+				</div>
 					</p>
 
 					<h4>Lua script</h4>
@@ -362,7 +392,7 @@ end<br/>
 					</div>
 
 					<a class="anchor" id="hook_WeaponImpactsBefore"></a>
-					<li>WeaponImpactsBefore( theWeapon, theTarget )</li>
+					<li><b>WeaponImpactsBefore</b>( theWeapon, theTarget )</li>
 					<p>
 					This is excuted before the weapon (theWeapon) impacts the target (theTarget).<br>
 					</p><p>
@@ -371,6 +401,11 @@ end<br/>
 					The return will indicate if the impact has been handled externally rather than let it use the normal impact resolution code.<br/>
 					</p>
 
+					<h4>Filter table</h4>
+					<p>
+					This hook supports filtering as shown in <a href="#hook_WeaponImpactsFilter">WeaponImpacts</a>.<br/> 
+					</p>
+					
 					<h4>Lua script</h4>
 					function WeaponImpactsBefore( <span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theWeapon</a></span>, <span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theTarget</a></span> )<br/>
 					<ul>
@@ -402,7 +437,7 @@ end<br/>
 					</div>
 
 					<a class="anchor" id="hook_WeaponImpactsAfter"></a>
-					<li>WeaponImpactsAfter( theWeapon, theTarget, impacted )</li>
+					<li><b>WeaponImpactsAfter</b>( theWeapon, theTarget, impacted )</li>
 					<p>
 					This is excuted after the weapon (theWeapon) impacts the target (theTarget). The parameter (impacted) indicates if it impacted or not.<br>
 					</p><p>
@@ -411,6 +446,12 @@ end<br/>
 					This will not have changed any damage resolution or exported events that may have been applied previously. Though within the script, the damage on the target could be modified.<br/>
 					Currently no action is taken from the returned results, it is used just to set the 'impacted' flag.<br/>
 					</p>
+
+					<h4>Filter table</h4>
+					<p>
+					This hook supports filtering as shown in <a href="#hook_WeaponImpactsFilter">WeaponImpacts</a>.<br/> 
+					</p>
+
 
 					<h4>Lua script</h4>
 					function WeaponImpactsAfter( <span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theWeapon</a></span>, <span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theTarget</a></span>, <span class="types"> <span class="boolean"> impacted</span></span> )<br/>
@@ -440,7 +481,7 @@ end<br/>
 					</div>
 					
 					<a class="anchor" id="hook_ContactUpdateAfter"></a>
-                    <li>ContactUpdateAfter( theReason, theDetectingUnit, 
+                    <li><b>ContactUpdateAfter</b>( theReason, theDetectingUnit, 
 			theOldContact, theNewContact, theMergedContact, theDetectedUnit, SensorsThatMadeDetection )</li>
 					<p>
 					The contact information is being update.<br/>
@@ -448,6 +489,22 @@ end<br/>
 					The [theNewContact] and [theMergedConact] are the same contact. <br/> 
 					No action is taken on return<br/>
 					</p>
+
+					<a class="anchor" id="hook_ContactUpdateAfterFilter"></a>
+					<h4>Filter table</h4>
+					<p>
+					This hook supports filters, one for the detecting unit and one for the detected unit; both filters are based on the standard <a href="#hook_UnitFilter">Filter={...}</a>.<br/> 
+					The 'theDetectingUnit' filter is defined by DetectingFilter={...}, while the 'theDetectedUnit' filter is defined by DetectedFilter={...}. <br/>
+					
+					<h5>Example</h5>
+					<div class="example">
+					<p>This sets the filter to match on a 'facility' on 'any' side, AND the detecting unit is on 'player side' and is a 'aircraft'<br/></p>
+						<code>
+					ContactUpdateAfterFilter={ <b>{</b>detectedFilter={targetside='any',targettype='facility'}, <br/>
+												detectingFilter={targetside='playerside',targettype='aircraft'} <b>}</b> }
+						</code>
+					</div>
+
 
 					<p>
 					<h4>Lua script</h4>
@@ -488,12 +545,18 @@ end<br/>
 					</p>
 					
 					<a class="anchor" id="hook_ContactUpdateFromOffGridAfter"></a>
-                    <li>ContactUpdateFromOffGridAfter( theReason, theDetectingUnit, 
+                    <li><b>ContactUpdateFromOffGridAfter</b>( theReason, theDetectingUnit, 
 			theOldContact, theNewContact, theMergedContact, theDetectedUnit )</li>
 					<p>
 					The contact information is being update after rejoining the communication grid.<br/>
 					No action is taken on return<br/>
 					</p>
+
+					<h4>Filter table</h4>
+					<p>
+					This hook supports filtering as shown in <a href="#hook_ContactUpdateAfterFilter">ContactUpdateAfter</a>.<br/> 
+					</p>
+
 
 					<p>
 					<h4>Lua script</h4>
@@ -533,7 +596,7 @@ end<br/>
 
 
 					<a class="anchor" id="hook_UnitMovesBefore"></a>
-					<li>UnitMovesBefore( theUnit, theScen, increment )</li>
+					<li><b>UnitMovesBefore</b>( theUnit, theScen, increment )</li>
 					<p>
 					This is excuted before the unit (theUnit) moves. The time increment is indicate by (increment) and will vary by the speed of the simulation.<br>
 					</p><p>
@@ -544,10 +607,9 @@ end<br/>
 
 					<h4>Filter table</h4>
 					<p>
-					This hook supports a standard <a href="#hook_UnitFilter">unit filter</a>.<br/> 
-					Multiple 'UnitFilter' items can be added. What this does is for each TUnitFilter, the hook sees if the unit satisfies the conditions. <br/>
-					If not, it is skipped and the next TargetFilter tried. Once a match is found, the hook executes and no more TargetFilters are tested.
+					This hook supports a standard filter <a href="#hook_UnitFilter">UnitFilter={...}</a>.<br/> 
 					</p>
+
 
 					<h4>Lua script</h4>
 					function UnitMovesBefore( <span class="wrapper"> <a href="Wrappers.html#wrapper_Unit"> theUnit</a></span>, <span class="wrapper"> <a href="Wrappers.html#wrapper_Scenario"> theScen</a></span> , <span class="number"> increment</span> )<br/>
@@ -572,7 +634,7 @@ end<br/>
 
 
 					<a class="anchor" id="hook_UnitMovesAfter"></a>
-					<li>UnitMovesAfter( theUnit, theScen, increment )</li>
+					<li><b>UnitMovesAfter</b>( theUnit, theScen, increment )</li>
 					<p>
 					This is excuted after the unit (theUnit) moves. The time increment is indicate by (increment) and will vary by the speed of the simulation.<br>
 					</p><p>
@@ -583,9 +645,7 @@ end<br/>
 
 					<h4>Filter table</h4>
 					<p>
-					This hook supports a standard <a href="#hook_UnitFilter">unit filter</a>.<br/> 
-					Multiple 'UnitFilter' items can be added. What this does is for each UnitFilter, the hook sees if the unit satisfies the conditions. <br/>
-					If not, it is skipped and the next TargetFilter tried. Once a match is found, the hook executes and no more TargetFilters are tested.
+					This hook supports a standard filter <a href="#hook_UnitFilter">UnitFilter={...}</a>.<br/> 
 					</p>
 
 					<h4>Lua script</h4>
