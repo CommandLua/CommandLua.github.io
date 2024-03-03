@@ -1,0 +1,110 @@
+<html>
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163808192-1"></script>
+    <script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-163808192-1');
+    </script>
+
+
+    <title>Command Lua Docs</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+
+
+</head>
+
+<body>
+    <div id="header-container">
+        <div id="header">
+            <div id="header-logo">
+                <h1>
+                    <a href="../index2.html"><img src="./images/CommandLuaLogo.svg" height=45px alt="CommandLua"></a>
+                </h1>
+            </div>
+            <div id="header-nav">
+                <a class="selected" href="../index2.html">Reference</a>
+                <!-- <a href="/guides/">Guides</a> -->
+                <a href="https://www.matrixgames.com/forums/tt.asp?forumid=1681">Forum</a>
+            </div>
+        </div>
+    </div>
+    <div id="container">
+
+        <div id="content">
+            <div id="nav">
+                <ul>
+                    <li><a href="../index2.html#News">News</a></li>
+                    <li><a href="../index2.html#Introduction">Introduction</a></li>
+                    <ol>
+                        <li><a href="../index2.html#HowToUse">How to Use These Docs</a></li>
+                        <li><a href="../index2.html#FirstSteps">First Steps</a></li>
+                        <li><a href="../index2.html#ExternalResources">External Resources</a></li>
+                    </ol>
+
+                    <li><a href="../index2.html#Overview">Overview</a></li>
+                    <ol>
+                        <li><a href="../index2.html#CaseSensitivityandConventions">Case Sensitivity and Conventions</a></li>
+                        <li><a href="../index2.html#EventHandling">Event Handling</a></li>
+                        <li><a href="../index2.html#ErrorHandling">Error Handling</a></li>
+                    </ol>
+                    <li><a href="DataTypes.html">Data Types</a></li>
+                    <li><a href="Functions.html">Functions</a></li>
+                    <li><a href="Wrappers.html">Wrappers</a></li>
+                    <li><a href="Selectors.html">Selectors</a></li>
+                    <li><a href="Tables.html">Tables</a></li>
+                </ul>
+            </div>
+
+            <div id="main">
+
+                <h2><a class="anchor" id="Tool_BuildBlankScenario"></a>Tool_BuildBlankScenario ( useDBname )</h2>
+                <p>
+                    The function purpose is to create a blank scenario based on the current DB or by supplying the DB file name a different DB.
+                </p>
+                
+                <h3>Parameters</h3>
+                <ul>
+                    <li>
+                        <span class="parameter"> useDBname</span>
+                        <span class="types"> <span class="string"> string</span></span> (Optional) file name from the DB folder
+					</li>
+                </ul>
+
+                <h3>Returns</h3>
+                <p>
+                    <span class="types"><span class="boolean">True/False</span></span>
+                    True if successful. If result is nil, then the method failed.<br/>
+                </p>
+
+                <h4>Example</h4>
+                <div class="example">
+<p>Use s specific DB</p>
+                    <code>
+print(Tool_BuildBlankScenario('DB3K_503.db3'))
+<br/>
+<output>
+'Yes'
+</output>
+                    </code>
+<p>Use whatever is the current DB setting as shown in DB list under Editor</p>
+                   <code>
+print(Tool_BuildBlankScenario())
+                    </code>
+				</div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <p> Copyright &copy; WarfareSims 2020</p>
+    </div>
+</body>
+
+</html>
