@@ -980,7 +980,8 @@ print(u.formation) -- after update<br />
                         magazine 'blocks'. This is what is being referred to here, rather than the ONE magazine
                         group
                         for the
-                        unit/group.
+                        unit/group.<br/>
+						A magazine on a mount as distint from a normal mgazine of multiple weapons does not have a mag_dbid value (=0).
                     </p>
                 </div>
                 <h4>Fields</h4>
@@ -1020,7 +1021,7 @@ local u = ScenEdit_GetUnit({name='LST 4001 Osumi', guid='8269b881-20ce-4f2e-baa0
 print( "Unit Magazines " .. "\r\n")<br />
 for k,v in pairs(u.magazines) do<br />
  local s = '' <br />
- s = s .. k .. " - " .. v.mag_name .. "with capacity of " .. v.mag_capacity .. ' units\r\n'<br />
+ s = s .. k .. " - " .. v.mag_name .. " with capacity of " .. v.mag_capacity .. ' units\r\n'<br />
  s = s .. "\t[ containing " .. #v.mag_weapons .. " weapon(s)]\r\n"<br />
  for k,v in pairs(v.mag_weapons) do<br />
     s = s .. "\t\t" .. v.wpn_name .. " with load " .. v.wpn_current .. " of " .. v.wpn_default .. '\r\n'<br />
@@ -1053,7 +1054,7 @@ Unit Magazines <br />
 					</div>
                 <div class="note-alert">
                     <p>
-                        Compare the above example to the example in thw wrapper <a href="Wrappers.html#wrapper_Magazine">Magazine</a>.<br />
+                        Compare the above example to the example in the wrapper <a href="Wrappers.html#wrapper_Magazine">Magazine</a>.<br />
                     </p>
                 </div>
 
