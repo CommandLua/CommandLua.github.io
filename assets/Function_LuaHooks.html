@@ -278,10 +278,12 @@ end<br/>
 					   print(theSensor)<br/>
 					   print(theSensorParent)<br/>
 					   print(theTarget)<br/>
-					   local Message = "Sensor: " ..theSensor.name.. " detection results on " .. theTarget ..'\n' <br/>
-                        for k,v in ipairs (theFeedback) do<br/>
-                        Message = Message .. tostring(v) .. '\n'<br/>
-                        end<br/>
+					   local Message = "Sensor: " ..theSensor.name.. " detection results on " .. theTarget.name ..'\n' <br/>
+                       if theFeedback ~= nil then <br/>
+					      for k,v in ipairs (theFeedback) do<br/>
+                              Message = Message .. tostring(v) .. '\n'<br/>
+                          end<br/>
+                       end<br/>
 local button = ScenEdit_MsgBox(msg,1)<br/>
 if button == "Cancel" then<br/>
     CMANO:SetHookStatus("SensorCheckAfter",false) -- stop the execution of hook<br/>
