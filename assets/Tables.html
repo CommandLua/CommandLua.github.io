@@ -429,6 +429,21 @@
                         <td><span class="types"><span class="string">string</span></span>
                         <td>Damage Severity [if not operational]
                     </tr>
+                    <tr>
+                        <td><span class="parameter">comp_comms_jammed</span>
+                        <td><span class="types"><span class="boolean">true/false</span></span>
+                        <td>Communication component being jammed
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">comp_sensor_jammed</span>
+                        <td><span class="types"><span class="boolean">true/false</span></span>
+                        <td>Sensor component being jammed
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">comp_comms_datalink_parent</span>
+                        <td><span class="wrapper"><a href="#wrapper_Unit">Unit</a></span>
+                        <td>Communication (as datalink) parent unit, else nil
+                    </tr>
                 </table>
                 <hr>
 
@@ -2167,7 +2182,17 @@ loadout = 19867 <br />
                         <td><span class="parameter">GroupMemberEngageDistance</span>
                         <td><span class="types"><span class="string">string</span></span>
                     </tr>
-                </table>
+                     <tr>
+                        <td><span class="parameter">PrePlannedOnly</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                        <td>True , mission will RTB upon target being destroyed (same as StrikePreplan)
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">FocusOnStrike</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                        <td>True, focus entirely on striking targets
+                    </tr>
+               </table>
 
                 <hr>
                 <a class="anchor" id="table_SupportMission"></a>
