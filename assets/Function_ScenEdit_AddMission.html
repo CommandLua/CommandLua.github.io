@@ -92,9 +92,21 @@
                         The mission specific options
                         <ul>
                             <li>
+                                <span class="parameter">category = </span>
+                                <span class="types"><span class="tooltip">MissionCategory<span class="tooltiptext">Mission (0), Package (1), Taskpool (2)</span></span></span>
+                                The category of mission being added. The default is 'Mission'.
+                                <br />
+                            </li>
+                            <li>
                                 <span class="parameter">destination = </span>
                                 <span class="types"><span class="string">string</span></span>
                                 A mission destination location name/guid (This only applies to a 'Ferry' mission)
+                            </li>
+                            <li>
+                                <span class="parameter">pool = </span>
+                                <span class="types"><span class="string">ParentTaskpool</span></span>
+                                The name or GUID of the task pool this package draws from. (This only applies to mission category 'package')
+                                <br />
                             </li>
                             <li>
                                 <span class="parameter">type = </span>
@@ -124,8 +136,14 @@
                     <code>local mission = ScenEdit_AddMission( 'USA', 'Marker strike', 'strike',{ type = 'land'} )</code>
                     <code>local missionReferencePoints={'rp-1','rp-2','rp-3'}<br>
 					local mission = ScenEdit_AddMission (OPFORsideName, 'OPFOR Mission', 'Patrol', {type= 'AAW',zone= missionReferencePoints} )
-</code>
-                </div>
+</code><br/>
+<code>
+-- create a task pool<br>
+local m = ScenEdit_AddMission('sidea', 'Strike Pool', '', {category='taskpool'})<br>
+-- create a package under the task pool<br>
+m = ScenEdit_AddMission('sidea', 'Package 1', 'Strike', {category='package',type='land',pool='strike pool'})<br>
+             
+			 </div>
 
             </div>
         </div>
