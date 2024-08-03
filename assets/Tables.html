@@ -1864,6 +1864,15 @@ Unit Sensor                                                                     
 	[ Active: false , type: 2001 role: 2133]
 						</output>
 					</code>
+					<code>
+	local unit = SE_GetUnit({name='DDG 104 Sterett [Arleigh Burke Flight IIA]', guid='WT2BOY-0HN5INRGCHL31'})<br/>
+for _,s in ipairs(unit.sensors) do <br/>
+if string.find(s.sensor_name, 'SPY') then <br/>
+print(s.sensor_name..' - Active: '..tostring(s.sensor_isactive))<br/>
+if s.sensor_isactive == false then unit.sensors = {sensor_guid = s.sensor_guid, sensor_isactive = true } end<br/>
+end<br/>
+end<br/>
+</code>
 				</div>
 	
   <!--
