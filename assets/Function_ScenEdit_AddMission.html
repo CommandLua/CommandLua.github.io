@@ -139,10 +139,11 @@
 </code><br/>
 <code>
 -- create a task pool<br>
-local m = ScenEdit_AddMission('sidea', 'Strike Pool', '', {category='taskpool'})<br>
+local m = ScenEdit_AddMission('sidea', 'Strike Pool', 'Strike', {category='taskpool',type='land',pool='strike pool'})<br/>
 -- create a package under the task pool<br>
 m = ScenEdit_AddMission('sidea', 'Package 1', 'Strike', {category='package',type='land',pool='strike pool'})<br>
-             
+m = ScenEdit_AddMission('sidea', 'mission', 'Strike', {type='land',pool='strike pool'})
+print(m)  <br/>           
 			 </div>
 
             </div>
