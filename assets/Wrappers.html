@@ -1337,6 +1337,10 @@ end<br>
 						<td>The unit that the reference point is relative to
 						</td><td>
 						</td></tr>
+						<tr><td><span class="parameter">relativeto_type</span>
+						<td><span class="string">UnitType</span>
+						<td>The type of unit being used for the relative to part (contact, rp, or type on actual unit)
+						</td><td>
 						<tr><td><span class="parameter">side</span>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>The side the reference point is visible to
@@ -1915,11 +1919,23 @@ VLargeCargo = 5000 <br></span></span></span>
                             Docking/Air Ops condition value. <span class="readonly">READ ONLY</span>
                         </td></tr>
                         <tr><td><span class="parameter">course</span>
-                        <td><span class="types"><a href="#wrapper_WayPoint">WayPoint</a></span></span>
+                       <td><span class="types"><a href="#wrapper_WayPoint">WayPoint</a></span></span>
                         <td>
                             The unit's course, as a table of waypoints (latitude,longitude)
                         </td></tr>
-                        <tr><td><span class="parameter">crew</span>
+<!--
+                        <tr><td><span class="parameter">course_distance</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>
+                            The calculated total distance (NM) of an unit's course <span class="readonly">READ ONLY</span>
+                        </td></tr>
+                        <tr><td><span class="parameter">course_eta</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>
+                            The calculated eta (seconds) of an unit's course [not for a group] <span class="readonly">READ ONLY</span>
+                        </td></tr>
+-->
+                       <tr><td><span class="parameter">crew</span>
                         <td><span class="types"><span class="number">number</span></span>
                         <td>
                             crew size (nil if not defined) <span class="readonly">READ ONLY</span>
@@ -2074,6 +2090,11 @@ VLargeCargo = 5000 <br></span></span></span>
                         <td><span class="types"><span class="boolean">True/False</span></span>
                         <td>
                             is weapon a nuke <span class="readonly">READ ONLY</span>
+                        </td></tr>
+                        <tr><td><span class="parameter">isSinking</span>
+                        <td><span class="types"><span class="boolean">True/False</span></span>
+                        <td>
+                            is ship is sinking (which means it will still show as an 'active' unit <span class="readonly">READ ONLY</span>
                         </td></tr>
                         <tr><td><span class="parameter">isOperating</span>
                         <td><span class="types"><span class="boolean">True/False</span></span>
