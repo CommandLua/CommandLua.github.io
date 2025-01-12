@@ -99,6 +99,8 @@
                                             'add_comms', 'remove_comms', <br / >
                                             'add_fuel', 'remove_fuel', <br / >
                                             'add_magazine', 'add_magazine_only', 'remove_magazine', <br / >
+											'add_dock_facility', 'remove_dock_facility', <br/>
+											'add_air_facility', 'remove_air_facility', <br/>
                                             'delta'
                                         </span>
                                     </span>
@@ -181,12 +183,22 @@
                             <li>
                                 <span class="parameter"> commsid = </span>
                                 <span class="types"> <span class="string"> string</span> </span>
-                                A specific communication GUID to operate on (not applicable to adding weapon)
+                                A specific communication GUID to operate on (not applicable to adding comms)
                             </li>
                             <li>
                                 <span class="parameter"> magid = </span>
                                 <span class="types"> <span class="string"> string</span> </span>
                                 A specific magazine GUID to operate on (not applicable to adding magazine)
+                            </li>
+                            <li>
+                                <span class="parameter"> airfacid = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                A specific air facility GUID to operate on (not applicable to adding air facility)
+                            </li>
+                            <li>
+                                <span class="parameter"> dockfacid = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                A specific docking facility GUID to operate on (not applicable to adding docking facility)
                             </li>
                             <li>
                                 <span class="parameter"> fuel = </span>
@@ -224,13 +236,26 @@
                 </div>
 
                 <div class="example">
-                    <code> ScenEdit_UpdateUnit( { guid='2cd64757-1b66-4609-ad56-df41bee652e5',mode='remove_sensor',dbid=3352,sensorId='871aea14-d963-4052-a7fc-ed36e97bb732'} )</code>
+                    <code> ScenEdit_UpdateUnit( { 
+					guid='2cd64757-1b66-4609-ad56-df41bee652e5',mode='remove_sensor',
+dbid=3352,sensorId='871aea14-d963-4052-a7fc-ed36e97bb732'} )</code>
                 </div>
 
                 <div class="example">
                     <code> ScenEdit_UpdateUnit( { guid='2cd64757-1b66-4609-ad56-df41bee652e5',mode='delta',file='new.ini' } )</code>
                 </div>
-
+                <div class="example">
+                    <code> local u = ScenEdit_UpdateUnit( { 
+					guid='CY41MA-0HN9IIDE9MCFT', 
+					mode='add_dock_facility', 
+					dbid=19})<br/>
+					--local u = ScenEdit_UpdateUnit( { guid='CY41MA-0HN9IIDE9MCFT', 
+					mode='remove_dock_facility', 
+					dbid=19, 
+					dockfacid='CY41MA-0HN9IIDE9MDV6'} ) <br/>
+					print(u.components) <br/>
+					</code>
+                </div>
             </div>
         </div>
     </div>
