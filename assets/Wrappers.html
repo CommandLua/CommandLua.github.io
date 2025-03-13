@@ -958,6 +958,13 @@ end<br>
 						<tr><td><span class="parameter">unitlist</span>
 						<td><span class="table">{ <span class="types"><span class="string">string</span></span>, ... }</span>
 						<td>A table  of unit GUIDs assigned to mission. <span class="readonly">READ ONLY</span>
+						<tr><td><span class="parameter">packagelist</span>
+						<td><span class="table">table</span>
+						<td>A table with the missions in a task pool (only if wrapper is a taskpool)</span>
+						<tr><td><span class="parameter">parentTaskPool</span>
+						<td><span class="types"><span class="string">string</span></span>
+						<td>GUID of the parent taskpool (only if wrapper is a package</span>
+						</td></tr>
 						<tr><td><span class="parameter">cargomission</span>
 						<td><span class="table">{ <a href="Tables.html#table_CargoMission">CargoMission</a> }</span>
 						<td>A table of the mission specific options. <span class="readonly">READ ONLY</span>
