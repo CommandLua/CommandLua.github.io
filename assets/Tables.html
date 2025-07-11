@@ -75,6 +75,7 @@
                     <li><span class="table"><a href="#table_Component">Component</a></span></li>
                     <li><span class="table"><a href="#table_EMmatch">EMmatch</a></span></li>
                     <li><span class="table"><a href="#table_Emissions">Emissions</a></span></li>
+                    <li><span class="table"><a href="#table_Enablers">Enablers</a></span></li>
                     <!--<li><span class="table"><a href="#table_Explosion">Explosion</a></span></li>-->
                     <li><span class="table"><a href="#table_Facility">Facility</a></span></li>
                     <li><span class="table"><a href="#table_Formation">Formation</a></span></li>
@@ -570,6 +571,51 @@
 					</code>
 				</div>
  
+                <a class="anchor" id="table_Enablers"></a>
+                <h3>Enablers</h3>
+                <p>
+                    Enablers
+                </p>
+                <h4>Fields</h4>
+                <table class="table_borders" style="width: 100%; margin-left: 0px;">
+                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <td><span class="parameter">GNSS_NavIC</span>
+                        <td><span class="types"><span class="boolen">True/false</span></span>
+                        <td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">GNSS_BeiDou</span>
+                        <td><span class="types"><span class="boolen">True/false</span></span>
+                        <td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">GNSS_GLONASS</span>
+                        <td><span class="types"><span class="boolen">True/false</span></span>
+                        <td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">GNSS_GPS</span>
+                        <td><span class="types"><span class="boolen">True/false</span></span>
+                        <td>
+                    </tr>
+                </table>
+
+				<h5>Example</h5>
+				<div class="example">
+					<code>
+local side = VP_GetSide({side='BLUE'})<br />
+print(side.enablers)<br />
+					<output>
+{ GNSS_NavIC = 'Yes', GNSS_BeiDou = 'Yes', GNSS_GLONASS = 'Yes', GNSS_GPS = 'Yes' }<br />
+					</output>
+side.enablers = {GNSS_GLONASS=false}<br />
+print(side.enablers)<br />
+					<output>
+{ GNSS_NavIC = 'Yes', GNSS_BeiDou = 'Yes', GNSS_GLONASS = 'No', GNSS_GPS = 'Yes' }<br />
+					</output>
+					</code>
+				</div>
 
 
  <!--
