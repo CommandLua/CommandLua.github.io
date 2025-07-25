@@ -1,0 +1,153 @@
+<html>
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163808192-1"></script>
+    <script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-163808192-1');
+    </script>
+
+
+    <title>Command Lua Docs</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+
+
+</head>
+
+<body>
+    <div id="header-container">
+        <div id="header">
+            <div id="header-logo">
+                <h1>
+                    <a href="../index2.html"><img src="./images/CommandLuaLogo.svg" height=45px alt="CommandLua"></a>
+                </h1>
+            </div>
+            <div id="header-nav">
+                <a class="selected" href="../index2.html">Reference</a>
+                <!-- <a href="/guides/">Guides</a> -->
+                <a href="https://www.matrixgames.com/forums/tt.asp?forumid=1681">Forum</a>
+            </div>
+        </div>
+    </div>
+    <div id="container">
+
+        <div id="content">
+            <div id="nav">
+                <ul>
+                    <li><a href="../index2.html#News">News</a></li>
+                    <li><a href="../index2.html#Introduction">Introduction</a></li>
+                    <ol>
+                        <li><a href="../index2.html#HowToUse">How to Use These Docs</a></li>
+                        <li><a href="../index2.html#FirstSteps">First Steps</a></li>
+                        <li><a href="../index2.html#ExternalResources">External Resources</a></li>
+                    </ol>
+
+                    <li><a href="../index2.html#Overview">Overview</a></li>
+                    <ol>
+                        <li><a href="../index2.html#CaseSensitivityandConventions">Case Sensitivity and Conventions</a></li>
+                        <li><a href="../index2.html#EventHandling">Event Handling</a></li>
+                        <li><a href="../index2.html#ErrorHandling">Error Handling</a></li>
+                    </ol>
+                    <li><a href="DataTypes.html">Data Types</a></li>
+                    <li><a href="Functions.html">Functions</a></li>
+                    <li><a href="Wrappers.html">Wrappers</a></li>
+                    <li><a href="Selectors.html">Selectors</a></li>
+                    <li><a href="Tables.html">Tables</a></li>
+                </ul>
+            </div>
+
+            <div id="main">
+
+                <h3><a class="anchor" id="ScenEdit_GetFormation"></a>ScenEdit_GetFormation (table)</h3>
+                <p>
+				This function gets the properties of a groups formation.
+                </p>
+                <h4>Parameters</h4>
+                <ul>
+                    <li>
+                        <span class="parameter">table</span><span class="table"> {} </span>
+                        <ul>
+                            <li>
+                                <span class="parameter">side = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The side name of the unit
+                            </li>
+                            <li>
+                                <span class="parameter">name = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The name of unit
+                            </li>
+                            <li>
+                                <span class="parameter">guid = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The GUID of the unit
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h4>Returns</h4>
+                <span class="wrapper"><a href="Wrappers.html#wrapper_Unit">Unit wrapper</a></span> if the unit exists, or <code>nil</code> otherwise
+                <br><br>
+                <div class="note-alert">
+                    <p>
+                        <strong>Note:</strong> When run interactively (i.e. in the console) ScenEdit_GetUnit() will
+                        raise an exception if the selected unit is not found. This can be prevented using <a href="#Tool_EmulateNoConsole()">Tool_EmulateNoConsole()</a>.
+                    </p>
+                </div>
+
+                <h5>Example 1</h5>
+                <div class="example">
+                    <p>
+                        <code>
+                            local formation = ScenEdit_GetFormation({side='Blue', name='Group 16'})
+                            print(formation)
+                            <output>
+                                {<br/>
+                                    spacing_unit = 1,<br/>
+                                    lead = 'TTZL89-0HNB8KFCH7IQ1',<br/>
+                                    name = 'Column',<br/>
+                                    spacing = 1,<br/>
+                                    1 = {<br/>
+                                        longitude = -125.982767420485,<br/>
+                                        sprint = 'False',<br/>
+                                        bearing = 180,<br/>
+                                        distance = 1,<br/>
+                                        guid = 'TTZL89-0HNB8KFCH7JFM',<br/>
+                                        type = 'Rotating', latitude = 36.7916933243477 <br/>
+                                    },<br/>
+                                    2 = {<br/>
+                                        longitude = -125.982767420485,<br/>
+                                        sprint = 'False',<br/>
+                                        bearing = 180,<br/>
+                                        distance = 2,<br/>
+                                        guid = 'TTZL89-0HNB8KFCH7K61',<br/>
+                                        type = 'Rotating', latitude = 36.7750457370943<br/>
+                                    },<br/>
+                                    3 = {<br/>
+                                        longitude = -125.982767420485,<br/>
+                                        sprint = 'False',<br/>
+                                        bearing = 180,<br/>
+                                        distance = 3,<br/>
+                                        guid = 'TTZL89-0HNB8KFCH7KS4',<br/>
+                                        type = 'Rotating', latitude = 36.7583981481733<br/>
+                                    }<br/>
+                            </output>
+                        </code>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <p> Copyright &copy; WarfareSims 2020</p>
+    </div>
+</body>
+
+</html>

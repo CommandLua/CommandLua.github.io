@@ -87,25 +87,22 @@
                     <li><span class="datatype"><a href="#dataType_Longitude">Longitude</a></span></li>
 					<li><span class="datatype"><a href="#dataType_MissionType">MissionType/Subtype</a></span></li>
 					<li><span class="datatype"><a href="#dataType_Preset">Presets (Speed/altitude/depth)</a></span></li>
-
 					<li><span class="datatype"><a href="#dataType_Proficiency">Proficiency</a></span></li>
-					
+                    <li><span class="datatype"><a href="#dataType_RealismSetting">Realism Settings</a></span></li>
                     <li><span class="datatype"><a href="#dataType_Sensor">Sensor</a></span></li>
                     <li><span class="datatype"><a href="#dataType_Stance">Stance</a></span></li>
-
                     <li><span class="datatype"><a href="#dataType_TargetingMode">TargetingMode</a></span></li>
                     <li><span class="datatype"><a href="#dataType_TargetTypeWRA">TargetTypeWRA</a></span></li>
                     <li><span class="datatype"><a href="#dataType_TimeStamp">TimeStamp</a></span></li>
-
                     <li><span class="datatype"><a href="#dataType_TrueFalse">True/False</a></span></li>
-
                     <li><span class="datatype"><a href="#dataType_Unit__Types">Unit Types</a></span></li>
                     <li><span class="datatype"><a href="#dataType_Unit_Aircraft">Aircraft</a></span></li>
                     <li><span class="datatype"><a href="#dataType_Unit_Facility">Facility</a></span></li>
                     <li><span class="datatype"><a href="#dataType_Unit_Satellite">Satellite</a></span></li>
                     <li><span class="datatype"><a href="#dataType_Unit_Ship">Ship</a></span></li>
-                    <li><span class="datatype"><a href="#dataType_Size">Size</a></span></li>
                     <li><span class="datatype"><a href="#dataType_Unit_Submarine">Submarine</a></span></li>
+                    <li><span class="datatype"><a href="#dataType_Size">Size</a></span></li>
+                    <li><span class="datatype"><a href="#dataType_UIWindows">UI Windows</a></span></li>
                     <li><span class="datatype"><a href="#dataType_Waypoint">WayPoint</a></span></li>
                     <li><span class="datatype"><a href="#dataType_ROE#WCS">WeaponControl</a></span></li>
                     <li><span class="datatype"><a href="#dataType_WeaponDoctrine">WeaponDoctrine</a></span></li>
@@ -880,6 +877,30 @@ end<br>
                 </details>
                 <br />
 
+                <hr>
+                <h3><a class="anchor" id="dataType_RealismSetting"></a>Scenario Realism Settings</h3>
+                <details>
+                    <summary>
+                        Realism Settings
+                    </summary>
+                    <ul class="ul-no-bullets">
+                        <li>DetailedGunFireControl = Detailed gun fire-contorl</li> 
+                        <li>UnlimitedBaseMagazines = Unlimited magazines at air/naval bases</li>
+                        <li>AircraftDamage = Aircraft Damage</li>
+                        <li>RealisticSubComms = Realistic Submarine Communications</li> 
+                        <li>LandTypeEffects = Effects of Terrain Type</li> 
+                        <li>LandTypeEffects_Advanced = Effects of Terrain Type - ADVANCED</li> 
+                        <li>CommsDisruption = Communications Disruption</li>
+                        <!-- Comms Jamming Missing -->
+                        <li>WeatherAffectsShipSpeed = Weather affects ship speed</li> 
+                        <li>AllowLandingPlannerInstantLoading = Allow instant load for the landing planner (Pro Only)</li>
+                        <li>ACS_NAW_Limitations = Weather and day/night affect aircraft sorties</li> 
+                        <!-- Drone Autonomy Levels -->
+                        <!-- ASCM Terrain Following restriction -->
+                    </ul>
+                </details>
+                <br />
+
 				<hr>
                 <a class="anchor" id="dataType_Sensor"></a>
                 <h3>Sensor type and role</h3>
@@ -891,44 +912,44 @@ end<br>
 					<p></p>
                     <b>Code = Description </b>
                     <ul class="ul-2-columns">
-<li>1001 = None 
-<li>2001 = Radar 
-<li>2002 = SemiActive 
-<li>2003 = Visual 
-<li>2004 = Infrared 
-<li>2005 = TVM 
-<li>3001 = ESM 
-<li>3002 = ECM 
-<li>3003 = EMP_Projector 
-<li>3004 = PCLS 
-<li>4001 = LaserDesignator 
-<li>4002 = LaserSpotTracker 
-<li>4003 = LaserRangefinder 
-<li>5001 = HullSonar_PassiveOnly 
-<li>5002 = HullSonar_ActivePassive 
-<li>5003 = HullSonar_ActiveOnly 
-<li>5011 = TowedArray_PassiveOnly 
-<li>5012 = TowedArray_ActivePassive 
-<li>5013 = TowedArray_ActiveOnly 
-<li>5021 = VDS_PassiveOnly 
-<li>5022 = VDS_ActivePassive 
-<li>5023 = VDS_ActiveOnly 
-<li>5031 = DippingSonar_PassiveOnly 
-<li>5032 = DippingSonar_ActivePassive 
-<li>5033 = DippingSonar_ActiveOnly 
-<li>5041 = BottomFixedSonar_PassiveOnly 
-<li>5101 = MAD 
-<li>5901 = PingIntercept 
-<li>6001 = MineSweep_MechanicalCableCutter 
-<li>6002 = MineSweep_MagneticInfluence 
-<li>6003 = MineSweep_AcousticInfluence 
-<li>6004 = MineSweep_MultiInfluence 
-<li>6011 = MineSweep_TwoShipMagneticInfluence 
-<li>6021 = MineNeutralization_MooredMineCableCutter 
-<li>6022 = MineNeutralization_ExplosiveChargeMineDisposal 
-<li>6031 = MineNeutralization_DiverExplosiveCharge 
-<li>8001 = NonDetectingEmitter 
-<li>9001 = SensorGroup 
+                        <li>1001 = None 
+                        <li>2001 = Radar 
+                        <li>2002 = SemiActive 
+                        <li>2003 = Visual 
+                        <li>2004 = Infrared 
+                        <li>2005 = TVM 
+                        <li>3001 = ESM 
+                        <li>3002 = ECM 
+                        <li>3003 = EMP_Projector 
+                        <li>3004 = PCLS 
+                        <li>4001 = LaserDesignator 
+                        <li>4002 = LaserSpotTracker 
+                        <li>4003 = LaserRangefinder 
+                        <li>5001 = HullSonar_PassiveOnly 
+                        <li>5002 = HullSonar_ActivePassive 
+                        <li>5003 = HullSonar_ActiveOnly 
+                        <li>5011 = TowedArray_PassiveOnly 
+                        <li>5012 = TowedArray_ActivePassive 
+                        <li>5013 = TowedArray_ActiveOnly 
+                        <li>5021 = VDS_PassiveOnly 
+                        <li>5022 = VDS_ActivePassive 
+                        <li>5023 = VDS_ActiveOnly 
+                        <li>5031 = DippingSonar_PassiveOnly 
+                        <li>5032 = DippingSonar_ActivePassive 
+                        <li>5033 = DippingSonar_ActiveOnly 
+                        <li>5041 = BottomFixedSonar_PassiveOnly 
+                        <li>5101 = MAD 
+                        <li>5901 = PingIntercept 
+                        <li>6001 = MineSweep_MechanicalCableCutter 
+                        <li>6002 = MineSweep_MagneticInfluence 
+                        <li>6003 = MineSweep_AcousticInfluence 
+                        <li>6004 = MineSweep_MultiInfluence 
+                        <li>6011 = MineSweep_TwoShipMagneticInfluence 
+                        <li>6021 = MineNeutralization_MooredMineCableCutter 
+                        <li>6022 = MineNeutralization_ExplosiveChargeMineDisposal 
+                        <li>6031 = MineNeutralization_DiverExplosiveCharge 
+                        <li>8001 = NonDetectingEmitter 
+                        <li>9001 = SensorGroup 
                     </ul>
 					</details>
                 
@@ -1735,8 +1756,26 @@ end<br>
                         <li>9002 = False Target</li>
                     </ul>
                 </details>
-                <br />
-
+                <br>
+, , , , , and <
+                <hr>
+                <h3><a class="anchor" id="dataType_UIWindows"></a>UI Windows</h3>
+                <details>
+                    <summary>
+                        Realism Settings
+                    </summary>
+                    <ul class="ul-no-bullets">
+                        <li>orbat = Order of Battle</li> 
+                        <li>missioneditor = Mission Editor</li>
+                        <li>speedalt = Throttle & Altitude</li>
+                        <li>exclusionzoneswindow = Exclusion Zone Window/li> 
+                        <li>nonavzoneswindow = No-navigation Zone Window</li> 
+                        <li>consolewindow2 = Lua Console</li> 
+                        <!-- Drone Autonomy Levels -->
+                        <!-- ASCM Terrain Following restriction -->
+                    </ul>
+                </details>
+                <br>
 
                  <hr>
                 <a class="anchor" id="dataType_Waypoint"></a>
@@ -1748,34 +1787,34 @@ end<br>
                     </summary>
                     <p><b>Code = Description </b></p>
                     <ul class="ul-2-columns">
-<li>00 = ManualPlottedCourseWaypoint 
-<li>01 = PatrolStation 
-<li>02 = TerminalPoint 
-<li>03 = LocalizationRun 
-<li>04 = PathfindingPoint 
-<li>05 = Assemble 
-<li>06 = TurningPoint 
-<li>07 = InitialPoint 
-<li>10 = Target 
-<li>11 = LandingMarshal 
-<li>12 = StrikeIngress 
-<li>13 = StrikeEgress 
-<li>14 = Refuel 
-<li>15 = TakeOff 
-<li>17 = WeaponLaunch 
-<li>18 = Land 
-<li>19 = WeaponTarget 
-<li>20 = StationStart_Racetrack 
-<li>21 = StationStart_FigureEight 
-<li>22 = StationStart_Area 
-<li>23 = StationStart_RaceTrackRandom 
-<li>24 = StationEnd 
-<li>25 = PickupPoint 
-<li>26 = HoldStart 
-<li>27 = HoldEnd 
-<li>28 = Launch 
-<li>29 = Activation 
-<li>30 = Termination 
+                        <li>00 = ManualPlottedCourseWaypoint 
+                        <li>01 = PatrolStation 
+                        <li>02 = TerminalPoint 
+                        <li>03 = LocalizationRun 
+                        <li>04 = PathfindingPoint 
+                        <li>05 = Assemble 
+                        <li>06 = TurningPoint 
+                        <li>07 = InitialPoint 
+                        <li>10 = Target 
+                        <li>11 = LandingMarshal 
+                        <li>12 = StrikeIngress 
+                        <li>13 = StrikeEgress 
+                        <li>14 = Refuel 
+                        <li>15 = TakeOff 
+                        <li>17 = WeaponLaunch 
+                        <li>18 = Land 
+                        <li>19 = WeaponTarget 
+                        <li>20 = StationStart_Racetrack 
+                        <li>21 = StationStart_FigureEight 
+                        <li>22 = StationStart_Area 
+                        <li>23 = StationStart_RaceTrackRandom 
+                        <li>24 = StationEnd 
+                        <li>25 = PickupPoint 
+                        <li>26 = HoldStart 
+                        <li>27 = HoldEnd 
+                        <li>28 = Launch 
+                        <li>29 = Activation 
+                        <li>30 = Termination 
                     </ul>
                 </details>
                 <br />

@@ -64,85 +64,50 @@
             <div id="main">
 
                 <h3>
-                    <a class="anchor" id="ScenEdit_SetSideOptions"></a>ScenEdit_SetSideOptions
-                    (table)
+                    <a class="anchor" id="ScenEdit_ClearAllMagazines"> </a> ScenEdit_ClearAllMagazines
+                    ( table )
                 </h3>
                 <p>
-                    This function updates the
-                    side
-                    options -
-                    'awareness'
-                    and
-                    'proficiency'
+                    This function removes all weapons from the selected units magazines. 
                 </p>
-                <h4>Parameters</h4>
+                <h4> Parameters</h4>
                 <ul>
                     <li>
-                        <span class="parameter">table</span>
-                        <span class="table"> {} </span>
+                        <span class="parameter"> table</span> <span class="table">
+                            {
+                            }
+                        </span>
                         <ul>
                             <li>
-                                <span class="parameter">side = </span>
+                                <span class="parameter"> side = </span>
                                 <span class="types"> <span class="string"> string</span> </span>
-                                The side guid/name
+                                The side name of the unit
                             </li>
                             <li>
-                                <span class="parameter">awareness = </span>
-								<span class="types"><a href="DataTypes.html#dataType_Awareness">Awareness</a></span>
-                                The side awareness
+                                <span class="parameter"> name = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                The name of unit
                             </li>
                             <li>
-                                <span class="parameter">proficiency = </span>
-								<span class="types"><a href="DataTypes.html#dataType_Proficiency">Proficiency</a></span>
-                                The side proficiency 
+                                <span class="parameter"> guid = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                The GUID of the unit
                             </li>
-                            <li>
-                                <span class="parameter">switchto = </span>
-                                <span class="types"> <span class="boolean"> True/False</span> </span>
-                                [optional] Switch the current side to the 'side' parameter. 
-                            </li>
-
                         </ul>
                     </li>
                 </ul>
-                <h4>Returns</h4>
-                <span class="table">table {} </span>
-                <ul>
-                    <li>
-                        <span class="parameter">side </span>
-                        <span class="types"><span class="string">string</span></span>
-                        Side name
-                    </li>
-                    <li>
-                        <span class="parameter">guid </span>
-                        <span class="types"><span class="string">string</span></span>
-                        Side guid
-                    </li>
-                    <li>
-                        <span class="parameter">awareness </span>
-                        <span class="types"><span class="string">string</span></span>
-                        Side awareness
-                    </li>
-                    <li>
-                        <span class="parameter">proficiency </span>
-                        <span class="types"><span class="string">string</span></span>
-                        Side proficiency 
-                    </li>
-                </ul>
 
-                <h5>Example</h5>
-				Set the side to 'blind' awareness and 'normal' proficiency. Note the use of the description or code number.
+                <h4>Returns</h4>
+                <p>
+                    <span class="types"><span class="boolean">True/False</span></span>
+                    True if unit is valid
+                </p>
+
+                <h5> Example</h5>
+
                 <div class="example">
                     <code>
-                        local a = ScenEdit_SetSideOptions({side='sidea', awareness = 'blind', PROFICIENCY= 2})<br/>
-                        print(a)<br/>
-                        if a.awareness == 'Normal' then print('awareness is normal') end<br/>
-                        if a.proficiency == 'Regular' then print('proficiency is regular') end		<br/>			
-                        <br/>
-                        Output<br/>
-                        <output>
-                        { awareness = 'Blind', side = 'SideA', guid = '387dfb31-e553-412a-8258-9b959aa00aed', proficiency = 'Regular' }<br/>
-                        proficiency is regular</output>
+                        ScenEdit_ClearAllMagazines({side=<span class="string">"United States"</span>, name=<span class="string">"USS Test"</span>})
                     </code>
                 </div>
 
