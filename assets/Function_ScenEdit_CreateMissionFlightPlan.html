@@ -62,81 +62,78 @@
             </div>
 
             <div id="main">
-
                 <h3>
-                    <a class="anchor" id="ScenEdit_SetEvent"></a>ScenEdit_SetEvent
-                    (EventDescriptionOrID, options)
+                    <a class="anchor" id="ScenEdit_CreateMissionFlightPlan"></a>ScenEdit_CreateMissionFlightPlan
+                    (SideName, MissionName, options)
                 </h3>
                 <p>
-                    This function sets the attributes of an event.<br><br>
-                    Use the SetEventAction/Trigger/Condition to associate those to the event.
+                    This function creates flights for a mission.
                 </p>
-                <h4>Parameters</h4>
+                
+                <h3>Parameters</h3>
                 <ul>
                     <li>
-                        <span class="parameter">EventDescriptionOrID</span>
+                        <span class="parameter">SideName</span>
                         <span class="types"><span class="string">string</span></span>
-                        Event GUID or Description
+                        The mission side
+                    </li>
+                    <li>
+                        <span class="parameter">MissionName</span>
+                        <span class="types"><span class="string">string</span></span>
+                        The mission name/guid
                     </li>
                     <li>
                         <span class="parameter">options</span>
                         <span class="table">{} of </span>
                         <ul>
                             <li>
-                                <span class="parameter">mode =</span>
-                                <span class="types">
-                                    <span class="tooltip">
-                                        string
-                                        <span class="tooltiptext">"add", "remove", "update"</span>
-                                    </span>
-                                </span>
-                                Mode to perform
-                            </li>
-                            <li>
-                                <span class="parameter">description =</span>
+                                <span class="parameter">DATEONTARGET =</span>
                                 <span class="types"><span class="string">string</span></span>
-                                Event description
+                               The mission time on target day, YYYY/MM/DD
                             </li>
                             <li>
-                                <span class="parameter">newname =</span>
+                                <span class="parameter">TIMEONTARGET  =</span>
                                 <span class="types"><span class="string">string</span></span>
-                                New name for event if renaming the event. Not suggested as it can cause issues if scripts are using event names to perform tasks on.
+                                The mission time on target, HH:MM:SS
+                            </li>
+                            or
+                            <li>
+                                <span class="parameter">TAKEOFFDATE =</span>
+                                <span class="types"><span class="string">string</span></span>
+                                The mission takeoff day, YYYY/MM/DD
                             </li>
                             <li>
-                                <span class="parameter">isActive =</span>
-                                <span class="types"><span class="boolean">True/False</span></span>
-                                Event active
-                            </li>
-                            <li>
-                                <span class="parameter">isShown =</span>
-                                <span class="types"><span class="boolean">True/False</span></span>
-                                Event is shown
-                            </li>
-                            <li>
-                                <span class="parameter">IsRepeatable =</span>
-                                <span class="types"><span class="boolean">True/False</span></span>
-                                Event can repeat
-                            </li>
-                            <li>
-                                <span class="parameter">Probability =</span>
-                                <span class="types"><span class="number">Number 0 -100</span></span>
-                                Event can repeat
+                                <span class="parameter">TAKEOFFTIME  =</span>
+                                <span class="types"><span class="string">string</span></span>
+                                The mission takeoff time, HH:MM:SS
                             </li>
                         </ul>
                     </li>
                 </ul>
 
-                <h4>Returns</h4>
-                <p>
-                    <span class="wrapper"><a href="Wrappers.html#wrapper_Event">Event</a></span>
-                    The event wrapper containing the details
-                </p>
+                <h3>Returns</h3>
+                <ul>
+                    <li>
+                        Returns all the flights on the mission.
+                        <i>Currently only returns the first flight, will be fixed in a upcoming release.</i>
+                    </li>
+                </ul>
 
-                <h5>Example</h5>
+                <h4>Example</h4>
+                Time on Target
                 <div class="example">
-                    <code>ScenEdit_SetEvent('MyEvent',{mode = 'remove')</code>
+                    <code>
+                        ScenEdit_CreateMissionFlightPlan('Blue', 'Strike', {DATEONTARGET = '2025/08/01', TIMEONTARGET = '12:00:00'})
+                    </code>
                 </div>
 
+                <h4>Example</h4>
+                Takeoff Time
+                <div class="example">
+                    <code>
+                        ScenEdit_CreateMissionFlightPlan('Blue', 'Strike', {TAKEOFFDATE = '2025/08/01', TAKEOFFTIME = '08:00:00'})
+                    </code>
+                </div>
             </div>
         </div>
     </div>
