@@ -714,6 +714,22 @@ Rear: 8.016566<br />
                     	</code>
                     </div>
 
+                <hr>
+				<div class="example">
+<p>Order unit to attempt replenishment</p>
+					<code>
+local u = ScenEdit_GetUnit({name='MiG-31BM Foxhound', guid='NZZYVJ-0HM0G1F7MPTLQ'})<br>
+-- use any available replenishment unit <br>
+print( u:ReplenishUnit() )<br>
+-- use specific replenishment unit <br>
+print( u:ReplenishUnit({ tanker = 'd5eedc59-2541-4b7a-b540-607e84e579f8'}) )<br>
+-- use any available replenishment unit from set of missions <br>
+print( u:ReplenishUnit({ mission={'test support'}}) )<br>
+						<output>
+						</output>
+					</code>
+				</div>
+
 
 				<hr>
 				<h1><a class="anchor" id="Example_Wrapper_Zone"></a>Wrapper Zone (non-navigation and exclusion)</h1>

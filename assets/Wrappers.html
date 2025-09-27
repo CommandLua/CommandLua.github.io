@@ -2442,6 +2442,11 @@ VLargeCargo = 5000 <br></span></span></span>
                         <td>
                             Get magazine details of the specific mount GUID. Returns <span class="wrapper"><a href="#wrapper_Magazine">magazine</a> or nil</span>
                         </td></tr>
+						<tr><td><span class="parameter">ReplenishUnit</span>
+                        <td><span class="types"><span class="method">method</span>([{ tanker = ..., mission = {...}}])</span>
+                        <td>
+                            Send the unit to replenish. Returns <span class="table">{ success, reason }</span> success = false if method call fails, reason = why replenishment failed where blank reason means unit is set to replenish.
+                        </td></tr>
 					</table>
 
 <br/>		
