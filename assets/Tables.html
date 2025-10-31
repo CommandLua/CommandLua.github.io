@@ -1539,9 +1539,14 @@ Unit Mounts <br />
                         <td>Number of units to be on station</td>
                     </tr>
                     <tr>
+                        <td><span class="parameter">StationGroupingType</span></td>
+                        <td><span class="types"><span class="number">number</span></td>
+                        <td>ByLoadout = 0; ByUnitClass = 1; NoGrouping = 2</td>
+                    </tr>
+                    <tr>
                         <td><span class="parameter">LoopType</span>
                         <td><span class="types"><span class="string">string</span></span>
-                        <td>Movement style: Random within area (0) or Repeatable loop (1)
+                        <td>Movement style: Random within area (0), Repeatable loop (1), ChainsawLoop  (2)
                     </tr>
                     <tr>
                         <td><span class="parameter">CheckOPA</span>
@@ -2271,6 +2276,25 @@ loadout = 19867 <br />
                         <td>Number of units to be on station</td>
                     </tr>
                     <tr>
+                        <td><span class="parameter">StationGroupingType</span></td>
+                        <td><span class="types"><span class="number">number</span></td>
+                        <td>ByLoadout = 0; ByUnitClass = 1; NoGrouping = 2</td>
+                    </tr>
+                                        <tr>
+                        <td><span class="parameter">LoopType</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Navigation type: Continous loop (0) or Single loop (1)
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">OneTimeOnly</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">ActiveEMCON</span></td>
+                        <td><span class="types"><span class="boolean">boolean</span></span></td>
+                        <td>Active EMCON only on the mission track</td>
+                    </tr>
+                    <tr>
                         <td><span class="parameter">TransitThrottleAircraft</span>
                         <td><span class="types"><span class="string">string</span></span>
                     </tr>
@@ -2379,19 +2403,6 @@ loadout = 19867 <br />
                                 <span class="string">GUID</span>
                             </span>
                         <td>Table of reference point names and/or GUIDs
-                    </tr>
-                    <tr>
-                        <td><span class="parameter">LoopType</span>
-                        <td><span class="types"><span class="string">string</span></span>
-                        <td>Navigation type: Continous loop (0) or Single loop (1)
-                    </tr>
-                    <tr>
-                        <td><span class="parameter">OneTimeOnly</span>
-                        <td><span class="types"><span class="boolean">boolean</span></span>
-                    </tr>
-                    <tr>
-                        <td><span class="parameter">ActiveEMCON</span>
-                        <td><span class="types"><span class="boolean">boolean</span></span>
                     </tr>
                     <tr>
                         <td><span class="parameter">TankerOneTime</span>
