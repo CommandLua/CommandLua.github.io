@@ -1,77 +1,79 @@
 <html>
 
 <head>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-163808192-1"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163808192-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-		gtag('config', 'UA-163808192-1');
-	</script>
+        gtag('config', 'UA-163808192-1');
+    </script>
 
-	<title>Command Lua Docs</title>
-	<link rel="stylesheet" type="text/css" href="style.css" / >
-	
+    <title>Command Lua Docs</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
 
 
 </head>
 
 <body>
-	<div id="header-container">
-		<div id="header">
-			<div id="header-logo">
-				<h1><a href="../index2.html"><img src="./images/CommandLuaLogo.svg" height=45px alt="CommandLua"></a>
-				</h1>
-			</div>
-			<div id="header-nav">
-				<a class="selected" href="../index2.html">Reference</a>
-				<!-- <a href="/guides/">Guides</a> -->
-				<a href="https://www.matrixgames.com/forums/tt.asp?forumid=1681">Forum</a>
-			</div>
-		</div>
-	</div>
-	<div id="container">
+    <div id="header-container">
+        <div id="header">
+            <div id="header-logo">
+                <h1><a href="../index2.html"><img src="./images/CommandLuaLogo.svg" height=45px alt="CommandLua"></a>
+                </h1>
+            </div>
+            <div id="header-nav">
+                <a class="selected" href="../index2.html">Reference</a>
+                <!-- <a href="/guides/">Guides</a> -->
+                <a href="https://www.matrixgames.com/forums/tt.asp?forumid=1681">Forum</a>
+            </div>
+        </div>
+    </div>
+    <div id="container">
 
-		<div id="content">
-			<div id="nav">
-				<ul>
-					<li><a href="../index2.html#News">News</a></li>
-					<li><a href="../index2.html#Introduction">Introduction</a></li>
-					<ol>
-						<li><a href="../index2.html#HowToUse">How to Use These Docs</a></li>
-						<li><a href="../index2.html#FirstSteps">First Steps</a></li>
-						<li><a href="../index2.html#ExternalResources">External Resources</a></li>
-					</ol>
+        <div id="content">
+            <div id="nav">
+                <ul>
+                    <li><a href="../index2.html#News">News</a></li>
+                    <li><a href="../index2.html#Introduction">Introduction</a></li>
+                    <ol>
+                        <li><a href="../index2.html#HowToUse">How to Use These Docs</a></li>
+                        <li><a href="../index2.html#FirstSteps">First Steps</a></li>
+                        <li><a href="../index2.html#ExternalResources">External Resources</a></li>
+                    </ol>
 
-					<li><a href="../index2.html#Overview">Overview</a></li>
-					<ol>
-						<li><a href="../index2.html#CaseSensitivityandConventions">Case Sensitivity and Conventions</a></li>
+                    <li><a href="../index2.html#Overview">Overview</a></li>
+                    <ol>
+                        <li><a href="../index2.html#CaseSensitivityandConventions">Case Sensitivity and Conventions</a>
+                        </li>
                         <li><a href="../index2.html#EventHandling">Event Handling</a></li>
-						<li><a href="../index2.html#ErrorHandling">Error Handling</a></li>
-					</ol>
+                        <li><a href="../index2.html#ErrorHandling">Error Handling</a></li>
+                    </ol>
                     <li><a href="DataTypes.html">Data Types</a></li>
-					<li><a href="Functions.html">Functions</a></li>
-					<li><a href="Wrappers.html">Wrappers</a></li>
-					<!--<li><a href="Selectors.html">Selectors</a></li>-->
-					<li><a href="Tables.html">Tables</a></li>
-				</ul>
-			</div>
+                    <li><a href="Functions.html">Functions</a></li>
+                    <li><a href="Wrappers.html">Wrappers</a></li>
+                    <!--<li><a href="Selectors.html">Selectors</a></li>-->
+                    <li><a href="Tables.html">Tables</a></li>
+                </ul>
+            </div>
             <div id="main">
 
                 <a class="anchor" id="Tables"></a>
                 <h2>Tables</h2>
                 <p>
                     Tables are sections that have related data attached to them. <br />
-					In general, they are referenced as Lua tables. <br />
-                    Like wrappers, the content of these may be modified either directly (<strong>object.field</strong>) or by some ScenEdit_Setxxx( {..<strong>field=</strong>....} ) function.<br>
+                    In general, they are referenced as Lua tables. <br />
+                    Like wrappers, the content of these may be modified either directly (<strong>object.field</strong>)
+                    or by some ScenEdit_Setxxx( {..<strong>field=</strong>....} ) function.<br>
                 </p>
                 <ul class="ul-2-columns">
                     <li><span class="table"><a href="#table_AAR">AAR</a></span></li>
                     <li><span class="table"><a href="#table_Area">Area</a></span></li>
                     <li><span class="table"><a href="#table_Cargo">Cargo</a></span></li>
-                    <li><span class="table"><a href="#table_CargoItem">CargoItem</a></span></li>		
+                    <li><span class="table"><a href="#table_CargoItem">CargoItem</a></span></li>
                     <li><span class="table"><a href="#table_Component">Component</a></span></li>
                     <li><span class="table"><a href="#table_EMmatch">EMmatch</a></span></li>
                     <li><span class="table"><a href="#table_Emissions">Emissions</a></span></li>
@@ -94,13 +96,13 @@
                     <li><span class="table"><a href="#table_ReferencePoint">ReferencePoint</a></span></li>
                     <li><span class="table"><a href="#table_Sensor">Sensor</a></span></li>
                     <li><span class="table"><a href="#table_Signature">Signature</a></span></li>
-				   
+
                     <!--<li><span class="table"><a href="#table_SideContact">SideContact</a></span></li>
     <li><span class="table"><a href="#table_SideDescription">SideDescription</a></span></li>
     <li><span class="table"><a href="#table_SideSelector">SideSelector </a></span></li>
     <li><span class="table"><a href="#table_SideUnit">SideUnit</a></span></li>-->
-			
-                    <li><span class="table"><a href="#table_TargetPriority">TargetPriority</a></span></li>		
+
+                    <li><span class="table"><a href="#table_TargetPriority">TargetPriority</a></span></li>
                     <li><span class="table"><a href="#table_WRA">WRA</a></span></li>
                     <!-- li><span class="table"><a href="#table_Waypoint">Waypoint</a></span></li-->
                     <li><span class="table"><a href="#table_WeaponLoaded">WeaponLoaded</a></span></li>
@@ -110,10 +112,16 @@
                 <hr>
                 <a class="anchor" id="table_AAR"></a>
                 <h3>AAR</h3>
-                <p>Air-to-Air Refueling options; these are updated by <a href="Function_ScenEdit_SetMission.html">ScenEdit_SetMission()</a>.</p>
+                <p>Air-to-Air Refueling options; these are updated by <a
+                        href="Function_ScenEdit_SetMission.html">ScenEdit_SetMission()</a>.</p>
                 </ul>
                 <table class="table_borders" style="width: 100%; margin-left: 0px;">
-                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Comments</td>
+                    </tr>
                     <tr>
                         <td><span class="parameter">use_refuel_unrep</span></td>
                         <td><span class="types"><span class="string">string</span></span></td>
@@ -192,24 +200,30 @@
                 <hr>
                 <a class="anchor" id="table_Area"></a>
                 <h3>Area</h3>
-				<p>
-				This defines an area bounded by Reference Points or LatLon points<br>
-				<ol>
-<li>Using Reference Point Names or GUIDs<br>
-{ 'RP-3137', 'RP-3139', 'RP-3136', 'RP-3138' }<br>
-<br>
-</ol>
-				</p>
+                <p>
+                    This defines an area bounded by Reference Points or LatLon points<br>
+                <ol>
+                    <li>Using Reference Point Names or GUIDs<br>
+                        { 'RP-3137', 'RP-3139', 'RP-3136', 'RP-3138' }<br>
+                        <br>
+                </ol>
+                </p>
 
                 <hr>
                 <a class="anchor" id="table_Cargo"></a>
                 <h3>Cargo</h3>
                 <p>
                     Cargo stored in a ship/aircraft or dock facility usually referenced from a 'unit' wrapper.<br>
-                    To add/modify/remove cargo, use the function <a href="Function_ScenEdit_UpdateUnitCargo.html">UpdateUnitCargo()</a>.
+                    To add/modify/remove cargo, use the function <a
+                        href="Function_ScenEdit_UpdateUnitCargo.html">UpdateUnitCargo()</a>.
                 </p>
                 <table class="table_borders" style="width: 100%; margin-left: 0px;">
-                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Comments</td>
+                    </tr>
                     <tr>
                         <td><span class="parameter">GUID</span>
                         <td><span class="types"><span class="string">string</span></span>
@@ -273,13 +287,18 @@
                     Cargo item is used to identify the cargo assigned to be moved via a cargo mission.<br>
                 </p>
                 <table class="table_borders" style="width: 100%; margin-left: 0px;">
-                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Comments</td>
+                    </tr>
                     <tr>
                         <td><span class="parameter">type</span>
                         <td><span class="types"><span class="number">number</span></span>
                         <td>CargoObjectType
                     </tr>
-                   <tr>
+                    <tr>
                         <td><span class="parameter">dbid</span>
                         <td><span class="types"><span class="number">number</span></span>
                         <td>Database ID of the CargoObjectType
@@ -295,13 +314,18 @@
                         <td>Number of items to be moved (for Mount type cargo.)
                     </tr>
                 </table>
-	
+
                 <hr>
                 <a class="anchor" id="table_CargoMission"></a>
                 <h3>CargoMission</h3>
                 <p>CargoMission options; these are updated by ScenEdit_SetMission()</p>
                 <table class="table_borders" style="width: 100%; margin-left: 0px;">
-                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Comments</td>
+                    </tr>
                     <tr>
                         <td><span class="parameter">subtype</span>
                         <td><span class="types"><span class="string">string</span></span>
@@ -379,22 +403,29 @@
                         <td><span class="parameter">MoveAllCargo</span>
                         <td><span class="types"><span class="boolean">boolean</span></span>
                         <td>If true, mission units ignore assigned cargo list and move all possible cargo.
-                    </tr>		
+                    </tr>
                     <tr>
                         <td><span class="parameter">AllowGroundUnitSelfDeliveryFromCargo</span>
                         <td><span class="types"><span class="boolean">boolean</span></span>
-                        <td>If true, ground units that are assigned to the mission AND begin inside cargo will exit cargo and attempt to self-transport.
-                    </tr>					
+                        <td>If true, ground units that are assigned to the mission AND begin inside cargo will exit
+                            cargo and attempt to self-transport.
+                    </tr>
                 </table>
 
                 <hr>
                 <a class="anchor" id="table_Component"></a>
                 <h3>Component</h3>
                 <p>
-                    This identifies the component/item(s) that are present in a unit. See <a href="Wrappers.html#wrapper_Unit">Unit</a>:filterOnComponent on how to filter this table
+                    This identifies the component/item(s) that are present in a unit. See <a
+                        href="Wrappers.html#wrapper_Unit">Unit</a>:filterOnComponent on how to filter this table
                 </p>
                 <table class="table_borders" style="width: 100%; margin-left: 0px;">
-                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Comments</td>
+                    </tr>
                     <tr>
                         <td><span class="parameter">comp_GUID</span>
                         <td><span class="types"><span class="string">string</span></span>
@@ -455,7 +486,12 @@
                 </p>
                 <h4>Fields</h4>
                 <table class="table_borders" style="width: 100%; margin-left: 0px;">
-                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Comments</td>
+                    </tr>
                     <tr>
                         <td><span class="parameter">DBID</span>
                         <td><span class="types"><span class="number">number</span></span>
@@ -487,9 +523,9 @@
                         <td>Applicable to Facility and Ships
                     </tr>
                 </table>
-				<h5>Example</h5>
-				<div class="example">
-					<code>
+                <h5>Example</h5>
+                <div class="example">
+                    <code>
 						local u = ScenEdit_GetContact( { side='united states', guid='Y5QK8V-0HM1KMFEQFV13'} )<br />
 						print(u.potentialmatches)<br />
 					<br />
@@ -499,7 +535,7 @@
 }
 					</output>
 					</code>
-				</div>
+                </div>
 
                 <hr>
                 <a class="anchor" id="table_Emissions"></a>
@@ -509,7 +545,12 @@
                 </p>
                 <h4>Fields</h4>
                 <table class="table_borders" style="width: 100%; margin-left: 0px;">
-                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Comments</td>
+                    </tr>
                     <tr>
                         <td><span class="parameter">name</span>
                         <td><span class="types"><span class="string">string</span></span>
@@ -552,9 +593,9 @@
                     </tr>
                 </table>
 
-				<h5>Example</h5>
-				<div class="example">
-					<code>
+                <h5>Example</h5>
+                <div class="example">
+                    <code>
 						local u = ScenEdit_GetContact({side='united states',guid='Y5QK8V-0HM1KMFEQFV13'})<br />
 						print(u.emissions)
 					<br />
@@ -569,8 +610,8 @@
 }
 					</output>
 					</code>
-				</div>
- 
+                </div>
+
                 <a class="anchor" id="table_Enablers"></a>
                 <h3>Enablers</h3>
                 <p>
@@ -578,7 +619,12 @@
                 </p>
                 <h4>Fields</h4>
                 <table class="table_borders" style="width: 100%; margin-left: 0px;">
-                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Comments</td>
+                    </tr>
                     <tr>
                         <td><span class="parameter">GNSS_NavIC</span>
                         <td><span class="types"><span class="boolen">True/false</span></span>
@@ -601,9 +647,9 @@
                     </tr>
                 </table>
 
-				<h5>Example</h5>
-				<div class="example">
-					<code>
+                <h5>Example</h5>
+                <div class="example">
+                    <code>
 local side = VP_GetSide({side='BLUE'})<br />
 print(side.enablers)<br />
 					<output>
@@ -615,10 +661,10 @@ print(side.enablers)<br />
 { GNSS_NavIC = 'Yes', GNSS_BeiDou = 'Yes', GNSS_GLONASS = 'No', GNSS_GPS = 'Yes' }<br />
 					</output>
 					</code>
-				</div>
+                </div>
 
 
- <!--
+                <!--
     <hr>
     <a class="anchor" id="table_Explosion"></a>
     <h3>Explosion</h3>
@@ -667,7 +713,12 @@ print(side.enablers)<br />
                 </p>
                 <h4>Fields</h4>
                 <table class="table_borders" style="width: 100%; margin-left: 0px;">
-                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Comments</td>
+                    </tr>
                     <tr>
                         <td><span class="parameter">GUID</span>
                         <td><span class="types"><span class="string">string</span></span>
@@ -704,12 +755,18 @@ print(side.enablers)<br />
                 <a class="anchor" id="table_FerryMission"></a>
                 <h3>FerryMission</h3>
                 <p>
-                    FerryMission options; these are updated by ScenEdit_SetMission()<br/>
-					Note that 'random' behavior basically finds a new destination base within range each time the mission is executed.
+                    FerryMission options; these are updated by ScenEdit_SetMission()<br />
+                    Note that 'random' behavior basically finds a new destination base within range each time the
+                    mission is executed.
                 </p>
                 <h4>Fields</h4>
                 <table class="table_borders" style="width: 100%; margin-left: 0px;">
-                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Comments</td>
+                    </tr>
                     <tr>
                         <td><span class="parameter">FerryBehavior </span>
                         <td><span class="types"><span class="string">string</span></span>
@@ -746,21 +803,29 @@ print(side.enablers)<br />
                 <h3>Formation</h3>
                 <p>
                     This contains the information related to keeping units of a group in formation.<br />
-					There are several predefined formation settings located in 'Resources\Formation\StandardFormations.txt'.
-					These can be used to set a group's base formation stations.<br />
-					Indivdual units in the formation can have their station changed.</br />
-					<p>
+                    There are several predefined formation settings located in
+                    'Resources\Formation\StandardFormations.txt'.
+                    These can be used to set a group's base formation stations.<br />
+                    Indivdual units in the formation can have their station changed.</br />
+                <p>
                     The field values for a selected unit are "bearing", "type", "distance", "sprint"<br />
-                    The field values for a selected group are "name", "spacing", "spacing_unit", "bearing", "transpose" <br />
-					</p>
+                    The field values for a selected group are "name", "spacing", "spacing_unit", "bearing", "transpose"
+                    <br />
+                </p>
                 </p>
                 <h4>Fields</h4>
                 <p>For setting a unit's station in the current formation</p>
                 <table class="table_borders" style="width: 100%; margin-left: 0px;">
-                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</th></tr>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Comments</th>
+                    </tr>
                     <tr>
                         <td><span class="parameter">type</span>
-                        <td><span class="types"><span class="tooltip">value<span class="tooltiptext">fixed = 0 <br> rotating = 1 </span></span></span>
+                        <td><span class="types"><span class="tooltip">value<span class="tooltiptext">fixed = 0 <br>
+                                        rotating = 1 </span></span></span>
                         <td>Type of bearing</td>
                         <td></td>
                     </tr>
@@ -782,17 +847,22 @@ print(side.enablers)<br />
                         <td>Use 'sprint and drift' mode while on formation station
                         <td></td>
                     </tr>
-                     <tr>
+                    <tr>
                         <td><span class="parameter">transpose</span>
                         <td><span class="types"><span class="boolean">True</span></span>
                         <td>Unit jumps to the new stations immediately</td>
                         <td></td>
                     </tr>
-               </table>
+                </table>
                 <p></p>
                 <p>For setting a group's formation and underlying unit stations</p>
                 <table class="table_borders" style="width: 100%; margin-left: 0px;">
-                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</th></tr>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Comments</th>
+                    </tr>
                     <tr>
                         <td><span class="parameter">name</span>
                         <td><span class="types"><span class="string">string</span></span>
@@ -829,16 +899,19 @@ print(side.enablers)<br />
                         <td></td>
                     </tr>
                 </table>
-				<p>
-				The formation name can also contain your own formation settings to initally set up the group's formation.<br>
-				The name starts with "Custom:" followed by a string in the format designated in the 'Resources\Formation\StandardFormations.txt' file.<br>
-				Look at this file to get a feeling of these fields and how they are used,<br>
-				The character '\t' is used in the Lua string to represent tabs which is needed to separate the fields in the line.<br>
-				For example: Custom:\t0\t2\t1\t135\t1\t1\t225\t1<br>
-				</p>
-				<h5>Example</h5>
-				<div class="example">
-					<code>
+                <p>
+                    The formation name can also contain your own formation settings to initally set up the group's
+                    formation.<br>
+                    The name starts with "Custom:" followed by a string in the format designated in the
+                    'Resources\Formation\StandardFormations.txt' file.<br>
+                    Look at this file to get a feeling of these fields and how they are used,<br>
+                    The character '\t' is used in the Lua string to represent tabs which is needed to separate the
+                    fields in the line.<br>
+                    For example: Custom:\t0\t2\t1\t135\t1\t1\t225\t1<br>
+                </p>
+                <h5>Example</h5>
+                <div class="example">
+                    <code>
 local g = ScenEdit_GetUnit( {name='CVN BG', guid='9506a165-6e44-40dd-b721-f9c07e056bdb'})<br />
 print (g.group.unitlist )  -- list of units in the group<br />
 local u_gid = g.group.unitlist[6]  -- changing station of 6th unit in the group<br />
@@ -859,7 +932,7 @@ print(u.formation) -- after update<br />
 { sprint = 'False', longitude = 138.295780804378, bearing = 44.8684692382813, latitude = 34.3064951630114, guid = 'e65feada-4529-4223-82df-522be44c7af9', type = 'Fixed', distance = 4.99721479415894 }<br />
 					</output>
 					</code>
-				</div>
+                </div>
 
                 <hr>
                 <a class="anchor" id="table_LastDetections"></a>
@@ -869,48 +942,53 @@ print(u.formation) -- after update<br />
                 </p>
                 <h4>Fields</h4>
                 <table class="table_borders" style="width: 100%; margin-left: 0px;">
-                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Comments</td>
+                    </tr>
                     <tr>
                         <td><span class="parameter">detector_guid</span>
                         <td><span class="types"><span class="string">string</span></span>
                         <td>The GUID of the detecting unit
-						<td></td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td><span class="parameter">detect_sensor_guid</span>
                         <td><span class="types"><span class="string">string</span></span>
                         <td>The GUID of the sensor on the detecting unit
-						<td></td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td><span class="parameter">age</span>
                         <td><span class="types"><span class="number">number</span></span>
                         <td>Seconds since detection made
-						<td></td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td><span class="parameter">range</span>
                         <td><span class="types"><span class="number">number</span></span>
                         <td>Estimated range at detect time
-						<td></td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td><span class="parameter">special_mode</span>
                         <td><span class="types"><span class="string">string</span></span>
                         <td>Special detect mode. This identifies detection as special.</td>
-						<td>The values, which should be self-explaining, are: <br>
-        None, 
-        SubAssumedFromTorpedoDetection, 
-        SubAssumedFromMissileDetection, 
-        FlamingDatum, 
-        AutoDetection, 
-        MissileAssumedFromSemiActiveIllumination 
-						</td>
-                   </tr>
+                        <td>The values, which should be self-explaining, are: <br>
+                            None,
+                            SubAssumedFromTorpedoDetection,
+                            SubAssumedFromMissileDetection,
+                            FlamingDatum,
+                            AutoDetection,
+                            MissileAssumedFromSemiActiveIllumination
+                        </td>
+                    </tr>
                 </table>
-				<h5>Example</h5>
-				<div class="example">
-					<code>
+                <h5>Example</h5>
+                <div class="example">
+                    <code>
 						local u = ScenEdit_GetContact( { side='united states', guid='Y5QK8V-0HM1KMFEQFV13'} )<br />
 						print(u.lastDetections)<br />
 					<br />
@@ -926,7 +1004,7 @@ print(u.formation) -- after update<br />
  }
 					</output>
 					</code>
-				</div>
+                </div>
 
                 <hr>
                 <a class="anchor" id="table_LatLon"></a>
@@ -939,20 +1017,27 @@ print(u.formation) -- after update<br />
                 </p>
                 <p>
                     A set of latitude and longitude to define a point. Within the simulation, the values are
-                    recorded in	decimal	degrees.
+                    recorded in decimal degrees.
                 </p>
                 <h4>Fields</h4>
                 <table class="table_borders" style="width: 100%; margin-left: 0px;">
-                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Comments</td>
+                    </tr>
                     <tr>
                         <td><span class="parameter">latitude</span>
                         <td class="types"><a href="DataTypes.html#dataType_Latitude">latitude</a></td>
-						<td /><td />
+                        <td />
+                        <td />
                     </tr>
                     <tr>
                         <td><span class="parameter">longitude</span>
                         <td class="types"><a href="DataTypes.html#dataType_Longitude">longitude</a></td>
-						<td /><td />
+                        <td />
+                        <td />
                     </tr>
                 </table>
                 <h5>Example</h5>
@@ -973,7 +1058,12 @@ print(u.formation) -- after update<br />
                 </p>
                 <h4>Fields</h4>
                 <table class="table_borders" style="width: 100%; margin-left: 0px;">
-                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Comments</td>
+                    </tr>
                     <tr>
                         <td><span class="parameter">UnitName</span>
                         <td><span class="types"><span class="string">string</span></span>
@@ -1041,13 +1131,19 @@ print(u.formation) -- after update<br />
                         magazine 'blocks'. This is what is being referred to here, rather than the ONE magazine
                         group
                         for the
-                        unit/group.<br/>
-						A magazine on a mount as distint from a normal mgazine of multiple weapons does not have a mag_dbid value (=0).
+                        unit/group.<br />
+                        A magazine on a mount as distint from a normal mgazine of multiple weapons does not have a
+                        mag_dbid value (=0).
                     </p>
                 </div>
                 <h4>Fields</h4>
                 <table class="table_borders" style="width: 100%; margin-left: 0px;">
-                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Comments</td>
+                    </tr>
                     <tr>
                         <td><span class="parameter">mag_capacity</span>
                         <td><span class="types"><span class="string">string</span></span>
@@ -1075,9 +1171,9 @@ print(u.formation) -- after update<br />
                     </tr>
                 </table>
 
-					<h5>Example</h5>
-					<div class="example">
-						<code>
+                <h5>Example</h5>
+                <div class="example">
+                    <code>
 local u = ScenEdit_GetUnit({name='LST 4001 Osumi', guid='8269b881-20ce-4f2e-baa0-6823e46d55a4'})<br />
 print( "Unit Magazines " .. "\r\n")<br />
 for k,v in pairs(u.magazines) do<br />
@@ -1112,10 +1208,11 @@ Unit Magazines <br />
 		Mk186 TORCH Flare [Seduction] with load 2 of 16<br />
 							</output>
 						</code>
-					</div>
+                </div>
                 <div class="note-alert">
                     <p>
-                        Compare the above example to the example in the wrapper <a href="Wrappers.html#wrapper_Magazine">Magazine</a>.<br />
+                        Compare the above example to the example in the wrapper <a
+                            href="Wrappers.html#wrapper_Magazine">Magazine</a>.<br />
                     </p>
                 </div>
 
@@ -1127,7 +1224,12 @@ Unit Magazines <br />
                 </p>
                 <h4>Fields</h4>
                 <table class="table_borders" style="width: 100%; margin-left: 0px;">
-                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Comments</td>
+                    </tr>
                     <tr>
                         <td><span class="parameter">OneThirdRule</span>
                         <td><span class="types"><span class="boolean">boolean</span></span>
@@ -1258,7 +1360,12 @@ Unit Magazines <br />
                 </ul>
                 <h4>Fields</h4>
                 <table class="table_borders" style="width: 100%; margin-left: 0px;">
-                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Comments</td>
+                    </tr>
                     <tr>
                         <td><span class="parameter">OneThirdRule</span>
                         <td><span class="types"><span class="boolean">boolean</span></span>
@@ -1379,7 +1486,8 @@ Unit Magazines <br />
                         <td><span class="parameter">MinesLaidInSet</span>
                         <td><span class="types"><span class="number">number</span></span>
                         <td>
-                            Mines can be laid in a group/set of 'number' of mines, example lay mines in groups of 10. Default is all.
+                            Mines can be laid in a group/set of 'number' of mines, example lay mines in groups of 10.
+                            Default is all.
                     </tr>
                     <tr>
                         <td><span class="parameter">MinesLaidInterval</span>
@@ -1411,7 +1519,12 @@ Unit Magazines <br />
                 </p>
                 <h4>Fields</h4>
                 <table class="table_borders" style="width: 100%; margin-left: 0px;">
-                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Comments</td>
+                    </tr>
                     <tr>
                         <td><span class="parameter">mount_dbid</span>
                         <td><span class="types"><span class="string">string</span></span>
@@ -1449,9 +1562,9 @@ Unit Magazines <br />
                     </tr>
                 </table>
 
-					<h5>Example</h5>
-					<div class="example">
-						<code>		 
+                <h5>Example</h5>
+                <div class="example">
+                    <code>
 local u = ScenEdit_GetUnit({name='LST 4001 Osumi', guid='8269b881-20ce-4f2e-baa0-6823e46d55a4'})<br />
 print( "Unit Mounts " )<br />
 for k,v in pairs(u.mounts) do<br />
@@ -1503,14 +1616,15 @@ Unit Mounts <br />
 		Mk186 TORCH Flare [Seduction] with load 2 of 2              <br />
 							</output>
 						</code>
-					</div>
+                </div>
                 <div class="note-alert">
                     <p>
-                        Compare the above example to the example in thw wrapper <a href="Wrappers.html#wrapper_Mount">Mount</a>.<br />
+                        Compare the above example to the example in thw wrapper <a
+                            href="Wrappers.html#wrapper_Mount">Mount</a>.<br />
                     </p>
                 </div>
 
-				<hr>
+                <hr>
                 <a class="anchor" id="table_PatrolMission"></a>
                 <h3>PatrolMission</h3>
                 <p>
@@ -1519,7 +1633,12 @@ Unit Mounts <br />
                 </ul>
                 <h4>Fields</h4>
                 <table class="table_borders" style="width: 100%; margin-left: 0px;">
-                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Comments</td>
+                    </tr>
                     <tr>
                         <td><span class="parameter">subtype</span>
                         <td><span class="types"><span class="string">string</span></span>
@@ -1546,7 +1665,7 @@ Unit Mounts <br />
                     <tr>
                         <td><span class="parameter">LoopType</span>
                         <td><span class="types"><span class="string">string</span></span>
-                        <td>Movement style: Random within area (0), Repeatable loop (1), ChainsawLoop  (2)
+                        <td>Movement style: Random within area (0), Repeatable loop (1), ChainsawLoop (2)
                     </tr>
                     <tr>
                         <td><span class="parameter">CheckOPA</span>
@@ -1576,7 +1695,7 @@ Unit Mounts <br />
                         <td><span class="types"><span class="boolean">boolean</span></span>
                         <td>True if terrain following
                     </tr>
-                      <tr>
+                    <tr>
                         <td><span class="parameter">TransitAltitudePreset</span>
                         <td><span class="types"><span class="string">string</span></span>
                     </tr>
@@ -1584,7 +1703,7 @@ Unit Mounts <br />
                         <td><span class="parameter">UseTransitAltitudePreset</span>
                         <td><span class="types"><span class="boolean">True/False</span></span>
                     </tr>
-                   <tr>
+                    <tr>
                         <td><span class="parameter">StationThrottleAircraft</span>
                         <td><span class="types"><span class="string">string</span></span>
                     </tr>
@@ -1597,7 +1716,7 @@ Unit Mounts <br />
                         <td><span class="types"><span class="boolean">boolean</span></span>
                         <td>True if terrain following
                     </tr>
-                      <tr>
+                    <tr>
                         <td><span class="parameter">StationAltitudePreset</span>
                         <td><span class="types"><span class="string">string</span></span>
                     </tr>
@@ -1605,7 +1724,7 @@ Unit Mounts <br />
                         <td><span class="parameter">UseStationAltitudePreset</span>
                         <td><span class="types"><span class="boolean">True/False</span></span>
                     </tr>
-                   <tr>
+                    <tr>
                         <td><span class="parameter">AttackThrottleAircraft</span>
                         <td><span class="types"><span class="string">string</span></span>
                     </tr>
@@ -1618,7 +1737,7 @@ Unit Mounts <br />
                         <td><span class="types"><span class="boolean">boolean</span></span>
                         <td>True if terrain following
                     </tr>
-                      <tr>
+                    <tr>
                         <td><span class="parameter">AttackAltitudePreset</span>
                         <td><span class="types"><span class="string">string</span></span>
                     </tr>
@@ -1638,7 +1757,7 @@ Unit Mounts <br />
                         <td><span class="parameter">TransitDepthSubmarine</span>
                         <td><span class="types"><span class="string">string</span></span>
                     </tr>
-                      <tr>
+                    <tr>
                         <td><span class="parameter">TransitDepthSubmarinePreset</span>
                         <td><span class="types"><span class="string">string</span></span>
                     </tr>
@@ -1654,7 +1773,7 @@ Unit Mounts <br />
                         <td><span class="parameter">StationDepthSubmarine</span>
                         <td><span class="types"><span class="string">string</span></span>
                     </tr>
-                      <tr>
+                    <tr>
                         <td><span class="parameter">StationDepthSubmarinePreset</span>
                         <td><span class="types"><span class="string">string</span></span>
                     </tr>
@@ -1670,7 +1789,7 @@ Unit Mounts <br />
                         <td><span class="parameter">AttackDepthSubmarine</span>
                         <td><span class="types"><span class="string">string</span></span>
                     </tr>
-                       <tr>
+                    <tr>
                         <td><span class="parameter">AttackDepthSubmarinePreset</span>
                         <td><span class="types"><span class="string">string</span></span>
                     </tr>
@@ -1678,7 +1797,7 @@ Unit Mounts <br />
                         <td><span class="parameter">UseAttackDepthSubmarinePreset</span>
                         <td><span class="types"><span class="boolean">True/False</span></span>
                     </tr>
-                   <tr>
+                    <tr>
                         <td><span class="parameter">AttackDistanceSubmarine</span>
                         <td><span class="types"><span class="string">string</span></span>
                     </tr>
@@ -1764,78 +1883,122 @@ Unit Mounts <br />
                     </tr>
                 </table>
 
-					<hr>
-					<a class="anchor" id="table_ReferencePoint"></a>
-					<h3>ReferencePoint</h3>
-					Reference point information. <br/>
-					This data should reflect the corresponding wrapper. In several places, a table is used rather than references to the actual RP wrapper.
-		
-	
-					<table class="table_borders" style="width: 100%; margin-left: 0px;">
-					<tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
-						<tr><td><span class="parameter">bearingtype</span>
-                        <td><span class="types"><span class="tooltip">bearingType<span class="tooltiptext">fixed = 0 <br> rotating = 1 </span></span></span>
-						<td>Type of bearing to 'relativeto' unit
-						</td><td>no value if no 'relativeto' unit
-						</td></tr>
-						<tr><td><span class="parameter">color</span>
-						<td><span class="types"><span class="string">string</span></span>
-						<td>The HTML color code expressed as a number - convert to hex to check against a HTML color chart
-						</td><td>
-						</td></tr>
-						<tr><td><span class="parameter">guid</span>
-						<td><span class="types"><span class="string">string</span></span>
-						<td>The unique identifier for the reference point
-						</td><td>
-						</td></tr>
-						<tr><td><span class="parameter">highlighted</span>
-						<td><span class="types"><span class="boolean">True/False</span></span>
-						<td>True if the point should be selected
-						</td><td>
-						</td></tr>
-						<tr><td><span class="parameter">latitude</span>
-						<td><span class="types"><a href="DataTypes.html#dataType_Latitude">Latitude</a></span>
-						<td>The latitude of the reference point
-						</td><td>
-						</td></tr>
-						<tr><td><span class="parameter">locked</span>
-						<td><span class="types"><span class="boolean">True/False</span></span>
-						<td>True if the point is locked
-						</td><td>
-						</td></tr>
-						<tr><td><span class="parameter">longitude</span>
-						<td><span class="types"><a href="DataTypes.html#dataType_Longitude">Longitude</a></span>
-						<td>The longitude of the reference point
-						</td><td>
-						</td></tr>
-						<tr><td><span class="parameter">name</span>
-						<td><span class="types"><span class="string">string</span></span>
-						<td>The name of the reference point
-						</td><td>
-						</td></tr>
-						<tr><td><span class="parameter">relativeDistance</span>
-						<td><span class="types"><span class="number">number</span></span>
-						<td>Relative distance of RP to 'relativeto' unit
-						</td><td>no value if no 'relativeto' unit
-						</td></tr>
-						<tr><td><span class="parameter">relativeBearing</span>
-						<td><span class="types"><span class="number">number</span></span>
-						<td>Relative bearing ( 0 - 360) of RP to 'relativeto' unit
-						</td><td>no value if no 'relativeto' unit
-						</td></tr>
-						<tr><td><span class="parameter">relativeto</span>
-						<td><span class="wrapper"><a href="#wrapper_Unit">Unit</a></span>
-						<td>The unit that the reference point is relative to
-						</td><td>
-						</td></tr>
-						<tr><td><span class="parameter">side</span>
-						<td><span class="types"><span class="string">string</span></span>
-						<td>The side the reference point is visible to
-						</td><td>
-						</td></tr>
-					</table>
+                <hr>
+                <a class="anchor" id="table_ReferencePoint"></a>
+                <h3>ReferencePoint</h3>
+                Reference point information. <br />
+                This data should reflect the corresponding wrapper. In several places, a table is used rather than
+                references to the actual RP wrapper.
 
-                 <hr>
+
+                <table class="table_borders" style="width: 100%; margin-left: 0px;">
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Comments</td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">bearingtype</span>
+                        <td><span class="types"><span class="tooltip">bearingType<span class="tooltiptext">fixed = 0
+                                        <br> rotating = 1 </span></span></span>
+                        <td>Type of bearing to 'relativeto' unit
+                        </td>
+                        <td>no value if no 'relativeto' unit
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">color</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>The HTML color code expressed as a number - convert to hex to check against a HTML color
+                            chart
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">guid</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>The unique identifier for the reference point
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">highlighted</span>
+                        <td><span class="types"><span class="boolean">True/False</span></span>
+                        <td>True if the point should be selected
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">latitude</span>
+                        <td><span class="types"><a href="DataTypes.html#dataType_Latitude">Latitude</a></span>
+                        <td>The latitude of the reference point
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">locked</span>
+                        <td><span class="types"><span class="boolean">True/False</span></span>
+                        <td>True if the point is locked
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">longitude</span>
+                        <td><span class="types"><a href="DataTypes.html#dataType_Longitude">Longitude</a></span>
+                        <td>The longitude of the reference point
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">name</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>The name of the reference point
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">relativeDistance</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Relative distance of RP to 'relativeto' unit
+                        </td>
+                        <td>no value if no 'relativeto' unit
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">relativeBearing</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Relative bearing ( 0 - 360) of RP to 'relativeto' unit
+                        </td>
+                        <td>no value if no 'relativeto' unit
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">relativeto</span>
+                        <td><span class="wrapper"><a href="#wrapper_Unit">Unit</a></span>
+                        <td>The unit that the reference point is relative to
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">side</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>The side the reference point is visible to
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                </table>
+
+                <hr>
                 <a class="anchor" id="table_Sensor"></a>
                 <h3>Sensor</h3>
                 <p>
@@ -1844,7 +2007,12 @@ Unit Mounts <br />
 
                 <h4>Fields</h4>
                 <table class="table_borders" style="width: 100%; margin-left: 0px;">
-                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Comments</td>
+                    </tr>
                     <tr>
                         <td><span class="parameter">sensor_dbid</span>
                         <td><span class="types"><span class="number">number</span></span>
@@ -1885,10 +2053,10 @@ Unit Mounts <br />
                         <td><span class="types"><a href="DataTypes.html#dataType_Sensor">SensorType</a></span>
                         <td>Sensor type
                     </tr>
-				</table>
-				<h5>Example</h5>
-				<div class="example">
-					<code>		   
+                </table>
+                <h5>Example</h5>
+                <div class="example">
+                    <code>
 local u = ScenEdit_GetUnit({name='LST 4001 Osumi', guid='8269b881-20ce-4f2e-baa0-6823e46d55a4'})<br />
 print( "Unit Sensor " )<br />
 for k,v in pairs(u.sensors) do<br />
@@ -1922,7 +2090,7 @@ Unit Sensor                                                                     
 	[ Active: false , type: 2001 role: 2133]
 						</output>
 					</code>
-					<code>
+                    <code>
 	local unit = SE_GetUnit({name='DDG 104 Sterett [Arleigh Burke Flight IIA]', guid='WT2BOY-0HN5INRGCHL31'})<br/>
 for _,s in ipairs(unit.sensors) do <br/>
 if string.find(s.sensor_name, 'SPY') then <br/>
@@ -1931,9 +2099,9 @@ if s.sensor_isactive == false then unit.sensors = {sensor_guid = s.sensor_guid, 
 end<br/>
 end<br/>
 </code>
-				</div>
-	
-  <!--
+                </div>
+
+                <!--
                 <hr>
                 <a class="anchor" id="table_SideContact"></a>
                 <h3>SideContact</h3>
@@ -2035,51 +2203,56 @@ end<br/>
 
                 <h4>Fields</h4>
                 <table class="table_borders" style="width: 100%; margin-left: 0px;">
-                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Comments</td>
+                    </tr>
                     <tr>
                         <td><span class="parameter">loadout</span>
                         <td><span class="types"><span class="number">number</span></span>
                         <td>Loadout ID from database. Only applicable if unit is aircraft
                     </tr>
-                   <tr>
+                    <tr>
                         <td><span class="parameter">...</span>
                         <td><span class="table">{ type, typeN, text, rcs, sqm }</span>
                         <td>Profile for each sonsor category
                     </tr>
-				</table>
-				<p>
-				Sonsor category profile
-				</p>
+                </table>
+                <p>
+                    Sonsor category profile
+                </p>
                 <table class="table_borders" style="width: 100%; margin-left: 0px;">
-					<tr>
-						<td><span class="parameter">type </span>
-						<td><span class="types"><span class="string">string</span></span>
-						<td>Sensor category as text
-					</tr>
-					<tr>
-						<td><span class="parameter">typeN </span>
-						<td><span class="types"><span class="number">number</span></span>
-						<td>Sensor category as number
-					</tr>
-					<tr>
-						<td><span class="parameter">text </span>
-						<td><span class="types"><span class="tsble">{ front, side, rear }</span></span>
-						<td>Profile as text similar to the internal DB viewer
-					</tr>
-					<tr>
-						<td><span class="parameter">rcs </span>
-						<td><span class="types"><span class="tsble">{ front, side, rear }</span></span>
-						<td>The raw profile values
-					</tr>
-					<tr>
-						<td><span class="parameter">sqm </span>
-						<td><span class="types"><span class="tsble">{ front, side, rear }</span></span>
-						<td>Square metre values
-					</tr>
-				</table>
-				<h5>Example</h5>
-				<div class="example">
-					<code>		   
+                    <tr>
+                        <td><span class="parameter">type </span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Sensor category as text
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">typeN </span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Sensor category as number
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">text </span>
+                        <td><span class="types"><span class="tsble">{ front, side, rear }</span></span>
+                        <td>Profile as text similar to the internal DB viewer
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">rcs </span>
+                        <td><span class="types"><span class="tsble">{ front, side, rear }</span></span>
+                        <td>The raw profile values
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">sqm </span>
+                        <td><span class="types"><span class="tsble">{ front, side, rear }</span></span>
+                        <td>Square metre values
+                    </tr>
+                </table>
+                <h5>Example</h5>
+                <div class="example">
+                    <code>
 							<output>
 { <br />
 loadout = 19867 <br />
@@ -2092,9 +2265,9 @@ loadout = 19867 <br />
 }<br />
 						</output>
 					</code>
-				</div>
+                </div>
 
-               <hr>
+                <hr>
                 <a class="anchor" id="table_StrikeMission"></a>
                 <h3>StrikeMission</h3>
                 <p>
@@ -2104,7 +2277,12 @@ loadout = 19867 <br />
                 </p>
                 <h4>Fields</h4>
                 <table class="table_borders" style="width: 100%; margin-left: 0px;">
-                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Comments</td>
+                    </tr>
                     <tr>
                         <td><span class="parameter">subtype</span>
                         <td><span class="types"><span class="string">string</span></span>
@@ -2245,7 +2423,7 @@ loadout = 19867 <br />
                         <td><span class="parameter">GroupMemberEngageDistance</span>
                         <td><span class="types"><span class="string">string</span></span>
                     </tr>
-                     <tr>
+                    <tr>
                         <td><span class="parameter">PrePlannedOnly</span>
                         <td><span class="types"><span class="boolean">boolean</span></span>
                         <td>True , mission will RTB upon target being destroyed (same as StrikePreplan)
@@ -2255,7 +2433,7 @@ loadout = 19867 <br />
                         <td><span class="types"><span class="boolean">boolean</span></span>
                         <td>True, focus entirely on striking targets
                     </tr>
-               </table>
+                </table>
 
                 <hr>
                 <a class="anchor" id="table_SupportMission"></a>
@@ -2264,8 +2442,13 @@ loadout = 19867 <br />
                     SupportMission options; these are updated by ScenEdit_SetMission()
                 </p>
                 <h4>Fields</h4>
-               <table class="table_borders" style="width: 100%; margin-left: 0px;">
-                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                <table class="table_borders" style="width: 100%; margin-left: 0px;">
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Comments</td>
+                    </tr>
                     <tr>
                         <td><span class="parameter">OneThirdRule</span>
                         <td><span class="types"><span class="boolean">boolean</span></span>
@@ -2280,7 +2463,7 @@ loadout = 19867 <br />
                         <td><span class="types"><span class="number">number</span></td>
                         <td>ByLoadout = 0; ByUnitClass = 1; NoGrouping = 2</td>
                     </tr>
-                                        <tr>
+                    <tr>
                         <td><span class="parameter">LoopType</span>
                         <td><span class="types"><span class="string">string</span></span>
                         <td>Navigation type: Continous loop (0) or Single loop (1)
@@ -2306,7 +2489,7 @@ loadout = 19867 <br />
                         <td><span class="parameter">TransitTerrainFollowingAircraft</span>
                         <td><span class="types"><span class="boolean">boolean</span></span>
                     </tr>
-                     <tr>
+                    <tr>
                         <td><span class="parameter">TransitAltitudePreset</span>
                         <td><span class="types"><span class="string">string</span></span>
                     </tr>
@@ -2314,7 +2497,7 @@ loadout = 19867 <br />
                         <td><span class="parameter">UseTransitAltitudePreset</span>
                         <td><span class="types"><span class="boolean">True/False</span></span>
                     </tr>
-                   <tr>
+                    <tr>
                         <td><span class="parameter">StationThrottleAircraft</span>
                         <td><span class="types"><span class="string">string</span></span>
                     </tr>
@@ -2326,7 +2509,7 @@ loadout = 19867 <br />
                         <td><span class="parameter">StationTerrainFollowingAircraft</span>
                         <td><span class="types"><span class="boolean">boolean</span></span>
                     </tr>
-                      <tr>
+                    <tr>
                         <td><span class="parameter">StationAltitudePreset</span>
                         <td><span class="types"><span class="string">string</span></span>
                     </tr>
@@ -2334,7 +2517,7 @@ loadout = 19867 <br />
                         <td><span class="parameter">UseStationAltitudePreset</span>
                         <td><span class="types"><span class="boolean">True/False</span></span>
                     </tr>
-                   <tr>
+                    <tr>
                         <td><span class="parameter">TransitThrottleSubmarine</span>
                         <td><span class="types"><span class="string">string</span></span>
                     </tr>
@@ -2442,18 +2625,23 @@ loadout = 19867 <br />
                 </p>
                 <h4>Fields</h4>
                 <table class="table_borders" style="width: 100%; margin-left: 0px;">
-                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Comments</td>
+                    </tr>
                     <tr>
                         <td><span class="parameter">guid</span>
                         <td><span class="types"><span class="string">string</span></span>
                         <td>The GUID of the unit.
-						<td>
+                        <td>
                     </tr>
                     <tr>
                         <td><span class="parameter">name</span>
                         <td><span class="types"><span class="string">string</span></span>
                         <td>The name of the unit.
-						<td>
+                        <td>
                     </tr>
                 </table>
 
@@ -2463,41 +2651,59 @@ loadout = 19867 <br />
                 <p>Target priority list format for the Doctrine wrapper.</p>
                 <h4>Fields</h4>
                 <table class="table_borders" style="width: 100%; margin-left: 0px;">
-                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>				
-			<tr>
-			<td><span class="parameter">unit_type</span>
-			<td><span class="types"><a href="DataTypes.html#dataType_Unit__Types">Unit Type</a></span>
-			<td>The general unit type. Only the default priority entry may have unit type 0 (any unit type.)</td>
-			</tr>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Comments</td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">unit_type</span>
+                        <td><span class="types"><a href="DataTypes.html#dataType_Unit__Types">Unit Type</a></span>
+                        <td>The general unit type. Only the default priority entry may have unit type 0 (any unit type.)
+                        </td>
+                    </tr>
 
-			<tr><td><span class="parameter">unit_subtype</span>
-			<td><span class="types"><span class="number">number</span></span>
-			<td>The unit subtype, based off unit type. 0 = any sub-type.
-			<span class="types"><span class="number"><a href="DataTypes.html#dataType_Unit_Aircraft">Aircraft subtype</a></span></span>
-			<span class="types"><span class="number"><a href="DataTypes.html#dataType_Unit_Ship">Ship subtype</a></span></span>
-			<span class="types"><span class="number"><a href="DataTypes.html#dataType_Unit_Submarine">Submarine subtype</a></span></span>			
-			<span class="types"><span class="number"><a href="DataTypes.html#dataType_Unit_Facility">Fixed facility category</a></span></span>
-			<span class="types"><span class="number"><a href="DataTypes.html#dataType_Unit_Facility">Ground/Mobile facility category</a></span></span>
-			<span class="types"><span class="number"><a href="DataTypes.html#dataType_WeaponType">Weapon type</a></span></span>		
-		        </td></tr>
+                    <tr>
+                        <td><span class="parameter">unit_subtype</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>The unit subtype, based off unit type. 0 = any sub-type.
+                            <span class="types"><span class="number"><a
+                                        href="DataTypes.html#dataType_Unit_Aircraft">Aircraft subtype</a></span></span>
+                            <span class="types"><span class="number"><a href="DataTypes.html#dataType_Unit_Ship">Ship
+                                        subtype</a></span></span>
+                            <span class="types"><span class="number"><a
+                                        href="DataTypes.html#dataType_Unit_Submarine">Submarine
+                                        subtype</a></span></span>
+                            <span class="types"><span class="number"><a
+                                        href="DataTypes.html#dataType_Unit_Facility">Fixed facility
+                                        category</a></span></span>
+                            <span class="types"><span class="number"><a
+                                        href="DataTypes.html#dataType_Unit_Facility">Ground/Mobile facility
+                                        category</a></span></span>
+                            <span class="types"><span class="number"><a href="DataTypes.html#dataType_WeaponType">Weapon
+                                        type</a></span></span>
+                        </td>
+                    </tr>
 
-			<tr>
+                    <tr>
                         <td><span class="parameter">isfixedfacilitysubtype</span>
                         <td><span class="types"><span class="boolean">True/False</span></span>
-                        <td>For facility unit_type only, TRUE indicates that unit_subtype is a fixed facility category. Otherwise unit_subtype is a Mobile unit category.
-                    	</tr>
+                        <td>For facility unit_type only, TRUE indicates that unit_subtype is a fixed facility category.
+                            Otherwise unit_subtype is a Mobile unit category.
+                    </tr>
 
-                    	<tr>
+                    <tr>
                         <td><span class="parameter">dbid</span>
                         <td><span class="types"><span class="number">number</span></span>
                         <td>The database ID of the specific unit class. 0 = any class.
-                    	</tr>
+                    </tr>
 
-                    	<tr>
+                    <tr>
                         <td><span class="parameter">priority</span>
                         <td><span class="types"><span class="number">number</span></span>
                         <td>0 = delayed, 1 = default, 2 = immediate
-                    	</tr>
+                    </tr>
                 </table>
 
                 <hr>
@@ -2506,19 +2712,28 @@ loadout = 19867 <br />
                 <p>WRA (Weapon Release Authority) settings</p>
                 <h4>Fields</h4>
                 <table class="table_borders" style="width: 100%; margin-left: 0px;">
-                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
-					
-					<tr><td><span class="parameter">weapon_dbid</span>
-					<td><span class="types"><span class="string">string</span></span>
-					<td>Weapon DB number 
-					</td></tr>
-					
-					<tr><td><span class="parameter">weapon_name</span>
-					<td><span class="types"><span class="string">string</span></span>
-					<td>Weapon name 
-					</td></tr>
-                    
-					<tr>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Comments</td>
+                    </tr>
+
+                    <tr>
+                        <td><span class="parameter">weapon_dbid</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Weapon DB number
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><span class="parameter">weapon_name</span>
+                        <td><span class="types"><span class="string">string</span></span>
+                        <td>Weapon name
+                        </td>
+                    </tr>
+
+                    <tr>
                         <td><span class="parameter">qty_salvo</span>
                         <td><span class="types"><span class="string">string</span></span>
                         <td>Weapons per salvo ('Max','None' or a number)
@@ -2541,7 +2756,8 @@ loadout = 19867 <br />
                 </table>
                 <div class="note-alert">
                     <p>
-                        <strong>Note:</strong> The absence of a field implies that it is <strong>not</strong> used or being changed.
+                        <strong>Note:</strong> The absence of a field implies that it is <strong>not</strong> used or
+                        being changed.
                     </p>
                 </div>
 
@@ -2602,7 +2818,12 @@ loadout = 19867 <br />
                 </p>
                 <h4>Fields</h4>
                 <table class="table_borders" style="width: 100%; margin-left: 0px;">
-                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Comments</td>
+                    </tr>
                     <tr>
                         <td><span class="parameter">wpn_guid</span>
                         <td><span class="types"><span class="string">string</span></span>
@@ -2646,29 +2867,34 @@ loadout = 19867 <br />
                 <p>Weather conditions.</p>
                 <h4>Fields</h4>
                 <table class="table_borders" style="width: 100%; margin-left: 0px;">
-                    <tr><th>Field</th><th>Type</th><th>Description</th><th>Comments</td></tr>
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Comments</td>
+                    </tr>
                     <tr>
                         <td><span class="parameter">temp</span>
-						<td><span class="types"><span class="number">number</span></span>
-						<td> Temperature (average for GetWeather(), or time-of-day for unit/contact)
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td> Temperature (average for GetWeather(), or time-of-day for unit/contact)
                     </tr>
                     <tr>
                         <td><span class="parameter">rainfall</span>
-						<td><span class="types"><span class="number">number</span></span> 
-						<td>Rainfall rate
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Rainfall rate
                     </tr>
                     <tr>
                         <td><span class="parameter">undercloud</span>
-						<td><span class="types"><span class="number">number</span></span> 
-						<td>Fraction under cloud
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Fraction under cloud
                     </tr>
                     <tr>
                         <td><span class="parameter">seastate</span>
-						<td><span class="types"><span class="number">number</span></span>
-						<td>Sea state
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Sea state
                     </tr>
                 </table>
-<!--
+                <!--
                 <hr>
                 <a class="anchor" id="table_ZoneMarker"></a>
                 <h3>ZoneMarker</h3>
@@ -2677,13 +2903,13 @@ loadout = 19867 <br />
                 </p>
 -->
 
-				
-            </div>			
-			<div id="footer">
-				<p>Copyright &copy; WarfareSims 2020</p>
-			</div>
-		</div>
-	</div>
+
+            </div>
+            <div id="footer">
+                <p>Copyright &copy; WarfareSims 2020</p>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
