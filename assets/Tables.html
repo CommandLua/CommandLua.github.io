@@ -1052,7 +1052,7 @@ print(u.formation) -- after update<br />
 
                 <hr>
                 <a class="anchor" id="table_LoadoutInfo"></a>
-                <h3>LoadoutInfo</h3>
+                <h3>Loadout_Info</h3>
                 <p>
                     Information on a loadout to add/alter
                 </p>
@@ -1114,6 +1114,129 @@ print(u.formation) -- after update<br />
                         <td><span class="parameter">Remove</span>
                         <td><span class="types"><span class="boolean">boolean</span></span>
                         <td>Deduct 'number' rather than add
+                    </tr>
+                </table>
+
+                <hr>
+                <a class="anchor" id="table_Loadout_QuickTurnaround"></a>
+                <h3>Loadout_QuickTurnaround</h3>
+                <p>
+                    QuickTurnaround details on a loadout 
+                </p>
+                <h4>Fields</h4>
+                <table class="table_borders" style="width: 100%; margin-left: 0px;">
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Comments</td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">state</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                        <td>is quick turnaround active for loadout
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">maxsorties</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Maximum number of sorties when in quick turnaround mode
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">readytime</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Time (minutes) to ready loadout in quick turnaround mode
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">extratime</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Additional Penalty time (minutes) to ready loadout in quick turnaround mode
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">airborne</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Airborne time (minutes) while in quick turnaround mode
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">tod</span>
+                        <td><span class="types"><a href="DataTypes.html#dataType_LoadoutTimeOfDay">tod</a></span>
+                        <td>Time of day supported while in quick turnaround mode
+                    </tr>
+                </table>
+
+                <hr>
+                <a class="anchor" id="table_Unit_QuickTurnaround"></a>
+                <h3>Quick Turnaround (unit)</h3>
+                <p>
+                    QuickTurnaround details for the aircraft 
+                </p>
+                <h4>Fields</h4>
+                <table class="table_borders" style="width: 100%; margin-left: 0px;">
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Comments</td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">state</span>
+                        <td><span class="types"><span class="boolean">boolean</span></span>
+                        <td>is quick turnaround enabled for the aircraft
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">maxsorties</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>The number of sorties the aircraft has flown in quick turnaround mode
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">totalsorties</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>The total number of sorties the aircraft has flown in quick turnaround mode
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">extratime</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>The Penalty time (minutes) to apply to the aircraft on reaching quick turnaround
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">airborne</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Total Airborne time (minutes) while in quick turnaround mode
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">avgsortietime</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Average sortie time while in quick turnaround mode
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">reset</span>
+                        <td><span class="types"><span class="boolean">Either True/False</span></span>
+                        <td>When setting unit quick turnaround, adding this parameter will reset the above numbers as if just starting in quick turnaround mode. The value does not matter.
+                    </tr>
+                </table>
+
+                <hr>
+                <a class="anchor" id="table_Loadout_AdditionalData"></a>
+                <h3>Loadout_AdditionalData</h3>
+                <p>
+                    Additional details specific to the loadout
+                </p>
+                <h4>Fields</h4>
+                <table class="table_borders" style="width: 100%; margin-left: 0px;">
+                    <tr>
+                        <th>Field</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Comments</td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">readytime</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Time (minutes) to ready loadout in normal mode
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">readytime_sustained</span>
+                        <td><span class="types"><span class="number">number</span></span>
+                        <td>Time (minutes) to ready loadout in sustained mode
                     </tr>
                 </table>
 

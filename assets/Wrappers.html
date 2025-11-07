@@ -1083,6 +1083,14 @@ end<br>
 						<th>Description</th>
 						<th>Comments</td>
 					</tr>
+
+					<tr>
+						<td><span class="parameter">additionalData</span>
+						<td><span class="table">{ <a href="Tables.html#table_Loadout_AdditionalData">AdditionalData</a> }</span>
+						<td>
+							Additional data for the loadout
+						</td>
+					</tr>
 					<tr>
 						<td><span class="parameter">dbid</span>
 						<td><span class="types"><span class="string">string</span></span>
@@ -1094,6 +1102,13 @@ end<br>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>Name of loadout
 						<td></td>
+					</tr>
+					<tr>
+						<td><span class="parameter">quickTurnaround</span>
+						<td><span class="table">{ <a href="Tables.html#table_Loadout_QuickTurnaround">QuickTurnaround</a> }</span>
+						<td>
+							Quick turnaround settings for the loadout
+						</td>
 					</tr>
 					<tr>
 						<td><span class="parameter">roles</span>
@@ -3026,6 +3041,13 @@ end<br>
 						</td>
 					</tr>
 					<tr>
+						<td><span class="parameter">loadout</span>
+						<td><span class="wrapper"><a href="#wrapper_Loadout">Loadout</a></span>
+						<td>
+							current aircraft loadout as a wrapper. <span class="readonly">READ ONLY</span>
+						</td>
+					</tr>
+					<tr>
 						<td><span class="parameter">loadoutdbid</span>
 						<td><span class="types"><span class="number">number</span></span>
 						<td>
@@ -3154,6 +3176,13 @@ end<br>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>
 							The unit proficiency, "Novice"|0, "Cadet"|1,"Regular"|2, "Veteran"|3, "Ace"|4.
+						</td>
+					</tr>
+					<tr>
+						<td><span class="parameter">quickTurnaround</span>
+						<td><span class="table">{ <a href="Tables.html#table_Unit_QuickTurnaround">QuickTurnaround</a> }</span>
+						<td>
+							Current quick turnaround values if an aircraft with a loadout
 						</td>
 					</tr>
 					<tr>
