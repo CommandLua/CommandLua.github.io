@@ -35,30 +35,8 @@
 	<div id="container">
 
 		<div id="content">
-			<div id="nav">
-				<ul>
-					<li><a href="../index2.html#News">News</a></li>
-					<li><a href="../index2.html#Introduction">Introduction</a></li>
-					<ol>
-						<li><a href="../index2.html#HowToUse">How to Use These Docs</a></li>
-						<li><a href="../index2.html#FirstSteps">First Steps</a></li>
-						<li><a href="../index2.html#ExternalResources">External Resources</a></li>
-					</ol>
-
-					<li><a href="../index2.html#Overview">Overview</a></li>
-					<ol>
-						<li><a href="../index2.html#CaseSensitivityandConventions">Case Sensitivity and Conventions</a></li>
-						<li><a href="../index2.html#EventHandling">Event Handling</a></li>
-						<li><a href="../index2.html#ErrorHandling">Error Handling</a></li>
-					</ol>
-					<li><a href="DataTypes.html">Data Types</a></li>
-					<li><a href="Functions.html">Functions</a></li>
-					<li><a href="Wrappers.html">Wrappers</a></li>
-					<!--<li><a href="Selectors.html">Selectors</a></li>-->
-					<li><a href="Tables.html">Tables</a></li>
-				</ul>
-			</div>
-			<div id="main">
+			<div id="header-wrapper" style="width: 100%; display: flex; flex-direction: row; gap: 10px; justify-content: space-between; margin-top: 2rem; margin-bottom: 1rem;">
+				<div id="introduction" style="width:80%";>
 				<a class="anchor" id="Wrappers"></a>
 				<h2>Wrappers</h2>
 				<p>
@@ -116,6 +94,33 @@ end<br>
 
 
 				</p>
+				</div>
+				<div id="nav">
+				<ul>
+					<li><a href="../index2.html#News">News</a></li>
+					<li><a href="../index2.html#Introduction">Introduction</a></li>
+					<ol>
+						<li><a href="../index2.html#HowToUse">How to Use These Docs</a></li>
+						<li><a href="../index2.html#FirstSteps">First Steps</a></li>
+						<li><a href="../index2.html#ExternalResources">External Resources</a></li>
+					</ol>
+
+					<li><a href="../index2.html#Overview">Overview</a></li>
+					<ol>
+						<li><a href="../index2.html#CaseSensitivityandConventions">Case Sensitivity and Conventions</a></li>
+						<li><a href="../index2.html#EventHandling">Event Handling</a></li>
+						<li><a href="../index2.html#ErrorHandling">Error Handling</a></li>
+					</ol>
+					<li><a href="DataTypes.html">Data Types</a></li>
+					<li><a href="Functions.html">Functions</a></li>
+					<li><a href="Wrappers.html">Wrappers</a></li>
+					<!--<li><a href="Selectors.html">Selectors</a></li>-->
+					<li><a href="Tables.html">Tables</a></li>
+				</ul>
+			</div>
+			</div>
+			<div id="main" style="width: 100%;">
+				
 				<ul class="ul-2-columns">
 					<li><span class="wrapper"><a href="#wrapper_Cargo">Cargo</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_Contact">Contact</a></span></li>
@@ -570,7 +575,13 @@ end<br>
 
 				<p> When there is a string(number) option, the indicated string or it's number can be used.</p><br>
 
-				<table class="table_borders" style="width: 100%; margin-left: 0px;">
+				<table class="table_borders" style="width: 100%; margin-left: 0px; table-layout: fixed;">
+					<colgroup>
+						<col style="width: 24%;">
+						<col style="width: 22%;">
+						<col style="width: 30%;">
+						<col style="width: 24%;">
+					</colgroup>
 					<tr>
 						<th>Field</th>
 						<th>Type</th>
@@ -762,6 +773,19 @@ end<br>
 						<td></td>
 					</tr>
 					<tr>
+						<td><span class="parameter">TargetPriority</span>
+						<td><span class="types"><a href="Tables.html#table_TargetPriority">{ TargetPriority }</a></span>
+						<td>Target priority list</td>
+						<td><span class="readonly">READ ONLY</span></td>
+					</tr>
+					<tr>
+						<td><span class="parameter">ThreatMaxDist</span>
+						<td><span class="types"><span class="number">number</span></span></td>
+						<td>Maximum range at which an inbound weapon is considered a threat.
+Missiles beyond this distance are ignored for threat evaluation and defensive reactions</td>
+						<td></td>
+					</tr>
+					<tr>
 						<td><span class="parameter">use_aip</span>
 						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">No = 0 <br> Yes_AttackOnly = 1
 										<br>Yes_Always = 2 </span></span></span>
@@ -857,10 +881,12 @@ end<br>
 						<td></td>
 					</tr>
 					<tr>
-						<td><span class="parameter">TargetPriority</span>
-						<td><span class="types"><a href="Tables.html#table_TargetPriority">{ TargetPriority }</a></span>
-						<td>Target priority list</td>
-						<td><span class="readonly">READ ONLY</span></td>
+						<td><span class="parameter">addTargetPriorityEntry</span></td>
+						<td><span class="types"><span class="method">method</span>(type, subtype, isfixedfacilitysubtype, dbid,
+								listIndex)</span></td>
+						<td></td>
+						<td>Returns <span class="types"><span class="boolean"><a href="Tables.html#table_TargetPriority">{
+										TargetPriority }</a></span></span></td>
 					</tr>
 					<tr>
 						<td><span class="parameter">deleteTargetPriorityEntry</span></td>
@@ -869,15 +895,6 @@ end<br>
 						<td>Returns <span class="types"><span class="boolean"><a href="Tables.html#table_TargetPriority">{
 										TargetPriority }</a></span></span></td>
 					</tr>
-					<tr>
-						<td><span class="parameter">addTargetPriorityEntry</span></td>
-						<td><span class="types"><span class="method">method</span>(type, subtype, isfixedfacilitysubtype, dbid,
-								listIndex)</span></td>
-						<td></td>
-						<td>Returns <span class="types"><span class="boolean"><a href="Tables.html#table_TargetPriority">{
-										TargetPriority }</a></span></span></td>
-					</tr>
-
 				</table>
 				<br />
 				<h4><a href="Examples.html#Example_Wrapper_Doctrine" target="wrapper_doctrine">Examples</a></h4>
