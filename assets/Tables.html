@@ -112,6 +112,7 @@
                 <hr>
                 <a class="anchor" id="table_AAR"></a>
                 <h3>AAR</h3>
+                <!-- { MaxReceiversInQueuePerTanker_Airborne = 0, Doctrine_UseReplenishment = 'Always_ExceptTankersRefuellingTankers', LaunchMissionWithoutTankersInPlace = 'No', FuelQtyToStartLookingForTanker_Airborne = 30, TankerUsage = 'Automatic', TankerFollowsReceivers = 'Yes', KeepOnMissionWithoutTankersInPlace = 'Yes', TankerMaxDistance_Airborne = 'internal' } -->
                 <p>Air-to-Air Refueling options; these are updated by <a
                         href="Function_ScenEdit_SetMission.html">ScenEdit_SetMission()</a>.</p>
                 </ul>
@@ -142,7 +143,19 @@
                         <td><span class="parameter">launchMissionWithoutTankersInPlace</span></td>
                         <td><span class="types"><span class="boolean">boolean</span></span></td>
                         <td></td>
+                        <td>If true, mission will launch even if no tankers are in place.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">TankerFollowsReceivers </span></td>
+                        <td><span class="types"><span class="boolean">boolean</span></span></td>
                         <td></td>
+                        <td>If true, tankers will move to mission/flightplan when aircraft starts refueling. False, the tanker will remain in its current track.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="parameter">KeepOnMissionWithoutTankersInPlace  </span></td>
+                        <td><span class="types"><span class="boolean">boolean</span></span></td>
+                        <td></td>
+                        <td>.</td>
                     </tr>
                     <tr>
                         <td><span class="parameter">tankerMissionList</span></td>
