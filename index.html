@@ -55,6 +55,7 @@
 				        <li><a href="#EventHandling">Event Handling</a></li>
 						<li><a href="#Globals">Global Keywords</a></li>
 						<li><a href="#ErrorHandling">Error Handling</a></li>
+						<li><a href="#DateTimeStamp">Date and Time methods [NEW]</a></li>
 					</ol>
 				    <li><a href="assets/DataTypes.html">Data Types</a></li>
 					<li><a href="assets/Functions.html">Functions</a></li>
@@ -1585,6 +1586,53 @@
 				</p>
 
 			</div>
+			
+		    <hr>
+          		<a class="anchor" id="DateTimeStamp"></a>
+             	   <h3>Date and Time [WORK IN PROGRESS]</h3>
+            		 <p>
+            			  A new way to handle date and time stamps from build 1825+.<br/>					  
+					</p>
+					<br/>
+					<p>
+						  Due to the different ways the date and time formats exist in the world,
+						   a new approach has been taken to allow more flexible ways to pass this to Lua.<br/>
+						  Most of the ScenEdit functions containing date and time have always had a 'dateformat' parameter to define <br/>
+						  how the date would be passed - DDMMYYYY, MMDDYYYY or YYYYMMDD.<br/>
+					</p>
+					<br/>
+					<p>
+						  The dates in the object wrappers generally were fixed to one of those formats as there was no 'dateformat' parameter.<br/>
+						  These changes are to assist mainly with setting date/time in a wrapper, such as in the case for mission date/times<br/>
+						  where the default date format is fixed as DDMMYYYY.<br/>
+						  <code>mission.starttime='09/06/2026 01:30:00'</code><br/>
+					</p>
+					<br/>
+					<p>
+					   The new approach allows the user to explicitly tell the program how to interpret the date/time string by entering the format 
+					   after a '!' in the parameter, as in   <code> "2027-06-09 1:30:00<b>!yyyy-MM-dd HH:mm:ss</b> "</code><br/>
+					</p>
+					<br/>
+					<p>
+					   There are some predefined formats which don't require the additional '!' format.<br/>
+					   These will list here shortly.<br/>
+					</p>
+					<br/>
+					<p>	  
+					The changes should be usable in ScenEdit functions also.<br/>
+            		 </p>
+					<br/><br/>
+					<h5>Examples</h5>
+	 				<div class="example">
+				    <p>
+				        <code>
+local m = ScenEdit_GetMission('sidea', 'test support')<br/>
+print(m)<br/>
+m.starttime = "2027-06-09 1:30:00!yyyy-MM-dd HH:mm:ss"<br/>
+print(m.starttime)<br/>
+--local d = '03/12/2025 09:03:00!dd/MM/yyyy H:mm:ss'<br/>
+</p></code></div>
+
 			<div id="footer">
 				<p>Copyright &copy; WarfareSims 2020</p>
 			</div>
