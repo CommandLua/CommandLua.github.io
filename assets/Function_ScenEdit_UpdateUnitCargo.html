@@ -107,7 +107,7 @@
                                 <ul>
                                     <li>
                                         <span class="types"> <span class="string"> string</span> </span>
-                                        Cargo GUID - treated as one unit to act on
+                                        Unit/Container GUID - the specific unit/container to remove from cargo. This is not supported for ADD_CARGO.
                                     </li>
                                     or
                                     <li>
@@ -118,7 +118,7 @@
                                             of
                                         </span>
                                         <span class="types"> <span class="number"> number</span> </span>
-                                        Cargo database id (DBID) and is treated as one unit to act on
+                                        Mount database id (DBID) and is treated as one mount to act on
                                     </li>
                                     or
                                     <li>
@@ -135,7 +135,7 @@
                                             </li>
                                             <li>
                                                 <span class="types"> <span class="number"> number</span> </span>
-                                                Cargo DBID to affect
+                                                Mount DBID to affect
                                             </li>
                                         </ul>
                                         Note the order of 'number to affect' and 'DBID'
@@ -155,11 +155,11 @@
                                             </li>
                                             <li>
                                                 <span class="types"> <span class="number"> number</span> </span>
-                                                Cargo DBID to affect
+                                                Unit/Container DBID to affect
                                             </li>
                                             <li>
 												<span class="types"> <span class="tooltip"> value<span class="tooltiptext"> '1 = Mount', '2 = Ground', '3 = Facility', '4 = Container'</span> </span> </span>
-                                                Type of cargo
+                                                Type of cargo that DBID refers to
                                             </li>
                                         </ul>
                                     </li>
