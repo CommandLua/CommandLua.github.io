@@ -115,6 +115,20 @@
                                 <span class="types"><span class="string">string</span></span>
                                 Type of Action. Applicable to mode 'add' only
                             </li>
+                            <li>
+                                <span class="parameter">scripttext =</span>
+                                <span class="types"><span class="string">string</span></span>
+                                Script to be executed for a Lua Action
+                            </li>
+                            <li>
+                                <span class="parameter">scriptfor =</span>
+                                <span class="types"><span class="tooltip">
+                                        number
+                                        <span class="tooltiptext">0: EventAction, 1: WaypointAction </span>
+                                    </span>
+                                </span>
+                                Script for action or for waypoints selector
+                            </li>
                             <!--
 
                 other Lua keywords that apply to various Event TCAs
@@ -153,6 +167,10 @@
                     <code>
                         local action = ScenEdit_SetAction( { description='my action', mode = 'remove' } )<br />
                         print(action)  -- list of the removed action settings
+                    </code>
+                    <code>
+                        local myscript = "ScenEdit_SpecialMessage('Blue','Starting data tx')"
+                        ScenEdit_SetAction( {name='ELF transmission2', description="action for waypoints", type="luascript", mode='add', scripttext = myscript, scriptfor=1})
                     </code>
                 </div>
 
