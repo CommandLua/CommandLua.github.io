@@ -35,30 +35,8 @@
 	<div id="container">
 
 		<div id="content">
-			<div id="nav">
-				<ul>
-					<li><a href="../index2.html#News">News</a></li>
-					<li><a href="../index2.html#Introduction">Introduction</a></li>
-					<ol>
-						<li><a href="../index2.html#HowToUse">How to Use These Docs</a></li>
-						<li><a href="../index2.html#FirstSteps">First Steps</a></li>
-						<li><a href="../index2.html#ExternalResources">External Resources</a></li>
-					</ol>
-
-					<li><a href="../index2.html#Overview">Overview</a></li>
-					<ol>
-						<li><a href="../index2.html#CaseSensitivityandConventions">Case Sensitivity and Conventions</a></li>
-						<li><a href="../index2.html#EventHandling">Event Handling</a></li>
-						<li><a href="../index2.html#ErrorHandling">Error Handling</a></li>
-					</ol>
-					<li><a href="DataTypes.html">Data Types</a></li>
-					<li><a href="Functions.html">Functions</a></li>
-					<li><a href="Wrappers.html">Wrappers</a></li>
-					<!--<li><a href="Selectors.html">Selectors</a></li>-->
-					<li><a href="Tables.html">Tables</a></li>
-				</ul>
-			</div>
-			<div id="main">
+			<div id="header-wrapper" style="width: 100%; display: flex; flex-direction: row; gap: 10px; justify-content: space-between; margin-top: 2rem; margin-bottom: 1rem;">
+				<div id="introduction" style="width:80%";>
 				<a class="anchor" id="Wrappers"></a>
 				<h2>Wrappers</h2>
 				<p>
@@ -116,6 +94,33 @@ end<br>
 
 
 				</p>
+				</div>
+				<div id="nav">
+				<ul>
+					<li><a href="../index2.html#News">News</a></li>
+					<li><a href="../index2.html#Introduction">Introduction</a></li>
+					<ol>
+						<li><a href="../index2.html#HowToUse">How to Use These Docs</a></li>
+						<li><a href="../index2.html#FirstSteps">First Steps</a></li>
+						<li><a href="../index2.html#ExternalResources">External Resources</a></li>
+					</ol>
+
+					<li><a href="../index2.html#Overview">Overview</a></li>
+					<ol>
+						<li><a href="../index2.html#CaseSensitivityandConventions">Case Sensitivity and Conventions</a></li>
+						<li><a href="../index2.html#EventHandling">Event Handling</a></li>
+						<li><a href="../index2.html#ErrorHandling">Error Handling</a></li>
+					</ol>
+					<li><a href="DataTypes.html">Data Types</a></li>
+					<li><a href="Functions.html">Functions</a></li>
+					<li><a href="Wrappers.html">Wrappers</a></li>
+					<!--<li><a href="Selectors.html">Selectors</a></li>-->
+					<li><a href="Tables.html">Tables</a></li>
+				</ul>
+			</div>
+			</div>
+			<div id="main" style="width: 100%;">
+				
 				<ul class="ul-2-columns">
 					<li><span class="wrapper"><a href="#wrapper_Cargo">Cargo</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_Contact">Contact</a></span></li>
@@ -570,7 +575,13 @@ end<br>
 
 				<p> When there is a string(number) option, the indicated string or it's number can be used.</p><br>
 
-				<table class="table_borders" style="width: 100%; margin-left: 0px;">
+				<table class="table_borders" style="width: 100%; margin-left: 0px; table-layout: fixed;">
+					<colgroup>
+						<col style="width: 24%;">
+						<col style="width: 22%;">
+						<col style="width: 30%;">
+						<col style="width: 24%;">
+					</colgroup>
 					<tr>
 						<th>Field</th>
 						<th>Type</th>
@@ -756,6 +767,25 @@ end<br>
 						<td>
 					</tr>
 					<tr>
+						<td><span class="parameter">StrikeMemberFocus</span>
+						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">0 = Opportunity Scrambling <br> 1 = Focus on mission targets</span></span></span>
+						<td>Mission focus</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><span class="parameter">TargetPriority</span>
+						<td><span class="types"><a href="Tables.html#table_TargetPriority">{ TargetPriority }</a></span>
+						<td>Target priority list</td>
+						<td><span class="readonly">READ ONLY</span></td>
+					</tr>
+					<tr>
+						<td><span class="parameter">ThreatMaxDist</span>
+						<td><span class="types"><span class="number">number</span></span></td>
+						<td>Maximum range at which an inbound weapon is considered a threat.
+Missiles beyond this distance are ignored for threat evaluation and defensive reactions</td>
+						<td></td>
+					</tr>
+					<tr>
 						<td><span class="parameter">use_aip</span>
 						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">No = 0 <br> Yes_AttackOnly = 1
 										<br>Yes_Always = 2 </span></span></span>
@@ -851,27 +881,20 @@ end<br>
 						<td></td>
 					</tr>
 					<tr>
-						<td><span class="parameter">TargetPriority</span>
-						<td><span class="types"><a href="Tables.html#table_TargetPriority">{ TargetPriority }</a></span>
-						<td>Target priority list</td>
-						<td><span class="readonly">READ ONLY</span></td>
+						<td><span class="parameter">addTargetPriorityEntry</span></td>
+						<td><span class="types"><span class="method">method</span>(type, subtype, isfixedfacilitysubtype, dbid,
+								listIndex)</span></td>
+						<td></td>
+						<td>Returns <span class="types"><span class="boolean"><a href="Tables.html#table_TargetPriority">{
+										TargetPriority }</a></span></span></td>
 					</tr>
 					<tr>
 						<td><span class="parameter">deleteTargetPriorityEntry</span></td>
-						<td><span class="types"><span class="method">method</span>(index)</span></td>
+						<td><span class="types"><span class="method">method</span>(listIndex)</span></td>
 						<td></td>
 						<td>Returns <span class="types"><span class="boolean"><a href="Tables.html#table_TargetPriority">{
 										TargetPriority }</a></span></span></td>
 					</tr>
-					<tr>
-						<td><span class="parameter">addTargetPriorityEntry</span></td>
-						<td><span class="types"><span class="method">method</span>(type, subtype, isfixedfacilitysubtype, dbid,
-								index)</span></td>
-						<td></td>
-						<td>Returns <span class="types"><span class="boolean"><a href="Tables.html#table_TargetPriority">{
-										TargetPriority }</a></span></span></td>
-					</tr>
-
 				</table>
 				<br />
 				<h4><a href="Examples.html#Example_Wrapper_Doctrine" target="wrapper_doctrine">Examples</a></h4>
@@ -1077,6 +1100,14 @@ end<br>
 						<th>Description</th>
 						<th>Comments</td>
 					</tr>
+
+					<tr>
+						<td><span class="parameter">additionalData</span>
+						<td><span class="table">{ <a href="Tables.html#table_Loadout_AdditionalData">AdditionalData</a> }</span>
+						<td>
+							Additional data for the loadout
+						</td>
+					</tr>
 					<tr>
 						<td><span class="parameter">dbid</span>
 						<td><span class="types"><span class="string">string</span></span>
@@ -1088,6 +1119,13 @@ end<br>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>Name of loadout
 						<td></td>
+					</tr>
+					<tr>
+						<td><span class="parameter">quickTurnaround</span>
+						<td><span class="table">{ <a href="Tables.html#table_Loadout_QuickTurnaround">QuickTurnaround</a> }</span>
+						<td>
+							Quick turnaround settings for the loadout
+						</td>
 					</tr>
 					<tr>
 						<td><span class="parameter">roles</span>
@@ -1232,7 +1270,7 @@ end<br>
 					<tr>
 						<td><span class="parameter">endtime</span>
 						<td><span class="types"><a href="DataTypes.html#dataType_DateTime">DateTime</a></span>
-						<td>Time mission ends
+						<td>Time mission ends (assumes DDMMYYYY for ambiguous date)
 						</td>
 					</tr>
 					<tr>
@@ -1280,7 +1318,7 @@ end<br>
 					<tr>
 						<td><span class="parameter">starttime</span>
 						<td><span class="types"><a href="DataTypes.html#dataType_DateTime">DateTime</a></span>
-						<td>Time mission starts
+						<td>Time mission starts (assumes DDMMYYYY for ambiguous date)
 						</td>
 					</tr>
 					<tr>
@@ -1298,13 +1336,13 @@ end<br>
 					<tr>
 						<td><span class="parameter">TakeOffTime</span>
 						<td><span class="types"><a href="DataTypes.html#dataType_DateTime">DateTime</a></span>
-						<td>Time mission flights take off
+						<td>Time mission flights take off (assumes DDMMYYYY for ambiguous date)
 						</td>
 					</tr>
 					<tr>
 						<td><span class="parameter">TimeOnTargetStation</span>
 						<td><span class="types"><a href="DataTypes.html#dataType_DateTime">DateTime</a></span>
-						<td>Time mission expects flights to be at target or on station
+						<td>Time mission expects flights to be at target or on station (assumes DDMMYYYY for ambiguous date)
 						</td>
 					</tr>
 					<tr>
@@ -2307,13 +2345,30 @@ end<br>
 					<tr>
 						<td><span class="parameter">awareness</span>
 						<td><span class="types"><a href="DataTypes.html#dataType_Awareness">Awareness</a></span>
-						<td><span class="readonly">READ ONLY</span>
+						</td>
+					</tr>
+					<tr>
+						<td><span class="parameter">canAutoTrackCivillians</span>
+						<td><span class="types"><span class="boolean">True/False</span></span>
+						<td>Auto track civilians 
 						</td>
 					</tr>
 					<tr>
 						<td><span class="parameter">Chalks</span>
 						<td><span class="table">{ <a href="#wrapper_Serial">Serial, ...</a> }</span>
 						<td>Table of serials within the Chalk.<span class="readonly">READ ONLY</span>
+						</td>
+					</tr>
+					<tr>
+						<td><span class="parameter">collectiveResponsibility</span>
+						<td><span class="types"><span class="boolean">True/False</span></span>
+						<td>Collective Responsibility 
+						</td>
+					</tr>
+					<tr>
+						<td><span class="parameter">computerControlledOnly</span>
+						<td><span class="types"><span class="boolean">True/False</span></span>
+						<td>AI controlled only 
 						</td>
 					</tr>
 					<tr>
@@ -2398,7 +2453,6 @@ end<br>
 					<tr>
 						<td><span class="parameter">proficiency</span>
 						<td><span class="types"><a href="DataTypes.html#dataType_Proficiency">Proficiency</a></span>
-						<td><span class="readonly">READ ONLY</span>
 						</td>
 					</tr>
 					<tr>
@@ -3020,6 +3074,13 @@ end<br>
 						</td>
 					</tr>
 					<tr>
+						<td><span class="parameter">loadout</span>
+						<td><span class="wrapper"><a href="#wrapper_Loadout">Loadout</a></span>
+						<td>
+							current aircraft loadout as a wrapper. <span class="readonly">READ ONLY</span>
+						</td>
+					</tr>
+					<tr>
 						<td><span class="parameter">loadoutdbid</span>
 						<td><span class="types"><span class="number">number</span></span>
 						<td>
@@ -3148,6 +3209,13 @@ end<br>
 						<td><span class="types"><span class="string">string</span></span>
 						<td>
 							The unit proficiency, "Novice"|0, "Cadet"|1,"Regular"|2, "Veteran"|3, "Ace"|4.
+						</td>
+					</tr>
+					<tr>
+						<td><span class="parameter">quickTurnaround</span>
+						<td><span class="table">{ <a href="Tables.html#table_Unit_QuickTurnaround">QuickTurnaround</a> }</span>
+						<td>
+							Current quick turnaround values if an aircraft with a loadout
 						</td>
 					</tr>
 					<tr>
@@ -3678,6 +3746,13 @@ end<br>
 						<th>Type</th>
 						<th>Description</th>
 						<th>Comments</td>
+					</tr>
+					<tr>
+						<td><span class="parameter">actionId </td>
+						<td class="types"><span class="string">string</span></td>
+						<td>The Event Action GUID that will execute when this waypoint is reached.<br/>
+						Use the normal Event Editor to create these types of events which can be added under Waypoint editing</td>
+						<td />
 					</tr>
 					<tr>
 						<td><span class="parameter">altitude </td>
