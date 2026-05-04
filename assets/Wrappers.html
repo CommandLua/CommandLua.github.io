@@ -589,6 +589,27 @@ end<br>
 						<th>Comments</td>
 					</tr>
 					<tr>
+						<td><span class="parameter">aaw_guidance</span>
+						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Always Continue Guidance = 0 <br>
+										Drop Guidance = 1 </span></span></span>
+						<td>'drop guidance' -> the firing platform will drop guidance when it becomes impossible for the guided missile to intercept the target.</td>
+						<td>This can allow a following weapon to make the intercept, or the firing platform to fire another shot, as it frees up the guidance system.</td>
+					</tr>
+					<tr>
+						<td><span class="parameter">aaw_rearward_fire</span>
+						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Always Fire = 0 <br>
+										Fire vs Aircraft or Weapons ONLY if interception is between shooter and target = 1 <br>Fire vs Aircraft Only if interception is between shoter and target = 2<br>Fire vs Weapons Only if interception is between shoter and target = 3</span></span></span>
+						<td>'Rearward' is based on the heading of the target -- if the target is heading away from the firing platform then it is 'to the rear.You can imagine a line perpendicular to the heading of the incoming target -- if the target goes 'behind' this line OR if the intercept point is behind this line, then the firing platform will drop the target</td>
+						<td>This can apply to aircraft and missile targets or just aircraft or just missiles, depending on the option chosen</td>
+					</tr>
+					<tr>
+						<td><span class="parameter">aaw_wra_qty</span>
+						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">For All targets WRA is fullfilled Separatelly = 0 <br>
+										For Aircraft or Weapons, WRA is fullfilled by ANY guided weapon = 1 <br>For Aircraft, WRA is fullfilled by ANY guided weapon = 2 <br>For Weapons, WRA is fullfilled by ANY guided weapon = 3 </span></span></span>
+						<td>How many different weapons needs to be fired against Target Aircrafts or Target weapons or both. Fullfilled separately means if two different weapons from two different units can fire at the target, they will fire to allocate the weapon salvo. If the setting is by ANY guided weapon, only one weapon type will be used</td>
+						<td></td>
+					</tr>
+					<tr>
 						<td><span class="parameter">air_operations_tempo</span>
 						<td><span class="types"><span class="tooltip">value<span class="tooltiptext">Surge = 0 <br> Sustained = 1
 									</span></span></span>
