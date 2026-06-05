@@ -313,6 +313,97 @@ Action(s) <br />
 					</code>
 				</div>
 
+
+				<hr>
+				<h1><a class="anchor" id="Example_Wrapper_Flight"></a>Wrapper Flight</h1>
+				<h2>Retrieving a mission flights </h2>
+				<div class="example">
+					<code>
+local m = ScenEdit_GetMission('BLUE','STRIKE')<br />
+print(m.flightlist)<br />
+<output>
+{ [1] = flight {<br />
+ guid = 'WT2BOY-0HNGTRKT3R1B9', name = 'Zombie21',  course = 'table' }, <br />
+ [2] = flight {<br />
+ guid = 'WT2BOY-0HNGTRKT3R1BL', name = 'Bat93',  course = 'table' } <br />
+ }
+</output>
+</code>
+</div>
+
+
+				<h2>Retrieving a mission flight course </h2>
+				<div class="example">
+					<code>
+
+local m = ScenEdit_GetMission('BLUE','STRIKE')<br />
+print(m.flightlist[1].course)<br />
+<output>
+
+{ <br />
+[1] = { latitude = 31.34, Name = 'Take-Off', DesiredAltitude = '609.6', TypeOf = 'TakeOff', Zulu = '20260222074857', Category = 'FlightPlan', PresetThrottle = 'Loiter', Description = '1', DesiredSpeed = '350', longitude = -82.73, GUID = 'WT2BOY-0HNGTRKT3R1BA' }, <br />
+[2] = { latitude = 31.5336110622656, Name = 'Hold Start', DesiredAltitude = '609.6', TypeOf = 'HoldStart', Zulu = '20260222075057', Category = 'FlightPlan', PresetThrottle = 'Loiter', Description = '2', DesiredSpeed = '350', longitude = -82.7480391781246, GUID = 'WT2BOY-0HNGTRKT3R1BB' }, <br />
+[3] = { latitude = 31.7716837201755, Name = 'Hold End', DesiredAltitude = '10972.8', TypeOf = 'HoldEnd', Zulu = '20260222075857', Category = 'FlightPlan', PresetThrottle = 'Cruise', Description = '3', DesiredSpeed = '480', longitude = -82.83656280014, GUID = 'WT2BOY-0HNGTRKT3R1BC' }, <br />
+[4] = { DesiredAltitudeTF = '0', latitude = 31.4474025820786, PresetThrottle = 'Cruise', DesiredAltitude = '10972.8', TypeOf = 'StrikeIngress', Zulu = '20260222075938', Category = 'FlightPlan', Name = 'Turning Point (Ingress)', Description = '4', DesiredSpeed = '480', longitude = -82.7168745136583, GUID = 'WT2BOY-0HNGTRKT3R1BE' }, <br />
+[5] = { DesiredAltitudeTF = '0', latitude = 29.0413181565301, PresetThrottle = 'Cruise', DesiredAltitude = '10972.8', TypeOf = 'WeaponLaunch', Zulu = '20260222082714', Category = 'FlightPlan', Name = 'Weapon Launch', Description = '5', DesiredSpeed = '480', longitude = -85.9351066028473, GUID = 'WT2BOY-0HNGTRKT3R1BF' }, <br />
+[6] = { latitude = 26.13, Name = 'Weapon Target', DesiredAltitude = '10972.8', TypeOf = 'WeaponTarget', Zulu = '20260222082807', Category = 'FlightPlan', PresetThrottle = 'Cruise', Description = '-', DesiredSpeed = '480', longitude = -80.9183333333333, GUID = 'WT2BOY-0HNGTRKT3R1BG' }, <br />
+[7] = { latitude = 31.4474064758234, Name = 'Turning Point (Egress)', DesiredAltitude = '10972.8', TypeOf = 'StrikeEgress', Zulu = '20260222085544', Category = 'FlightPlan', PresetThrottle = 'Cruise', Description = '6', DesiredSpeed = '480', longitude = -82.7168585268741, GUID = 'WT2BOY-0HNGTRKT3R1BH' }, <br />
+[8] = { latitude = 31.1735241174604, Name = 'Landing Marshal Point', DesiredAltitude = '914.4', TypeOf = 'LandingMarshal', Zulu = '20260222085959', Category = 'FlightPlan', PresetThrottle = 'Cruise', Description = '7', DesiredSpeed = '480', longitude = -82.73, GUID = 'WT2BOY-0HNGTRKT3R1BI' }, <br />
+[9] = { latitude = 31.34, Name = 'Land', DesiredAltitude = '0', TypeOf = 'Land', Zulu = '20260222090142', Category = 'FlightPlan', PresetThrottle = 'Loiter', Description = '8', DesiredSpeed = '350', longitude = -82.73, GUID = 'WT2BOY-0HNGTRKT3R1BJ' } <br />
+}
+
+</output>
+</code>
+</div>
+
+				<h2>Retrieving a mission flight course by waypoint wrapper </h2>
+				<div class="example">
+					<code>
+
+local m = ScenEdit_GetMission('BLUE','STRIKE')<br />
+print(m.flightlist[1].coursewrapper)<br />
+<output>
+{ <br />
+[1] = waypoint { type = 'TakeOff',  name = 'Take-Off',  description = '1',  guid = 'WT2BOY-0HNGTRKT3R1BA',  time = '20260222074857',  latitude = '31.34',  longitude = '-82.73', }, <br />
+[2] = waypoint { type = 'HoldStart',  name = 'Hold Start',  description = '2',  guid = 'WT2BOY-0HNGTRKT3R1BB',  time = '20260222075057',  latitude = '31.5336110622656',  longitude = '-82.7480391781246', }, <br />
+[3] = waypoint { type = 'HoldEnd',  name = 'Hold End',  description = '3',  guid = 'WT2BOY-0HNGTRKT3R1BC',  time = '20260222075857',  latitude = '31.7716837201755',  longitude = '-82.83656280014', }, <br />
+[4] = waypoint { type = 'StrikeIngress',  name = 'Turning Point (Ingress)',  description = '4',  guid = 'WT2BOY-0HNGTRKT3R1BE',  time = '20260222075938',  latitude = '31.4474025820786',  longitude = '-82.7168745136583', }, <br />
+[5] = waypoint { type = 'WeaponLaunch',  name = 'Weapon Launch',  description = '5',  guid = 'WT2BOY-0HNGTRKT3R1BF',  time = '20260222082714',  latitude = '29.0413181565301',  longitude = '-85.9351066028473', }, <br />
+[6] = waypoint { type = 'WeaponTarget',  name = 'Weapon Target',  description = '-',  guid = 'WT2BOY-0HNGTRKT3R1BG',  time = '20260222082807',  latitude = '26.13', 
+ longitude = '-80.9183333333333', }, <br />
+[7] = waypoint { type = 'StrikeEgress',  name = 'Turning Point (Egress)',  description = '6',  guid = 'WT2BOY-0HNGTRKT3R1BH',  time = '20260222085544',  latitude = '31.4474064758234',  longitude = '-82.7168585268741', }, <br />
+[8] = waypoint { type = 'LandingMarshal',  name = 'Landing Marshal Point',  description = '7',  guid = 'WT2BOY-0HNGTRKT3R1BI',  time = '20260222085959',  latitude = '31.1735241174604',  longitude = '-82.73', }, <br />
+[9] = waypoint { type = 'Land',  name = 'Land',  description = '8',  guid = 'WT2BOY-0HNGTRKT3R1BJ',  time = '20260222090142',  latitude = '31.34',  longitude = '-82.73', } <br />
+}
+</output>
+</code>
+</div>
+
+
+				<h2>Inserting a waypoint into a Flight plan </h2>
+				<div class="example">
+					<code>
+local mission = ScenEdit_GetMission('BLUE','STRIKE')<br/>
+mission.flightlist[1]:insertWaypoint(4,{ latitude = 39.610, longitude = -100.225, TypeOf = 'Refuel', DesiredSpeed = '350', DesiredAltitude = '7000' })<br/>
+print(m.flightlist[1].course)<br/>
+<output>
+{ <br/>
+[1] = { latitude = 31.34, Name = 'Take-Off', DesiredAltitude = '609.6', TypeOf = 'TakeOff', Zulu = '20260222034448', Category = 'FlightPlan', PresetThrottle = 'Loiter', Description = '1', DesiredSpeed = '350', longitude = -82.73, GUID = 'WT2BOY-0HNGTRKT3R1BA' }, <br/>
+[2] = { latitude = 31.5336110622656, Name = 'Hold Start', DesiredAltitude = '609.6', TypeOf = 'HoldStart', Zulu = '20260222034648', Category = 'FlightPlan', PresetThrottle = 'Loiter', Description = '2', DesiredSpeed = '350', longitude = -82.7480391781246, GUID = 'WT2BOY-0HNGTRKT3R1BB' }, <br/>
+[3] = { latitude = 31.7716837201755, Name = 'Hold End', DesiredAltitude = '10972.8', TypeOf = 'HoldEnd', Zulu = '20260222035448', Category = 'FlightPlan', PresetThrottle = 'Cruise', Description = '3', DesiredSpeed = '480', longitude = -82.83656280014, GUID = 'WT2BOY-0HNGTRKT3R1BC' }, <br/>
+<strong>[4] = { latitude = 39.61, Name = '', DesiredAltitude = '7000', TypeOf = 'Refuel', Zulu = '20260222055706', Category = 'FlightPlan', PresetThrottle = 'Cruise', Description = '4', DesiredSpeed = '480', longitude = -100.225, GUID = 'CY41MA-0HNM2RO50J0U9' }, </strong><br/>
+[5] = { DesiredAltitudeTF = '0', latitude = 31.4474025820786, PresetThrottle = 'Cruise', DesiredAltitude = '10972.8', TypeOf = 'StrikeIngress', Zulu = '20260222080024', Category = 'FlightPlan', Name = 'Turning Point (Ingress)', Description = '5', DesiredSpeed = '480', longitude = -82.7168745136583, GUID = 'WT2BOY-0HNGTRKT3R1BE' }, <br/>
+[6] = { DesiredAltitudeTF = '0', latitude = 29.0413181565301, PresetThrottle = 'Cruise', DesiredAltitude = '10972.8', TypeOf = 'WeaponLaunch', Zulu = '20260222082806', Category = 'FlightPlan', Name = 'Weapon Launch', Description = '6', DesiredSpeed = '480', longitude = -85.9351066028473, GUID = 'WT2BOY-0HNGTRKT3R1BF' }, <br/>
+[7] = { latitude = 26.13, Name = 'Weapon Target', DesiredAltitude = '10972.8', TypeOf = 'WeaponTarget', Zulu = '20260222082806', Category = 'FlightPlan', PresetThrottle = 'Cruise', Description = '-', DesiredSpeed = '480', longitude = -80.9183333333333, GUID = 'WT2BOY-0HNGTRKT3R1BG' }, <br/>
+[8] = { latitude = 31.4474064758234, Name = 'Turning Point (Egress)', DesiredAltitude = '10972.8', TypeOf = 'StrikeEgress', Zulu = '20260222085543', Category = 'FlightPlan', PresetThrottle = 'Cruise', Description = '7', DesiredSpeed = '480', longitude = -82.7168585268741, GUID = 'WT2BOY-0HNGTRKT3R1BH' }, <br/>
+[9] = { latitude = 31.1735241174604, Name = 'Landing Marshal Point', DesiredAltitude = '914.4', TypeOf = 'LandingMarshal', Zulu = '20260222085959', Category = 'FlightPlan', PresetThrottle = 'Cruise', Description = '8', DesiredSpeed = '480', longitude = -82.73, GUID = 'WT2BOY-0HNGTRKT3R1BI' }, <br/>
+[10] = { latitude = 31.34, Name = 'Land', DesiredAltitude = '0', TypeOf = 'Land', Zulu = '20260222090141', Category = 'FlightPlan', PresetThrottle = 'Loiter', Description = '9', DesiredSpeed = '350', longitude = -82.73, GUID = 'WT2BOY-0HNGTRKT3R1BJ' } <br/>
+}						
+						</output>
+					</code>
+				</div>
+
+
 				<hr>
 				<h1><a class="anchor" id="Example_Wrapper_Group"></a>Wrapper Group</h1>
 				<h2>Retreiving the Group details</h2>

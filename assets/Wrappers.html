@@ -127,6 +127,7 @@ end<br>
 					<li><span class="wrapper"><a href="#wrapper_Doctrine">Doctrine</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_DoctrineWRA">DoctrineWRA</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_Event">Event</a></span></li>
+					<li><span class="wrapper"><a href="#wrapper_Flight">Flight</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_Group">Group</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_Loadout">Loadout</a></span></li>
 					<li><span class="wrapper"><a href="#wrapper_Magazine">Magazine</a></span></li>
@@ -1049,6 +1050,71 @@ Missiles beyond this distance are ignored for threat evaluation and defensive re
 				<h4><a href="Examples.html#Example_Wrapper_Event" target="wrapper_event">Examples</a></h4>
 
 				<hr>
+				<a class="anchor" id="wrapper_Flight"></a>
+				<h3>Flight</h3>
+
+				Flight details
+
+				<table class="table_borders" style="width: 100%; margin-left: 0px;">
+					<tr>
+						<th>Field</th>
+						<th>Type</th>
+						<th>Description</th>
+						<th>Comments</td>
+					</tr>
+					<tr>
+						<td><span class="parameter">course</span>
+						<td><span class="table">table</span>
+						<td>Table of the course's <span class="types"><a href="#wrapper_WayPoint">waypoint</a></span> details. See example for difference.
+						</td>
+					</tr>
+					<tr>
+						<td><span class="parameter">courseWrapper</span>
+						<td><span class="table">table</span>
+						<td>Table of the course's waypoints as waypoint wrappers. This allows you to reference the waypoint itself before course details were extended. See example for difference.
+						</td>
+					</tr>
+					<tr>
+						<td><span class="parameter">guid</span>
+						<td><span class="types"><span class="string">string</span></span>
+						<td>The flight GUID <span class="readonly">READ ONLY</span>
+						</td>
+					</tr>
+					<tr>
+						<td><span class="parameter">name</span>
+						<td><span class="types"><span class="string">string</span></span>
+						<td>The flight call sign 
+						</td>
+					</tr>
+					
+					<tr>
+						<td><span class="parameter">deleteWaypoint</span></td>
+						<td><span class="types"><span class="method">method</span>( <span class="number">index</span> , [ optional <span class="types"><span class="boolean">True/False</span></span>] )</span></td>
+						<td>Delete a waypoint at the numbered position</td>
+						<td>Returns (a) Error message as a string <br>
+						    (b) <span class="types"><a href="#wrapper_WayPoint">deleted waypoint</a></span> </td>
+					</tr>
+					<tr>
+						<td><span class="parameter">insertWaypoint</span></td>
+						<td><span class="types"><span class="method">method</span>( <span class="number">indexBefore</span> , <span class="types"><a href="#wrapper_WayPoint">waypoint</a></span>)</span></td>
+						<td>Insert a waypoint before the numbered position from the waypoint table</td>
+						<td>Returns nil</td>
+					</tr>
+					<tr>
+						<td><span class="parameter">refreshWaypoints</span></td>
+						<td><span class="types"><span class="method">method</span>()</span></td>
+						<td>Refresh the wapoints for fuel and time</td>
+						<td>Returns nil</td>
+					</tr>
+					
+					
+					
+				</table>
+				<br />
+				<h4><a href="Examples.html#Example_Wrapper_Flight" target="wrapper_flight">Examples</a></h4>
+
+
+				<hr>
 				<a class="anchor" id="wrapper_Group"></a>
 				<h3>Group</h3>
 
@@ -1296,8 +1362,8 @@ Missiles beyond this distance are ignored for threat evaluation and defensive re
 					</tr>
 					<tr>
 						<td><span class="parameter">flightlist</span>
-						<td><span class="types"><a href="Tables.html#table_FlightList">FlightList</a></span>
-						<td>Table with the flightplans from a mission
+						<td><span class="types">{ <a href="Wrappers.html#wrapper_Flight">Flight</a>, ... }</span>
+						<td>Table of flights and flightplans for a mission
 						</td>
 					</tr>
 					<tr>
