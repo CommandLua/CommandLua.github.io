@@ -88,6 +88,14 @@
 									class="string">string</span></span>(Optional) name of unit side
 						</li>
 						<li>
+							<span class="parameter">aspect = </span>
+							<span class="types"><span class="tooltip">Aspect
+									<span class="tooltiptext">'FRONT','SIDE','REAR','ALL'
+										<br /></span></span></span>
+							(Optional) aspect to measure; REAR is default
+							<br />
+						</li>
+						<li>
 							<span class="parameter">frequency = </span>
 							<span class="types"><span class="tooltip">Freq
 									<span class="tooltiptext">'VLF','LF','MF','HF'
@@ -100,17 +108,32 @@
 				<h4> Returns</h4>
 				<p>
 					<span class="types"> <span class="number"> number</span> </span>
-					Returns a numerical value representing the SL in the given band<br />
+					Returns a numerical value representing the SL in the given band if ASPECT is not ALL </br>
+
+				</p>
+				<p>	OR </p>
+				<p>
+					 <span class="table"> {'front', 'side', 'rear' }</span> 
+					Returns a Lua table of SL values if ASPECT is ALL<br />
 				</p>
 				
 
 				<h5> Example</h5>
 				<div class="example">
 					<code>
-						print(Tool_QuerySoundLevel({targetunitname="SSN 768 Hartford"}))<br/>
-						<br/>
+print(Tool_QuerySoundLevel({targetunitname="DDG 113 John Finn [Arleigh Burke Flight IIA Restart]", frequency='vlf', aspect='all'})) </br>
 						<output>
-						56.4<br/>
+{ front = 67.5999984741211, side = 68.1999969482422, rear = 68.8000030517578 }</br>
+						</output>
+
+print(Tool_QuerySoundLevel({targetunitname="DDG 113 John Finn [Arleigh Burke Flight IIA Restart]", frequency='vlf'}))  ' as is</br>
+						<output>
+68.8000030517578</br>
+						</output>
+
+print(Tool_QuerySoundLevel({targetunitname="DDG 113 John Finn [Arleigh Burke Flight IIA Restart]", frequency='vlf', aspect='side'}))</br>
+						<output>
+68.1999969482422<br/>
 						</output>
 					</code>
 				</div>
