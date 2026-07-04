@@ -73,7 +73,20 @@
                 
                 <h3>Parameters</h3>
                 <ul>
-                    <li>None</li>
+                    <li>
+                        <span class="parameter"> table</span> <span class="table">
+                            {
+                            }
+
+                        </span>
+                        <ul>
+                            <li>
+                                <span class="parameter"> filename = </span>
+                                <span class="types"> <span class="string"> string</span> </span>
+                                The name of the filepath to write the XML.<br/>
+                            </li>
+						</ul>
+					</li>
                 </ul>
 
                 <h3>Returns</h3>
@@ -88,6 +101,7 @@
                 <div class="example">
                     <code>
                         local a = ScenEdit_ExportScenarioToXML ( )
+                        ScenEdit_ExportScenarioToXML ({filename='C:\\tmp\\scenario.xml'})
                     </code>
                 </div>
 
