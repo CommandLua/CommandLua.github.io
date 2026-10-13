@@ -145,7 +145,7 @@
                             <li>
                                 <span class="parameter"> areaColor = </span>
                                 <span class="types"> <span class="string"> string</span> </span>
-                                The zone color to show as a HTML color code
+                                The zone color to show as a HTML color code. Transparency can also be specified, either as <code>'#AARRGGBB'</code> (AA: 00 fully transparent, FF fully opaque) or as <code>'Alpha,Red,Green,Blue'</code> (Alpha: 0 fully transparent, 255 fully opaque)
                             </li>
                             <li>
                                 <span class="parameter"> rename = </span>
@@ -212,6 +212,13 @@
                 <h5> Example</h5>
                 <div class="example">
                     <code> local zone = ScenEdit_SetZone( 'sideA', 0, { rename = 'new zone', affects = {'ship', 'submarine'} } )</code>
+                </div>
+
+                <h5> Example 2</h5>
+                <p> Change a zone color to half-opacity red</p>
+                <div class="example">
+                    <code> local zone = ScenEdit_SetZone( 'sideA', -925, { description = 'test', areaColor = '#80FF0000' } )<br/>
+                        local zone = ScenEdit_SetZone( 'sideA', -925, { description = 'test', areaColor = '128,255,0,0' } )</code>
                 </div>
 
             </div>
