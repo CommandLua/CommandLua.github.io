@@ -87,6 +87,11 @@
                                 <span class="types"><span class="string">string</span></span>
                                 The GUID of the unit
                             </li>
+                            <li>
+                                <span class="parameter">DISEntityID = </span>
+                                <span class="types"><span class="string">string</span></span>
+                                The DIS entity ID of the unit, in the format SiteID.ApplicationID.EntityID <span class="pro_only">PRO ONLY</span>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -167,6 +172,16 @@
                                 weaponstate = 'None',<br/>
                                 }<br/>
                             </output>
+                        </code>
+                    </p>
+                </div>
+                <h5>Example 3 <span class="pro_only">PRO ONLY</span></h5>
+                <div class="example">
+                    <p>
+                        <code>
+                            local myUnit =
+                            ScenEdit_GetUnit( { DISEntityID='01.15.35546'} ) <br/>
+							print( myUnit) <br/>
                         </code>
                     </p>
                 </div>
