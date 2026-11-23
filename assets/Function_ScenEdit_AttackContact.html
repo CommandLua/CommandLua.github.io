@@ -106,6 +106,12 @@
                                 <span class="types"><span class="number">number</span></span>
                                 The number of weapons to fire in this salvo [Applies to manual weapon launch ]
                             </li>
+                            <li>
+                                <span class="parameter">datetime = </span>
+                                <span class="types"><a href="DataTypes.html#dataType_DateTime">DateTime</a></span>
+                                (Optional) The scenario date/time at which the unit will fire, as 'DD/MM/YYYY HH:MM:SS' (e.g. '10/09/2022 23:30:00' is 10 September) or ISO 'YYYY-MM-DD HH:MM:SS' / 'YYYY-MM-DDTHH:MM:SS'. ISO is unambiguous and preferred.<br />
+                                If omitted, in the past, or not a valid date, the unit fires immediately (the function still returns true).
+                            </li>
                             If the contactId is 'BOL', then the following applies.
                             <li>
                                 <span class="parameter">latitude = </span>
@@ -147,6 +153,20 @@
                 <h5>Example</h5>
                 <div class="example">
                     <code>ScenEdit_AttackContact( 'Phantom #1', 'SKUNK #12', { mode='1', mount=438, weapon=1413, qty=10 } )</code>
+                </div>
+
+                <h5>Example (timed launch with course)</h5>
+                <div class="example">
+                    <code>
+                        local a = ScenEdit_AttackContact( 'DDG 96 Bainbridge [Arleigh Burke Flight IIA]', 'Marker (Training Target)',<br />
+                        &nbsp;{ mode='1', weapon=586, qty=2, datetime='10/09/2022 23:30:00', course = {<br />
+                        &nbsp;&nbsp;{latitude = '-18.2967375469646', longitude = '112.901318421545'},<br />
+                        &nbsp;&nbsp;{latitude = '-21.2224389681171', longitude = '116.427393881667'},<br />
+                        &nbsp;&nbsp;{latitude = '-21.6000601226907', longitude = '116.818216454939'},<br />
+                        &nbsp;&nbsp;{latitude = '-21.6615862044255', longitude = '118.086057118768'}<br />
+                        &nbsp;}<br />
+                        &nbsp;} )
+                    </code>
                 </div>
 
             </div>
